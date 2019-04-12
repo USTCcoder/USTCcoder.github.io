@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[C4.5]]></title>
+    <url>%2F2019%2F03%2F25%2FMachine%20Learning%20C4.5%2F</url>
+    <content type="text"><![CDATA[&#x2003; Watermelon&#x1F349; 111111 2222 33333$$x = 100 * y + z - 10 / 33 + 10 % 3$$$$f=\lim_{x \to 0} \left ( \frac{\sin x}{x} \right )$$ 777 111 $$\hat{f}(\xi ):=\int_{-\infty }^{\infty }f(x)e^{-2\pi ix\xi}dx$$ aaa bbb ccc ddd eee fff ggg hhh iii jjj document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <categories>
+        <category>Machine Learning</category>
+        <category>jueceshu</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[Bayes]]></title>
     <url>%2F2019%2F03%2F25%2FMachine%20Learning%20Bayes%2F</url>
     <content type="text"><![CDATA[&#x2003;Watermelon&#x1F349; 111111 222233333$$f(x, y,z) = x \lbrace[(x + y) x] +z\rbrace$$777 111 aaa bbb ccc ddd eee fff ggg hhh iii jjj document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
       <categories>
         <category>Machine Learning</category>
         <category>beiyesi</category>
-      </categories>
-  </entry>
-  <entry>
-    <title><![CDATA[C4.5]]></title>
-    <url>%2F2019%2F03%2F25%2FMachine%20Learning%20C4.5%2F</url>
-    <content type="text"><![CDATA[&#x2003;Watermelon&#x1F349; 111111 222233333$$f(x, y,z) = x \lbrace[(x + y) x] +z\rbrace$$777 111 aaa bbb ccc ddd eee fff ggg hhh iii jjj document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
-      <categories>
-        <category>Machine Learning</category>
-        <category>jueceshu</category>
       </categories>
   </entry>
   <entry>

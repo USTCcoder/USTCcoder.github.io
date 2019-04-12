@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://USTCcoder.github.io/"/>
-  <updated>2019-04-02T04:38:16.000Z</updated>
+  <updated>2019-04-12T14:47:25.588Z</updated>
   <id>https://USTCcoder.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>C4.5</title>
+    <link href="https://USTCcoder.github.io/2019/03/25/Machine%20Learning%20C4.5/"/>
+    <id>https://USTCcoder.github.io/2019/03/25/Machine Learning C4.5/</id>
+    <published>2019-03-25T11:29:40.000Z</published>
+    <updated>2019-04-12T14:47:25.588Z</updated>
+    
+    <content type="html"><![CDATA[<p>&#x2003;</p><a id="more"></a><p>Watermelon&#x1F349;</p><blockquote><p>111111</p></blockquote><blockquote><p>2222</p></blockquote><blockquote><p>33333<br>$$x = 100 * y + z - 10 / 33 + 10 % 3$$<br>$$f=\lim_{x \to 0} \left ( \frac{\sin x}{x} \right )$$</p></blockquote><p>777</p><button>111</button><p>$$\hat{f}(\xi ):=\int_{-\infty }^{\infty }f(x)e^{-2\pi ix\xi}dx$$</p><ul><li><p>aaa</p><ul><li><p>bbb</p></li><li><p>ccc</p><ul><li><p>ddd</p></li><li><p>eee</p><ul><li>fff</li><li>ggg<ul><li>hhh<ul><li>iii<ul><li>jjj</li></ul></li></ul></li></ul></li></ul></li></ul></li></ul></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;table&gt;&lt;tr&gt;&lt;td bgcolor=#87CEFA&gt;&lt;font size=5 face=&quot;STCAIYUN&quot; color=white&gt;&lt;center&gt;四月是青春的谎言.&lt;/center&gt;&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+    
+    </summary>
+    
+      <category term="Machine Learning" scheme="https://USTCcoder.github.io/categories/Machine-Learning/"/>
+    
+      <category term="jueceshu" scheme="https://USTCcoder.github.io/categories/Machine-Learning/jueceshu/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Bayes</title>
@@ -34,28 +56,6 @@
       <category term="Machine Learning" scheme="https://USTCcoder.github.io/categories/Machine-Learning/"/>
     
       <category term="beiyesi" scheme="https://USTCcoder.github.io/categories/Machine-Learning/beiyesi/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>C4.5</title>
-    <link href="https://USTCcoder.github.io/2019/03/25/Machine%20Learning%20C4.5/"/>
-    <id>https://USTCcoder.github.io/2019/03/25/Machine Learning C4.5/</id>
-    <published>2019-03-25T11:29:40.000Z</published>
-    <updated>2019-04-02T04:38:16.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>&#x2003;<br><a id="more"></a><br>Watermelon&#x1F349;</p><blockquote><p>111111</p><p>2222<br>33333<br>$$f(x, y,z) = x <em> \lbrace[(x + y) </em> x] +z\rbrace$$<br>777</p></blockquote><p><button>111</button></p><ul><li>aaa<ul><li>bbb</li><li>ccc<ul><li>ddd</li><li>eee<ul><li>fff</li><li>ggg<ul><li>hhh<ul><li>iii<ul><li>jjj</li></ul></li></ul></li></ul></li></ul></li></ul></li></ul></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
-    
-    <summary type="html">
-    
-      &lt;table&gt;&lt;tr&gt;&lt;td bgcolor=#87CEFA&gt;&lt;font size=5 face=&quot;STCAIYUN&quot; color=white&gt;&lt;center&gt;四月是青春的谎言.&lt;/center&gt;&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-    
-    </summary>
-    
-      <category term="Machine Learning" scheme="https://USTCcoder.github.io/categories/Machine-Learning/"/>
-    
-      <category term="jueceshu" scheme="https://USTCcoder.github.io/categories/Machine-Learning/jueceshu/"/>
     
     
   </entry>
