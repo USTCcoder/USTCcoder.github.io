@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[C4.5]]></title>
-    <url>%2F2019%2F03%2F25%2FMachine%20Learning%20C4.5%2F</url>
-    <content type="text"><![CDATA[&#x2003;Watermelon&#x1F349; 111111 222233333$$f(x, y,z) = x \lbrace[(x + y) x] +z\rbrace$$777 111 aaa bbb ccc ddd eee fff ggg hhh iii jjj document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
-      <categories>
-        <category>Machine Learning</category>
-        <category>jueceshu</category>
-      </categories>
-  </entry>
-  <entry>
     <title><![CDATA[Bayes]]></title>
     <url>%2F2019%2F03%2F25%2FMachine%20Learning%20Bayes%2F</url>
     <content type="text"><![CDATA[&#x2003;Watermelon&#x1F349; 111111 222233333$$f(x, y,z) = x \lbrace[(x + y) x] +z\rbrace$$777 111 aaa bbb ccc ddd eee fff ggg hhh iii jjj document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
@@ -19,12 +10,12 @@
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[personal recommendation]]></title>
-    <url>%2F2019%2F03%2F22%2Fpersonal%20recommendation%2F</url>
-    <content type="text"><![CDATA[leifengta xxxxxxx Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new &quot;My New Post&quot; More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+    <title><![CDATA[C4.5]]></title>
+    <url>%2F2019%2F03%2F25%2FMachine%20Learning%20C4.5%2F</url>
+    <content type="text"><![CDATA[&#x2003;Watermelon&#x1F349; 111111 222233333$$f(x, y,z) = x \lbrace[(x + y) x] +z\rbrace$$777 111 aaa bbb ccc ddd eee fff ggg hhh iii jjj document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
       <categories>
-        <category>Computer Science</category>
-        <category>personal recommendation</category>
+        <category>Machine Learning</category>
+        <category>jueceshu</category>
       </categories>
   </entry>
   <entry>
@@ -42,6 +33,15 @@
     <content type="text"><![CDATA[leifengta xxxxxxx Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
       <categories>
         <category>Hexo GitHub</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[personal recommendation]]></title>
+    <url>%2F2019%2F03%2F22%2Fpersonal%20recommendation%2F</url>
+    <content type="text"><![CDATA[leifengta xxxxxxx Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new &quot;My New Post&quot; More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <categories>
+        <category>Computer Science</category>
+        <category>personal recommendation</category>
       </categories>
   </entry>
   <entry>
