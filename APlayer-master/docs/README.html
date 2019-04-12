@@ -1,0 +1,549 @@
+<hr>
+<h2 id="search-english"><a href="#search-english" class="headerlink" title="search: english"></a>search: english</h2><h1 id="APlayer"><a href="#APlayer" class="headerlink" title="APlayer"></a>APlayer</h1><p>🍭 Wow, such a beautiful HTML5 music player</p>
+<h2 id="Special-Sponsors"><a href="#Special-Sponsors" class="headerlink" title="Special Sponsors"></a>Special Sponsors</h2><p><a href="https://www.dogecloud.com/?ref=dplayer" target="_blank"><br>    <img width="222px" src="https://i.imgur.com/BBKXPAp.png"><br></a><br><a href="https://www.upyun.com/" target="_blank"><br>    <img width="222px" src="https://imgur.com/apG1uKf.png"><br></a></p>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><p>Using npm:</p>
+<pre><code>npm install aplayer --save
+</code></pre><p>Using Yarn:</p>
+<pre><code>yarn add aplayer
+</code></pre><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><div class="aplayer-wrap"><br>    <div id="aplayer2"><button class="docute-button load">Click to load player</button></div><br></div>
+
+<pre><code class="html"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"APlayer.min.css"</span>&gt;</span>
+<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"aplayer"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"APlayer.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+</code></pre>
+<pre><code class="js"><span class="keyword">const</span> ap = <span class="keyword">new</span> APlayer({
+    container: <span class="built_in">document</span>.getElementById(<span class="string">'aplayer'</span>),
+    audio: [{
+        name: <span class="string">'name'</span>,
+        artist: <span class="string">'artist'</span>,
+        url: <span class="string">'url.mp3'</span>,
+        cover: <span class="string">'cover.jpg'</span>
+    }]
+});
+</code></pre>
+<p>Work with module bundler:</p>
+<pre><code class="js"><span class="keyword">import</span> <span class="string">'aplayer/dist/APlayer.min.css'</span>;
+<span class="keyword">import</span> APlayer <span class="keyword">from</span> <span class="string">'aplayer'</span>;
+
+<span class="keyword">const</span> ap = <span class="keyword">new</span> APlayer(options);
+</code></pre>
+<h2 id="Options"><a href="#Options" class="headerlink" title="Options"></a>Options</h2><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>container</td>
+<td>document.querySelector(‘.aplayer’)</td>
+<td>player container</td>
+</tr>
+<tr>
+<td>fixed</td>
+<td>false</td>
+<td>enable fixed mode, <a href="https://aplayer.js.org/#/home?id=fixed-mode">see more details</a></td>
+</tr>
+<tr>
+<td>mini</td>
+<td>false</td>
+<td>enable mini mode, <a href="https://aplayer.js.org/#/home?id=mini-mode">see more details</a></td>
+</tr>
+<tr>
+<td>autoplay</td>
+<td>false</td>
+<td>audio autoplay</td>
+</tr>
+<tr>
+<td>theme</td>
+<td>‘#b7daff’</td>
+<td>main color</td>
+</tr>
+<tr>
+<td>loop</td>
+<td>‘all’</td>
+<td>player loop play, values: ‘all’, ‘one’, ‘none’</td>
+</tr>
+<tr>
+<td>order</td>
+<td>‘list’</td>
+<td>player play order, values: ‘list’, ‘random’</td>
+</tr>
+<tr>
+<td>preload</td>
+<td>‘auto’</td>
+<td>values: ‘none’, ‘metadata’, ‘auto’</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>0.7</td>
+<td>default volume, notice that player will remember user setting, default volume will not work after user set volume themselves</td>
+</tr>
+<tr>
+<td>audio</td>
+<td>-</td>
+<td>audio info, should be an object or object array</td>
+</tr>
+<tr>
+<td>audio.name</td>
+<td>-</td>
+<td>audio name</td>
+</tr>
+<tr>
+<td>audio.artist</td>
+<td>-</td>
+<td>audio artist</td>
+</tr>
+<tr>
+<td>audio.url</td>
+<td>-</td>
+<td>audio url</td>
+</tr>
+<tr>
+<td>audio.cover</td>
+<td>-</td>
+<td>audio cover</td>
+</tr>
+<tr>
+<td>audio.lrc</td>
+<td>-</td>
+<td><a href="https://aplayer.js.org/#/home?id=lrc">see more details</a></td>
+</tr>
+<tr>
+<td>audio.theme</td>
+<td>-</td>
+<td>main color when switching to this audio, it has priority over the above theme</td>
+</tr>
+<tr>
+<td>audio.type</td>
+<td>‘auto’</td>
+<td>values: ‘auto’, ‘hls’, ‘normal’ or other custom type, <a href="https://aplayer.js.org/#/home?id=mse-support">see more details</a></td>
+</tr>
+<tr>
+<td>customAudioType</td>
+<td>-</td>
+<td><a href="https://aplayer.js.org/#/home?id=mse-support">see more details</a></td>
+</tr>
+<tr>
+<td>mutex</td>
+<td>true</td>
+<td>prevent to play multiple player at the same time, pause other players when this player start play</td>
+</tr>
+<tr>
+<td>lrcType</td>
+<td>0</td>
+<td><a href="https://aplayer.js.org/#/home?id=lrc">see more details</a></td>
+</tr>
+<tr>
+<td>listFolded</td>
+<td>false</td>
+<td>indicate whether list should folded at first</td>
+</tr>
+<tr>
+<td>listMaxHeight</td>
+<td>-</td>
+<td>list max height</td>
+</tr>
+<tr>
+<td>storageName</td>
+<td>‘aplayer-setting’</td>
+<td>localStorage key that store player setting</td>
+</tr>
+</tbody>
+</table>
+<p>For example:</p>
+<div class="aplayer-wrap"><br>    <div id="aplayer3"><button class="docute-button load">Click to load player</button></div><br></div>
+
+<pre><code class="js"><span class="keyword">const</span> ap = <span class="keyword">new</span> APlayer({
+    container: <span class="built_in">document</span>.getElementById(<span class="string">'player'</span>),
+    mini: <span class="literal">false</span>,
+    autoplay: <span class="literal">false</span>,
+    theme: <span class="string">'#FADFA3'</span>,
+    loop: <span class="string">'all'</span>,
+    order: <span class="string">'random'</span>,
+    preload: <span class="string">'auto'</span>,
+    volume: <span class="number">0.7</span>,
+    mutex: <span class="literal">true</span>,
+    listFolded: <span class="literal">false</span>,
+    listMaxHeight: <span class="number">90</span>,
+    lrcType: <span class="number">3</span>,
+    audio: [
+        {
+            name: <span class="string">'name1'</span>,
+            artist: <span class="string">'artist1'</span>,
+            url: <span class="string">'url1.mp3'</span>,
+            cover: <span class="string">'cover1.jpg'</span>,
+            lrc: <span class="string">'lrc1.lrc'</span>,
+            theme: <span class="string">'#ebd0c2'</span>
+        },
+        {
+            name: <span class="string">'name2'</span>,
+            artist: <span class="string">'artist2'</span>,
+            url: <span class="string">'url2.mp3'</span>,
+            cover: <span class="string">'cover2.jpg'</span>,
+            lrc: <span class="string">'lrc2.lrc'</span>,
+            theme: <span class="string">'#46718b'</span>
+        }
+    ]
+});
+</code></pre>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><ul>
+<li><p><code>APlayer.version</code>: static property, return the version of APlayer</p>
+</li>
+<li><p><code>ap.play()</code>: play audio</p>
+</li>
+<li><p><code>ap.pause()</code>: pause audio</p>
+</li>
+<li><p><code>ap.seek(time: number)</code>: seek to specified time, the unit of time is second</p>
+<pre><code class="js">ap.seek(<span class="number">100</span>);
+</code></pre>
+</li>
+<li><p><code>ap.toggle()</code>: toggle between play and pause</p>
+</li>
+<li><p><code>ap.on(event: string, handler: function)</code>: bind audio and player events, <a href="https://aplayer.js.org/#/home?id=event-binding">see more details</a></p>
+</li>
+<li><p><code>ap.volume(percentage: number, nostorage: boolean)</code>: set audio volume</p>
+<pre><code class="js">ap.volume(<span class="number">0.1</span>, <span class="literal">true</span>);
+</code></pre>
+</li>
+<li><p><code>ap.theme(color: string, index: number)</code>: set player theme, the default of index is current audio index</p>
+<pre><code class="js">ap.theme(<span class="string">'#000'</span>, <span class="number">0</span>);
+</code></pre>
+</li>
+<li><p><code>ap.setMode(mode: string)</code>: set player mode, the value of mode should be ‘mini’ or ‘normal’</p>
+</li>
+<li><p><code>ap.mode</code>: return current player mode, ‘mini’ or ‘normal’</p>
+</li>
+<li><p><code>ap.notice(text: string, time: number, opacity: number)</code>: show message, the unit of time is millisecond, the default of time is 2000, the default of opacity is 0.8, setting time to 0 can disable notice autohide.</p>
+<pre><code class="js">ap.notice(<span class="string">'Amazing player'</span>, <span class="number">2000</span>, <span class="number">0.8</span>);
+</code></pre>
+</li>
+<li><p><code>ap.skipBack()</code>: skip to previous audio</p>
+</li>
+<li><p><code>ap.skipForward()</code>: skip to next audio</p>
+</li>
+<li><p><code>ap.destroy()</code>: destroy player</p>
+</li>
+<li><p><code>ap.lrc</code></p>
+<ul>
+<li><p><code>ap.lrc.show()</code>: show lrc</p>
+</li>
+<li><p><code>ap.lrc.hide()</code>: hide lrc</p>
+</li>
+<li><p><code>ap.lrc.toggle()</code>: toggle lrc between show and hide</p>
+</li>
+</ul>
+</li>
+<li><p><code>ap.list</code></p>
+<ul>
+<li><p><code>ap.list.show()</code>: show list</p>
+</li>
+<li><p><code>ap.list.hide()</code>: hide list</p>
+</li>
+<li><p><code>ap.list.toggle()</code>: toggle list between show and hide</p>
+</li>
+<li><p><code>ap.list.add(audios: array | object)</code>: add new audios to the list</p>
+</li>
+</ul>
+<pre><code class="js">ap.list.add([{
+    name: <span class="string">'name'</span>,
+    artist: <span class="string">'artist'</span>,
+    url: <span class="string">'url.mp3'</span>,
+    cover: <span class="string">'cover.jpg'</span>,
+    lrc: <span class="string">'lrc.lrc'</span>,
+    theme: <span class="string">'#ebd0c2'</span>
+}]);
+</code></pre>
+<ul>
+<li><code>ap.list.remove(index: number)</code>: remove an audio from the list</li>
+</ul>
+<pre><code class="js">ap.list.remove(<span class="number">1</span>);
+</code></pre>
+<ul>
+<li><code>ap.list.switch()</code>: switch to an audio in the list</li>
+</ul>
+<pre><code class="js">ap.list.switch(<span class="number">1</span>);
+</code></pre>
+<ul>
+<li><code>ap.list.clear()</code>: remove all audios from the list</li>
+</ul>
+</li>
+<li><p><code>ap.audio</code>: native audio</p>
+<ul>
+<li><p><code>ap.audio.currentTime</code>: returns the current playback position</p>
+</li>
+<li><p><code>ap.audio.duration</code>: returns audio total time</p>
+</li>
+<li><p><code>ap.audio.paused</code>: returns whether the audio paused</p>
+</li>
+<li><p>most <a href="http://www.w3schools.com/tags/ref_av_dom.asp">native api</a> are supported</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Event-binding"><a href="#Event-binding" class="headerlink" title="Event binding"></a>Event binding</h2><p><code>ap.on(event, handler)</code></p>
+<pre><code class="js">ap.on(<span class="string">'ended'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
+    <span class="built_in">console</span>.log(<span class="string">'player ended'</span>);
+});
+</code></pre>
+<p>Audio events</p>
+<ul>
+<li>abort</li>
+<li>canplay</li>
+<li>canplaythrough</li>
+<li>durationchange</li>
+<li>emptied</li>
+<li>ended</li>
+<li>error</li>
+<li>loadeddata</li>
+<li>loadedmetadata</li>
+<li>loadstart</li>
+<li>mozaudioavailable</li>
+<li>pause</li>
+<li>play</li>
+<li>playing</li>
+<li>progress</li>
+<li>ratechange</li>
+<li>seeked</li>
+<li>seeking</li>
+<li>stalled</li>
+<li>suspend</li>
+<li>timeupdate</li>
+<li>volumechange</li>
+<li>waiting</li>
+</ul>
+<p>Player events</p>
+<ul>
+<li>listshow</li>
+<li>listhide</li>
+<li>listadd</li>
+<li>listremove</li>
+<li>listswitch</li>
+<li>listclear</li>
+<li>noticeshow</li>
+<li>noticehide</li>
+<li>destroy</li>
+<li>lrcshow</li>
+<li>lrchide</li>
+</ul>
+<h2 id="LRC"><a href="#LRC" class="headerlink" title="LRC"></a>LRC</h2><p>We have three ways to pass LRC to APlayer, indicate the way to pass LRC by option <code>lrcType</code>, then put lrc to option <code>audio.lrc</code> or HTML.</p>
+<div class="aplayer-wrap"><br>    <div id="aplayer4"><button class="docute-button load">Click to load player</button></div><br></div>
+
+<h3 id="LRC-file"><a href="#LRC-file" class="headerlink" title="LRC file"></a>LRC file</h3><p>The first way, put LRC to a LRC file, LRC file will be loaded when this audio start to play.</p>
+<pre><code class="js"><span class="keyword">const</span> ap = <span class="keyword">new</span> APlayer({
+    container: <span class="built_in">document</span>.getElementById(<span class="string">'aplayer'</span>),
+    lrcType: <span class="number">3</span>,
+    audio: {
+        name: <span class="string">'name'</span>,
+        artist: <span class="string">'artist'</span>,
+        url: <span class="string">'demo.mp3'</span>,
+        cover: <span class="string">'demo.jpg'</span>,
+        lrc: <span class="string">'lrc.lrc'</span>
+    }
+});
+</code></pre>
+<h3 id="LRC-string-in-JS"><a href="#LRC-string-in-JS" class="headerlink" title="LRC string in JS"></a>LRC string in JS</h3><p>The second way, put LRC to a JS string.</p>
+<pre><code class="js"><span class="keyword">const</span> ap = <span class="keyword">new</span> APlayer({
+    container: <span class="built_in">document</span>.getElementById(<span class="string">'aplayer'</span>),
+    lrcType: <span class="number">1</span>,
+    audio: {
+        name: <span class="string">'name'</span>,
+        artist: <span class="string">'artist'</span>,
+        url: <span class="string">'demo.mp3'</span>,
+        cover: <span class="string">'demo.jpg'</span>,
+        lrc: <span class="string">'[00:00.00]APlayer\n[00:04.01]is\n[00:08.02]amazing'</span>
+    }
+});
+</code></pre>
+<h3 id="LRC-in-HTML"><a href="#LRC-in-HTML" class="headerlink" title="LRC in HTML"></a>LRC in HTML</h3><p>The third way, put LRC to HTML.</p>
+<pre><code class="html"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"APlayer.min.css"</span>&gt;</span>
+<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"player"</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">pre</span> <span class="attr">class</span>=<span class="string">"aplayer-lrc-content"</span>&gt;</span>
+        [00:00.00]APlayer audio1
+        [00:04.01]is
+        [00:08.02]amazing
+        <span class="comment">&lt;!-- ... --&gt;</span>
+    <span class="tag">&lt;/<span class="name">pre</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">pre</span> <span class="attr">class</span>=<span class="string">"aplayer-lrc-content"</span>&gt;</span>
+        [00:00.00]APlayer audio2
+        [00:04.01]is
+        [00:08.02]amazing
+        <span class="comment">&lt;!-- ... --&gt;</span>
+    <span class="tag">&lt;/<span class="name">pre</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"APlayer.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+</code></pre>
+<pre><code class="js"><span class="keyword">const</span> ap = <span class="keyword">new</span> APlayer({
+    container: <span class="built_in">document</span>.getElementById(<span class="string">'aplayer'</span>),
+    lrcType: <span class="number">2</span>,
+    audio: [[
+        {
+            name: <span class="string">'name1'</span>,
+            artist: <span class="string">'artist1'</span>,
+            url: <span class="string">'url1.mp3'</span>,
+            cover: <span class="string">'cover1.jpg'</span>
+        },
+        {
+            name: <span class="string">'name2'</span>,
+            artist: <span class="string">'artist2'</span>,
+            url: <span class="string">'url2.mp3'</span>,
+            cover: <span class="string">'cover2.jpg'</span>
+        }
+    ]]
+});
+</code></pre>
+<h3 id="LRC-format"><a href="#LRC-format" class="headerlink" title="LRC format"></a>LRC format</h3><p>The following LRC format are supported:</p>
+<p><code>[mm:ss]APlayer</code></p>
+<p><code>[mm:ss.xx]is</code></p>
+<p><code>[mm:ss.xxx]amazing</code></p>
+<p><code>[mm:ss.xx][mm:ss.xx]APlayer</code></p>
+<p><code>[mm:ss.xx]&lt;mm:ss.xx&gt;is</code></p>
+<p><code>[mm:ss.xx]amazing[mm:ss.xx]APlayer</code></p>
+<h2 id="Playlist"><a href="#Playlist" class="headerlink" title="Playlist"></a>Playlist</h2><p>APlayer will show a playlist when it has more than one audio, option <code>listFolded</code> indicates whether list should folded at first, and option <code>listMaxHeight</code> indicates list max height.</p>
+<div class="aplayer-wrap"><br>    <div id="aplayer5"><button class="docute-button load">Click to load player</button></div><br></div>
+
+<pre><code class="js"><span class="keyword">const</span> ap = <span class="keyword">new</span> APlayer({
+    container: <span class="built_in">document</span>.getElementById(<span class="string">'player'</span>),
+    listFolded: <span class="literal">false</span>,
+    listMaxHeight: <span class="number">90</span>,
+    lrcType: <span class="number">3</span>,
+    audio: [
+        {
+            name: <span class="string">'name1'</span>,
+            artist: <span class="string">'artist1'</span>,
+            url: <span class="string">'url1.mp3'</span>,
+            cover: <span class="string">'cover1.jpg'</span>,
+            lrc: <span class="string">'lrc1.lrc'</span>,
+            theme: <span class="string">'#ebd0c2'</span>
+        },
+        {
+            name: <span class="string">'name2'</span>,
+            artist: <span class="string">'artist2'</span>,
+            url: <span class="string">'url2.mp3'</span>,
+            cover: <span class="string">'cover2.jpg'</span>,
+            lrc: <span class="string">'lrc2.lrc'</span>,
+            theme: <span class="string">'#46718b'</span>
+        }
+    ]
+});
+</code></pre>
+<h2 id="Fixed-mode"><a href="#Fixed-mode" class="headerlink" title="Fixed mode"></a>Fixed mode</h2><p>APlayer can be fixed to page bottom via fixed mode, fixed mode is a very different mode, enjoy it!</p>
+<div class="aplayer-wrap"><br>    <div id="aplayer9"><button class="docute-button load">Click to load player</button></div><br></div>
+
+<pre><code class="js"><span class="keyword">const</span> ap = <span class="keyword">new</span> APlayer({
+    container: <span class="built_in">document</span>.getElementById(<span class="string">'player'</span>),
+    fixed: <span class="literal">true</span>,
+    audio: [{
+        name: <span class="string">'name'</span>,
+        artist: <span class="string">'artist'</span>,
+        url: <span class="string">'url.mp3'</span>,
+        cover: <span class="string">'cover.jpg'</span>,
+    }]
+});
+</code></pre>
+<h2 id="Mini-mode"><a href="#Mini-mode" class="headerlink" title="Mini mode"></a>Mini mode</h2><p>If you don’t have enough space for normal player, mini mode might be your choice.</p>
+<p>Please note that mini mode is conflicted with fixed mode.</p>
+<div class="aplayer-wrap"><br>    <div id="aplayer6"><button class="docute-button load">Click to load player</button></div><br></div>
+
+<pre><code class="js"><span class="keyword">const</span> ap = <span class="keyword">new</span> APlayer({
+    container: <span class="built_in">document</span>.getElementById(<span class="string">'player'</span>),
+    mini: <span class="literal">true</span>,
+    audio: [{
+        name: <span class="string">'name'</span>,
+        artist: <span class="string">'artist'</span>,
+        url: <span class="string">'url.mp3'</span>,
+        cover: <span class="string">'cover.jpg'</span>,
+    }]
+});
+</code></pre>
+<h2 id="MSE-support"><a href="#MSE-support" class="headerlink" title="MSE support"></a>MSE support</h2><h3 id="HLS"><a href="#HLS" class="headerlink" title="HLS"></a>HLS</h3><p>It requires the library <a href="https://github.com/video-dev/hls.js">hls.js</a> and it should be loaded before <code>APlayer.min.js</code>.</p>
+<div class="aplayer-wrap"><br>    <div id="aplayer7"><button class="docute-button load">Click to load player</button></div><br></div>
+
+<pre><code class="html"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"APlayer.min.css"</span>&gt;</span>
+<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"aplayer"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"hls.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"APlayer.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+</code></pre>
+<pre><code class="js"><span class="keyword">const</span> ap = <span class="keyword">new</span> APlayer({
+    container: <span class="built_in">document</span>.getElementById(<span class="string">'aplayer'</span>),
+    audio: [{
+        name: <span class="string">'HLS'</span>,
+        artist: <span class="string">'artist'</span>,
+        url: <span class="string">'url.m3u8'</span>,
+        cover: <span class="string">'cover.jpg'</span>,
+        type: <span class="string">'hls'</span>
+    }]
+});
+</code></pre>
+<pre><code class="js"><span class="comment">// another way, use customType</span>
+<span class="keyword">const</span> ap = <span class="keyword">new</span> APlayer({
+    container: <span class="built_in">document</span>.getElementById(<span class="string">'aplayer'</span>),
+    audio: [{
+        name: <span class="string">'HLS'</span>,
+        artist: <span class="string">'artist'</span>,
+        url: <span class="string">'url.m3u8'</span>,
+        cover: <span class="string">'cover.jpg'</span>,
+        type: <span class="string">'customHls'</span>
+    }],
+    customAudioType: {
+        <span class="string">'customHls'</span>: <span class="function"><span class="keyword">function</span> (<span class="params">audioElement, audio, player</span>) </span>{
+            <span class="keyword">if</span> (Hls.isSupported()) {
+                <span class="keyword">const</span> hls = <span class="keyword">new</span> Hls();
+                hls.loadSource(audio.url);
+                hls.attachMedia(audioElement);
+            }
+            <span class="keyword">else</span> <span class="keyword">if</span> (audioElement.canPlayType(<span class="string">'application/x-mpegURL'</span>) || audioElement.canPlayType(<span class="string">'application/vnd.apple.mpegURL'</span>)) {
+                audioElement.src = audio.url;
+            }
+            <span class="keyword">else</span> {
+                player.notice(<span class="string">'Error: HLS is not supported.'</span>);
+            }
+        }
+    }
+});
+</code></pre>
+<h2 id="Self-adapting-theme-according-to-cover"><a href="#Self-adapting-theme-according-to-cover" class="headerlink" title="Self-adapting theme according to cover"></a>Self-adapting theme according to cover</h2><p>It requires the library <a href="https://github.com/lokesh/color-thief/blob/master/src/color-thief.js">color-thief</a>.</p>
+<div class="aplayer-wrap"><br>    <div id="aplayer8"><button class="docute-button load">Click to load player</button></div><br></div>
+
+<pre><code class="html"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"APlayer.min.css"</span>&gt;</span>
+<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"aplayer"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"APlayer.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"color-thief.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+</code></pre>
+<pre><code class="js"><span class="keyword">const</span> ap = <span class="keyword">new</span> APlayer({
+    container: <span class="built_in">document</span>.getElementById(<span class="string">'aplayer'</span>),
+    theme: <span class="string">'#e9e9e9'</span>,
+    audio: [{
+        name: <span class="string">'name1'</span>,
+        artist: <span class="string">'artist1'</span>,
+        url: <span class="string">'url1.mp3'</span>,
+        cover: <span class="string">'cover1.jpg'</span>
+    }, {
+        name: <span class="string">'name2'</span>,
+        artist: <span class="string">'artist2'</span>,
+        url: <span class="string">'url2.mp3'</span>,
+        cover: <span class="string">'cover2.jpg'</span>
+    }]
+});
+
+<span class="keyword">const</span> colorThief = <span class="keyword">new</span> ColorThief();
+<span class="keyword">const</span> setTheme = <span class="function">(<span class="params">index</span>) =&gt;</span> {
+    <span class="keyword">if</span> (!ap.list.audios[index].theme) {
+        colorThief.getColorAsync(ap.list.audios[index].cover, <span class="function"><span class="keyword">function</span> (<span class="params">color</span>) </span>{
+            ap.theme(<span class="string">`rgb(<span class="subst">${color[<span class="number">0</span>]}</span>, <span class="subst">${color[<span class="number">1</span>]}</span>, <span class="subst">${color[<span class="number">2</span>]}</span>)`</span>, index);
+        });
+    }
+};
+setTheme(ap.list.index);
+ap.on(<span class="string">'listswitch'</span>, (data) =&gt; {
+    setTheme(data.index);
+});
+</code></pre>
+<h2 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h2><ul>
+<li><a href="https://www.jsdelivr.com/package/npm/aplayer">jsDelivr</a></li>
+<li><a href="https://cdnjs.com/libraries/aplayer">cdnjs</a></li>
+<li><a href="https://unpkg.com/aplayer/">unpkg</a></li>
+</ul>
+<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><h3 id="Why-can’t-player-autoplay-in-some-mobile-browsers"><a href="#Why-can’t-player-autoplay-in-some-mobile-browsers" class="headerlink" title="Why can’t player autoplay in some mobile browsers?"></a>Why can’t player autoplay in some mobile browsers?</h3><p>Most mobile browsers forbid audio autoplay, you wont be able to achieve it without hacks.</p>
