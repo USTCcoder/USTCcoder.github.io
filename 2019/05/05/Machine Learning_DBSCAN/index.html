@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 
 
@@ -110,6 +110,10 @@
   <link rel="mask-icon" href="/images/github_logo.jpeg?v=5.1.4" color="#222">
 
 
+  <link rel="manifest" href="/images/github_logo.jpeg">
+
+
+  <meta name="msapplication-config" content="/images/github_logo.jpeg">
 
 
 
@@ -128,16 +132,18 @@
 
 <meta name="description" content="DBSCAN">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DBSCAN">
+<meta property="og:title" content="密度聚类(DBSCAN)">
 <meta property="og:url" content="https://USTCcoder.github.io/2019/05/05/Machine Learning_DBSCAN/index.html">
 <meta property="og:site_name" content="GitHub">
 <meta property="og:description" content="DBSCAN">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/dbscan1.jpg">
+<meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/dbscan2.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/dbscan9.png">
 <meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/dbscan.png">
-<meta property="og:updated_time" content="2019-05-13T09:11:02.791Z">
+<meta property="og:updated_time" content="2019-05-21T05:29:40.896Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DBSCAN">
+<meta name="twitter:title" content="密度聚类(DBSCAN)">
 <meta name="twitter:description" content="DBSCAN">
 <meta name="twitter:image" content="https://ustccoder.github.io/images/MACHINE/dbscan1.jpg">
 
@@ -175,7 +181,7 @@
 
 
 
-  <title>DBSCAN | GitHub</title>
+  <title>密度聚类(DBSCAN) | GitHub</title>
   
 
 
@@ -357,7 +363,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">DBSCAN</h1>
+          <h1 class="post-title" itemprop="name headline">密度聚类(DBSCAN)</h1>
         
 
         <div class="post-meta">
@@ -451,7 +457,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.1k
+                  959
                 </span>
               
 
@@ -480,13 +486,15 @@
       
 
       
-        <p><strong><font size="5" color="gray"></font></strong></p><center><strong><font size="5" color="gray">DBSCAN&#x805A;&#x7C7B;&#x65B9;&#x6CD5;</font></strong></center><p></p>
-<h1 id="&#x539F;&#x7406;&#x89E3;&#x8BFB;"><a href="#&#x539F;&#x7406;&#x89E3;&#x8BFB;" class="headerlink" title="&#x539F;&#x7406;&#x89E3;&#x8BFB;"></a><font size="5" color="red">&#x539F;&#x7406;&#x89E3;&#x8BFB;</font></h1><p>&#x2003;&#x2003;DBSCAN(density-based spatial clustering of applications with noise):DBSCAN&#x9700;&#x8981;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;<strong>&#x626B;&#x63CF;&#x534A;&#x5F84; </strong>(eps)&#x548C;<strong>&#x6700;&#x5C0F;&#x5305;&#x542B;&#x70B9;&#x6570;</strong>(minPts)&#x3002; &#x4EFB;&#x9009;&#x4E00;&#x4E2A;&#x672A;&#x88AB;&#x6807;&#x8BB0;&#x7684;&#x70B9;&#x5F00;&#x59CB;&#xFF0C;&#x627E;&#x51FA;&#x4E0E;&#x5176;&#x8DDD;&#x79BB;&#x5728;eps&#x4E4B;&#x5185;(&#x5305;&#x62EC;eps)&#x7684;&#x6240;&#x6709;&#x9644;&#x8FD1;&#x70B9;&#x3002;&#x5982;&#x679C;<strong>&#x9644;&#x8FD1;&#x70B9;&#x7684;&#x6570;&#x91CF;&#x5927;&#x4E8E;&#x7B49;&#x4E8E;minPts</strong>&#xFF0C;&#x5219;&#x5F53;&#x524D;&#x70B9;&#x4E0E;&#x5176;&#x9644;&#x8FD1;&#x70B9;&#x5F62;&#x6210;&#x4E00;&#x4E2A;&#x7C07;&#xFF0C;&#x5E76;&#x4E14;&#x51FA;&#x53D1;&#x70B9;&#x88AB;&#x6807;&#x8BB0;&#x3002; &#x7136;&#x540E;&#x9012;&#x5F52;&#xFF0C;&#x4EE5;&#x76F8;&#x540C;&#x7684;&#x65B9;&#x6CD5;&#x5904;&#x7406;&#x8BE5;&#x7C07;&#x5185;&#x6240;&#x6709;&#x672A;&#x88AB;&#x6807;&#x8BB0;&#x7684;&#x70B9;&#xFF0C;&#x4ECE;&#x800C;&#x5BF9;&#x7C07;&#x8FDB;&#x884C;&#x6269;&#x5C55;&#x3002;&#x5982;&#x679C;<strong>&#x9644;&#x8FD1;&#x70B9;&#x7684;&#x6570;&#x91CF;&#x5C0F;&#x4E8E;minPts</strong>&#xFF0C;&#x5219;&#x8BE5;&#x70B9;&#x88AB;&#x6807;&#x8BB0;&#xFF0C;&#x4E0D;&#x4F5C;&#x6269;&#x5C55;&#x3002;&#x5982;&#x679C;&#x7C07;&#x5145;&#x5206;&#x5730;&#x88AB;&#x6269;&#x5C55;&#xFF0C;&#x5373;&#x7C07;&#x5185;&#x7684;&#x6240;&#x6709;&#x70B9;&#x88AB;&#x6807;&#x8BB0;&#x4E3A;&#x5DF2;&#x8BBF;&#x95EE;&#xFF0C;&#x7136;&#x540E;&#x7528;&#x540C;&#x6837;&#x7684;&#x7B97;&#x6CD5;&#x53BB;&#x5904;&#x7406;&#x672A;&#x88AB;&#x8BBF;&#x95EE;&#x7684;&#x70B9;&#xFF0C;&#x76F4;&#x5230;&#x6240;&#x6709;&#x7684;&#x70B9;&#x90FD;&#x88AB;&#x6807;&#x8BB0;&#x3002;<br><a id="more"></a></p>
-<h1 id="&#x601D;&#x60F3;&#x56FE;&#x89E3;"><a href="#&#x601D;&#x60F3;&#x56FE;&#x89E3;" class="headerlink" title="&#x601D;&#x60F3;&#x56FE;&#x89E3;"></a><font size="5" color="red">&#x601D;&#x60F3;&#x56FE;&#x89E3;</font></h1><p><img src="/images/MACHINE/dbscan1.jpg" alt="IDBSCAN"></p>
-<h1 id="&#x7B97;&#x6CD5;&#x6D41;&#x7A0B;"><a href="#&#x7B97;&#x6CD5;&#x6D41;&#x7A0B;" class="headerlink" title="&#x7B97;&#x6CD5;&#x6D41;&#x7A0B;"></a><font size="5" color="red">&#x7B97;&#x6CD5;&#x6D41;&#x7A0B;</font></h1><div id="flowchart-0" class="flow-chart"></div>
-
+        <p><strong><font size="5" color="gray"></font></strong></p><center><strong><font size="5" color="gray">&#x5BC6;&#x5EA6;&#x805A;&#x7C7B;&#x65B9;&#x6CD5;</font></strong></center><p></p>
+<h1 id="&#x539F;&#x7406;&#x89E3;&#x8BFB;"><a href="#&#x539F;&#x7406;&#x89E3;&#x8BFB;" class="headerlink" title="&#x539F;&#x7406;&#x89E3;&#x8BFB;"></a><font size="5" color="red">&#x539F;&#x7406;&#x89E3;&#x8BFB;</font></h1><p>&#x2003;&#x2003;DBSCAN(Density-Based Spatial Clustering Of Applications With Noise):DBSCAN&#x9700;&#x8981;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;<strong>&#x626B;&#x63CF;&#x534A;&#x5F84; </strong>(eps)&#x548C;<strong>&#x6700;&#x5C0F;&#x5305;&#x542B;&#x70B9;&#x6570;</strong>(minPts)&#x3002; &#x4EFB;&#x9009;&#x4E00;&#x4E2A;&#x672A;&#x88AB;&#x6807;&#x8BB0;&#x7684;&#x70B9;&#x5F00;&#x59CB;&#xFF0C;&#x627E;&#x51FA;&#x4E0E;&#x5176;&#x8DDD;&#x79BB;&#x5728;eps&#x4E4B;&#x5185;(&#x5305;&#x62EC;eps)&#x7684;&#x6240;&#x6709;&#x9644;&#x8FD1;&#x70B9;&#x3002;&#x5982;&#x679C;<strong>&#x9644;&#x8FD1;&#x70B9;&#x7684;&#x6570;&#x91CF;&#x5927;&#x4E8E;&#x7B49;&#x4E8E;minPts</strong>&#xFF0C;&#x5219;&#x5F53;&#x524D;&#x70B9;&#x4E0E;&#x5176;&#x9644;&#x8FD1;&#x70B9;&#x5F62;&#x6210;&#x4E00;&#x4E2A;&#x7C07;&#xFF0C;&#x5E76;&#x4E14;&#x51FA;&#x53D1;&#x70B9;&#x88AB;&#x6807;&#x8BB0;&#x3002; &#x7136;&#x540E;&#x9012;&#x5F52;&#xFF0C;&#x4EE5;&#x76F8;&#x540C;&#x7684;&#x65B9;&#x6CD5;&#x5904;&#x7406;&#x8BE5;&#x7C07;&#x5185;&#x6240;&#x6709;&#x672A;&#x88AB;&#x6807;&#x8BB0;&#x7684;&#x70B9;&#xFF0C;&#x4ECE;&#x800C;&#x5BF9;&#x7C07;&#x8FDB;&#x884C;&#x6269;&#x5C55;&#x3002;&#x5982;&#x679C;<strong>&#x9644;&#x8FD1;&#x70B9;&#x7684;&#x6570;&#x91CF;&#x5C0F;&#x4E8E;minPts</strong>&#xFF0C;&#x5219;&#x8BE5;&#x70B9;&#x88AB;&#x6807;&#x8BB0;&#xFF0C;&#x4E0D;&#x4F5C;&#x6269;&#x5C55;&#x3002;&#x5982;&#x679C;&#x7C07;&#x5145;&#x5206;&#x5730;&#x88AB;&#x6269;&#x5C55;&#xFF0C;&#x5373;&#x7C07;&#x5185;&#x7684;&#x6240;&#x6709;&#x70B9;&#x88AB;&#x6807;&#x8BB0;&#x4E3A;&#x5DF2;&#x8BBF;&#x95EE;&#xFF0C;&#x7136;&#x540E;&#x7528;&#x540C;&#x6837;&#x7684;&#x7B97;&#x6CD5;&#x53BB;&#x5904;&#x7406;&#x672A;&#x88AB;&#x8BBF;&#x95EE;&#x7684;&#x70B9;&#xFF0C;&#x76F4;&#x5230;&#x6240;&#x6709;&#x7684;&#x70B9;&#x90FD;&#x88AB;&#x6807;&#x8BB0;&#x3002;<br><a id="more"></a></p>
+<h1 id="&#x6838;&#x5FC3;&#x601D;&#x60F3;"><a href="#&#x6838;&#x5FC3;&#x601D;&#x60F3;" class="headerlink" title="&#x6838;&#x5FC3;&#x601D;&#x60F3;"></a><font size="5" color="red">&#x6838;&#x5FC3;&#x601D;&#x60F3;</font></h1><p>&#x2003;&#x2003;<font size="4">1. &#x6311;&#x9009;&#x4E00;&#x4E2A;&#x672A;&#x6807;&#x8BB0;&#x6837;&#x672C;&#xFF0C;&#x7F6E;&#x4E3A;&#x4E00;&#x7C7B;&#xFF0C;&#x641C;&#x7D22;&#x9644;&#x8FD1;&#x6837;&#x672C;</font><br><img src="/images/MACHINE/dbscan1.jpg" alt="DBSCAN"></p>
+<p>&#x2003;&#x2003;<font size="4">2. &#x9644;&#x8FD1;&#x6837;&#x672C;&#x6570;&#x5927;&#x4E8E;minPts&#xFF0C;&#x5F52;&#x4E8E;&#x8BE5;&#x7C7B;&#xFF0C;&#x5728;&#x6B64;&#x7C7B;&#x6311;&#x9009;&#x672A;&#x6807;&#x8BB0;&#x6837;&#x672C;&#xFF0C;&#x641C;&#x7D22;&#x9644;&#x8FD1;&#x6837;&#x672C;</font><br><img src="/images/MACHINE/dbscan2.png" alt="DBSCAN"></p>
+<p>&#x2003;&#x2003;<font size="4">3. &#x91CD;&#x590D;&#x6B65;&#x9AA4;2&#xFF0C;&#x76F4;&#x5230;&#x8BE5;&#x7C7B;&#x4E2D;&#x6240;&#x6709;&#x6837;&#x672C;&#x90FD;&#x88AB;&#x6807;&#x8BB0;</font></p>
+<p>&#x2003;&#x2003;<font size="4">4. &#x91CD;&#x590D;&#x6B65;&#x9AA4;1&#xFF0C;&#x76F4;&#x5230;&#x6240;&#x6709;&#x6837;&#x672C;&#x90FD;&#x88AB;&#x6807;&#x8BB0;</font></p>
+<h1 id="&#x7B97;&#x6CD5;&#x6D41;&#x7A0B;"><a href="#&#x7B97;&#x6CD5;&#x6D41;&#x7A0B;" class="headerlink" title="&#x7B97;&#x6CD5;&#x6D41;&#x7A0B;"></a><font size="5" color="red">&#x7B97;&#x6CD5;&#x6D41;&#x7A0B;</font></h1><p><img src="/images/MACHINE/dbscan9.png" alt="DBSCAN"></p>
 <p><br><br></p>
-<h1 id="&#x4EE3;&#x7801;&#x5B9E;&#x6218;"><a href="#&#x4EE3;&#x7801;&#x5B9E;&#x6218;" class="headerlink" title="&#x4EE3;&#x7801;&#x5B9E;&#x6218;"></a><font size="5" color="red">&#x4EE3;&#x7801;&#x5B9E;&#x6218;</font></h1><h2 id="DBSCAN-main-m"><a href="#DBSCAN-main-m" class="headerlink" title="DBSCAN_main.m"></a>DBSCAN_main.m</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">clear;clc;close all;</span><br><span class="line">%&#x641C;&#x7D22;&#x534A;&#x5F84;</span><br><span class="line">eps=0.03;</span><br><span class="line">%&#x5706;&#x5185;&#x70B9;&#x6570;</span><br><span class="line">minpts=2;</span><br><span class="line">%&#x8F93;&#x5165;x&#x7684;&#x77E9;&#x9635;</span><br><span class="line">x=[[rand(1,1000)*100;rand(1,1000)*10+75],[rand(1,1000)*100;rand(1,1000)*10+60],[rand(1,1000)*100;rand(1,1000)*10+45],[rand(1,1000)*100;rand(1,1000)*10+30],[rand(1,1000)*100;rand(1,1000)*10+15]];</span><br><span class="line">%&#x6837;&#x672C;&#x6570;</span><br><span class="line">sample_num=size(x,2);</span><br><span class="line">%&#x7279;&#x5F81;&#x6570;&#x76EE;</span><br><span class="line">feat_num=size(x,1);</span><br><span class="line">%&#x5C3A;&#x5EA6;&#x7F29;&#x653E;&#x5230;0-1</span><br><span class="line">x_scale=zeros(size(x));</span><br><span class="line">for i=1:feat_num</span><br><span class="line">    x_scale(i,:)=(x(i,:)-min(x(i,:)))/(max(x(i,:))-min(x(i,:)));</span><br><span class="line">end</span><br><span class="line">[y,color_bar]=DBSCAN_classify(x_scale,sample_num,eps,minpts);</span><br><span class="line">%&#x5982;&#x679C;&#x6570;&#x636E;&#x7684;&#x7279;&#x5F81;&#x662F;&#x4E8C;&#x7EF4;&#x7684;&#xFF0C;&#x53EF;&#x4EE5;&#x7ED8;&#x56FE;&#x8868;&#x793A;</span><br><span class="line">if feat_num==2</span><br><span class="line">    DBSCAN_display(x,y,color_bar,sample_num)</span><br><span class="line">else</span><br><span class="line">    disp(&apos;The Feature Is Not Two-Dimensional&apos;);</span><br><span class="line">end</span><br></pre></td></tr></tbody></table></figure>
+<h1 id="&#x4EE3;&#x7801;&#x5B9E;&#x6218;"><a href="#&#x4EE3;&#x7801;&#x5B9E;&#x6218;" class="headerlink" title="&#x4EE3;&#x7801;&#x5B9E;&#x6218;"></a><font size="5" color="red">&#x4EE3;&#x7801;&#x5B9E;&#x6218;</font></h1><h2 id="DBSCAN-main-m"><a href="#DBSCAN-main-m" class="headerlink" title="DBSCAN_main.m"></a>DBSCAN_main.m</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">clear;clc;close all;</span><br><span class="line">load(&apos;..\\cluster_cicle.mat&apos;);</span><br><span class="line">%&#x8F93;&#x5165;x&#x7684;&#x77E9;&#x9635;</span><br><span class="line">x=data;</span><br><span class="line">%&#x641C;&#x7D22;&#x534A;&#x5F84;</span><br><span class="line">eps=0.05;</span><br><span class="line">%&#x5706;&#x5185;&#x70B9;&#x6570;</span><br><span class="line">minpts=2;</span><br><span class="line">%&#x6837;&#x672C;&#x6570;</span><br><span class="line">sample_num=size(x,2);</span><br><span class="line">%&#x7279;&#x5F81;&#x6570;&#x76EE;</span><br><span class="line">feat_num=size(x,1);</span><br><span class="line">%&#x5C3A;&#x5EA6;&#x7F29;&#x653E;&#x5230;0-1</span><br><span class="line">x_scale=zeros(size(x));</span><br><span class="line">for i=1:feat_num</span><br><span class="line">    x_scale(i,:)=(x(i,:)-min(x(i,:)))/(max(x(i,:))-min(x(i,:)));</span><br><span class="line">end</span><br><span class="line">[y,color_bar]=DBSCAN_classify(x_scale,sample_num,eps,minpts);</span><br><span class="line">%&#x5982;&#x679C;&#x6570;&#x636E;&#x7684;&#x7279;&#x5F81;&#x662F;&#x4E8C;&#x7EF4;&#x7684;&#xFF0C;&#x53EF;&#x4EE5;&#x7ED8;&#x56FE;&#x8868;&#x793A;</span><br><span class="line">if feat_num==2</span><br><span class="line">    DBSCAN_display(x,y,color_bar,sample_num)</span><br><span class="line">else</span><br><span class="line">    disp(&apos;The Feature Is Not Two-Dimensional&apos;);</span><br><span class="line">end</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="DBSCAN-classify-m"><a href="#DBSCAN-classify-m" class="headerlink" title="DBSCAN_classify.m"></a>DBSCAN_classify.m</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">function [y,color_bar]=DBSCAN_classify(x_scale,sample_num,eps,minpts)</span><br><span class="line">%&#x6807;&#x8BB0;&#x662F;&#x5426;&#x5DF2;&#x7ECF;&#x5206;&#x8FC7;&#x7C7B;</span><br><span class="line">flag=zeros(1,sample_num);</span><br><span class="line">y=zeros(1,sample_num);</span><br><span class="line">color_bar=[];</span><br><span class="line">%&#x7C7B;&#x522B;&#x6570;&#x76EE;</span><br><span class="line">i=1;</span><br><span class="line">%&#x627E;&#x5230;&#x672A;&#x6807;&#x8BB0;&#x7684;&#x6570;&#x636E;&#x70B9;&#x5219;&#x7EE7;&#x7EED;&#x5FAA;&#x73AF;</span><br><span class="line">while ~isempty(find(flag==0,1))</span><br><span class="line">    %&#x6C42;&#x51FA;&#x8BE5;&#x70B9;C&#x5230;&#x5176;&#x4F59;&#x5404;&#x70B9;&#x7684;&#x8DDD;&#x79BB;</span><br><span class="line">    distance=sum((x_scale-repmat(x_scale(:,find(flag==0,1)),1,sample_num)).^2);</span><br><span class="line">    %&#x5C06;&#x627E;&#x5230;&#x7684;&#x70B9;&#x6807;&#x8BB0;</span><br><span class="line">    flag(find(flag==0,1))=1;</span><br><span class="line">    %&#x627E;&#x51FA;&#x8DDD;&#x79BB;&#x627E;&#x5230;&#x7684;&#x70B9;&#x5C0F;&#x4E8E;&#x534A;&#x5F84;&#x7684;&#x6240;&#x6709;&#x70B9;</span><br><span class="line">    temp=find(distance&lt;eps^2);</span><br><span class="line">    %&#x5982;&#x679C;&#x4E2A;&#x6570;&#x5927;&#x4E8E;&#x7B49;&#x4E8E;&#x8BBE;&#x5B9A;&#x7684;&#x4E2A;&#x6570;</span><br><span class="line">    if length(temp)&gt;=minpts</span><br><span class="line">        %&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;&#x7C7B;&#x522B;&#x7684;&#x989C;&#x8272;&#x4FE1;&#x606F;</span><br><span class="line">        color_bar(i,:)=[rand(1),rand(1),rand(1)];</span><br><span class="line">        %&#x5C06;&#x8FD9;&#x4E9B;&#x70B9;&#x5168;&#x90E8;&#x5206;&#x4E3A;i&#x7C7B;</span><br><span class="line">        y(temp)=i;</span><br><span class="line">        %&#x627E;&#x51FA;i&#x7C7B;&#x4E2D;&#x6CA1;&#x6709;&#x6807;&#x8BB0;&#x7684;&#x70B9;&#x5219;&#x7EE7;&#x7EED;&#x5FAA;&#x73AF;</span><br><span class="line">        while ~isempty(find(y==i&amp;flag==0,1))</span><br><span class="line">            %&#x6C42;&#x51FA;&#x8BE5;&#x70B9;D&#x5230;&#x5176;&#x4F59;&#x5404;&#x70B9;&#x7684;&#x8DDD;&#x79BB;</span><br><span class="line">            distance_part=sum((x_scale-repmat(x_scale(:,find(y==i&amp;flag==0,1)),1,sample_num)).^2);</span><br><span class="line">            %&#x5C06;&#x627E;&#x5230;&#x7684;&#x70B9;&#x6807;&#x8BB0;</span><br><span class="line">            flag(find(y==i&amp;flag==0,1))=1;</span><br><span class="line">            %&#x627E;&#x51FA;&#x8DDD;&#x79BB;&#x627E;&#x5230;&#x7684;&#x70B9;&#x5C0F;&#x4E8E;&#x534A;&#x5F84;&#x7684;&#x6240;&#x6709;&#x70B9;</span><br><span class="line">            temp_part=find(distance_part&lt;eps^2);</span><br><span class="line">            %&#x5982;&#x679C;&#x4E2A;&#x6570;&#x5927;&#x4E8E;&#x7B49;&#x4E8E;&#x8BBE;&#x5B9A;&#x7684;&#x4E2A;&#x6570;,</span><br><span class="line">            if length(temp_part)&gt;=minpts</span><br><span class="line">                %&#x5C06;&#x8FD9;&#x4E9B;&#x70B9;&#x5168;&#x90E8;&#x5206;&#x4E3A;i&#x7C7B;</span><br><span class="line">                y(temp_part)=i;</span><br><span class="line">            end</span><br><span class="line">        end</span><br><span class="line">    else</span><br><span class="line">        continue;</span><br><span class="line">    end</span><br><span class="line">    %&#x8FD9;&#x4E00;&#x7C7B;&#x627E;&#x5B8C;&#x65F6;&#xFF0C;&#x7C7B;&#x522B;&#x52A0;1</span><br><span class="line">    i=i+1;</span><br><span class="line">end</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="DBSCAN-display-m"><a href="#DBSCAN-display-m" class="headerlink" title="DBSCAN_display.m"></a>DBSCAN_display.m</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function DBSCAN_display(x,y,color_bar,sample_num)</span><br><span class="line">figure;</span><br><span class="line">hold on;</span><br><span class="line">for i=1:sample_num</span><br><span class="line">    if y(i)==0</span><br><span class="line">        %&#x753B;&#x51FA;&#x566A;&#x58F0;&#x70B9;&#xFF0C;&#x7528;*&#x8868;&#x793A;</span><br><span class="line">        plot(x(1,i),x(2,i),&apos;k*&apos;)</span><br><span class="line">    else</span><br><span class="line">        %&#x753B;&#x51FA;&#x6BCF;&#x4E00;&#x7C7B;&#x7684;&#x6837;&#x672C;&#x6570;&#x636E;&#xFF0C;&#x7528;o&#x8868;&#x793A;</span><br><span class="line">        plot(x(1,i),x(2,i),&apos;color&apos;,color_bar(y(i),:),&apos;marker&apos;,&apos;o&apos;);</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line">hold off;</span><br></pre></td></tr></tbody></table></figure>
 <p><br><br></p>
@@ -499,24 +507,7 @@
 </font></li>
 <li><font size="4"><strong>&#x7F3A;&#x70B9;&#xFF1A;</strong><ul>
 <li>&#x5BF9;&#x4E8E;&#x9AD8;&#x7EF4;&#x6570;&#x636E;&#xFF0C;&#x8DDD;&#x79BB;&#x7684;&#x5EA6;&#x91CF;&#x5E76;&#x4E0D;&#x662F;&#x5F88;&#x597D;&#x3002;</li>
-<li>&#x4E0D;&#x9002;&#x5408;&#x6570;&#x636E;&#x96C6;&#x4E2D;&#x5BC6;&#x5EA6;&#x5DEE;&#x5F02;&#x8F83;&#x5927;&#x7684;&#x60C5;&#x51B5;&#x3002;<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script><textarea id="flowchart-0-code" style="display: none">st=&gt;start: &#x5F00;&#x59CB;
-i=&gt;inputoutput: &#x8F93;&#x5165;&#x6570;&#x636E;X&#xFF0C;&#x626B;&#x63CF;&#x534A;&#x5F84;eps&#xFF0C;&#x6700;&#x5C0F;&#x5305;&#x542B;&#x70B9;&#x6570;minPts
-op1=&gt;operation: &#x6570;&#x636E;&#x5F52;&#x4E00;&#x5316;
-op2=&gt;operation: &#x6807;&#x8BB0;&#x6240;&#x6709;&#x6837;&#x672C;&#x4E2D;&#x4EFB;&#x4E00;&#x672A;&#x6807;&#x8BB0;&#x70B9;&#xFF0C;&#x5E76;&#x7F6E;&#x4E3A;&#x65B0;&#x7C7B;&#x522B;
-op3=&gt;operation: &#x5C06;&#x5468;&#x56F4;&#x6837;&#x672C;&#x5168;&#x90E8;&#x5F52;&#x4E3A;&#x8BE5;&#x7C7B;
-op4=&gt;operation: &#x6807;&#x8BB0;&#x8BE5;&#x7C7B;&#x522B;&#x4E2D;&#x4EFB;&#x4E00;&#x672A;&#x6807;&#x8BB0;&#x70B9;
-cond1=&gt;condition: &#x6240;&#x6709;&#x6837;&#x672C;&#x662F;&#x5426;&#x5B58;&#x5728;&#x672A;&#x6807;&#x8BB0;&#x70B9;&#xFF1F;
-cond2=&gt;condition: &#x8BE5;&#x6837;&#x672C;&#x5468;&#x56F4;&#x6837;&#x672C;&#x6570;&#x5927;&#x4E8E;&#x7B49;&#x4E8E;minPts&#xFF1F;
-cond3=&gt;condition: &#x5F53;&#x524D;&#x7C7B;&#x522B;&#x662F;&#x5426;&#x5B58;&#x5728;&#x672A;&#x6807;&#x8BB0;&#x70B9;&#xFF1F;
-o=&gt;inputoutput: &#x8F93;&#x51FA;&#x6807;&#x7B7E;Y
-e=&gt;end: &#x7ED3;&#x675F;
-st-&gt;i-&gt;op1-&gt;cond1
-cond1(yes)-&gt;op2-&gt;cond2
-cond1(no)-&gt;o-&gt;e
-cond2(yes)-&gt;op3-&gt;cond3
-cond2(no)-&gt;cond3
-cond3(yes)-&gt;op4(left)-&gt;cond2
-cond3(no)-&gt;cond1</textarea><textarea id="flowchart-0-options" style="display: none">{&quot;scale&quot;:1,&quot;line-width&quot;:2,&quot;line-length&quot;:50,&quot;text-margin&quot;:10,&quot;font-size&quot;:12}</textarea><script>  var code = document.getElementById("flowchart-0-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("flowchart-0-options").value));  var diagram = flowchart.parse(code);  diagram.drawSVG("flowchart-0", options);</script></li>
+<li>&#x4E0D;&#x9002;&#x5408;&#x6570;&#x636E;&#x96C6;&#x4E2D;&#x5BC6;&#x5EA6;&#x5DEE;&#x5F02;&#x8F83;&#x5927;&#x7684;&#x60C5;&#x51B5;&#x3002;</li>
 </ul>
 </font></li>
 </ul>
@@ -586,8 +577,8 @@ cond3(no)-&gt;cond1</textarea><textarea id="flowchart-0-options" style="display:
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/05/Machine Learning_ISODATA/" rel="next" title="迭代自组织分析聚类">
-                <i class="fa fa-chevron-left"></i> 迭代自组织分析聚类
+              <a href="/2019/05/04/Machine Learning_ISODATA/" rel="next" title="迭代自组织分析聚类(ISODATA)">
+                <i class="fa fa-chevron-left"></i> 迭代自组织分析聚类(ISODATA)
               </a>
             
           </div>
@@ -596,8 +587,8 @@ cond3(no)-&gt;cond1</textarea><textarea id="flowchart-0-options" style="display:
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/05/07/Machine Learning_MDCA/" rel="prev" title="密度最大值聚类">
-                密度最大值聚类 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/05/07/Machine Learning_MDCA/" rel="prev" title="密度最大值聚类(MDCA)">
+                密度最大值聚类(MDCA) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -709,7 +700,7 @@ cond3(no)-&gt;cond1</textarea><textarea id="flowchart-0-options" style="display:
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -801,7 +792,7 @@ cond3(no)-&gt;cond1</textarea><textarea id="flowchart-0-options" style="display:
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#原理解读"><span class="nav-number">1.</span> <span class="nav-text">原理解读</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#思想图解"><span class="nav-number">2.</span> <span class="nav-text">思想图解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#算法流程"><span class="nav-number">3.</span> <span class="nav-text">算法流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码实战"><span class="nav-number">4.</span> <span class="nav-text">代码实战</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DBSCAN-main-m"><span class="nav-number">4.1.</span> <span class="nav-text">DBSCAN_main.m</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DBSCAN-classify-m"><span class="nav-number">4.2.</span> <span class="nav-text">DBSCAN_classify.m</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DBSCAN-display-m"><span class="nav-number">4.3.</span> <span class="nav-text">DBSCAN_display.m</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实验结果"><span class="nav-number">5.</span> <span class="nav-text">实验结果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#性能比较"><span class="nav-number">6.</span> <span class="nav-text">性能比较</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#原理解读"><span class="nav-number">1.</span> <span class="nav-text">原理解读</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#核心思想"><span class="nav-number">2.</span> <span class="nav-text">核心思想</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#算法流程"><span class="nav-number">3.</span> <span class="nav-text">算法流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码实战"><span class="nav-number">4.</span> <span class="nav-text">代码实战</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DBSCAN-main-m"><span class="nav-number">4.1.</span> <span class="nav-text">DBSCAN_main.m</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DBSCAN-classify-m"><span class="nav-number">4.2.</span> <span class="nav-text">DBSCAN_classify.m</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DBSCAN-display-m"><span class="nav-number">4.3.</span> <span class="nav-text">DBSCAN_display.m</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实验结果"><span class="nav-number">5.</span> <span class="nav-text">实验结果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#性能比较"><span class="nav-number">6.</span> <span class="nav-text">性能比较</span></a></li></ol></div>
             
 
           </div>
