@@ -140,7 +140,7 @@
 <meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/cfdp1.png">
 <meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/cfdp9.png">
 <meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/cfdp.png">
-<meta property="og:updated_time" content="2019-05-27T04:45:03.184Z">
+<meta property="og:updated_time" content="2019-05-27T05:13:33.136Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="快速搜索聚类(CFDP)">
 <meta name="twitter:description" content="CFDP">
@@ -491,14 +491,14 @@
 <ul>
 <li>k&#x8FD1;&#x90BB;&#x5747;&#x503C;&#x5012;&#x6570;<br>$$\rho_i = \frac{k}{\displaystyle \sum_{j=1}^k d_{ij}} \ , \ d_{i1} \leq d_{i2} \leq \cdots \leq d_{in}$$</li>
 <li>&#x9AD8;&#x65AF;&#x6838;&#x76F8;&#x4F3C;&#x5EA6;<br>$$\rho_i = \underset{d_{ij} \leq d_c}{\sum}exp[-(\frac{d_{ij}}{d_c})^2]$$</li>
-<li>&#x5468;&#x56F4;&#x70B9;&#x7684;&#x4E2A;&#x6570;<br>$$\rho_i = \sum_{j=1}^n {\chi(d_{ij}-d_c)} \ , \ \chi(x)= \begin{cases} 1, &amp; x&lt;0 \ 0, &amp; otherwise \end{cases} \ , \ &#x5176;&#x4E2D;d_c&#x4E3A;&#x622A;&#x65AD;&#x8DDD;&#x79BB;$$</li>
+<li>&#x5468;&#x56F4;&#x70B9;&#x7684;&#x4E2A;&#x6570;<br>$$\rho_i = \sum_{j=1}^n {\chi(d_{ij}-d_c)} \ , \ \chi(x)= \begin{cases} 1, &amp; x&lt;0 \[2ex] 0, &amp; otherwise \end{cases} \ , \ &#x5176;&#x4E2D;d_c&#x4E3A;&#x622A;&#x65AD;&#x8DDD;&#x79BB;$$</li>
 </ul>
 <p>&#x2003;&#x2003;<font size="4">2. &#x5BC6;&#x5EA6;&#x4ECE;&#x5927;&#x5230;&#x5C0F;&#x6392;&#x5E8F;&#xFF0C;&#x5E76;&#x6C42;&#x51FA;&#x6700;&#x5927;&#x5BC6;&#x5EA6;&#x3C1;<sub>max</sub></font><br>$$\rho_{x_1} \ge \rho_{x_2} \ge \cdots \ge \rho_{x_n} \ , \ \rho_{max} = \rho_{x_1} $$</p>
 <ul>
 <li>d<sub>ij</sub>:&#x539F;&#x5E8F;&#x5217;i&#xFF0C;j&#x6837;&#x672C;&#x7684;&#x8DDD;&#x79BB;</li>
 <li>d(x<sub>i</sub>,x<sub>j</sub>):&#x5BC6;&#x5EA6;&#x6392;&#x5E8F;&#x540E;&#xFF0C;x<sub>i</sub>&#x548C;x<sub>j</sub>&#x6837;&#x672C;&#x7684;&#x8DDD;&#x79BB;</li>
 </ul>
-<p>&#x2003;&#x2003;<font size="4">3. &#x6C42;&#x51FA;&#x6BCF;&#x4E2A;&#x70B9;&#x7684;&#x8DDD;&#x79BB;&#x3B4;<sub>i</sub></font><br>&#x2003;&#x2003;&#x3B4;<sub>i</sub>&#xFF1A;&#x5230;&#x5BC6;&#x5EA6;&#x5927;&#x4E8E;i&#x7684;&#x6700;&#x8FD1;&#x70B9;j&#x7684;&#x8DDD;&#x79BB;dist(ij)<br>$$\delta_{x_i} = \begin{cases} \underset{j&lt;i}{min}\ d(x_i,x_j) &amp;  i \ge 2  \ \underset{j \ge 2}{\max}\ \delta_{x_j} &amp; i=1 \end{cases} $$</p>
+<p>&#x2003;&#x2003;<font size="4">3. &#x6C42;&#x51FA;&#x6BCF;&#x4E2A;&#x70B9;&#x7684;&#x8DDD;&#x79BB;&#x3B4;<sub>i</sub></font><br>&#x2003;&#x2003;&#x3B4;<sub>i</sub>&#xFF1A;&#x5230;&#x5BC6;&#x5EA6;&#x5927;&#x4E8E;i&#x7684;&#x6700;&#x8FD1;&#x70B9;j&#x7684;&#x8DDD;&#x79BB;dist(ij)<br>$$\delta_{x_i} = \begin{cases} \underset{j&lt;i}{min}\ d(x_i,x_j) &amp;  i \ge 2  \[2ex] \underset{j \ge 2}{\max}\ \delta_{x_j} &amp; i=1 \end{cases} $$</p>
 <p>&#x2003;&#x2003;<font size="4">4. &#x753B;&#x51FA;&#x3C1;-&#x3B4;&#x56FE;&#xFF0C;&#x627E;&#x5230;&#x79BB;&#x7FA4;&#x70B9;(&#x4EE3;&#x8868;&#x6BCF;&#x4E00;&#x7C7B;&#x7684;&#x4E2D;&#x5FC3;)</font><br><img src="/images/MACHINE/cfdp1.png" alt="CFDP"></p>
 <p>&#x2003;&#x2003;<font size="4">5. &#x6309;&#x5BC6;&#x5EA6;&#x4ECE;&#x5927;&#x5230;&#x5C0F;&#x5F52;&#x5C5E;&#x4E8E;&#x8DDD;&#x79BB;&#x6700;&#x8FD1;&#x70B9;&#x7684;&#x7C7B;&#x522B;</font><br>$$x_i \in C_k \ , \ &#x5176;&#x4E2D;k=\underset{j&lt;i \ , \ x_j \in C_k}{arg \ min}\ d(x_i,x_j)$$</p>
 <p>&#x2003;&#x2003;<font size="4">6. &#x5B9A;&#x4E49;&#x4E24;&#x7C7B;&#x4E4B;&#x95F4;&#x7684;&#x6700;&#x5C0F;&#x8DDD;&#x79BB;d<sub>0</sub></font><br>&#x2003;&#x2003;&#x4E24;&#x7C7B;&#x7684;&#x6700;&#x5C0F;&#x8DDD;&#x79BB;&#xFF1A;&#x6240;&#x6709;&#x6837;&#x672C;&#x4E4B;&#x95F4;&#x8DDD;&#x79BB;&#x4ECE;&#x5C0F;&#x5230;&#x5927;&#x6392;&#x5E8F;&#x540E;&#x7B2C;2%&#x4E2A;&#x79F0;&#x4E24;&#x7C7B;&#x7684;&#x6700;&#x5C0F;&#x8DDD;&#x79BB;&#x3002;</p>
