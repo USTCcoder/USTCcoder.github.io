@@ -1,0 +1,1499 @@
+﻿<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-fill-left.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/github_logo.jpeg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/github_logo.jpeg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/github_logo.jpeg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/github_logo.jpeg?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/github_logo.jpeg">
+
+
+  <meta name="msapplication-config" content="/images/github_logo.jpeg">
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="GitHub" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="TensorFlow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TensorFlow">
+<meta property="og:url" content="https://USTCcoder.github.io/2019/09/06/frame TensorFlow/index.html">
+<meta property="og:site_name" content="GitHub">
+<meta property="og:description" content="TensorFlow">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://ustccoder.github.io/images/FRAME/tensorflow1.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/FRAME/tensorflow2.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/FRAME/tensorflow3.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/FRAME/tensorflow4.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/FRAME/tensorflow5.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/FRAME/tensorflow6.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/FRAME/tensorflow7.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/FRAME/tensorflow8.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/FRAME/tensorflow9.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/FRAME/tensorflow10.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/FRAME/tensorflow11.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/FRAME/tensorflow12.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/FRAME/tensorflow13.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/FRAME/tensorflow14.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/FRAME/tensorflow15.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/FRAME/tensorflow16.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/FRAME/tensorflow17.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/FRAME/tensorflow18.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/FRAME/tensorflow19.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/FRAME/tensorflow20.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/FRAME/tensorflow21.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/FRAME/tensorflow22.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/FRAME/tensorflow24.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/FRAME/tensorflow24.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/FRAME/tensorflow23.png">
+<meta property="og:updated_time" content="2019-09-10T03:51:02.095Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TensorFlow">
+<meta name="twitter:description" content="TensorFlow">
+<meta name="twitter:image" content="https://ustccoder.github.io/images/FRAME/tensorflow1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"perspectiveLeftIn","post_header":"fadeIn","post_body":"fadeIn","coll_header":"fadeIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://USTCcoder.github.io/2019/09/06/frame TensorFlow/">
+
+
+
+
+
+  <title>TensorFlow | GitHub</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<!--
+<link rel="stylesheet" href="/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script type="text/javascript" src="/dist/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/music.js"></script>
+-->
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a href="https://github.com/USTCcoder" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">GitHub</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            我的主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            日志总览
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分门别类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于博主
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2019/09/06/frame TensorFlow/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="USTCcoder">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/github.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GitHub">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">TensorFlow</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-06T12:16:40+08:00">
+                2019-09-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/深度学习/深度学习框架/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习框架</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/06/frame TensorFlow/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/06/frame TensorFlow/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读数<i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4.4k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  <table><tr><td bgcolor="grey"><font size="5" face="STXihei" color="white"><center>TensorFlow</center></font></td></tr></table>
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong><font size="5" color="gray"></font></strong></p><center><strong><font size="5" color="gray">TensorFlow</font></strong></center><p></p>
+<h1 id="&#x80CC;&#x666F;&#x4ECB;&#x7ECD;"><a href="#&#x80CC;&#x666F;&#x4ECB;&#x7ECD;" class="headerlink" title="&#x80CC;&#x666F;&#x4ECB;&#x7ECD;"></a><font size="5" color="red">&#x80CC;&#x666F;&#x4ECB;&#x7ECD;</font></h1><p>&#x2003;&#x2003;<strong>TensorFlow:</strong>&#x662F;&#x8C37;&#x6B4C;&#x516C;&#x53F8;&#x4E8E;2015&#x5E74;11&#x6708;9&#x65E5;&#x63A8;&#x51FA;&#x7684;&#x4E00;&#x4E2A;&#x5212;&#x65F6;&#x4EE3;&#x7684;<strong>&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#xFF0C;&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;&#x5F00;&#x53D1;&#x5E73;&#x53F0;</strong>&#x3002;TensorFlow&#x662F;&#x4E00;&#x4E2A;&#x5E9E;&#x5927;&#x7684;&#x7CFB;&#x7EDF;&#xFF0C;&#x7ED3;&#x6784;&#x590D;&#x6742;&#xFF0C;&#x529F;&#x80FD;&#x5F3A;&#x5927;&#xFF0C;&#x5229;&#x7528;<strong>&#x6570;&#x636E;&#x6D41;&#x56FE;(Data Flow Graphs)</strong>&#x8FDB;&#x884C;&#x6570;&#x503C;&#x8BA1;&#x7B97;&#x7684;&#x5F00;&#x6E90;&#x8F6F;&#x4EF6;&#x5E93;&#xFF0C;&#x6570;&#x636E;&#x6D41;&#x56FE;&#x4E2D;&#x7684;<strong>&#x7ED3;&#x70B9;(Node)</strong>&#x4EE3;&#x8868;&#x6570;&#x5B66;&#x8FD0;&#x7B97;&#x64CD;&#x4F5C;&#xFF0C;<strong>&#x8FB9;(Edge)</strong>&#x4EE3;&#x8868;&#x8282;&#x70B9;&#x4E4B;&#x95F4;&#x6D41;&#x901A;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x5373;&#x5F20;&#x91CF;(Tensor)&#x3002;<br><a id="more"></a></p>
+<h1 id="TensorFlow&#x7279;&#x70B9;"><a href="#TensorFlow&#x7279;&#x70B9;" class="headerlink" title="TensorFlow&#x7279;&#x70B9;"></a><font size="5" color="red">TensorFlow&#x7279;&#x70B9;</font></h1><p>&#x2003;&#x2003;<font size="3">TensorFlow&#x5177;&#x6709;&#x9AD8;&#x5EA6;&#x7684;&#x7075;&#x6D3B;&#x6027;&#xFF1A;&#x53EA;&#x8981;&#x80FD;&#x591F;&#x5C06;&#x8BA1;&#x7B97;&#x8868;&#x793A;&#x4E3A;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x6D41;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;TensorFlow&#x8FDB;&#x884C;&#x8FD0;&#x7B97;&#x3002;</font><br>&#x2003;&#x2003;<font size="3">TensorFlow&#x5177;&#x6709;&#x5F3A;&#x7684;&#x53EF;&#x79FB;&#x690D;&#x6027;&#xFF1A;TensorFlow&#x652F;&#x6301;CPU&#x548C;GPU&#x8FD0;&#x7B97;&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x8FD0;&#x884C;&#x5728;&#x4E2A;&#x4EBA;&#x7535;&#x8111;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x79FB;&#x52A8;&#x8BBE;&#x5907;&#x7B49;&#x3002;</font><br>&#x2003;&#x2003;<font size="3">TensorFlow&#x8FD0;&#x7B97;&#x7B80;&#x5355;&#xFF1A;&#x5185;&#x90E8;&#x5B9E;&#x73B0;&#x4E86;&#x81EA;&#x52A8;&#x6C42;&#x5BFC;&#x65B9;&#x5F0F;&#xFF0C;&#x50CF;&#x642D;&#x79EF;&#x6728;&#x4E00;&#x6837;&#xFF0C;&#x53EA;&#x8981;&#x5EFA;&#x597D;&#x8FD0;&#x7B97;&#x56FE;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x5173;&#x5FC3;&#x6C42;&#x5BFC;&#x7684;&#x590D;&#x6742;&#x7A0B;&#x5EA6;&#x3002;</font><br>&#x2003;&#x2003;<font size="3">TensorFlow&#x5177;&#x6709;&#x529F;&#x80FD;&#x5F3A;&#x5927;&#x7684;&#x53EF;&#x89C6;&#x5316;&#x7EC4;&#x5EFA;TensorBoard&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x8BAD;&#x7EC3;&#x65F6;&#x76D1;&#x63A7;&#x8BAD;&#x7EC3;&#x8FC7;&#x7A0B;&#x3002;</font></p>
+<h1 id="TensorFlow&#x5E94;&#x7528;"><a href="#TensorFlow&#x5E94;&#x7528;" class="headerlink" title="TensorFlow&#x5E94;&#x7528;"></a><font size="5" color="red">TensorFlow&#x5E94;&#x7528;</font></h1><h2 id="TensorFlow&#x521B;&#x5EFA;tensor"><a href="#TensorFlow&#x521B;&#x5EFA;tensor" class="headerlink" title="TensorFlow&#x521B;&#x5EFA;tensor"></a><font size="4">TensorFlow&#x521B;&#x5EFA;tensor</font></h2><h3 id="constant&#x65B9;&#x6CD5;"><a href="#constant&#x65B9;&#x6CD5;" class="headerlink" title="constant&#x65B9;&#x6CD5;"></a><font size="3">constant&#x65B9;&#x6CD5;</font></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line"></span><br><span class="line"># tf.constant(value, dtype=None, shape=None) &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5F62;&#x72B6;&#x4E3A;shape&#xFF0C;&#x7C7B;&#x578B;&#x4E3A;dtype&#xFF0C;&#x503C;&#x4E3A;value&#x7684;&#x5F20;&#x91CF;</span><br><span class="line">a = tf.constant([[1, 2, 3], [4, 5, 6]])</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/FRAME/tensorflow1.png" alt="1"></p>
+<h3 id="CPU&#xFF0C;GPU&#x65B9;&#x6CD5;"><a href="#CPU&#xFF0C;GPU&#x65B9;&#x6CD5;" class="headerlink" title="CPU&#xFF0C;GPU&#x65B9;&#x6CD5;"></a><font size="3">CPU&#xFF0C;GPU&#x65B9;&#x6CD5;</font></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line"></span><br><span class="line">a = tf.constant([[1, 2, 3], [4, 5, 6]])</span><br><span class="line"></span><br><span class="line"># obj.device() &#x67E5;&#x770B;tensor&#x7684;&#x73AF;&#x5883;&#x662F;CPU&#x8FD8;&#x662F;GPU</span><br><span class="line">a.device</span><br><span class="line"></span><br><span class="line"># obj.gpu() &#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x65B0;tensor&#x4F4D;&#x4E8E;GPU </span><br><span class="line">b = a.gpu()</span><br><span class="line"></span><br><span class="line"># obj.cpu() &#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x65B0;tensor&#x4F4D;&#x4E8E;CPU</span><br><span class="line">c = b.cpu()</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/FRAME/tensorflow2.png" alt="3"></p>
+<h3 id="numpy&#xFF0C;shape&#xFF0C;ndim&#xFF0C;dtype&#x65B9;&#x6CD5;"><a href="#numpy&#xFF0C;shape&#xFF0C;ndim&#xFF0C;dtype&#x65B9;&#x6CD5;" class="headerlink" title="numpy&#xFF0C;shape&#xFF0C;ndim&#xFF0C;dtype&#x65B9;&#x6CD5;"></a><font size="3">numpy&#xFF0C;shape&#xFF0C;ndim&#xFF0C;dtype&#x65B9;&#x6CD5;</font></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line"></span><br><span class="line">a = tf.constant([[1, 2, 3], [4, 5, 6]])</span><br><span class="line"></span><br><span class="line"># obj.numpy() &#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x65B0;&#x7684;ndarray&#xFF0C;&#x5373;&#x5C06;tensor&#x53D8;&#x6210;numpy&#x6570;&#x7EC4;</span><br><span class="line">b = a.numpy</span><br><span class="line"></span><br><span class="line"># obj.shape &#x67E5;&#x770B;tensor&#x7684;&#x7EF4;&#x5EA6;&#x4FE1;&#x606F;</span><br><span class="line">a.shape</span><br><span class="line"></span><br><span class="line"># obj.ndim &#x67E5;&#x770B;tensor&#x7684;&#x7EF4;&#x5EA6;&#x6570;</span><br><span class="line">a.ndim</span><br><span class="line"></span><br><span class="line"># obj.dtype &#x67E5;&#x770B;tensor&#x7684;&#x7C7B;&#x578B;</span><br><span class="line">a.dtype</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/FRAME/tensorflow3.png" alt="3"></p>
+<h3 id="convert-to-tensor&#xFF0C;cast&#x65B9;&#x6CD5;"><a href="#convert-to-tensor&#xFF0C;cast&#x65B9;&#x6CD5;" class="headerlink" title="convert_to_tensor&#xFF0C;cast&#x65B9;&#x6CD5;"></a><font size="3">convert_to_tensor&#xFF0C;cast&#x65B9;&#x6CD5;</font></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">a = np.array([[1, 2, 3], [4, 5, 6]])</span><br><span class="line"></span><br><span class="line"># tf.convert_to_tensor(value, dtype=None) &#x5C06;value&#x8F6C;&#x6362;&#x4E3A;tensor&#x5F62;&#x5F0F;&#xFF0C;&#x5E38;&#x7528;&#x6765;&#x5C06;numpy&#x683C;&#x5F0F;&#x8F6C;&#x6362;&#x4E3A;tensor&#x683C;&#x5F0F;</span><br><span class="line">b = tf.convert_to_tensor(a)</span><br><span class="line"></span><br><span class="line"># tf.cast(value, dtype) &#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x503C;&#x4E3A;value&#xFF0C;&#x7C7B;&#x578B;&#x4E3A;dtype&#x7684;tensor&#xFF0C;&#x5E38;&#x7528;&#x6765;&#x4FEE;&#x6539;tensor&#x7684;&#x7C7B;&#x578B;</span><br><span class="line">c = tf.cast(b, dtype=tf.float32)</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/FRAME/tensorflow4.png" alt="4"></p>
+<h3 id="zeros&#xFF0C;ones&#xFF0C;fill&#xFF0C;random&#x65B9;&#x6CD5;"><a href="#zeros&#xFF0C;ones&#xFF0C;fill&#xFF0C;random&#x65B9;&#x6CD5;" class="headerlink" title="zeros&#xFF0C;ones&#xFF0C;fill&#xFF0C;random&#x65B9;&#x6CD5;"></a><font size="3">zeros&#xFF0C;ones&#xFF0C;fill&#xFF0C;random&#x65B9;&#x6CD5;</font></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line"></span><br><span class="line"># tf.zeros(shape) &#x4EA7;&#x751F;&#x5F62;&#x72B6;&#x4E3A;shape&#x7684;&#x503C;&#x5168;&#x4E3A;0&#x7684;tensor</span><br><span class="line">a = tf.zeros((3, 3))</span><br><span class="line"></span><br><span class="line"># tf.ones(shape) &#x4EA7;&#x751F;&#x5F62;&#x72B6;&#x4E3A;shape&#x7684;&#x503C;&#x5168;&#x4E3A;1&#x7684;tensor</span><br><span class="line">b = tf.ones((3, 3))</span><br><span class="line"></span><br><span class="line"># tf.fill(shape, value) &#x4EA7;&#x751F;&#x5F62;&#x72B6;&#x4E3A;shape&#x7684;&#x503C;&#x5168;&#x4E3A;value&#x7684;tensor</span><br><span class="line">c = tf.fill((3, 3), -1) </span><br><span class="line"></span><br><span class="line"># tf.random.normal(shape, mean=0, stddev=1) &#x4EA7;&#x751F;&#x5F62;&#x72B6;&#x4E3A;shape&#x7684;&#x9AD8;&#x65AF;&#x5206;&#x5E03;&#xFF0C;&#x5747;&#x503C;&#x9ED8;&#x8BA4;&#x4E3A;0&#xFF0C;&#x6807;&#x51C6;&#x5DEE;&#x9ED8;&#x8BA4;&#x4E3A;1</span><br><span class="line">d = tf.random.normal((3, 3)) </span><br><span class="line"></span><br><span class="line"># tf.random.uniform(shape, mean=0, stddev=1) &#x4EA7;&#x751F;&#x5F62;&#x72B6;&#x4E3A;shape&#x7684;&#x5747;&#x5300;&#x5206;&#x5E03;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;(0-1)&#x5747;&#x5300;&#x5206;&#x5E03;</span><br><span class="line">e = tf.random.uniform((3, 3)) </span><br><span class="line"></span><br><span class="line"># tf.random.shuffle(value, seed) &#x5C06;value&#x6309;&#x7167;&#x79CD;&#x5B50;seed&#x6253;&#x6563;</span><br><span class="line">f = tf.random.shuffle(d)</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/FRAME/tensorflow5.png" alt="5"></p>
+<h3 id="zeros-like&#xFF0C;ones-like&#xFF0C;one-hot&#xFF0C;range&#x65B9;&#x6CD5;"><a href="#zeros-like&#xFF0C;ones-like&#xFF0C;one-hot&#xFF0C;range&#x65B9;&#x6CD5;" class="headerlink" title="zeros_like&#xFF0C;ones_like&#xFF0C;one_hot&#xFF0C;range&#x65B9;&#x6CD5;"></a><font size="3">zeros_like&#xFF0C;ones_like&#xFF0C;one_hot&#xFF0C;range&#x65B9;&#x6CD5;</font></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line"></span><br><span class="line">a = tf.random.normal((3, 3))</span><br><span class="line"></span><br><span class="line"># tf.zeros_like(input, dtype) &#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x5927;&#x5C0F;&#x548C;input&#x76F8;&#x540C;&#x503C;&#x4E3A;&#x5168;0&#x7684;tensor</span><br><span class="line">b = tf.zeros_like(a)</span><br><span class="line"></span><br><span class="line"># tf.ones_like(input, dtype) &#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x5927;&#x5C0F;&#x548C;input&#x76F8;&#x540C;&#x503C;&#x4E3A;&#x5168;1&#x7684;tensor</span><br><span class="line">c = tf.ones_like(a)</span><br><span class="line"></span><br><span class="line"># tf.range(start, end, interval, dtype) &#x4EA7;&#x751F;&#x4ECE;start&#x5230;end&#xFF0C;&#x6B65;&#x957F;&#x4E3A;interval&#x7684;&#x8FDE;&#x7EED;&#x5F20;&#x91CF;&#xFF0C;&#x7528;&#x6CD5;&#x540C;numpy&#x4E2D;&#x7684;arange</span><br><span class="line">d = tf.range(10)</span><br><span class="line"></span><br><span class="line"># tf.one_hot(indices, depth) &#x5C06;indices&#x8F6C;&#x6362;&#x4E3A;&#x72EC;&#x70ED;&#x7F16;&#x7801;&#xFF0C;&#x6DF1;&#x5EA6;&#x4E3A;depth</span><br><span class="line">e = tf.one_hot(d, depth=10)</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/FRAME/tensorflow6.png" alt="6"></p>
+<h2 id="TensorFlow&#x5207;&#x7247;&#x4E0E;&#x7D22;&#x5F15;"><a href="#TensorFlow&#x5207;&#x7247;&#x4E0E;&#x7D22;&#x5F15;" class="headerlink" title="TensorFlow&#x5207;&#x7247;&#x4E0E;&#x7D22;&#x5F15;"></a><font size="4">TensorFlow&#x5207;&#x7247;&#x4E0E;&#x7D22;&#x5F15;</font></h2><h3 id="&#x7D22;&#x5F15;"><a href="#&#x7D22;&#x5F15;" class="headerlink" title="[]&#x7D22;&#x5F15;"></a><font size="3">[]&#x7D22;&#x5F15;</font></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">a = np.arange(27).reshape((3, 3, 3))</span><br><span class="line">b = tf.convert_to_tensor(a)</span><br><span class="line"></span><br><span class="line"># obj[index0][index1]...&#x7B49;&#x4EF7;&#x4E8E;obj[index0, index1, ...] &#x7D22;&#x5F15;</span><br><span class="line">b[1][1][1]</span><br><span class="line">b[1, 1, 1]</span><br><span class="line"></span><br><span class="line"># obj[start, end, step] &#x5207;&#x7247;&#x7D22;&#x5F15;</span><br><span class="line">b[0:2, 0:2, 0:2]</span><br><span class="line"></span><br><span class="line"># obj[...] ...&#x53EF;&#x4EE5;&#x4EE3;&#x66FF;&#x8FDE;&#x7EED;&#x7684;:</span><br><span class="line">b[..., 0]</span><br><span class="line">b[0, ...]</span><br><span class="line">b[0, ..., 0]</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/FRAME/tensorflow7.png" alt="7"></p>
+<h3 id="gather&#xFF0C;gather-nd&#xFF0C;boolean-mask&#x65B9;&#x6CD5;"><a href="#gather&#xFF0C;gather-nd&#xFF0C;boolean-mask&#x65B9;&#x6CD5;" class="headerlink" title="gather&#xFF0C;gather_nd&#xFF0C;boolean_mask&#x65B9;&#x6CD5;"></a><font size="3">gather&#xFF0C;gather_nd&#xFF0C;boolean_mask&#x65B9;&#x6CD5;</font></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">a = np.arange(27).reshape((3, 3, 3))</span><br><span class="line">b = tf.convert_to_tensor(a)</span><br><span class="line"></span><br><span class="line"># tf.gather(obj, axis, indices) &#x5728;&#x7EF4;&#x5EA6;axis&#x4E0A;&#x7D22;&#x5F15;indices&#xFF0C;&#x5E76;&#x4E14;&#x8FDE;&#x63A5;&#x6210;&#x4E00;&#x4E2A;&#x65B0;&#x7684;tensor</span><br><span class="line">c = tf.gather(b, axis=0, indices=[1, 0]) # &#x5728;&#x7B2C;&#x4E00;&#x4E2A;&#x7EF4;&#x5EA6;&#x4E0A;&#x9009;&#x62E9;&#x524D;&#x4E24;&#x4E2A;&#xFF0C;&#x5E76;&#x4E14;&#x5C06;&#x987A;&#x5E8F;&#x8C03;&#x6362;</span><br><span class="line">d = tf.gather(b, axis=1, indices=[1, 0]) # &#x5728;&#x7B2C;&#x4E8C;&#x4E2A;&#x7EF4;&#x5EA6;&#x4E0A;&#x9009;&#x62E9;&#x524D;&#x4E24;&#x4E2A;&#xFF0C;&#x5E76;&#x4E14;&#x5C06;&#x987A;&#x5E8F;&#x8C03;&#x6362;</span><br><span class="line"></span><br><span class="line"># tf.gather_nd(obj, indices) &#x5728;&#x591A;&#x7EF4;&#x5EA6;&#x4E0A;&#x7D22;&#x5F15;indices&#xFF0C;&#x5E76;&#x4E14;&#x8FDE;&#x63A5;&#x6210;&#x4E00;&#x4E2A;&#x65B0;&#x7684;tensor</span><br><span class="line">e = tf.gather_nd(b, indices=[[0, 0], [1, 1]]) # &#x7D22;&#x5F15;&#x7B2C;1&#x4E2A;&#x7EF4;&#x5EA6;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x548C;&#x7B2C;2&#x4E2A;&#x7EF4;&#x5EA6;&#x7684;&#x7B2C;&#x4E8C;&#x4E2A;&#x6570;&#x636E;</span><br><span class="line">f = tf.gather_nd(b, indices=[[0, 0, 0], [0, 0, 1], [0, 0, 2]]) # &#x7D22;&#x5F15;&#x7B2C;1&#x4E2A;&#x7EF4;&#x5EA6;&#x7684;&#x7B2C;1&#x884C;&#x7684;&#x7B2C;1&#x5217;&#xFF0C;&#x7B2C;1&#x4E2A;&#x7EF4;&#x5EA6;&#x7684;&#x7B2C;1&#x884C;&#x7684;&#x7B2C;2&#x5217;&#xFF0C;&#x7B2C;1&#x4E2A;&#x7EF4;&#x5EA6;&#x7684;&#x7B2C;1&#x884C;&#x7684;&#x7B2C;3&#x5217;</span><br><span class="line"></span><br><span class="line"># tf.boolean_mask(obj, mask, axis) &#x5728;axis&#x8F74;&#x4E0A;&#x63A9;&#x6A21;&#x7D22;&#x5F15;</span><br><span class="line">g = tf.boolean_mask(b, [[True,True,False],[True,False,False],[False,False,False]], axis=0) # &#x5728;&#x7B2C;&#x4E00;&#x7EF4;&#x5EA6;&#x4E0A;&#x9009;&#x62E9;&#x524D;&#x4E24;&#x884C;&#xFF0C;&#x5728;&#x7B2C;&#x4E8C;&#x7EF4;&#x5EA6;&#x4E0A;&#x9009;&#x62E9;&#x7B2C;&#x4E00;&#x884C;&#xFF0C;&#x4E00;&#x5171;&#x4E09;&#x884C;</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/FRAME/tensorflow8.png" alt="8"></p>
+<h2 id="TensorFlow&#x7EF4;&#x5EA6;&#x53D8;&#x5316;"><a href="#TensorFlow&#x7EF4;&#x5EA6;&#x53D8;&#x5316;" class="headerlink" title="TensorFlow&#x7EF4;&#x5EA6;&#x53D8;&#x5316;"></a><font size="4">TensorFlow&#x7EF4;&#x5EA6;&#x53D8;&#x5316;</font></h2><h3 id="reshape&#xFF0C;transpose&#xFF0C;expand-dims&#xFF0C;squeeze&#x65B9;&#x6CD5;"><a href="#reshape&#xFF0C;transpose&#xFF0C;expand-dims&#xFF0C;squeeze&#x65B9;&#x6CD5;" class="headerlink" title="reshape&#xFF0C;transpose&#xFF0C;expand_dims&#xFF0C;squeeze&#x65B9;&#x6CD5;"></a><font size="3">reshape&#xFF0C;transpose&#xFF0C;expand_dims&#xFF0C;squeeze&#x65B9;&#x6CD5;</font></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">a = np.arange(4).reshape((2, 1, 2))</span><br><span class="line">b = tf.constant(a)</span><br><span class="line"></span><br><span class="line"># tf.reshape(tensor, shape) &#x8FD4;&#x56DE;&#x5F62;&#x72B6;&#x4E3A;shape&#x7684;tensor</span><br><span class="line">c = tf.reshape(a, (2, 2))</span><br><span class="line"></span><br><span class="line"># tf.transpose(tensor, perm=None) &#x5C06;&#x8F74;&#x8FDB;&#x884C;&#x8C03;&#x6362;&#xFF0C;&#x9ED8;&#x8BA4;&#x7FFB;&#x8F6C;&#x8F74;</span><br><span class="line">d = tf.transpose(b, (1, 2, 0))</span><br><span class="line"></span><br><span class="line"># tf.expand_dims(tensor, axis) &#x5728;axis&#x4E0A;&#x589E;&#x52A0;&#x4E00;&#x4E2A;&#x7EF4;&#x5EA6;</span><br><span class="line">e = tf.expand_dims(b, axis=3)</span><br><span class="line"></span><br><span class="line"># tf.squeeze(tensor, axis=None) &#x5C06;axis&#x4E0A;&#x4E3A;1&#x7684;&#x7EF4;&#x5EA6;&#x5220;&#x53BB;&#xFF0C;&#x9ED8;&#x8BA4;&#x5220;&#x9664;&#x6240;&#x6709;&#x4E3A;1&#x7684;&#x7EF4;&#x5EA6;</span><br><span class="line">f = tf.squeeze(e)</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/FRAME/tensorflow9.png" alt="9"></p>
+<h3 id="broadcast-to&#xFF0C;tile&#x65B9;&#x6CD5;"><a href="#broadcast-to&#xFF0C;tile&#x65B9;&#x6CD5;" class="headerlink" title="broadcast_to&#xFF0C;tile&#x65B9;&#x6CD5;"></a><font size="3">broadcast_to&#xFF0C;tile&#x65B9;&#x6CD5;</font></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line"></span><br><span class="line">a = tf.range(3)</span><br><span class="line">b = tf.reshape(a, (1, 3))</span><br><span class="line"></span><br><span class="line"># tf.broadcast_to(input, shape) &#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5E7F;&#x64AD;&#x540E;&#x7684;tensor</span><br><span class="line">c = tf.broadcast_to(a, (3, 3))</span><br><span class="line"></span><br><span class="line"># tf.tile(input, multiples) &#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x7ECF;&#x8FC7;&#x590D;&#x5236;&#x7684;tensor</span><br><span class="line">d = tf.tile(b, [2, 2])</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/FRAME/tensorflow10.png" alt="10"></p>
+<h2 id="TensorFlow&#x5408;&#x5E76;&#x4E0E;&#x5206;&#x5272;"><a href="#TensorFlow&#x5408;&#x5E76;&#x4E0E;&#x5206;&#x5272;" class="headerlink" title="TensorFlow&#x5408;&#x5E76;&#x4E0E;&#x5206;&#x5272;"></a><font size="4">TensorFlow&#x5408;&#x5E76;&#x4E0E;&#x5206;&#x5272;</font></h2><h3 id="concat&#xFF0C;stack&#xFF0C;unstack&#xFF0C;split&#x65B9;&#x6CD5;"><a href="#concat&#xFF0C;stack&#xFF0C;unstack&#xFF0C;split&#x65B9;&#x6CD5;" class="headerlink" title="concat&#xFF0C;stack&#xFF0C;unstack&#xFF0C;split&#x65B9;&#x6CD5;"></a><font size="3">concat&#xFF0C;stack&#xFF0C;unstack&#xFF0C;split&#x65B9;&#x6CD5;</font></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">a = np.arange(6).reshape((2, 3))</span><br><span class="line">b = np.arange(3, 9).reshape((2, 3))</span><br><span class="line">c = tf.constant(a)</span><br><span class="line">d = tf.constant(b)</span><br><span class="line"></span><br><span class="line"># tf.concat(values, axis) &#x5C06;&#x591A;&#x4E2A;values&#x6309;&#x7167;axis&#x8F74;&#x8FDB;&#x884C;&#x5408;&#x5E76;</span><br><span class="line">e = tf.concat([c, d], axis=1)</span><br><span class="line"></span><br><span class="line"># tf.stack(values, axis) &#x589E;&#x52A0;&#x4E00;&#x4E2A;&#x65B0;&#x7EF4;&#x5EA6;&#xFF0C;&#x5E76;&#x5408;&#x5E76;&#x5230;&#x8BE5;&#x7EF4;&#x5EA6;</span><br><span class="line">f = tf.stack([c, d], axis=1)</span><br><span class="line"></span><br><span class="line"># tf.unstack(value, axis) &#x5BF9;value&#x6309;&#x7167;axis&#x8F74;&#x8FDB;&#x884C;&#x62C6;&#x5206;</span><br><span class="line">g = tf.unstack(f, axis=1)</span><br><span class="line"></span><br><span class="line"># tf.split(value, num_or_size_splits, axis) &#x5BF9;value&#x6309;&#x7167;axis&#x8F74;&#x8FDB;&#x884C;&#x62C6;&#x5206;&#xFF0C;&#x5982;&#x679C;&#x5E0C;&#x671B;&#x5747;&#x5300;&#x62C6;&#x5206;&#x5219;num_or_size_splits&#x4E3A;&#x5E38;&#x6570;&#xFF0C;&#x5426;&#x5219;&#x8F93;&#x5165;&#x4E00;&#x4E2A;&#x5217;&#x8868;&#xFF0C;&#x4EE3;&#x8868;&#x6BCF;&#x4E00;&#x90E8;&#x5206;&#x7684;&#x6570;&#x91CF;</span><br><span class="line">h = tf.split(e, 3, axis=1)</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/FRAME/tensorflow11.png" alt="11"></p>
+<h2 id="tensorflow&#x6570;&#x636E;&#x7EDF;&#x8BA1;"><a href="#tensorflow&#x6570;&#x636E;&#x7EDF;&#x8BA1;" class="headerlink" title="tensorflow&#x6570;&#x636E;&#x7EDF;&#x8BA1;"></a><font size="4">tensorflow&#x6570;&#x636E;&#x7EDF;&#x8BA1;</font></h2><h3 id="reduce-min&#xFF0C;reduce-max&#xFF0C;reduce-mean&#x65B9;&#x6CD5;"><a href="#reduce-min&#xFF0C;reduce-max&#xFF0C;reduce-mean&#x65B9;&#x6CD5;" class="headerlink" title="reduce_min&#xFF0C;reduce_max&#xFF0C;reduce_mean&#x65B9;&#x6CD5;"></a><font size="3">reduce_min&#xFF0C;reduce_max&#xFF0C;reduce_mean&#x65B9;&#x6CD5;</font></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line"></span><br><span class="line">a = tf.reshape(tf.random.shuffle(tf.range(1, 13)), (3, 4))</span><br><span class="line"></span><br><span class="line"># tf.reduce_min(input_tensor, axis=None) &#x6C42;input_tensor&#x5728;axis&#x4E0A;&#x7684;&#x6700;&#x5C0F;&#x503C;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;&#x5168;&#x5C40;&#x6700;&#x5C0F;&#x503C;</span><br><span class="line">b = tf.reduce_min(a)</span><br><span class="line"></span><br><span class="line"># tf.reduce_max(input_tensor, axis=None) &#x6C42;input_tensor&#x5728;axis&#x4E0A;&#x7684;&#x6700;&#x5927;&#x503C;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;&#x5168;&#x5C40;&#x6700;&#x5927;&#x503C;</span><br><span class="line">c = tf.reduce_max(a, axis=0)</span><br><span class="line"></span><br><span class="line"># tf.reduce_mean(input_tensor, axis=None) &#x6C42;input_tensor&#x5728;axis&#x4E0A;&#x7684;&#x5E73;&#x5747;&#x503C;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;&#x5168;&#x5C40;&#x5E73;&#x5747;&#x503C;</span><br><span class="line">d = tf.reduce_mean(a, axis=1)</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/FRAME/tensorflow12.png" alt="12"></p>
+<h3 id="argmax&#xFF0C;argmin&#x65B9;&#x6CD5;"><a href="#argmax&#xFF0C;argmin&#x65B9;&#x6CD5;" class="headerlink" title="argmax&#xFF0C;argmin&#x65B9;&#x6CD5;"></a><font size="3">argmax&#xFF0C;argmin&#x65B9;&#x6CD5;</font></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line"></span><br><span class="line">a = tf.reshape(tf.random.shuffle(tf.range(1, 13)), (3, 4))</span><br><span class="line"></span><br><span class="line"># tf.argmax(input, axis=0) &#x6C42;input&#x5728;axis&#x8F74;&#x7684;&#x6700;&#x5927;&#x503C;&#x7D22;&#x5F15;&#xFF0C;&#x9ED8;&#x8BA4;&#x5728;&#x7B2C;&#x4E00;&#x4E2A;&#x8F74;</span><br><span class="line">b = tf.argmax(a, axis=0)</span><br><span class="line"></span><br><span class="line"># tf.argmin(input, axis=0) &#x6C42;input&#x5728;axis&#x8F74;&#x7684;&#x6700;&#x5C0F;&#x503C;&#x7D22;&#x5F15;&#xFF0C;&#x9ED8;&#x8BA4;&#x5728;&#x7B2C;&#x4E00;&#x4E2A;&#x8F74;</span><br><span class="line">c = tf.argmin(a, axis=1)</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/FRAME/tensorflow13.png" alt="13"></p>
+<h3 id="equal&#xFF0C;unique&#x65B9;&#x6CD5;"><a href="#equal&#xFF0C;unique&#x65B9;&#x6CD5;" class="headerlink" title="equal&#xFF0C;unique&#x65B9;&#x6CD5;"></a><font size="3">equal&#xFF0C;unique&#x65B9;&#x6CD5;</font></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line"></span><br><span class="line">a = tf.constant([[1, 1], [0, 0]])</span><br><span class="line">b = tf.constant([[1, 0], [1, 0]])</span><br><span class="line">c = tf.constant([1,2,3,2,1])</span><br><span class="line"></span><br><span class="line"># tf.equal(x, y) &#x6BD4;&#x8F83;x&#x548C;y&#x662F;&#x5426;&#x76F8;&#x7B49;&#xFF0C;&#x5728;&#x5982;&#x679C;&#x76F8;&#x7B49;&#x5219;&#x5BF9;&#x5E94;&#x4F4D;&#x7F6E;&#x4E3A;True&#xFF0C;&#x5426;&#x5219;&#x4E3A;False</span><br><span class="line">d = tf.equal(a, b)</span><br><span class="line"></span><br><span class="line"># tf.unique(x) &#x627E;&#x51FA;x&#x4E2D;&#x6709;&#x591A;&#x5C11;&#x4E0D;&#x540C;&#x7684;&#x5143;&#x7D20;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;&#x5176;&#x7D22;&#x5F15;</span><br><span class="line">e = tf.unique(c)</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/FRAME/tensorflow14.png" alt="14"></p>
+<h3 id="norm&#xFF0C;top-k&#x65B9;&#x6CD5;"><a href="#norm&#xFF0C;top-k&#x65B9;&#x6CD5;" class="headerlink" title="norm&#xFF0C;top_k&#x65B9;&#x6CD5;"></a><font size="3">norm&#xFF0C;top_k&#x65B9;&#x6CD5;</font></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line"></span><br><span class="line">a = tf.reshape(tf.random.shuffle(tf.range(1, 13, dtype=tf.float32)), (3, 4))</span><br><span class="line"></span><br><span class="line"># tf.norm(tensor, str, axis=-1) &#x6C42;tensor&#x7684;p&#x8303;&#x6570;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;&#x5168;&#x5C40;p&#x8303;&#x6570;</span><br><span class="line">b = tf.norm(a, 2, axis=0)</span><br><span class="line"></span><br><span class="line"># tf.math.top_k(input, k, bool=True) &#x5728;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x7EF4;&#x5EA6;&#x6C42;input&#x4E2D;&#x524D;k&#x4E2A;&#x6700;&#x5927;&#x503C;&#x6216;&#x6700;&#x5C0F;&#x503C;&#x53CA;&#x5176;&#x7D22;&#x5F15;&#xFF0C;bool=True&#x4E3A;&#x6700;&#x5927;&#x503C;&#xFF0C;bool=False&#x4E3A;&#x6700;&#x5C0F;&#x503C;&#x3002;</span><br><span class="line">c = tf.math.top_k(a, 2, True)</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/FRAME/tensorflow15.png" alt="15"></p>
+<h2 id="tensorflow&#x6392;&#x5E8F;"><a href="#tensorflow&#x6392;&#x5E8F;" class="headerlink" title="tensorflow&#x6392;&#x5E8F;"></a><font size="4">tensorflow&#x6392;&#x5E8F;</font></h2><h3 id="sort&#xFF0C;argsort&#x65B9;&#x6CD5;"><a href="#sort&#xFF0C;argsort&#x65B9;&#x6CD5;" class="headerlink" title="sort&#xFF0C;argsort&#x65B9;&#x6CD5;"></a><font size="3">sort&#xFF0C;argsort&#x65B9;&#x6CD5;</font></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line"></span><br><span class="line">a = tf.reshape(tf.random.shuffle(tf.range(1, 13)), (3, 4))</span><br><span class="line"></span><br><span class="line"># tf.sort(values, direction=&apos;ASCENDING&apos;, axis=-1) &#x6309;axis&#x8F74;&#x5BF9;values&#x8FDB;&#x884C;&#x6392;&#x5E8F;&#xFF0C;&#x8FD4;&#x56DE;&#x6392;&#x5E8F;&#x540E;&#x7684;&#x7ED3;&#x679C;&#xFF0C;direction=&apos;ASCENDING&apos;&#x4EE3;&#x8868;&#x9012;&#x589E;&#x6392;&#x5E8F;&#xFF0C;&apos;DESCENDING&apos;&#x4EE3;&#x8868;&#x9012;&#x51CF;&#x6392;&#x5E8F;</span><br><span class="line">b = tf.sort(a, axis=0)</span><br><span class="line"></span><br><span class="line"># tf.argsort(values, direction=&apos;ASCENDING&apos;, axis=-1) &#x6309;axis&#x8F74;&#x5BF9;values&#x8FDB;&#x884C;&#x6392;&#x5E8F;&#xFF0C;&#x8FD4;&#x56DE;&#x6392;&#x5E8F;&#x540E;&#x7684;&#x7D22;&#x5F15;&#xFF0C;direction=&apos;ASCENDING&apos;&#x4EE3;&#x8868;&#x9012;&#x589E;&#x6392;&#x5E8F;&#xFF0C;&apos;DESCENDING&apos;&#x4EE3;&#x8868;&#x9012;&#x51CF;&#x6392;&#x5E8F;</span><br><span class="line">c = tf.argsort(a, axis=1)</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/FRAME/tensorflow16.png" alt="16"></p>
+<h2 id="tensorflow&#x5F20;&#x91CF;&#x9650;&#x5E45;"><a href="#tensorflow&#x5F20;&#x91CF;&#x9650;&#x5E45;" class="headerlink" title="tensorflow&#x5F20;&#x91CF;&#x9650;&#x5E45;"></a><font size="4">tensorflow&#x5F20;&#x91CF;&#x9650;&#x5E45;</font></h2><h3 id="maximun&#xFF0C;minimum&#x65B9;&#x6CD5;"><a href="#maximun&#xFF0C;minimum&#x65B9;&#x6CD5;" class="headerlink" title="maximun&#xFF0C;minimum&#x65B9;&#x6CD5;"></a><font size="3">maximun&#xFF0C;minimum&#x65B9;&#x6CD5;</font></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line"></span><br><span class="line">a = tf.reshape(tf.random.shuffle(tf.range(1, 13)), (3, 4))</span><br><span class="line">b = tf.reshape(tf.random.shuffle(tf.range(1, 13)), (3, 4))</span><br><span class="line"></span><br><span class="line"># tf.maximun(x, y) &#x53D6;x&#xFF0C;y&#x4E2D;&#x7684;&#x5927;&#x6570;&#x5E76;&#x8FD4;&#x56DE;</span><br><span class="line">c = tf.maximum(a, b)</span><br><span class="line"></span><br><span class="line"># tf.minimun(x, y) &#x53D6;x&#xFF0C;y&#x4E2D;&#x7684;&#x5C0F;&#x6570;&#x5E76;&#x8FD4;&#x56DE;</span><br><span class="line">d = tf.minimum(a, b)</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/FRAME/tensorflow17.png" alt="17"></p>
+<h3 id="clip-by-value&#x65B9;&#x6CD5;"><a href="#clip-by-value&#x65B9;&#x6CD5;" class="headerlink" title="clip_by_value&#x65B9;&#x6CD5;"></a><font size="3">clip_by_value&#x65B9;&#x6CD5;</font></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line"></span><br><span class="line">a = tf.reshape(tf.random.shuffle(tf.range(1, 13)), (3, 4))</span><br><span class="line"></span><br><span class="line"># tf.clip_by_value(t, clip_value_min, clip_value_max) &#x5C06;t&#x4E2D;&#x5C0F;&#x4E8E;clip_value_min&#x7684;&#x503C;&#x8D4B;&#x503C;&#x4E3A;clip_value_min&#xFF0C;&#x5927;&#x4E8E;clip_value_max&#x7684;&#x503C;&#x8D4B;&#x503C;&#x4E3A;clip_value_max</span><br><span class="line">b = tf.clip_by_value(a, 3, 7)</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/FRAME/tensorflow18.png" alt="18"></p>
+<h2 id="tensorflow&#x6570;&#x5B66;&#x8FD0;&#x7B97;"><a href="#tensorflow&#x6570;&#x5B66;&#x8FD0;&#x7B97;" class="headerlink" title="tensorflow&#x6570;&#x5B66;&#x8FD0;&#x7B97;"></a><font size="4">tensorflow&#x6570;&#x5B66;&#x8FD0;&#x7B97;</font></h2><h3 id="&#x5E38;&#x89C4;&#x8FD0;&#x7B97;&#x65B9;&#x6CD5;"><a href="#&#x5E38;&#x89C4;&#x8FD0;&#x7B97;&#x65B9;&#x6CD5;" class="headerlink" title="&#x5E38;&#x89C4;&#x8FD0;&#x7B97;&#x65B9;&#x6CD5;"></a><font size="3">&#x5E38;&#x89C4;&#x8FD0;&#x7B97;&#x65B9;&#x6CD5;</font></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line"></span><br><span class="line">a = tf.reshape(tf.random.shuffle(tf.range(1, 5, dtype=tf.float32)), (2, 2))</span><br><span class="line">b = tf.reshape(tf.random.shuffle(tf.range(1, 5, dtype=tf.float32)), (2, 2))</span><br><span class="line"></span><br><span class="line"># tensor1 op tensor2 &#x5C06;tensor1&#x4E0E;tensor2&#x8FDB;&#x884C;&#x5E38;&#x89C4;&#x7684;&#x6570;&#x5B66;&#x8FD0;&#x7B97;&#xFF0C;&#x5982;&#x679C;&#x7EF4;&#x5EA6;&#x5927;&#x5C0F;&#x4E0D;&#x540C;&#xFF0C;&#x5219;&#x8FDB;&#x884C;&#x5E7F;&#x64AD;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x80FD;&#x5E7F;&#x64AD;&#x5219;&#x62A5;&#x9519;</span><br><span class="line">c = a + b</span><br><span class="line">d = a ** b</span><br><span class="line"></span><br><span class="line"># tf.sqrt(x) &#x5C06;x&#x8FDB;&#x884C;&#x5F00;&#x65B9;&#x8FD0;&#x7B97;</span><br><span class="line">e = tf.sqrt(a)</span><br><span class="line"></span><br><span class="line"># tf.exp(x) &#x6C42;e&#x7684;x&#x6B21;&#x5E42;</span><br><span class="line">f = tf.exp(a)</span><br><span class="line"></span><br><span class="line"># tf.math.log(x) &#x6C42;x&#x4EE5;e&#x4E3A;&#x5E95;&#x7684;&#x5BF9;&#x6570;</span><br><span class="line">g = tf.math.log(a)</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/FRAME/tensorflow19.png" alt="19"></p>
+<h3 id="matmul&#x65B9;&#x6CD5;"><a href="#matmul&#x65B9;&#x6CD5;" class="headerlink" title="matmul&#x65B9;&#x6CD5;"></a><font size="3">matmul&#x65B9;&#x6CD5;</font></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line"></span><br><span class="line">a = tf.reshape(tf.random.shuffle(tf.range(1, 5, dtype=tf.float32)), (2, 2))</span><br><span class="line">b = tf.reshape(tf.random.shuffle(tf.range(1, 5, dtype=tf.float32)), (2, 2))</span><br><span class="line"></span><br><span class="line"># tf.matmul(a, b) a&#x548C;b&#x7684;&#x77E9;&#x9635;&#x4E58;&#x6CD5;&#xFF0C;&#x7B49;&#x4EF7;&#x4E8E;a @ b</span><br><span class="line">c = tf.matmul(a, b)</span><br><span class="line">d = a @ b</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/FRAME/tensorflow20.png" alt="20"></p>
+<h3 id="where&#x65B9;&#x6CD5;"><a href="#where&#x65B9;&#x6CD5;" class="headerlink" title="where&#x65B9;&#x6CD5;"></a><font size="3">where&#x65B9;&#x6CD5;</font></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line"></span><br><span class="line">a = tf.constant([[False, True], [True, False]])</span><br><span class="line">b = tf.constant([[1, 2], [3, 4]])</span><br><span class="line">c = tf.constant([[-1, -2], [-3, -4]])</span><br><span class="line"></span><br><span class="line"># tf.where(obj) &#x8FD4;&#x56DE;obj&#x4E2D;True&#x7684;&#x4F4D;&#x7F6E;&#x7684;&#x7D22;&#x5F15;</span><br><span class="line">d = tf.where(a)</span><br><span class="line"></span><br><span class="line"># tf.where(tensor1, tensor2, tensor3) &#x5982;&#x679C;tensor1&#x5BF9;&#x5E94;&#x4F4D;&#x7F6E;&#x4E3A;True&#x5219;&#x4ECE;tensor2&#x4E2D;&#x53D6;&#x5F97;&#x76F8;&#x5E94;&#x5143;&#x7D20;&#xFF0C;&#x5426;&#x5219;&#x4ECE;tensor3&#x4E2D;&#x53D6;&#x5F97;&#x76F8;&#x5E94;&#x5143;&#x7D20;</span><br><span class="line">e = tf.where(a, b, c)</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/FRAME/tensorflow21.png" alt="21"></p>
+<h2 id="tensorflow&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;"><a href="#tensorflow&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;" class="headerlink" title="tensorflow&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;"></a><font size="4">tensorflow&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;</font></h2><h3 id="datasets-&#x6570;&#x636E;&#x96C6;-&#x6A21;&#x5757;"><a href="#datasets-&#x6570;&#x636E;&#x96C6;-&#x6A21;&#x5757;" class="headerlink" title="datasets(&#x6570;&#x636E;&#x96C6;)&#x6A21;&#x5757;"></a><font size="3">datasets(&#x6570;&#x636E;&#x96C6;)&#x6A21;&#x5757;</font></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">from tensorflow.keras import datasets</span><br><span class="line"></span><br><span class="line"># datasets.XXX.load_data() # &#x4E0B;&#x8F7D;XXX&#x6570;&#x636E;&#x96C6;&#xFF0C;&#x5E38;&#x7528;&#x7684;&#x6709;mnist&#xFF0C;cifar10&#xFF0C;cifar100&#x7B49;&#x7B49;&#xFF0C;&#x6B64;&#x65F6;&#x6570;&#x636E;&#x4E3A;numpy&#x683C;&#x5F0F;&#xFF0C;&#x5E76;&#x4E0D;&#x662F;tensor</span><br><span class="line">(x_train, y_train), (x_test, y_test) = datasets.mnist.load_data() # &#x4E0B;&#x8F7D;mnist&#x624B;&#x5199;&#x6570;&#x5B57;&#x6570;&#x636E;&#x96C6;</span><br><span class="line"></span><br><span class="line">x_train.shape</span><br><span class="line">y_train.shape</span><br><span class="line"></span><br><span class="line">x_test.shape</span><br><span class="line">y_test.shape</span><br><span class="line"></span><br><span class="line">y_train[:6]</span><br><span class="line">y_train_onehot = tf.one_hot(y_train[:6], depth=10)</span><br><span class="line">y_train_onehot</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/FRAME/tensorflow22.png" alt="22"></p>
+<h3 id="data-&#x6570;&#x636E;&#x64CD;&#x4F5C;-&#x6A21;&#x5757;"><a href="#data-&#x6570;&#x636E;&#x64CD;&#x4F5C;-&#x6A21;&#x5757;" class="headerlink" title="data(&#x6570;&#x636E;&#x64CD;&#x4F5C;)&#x6A21;&#x5757;"></a><font size="3">data(&#x6570;&#x636E;&#x64CD;&#x4F5C;)&#x6A21;&#x5757;</font></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line"></span><br><span class="line"># tf.data.Dataset.from_tensor_slices(tensor) &#x5C06;tensor&#x6570;&#x636E;&#x8F6C;&#x6362;&#x6210;&#x4E00;&#x4E2A;&#x53EF;&#x8FED;&#x4EE3;&#x7684;&#x5BF9;&#x8C61;</span><br><span class="line">db = tf.data.Dataset.from_tensor_slices(x_train)</span><br><span class="line"></span><br><span class="line"># next(iter(db)) &#x8FD4;&#x56DE;&#x4E0B;&#x4E00;&#x4E2A;&#x8FED;&#x4EE3;&#x5668;&#x7684;&#x5185;&#x5BB9;</span><br><span class="line"></span><br><span class="line"># db.shuffle(n) &#x5C06;0-n&#x7684;&#x8FED;&#x4EE3;&#x5668;&#x5185;&#x5BB9;&#x6253;&#x6563;&#xFF0C;&#x4F7F;&#x5176;&#x8BAD;&#x7EC3;&#x66F4;&#x52A0;&#x5408;&#x7406;</span><br><span class="line"></span><br><span class="line"># db.map(function) &#x5C06;&#x8FED;&#x4EE3;&#x5668;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x5168;&#x90E8;&#x7ECF;&#x8FC7;function&#x5904;&#x7406;&#xFF0C;&#x5E38;&#x7528;&#x4E8E;&#x56FE;&#x7247;&#x7684;&#x9884;&#x5904;&#x7406;&#x7B49;&#x529F;&#x80FD;</span><br><span class="line"></span><br><span class="line">#db.batch(n) &#x5C06;&#x8FED;&#x4EE3;&#x5668;&#x4E2D;&#x7684;&#x5185;&#x5BB9;&#x5206;&#x6210;&#x5F88;&#x591A;&#x4E2A;batch&#xFF0C;&#x6BCF;&#x4E00;&#x4E2A;batch&#x4E2D;&#x6709;n&#x4E2A;&#x6570;&#x636E;</span><br><span class="line"></span><br><span class="line"># db.repeat(n) &#x5C06;db&#x5BF9;&#x8C61;&#x8FED;&#x4EE3;n&#x6B21;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;&#x65E0;&#x9650;&#x8FED;&#x4EE3;</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="nn-&#x795E;&#x7ECF;&#x7F51;&#x7EDC;-&#x6A21;&#x5757;"><a href="#nn-&#x795E;&#x7ECF;&#x7F51;&#x7EDC;-&#x6A21;&#x5757;" class="headerlink" title="nn(&#x795E;&#x7ECF;&#x7F51;&#x7EDC;)&#x6A21;&#x5757;"></a><font size="3">nn(&#x795E;&#x7ECF;&#x7F51;&#x7EDC;)&#x6A21;&#x5757;</font></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line"></span><br><span class="line"># tf.nn.relu(features) ReLu&#x6FC0;&#x6D3B;&#x51FD;&#x6570;</span><br><span class="line"></span><br><span class="line"># tf.nn.sigmoid(features) Sigmoid&#x6FC0;&#x6D3B;&#x51FD;&#x6570;</span><br><span class="line"></span><br><span class="line"># tf.nn.tanh(features) tanh&#x6FC0;&#x6D3B;&#x51FD;&#x6570;</span><br><span class="line"></span><br><span class="line"># tf.nn.softmax(logits) softmax&#x5C42;</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="optimizers-&#x4F18;&#x5316;&#x5668;-&#x6A21;&#x5757;"><a href="#optimizers-&#x4F18;&#x5316;&#x5668;-&#x6A21;&#x5757;" class="headerlink" title="optimizers(&#x4F18;&#x5316;&#x5668;)&#x6A21;&#x5757;"></a><font size="3">optimizers(&#x4F18;&#x5316;&#x5668;)&#x6A21;&#x5757;</font></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from tensorflow.keras import optimizers</span><br><span class="line"></span><br><span class="line"># optimizers.SGD(lr=0.01, momentum=0.0, decay=0.0, nesterov=False) &#x968F;&#x673A;&#x68AF;&#x5EA6;&#x4E0B;&#x964D;&#x4F18;&#x5316;&#x5668;&#xFF0C;&#x5B66;&#x4E60;&#x7387;lr&#x9ED8;&#x8BA4;&#x4E3A;0.01&#xFF0C;&#x52A8;&#x91CF;momentum&#x9ED8;&#x8BA4;&#x4E3A;0&#xFF0C;&#x5B66;&#x4E60;&#x7387;&#x8870;&#x51CF;decay&#x9ED8;&#x8BA4;&#x4E3A;0&#xFF0C;&#x9ED8;&#x8BA4;&#x4E0D;&#x4F7F;&#x7528;nesterov&#x52A8;&#x91CF;</span><br><span class="line"></span><br><span class="line"># optimizers.RMSprop(lr=0.001, rho=0.9, epsilon=None, decay=0.0) RMSprop&#x4F18;&#x5316;&#x5668;&#xFF0C;&#x5B66;&#x4E60;&#x7387;lr&#x9ED8;&#x8BA4;&#x4E3A;0.001&#xFF0C;&#x53C2;&#x6570;rho&#x9ED8;&#x8BA4;&#x4E3A;0.9&#xFF0C;&#x6A21;&#x7CCA;&#x56E0;&#x5B50;epsilon&#x9ED8;&#x8BA4;&#x4E3A;None&#xFF0C;&#x5B66;&#x4E60;&#x7387;&#x8870;&#x51CF;decay&#x9ED8;&#x8BA4;&#x4E3A;0.0</span><br><span class="line"></span><br><span class="line"># optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0) Adam&#x4F18;&#x5316;&#x5668;&#xFF0C;&#x5B66;&#x4E60;&#x7387;lr&#x9ED8;&#x8BA4;&#x4E3A;0.001&#xFF0C;&#x53C2;&#x6570;beta_1&#x9ED8;&#x8BA4;&#x4E3A;0.9, &#x53C2;&#x6570;beta_2&#x9ED8;&#x8BA4;&#x4E3A;0.999&#xFF0C;&#x6A21;&#x7CCA;&#x56E0;&#x5B50;epsilon&#x9ED8;&#x8BA4;&#x4E3A;None&#xFF0C;&#x5B66;&#x4E60;&#x7387;&#x8870;&#x51CF;decay&#x9ED8;&#x8BA4;&#x4E3A;0</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="layers-&#x7F51;&#x7EDC;&#x5C42;-&#x6A21;&#x5757;"><a href="#layers-&#x7F51;&#x7EDC;&#x5C42;-&#x6A21;&#x5757;" class="headerlink" title="layers(&#x7F51;&#x7EDC;&#x5C42;)&#x6A21;&#x5757;"></a><font size="3">layers(&#x7F51;&#x7EDC;&#x5C42;)&#x6A21;&#x5757;</font></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">from tensorflow.keras import layers</span><br><span class="line"></span><br><span class="line"># layers.Dense(out_dim) &#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;&#x5168;&#x8FDE;&#x63A5;&#x5C42;&#xFF0C;&#x7ED3;&#x70B9;&#x6570;&#x4E3A;out_dim&#x4E2A;</span><br><span class="line"></span><br><span class="line"># layers.Layer &#x81EA;&#x5B9A;&#x4E49;&#x7F51;&#x7EDC;&#x5C42;&#x7684;&#x57FA;&#x7C7B;</span><br><span class="line">class MyDense(layers.Layer):</span><br><span class="line">    def __init__(self, input_dim, output_dim):</span><br><span class="line">        super(MyDense, self).__init__()</span><br><span class="line">        </span><br><span class="line">        self.kernel = self.add_variable(&apos;w&apos;, [input_dim, output_dim])</span><br><span class="line">        self.bias = self.add_variable(&apos;b&apos;, [output_dim])</span><br><span class="line"></span><br><span class="line">    def call(self, inputs, training=None):</span><br><span class="line">        out = inputs @ self.kernel + self.bias</span><br><span class="line">        return out</span><br><span class="line"></span><br><span class="line"># layers.Dropout(rate) &#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;Dropout&#x5C42;&#xFF0C;&#x4FDD;&#x6301;&#x8FDE;&#x63A5;&#x7684;&#x6BD4;&#x7387;&#x4E3A;rate&#xFF0C;&#x5931;&#x6D3B;&#x7684;&#x6BD4;&#x7387;&#x4E3A;1-rate&#xFF0C;&#x548C;PyTorch&#x4E0D;&#x540C;</span><br><span class="line"></span><br><span class="line"># layers.Flatten() &#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;Flatten&#x5C42;&#xFF0C;&#x5C06;&#x6570;&#x636E;&#x5C55;&#x5E73;&#x6210;&#x4E00;&#x7EF4;</span><br><span class="line"></span><br><span class="line"># layers.Conv2D(filters, kernel_size, strides=(1, 1), padding=&apos;valid&apos;) &#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;&#x5377;&#x79EF;&#x5C42;&#xFF0C;&#x5377;&#x79EF;&#x6838;&#x7684;&#x4E2A;&#x6570;&#x4E3A;filters&#xFF0C;&#x6838;&#x7684;&#x5927;&#x5C0F;&#x4E3A;kernel_size&#xFF0C;strides&#x4E3A;&#x6A21;&#x677F;&#x79FB;&#x52A8;&#x7684;&#x6B65;&#x957F;&#xFF0C;padding&#x4E3A;&#x662F;&#x5426;&#x5728;&#x5468;&#x56F4;&#x8865;0&#xFF0C;valid&#x4E3A;&#x4E0D;&#x8865;0&#xFF0C;same&#x4E3A;&#x8865;0&#x4FDD;&#x8BC1;&#x5927;&#x5C0F;&#x4E0D;&#x53D8;</span><br><span class="line"></span><br><span class="line"># layers.MaxPool2D(pool_size=(2, 2), strides=None, padding=&apos;valid&apos;) &#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;&#x6700;&#x5927;&#x503C;&#x6C60;&#x5316;&#x5C42;(&#x5E73;&#x5747;&#x503C;&#x6C60;&#x5316;&#x4E3A;AveragePooling2D)&#xFF0C;&#x6C60;&#x5316;&#x5C42;&#x6A21;&#x677F;&#x4E3A;pool_size&#xFF0C;strides&#x4E3A;&#x6A21;&#x677F;&#x79FB;&#x52A8;&#x7684;&#x6B65;&#x957F;&#xFF0C;padding&#x4E3A;&#x662F;&#x5426;&#x5728;&#x5468;&#x56F4;&#x8865;0&#xFF0C;valid&#x4E3A;&#x4E0D;&#x8865;0&#xFF0C;same&#x4E3A;&#x8865;0&#x4FDD;&#x8BC1;&#x5927;&#x5C0F;&#x4E0D;&#x53D8;</span><br><span class="line"></span><br><span class="line"># layers.SimpleRNNCell(units, activation=&apos;tanh&apos;, dropout=0.0, return_sequences=False, unroll=False) &#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;&#x5FAA;&#x73AF;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x5C42;&#xFF0C;&#x5355;&#x5143;&#x6570;&#x4E3A;units&#xFF0C;dropout&#x4E22;&#x5F03;&#x767E;&#x5206;&#x767E;&#x4E3A;0.0&#xFF0C;return_sequences=False&#x8FD4;&#x56DE;&#x5E8F;&#x5217;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x8F93;&#x51FA;&#xFF0C;return_sequences=True&#x8FD4;&#x56DE;&#x5168;&#x90E8;&#x5E8F;&#x5217;&#xFF0C;unroll=True&#xFF0C;&#x5219;&#x7F51;&#x7EDC;&#x5C06;&#x5C55;&#x5F00;&#xFF0C;&#x5426;&#x5219;&#x5C06;&#x4F7F;&#x7528;&#x7B26;&#x53F7;&#x5FAA;&#x73AF;&#x3002;</span><br><span class="line"></span><br><span class="line"># layers.LSTM(units, activation=&apos;tanh&apos;, dropout=0.0, return_sequences=False, unroll=False) &#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;&#x957F;&#x77ED;&#x671F;&#x8BB0;&#x5FC6;&#x7F51;&#x7EDC;&#xFF0C;&#x5355;&#x5143;&#x6570;&#x4E3A;units&#xFF0C;dropout&#x4E22;&#x5F03;&#x767E;&#x5206;&#x767E;&#x4E3A;0.0&#xFF0C;return_sequences=False&#x8FD4;&#x56DE;&#x5E8F;&#x5217;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x8F93;&#x51FA;&#xFF0C;return_sequences=True&#x8FD4;&#x56DE;&#x5168;&#x90E8;&#x5E8F;&#x5217;&#xFF0C;unroll=True&#xFF0C;&#x5219;&#x7F51;&#x7EDC;&#x5C06;&#x5C55;&#x5F00;&#xFF0C;&#x5426;&#x5219;&#x5C06;&#x4F7F;&#x7528;&#x7B26;&#x53F7;&#x5FAA;&#x73AF;&#x3002;</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="losses-&#x8BEF;&#x5DEE;&#x8BA1;&#x7B97;-&#x6A21;&#x5757;"><a href="#losses-&#x8BEF;&#x5DEE;&#x8BA1;&#x7B97;-&#x6A21;&#x5757;" class="headerlink" title="losses(&#x8BEF;&#x5DEE;&#x8BA1;&#x7B97;)&#x6A21;&#x5757;"></a><font size="3">losses(&#x8BEF;&#x5DEE;&#x8BA1;&#x7B97;)&#x6A21;&#x5757;</font></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line"></span><br><span class="line"># tf.losses.MSE(y, logits) &#x8BA1;&#x7B97;&#x771F;&#x5B9E;&#x503C;y&#x4E0E;&#x9884;&#x6D4B;&#x503C;logits&#x7684;&#x5747;&#x65B9;&#x5DEE;</span><br><span class="line"></span><br><span class="line"># tf.losses.categorical_crossentropy(y, logits) &#x8BA1;&#x7B97;&#x771F;&#x5B9E;&#x503C;y&#x4E0E;&#x9884;&#x6D4B;&#x503C;logits&#x7684;&#x4EA4;&#x53C9;&#x71B5;</span><br><span class="line"></span><br><span class="line"># tf.losses.binary_crossentropy(label, prob) &#x6839;&#x636E;&#x6807;&#x7B7E;&#x548C;&#x6982;&#x7387;&#x8BA1;&#x7B97;&#x4E8C;&#x5206;&#x7C7B;&#x95EE;&#x9898;&#x7684;&#x4EA4;&#x53C9;&#x71B5;</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="Gradient-&#x68AF;&#x5EA6;&#x4E0B;&#x964D;-&#x6A21;&#x5757;"><a href="#Gradient-&#x68AF;&#x5EA6;&#x4E0B;&#x964D;-&#x6A21;&#x5757;" class="headerlink" title="Gradient(&#x68AF;&#x5EA6;&#x4E0B;&#x964D;)&#x6A21;&#x5757;"></a><font size="3">Gradient(&#x68AF;&#x5EA6;&#x4E0B;&#x964D;)&#x6A21;&#x5757;</font></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line"></span><br><span class="line"># tf.Variable(tensor) &#x5C06;tensor&#x8D4B;&#x6709;&#x53EF;&#x6C42;&#x5BFC;&#x5C5E;&#x6027;</span><br><span class="line"></span><br><span class="line"># &#x5C06;&#x524D;&#x5411;&#x8FD0;&#x7B97;&#x8FC7;&#x7A0B;&#x653E;&#x5728;tf.GradientTape()&#x4E2D;&#xFF0C;&#x5373;&#x53EF;&#x5B9E;&#x73B0;&#x81EA;&#x52A8;&#x6C42;&#x5BFC;&#xFF0C;&#x524D;&#x63D0;&#x662F;&#x53D8;&#x91CF;&#x5177;&#x6709;&#x53EF;&#x5BFC;&#x5C5E;&#x6027;</span><br><span class="line">with tf.GradientTape() as tape&#xFF1A;</span><br><span class="line">    XXX</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="TensorBoard&#x6A21;&#x5757;"><a href="#TensorBoard&#x6A21;&#x5757;" class="headerlink" title="TensorBoard&#x6A21;&#x5757;"></a><font size="3">TensorBoard&#x6A21;&#x5757;</font></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># &#x9996;&#x5148;&#x8981;&#x5B89;&#x88C5;TensorBoard&#xFF0C;pip install tensorboard</span><br><span class="line"># &#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x547D;&#x540D;&#x4E3A;logs&#xFF0C;&#x5728;&#x8BE5;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#x4E0B;&#x5E76;&#x8F93;&#x5165;tensorboard --logdir logs  &#x4F1A;&#x663E;&#x793A;TensorBoard 1.14.0 at http://DESKTOP-1NSILG1:6006/ (Press CTRL+C to quit)</span><br><span class="line"># &#x5EFA;&#x7ACB;&#x65E5;&#x5FD7;&#x6587;&#x4EF6;tf.summary.create_file_writer(filename)</span><br><span class="line"># &#x7ED9;&#x65E5;&#x5FD7;&#x5199;&#x6570;&#x636E;</span><br><span class="line">with summary_writer.as_default():</span><br><span class="line">    tf.summary.scalar(label, data, step) # &#x7ED9;label&#x6DFB;&#x52A0;&#x6570;&#x636E;data&#xFF0C;&#x4EE5;step&#x4F5C;&#x4E3A;x&#x8F74;</span><br><span class="line">    tf.summary.image(label, img, step) # &#x7ED9;label&#x6DFB;&#x52A0;&#x56FE;&#x7247;img</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/FRAME/tensorflow24.png" alt="24"></p>
+<h3 id="visdom&#x6A21;&#x5757;"><a href="#visdom&#x6A21;&#x5757;" class="headerlink" title="visdom&#x6A21;&#x5757;"></a><font size="3">visdom&#x6A21;&#x5757;</font></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># &#x9996;&#x5148;&#x8981;&#x5B89;&#x88C5;visdom&#xFF0C;pip install visdom</span><br><span class="line"># &#x5728;&#x8BE5;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#x4E0B;&#x5E76;&#x8F93;&#x5165;python -m visdom.server&#xFF0C;&#x4F1A;&#x51FA;&#x73B0;&#x4E0B;&#x9762;&#x7684;&#x63D0;&#x793A;</span><br><span class="line">Checking for scripts.</span><br><span class="line">It&apos;s Alive!</span><br><span class="line">INFO:root:Application Started</span><br><span class="line">You can navigate to http://localhost:8097</span><br><span class="line"># &#x5728;python&#x6587;&#x4EF6;&#x4E2D;&#x5199;&#x5165;</span><br><span class="line">from visdom import Visdom</span><br><span class="line"></span><br><span class="line">vis = Visdom()</span><br><span class="line"></span><br><span class="line"># vis.line(Y, X, win, updata) &#x5728;win&#x7A97;&#x53E3;&#x4E0B;&#x521B;&#x5EFA;&#x6A2A;&#x5750;&#x6807;&#x4E3A;X&#xFF0C;&#x7EB5;&#x5750;&#x6807;&#x4E3A;Y&#x7684;&#x6298;&#x7EBF;&#xFF0C;updata&#x4E3A;&#x6298;&#x7EBF;&#x7684;&#x66F4;&#x65B0;&#x65B9;&#x5F0F;</span><br><span class="line"></span><br><span class="line"># vis.images(tensor, win) &#x5728;win&#x7A97;&#x53E3;&#x4E0B;&#x663E;&#x793A;&#x56FE;&#x7247;tensor</span><br><span class="line"></span><br><span class="line"># vis.text(text, win) &#x5728;win&#x7A97;&#x53E3;&#x4E0B;&#x663E;&#x793A;text&#x6587;&#x672C;&#x6587;&#x5B57;</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/FRAME/tensorflow24.png" alt="24"></p>
+<h3 id="metrics-&#x8861;&#x91CF;&#x6307;&#x6807;-&#x6A21;&#x5757;"><a href="#metrics-&#x8861;&#x91CF;&#x6307;&#x6807;-&#x6A21;&#x5757;" class="headerlink" title="metrics(&#x8861;&#x91CF;&#x6307;&#x6807;)&#x6A21;&#x5757;"></a><font size="3">metrics(&#x8861;&#x91CF;&#x6307;&#x6807;)&#x6A21;&#x5757;</font></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">from tensorflow.keras import metrics</span><br><span class="line"></span><br><span class="line"># metrics.Accuracy() &#x8FD4;&#x56DE;&#x51C6;&#x786E;&#x5EA6;&#x8861;&#x91CF;&#x6307;&#x6807;&#x5BF9;&#x8C61;</span><br><span class="line">acc_metrics = metrics.Accuracy()</span><br><span class="line"></span><br><span class="line"># metrics.Mean() &#x8FD4;&#x56DE;&#x5E73;&#x5747;&#x503C;&#x8861;&#x91CF;&#x6307;&#x6807;&#x5BF9;&#x8C61;</span><br><span class="line">mean_metrics = metrics.Mean()</span><br><span class="line"></span><br><span class="line"># obj.updata_state() &#x5411;metrics&#x5BF9;&#x8C61;&#x4E2D;&#x6DFB;&#x52A0;&#x6570;&#x636E;</span><br><span class="line">acc_metrics.updata_state(loss)</span><br><span class="line">mean_metrics.updata_state(y, pred)</span><br><span class="line"></span><br><span class="line"># obj.result() &#x5C06;metrics&#x4E2D;&#x7684;&#x6570;&#x636E;&#x53D6;&#x51FA;</span><br><span class="line">acc_metrics.result()</span><br><span class="line">mean_metrics.result()</span><br><span class="line"></span><br><span class="line"># obj.reset_states() &#x6E05;&#x9664;metrics&#x4E2D;&#x7684;&#x6570;&#x636E;</span><br><span class="line">acc_metrics.reset_states()</span><br><span class="line">mean_metrics.reset_states()</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="Model-&#x6A21;&#x578B;-&#x6A21;&#x5757;"><a href="#Model-&#x6A21;&#x578B;-&#x6A21;&#x5757;" class="headerlink" title="Model(&#x6A21;&#x578B;)&#x6A21;&#x5757;"></a><font size="3">Model(&#x6A21;&#x578B;)&#x6A21;&#x5757;</font></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">from tensorflow.keras import Sequential, layers</span><br><span class="line">from tensorflow import keras</span><br><span class="line"></span><br><span class="line"># model = Sequential([layer1, layer2, ...]) &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7F51;&#x7EDC;&#x7ED3;&#x6784;&#xFF0C;&#x7B2C;&#x4E00;&#x5C42;&#x4E3A;layer1&#xFF0C;&#x7B2C;&#x4E8C;&#x5C42;&#x4E3A;layer2&#xFF0C;&#x2026;&#x2026;</span><br><span class="line">model = Sequential([layers.Dense(512), layers.Dense(128), layers.Dense(10)])</span><br><span class="line"></span><br><span class="line"># keras.Model &#x81EA;&#x5B9A;&#x4E49;&#x7F51;&#x7EDC;&#x7ED3;&#x6784;&#x7684;&#x57FA;&#x7C7B;</span><br><span class="line">class MyModel(keras.Model):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        super(MyModel, self).__init__()</span><br><span class="line">        </span><br><span class="line">        self.fc1 = MyDense(28 * 28, 256)</span><br><span class="line">        self.fc2 = MyDense(256, 64)</span><br><span class="line">        self.fc3 = MyDense(64, 10)</span><br><span class="line"></span><br><span class="line">    def call(self, inputs, training=None):</span><br><span class="line">        x = self.fc1(inputs)</span><br><span class="line">        x = tf.nn.relu(x)</span><br><span class="line">        x = self.fc2(x)</span><br><span class="line">        x = tf.nn.relu(x)</span><br><span class="line">        x = self.fc3(x)</span><br><span class="line">        return x</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># model.build(input_shape) &#x5B9A;&#x4E49;&#x7F51;&#x7EDC;&#x8F93;&#x5165;&#x7684;&#x5F62;&#x72B6;</span><br><span class="line">model.build(input_shape=(None, 784))</span><br><span class="line"></span><br><span class="line"># model.summary() &#x67E5;&#x770B;&#x7F51;&#x7EDC;&#x7ED3;&#x6784;</span><br><span class="line">model.summary()</span><br><span class="line"></span><br><span class="line"># model.trainable_variables &#x67E5;&#x770B;&#x7F51;&#x7EDC;&#x6240;&#x6709;&#x53EF;&#x8BAD;&#x7EC3;&#x53C2;&#x6570;</span><br><span class="line">model.trainable_variables</span><br><span class="line"></span><br><span class="line"># model.compile(optimizer, loss, metrics) &#x914D;&#x7F6E;&#x8BAD;&#x7EC3;&#x6A21;&#x578B;&#xFF0C;&#x8BBE;&#x7F6E;&#x4F18;&#x5316;&#x5668;&#x4E3A;optimizer&#xFF0C;&#x635F;&#x5931;&#x51FD;&#x6570;&#x4E3A;loss&#xFF0C;&#x8861;&#x91CF;&#x6307;&#x6807;&#x4E3A;metrics</span><br><span class="line"></span><br><span class="line"># model.fit(db, epoch, validation_data, validation_freq) &#x8BAD;&#x7EC3;&#x6A21;&#x578B;&#xFF0C;&#x8BAD;&#x7EC3;&#x96C6;&#x4E3A;db&#xFF0C;&#x8BAD;&#x7EC3;epoch&#x6B21;&#xFF0C;validation_freq&#x6B21;&#x5BF9;validation_data&#x8FDB;&#x884C;&#x4E00;&#x6B21;&#x6D4B;&#x8BD5;&#xFF0C;&#x9632;&#x6B62;&#x8FC7;&#x62DF;&#x5408;</span><br><span class="line"></span><br><span class="line"># model.evaluate(db_test) &#x5BF9;&#x6D4B;&#x8BD5;&#x96C6;&#x8FDB;&#x884C;&#x6D4B;&#x8BD5;</span><br><span class="line"></span><br><span class="line"># model.predict(x) &#x5BF9;&#x672A;&#x77E5;&#x7684;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x9884;&#x6D4B;</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/FRAME/tensorflow23.png" alt="23"></p>
+<h3 id="save-&#x4FDD;&#x5B58;-&#x6A21;&#x5757;"><a href="#save-&#x4FDD;&#x5B58;-&#x6A21;&#x5757;" class="headerlink" title="save(&#x4FDD;&#x5B58;)&#x6A21;&#x5757;"></a><font size="3">save(&#x4FDD;&#x5B58;)&#x6A21;&#x5757;</font></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line"></span><br><span class="line"># model.save_weights(filename) &#x5C06;&#x7F51;&#x7EDC;&#x7684;&#x8BAD;&#x7EC3;&#x53C2;&#x6570;&#x4FDD;&#x5B58;&#x5728;filename&#x4E2D;&#xFF0C;&#x4EC5;&#x4EC5;&#x4FDD;&#x5B58;&#x6743;&#x503C;</span><br><span class="line"># model.load_weights(filename) &#x8BFB;&#x53D6;filename&#x4E2D;&#x7684;&#x8BAD;&#x7EC3;&#x53C2;&#x6570;&#xFF0C;&#x524D;&#x63D0;&#x662F;&#x8981;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x76F8;&#x540C;&#x7ED3;&#x6784;&#x7684;&#x7F51;&#x7EDC;</span><br><span class="line"></span><br><span class="line"># model.save(filename) &#x4FDD;&#x5B58;&#x7F51;&#x7EDC;&#x7684;&#x6240;&#x6709;&#x7ED3;&#x6784;&#x548C;&#x53C2;&#x6570;</span><br><span class="line"># tf.keras.models.load_model(filename) &#x8BFB;&#x53D6;&#x6A21;&#x578B;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x521B;&#x5EFA;&#x7F51;&#x7EDC;&#xFF0C;&#x4F1A;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x76F8;&#x540C;&#x7684;&#x7F51;&#x7EDC;</span><br><span class="line"></span><br><span class="line"># tf.saved_model.save(model, filename) &#x4FDD;&#x5B58;&#x7F51;&#x7EDC;&#x7684;&#x6240;&#x6709;&#x7ED3;&#x6784;&#x548C;&#x53C2;&#x6570;&#xFF0C;&#x4FBF;&#x4E8E;&#x7ED9;&#x5176;&#x4ED6;&#x8BED;&#x8A00;&#x63D0;&#x4F9B;&#x8C03;&#x7528;</span><br></pre></td></tr></tbody></table></figure>
+<h1 id="TensorFlow&#x5C0F;&#x7ED3;"><a href="#TensorFlow&#x5C0F;&#x7ED3;" class="headerlink" title="TensorFlow&#x5C0F;&#x7ED3;"></a><font size="5" color="red">TensorFlow&#x5C0F;&#x7ED3;</font></h1><p>&#x2003;&#x2003;&#x7531;&#x4E8E;TensorFlow&#x80CC;&#x9760;&#x8C37;&#x6B4C;&#xFF0C;&#x5177;&#x6709;&#x6700;&#x5168;&#x7684;&#x6587;&#x6863;&#x548C;&#x8D44;&#x6E90;&#xFF0C;&#x800C;&#x4E14;&#x5F88;&#x591A;&#x6A21;&#x578B;&#x90FD;&#x6709;TensorFlow&#x7684;&#x6E90;&#x7801;&#x5B9E;&#x73B0;&#xFF0C;&#x6240;&#x4EE5;&#x62E5;&#x6709;&#x8F83;&#x5927;&#x7684;&#x7528;&#x6237;&#x57FA;&#x6570;&#xFF0C;&#x8FD9;&#x6837;&#x4F7F;&#x7528;&#x6237;&#x51FA;&#x73B0;&#x95EE;&#x9898;&#x65F6;&#x80FD;&#x8F83;&#x5BB9;&#x6613;&#x5730;&#x627E;&#x5230;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF0C;&#x8FD9;&#x4F7F;TensorFlow&#x76EE;&#x524D;&#x4F5C;&#x4E3A;&#x6700;&#x6D41;&#x884C;&#x7684;&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;&#x6846;&#x67B6;&#x3002;</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        <div> 
+  
+    <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div> 
+   
+</div>
+
+
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/02/algorithm network_flows/" rel="next" title="网络流(Network Flows)">
+                <i class="fa fa-chevron-left"></i> 网络流(Network Flows)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/08/frame pytorch/" rel="prev" title="PyTorch">
+                PyTorch <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "1",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      },
+      "slide": {
+        "bdImg": "5",
+        "bdPos": "left",
+        "bdTop": "100"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/github.jpeg" alt="USTCcoder">
+            
+              <p class="site-author-name" itemprop="name">USTCcoder</p>
+              <p class="site-description motion-element" itemprop="description">身体和灵魂总有一个在路上</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/USTCcoder" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/5754061944" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  </span>
+                
+            </div>
+          
+
+  <div id="music163player"> 
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="298" height="52" src="//music.163.com/outchain/player?type=0&id=2723087145&auto=0&height=32"></iframe>
+  </div>
+
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度搜索" target="_blank">百度搜索</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.ustc.edu.cn/" title="中国科学技术大学" target="_blank">中国科学技术大学</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景介绍"><span class="nav-number">1.</span> <span class="nav-text">背景介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TensorFlow特点"><span class="nav-number">2.</span> <span class="nav-text">TensorFlow特点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TensorFlow应用"><span class="nav-number">3.</span> <span class="nav-text">TensorFlow应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#TensorFlow创建tensor"><span class="nav-number">3.1.</span> <span class="nav-text">TensorFlow创建tensor</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#constant方法"><span class="nav-number">3.1.1.</span> <span class="nav-text">constant方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CPU，GPU方法"><span class="nav-number">3.1.2.</span> <span class="nav-text">CPU，GPU方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#numpy，shape，ndim，dtype方法"><span class="nav-number">3.1.3.</span> <span class="nav-text">numpy，shape，ndim，dtype方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#convert-to-tensor，cast方法"><span class="nav-number">3.1.4.</span> <span class="nav-text">convert_to_tensor，cast方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zeros，ones，fill，random方法"><span class="nav-number">3.1.5.</span> <span class="nav-text">zeros，ones，fill，random方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zeros-like，ones-like，one-hot，range方法"><span class="nav-number">3.1.6.</span> <span class="nav-text">zeros_like，ones_like，one_hot，range方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TensorFlow切片与索引"><span class="nav-number">3.2.</span> <span class="nav-text">TensorFlow切片与索引</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#索引"><span class="nav-number">3.2.1.</span> <span class="nav-text">[]索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gather，gather-nd，boolean-mask方法"><span class="nav-number">3.2.2.</span> <span class="nav-text">gather，gather_nd，boolean_mask方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TensorFlow维度变化"><span class="nav-number">3.3.</span> <span class="nav-text">TensorFlow维度变化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#reshape，transpose，expand-dims，squeeze方法"><span class="nav-number">3.3.1.</span> <span class="nav-text">reshape，transpose，expand_dims，squeeze方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#broadcast-to，tile方法"><span class="nav-number">3.3.2.</span> <span class="nav-text">broadcast_to，tile方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TensorFlow合并与分割"><span class="nav-number">3.4.</span> <span class="nav-text">TensorFlow合并与分割</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#concat，stack，unstack，split方法"><span class="nav-number">3.4.1.</span> <span class="nav-text">concat，stack，unstack，split方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tensorflow数据统计"><span class="nav-number">3.5.</span> <span class="nav-text">tensorflow数据统计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#reduce-min，reduce-max，reduce-mean方法"><span class="nav-number">3.5.1.</span> <span class="nav-text">reduce_min，reduce_max，reduce_mean方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#argmax，argmin方法"><span class="nav-number">3.5.2.</span> <span class="nav-text">argmax，argmin方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#equal，unique方法"><span class="nav-number">3.5.3.</span> <span class="nav-text">equal，unique方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#norm，top-k方法"><span class="nav-number">3.5.4.</span> <span class="nav-text">norm，top_k方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tensorflow排序"><span class="nav-number">3.6.</span> <span class="nav-text">tensorflow排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sort，argsort方法"><span class="nav-number">3.6.1.</span> <span class="nav-text">sort，argsort方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tensorflow张量限幅"><span class="nav-number">3.7.</span> <span class="nav-text">tensorflow张量限幅</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#maximun，minimum方法"><span class="nav-number">3.7.1.</span> <span class="nav-text">maximun，minimum方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#clip-by-value方法"><span class="nav-number">3.7.2.</span> <span class="nav-text">clip_by_value方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tensorflow数学运算"><span class="nav-number">3.8.</span> <span class="nav-text">tensorflow数学运算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常规运算方法"><span class="nav-number">3.8.1.</span> <span class="nav-text">常规运算方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#matmul方法"><span class="nav-number">3.8.2.</span> <span class="nav-text">matmul方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#where方法"><span class="nav-number">3.8.3.</span> <span class="nav-text">where方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tensorflow深度学习"><span class="nav-number">3.9.</span> <span class="nav-text">tensorflow深度学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#datasets-数据集-模块"><span class="nav-number">3.9.1.</span> <span class="nav-text">datasets(数据集)模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#data-数据操作-模块"><span class="nav-number">3.9.2.</span> <span class="nav-text">data(数据操作)模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nn-神经网络-模块"><span class="nav-number">3.9.3.</span> <span class="nav-text">nn(神经网络)模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#optimizers-优化器-模块"><span class="nav-number">3.9.4.</span> <span class="nav-text">optimizers(优化器)模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#layers-网络层-模块"><span class="nav-number">3.9.5.</span> <span class="nav-text">layers(网络层)模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#losses-误差计算-模块"><span class="nav-number">3.9.6.</span> <span class="nav-text">losses(误差计算)模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gradient-梯度下降-模块"><span class="nav-number">3.9.7.</span> <span class="nav-text">Gradient(梯度下降)模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TensorBoard模块"><span class="nav-number">3.9.8.</span> <span class="nav-text">TensorBoard模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#visdom模块"><span class="nav-number">3.9.9.</span> <span class="nav-text">visdom模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#metrics-衡量指标-模块"><span class="nav-number">3.9.10.</span> <span class="nav-text">metrics(衡量指标)模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Model-模型-模块"><span class="nav-number">3.9.11.</span> <span class="nav-text">Model(模型)模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#save-保存-模块"><span class="nav-number">3.9.12.</span> <span class="nav-text">save(保存)模块</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TensorFlow小结"><span class="nav-number">4.</span> <span class="nav-text">TensorFlow小结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+
+      
+
+  </div></aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-star"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">USTCcoder</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由USTCcoder强力驱动</div>
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+-->
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数<i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量<i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 't9SI7AusOApNt2xEqzwPKdgu-gzGzoHsz',
+        appKey: 'HL9HMS3c39n0mcXn11GkeE0S',
+        placeholder: '给主人一点鼓励吧( ⊙ o ⊙ )',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: ,
+    el: 'wpac-rating',
+    color: 'fc79533'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"tagMode":true,"debug":false,"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":140,"height":260,"mobile":true,"show":true},"log":false});</script>
+
+<!-- 动态可交互背景（js引入）
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+ <script>
+ $("body").backstretch("/images/github_logo.jpeg");
+  </script>
+-->
+</body>
+</html>
+<!-- 页面点击小红心 
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+-->

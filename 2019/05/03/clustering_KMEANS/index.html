@@ -140,7 +140,7 @@
 <meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/kmeans1.png">
 <meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/kmeans9.png">
 <meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/kmeans.png">
-<meta property="og:updated_time" content="2019-05-27T04:50:11.127Z">
+<meta property="og:updated_time" content="2019-08-07T15:53:24.367Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="K均值聚类(K-MEANS)">
 <meta name="twitter:description" content="K-Means">
@@ -397,8 +397,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
-                    <span itemprop="name">Machine Learning</span>
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
                   </a>
                 </span>
 
@@ -408,8 +408,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-Learning/聚类方法/" itemprop="url" rel="index">
-                    <span itemprop="name">聚类方法</span>
+                  <a href="/categories/机器学习/无监督学习/" itemprop="url" rel="index">
+                    <span itemprop="name">无监督学习</span>
                   </a>
                 </span>
 
@@ -487,9 +487,7 @@
       
         <p><strong><font size="5" color="gray"></font></strong></p><center><strong><font size="5" color="gray">K-Means&#x805A;&#x7C7B;&#x65B9;&#x6CD5;</font></strong></center><p></p>
 <h1 id="&#x539F;&#x7406;&#x89E3;&#x8BFB;"><a href="#&#x539F;&#x7406;&#x89E3;&#x8BFB;" class="headerlink" title="&#x539F;&#x7406;&#x89E3;&#x8BFB;"></a><font size="5" color="red">&#x539F;&#x7406;&#x89E3;&#x8BFB;</font></h1><p>&#x2003;&#x2003;K-Means :&#x968F;&#x673A;&#x9009;&#x53D6;<strong>N&#x4E2A;</strong>&#x5BF9;&#x8C61;&#x4F5C;&#x4E3A;&#x521D;&#x59CB;&#x7684;&#x805A;&#x7C7B;&#x4E2D;&#x5FC3;&#xFF0C;&#x7136;&#x540E;&#x8BA1;&#x7B97;&#x6BCF;&#x4E2A;&#x5BF9;&#x8C61;&#x4E0E;&#x5404;&#x4E2A;&#x79CD;&#x5B50;&#x805A;&#x7C7B;&#x4E2D;&#x5FC3;&#x4E4B;&#x95F4;&#x7684;&#x8DDD;&#x79BB;&#xFF0C;&#x628A;&#x6BCF;&#x4E2A;&#x5BF9;&#x8C61;&#x5206;&#x914D;&#x7ED9;&#x8DDD;&#x79BB;&#x5B83;&#x6700;&#x8FD1;&#x7684;&#x805A;&#x7C7B;&#x4E2D;&#x5FC3;&#x3002;&#x6BCF;&#x5206;&#x914D;&#x4E00;&#x4E2A;&#x6837;&#x672C;&#xFF0C;&#x805A;&#x7C7B;&#x4E2D;&#x5FC3;&#x4F1A;&#x6839;&#x636E;&#x805A;&#x7C7B;&#x4E2D;&#x73B0;&#x6709;&#x7684;&#x5BF9;&#x8C61;&#x88AB;<strong>&#x91CD;&#x65B0;&#x8BA1;&#x7B97;</strong>&#x3002;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x5C06;&#x4E0D;&#x65AD;&#x91CD;&#x590D;&#x76F4;&#x5230;&#x6EE1;&#x8DB3;&#x67D0;&#x4E2A;&#x7EC8;&#x6B62;&#x6761;&#x4EF6;&#x3002;<br><a id="more"></a></p>
-<h1 id="&#x6838;&#x5FC3;&#x601D;&#x60F3;"><a href="#&#x6838;&#x5FC3;&#x601D;&#x60F3;" class="headerlink" title="&#x6838;&#x5FC3;&#x601D;&#x60F3;"></a><font size="5" color="red">&#x6838;&#x5FC3;&#x601D;&#x60F3;</font></h1><p>&#x2003;&#x2003;<font size="4">1. &#x6C42;&#x51FA;N&#x4E2A;&#x7C7B;&#x522B;&#x7684;&#x805A;&#x7C7B;&#x4E2D;&#x5FC3;a<sub>1</sub>,a<sub>2</sub>, &#x2026; ,a<sub>N</sub></font></p>
-<script type="math/tex; mode=display">a_i=\frac {1}{\lvert C_i \rvert}\underset{x_i \in C_j}{\sum}{x_i}</script><p>&#x2003;&#x2003;<font size="4">2. &#x5BF9;&#x4E8E;&#x6BCF;&#x4E2A;&#x6837;&#x672C;x<sub>j</sub>&#xFF0C;&#x5C06;&#x5176;&#x6807;&#x8BB0;&#x4E3A;&#x8DDD;&#x79BB;&#x7C7B;&#x522B;&#x4E2D;&#x5FC3;a<sub>i</sub>&#x6700;&#x8FD1;&#x7684;&#x4E00;&#x7C7B;</font></p>
-<script type="math/tex; mode=display">x_j \in C_i \ , \ 其中k=\underset{i,a_i \in C_k}{arg \ min}\ d(x_j,a_i)</script><p>&#x2003;&#x2003;<font size="4">3. &#x91CD;&#x590D;&#x6B65;&#x9AA4;1&#xFF0C;2&#x76F4;&#x5230;&#x6EE1;&#x8DB3;&#x67D0;&#x4E2A;&#x7EC8;&#x6B62;&#x6761;&#x4EF6;</font><br><img src="/images/MACHINE/kmeans1.png" alt="KMEANS"></p>
+<h1 id="&#x6838;&#x5FC3;&#x601D;&#x60F3;"><a href="#&#x6838;&#x5FC3;&#x601D;&#x60F3;" class="headerlink" title="&#x6838;&#x5FC3;&#x601D;&#x60F3;"></a><font size="5" color="red">&#x6838;&#x5FC3;&#x601D;&#x60F3;</font></h1><p>&#x2003;&#x2003;<font size="4">1. &#x6C42;&#x51FA;N&#x4E2A;&#x7C7B;&#x522B;&#x7684;&#x805A;&#x7C7B;&#x4E2D;&#x5FC3;a<sub>1</sub>,a<sub>2</sub>, &#x2026; ,a<sub>N</sub></font><br>$$a_i=\frac {1}{\lvert C_i \rvert}\underset{x_i \in C_j}{\sum}{x_i}$$<br>&#x2003;&#x2003;<font size="4">2. &#x5BF9;&#x4E8E;&#x6BCF;&#x4E2A;&#x6837;&#x672C;x<sub>j</sub>&#xFF0C;&#x5C06;&#x5176;&#x6807;&#x8BB0;&#x4E3A;&#x8DDD;&#x79BB;&#x7C7B;&#x522B;&#x4E2D;&#x5FC3;a<sub>i</sub>&#x6700;&#x8FD1;&#x7684;&#x4E00;&#x7C7B;</font><br>$$x_j \in C_i \ , \ &#x5176;&#x4E2D;k=\underset{i,a_i \in C_k}{arg \ min}\ d(x_j,a_i)$$<br>&#x2003;&#x2003;<font size="4">3. &#x91CD;&#x590D;&#x6B65;&#x9AA4;1&#xFF0C;2&#x76F4;&#x5230;&#x6EE1;&#x8DB3;&#x67D0;&#x4E2A;&#x7EC8;&#x6B62;&#x6761;&#x4EF6;</font><br><img src="/images/MACHINE/kmeans1.png" alt="KMEANS"></p>
 <h1 id="&#x7B97;&#x6CD5;&#x6D41;&#x7A0B;"><a href="#&#x7B97;&#x6CD5;&#x6D41;&#x7A0B;" class="headerlink" title="&#x7B97;&#x6CD5;&#x6D41;&#x7A0B;"></a><font size="5" color="red">&#x7B97;&#x6CD5;&#x6D41;&#x7A0B;</font></h1><p><img src="/images/MACHINE/kmeans9.png" alt="KMEANS"></p>
 <p><br><br></p>
 <h1 id="&#x4EE3;&#x7801;&#x5B9E;&#x6218;"><a href="#&#x4EE3;&#x7801;&#x5B9E;&#x6218;" class="headerlink" title="&#x4EE3;&#x7801;&#x5B9E;&#x6218;"></a><font size="5" color="red">&#x4EE3;&#x7801;&#x5B9E;&#x6218;</font></h1><p><font size="4">&#x4EE3;&#x7801;&#x4E2D;&#x6240;&#x7528;&#x6570;&#x636E;&#x96C6;&#x53EF;&#x4EE5;&#x67E5;&#x770B;&#x76F8;&#x5173;&#x6587;&#x6863;&#xFF0C;<a href="https://ustccoder.github.io/2019/04/25/clustering_Dataset/">&#x6570;&#x636E;&#x96C6;(Data Set)</a></font></p>
@@ -701,7 +699,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -712,7 +710,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

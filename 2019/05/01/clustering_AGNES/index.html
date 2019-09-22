@@ -143,7 +143,7 @@
 <meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/agnes4.png">
 <meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/agnes9.png">
 <meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/agnes.png">
-<meta property="og:updated_time" content="2019-05-27T05:00:11.442Z">
+<meta property="og:updated_time" content="2019-08-07T15:51:48.176Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="凝聚的层次聚类(AGNES)">
 <meta name="twitter:description" content="AGNES">
@@ -400,8 +400,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
-                    <span itemprop="name">Machine Learning</span>
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
                   </a>
                 </span>
 
@@ -411,8 +411,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-Learning/聚类方法/" itemprop="url" rel="index">
-                    <span itemprop="name">聚类方法</span>
+                  <a href="/categories/机器学习/无监督学习/" itemprop="url" rel="index">
+                    <span itemprop="name">无监督学习</span>
                   </a>
                 </span>
 
@@ -493,24 +493,22 @@
 <h1 id="&#x6838;&#x5FC3;&#x601D;&#x60F3;"><a href="#&#x6838;&#x5FC3;&#x601D;&#x60F3;" class="headerlink" title="&#x6838;&#x5FC3;&#x601D;&#x60F3;"></a><font size="5" color="red">&#x6838;&#x5FC3;&#x601D;&#x60F3;</font></h1><p>&#x2003;&#x2003;<font size="4">1. &#x5C06;&#x6BCF;&#x4E00;&#x4E2A;&#x6837;&#x672C;&#x90FD;&#x5355;&#x72EC;&#x4F5C;&#x4E3A;&#x4E00;&#x7C7B;</font></p>
 <p>&#x2003;&#x2003;<font size="4">2. &#x5408;&#x5E76;&#x4E24;&#x7C7B;(&#x591A;&#x79CD;&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;)&#xFF0C;&#x76F4;&#x5230;&#x6EE1;&#x8DB3;&#x67D0;&#x4E2A;&#x7EC8;&#x6B62;&#x6761;&#x4EF6;</font></p>
 <ul>
-<li><p>&#x6700;&#x5C0F;&#x8DDD;&#x79BB;&#xFF1A;&#x5C06;&#x4E24;&#x4E2A;&#x7C7B;&#x522B;&#x4E4B;&#x95F4;&#x6700;&#x8FD1;&#x7684;&#x4E24;&#x4E2A;&#x6837;&#x672C;&#x4E4B;&#x95F4;&#x7684;&#x8DDD;&#x79BB;&#x4F5C;&#x4E3A;&#x4E24;&#x4E2A;&#x7C7B;&#x522B;&#x4E4B;&#x95F4;&#x7684;&#x8DDD;&#x79BB;</p>
-<script type="math/tex; mode=display">d_{min}=\underset{x_i \in C_i,x_j \in C_j}{min}d(x_i,x_j)</script></li>
-<li><p>&#x6700;&#x5927;&#x8DDD;&#x79BB;&#xFF1A;&#x5C06;&#x4E24;&#x4E2A;&#x7C7B;&#x522B;&#x4E4B;&#x95F4;&#x6700;&#x8FDC;&#x7684;&#x4E24;&#x4E2A;&#x6837;&#x672C;&#x4E4B;&#x95F4;&#x7684;&#x8DDD;&#x79BB;&#x4F5C;&#x4E3A;&#x4E24;&#x4E2A;&#x7C7B;&#x522B;&#x4E4B;&#x95F4;&#x7684;&#x8DDD;&#x79BB;</p>
-<script type="math/tex; mode=display">d_{max}=\underset{x_i \in C_i,x_j \in C_j}{max}d(x_i-x_j)</script></li>
+<li><p>&#x6700;&#x5C0F;&#x8DDD;&#x79BB;&#xFF1A;&#x5C06;&#x4E24;&#x4E2A;&#x7C7B;&#x522B;&#x4E4B;&#x95F4;&#x6700;&#x8FD1;&#x7684;&#x4E24;&#x4E2A;&#x6837;&#x672C;&#x4E4B;&#x95F4;&#x7684;&#x8DDD;&#x79BB;&#x4F5C;&#x4E3A;&#x4E24;&#x4E2A;&#x7C7B;&#x522B;&#x4E4B;&#x95F4;&#x7684;&#x8DDD;&#x79BB;<br>$$d_{min}=\underset{x_i \in C_i,x_j \in C_j}{min}d(x_i,x_j)$$</p>
+</li>
+<li><p>&#x6700;&#x5927;&#x8DDD;&#x79BB;&#xFF1A;&#x5C06;&#x4E24;&#x4E2A;&#x7C7B;&#x522B;&#x4E4B;&#x95F4;&#x6700;&#x8FDC;&#x7684;&#x4E24;&#x4E2A;&#x6837;&#x672C;&#x4E4B;&#x95F4;&#x7684;&#x8DDD;&#x79BB;&#x4F5C;&#x4E3A;&#x4E24;&#x4E2A;&#x7C7B;&#x522B;&#x4E4B;&#x95F4;&#x7684;&#x8DDD;&#x79BB;<br>$$d_{max}=\underset{x_i \in C_i,x_j \in C_j}{max}d(x_i-x_j)$$</p>
+</li>
 </ul>
 <p></p><center><div style="float:left;margin-left:50px"><img src="/images/MACHINE/agnes1.png" width="200" height="260"></div></center><p></p>
-<div style="float:right;margin-right:50px"><img src="/images/MACHINE/agnes2.png" width="200" height="260"></div>
-<div style="float:none;clear:both;"></div>
+<div style="float:right;margin-right:50px"><img src="/images/MACHINE/agnes2.png" width="200" height="260"></div><br><div style="float:none;clear:both;"></div>
 
 <ul>
-<li><p>&#x5747;&#x503C;&#x8DDD;&#x79BB;&#xFF1A;&#x5C06;&#x4E24;&#x4E2A;&#x7C7B;&#x522B;&#x4E2D;&#x6837;&#x672C;&#x7684;&#x5E73;&#x5747;&#x503C;&#x4E4B;&#x95F4;&#x7684;&#x8DDD;&#x79BB;&#x4F5C;&#x4E3A;&#x4E24;&#x4E2A;&#x7C7B;&#x522B;&#x4E4B;&#x95F4;&#x7684;&#x8DDD;&#x79BB;</p>
-<script type="math/tex; mode=display">d_{mean}=d(\overline {C_i}- \overline {C_j}) \ , \ 其中\overline {C_i}=\frac {1}{\lvert C_i \rvert}\underset{x_i \in C_i}{\sum}{x_i}</script></li>
-<li><p>&#x5E73;&#x5747;&#x8DDD;&#x79BB;&#xFF1A;&#x5C06;&#x4E24;&#x4E2A;&#x7C7B;&#x522B;&#x4E2D;&#x6837;&#x672C;&#x95F4;&#x4E24;&#x4E24;&#x8DDD;&#x79BB;&#x7684;&#x5E73;&#x5747;&#x503C;&#x4F5C;&#x4E3A;&#x4E24;&#x4E2A;&#x7C7B;&#x522B;&#x4E4B;&#x95F4;&#x7684;&#x8DDD;&#x79BB;</p>
-<script type="math/tex; mode=display">d_{avg}=\frac {1}{\lvert C_i \rvert \lvert C_j \rvert}\underset{x_i \in C_i}{\sum}\underset{x_j \in C_j}{\sum}d(x_i-x_j)</script></li>
+<li><p>&#x5747;&#x503C;&#x8DDD;&#x79BB;&#xFF1A;&#x5C06;&#x4E24;&#x4E2A;&#x7C7B;&#x522B;&#x4E2D;&#x6837;&#x672C;&#x7684;&#x5E73;&#x5747;&#x503C;&#x4E4B;&#x95F4;&#x7684;&#x8DDD;&#x79BB;&#x4F5C;&#x4E3A;&#x4E24;&#x4E2A;&#x7C7B;&#x522B;&#x4E4B;&#x95F4;&#x7684;&#x8DDD;&#x79BB;<br>$$d_{mean}=d(\overline {C_i}- \overline {C_j}) \ , \ &#x5176;&#x4E2D;\overline {C_i}=\frac {1}{\lvert C_i \rvert}\underset{x_i \in C_i}{\sum}{x_i}$$</p>
+</li>
+<li><p>&#x5E73;&#x5747;&#x8DDD;&#x79BB;&#xFF1A;&#x5C06;&#x4E24;&#x4E2A;&#x7C7B;&#x522B;&#x4E2D;&#x6837;&#x672C;&#x95F4;&#x4E24;&#x4E24;&#x8DDD;&#x79BB;&#x7684;&#x5E73;&#x5747;&#x503C;&#x4F5C;&#x4E3A;&#x4E24;&#x4E2A;&#x7C7B;&#x522B;&#x4E4B;&#x95F4;&#x7684;&#x8DDD;&#x79BB;<br>$$d_{avg}=\frac {1}{\lvert C_i \rvert \lvert C_j \rvert}\underset{x_i \in C_i}{\sum}\underset{x_j \in C_j}{\sum}d(x_i-x_j)$$</p>
+</li>
 </ul>
 <p></p><center><div style="float:left;margin-left:50px"><img src="/images/MACHINE/agnes3.png" width="200" height="260"></div></center><p></p>
-<div style="float:right;margin-right:50px"><img src="/images/MACHINE/agnes4.png" width="200" height="260"></div>
-<div style="float:none;clear:both;"></div>
+<div style="float:right;margin-right:50px"><img src="/images/MACHINE/agnes4.png" width="200" height="260"></div><br><div style="float:none;clear:both;"></div>
 
 <h1 id="&#x7B97;&#x6CD5;&#x6D41;&#x7A0B;"><a href="#&#x7B97;&#x6CD5;&#x6D41;&#x7A0B;" class="headerlink" title="&#x7B97;&#x6CD5;&#x6D41;&#x7A0B;"></a><font size="5" color="red">&#x7B97;&#x6CD5;&#x6D41;&#x7A0B;</font></h1><p><img src="/images/MACHINE/agnes9.png" alt="AGNES"></p>
 <p><br><br></p>
@@ -726,7 +724,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -737,7 +735,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
