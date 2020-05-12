@@ -132,16 +132,16 @@
 
 <meta name="description" content="Normalization">
 <meta property="og:type" content="article">
-<meta property="og:title" content="各种标准化对比">
+<meta property="og:title" content="Normalization黑科技">
 <meta property="og:url" content="https://USTCcoder.github.io/2020/05/07/deep learning BN_VS_LN_VS_IN_VS_GN/index.html">
 <meta property="og:site_name" content="GitHub">
 <meta property="og:description" content="Normalization">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ustccoder.github.io/images/deep_learning/normal.png">
 <meta property="og:image" content="https://ustccoder.github.io/images/deep_learning/normalization.png">
-<meta property="og:updated_time" content="2020-05-09T13:17:29.291Z">
+<meta property="og:updated_time" content="2020-05-11T14:47:28.572Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="各种标准化对比">
+<meta name="twitter:title" content="Normalization黑科技">
 <meta name="twitter:description" content="Normalization">
 <meta name="twitter:image" content="https://ustccoder.github.io/images/deep_learning/normal.png">
 
@@ -179,7 +179,7 @@
 
 
 
-  <title>各种标准化对比 | GitHub</title>
+  <title>Normalization黑科技 | GitHub</title>
   
 
 
@@ -361,7 +361,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">各种标准化对比</h1>
+          <h1 class="post-title" itemprop="name headline">Normalization黑科技</h1>
         
 
         <div class="post-meta">
@@ -494,8 +494,8 @@
 </ol>
 <h1 id="Normalization&#x539F;&#x7406;&#x5206;&#x6790;"><a href="#Normalization&#x539F;&#x7406;&#x5206;&#x6790;" class="headerlink" title="Normalization&#x539F;&#x7406;&#x5206;&#x6790;"></a><font size="5" color="red">Normalization&#x539F;&#x7406;&#x5206;&#x6790;</font></h1><p>&#x2003;&#x2003;&#x4E3A;&#x4E86;&#x89E3;&#x51B3;&#x4E0A;&#x8FF0;ICS&#x95EE;&#x9898;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5C06;&#x53D8;&#x91CF;&#x5206;&#x5E03;&#x53D8;&#x6210;&#x76F8;&#x540C;&#x5206;&#x5E03;&#x7684;&#xFF0C;&#x8FD9;&#x4F7F;&#x6211;&#x4EEC;&#x60F3;&#x5230;&#x4E86;<strong>&#x6807;&#x51C6;&#x5316;&#x64CD;&#x4F5C;</strong>&#x3002;<br><img src="/images/deep_learning/normal.png" alt="normal"></p>
 <ol>
-<li>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;$ \overset{\land}{x} = \frac{x - \mu}{\sigma} $&#xFF0C;$ \mu $&#x662F;&#x5E73;&#x79FB;&#x53C2;&#x6570;&#xFF0C;$ \sigma $&#x662F;&#x7F29;&#x653E;&#x53C2;&#x6570;<strong>&#x5C06;&#x6570;&#x636E;&#x53D8;&#x6210;&#x7B26;&#x5408;&#x5747;&#x503C;&#x4E3A;0&#xFF0C;&#x65B9;&#x5DEE;&#x4E3A;1&#x7684;&#x6807;&#x51C6;&#x5206;&#x5E03;</strong>&#x3002;</li>
-<li>&#x6211;&#x4EEC;&#x518D;&#x901A;&#x8FC7;$ y = \gamma * \overset{\land}{x} + \beta $, $ \beta $&#x662F;&#x518D;&#x5E73;&#x79FB;&#x53C2;&#x6570;&#xFF0C;$ \gamma $&#x662F;&#x518D;&#x7F29;&#x653E;&#x53C2;&#x6570;<strong>&#x5C06;&#x6570;&#x636E;&#x53D8;&#x6210;&#x7B26;&#x5408;&#x5747;&#x503C;&#x4E3A;$ \beta $&#xFF0C;&#x65B9;&#x5DEE;&#x4E3A;$ {\gamma}^2 $&#x7684;&#x6807;&#x51C6;&#x5206;&#x5E03;</strong>&#x3002;</li>
+<li>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;$ \hat{x} = \frac{x - \mu}{\sigma} $&#xFF0C;$ \mu $&#x662F;&#x5E73;&#x79FB;&#x53C2;&#x6570;&#xFF0C;$ \sigma $&#x662F;&#x7F29;&#x653E;&#x53C2;&#x6570;<strong>&#x5C06;&#x6570;&#x636E;&#x53D8;&#x6210;&#x7B26;&#x5408;&#x5747;&#x503C;&#x4E3A;0&#xFF0C;&#x65B9;&#x5DEE;&#x4E3A;1&#x7684;&#x6807;&#x51C6;&#x5206;&#x5E03;</strong>&#x3002;</li>
+<li>&#x6211;&#x4EEC;&#x518D;&#x901A;&#x8FC7;$ y = \gamma * \hat{x} + \beta $, $ \beta $&#x662F;&#x518D;&#x5E73;&#x79FB;&#x53C2;&#x6570;&#xFF0C;$ \gamma $&#x662F;&#x518D;&#x7F29;&#x653E;&#x53C2;&#x6570;<strong>&#x5C06;&#x6570;&#x636E;&#x53D8;&#x6210;&#x7B26;&#x5408;&#x5747;&#x503C;&#x4E3A;$ \beta $&#xFF0C;&#x65B9;&#x5DEE;&#x4E3A;$ {\gamma}^2 $&#x7684;&#x6807;&#x51C6;&#x5206;&#x5E03;</strong>&#x3002;</li>
 </ol>
 <p><font size="3" color="red">&#x2003;&#x2003;&#x5947;&#x602A;&#x7684;&#x77E5;&#x8BC6;&#x589E;&#x52A0;&#x4E86;&#xFF1F;&#xFF1F;&#xFF1F;&#x4E3A;&#x4EC0;&#x4E48;&#x7B2C;&#x4E00;&#x6B65;&#x5F97;&#x5230;&#x6807;&#x51C6;&#x5206;&#x5E03;&#x4E4B;&#x540E;&#xFF0C;&#x7B2C;&#x4E8C;&#x6B65;&#x53C8;&#x7ED9;&#x53D8;&#x8D70;&#x4E86;&#xFF1F;</font><br>&#x2003;&#x2003;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF0C;&#x9996;&#x5148;&#x4E3A;&#x4E86;<strong>&#x4FDD;&#x8BC1;&#x6A21;&#x578B;&#x7684;&#x8868;&#x8FBE;&#x80FD;&#x529B;&#x4E0D;&#x56E0;&#x4E3A;&#x89C4;&#x8303;&#x5316;&#x800C;&#x4E0B;&#x964D;</strong>&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x518D;&#x5E73;&#x79FB;&#x548C;&#x7F29;&#x653E;&#xFF0C;&#x4F1A;&#x5BFC;&#x81F4;&#x8F93;&#x5165;&#x7684;&#x53C2;&#x6570;&#x5206;&#x5E03;&#x53EF;&#x80FD;&#x53D1;&#x751F;&#x8F83;&#x5927;&#x7684;&#x53D8;&#x5316;&#xFF0C;&#x8FD9;&#x6837;&#x53EF;&#x80FD;&#x4F1A;&#x5BF9;&#x6A21;&#x578B;&#x7684;&#x8868;&#x8FBE;&#x80FD;&#x529B;&#x4EA7;&#x751F;&#x5F71;&#x54CD;&#x3002;&#x5176;&#x6B21;&#x8FD9;&#x4E24;&#x7EC4;&#x53C2;&#x6570;&#x662F;&#x610F;&#x4E49;&#x4E0A;&#x5B8C;&#x5168;&#x4E0D;&#x540C;&#x7684;&#x6982;&#x5FF5;&#xFF0C;<strong>$ \mu $&#x548C;$ \sigma $&#x53D7;&#x5230;&#x4E0A;&#x4E00;&#x5C42;&#x8F93;&#x5165;&#x7684;&#x5F71;&#x54CD;&#xFF0C;$ \beta $&#x548C;$ \gamma $&#x662F;&#x72EC;&#x7ACB;&#x7684;&#xFF0C;&#x4E0E;&#x8F93;&#x5165;&#x65E0;&#x5173;</strong>&#xFF0C;&#x662F;&#x7F51;&#x7EDC;&#x540E;&#x6765;&#x52A0;&#x5165;&#x7684;&#xFF0C;<strong>&#x4F1A;&#x5728;&#x63A5;&#x4E0B;&#x6765;&#x8BAD;&#x7EC3;&#x8FC7;&#x7A0B;&#x4E2D;&#x4E0D;&#x65AD;&#x5B66;&#x4E60;&#x7684;&#xFF0C;&#x4E5F;&#x662F;&#x4E3A;&#x4E86;&#x5C0A;&#x91CD;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x7684;&#x5B66;&#x4E60;&#x7ED3;&#x679C;</strong>&#x3002;&#x56E0;&#x6B64;&#x8FD9;&#x4E24;&#x6B65;&#x662F;&#x6709;&#x5FC5;&#x8981;&#x7684;&#x3002;</p>
 <h1 id="Normalization&#x4F18;&#x70B9;"><a href="#Normalization&#x4F18;&#x70B9;" class="headerlink" title="Normalization&#x4F18;&#x70B9;"></a><font size="5" color="red">Normalization&#x4F18;&#x70B9;</font></h1><ol>
@@ -576,8 +576,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/05/06/deep learning upsampling/" rel="next" title="各种上采样操作对比">
-                <i class="fa fa-chevron-left"></i> 各种上采样操作对比
+              <a href="/2020/05/06/deep learning upsampling/" rel="next" title="Upsampling黑科技">
+                <i class="fa fa-chevron-left"></i> Upsampling黑科技
               </a>
             
           </div>
@@ -699,7 +699,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">88</span>
+                  <span class="site-state-item-count">91</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -748,7 +748,7 @@
           
 
   <div id="music163player"> 
-    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="298" height="52" src="//music.163.com/outchain/player?type=2&id=167885&auto=0&height=32"></iframe>
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="298" height="52" src="//music.163.com/outchain/player?type=0&id=2723087145&auto=0&height=32"></iframe>
   </div>
 
 
