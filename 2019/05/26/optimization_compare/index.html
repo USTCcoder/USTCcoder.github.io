@@ -484,7 +484,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.7k
+                  1.6k
                 </span>
               
 
@@ -513,193 +513,209 @@
       
 
       
-        <p><strong><font size="5" color="gray"></font></strong></p><center><strong><font size="5" color="gray">&#x5168;&#x5C40;&#x641C;&#x7D22;&#x7B97;&#x6CD5;&#x6BD4;&#x8F83;</font></strong></center><p></p>
-<h1 id="&#x5168;&#x5C40;&#x641C;&#x7D22;"><a href="#&#x5168;&#x5C40;&#x641C;&#x7D22;" class="headerlink" title="&#x5168;&#x5C40;&#x641C;&#x7D22;"></a><font size="5" color="red">&#x5168;&#x5C40;&#x641C;&#x7D22;</font></h1><p>&#x2003;&#x2003;&#x68AF;&#x5EA6;&#x65B9;&#x6CD5;&#xFF0C;&#x725B;&#x987F;&#x6CD5;&#xFF0C;&#x5171;&#x8F6D;&#x68AF;&#x5EA6;&#x6CD5;&#xFF0C;&#x62DF;&#x725B;&#x987F;&#x6CD5;&#x7B49;&#xFF0C;&#x80FD;&#x591F;&#x4ECE;&#x521D;&#x59CB;&#x70B9;&#x51FA;&#x53D1;&#xFF0C;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x8FED;&#x4EE3;&#x5E8F;&#x5217;&#x3002;&#x4F46;&#x662F;&#x5F88;&#x591A;&#x65F6;&#x5019;&#xFF0C;&#x5F80;&#x5F80;&#x53EA;&#x80FD;&#x6536;&#x655B;&#x5230;<strong>&#x5C40;&#x90E8;&#x6781;&#x5C0F;&#x70B9;</strong>&#x3002;&#x56E0;&#x6B64;&#x4E3A;&#x4E86;&#x4FDD;&#x8BC1;&#x7B97;&#x6CD5;&#x80FD;&#x591F;&#x6536;&#x655B;&#x5230;<strong>&#x5168;&#x5C40;&#x6700;&#x5C0F;&#x70B9;</strong>&#xFF0C;&#x9700;&#x8981;&#x501F;&#x52A9;&#x4E8E;<strong>&#x5168;&#x5C40;&#x641C;&#x7D22;&#x7B97;&#x6CD5;</strong>&#x6765;&#x5B9E;&#x73B0;&#x3002;<br><a id="more"></a></p>
-<h1 id="&#x7B97;&#x6CD5;&#x5206;&#x7C7B;"><a href="#&#x7B97;&#x6CD5;&#x5206;&#x7C7B;" class="headerlink" title="&#x7B97;&#x6CD5;&#x5206;&#x7C7B;"></a><font size="5" color="red">&#x7B97;&#x6CD5;&#x5206;&#x7C7B;</font></h1><p><img src="/images/OPTIMIZATION/compare.png" alt="COMPARE"></p>
-<h1 id="&#x6027;&#x80FD;&#x6BD4;&#x8F83;"><a href="#&#x6027;&#x80FD;&#x6BD4;&#x8F83;" class="headerlink" title="&#x6027;&#x80FD;&#x6BD4;&#x8F83;"></a><font size="5" color="red">&#x6027;&#x80FD;&#x6BD4;&#x8F83;</font></h1><p><font size="4">&#x6240;&#x7528;&#x6D4B;&#x8BD5;&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x67E5;&#x770B;&#x76F8;&#x5173;&#x6587;&#x6863;&#xFF0C;<a href="https://ustccoder.github.io/2019/05/19/optimization_Testfunction/">&#x6D4B;&#x8BD5;&#x51FD;&#x6570;(Test Function)</a></font></p>
-<h2 id="&#x6A21;&#x62DF;&#x9000;&#x706B;&#x7B97;&#x6CD5;-SA"><a href="#&#x6A21;&#x62DF;&#x9000;&#x706B;&#x7B97;&#x6CD5;-SA" class="headerlink" title="&#x6A21;&#x62DF;&#x9000;&#x706B;&#x7B97;&#x6CD5;(SA)"></a><a href="https://ustccoder.github.io/2019/05/20/optimization_SA/">&#x6A21;&#x62DF;&#x9000;&#x706B;&#x7B97;&#x6CD5;(SA)</a></h2><ul>
-<li><font size="4"><strong>&#x4F18;&#x70B9;&#xFF1A;</strong><ul>
-<li>&#x8BA1;&#x7B97;&#x8FC7;&#x7A0B;&#x7B80;&#x5355;</li>
-<li>&#x53EF;&#x7528;&#x4E8E;&#x6C42;&#x89E3;&#x590D;&#x6742;&#x7684;&#x975E;&#x7EBF;&#x6027;&#x4F18;&#x5316;&#x95EE;&#x9898;</li>
-<li>&#x76F8;&#x6BD4;&#x68AF;&#x5EA6;&#x4E0B;&#x964D;&#xFF0C;&#x589E;&#x52A0;&#x4E86;&#x9003;&#x79BB;&#x5C40;&#x90E8;&#x6700;&#x5C0F;&#x7684;&#x53EF;&#x80FD;</li>
+        <p><strong><font size="5" color="gray"></font></strong></p><center><strong><font size="5" color="gray">全局搜索算法比较</font></strong></center><p></p>
+<h1 id="全局搜索"><a href="#全局搜索" class="headerlink" title="全局搜索"></a><font size="5" color="red">全局搜索</font></h1><p>  梯度方法，牛顿法，共轭梯度法，拟牛顿法等，能够从初始点出发，产生一个迭代序列。但是很多时候，往往只能收敛到<strong>局部极小点</strong>。因此为了保证算法能够收敛到<strong>全局最小点</strong>，需要借助于<strong>全局搜索算法</strong>来实现。<br><a id="more"></a></p>
+<h1 id="算法分类"><a href="#算法分类" class="headerlink" title="算法分类"></a><font size="5" color="red">算法分类</font></h1><p><img src="/images/OPTIMIZATION/compare.png" alt="COMPARE"></p>
+<h1 id="性能比较"><a href="#性能比较" class="headerlink" title="性能比较"></a><font size="5" color="red">性能比较</font></h1><p><font size="4">所用测试函数可以查看相关文档，<a href="https://ustccoder.github.io/2019/05/19/optimization_Testfunction/">测试函数(Test Function)</a></font></p>
+<h2 id="模拟退火算法-SA"><a href="#模拟退火算法-SA" class="headerlink" title="模拟退火算法(SA)"></a><a href="https://ustccoder.github.io/2019/05/20/optimization_SA/">模拟退火算法(SA)</a></h2><ul>
+<li><font size="4"><strong>优点：</strong><ul>
+<li>计算过程简单</li>
+<li>可用于求解复杂的非线性优化问题</li>
+<li>相比梯度下降，增加了逃离局部最小的可能</li>
 </ul>
 </font></li>
-<li><font size="4"><strong>&#x7F3A;&#x70B9;&#xFF1A;</strong><ul>
-<li>&#x53C2;&#x6570;&#x654F;&#x611F;</li>
-<li>&#x6536;&#x655B;&#x901F;&#x5EA6;&#x6162;</li>
-<li>&#x6267;&#x884C;&#x65F6;&#x95F4;&#x957F;</li>
-<li>&#x7B97;&#x6CD5;&#x6027;&#x80FD;&#x4E0E;&#x521D;&#x59CB;&#x503C;&#x6709;&#x5173;</li>
-<li>&#x53EF;&#x80FD;&#x843D;&#x5165;&#x5176;&#x4ED6;&#x7684;&#x5C40;&#x90E8;&#x6700;&#x5C0F;&#x503C;</li>
+<li><font size="4"><strong>缺点：</strong><ul>
+<li>参数敏感</li>
+<li>收敛速度慢</li>
+<li>执行时间长</li>
+<li>算法性能与初始值有关</li>
+<li>可能落入其他的局部最小值</li>
 </ul>
 </font></li>
 </ul>
 <p></p><center><div style="float:left;margin-left:50px"><img src="/images/OPTIMIZATION/sa1.png" width="200" height="260"></div></center><p></p>
-<div style="float:right;margin-right:50px"><img src="/images/OPTIMIZATION/compare_sa_2.png" width="200" height="260"></div><br><div style="float:none;clear:both;"></div>
+<div style="float:right;margin-right:50px"><img src="/images/OPTIMIZATION/compare_sa_2.png" width="200" height="260"></div>
+<div style="float:none;clear:both;"></div>
 
 <p></p><center><div style="float:left;margin-left:50px"><img src="/images/OPTIMIZATION/compare_sa_3.png" width="200" height="260"></div></center><p></p>
-<div style="float:right;margin-right:50px"><img src="/images/OPTIMIZATION/compare_sa_4.png" width="200" height="260"></div><br><div style="float:none;clear:both;"></div>
+<div style="float:right;margin-right:50px"><img src="/images/OPTIMIZATION/compare_sa_4.png" width="200" height="260"></div>
+<div style="float:none;clear:both;"></div>
 
-<h2 id="&#x9057;&#x4F20;&#x7B97;&#x6CD5;-GA"><a href="#&#x9057;&#x4F20;&#x7B97;&#x6CD5;-GA" class="headerlink" title="&#x9057;&#x4F20;&#x7B97;&#x6CD5;(GA)"></a><a href="https://ustccoder.github.io/2019/05/21/optimization_GA/">&#x9057;&#x4F20;&#x7B97;&#x6CD5;(GA)</a></h2><ul>
-<li><font size="4"><strong>&#x4F18;&#x70B9;&#xFF1A;</strong><ul>
-<li>&#x4ECE;&#x7FA4;&#x4F53;&#x51FA;&#x53D1;&#xFF0C;&#x5177;&#x6709;&#x5E76;&#x884C;&#x6027;</li>
-<li>&#x53EF;&#x7528;&#x4E8E;&#x6C42;&#x89E3;&#x590D;&#x6742;&#x7684;&#x975E;&#x7EBF;&#x6027;&#x4F18;&#x5316;&#x95EE;&#x9898;</li>
-<li>&#x4F7F;&#x7528;&#x6982;&#x7387;&#x673A;&#x5236;&#x8FDB;&#x884C;&#x8FED;&#x4EE3;&#xFF0C;&#x5177;&#x6709;&#x968F;&#x673A;&#x6027;</li>
-<li>&#x5177;&#x6709;&#x53EF;&#x6269;&#x5C55;&#x6027;&#xFF0C;&#x5BB9;&#x6613;&#x4E0E;&#x5176;&#x4ED6;&#x7B97;&#x6CD5;&#x7ED3;&#x5408;</li>
+<h2 id="遗传算法-GA"><a href="#遗传算法-GA" class="headerlink" title="遗传算法(GA)"></a><a href="https://ustccoder.github.io/2019/05/21/optimization_GA/">遗传算法(GA)</a></h2><ul>
+<li><font size="4"><strong>优点：</strong><ul>
+<li>从群体出发，具有并行性</li>
+<li>可用于求解复杂的非线性优化问题</li>
+<li>使用概率机制进行迭代，具有随机性</li>
+<li>具有可扩展性，容易与其他算法结合</li>
 </ul>
 </font></li>
-<li><font size="4"><strong>&#x7F3A;&#x70B9;&#xFF1A;</strong><ul>
-<li>&#x53D7;&#x5230;&#x53C2;&#x6570;&#x5F71;&#x54CD;&#x8F83;&#x5927;</li>
-<li>&#x53EF;&#x80FD;&#x4EA7;&#x751F;&#x65E9;&#x719F;&#x6536;&#x655B;&#x95EE;&#x9898;</li>
-<li>&#x5BF9;&#x95EE;&#x9898;&#x7F16;&#x7801;&#x8868;&#x793A;&#x8F83;&#x4E3A;&#x56F0;&#x96BE;</li>
-<li>&#x7B97;&#x6CD5;&#x5BF9;&#x521D;&#x59CB;&#x79CD;&#x7FA4;&#x7684;&#x9009;&#x62E9;&#x6709;&#x4E00;&#x5B9A;&#x7684;&#x4F9D;&#x8D56;&#x6027;</li>
-<li>&#x641C;&#x7D22;&#x901F;&#x5EA6;&#x6BD4;&#x8F83;&#x6162;&#xFF0C;&#x8981;&#x5F97;&#x5230;&#x8F83;&#x7CBE;&#x786E;&#x7684;&#x89E3;&#x9700;&#x8981;&#x8F83;&#x591A;&#x7684;&#x8BAD;&#x7EC3;&#x65F6;&#x95F4;</li>
+<li><font size="4"><strong>缺点：</strong><ul>
+<li>受到参数影响较大</li>
+<li>可能产生早熟收敛问题</li>
+<li>对问题编码表示较为困难</li>
+<li>算法对初始种群的选择有一定的依赖性</li>
+<li>搜索速度比较慢，要得到较精确的解需要较多的训练时间</li>
 </ul>
 </font></li>
 </ul>
 <p></p><center><div style="float:left;margin-left:50px"><img src="/images/OPTIMIZATION/ga1.png" width="200" height="260"></div></center><p></p>
-<div style="float:right;margin-right:50px"><img src="/images/OPTIMIZATION/compare_ga_2.png" width="200" height="260"></div><br><div style="float:none;clear:both;"></div>
+<div style="float:right;margin-right:50px"><img src="/images/OPTIMIZATION/compare_ga_2.png" width="200" height="260"></div>
+<div style="float:none;clear:both;"></div>
 
 <p></p><center><div style="float:left;margin-left:50px"><img src="/images/OPTIMIZATION/compare_ga_3.png" width="200" height="260"></div></center><p></p>
-<div style="float:right;margin-right:50px"><img src="/images/OPTIMIZATION/compare_ga_4.png" width="200" height="260"></div><br><div style="float:none;clear:both;"></div>
+<div style="float:right;margin-right:50px"><img src="/images/OPTIMIZATION/compare_ga_4.png" width="200" height="260"></div>
+<div style="float:none;clear:both;"></div>
 
-<h2 id="&#x514D;&#x75AB;&#x7B97;&#x6CD5;-IA"><a href="#&#x514D;&#x75AB;&#x7B97;&#x6CD5;-IA" class="headerlink" title="&#x514D;&#x75AB;&#x7B97;&#x6CD5;(IA)"></a><a href="https://ustccoder.github.io/2019/05/22/optimization_IA/">&#x514D;&#x75AB;&#x7B97;&#x6CD5;(IA)</a></h2><ul>
-<li><font size="4"><strong>&#x4F18;&#x70B9;&#xFF1A;</strong><ul>
-<li>&#x53D7;&#x5230;&#x53C2;&#x6570;&#x5F71;&#x54CD;&#x8F83;&#x5C0F;</li>
-<li>&#x89E3;&#x51B3;&#x65E9;&#x719F;&#x6536;&#x655B;&#x95EE;&#x9898;</li>
-<li>&#x4ECE;&#x7FA4;&#x4F53;&#x51FA;&#x53D1;&#xFF0C;&#x5177;&#x6709;&#x5E76;&#x884C;&#x6027;</li>
-<li>&#x5BF9;&#x6297;&#x4F53;&#x9009;&#x62E9;&#x7684;&#x4F9D;&#x8D56;&#x6027;&#x964D;&#x4F4E;</li>
-<li>&#x53EF;&#x7528;&#x4E8E;&#x6C42;&#x89E3;&#x590D;&#x6742;&#x7684;&#x975E;&#x7EBF;&#x6027;&#x4F18;&#x5316;&#x95EE;&#x9898;</li>
-<li>&#x4F7F;&#x7528;&#x6982;&#x7387;&#x673A;&#x5236;&#x8FDB;&#x884C;&#x8FED;&#x4EE3;&#xFF0C;&#x5177;&#x6709;&#x968F;&#x673A;&#x6027;</li>
+<h2 id="免疫算法-IA"><a href="#免疫算法-IA" class="headerlink" title="免疫算法(IA)"></a><a href="https://ustccoder.github.io/2019/05/22/optimization_IA/">免疫算法(IA)</a></h2><ul>
+<li><font size="4"><strong>优点：</strong><ul>
+<li>受到参数影响较小</li>
+<li>解决早熟收敛问题</li>
+<li>从群体出发，具有并行性</li>
+<li>对抗体选择的依赖性降低</li>
+<li>可用于求解复杂的非线性优化问题</li>
+<li>使用概率机制进行迭代，具有随机性</li>
 </ul>
 </font></li>
-<li><font size="4"><strong>&#x7F3A;&#x70B9;&#xFF1A;</strong><ul>
-<li>&#x5BF9;&#x95EE;&#x9898;&#x7F16;&#x7801;&#x8868;&#x793A;&#x8F83;&#x4E3A;&#x56F0;&#x96BE;</li>
-<li>&#x8981;&#x8FDB;&#x884C;&#x591A;&#x6B21;&#x514D;&#x75AB;&#x5E94;&#x7B54;&#xFF0C;&#x56E0;&#x6B64;&#x901F;&#x5EA6;&#x6162;&#x4E8E;&#x9057;&#x4F20;&#x7B97;&#x6CD5;</li>
+<li><font size="4"><strong>缺点：</strong><ul>
+<li>对问题编码表示较为困难</li>
+<li>要进行多次免疫应答，因此速度慢于遗传算法</li>
 </ul>
 </font></li>
 </ul>
 <p></p><center><div style="float:left;margin-left:50px"><img src="/images/OPTIMIZATION/ia1.png" width="200" height="260"></div></center><p></p>
-<div style="float:right;margin-right:50px"><img src="/images/OPTIMIZATION/compare_ia_2.png" width="200" height="260"></div><br><div style="float:none;clear:both;"></div>
+<div style="float:right;margin-right:50px"><img src="/images/OPTIMIZATION/compare_ia_2.png" width="200" height="260"></div>
+<div style="float:none;clear:both;"></div>
 
 <p></p><center><div style="float:left;margin-left:50px"><img src="/images/OPTIMIZATION/compare_ia_3.png" width="200" height="260"></div></center><p></p>
-<div style="float:right;margin-right:50px"><img src="/images/OPTIMIZATION/compare_ia_4.png" width="200" height="260"></div><br><div style="float:none;clear:both;"></div>
+<div style="float:right;margin-right:50px"><img src="/images/OPTIMIZATION/compare_ia_4.png" width="200" height="260"></div>
+<div style="float:none;clear:both;"></div>
 
-<h2 id="&#x8681;&#x7FA4;&#x7B97;&#x6CD5;-ACO"><a href="#&#x8681;&#x7FA4;&#x7B97;&#x6CD5;-ACO" class="headerlink" title="&#x8681;&#x7FA4;&#x7B97;&#x6CD5;(ACO)"></a><a href="https://ustccoder.github.io/2019/05/23/optimization_ACO/">&#x8681;&#x7FA4;&#x7B97;&#x6CD5;(ACO)</a></h2><ul>
-<li><font size="4"><strong>&#x4F18;&#x70B9;&#xFF1A;</strong><ul>
-<li>&#x641C;&#x7D22;&#x901F;&#x5EA6;&#x8F83;&#x5FEB;</li>
-<li>&#x53D7;&#x5230;&#x53C2;&#x6570;&#x5F71;&#x54CD;&#x8F83;&#x5C0F;</li>
-<li>&#x4ECE;&#x7FA4;&#x4F53;&#x51FA;&#x53D1;&#xFF0C;&#x5177;&#x6709;&#x5E76;&#x884C;&#x6027;</li>
-<li>&#x53EF;&#x7528;&#x4E8E;&#x6C42;&#x89E3;&#x590D;&#x6742;&#x7684;&#x975E;&#x7EBF;&#x6027;&#x4F18;&#x5316;&#x95EE;&#x9898;</li>
-<li>&#x5177;&#x6709;&#x53EF;&#x6269;&#x5C55;&#x6027;&#xFF0C;&#x5BB9;&#x6613;&#x4E0E;&#x5176;&#x4ED6;&#x7B97;&#x6CD5;&#x7ED3;&#x5408;</li>
-<li><font size="4"><strong>&#x7F3A;&#x70B9;&#xFF1A;</strong></font></li>
-<li>&#x5BF9;&#x521D;&#x59CB;&#x8682;&#x8681;&#x7684;&#x6570;&#x91CF;&#x6709;&#x5F88;&#x9AD8;&#x7684;&#x8981;&#x6C42;</li>
+<h2 id="蚁群算法-ACO"><a href="#蚁群算法-ACO" class="headerlink" title="蚁群算法(ACO)"></a><a href="https://ustccoder.github.io/2019/05/23/optimization_ACO/">蚁群算法(ACO)</a></h2><ul>
+<li><font size="4"><strong>优点：</strong><ul>
+<li>搜索速度较快</li>
+<li>受到参数影响较小</li>
+<li>从群体出发，具有并行性</li>
+<li>可用于求解复杂的非线性优化问题</li>
+<li>具有可扩展性，容易与其他算法结合</li>
+<li><font size="4"><strong>缺点：</strong></font></li>
+<li>对初始蚂蚁的数量有很高的要求</li>
 </ul>
 </font></li>
 </ul>
 <p></p><center><div style="float:left;margin-left:50px"><img src="/images/OPTIMIZATION/aco1.png" width="200" height="260"></div></center><p></p>
-<div style="float:right;margin-right:50px"><img src="/images/OPTIMIZATION/compare_aco_2.png" width="200" height="260"></div><br><div style="float:none;clear:both;"></div>
+<div style="float:right;margin-right:50px"><img src="/images/OPTIMIZATION/compare_aco_2.png" width="200" height="260"></div>
+<div style="float:none;clear:both;"></div>
 
 <p></p><center><div style="float:left;margin-left:50px"><img src="/images/OPTIMIZATION/compare_aco_3.png" width="200" height="260"></div></center><p></p>
-<div style="float:right;margin-right:50px"><img src="/images/OPTIMIZATION/compare_aco_4.png" width="200" height="260"></div><br><div style="float:none;clear:both;"></div>
+<div style="float:right;margin-right:50px"><img src="/images/OPTIMIZATION/compare_aco_4.png" width="200" height="260"></div>
+<div style="float:none;clear:both;"></div>
 
-<h2 id="&#x7C92;&#x5B50;&#x7FA4;&#x7B97;&#x6CD5;-PSO"><a href="#&#x7C92;&#x5B50;&#x7FA4;&#x7B97;&#x6CD5;-PSO" class="headerlink" title="&#x7C92;&#x5B50;&#x7FA4;&#x7B97;&#x6CD5;(PSO)"></a><a href="https://ustccoder.github.io/2019/05/24/optimization_PSO/">&#x7C92;&#x5B50;&#x7FA4;&#x7B97;&#x6CD5;(PSO)</a></h2><ul>
-<li><font size="4"><strong>&#x4F18;&#x70B9;&#xFF1A;</strong><ul>
-<li>&#x641C;&#x7D22;&#x80FD;&#x529B;&#x6700;&#x5FEB;</li>
-<li>&#x4ECE;&#x7FA4;&#x4F53;&#x51FA;&#x53D1;&#xFF0C;&#x5177;&#x6709;&#x5E76;&#x884C;&#x6027;</li>
-<li>&#x53EF;&#x7528;&#x4E8E;&#x6C42;&#x89E3;&#x590D;&#x6742;&#x7684;&#x975E;&#x7EBF;&#x6027;&#x4F18;&#x5316;&#x95EE;&#x9898;</li>
-<li><font size="4"><strong>&#x7F3A;&#x70B9;&#xFF1A;</strong></font></li>
-<li>&#x53D7;&#x5230;&#x53C2;&#x6570;&#x5F71;&#x54CD;&#x8F83;&#x5927;</li>
-<li>&#x5B58;&#x5728;&#x65E9;&#x719F;&#x6536;&#x655B;&#x95EE;&#x9898;</li>
-<li>&#x5BF9;&#x521D;&#x59CB;&#x7C92;&#x5B50;&#x7FA4;&#x7684;&#x6570;&#x91CF;&#x6709;&#x5F88;&#x9AD8;&#x7684;&#x8981;&#x6C42;</li>
+<h2 id="粒子群算法-PSO"><a href="#粒子群算法-PSO" class="headerlink" title="粒子群算法(PSO)"></a><a href="https://ustccoder.github.io/2019/05/24/optimization_PSO/">粒子群算法(PSO)</a></h2><ul>
+<li><font size="4"><strong>优点：</strong><ul>
+<li>搜索能力最快</li>
+<li>从群体出发，具有并行性</li>
+<li>可用于求解复杂的非线性优化问题</li>
+<li><font size="4"><strong>缺点：</strong></font></li>
+<li>受到参数影响较大</li>
+<li>存在早熟收敛问题</li>
+<li>对初始粒子群的数量有很高的要求</li>
 </ul>
 </font></li>
 </ul>
 <p></p><center><div style="float:left;margin-left:50px"><img src="/images/OPTIMIZATION/pso1.png" width="200" height="260"></div></center><p></p>
-<div style="float:right;margin-right:50px"><img src="/images/OPTIMIZATION/compare_pso_2.png" width="200" height="260"></div><br><div style="float:none;clear:both;"></div>
+<div style="float:right;margin-right:50px"><img src="/images/OPTIMIZATION/compare_pso_2.png" width="200" height="260"></div>
+<div style="float:none;clear:both;"></div>
 
 <p></p><center><div style="float:left;margin-left:50px"><img src="/images/OPTIMIZATION/compare_pso_3.png" width="200" height="260"></div></center><p></p>
-<div style="float:right;margin-right:50px"><img src="/images/OPTIMIZATION/compare_pso_4.png" width="200" height="260"></div><br><div style="float:none;clear:both;"></div>
+<div style="float:right;margin-right:50px"><img src="/images/OPTIMIZATION/compare_pso_4.png" width="200" height="260"></div>
+<div style="float:none;clear:both;"></div>
 
-<h2 id="&#x5355;&#x7EAF;&#x5F62;&#x6CD5;-Nelder-Mead"><a href="#&#x5355;&#x7EAF;&#x5F62;&#x6CD5;-Nelder-Mead" class="headerlink" title="&#x5355;&#x7EAF;&#x5F62;&#x6CD5;(Nelder-Mead)"></a><a href="https://ustccoder.github.io/2019/05/25/optimization_NM/">&#x5355;&#x7EAF;&#x5F62;&#x6CD5;(Nelder-Mead)</a></h2><ul>
-<li><font size="4"><strong>&#x4F18;&#x70B9;&#xFF1A;</strong><ul>
-<li>&#x53D7;&#x5230;&#x53C2;&#x6570;&#x5F71;&#x54CD;&#x8F83;&#x5C0F;</li>
-<li>&#x5177;&#x6709;&#x5FEB;&#x901F;&#x968F;&#x673A;&#x7684;&#x641C;&#x7D22;&#x80FD;&#x529B;</li>
-<li>&#x53EF;&#x7528;&#x4E8E;&#x6C42;&#x89E3;&#x590D;&#x6742;&#x7684;&#x975E;&#x7EBF;&#x6027;&#x4F18;&#x5316;&#x95EE;&#x9898;</li>
-<li>&#x6BCF;&#x6B21;&#x8FED;&#x4EE3;&#x90FD;&#x66F4;&#x63A5;&#x8FD1;&#x6700;&#x4F18;&#x89E3;&#xFF0C;&#x7CBE;&#x5EA6;&#x6700;&#x9AD8;</li>
-<li><font size="4"><strong>&#x7F3A;&#x70B9;&#xFF1A;</strong></font></li>
-<li>&#x7B97;&#x6CD5;&#x6027;&#x80FD;&#x4E0E;&#x521D;&#x59CB;&#x503C;&#x6709;&#x5173;</li>
-<li>&#x4E0D;&#x9002;&#x7528;&#x4E8E;&#x591A;&#x7EF4;&#x7684;&#x6700;&#x4F18;&#x503C;&#x6C42;&#x89E3;</li>
-<li>&#x53EF;&#x80FD;&#x843D;&#x5165;&#x5176;&#x4ED6;&#x7684;&#x5C40;&#x90E8;&#x6700;&#x5C0F;&#x503C;</li>
+<h2 id="单纯形法-Nelder-Mead"><a href="#单纯形法-Nelder-Mead" class="headerlink" title="单纯形法(Nelder-Mead)"></a><a href="https://ustccoder.github.io/2019/05/25/optimization_NM/">单纯形法(Nelder-Mead)</a></h2><ul>
+<li><font size="4"><strong>优点：</strong><ul>
+<li>受到参数影响较小</li>
+<li>具有快速随机的搜索能力</li>
+<li>可用于求解复杂的非线性优化问题</li>
+<li>每次迭代都更接近最优解，精度最高</li>
+<li><font size="4"><strong>缺点：</strong></font></li>
+<li>算法性能与初始值有关</li>
+<li>不适用于多维的最优值求解</li>
+<li>可能落入其他的局部最小值</li>
 </ul>
 </font></li>
 </ul>
 <p></p><center><div style="float:left;margin-left:50px"><img src="/images/OPTIMIZATION/nm1.png" width="200" height="260"></div></center><p></p>
-<div style="float:right;margin-right:50px"><img src="/images/OPTIMIZATION/compare_nm_2.png" width="200" height="260"></div><br><div style="float:none;clear:both;"></div>
+<div style="float:right;margin-right:50px"><img src="/images/OPTIMIZATION/compare_nm_2.png" width="200" height="260"></div>
+<div style="float:none;clear:both;"></div>
 
 <p></p><center><div style="float:left;margin-left:50px"><img src="/images/OPTIMIZATION/compare_nm_3.png" width="200" height="260"></div></center><p></p>
-<div style="float:right;margin-right:50px"><img src="/images/OPTIMIZATION/compare_nm_4.png" width="200" height="260"></div><br><div style="float:none;clear:both;"></div>
+<div style="float:right;margin-right:50px"><img src="/images/OPTIMIZATION/compare_nm_4.png" width="200" height="260"></div>
+<div style="float:none;clear:both;"></div>
 
-<h2 id="&#x9057;&#x4F20;&#x5DEE;&#x5206;&#x7B97;&#x6CD5;-DE"><a href="#&#x9057;&#x4F20;&#x5DEE;&#x5206;&#x7B97;&#x6CD5;-DE" class="headerlink" title="&#x9057;&#x4F20;&#x5DEE;&#x5206;&#x7B97;&#x6CD5;(DE)"></a><a href="https://ustccoder.github.io/2019/05/27/optimization_DE/">&#x9057;&#x4F20;&#x5DEE;&#x5206;&#x7B97;&#x6CD5;(DE)</a></h2><ul>
-<li><font size="4"><strong>&#x4F18;&#x70B9;&#xFF1A;</strong><ul>
-<li>&#x53D7;&#x5230;&#x53C2;&#x6570;&#x5F71;&#x54CD;&#x8F83;&#x5C0F;</li>
-<li>&#x4E0D;&#x4F1A;&#x4EA7;&#x751F;&#x65E9;&#x719F;&#x6536;&#x655B;&#x95EE;&#x9898;</li>
-<li>&#x9002;&#x7528;&#x4E8E;&#x591A;&#x7EF4;&#x7684;&#x6700;&#x4F18;&#x503C;&#x6C42;&#x89E3;</li>
-<li>&#x4ECE;&#x7FA4;&#x4F53;&#x51FA;&#x53D1;&#xFF0C;&#x5177;&#x6709;&#x5E76;&#x884C;&#x6027;</li>
-<li>&#x7B97;&#x6CD5;&#x4E0D;&#x4F9D;&#x8D56;&#x521D;&#x59CB;&#x79CD;&#x7FA4;&#x7684;&#x9009;&#x62E9;</li>
-<li>&#x53EF;&#x7528;&#x4E8E;&#x6C42;&#x89E3;&#x590D;&#x6742;&#x7684;&#x975E;&#x7EBF;&#x6027;&#x4F18;&#x5316;&#x95EE;&#x9898;</li>
-<li>&#x4F7F;&#x7528;&#x6982;&#x7387;&#x673A;&#x5236;&#x8FDB;&#x884C;&#x8FED;&#x4EE3;&#xFF0C;&#x5177;&#x6709;&#x968F;&#x673A;&#x6027;</li>
-<li>&#x5177;&#x6709;&#x53EF;&#x6269;&#x5C55;&#x6027;&#xFF0C;&#x5BB9;&#x6613;&#x4E0E;&#x5176;&#x4ED6;&#x7B97;&#x6CD5;&#x7ED3;&#x5408;</li>
-<li><font size="4"><strong>&#x7F3A;&#x70B9;&#xFF1A;</strong></font></li>
-<li>&#x5BF9;&#x95EE;&#x9898;&#x7F16;&#x7801;&#x8868;&#x793A;&#x8F83;&#x4E3A;&#x56F0;&#x96BE;</li>
-<li>&#x56E0;&#x4E3A;&#x6709;&#x5927;&#x91CF;&#x7684;&#x6BD4;&#x8F83;&#x548C;&#x9009;&#x62E9;&#xFF0C;&#x53EF;&#x80FD;&#x901F;&#x5EA6;&#x7A0D;&#x6162;&#x4E8E;&#x9057;&#x4F20;&#x7B97;&#x6CD5;</li>
+<h2 id="遗传差分算法-DE"><a href="#遗传差分算法-DE" class="headerlink" title="遗传差分算法(DE)"></a><a href="https://ustccoder.github.io/2019/05/27/optimization_DE/">遗传差分算法(DE)</a></h2><ul>
+<li><font size="4"><strong>优点：</strong><ul>
+<li>受到参数影响较小</li>
+<li>不会产生早熟收敛问题</li>
+<li>适用于多维的最优值求解</li>
+<li>从群体出发，具有并行性</li>
+<li>算法不依赖初始种群的选择</li>
+<li>可用于求解复杂的非线性优化问题</li>
+<li>使用概率机制进行迭代，具有随机性</li>
+<li>具有可扩展性，容易与其他算法结合</li>
+<li><font size="4"><strong>缺点：</strong></font></li>
+<li>对问题编码表示较为困难</li>
+<li>因为有大量的比较和选择，可能速度稍慢于遗传算法</li>
 </ul>
 </font></li>
 </ul>
 <p></p><center><div style="float:left;margin-left:50px"><img src="/images/OPTIMIZATION/de1.png" width="200" height="260"></div></center><p></p>
-<div style="float:right;margin-right:50px"><img src="/images/OPTIMIZATION/compare_de_2.png" width="200" height="260"></div><br><div style="float:none;clear:both;"></div>
+<div style="float:right;margin-right:50px"><img src="/images/OPTIMIZATION/compare_de_2.png" width="200" height="260"></div>
+<div style="float:none;clear:both;"></div>
 
 <p></p><center><div style="float:left;margin-left:50px"><img src="/images/OPTIMIZATION/compare_de_3.png" width="200" height="260"></div></center><p></p>
-<div style="float:right;margin-right:50px"><img src="/images/OPTIMIZATION/compare_de_4.png" width="200" height="260"></div><br><div style="float:none;clear:both;"></div>
+<div style="float:right;margin-right:50px"><img src="/images/OPTIMIZATION/compare_de_4.png" width="200" height="260"></div>
+<div style="float:none;clear:both;"></div>
 
-<h2 id="&#x7B97;&#x6CD5;&#x5BF9;&#x6BD4;"><a href="#&#x7B97;&#x6CD5;&#x5BF9;&#x6BD4;" class="headerlink" title="&#x7B97;&#x6CD5;&#x5BF9;&#x6BD4;"></a>&#x7B97;&#x6CD5;&#x5BF9;&#x6BD4;</h2><p></p><center><img src="/images/OPTIMIZATION/compare1.png">&#x641C;&#x7D22;&#x7CBE;&#x5EA6;&#x5206;&#x6790;</center><p></p>
-<div style="float:none;clear:both;"></div><br><center><img src="/images/OPTIMIZATION/compare2.png">&#x6240;&#x7528;&#x65F6;&#x95F4;&#x5206;&#x6790;</center><br><div style="float:none;clear:both;"></div>
+<h2 id="算法对比"><a href="#算法对比" class="headerlink" title="算法对比"></a>算法对比</h2><p></p><center><img src="/images/OPTIMIZATION/compare1.png">搜索精度分析</center><p></p>
+<div style="float:none;clear:both;"></div>
+<center><img src="/images/OPTIMIZATION/compare2.png">所用时间分析</center>
+<div style="float:none;clear:both;"></div>
 
-<h1 id="&#x7279;&#x70B9;&#x5C0F;&#x7ED3;"><a href="#&#x7279;&#x70B9;&#x5C0F;&#x7ED3;" class="headerlink" title="&#x7279;&#x70B9;&#x5C0F;&#x7ED3;"></a><font size="5" color="red">&#x7279;&#x70B9;&#x5C0F;&#x7ED3;</font></h1><h2 id="&#x6A21;&#x62DF;&#x9000;&#x706B;&#x7B97;&#x6CD5;-SA-1"><a href="#&#x6A21;&#x62DF;&#x9000;&#x706B;&#x7B97;&#x6CD5;-SA-1" class="headerlink" title="&#x6A21;&#x62DF;&#x9000;&#x706B;&#x7B97;&#x6CD5;(SA)"></a>&#x6A21;&#x62DF;&#x9000;&#x706B;&#x7B97;&#x6CD5;(SA)</h2><ul>
-<li>&#x4E0D;&#x540C;&#x95EE;&#x9898;&#x5BF9;&#x6E29;&#x5EA6;&#x8981;&#x6C42;&#x4E0D;&#x540C;&#xFF0C;&#x8D77;&#x59CB;&#x6E29;&#x5EA6;&#x548C;&#x6E29;&#x5EA6;&#x53D8;&#x5316;&#x7387;&#x90FD;&#x4F1A;&#x5F71;&#x54CD;&#x641C;&#x7D22;&#x7CBE;&#x5EA6;&#x548C;&#x65F6;&#x95F4;</li>
-<li>&#x6BCF;&#x6B21;&#x90FD;&#x968F;&#x673A;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x89E3;&#xFF0C;&#x6709;&#x65F6;&#x5F88;&#x96BE;&#x8DF3;&#x51FA;&#x8F83;&#x6DF1;&#x8F83;&#x8FDC;&#x7684;&#x5C40;&#x90E8;&#x6700;&#x4F18;</li>
-<li>&#x53EF;&#x4EE5;&#x91CD;&#x590D;&#x8FD0;&#x7B97;&#x591A;&#x6B21;&#xFF0C;&#x53D6;&#x591A;&#x6B21;&#x7684;&#x6700;&#x5C0F;&#x503C;&#xFF0C;&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x4FDD;&#x8BC1;&#x5F97;&#x5230;&#x5168;&#x5C40;&#x6700;&#x4F18;</li>
+<h1 id="特点小结"><a href="#特点小结" class="headerlink" title="特点小结"></a><font size="5" color="red">特点小结</font></h1><h2 id="模拟退火算法-SA-1"><a href="#模拟退火算法-SA-1" class="headerlink" title="模拟退火算法(SA)"></a>模拟退火算法(SA)</h2><ul>
+<li>不同问题对温度要求不同，起始温度和温度变化率都会影响搜索精度和时间</li>
+<li>每次都随机产生一个解，有时很难跳出较深较远的局部最优</li>
+<li>可以重复运算多次，取多次的最小值，这样可以保证得到全局最优</li>
 </ul>
-<h2 id="&#x9057;&#x4F20;&#x7B97;&#x6CD5;-GA-1"><a href="#&#x9057;&#x4F20;&#x7B97;&#x6CD5;-GA-1" class="headerlink" title="&#x9057;&#x4F20;&#x7B97;&#x6CD5;(GA)"></a>&#x9057;&#x4F20;&#x7B97;&#x6CD5;(GA)</h2><ul>
-<li>&#x4E0D;&#x540C;&#x7684;&#x95EE;&#x9898;&#x9700;&#x8981;&#x7684;&#x79CD;&#x7FA4;&#x4E2A;&#x6570;&#x4E0D;&#x540C;&#xFF0C;&#x79CD;&#x7FA4;&#x4E2A;&#x6570;&#x8D8A;&#x591A;&#xFF0C;&#x641C;&#x7D22;&#x7CBE;&#x5EA6;&#x8D8A;&#x9AD8;&#xFF0C;&#x7528;&#x65F6;&#x8D8A;&#x957F;</li>
-<li>&#x8FED;&#x4EE3;&#x6B21;&#x6570;&#x8D8A;&#x9AD8;&#xFF0C;&#x81EA;&#x7136;&#x9009;&#x62E9;&#x8D8A;&#x5F3A;&#xFF0C;&#x4FDD;&#x7559;&#x7684;&#x7ED3;&#x679C;&#x8D8A;&#x597D;&#xFF0C;&#x641C;&#x7D22;&#x7CBE;&#x5EA6;&#x8D8A;&#x9AD8;&#xFF0C;&#x7528;&#x65F6;&#x8D8A;&#x957F;</li>
-<li>&#x95EE;&#x9898;&#x7684;&#x8868;&#x793A;&#x5F71;&#x54CD;&#x9057;&#x4F20;&#x7B97;&#x6CD5;&#x7684;&#x6548;&#x7387;&#xFF0C;&#x7528;&#x4E8C;&#x8FDB;&#x5236;&#x57FA;&#x56E0;&#x4E32;&#x8868;&#x793A;&#x8FD8;&#x662F;&#x7528;&#x5341;&#x8FDB;&#x5236;&#x8868;&#x793A;&#x9700;&#x8981;&#x8003;&#x8651;</li>
-<li>&#x81EA;&#x7136;&#x9009;&#x62E9;&#x7684;&#x65B9;&#x5F0F;&#x5F88;&#x91CD;&#x8981;&#xFF0C;&#x91C7;&#x7528;&#x7CBE;&#x82F1;&#x9009;&#x62E9;&#x6216;&#x8F6E;&#x76D8;&#x8D4C;&#x4F1A;&#x4EA7;&#x751F;&#x4E0D;&#x540C;&#x7684;&#x6548;&#x679C;</li>
-<li>&#x9057;&#x4F20;&#x7B97;&#x5B50;&#x5BF9;&#x7B97;&#x6CD5;&#x7684;&#x5F71;&#x54CD;&#x5F88;&#x5927;&#xFF0C;&#x91C7;&#x7528;&#x4F55;&#x79CD;&#x4EA4;&#x53C9;&#x65B9;&#x5F0F;&#x548C;&#x591A;&#x5927;&#x7684;&#x53D8;&#x5F02;&#x7387;&#x6700;&#x5408;&#x9002;</li>
+<h2 id="遗传算法-GA-1"><a href="#遗传算法-GA-1" class="headerlink" title="遗传算法(GA)"></a>遗传算法(GA)</h2><ul>
+<li>不同的问题需要的种群个数不同，种群个数越多，搜索精度越高，用时越长</li>
+<li>迭代次数越高，自然选择越强，保留的结果越好，搜索精度越高，用时越长</li>
+<li>问题的表示影响遗传算法的效率，用二进制基因串表示还是用十进制表示需要考虑</li>
+<li>自然选择的方式很重要，采用精英选择或轮盘赌会产生不同的效果</li>
+<li>遗传算子对算法的影响很大，采用何种交叉方式和多大的变异率最合适</li>
 </ul>
-<h2 id="&#x514D;&#x75AB;&#x7B97;&#x6CD5;-IA-1"><a href="#&#x514D;&#x75AB;&#x7B97;&#x6CD5;-IA-1" class="headerlink" title="&#x514D;&#x75AB;&#x7B97;&#x6CD5;(IA)"></a>&#x514D;&#x75AB;&#x7B97;&#x6CD5;(IA)</h2><ul>
-<li>&#x514D;&#x75AB;&#x7B97;&#x6CD5;&#x5305;&#x542B;&#x9057;&#x4F20;&#x7B97;&#x6CD5;&#x7684;&#x6240;&#x6709;&#x7279;&#x70B9;</li>
-<li>&#x514D;&#x75AB;&#x8FC7;&#x7A0B;&#x4ECE;&#x8BB0;&#x5FC6;&#x7EC6;&#x80DE;&#x4E2D;&#x53D6;&#x51FA;&#x90E8;&#x5206;&#xFF0C;&#x63D0;&#x9AD8;&#x641C;&#x7D22;&#x6548;&#x7387;</li>
-<li>&#x514D;&#x75AB;&#x8FC7;&#x7A0B;&#x968F;&#x673A;&#x4EA7;&#x751F;&#x53E6;&#x4E00;&#x90E8;&#x5206;&#x6297;&#x4F53;&#xFF0C;&#x7ED9;&#x641C;&#x7D22;&#x5230;&#x5176;&#x4ED6;&#x66F4;&#x4F18;&#x70B9;&#x521B;&#x9020;&#x4E86;&#x53EF;&#x80FD;&#x6027;</li>
-<li>&#x6BCF;&#x6B21;&#x7684;&#x514D;&#x75AB;&#x8FC7;&#x7A0B;&#x90FD;&#x76F8;&#x5F53;&#x4E8E;&#x4E00;&#x6B21;&#x9057;&#x4F20;&#x7B97;&#x6CD5;&#xFF0C;&#x56E0;&#x6B64;&#x514D;&#x75AB;&#x6B21;&#x6570;&#x8D8A;&#x591A;&#xFF0C;&#x7CBE;&#x5EA6;&#x8D8A;&#x9AD8;&#xFF0C;&#x65F6;&#x95F4;&#x8D8A;&#x957F;</li>
+<h2 id="免疫算法-IA-1"><a href="#免疫算法-IA-1" class="headerlink" title="免疫算法(IA)"></a>免疫算法(IA)</h2><ul>
+<li>免疫算法包含遗传算法的所有特点</li>
+<li>免疫过程从记忆细胞中取出部分，提高搜索效率</li>
+<li>免疫过程随机产生另一部分抗体，给搜索到其他更优点创造了可能性</li>
+<li>每次的免疫过程都相当于一次遗传算法，因此免疫次数越多，精度越高，时间越长</li>
 </ul>
-<h2 id="&#x8681;&#x7FA4;&#x7B97;&#x6CD5;-ACO-1"><a href="#&#x8681;&#x7FA4;&#x7B97;&#x6CD5;-ACO-1" class="headerlink" title="&#x8681;&#x7FA4;&#x7B97;&#x6CD5;(ACO)"></a>&#x8681;&#x7FA4;&#x7B97;&#x6CD5;(ACO)</h2><ul>
-<li>&#x548C;&#x81EA;&#x7136;&#x754C;&#x4E2D;&#x8681;&#x7FA4;&#x4E00;&#x6837;&#xFF0C;&#x8682;&#x8681;&#x8D8A;&#x591A;&#xFF0C;&#x641C;&#x7D22;&#x7CBE;&#x5EA6;&#x8D8A;&#x9AD8;&#xFF0C;&#x4F46;&#x662F;&#x8BA1;&#x7B97;&#x91CF;&#x5927;&#xFF0C;&#x7528;&#x65F6;&#x66F4;&#x957F;</li>
-<li>&#x8FED;&#x4EE3;&#x6B21;&#x6570;&#x8D8A;&#x9AD8;&#xFF0C;&#x4FE1;&#x606F;&#x7D20;&#x7684;&#x4F5C;&#x7528;&#x65F6;&#x95F4;&#x8D8A;&#x957F;&#xFF0C;&#x6240;&#x6C42;&#x7ED3;&#x679C;&#x66F4;&#x597D;&#xFF0C;&#x7CBE;&#x5EA6;&#x66F4;&#x9AD8;&#xFF0C;&#x7528;&#x65F6;&#x66F4;&#x957F;</li>
+<h2 id="蚁群算法-ACO-1"><a href="#蚁群算法-ACO-1" class="headerlink" title="蚁群算法(ACO)"></a>蚁群算法(ACO)</h2><ul>
+<li>和自然界中蚁群一样，蚂蚁越多，搜索精度越高，但是计算量大，用时更长</li>
+<li>迭代次数越高，信息素的作用时间越长，所求结果更好，精度更高，用时更长</li>
 </ul>
-<h2 id="&#x7C92;&#x5B50;&#x7FA4;&#x7B97;&#x6CD5;-PSO-1"><a href="#&#x7C92;&#x5B50;&#x7FA4;&#x7B97;&#x6CD5;-PSO-1" class="headerlink" title="&#x7C92;&#x5B50;&#x7FA4;&#x7B97;&#x6CD5;(PSO)"></a>&#x7C92;&#x5B50;&#x7FA4;&#x7B97;&#x6CD5;(PSO)</h2><ul>
-<li>&#x548C;&#x81EA;&#x7136;&#x754C;&#x4E2D;&#x98DE;&#x9E1F;&#x4E00;&#x6837;&#xFF0C;&#x98DE;&#x9E1F;&#x8D8A;&#x591A;&#x8D8A;&#x5BB9;&#x6613;&#x9047;&#x5230;&#x5168;&#x5C40;&#x6700;&#x4F18;&#x89E3;&#xFF0C;&#x641C;&#x7D22;&#x7CBE;&#x5EA6;&#x8D8A;&#x9AD8;&#xFF0C;&#x7528;&#x65F6;&#x66F4;&#x957F;</li>
-<li>&#x8FED;&#x4EE3;&#x6B21;&#x6570;&#x8D8A;&#x9AD8;&#xFF0C;&#x98DE;&#x9E1F;&#x4E4B;&#x95F4;&#x7684;&#x4FE1;&#x606F;&#x4EA4;&#x6362;&#x8D8A;&#x591A;&#xFF0C;&#x6240;&#x6C42;&#x7ED3;&#x679C;&#x66F4;&#x597D;&#xFF0C;&#x7CBE;&#x5EA6;&#x66F4;&#x9AD8;&#xFF0C;&#x7528;&#x65F6;&#x66F4;&#x957F;</li>
-<li>&#x7C92;&#x5B50;&#x7FA4;&#x7B97;&#x6CD5;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x9AD8;&#x5EA6;&#x7684;&#x5E76;&#x884C;&#x8BA1;&#x7B97;&#xFF0C;&#x56E0;&#x6B64;&#x5728;&#x641C;&#x7D22;&#x51FD;&#x6570;&#x6700;&#x503C;&#x65B9;&#x9762;&#x901F;&#x5EA6;&#x6700;&#x5FEB;</li>
+<h2 id="粒子群算法-PSO-1"><a href="#粒子群算法-PSO-1" class="headerlink" title="粒子群算法(PSO)"></a>粒子群算法(PSO)</h2><ul>
+<li>和自然界中飞鸟一样，飞鸟越多越容易遇到全局最优解，搜索精度越高，用时更长</li>
+<li>迭代次数越高，飞鸟之间的信息交换越多，所求结果更好，精度更高，用时更长</li>
+<li>粒子群算法可以实现高度的并行计算，因此在搜索函数最值方面速度最快</li>
 </ul>
-<h2 id="&#x5355;&#x7EAF;&#x5F62;&#x6CD5;-Nelder-Mead-1"><a href="#&#x5355;&#x7EAF;&#x5F62;&#x6CD5;-Nelder-Mead-1" class="headerlink" title="&#x5355;&#x7EAF;&#x5F62;&#x6CD5;(Nelder-Mead)"></a>&#x5355;&#x7EAF;&#x5F62;&#x6CD5;(Nelder-Mead)</h2><ul>
-<li>&#x5355;&#x7EAF;&#x5F62;&#x6CD5;&#x662F;&#x4E00;&#x79CD;&#x6536;&#x7F29;&#x7B97;&#x6CD5;&#xFF0C;&#x5982;&#x679C;&#x521D;&#x59CB;&#x70B9;&#x9009;&#x62E9;&#x5728;&#x5C40;&#x90E8;&#x6781;&#x5C0F;&#x503C;&#x533A;&#x57DF;&#xFF0C;&#x4F1A;&#x6536;&#x7F29;&#x5230;&#x5C40;&#x90E8;&#x6700;&#x5C0F;</li>
-<li>&#x548C;SA&#x76F8;&#x540C;&#xFF0C;&#x53EF;&#x4EE5;&#x91CD;&#x590D;&#x8FD0;&#x7B97;&#x591A;&#x6B21;&#xFF0C;&#x53D6;&#x591A;&#x6B21;&#x7684;&#x6700;&#x5C0F;&#x503C;&#xFF0C;&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x4FDD;&#x8BC1;&#x5F97;&#x5230;&#x5168;&#x5C40;&#x6700;&#x4F18;&#x3002;</li>
-<li>&#x548C;&#x5176;&#x4ED6;&#x7B97;&#x6CD5;&#x4E0D;&#x540C;&#xFF0C;&#x6CA1;&#x6709;&#x968F;&#x673A;&#x6027;&#xFF0C;&#x6BCF;&#x6B21;&#x8FED;&#x4EE3;&#x90FD;&#x4EA7;&#x751F;&#x6BD4;&#x4E0A;&#x4E00;&#x6B21;&#x66F4;&#x4F18;&#x7684;&#x89E3;&#xFF0C;&#x641C;&#x7D22;&#x7CBE;&#x5EA6;&#x6700;&#x9AD8;</li>
+<h2 id="单纯形法-Nelder-Mead-1"><a href="#单纯形法-Nelder-Mead-1" class="headerlink" title="单纯形法(Nelder-Mead)"></a>单纯形法(Nelder-Mead)</h2><ul>
+<li>单纯形法是一种收缩算法，如果初始点选择在局部极小值区域，会收缩到局部最小</li>
+<li>和SA相同，可以重复运算多次，取多次的最小值，这样可以保证得到全局最优。</li>
+<li>和其他算法不同，没有随机性，每次迭代都产生比上一次更优的解，搜索精度最高</li>
 </ul>
-<h2 id="&#x5DEE;&#x5206;&#x8FDB;&#x5316;&#x7B97;&#x6CD5;-DE"><a href="#&#x5DEE;&#x5206;&#x8FDB;&#x5316;&#x7B97;&#x6CD5;-DE" class="headerlink" title="&#x5DEE;&#x5206;&#x8FDB;&#x5316;&#x7B97;&#x6CD5;(DE)"></a>&#x5DEE;&#x5206;&#x8FDB;&#x5316;&#x7B97;&#x6CD5;(DE)</h2><ul>
-<li>&#x5DEE;&#x5206;&#x8FDB;&#x5316;&#x7B97;&#x6CD5;&#x7C7B;&#x4F3C;&#x4E8E;&#x6539;&#x8FDB;&#x7248;&#x7684;&#x9057;&#x4F20;&#x7B97;&#x6CD5;&#xFF0C;&#x66F4;&#x52A0;&#x9002;&#x5408;&#x4E8E;&#x591A;&#x7EF4;&#x6700;&#x4F18;&#x503C;&#x6C42;&#x89E3;</li>
-<li>&#x548C;&#x9057;&#x4F20;&#x7B97;&#x6CD5;&#x4E0D;&#x540C;&#x7684;&#x662F;&#x5177;&#x6709;&#x5DEE;&#x5206;&#x6027;&#x8D28;&#xFF0C;&#x80FD;&#x591F;&#x66F4;&#x5BB9;&#x6613;&#x5730;&#x8DF3;&#x51FA;&#x5F53;&#x524D;&#x7684;&#x5C40;&#x90E8;&#x89E3;</li>
-<li>&#x6DD8;&#x6C70;&#x673A;&#x5236;&#x4E5F;&#x5341;&#x5206;&#x7B80;&#x5355;&#xFF0C;&#x5C06;&#x5B50;&#x4EE3;&#x548C;&#x7236;&#x4EE3;&#x5BF9;&#x6BD4;&#xFF0C;&#x76F4;&#x63A5;&#x6DD8;&#x6C70;&#x8868;&#x73B0;&#x5DEE;&#x7684;&#x89E3;&#xFF0C;&#x7CBE;&#x82F1;&#x9009;&#x62E9;</li>
+<h2 id="差分进化算法-DE"><a href="#差分进化算法-DE" class="headerlink" title="差分进化算法(DE)"></a>差分进化算法(DE)</h2><ul>
+<li>差分进化算法类似于改进版的遗传算法，更加适合于多维最优值求解</li>
+<li>和遗传算法不同的是具有差分性质，能够更容易地跳出当前的局部解</li>
+<li>淘汰机制也十分简单，将子代和父代对比，直接淘汰表现差的解，精英选择</li>
 </ul>
 <script>
         document.querySelectorAll('.github-emoji')
