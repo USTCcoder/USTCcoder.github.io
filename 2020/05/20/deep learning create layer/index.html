@@ -140,7 +140,7 @@
 <meta property="og:image" content="https://ustccoder.github.io/images/deep_learning/layer.png">
 <meta property="og:image" content="https://ustccoder.github.io/images/deep_learning/model1.png">
 <meta property="og:image" content="https://ustccoder.github.io/images/deep_learning/layer2.png">
-<meta property="og:updated_time" content="2020-06-09T10:56:31.433Z">
+<meta property="og:updated_time" content="2020-06-14T06:13:34.112Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TensorFlow定义网络层">
 <meta name="twitter:description" content="Define Layer">
@@ -456,7 +456,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.6k
+                  1.7k
                 </span>
               
 
@@ -490,7 +490,7 @@
 <p><img src="/images/deep_learning/layer.png" alt="layer"></p>
 <h1 id="第一种方法"><a href="#第一种方法" class="headerlink" title="第一种方法"></a><font size="5" color="red">第一种方法</font></h1><p>只用TensorFlow中定义好的网络层，直接使用keras.layer下的网络层类即可，是最简单的网络层创建方法，缺点也很明显，灵活度很低。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow.keras as keras</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == '__main__':</span><br><span class="line"></span><br><span class="line">    model = keras.models.Sequential([keras.layers.Input(shape=(28, 28, 1), name='input'),</span><br><span class="line">                                     keras.layers.Conv2D(6, kernel_size=(5, 5), padding='same', activation='relu', name='conv1'),</span><br><span class="line">                                     keras.layers.MaxPooling2D((2, 2), strides=(2, 2), padding='same', name='maxpool1'),</span><br><span class="line">                                     keras.layers.Conv2D(16, kernel_size=(5, 5), padding='valid', activation='relu', name='conv2'),</span><br><span class="line">                                     keras.layers.MaxPooling2D((2, 2), strides=(2, 2), padding='same', name='maxpool2'),</span><br><span class="line">                                     keras.layers.Flatten(name='flatten'),</span><br><span class="line">                                     keras.layers.Dense(120, activation='relu', name='dense1'),</span><br><span class="line">                                     keras.layers.Dense(84, activation='relu', name='dense2'),</span><br><span class="line">                                     keras.layers.Dense(10, activation='softmax', name='dense3')], name='LeNet-5')</span><br><span class="line"></span><br><span class="line">    model.build(input_shape=(None, 28, 28, 1))</span><br><span class="line">    model.summary()</span><br></pre></td></tr></tbody></table></figure><p></p>
 <p><img src="/images/deep_learning/model1.png" alt="model1"></p>
-<h1 id="第二种方法"><a href="#第二种方法" class="headerlink" title="第二种方法"></a><font size="5" color="red">第二种方法</font></h1><p>通过<strong>继承keras.layer.Layer来创建模型，是最灵活的方式，可以满足任何网络层的定义，但是难度也更大，必须通过重载call函数自定义调用方式</strong>。<br><strong>__init__函数，是自定义层的构造函数，可以在这里准备一些和输入尺寸无关的网络层，如定义一些参数，接收构造函数的输入等等</strong>。<br><strong>call函数，inputs是上一层网络的输出，return是自定义网络的输出，在call函数中写入本层要实现的内容</strong>。<br><strong>build函数，上面两个都是必须的函数，而build函数是根据需要来创建的，一些参数可能需要根据上一层的网络的输出来确定的，如reshape，resize等等操作，因此这些参数的定义无法在__init__中完成，所以需要在build中完成参数的定义，input_shape参数是上一层网络的输出维度。在没有定义build函数时，会默认调用一次空的build函数</strong>。</p>
+<h1 id="第二种方法"><a href="#第二种方法" class="headerlink" title="第二种方法"></a><font size="5" color="red">第二种方法</font></h1><p>通过<strong>继承keras.layer.Layer来创建模型，是最灵活的方式，可以满足任何网络层的定义，但是难度也更大，必须通过重载call函数自定义调用方式</strong>。<br><strong>__init__函数，是自定义层的构造函数，可以在这里准备一些和输入尺寸无关的网络层，如定义一些参数，接收构造函数的输入等等</strong>。<br><strong>call函数，inputs是上一层网络的输出，return是自定义网络的输出，在call函数中写入本层要实现的内容</strong>。<br><strong>build函数，上面两个都是必须的函数，而build函数是根据需要来创建的，一些参数可能需要根据上一层的网络的输出来确定的，如reshape，resize等等操作，因此这些参数的定义无法在__init__中完成，所以需要在build中完成参数的定义，input_shape参数是上一层网络的输出维度。在没有定义build函数时，会默认调用一次空的build函数</strong>。<br><strong>dynamic=False参数，在调用父类的构造函数时，可以传入dynamic参数，其中默认为False，搭建静态图，如果需要动态调整参数，则需要写入dynamic=True</strong></p>
 <p>因此当我们需要自定义一个网络层时，我们的思路为：</p>
 <ol>
 <li><p>根据需要<strong>判断自定义层是否可以由keras.layer提供的网络层组合而成</strong>，如CNN中大量存在Convlution+BN+ReLU层，因此我们可以定义一个层一次性完成三个步骤，而且这三个层都存在于keras.layer中，所以使用卷积层时也不必要使用build函数，直接调用keras.layers.Conv2D接口即可。</p>
@@ -697,7 +697,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">131</span>
+                  <span class="site-state-item-count">134</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -745,9 +745,9 @@
             </div>
           
 
-	<div id="music163player"> 
-    		<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="298" height="52" src="//music.163.com/outchain/player?type=2&id=436675656&auto=0&height=32"></iframe>
- 	</div>
+  <div id="music163player"> 
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="298" height="52" src="//music.163.com/outchain/player?type=2&id=436675656&auto=0&height=32"></iframe>
+  </div>
 
           
           

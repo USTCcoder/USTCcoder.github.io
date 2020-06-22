@@ -138,7 +138,7 @@
 <meta property="og:description" content="Optimizer">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ustccoder.github.io/images/deep_learning/optimizer.png">
-<meta property="og:updated_time" content="2020-05-11T15:23:04.589Z">
+<meta property="og:updated_time" content="2020-06-14T05:02:05.421Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Optimizer黑科技">
 <meta name="twitter:description" content="Optimizer">
@@ -518,12 +518,12 @@
 <li><strong>随着迭代次数的增加，学习率会越来越小，最终趋近于0</strong>。<br>在TensorFlow2.0中给我们提供了AdaGrad的类<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow.keras as keras</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">optimizer = keras.optimizers.Adagrad(learning_rate=0.001, epsilon=1e-7)</span><br></pre></td></tr></tbody></table></figure>
 </li>
 </ul>
-<h1 id="RMSProp"><a href="#RMSProp" class="headerlink" title="RMSProp"></a><font size="5" color="red">RMSProp</font></h1><script type="math/tex; mode=display">\begin{cases} W_{t+1}=W_{t} - \frac{\eta_0}{\sqrt{E[g^2]\_t} + \epsilon} \odot g_t \\\\ E[g^2]\_t = \alpha E[g^2]\_{t - 1} + (1 - \alpha)g_t^2  \end{cases}</script><p>其中$ W<em>{t} $表示t时刻模型参数，$ g_t $表示第t次迭代的梯度，$ \epsilon $避免分母为0，一般取值1e-7，$ \eta</em>{t} $表示全局学习率，一般取值0.001，$ \alpha $表示动力大小，一般取值0.9，$ E[g^2]_t $表示前t次的梯度平方的均值。<br><strong>RMSProp</strong>：是对AdaGrad的改进，<strong>修改了AdaGrad的梯度累加变为加权平均</strong>。<br><strong>RMSProp优点</strong>：</p>
+<h1 id="RMSProp"><a href="#RMSProp" class="headerlink" title="RMSProp"></a><font size="5" color="red">RMSProp</font></h1><script type="math/tex; mode=display">\begin{cases} W_{t+1}=W_{t} - \frac{\eta_0}{\sqrt{E[g^2]_t} + \epsilon} \odot g_t \\\\ E[g^2]_t = \alpha E[g^2]_{t - 1} + (1 - \alpha)g_t^2  \end{cases}</script><p>其中$ W<em>{t} $表示t时刻模型参数，$ g_t $表示第t次迭代的梯度，$ \epsilon $避免分母为0，一般取值1e-7，$ \eta</em>{t} $表示全局学习率，一般取值0.001，$ \alpha $表示动力大小，一般取值0.9，$ E[g^2]_t $表示前t次的梯度平方的均值。<br><strong>RMSProp</strong>：是对AdaGrad的改进，<strong>修改了AdaGrad的梯度累加变为加权平均</strong>。<br><strong>RMSProp优点</strong>：</p>
 <ul>
 <li>由于使用加权平均，可以<strong>避免AdaGrad中学习率越来越低的问题</strong>。<br>在TensorFlow2.0中给我们提供了RMSProp的类<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow.keras as keras</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">optimizer = keras.optimizers.RMSProp(learning_rate=0.001, rho=0.9, epsilon=1e-7)</span><br></pre></td></tr></tbody></table></figure>
 </li>
 </ul>
-<h1 id="AdaDelta"><a href="#AdaDelta" class="headerlink" title="AdaDelta"></a><font size="5" color="red">AdaDelta</font></h1><script type="math/tex; mode=display">\begin{cases} W_{t+1}=W_{t} + \Delta W_{t} \\\\ \Delta W_{t} = -\frac{\sqrt{\sum_{i=1}^{t-1}{\Delta W_{i}}}}{\sqrt{E[g^2]\_t} + \epsilon} \\\\ E[g^2]\_t = \alpha E[g^2]\_{t - 1} + (1 - \alpha)g_t^2  \end{cases}</script><p>其中$ W_{t} $表示t时刻模型参数，$ g_t $表示第t次迭代的梯度，$ \epsilon $避免分母为0，一般取值1e-7，$ \alpha $表示动力大小，一般取值0.95，$ E[g^2]_t $表示前t次的梯度平方的均值。<br><strong>AdaDelta</strong>：<strong>结合AdaGrad和RMSProp两种算法每次参数的更新步长</strong>。<br><strong>AdaDelta优点</strong>：</p>
+<h1 id="AdaDelta"><a href="#AdaDelta" class="headerlink" title="AdaDelta"></a><font size="5" color="red">AdaDelta</font></h1><script type="math/tex; mode=display">\begin{cases} W_{t+1}=W_{t} + \Delta W_{t} \\\\ \Delta W_{t} = -\frac{\sqrt{\sum_{i=1}^{t-1}{\Delta W_{i}}}}{\sqrt{E[g^2]_t} + \epsilon} \\\\ E[g^2]_t = \alpha E[g^2]_{t - 1} + (1 - \alpha)g_t^2  \end{cases}</script><p>其中$ W_{t} $表示t时刻模型参数，$ g_t $表示第t次迭代的梯度，$ \epsilon $避免分母为0，一般取值1e-7，$ \alpha $表示动力大小，一般取值0.95，$ E[g^2]_t $表示前t次的梯度平方的均值。<br><strong>AdaDelta</strong>：<strong>结合AdaGrad和RMSProp两种算法每次参数的更新步长</strong>。<br><strong>AdaDelta优点</strong>：</p>
 <ul>
 <li><strong>不需要设置全局学习率</strong>。<br><strong>AdaDelta缺点</strong>：</li>
 <li><strong>在模型训练的后期，模型会反复地在局部最小值附近抖动</strong>。<br>在TensorFlow2.0中给我们提供了AdaDelta的类<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow.keras as keras</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 其中的learning_rate匹配论文中的精确形式，使用1.0，等效为实现与学习率无关</span><br><span class="line">optimizer = tf.keras.optimizers.AdaDelta(learning_rate=1.0, rho=0.95, epsilon=1e-7)</span><br></pre></td></tr></tbody></table></figure>
@@ -731,7 +731,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">131</span>
+                  <span class="site-state-item-count">134</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -779,9 +779,9 @@
             </div>
           
 
-	<div id="music163player"> 
-    		<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="298" height="52" src="//music.163.com/outchain/player?type=2&id=436675656&auto=0&height=32"></iframe>
- 	</div>
+  <div id="music163player"> 
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="298" height="52" src="//music.163.com/outchain/player?type=2&id=436675656&auto=0&height=32"></iframe>
+  </div>
 
           
           
