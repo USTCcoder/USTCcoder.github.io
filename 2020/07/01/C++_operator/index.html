@@ -130,12 +130,12 @@
 
 
 
-<meta name="description" content="C++基础">
+<meta name="description" content="C++运算符">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++运算符">
 <meta property="og:url" content="https://USTCcoder.github.io/2020/07/01/C++_operator/index.html">
 <meta property="og:site_name" content="GitHub">
-<meta property="og:description" content="C++基础">
+<meta property="og:description" content="C++运算符">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ustccoder.github.io/images/LANGUAGE/python3.jpg">
 <meta property="og:image" content="https://ustccoder.github.io/images/LANGUAGE/C++2.png">
@@ -144,10 +144,10 @@
 <meta property="og:image" content="https://ustccoder.github.io/images/LANGUAGE/C++5.png">
 <meta property="og:image" content="https://ustccoder.github.io/images/LANGUAGE/C++6.png">
 <meta property="og:image" content="https://ustccoder.github.io/images/LANGUAGE/C++7.png">
-<meta property="og:updated_time" content="2020-07-12T15:24:33.951Z">
+<meta property="og:updated_time" content="2020-07-19T12:47:45.647Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++运算符">
-<meta name="twitter:description" content="C++基础">
+<meta name="twitter:description" content="C++运算符">
 <meta name="twitter:image" content="https://ustccoder.github.io/images/LANGUAGE/python3.jpg">
 
 
@@ -461,7 +461,7 @@
 
           
               <div class="post-description">
-                  <table><tr><td bgcolor="grey"><font size="5" face="STXihei" color="white"><center>C++基础</center></font></td></tr></table>
+                  <table><tr><td bgcolor="grey"><font size="5" face="STXihei" color="white"><center>C++运算符</center></font></td></tr></table>
               </div>
           
 
@@ -479,7 +479,7 @@
 
       
         <p><img src="/images/LANGUAGE/python3.jpg" alt="2"></p>
-<h1 id="C-介绍"><a href="#C-介绍" class="headerlink" title="C++介绍"></a><font size="5" color="red">C++介绍</font></h1><p>  在前面已经介绍了C++的由来，这里主要介绍C++的运算符，包括赋值运算符，算术运算符，关系运算符，逻辑运算符，三目运算符。<br><a id="more"></a></p>
+<h1 id="C-运算符"><a href="#C-运算符" class="headerlink" title="C++运算符"></a><font size="5" color="red">C++运算符</font></h1><p>  在前面已经介绍了C++的由来，这里主要介绍C++的运算符，包括赋值运算符，算术运算符，关系运算符，逻辑运算符，三目运算符。<br><a id="more"></a></p>
 <h1 id="C-创建变量"><a href="#C-创建变量" class="headerlink" title="C++创建变量"></a><font size="4">C++创建变量</font></h1><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main() {</span><br><span class="line">	// C++中的变量创建时必须写清楚数据类型，也可以先定义，然后在其他地方赋初始值</span><br><span class="line">	short s = 1;</span><br><span class="line">	int i = 20;</span><br><span class="line">	long l = 300;</span><br><span class="line">	long long ll = 4000L;</span><br><span class="line">	char c = 'A';</span><br><span class="line">	float f = 3.14f;</span><br><span class="line">	double d = 1.234567;</span><br><span class="line">	bool b;</span><br><span class="line">	b = true</span><br><span class="line"></span><br><span class="line">	// 可以用sizeof(obj) 查看创建的变量大小，typeid(obj).name()可以查看变量的类型</span><br><span class="line">	cout &lt;&lt; "s=" &lt;&lt; s &lt;&lt; "  类型为" &lt;&lt; typeid(s).name() &lt;&lt; "  所占内存大小为" &lt;&lt; sizeof(s) &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; "i=" &lt;&lt; i &lt;&lt; "  类型为" &lt;&lt; typeid(i).name() &lt;&lt; "  所占内存大小为" &lt;&lt; sizeof(i) &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; "l=" &lt;&lt; l &lt;&lt; "  类型为" &lt;&lt; typeid(l).name() &lt;&lt; "  所占内存大小为" &lt;&lt; sizeof(l) &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; "ll=" &lt;&lt; ll &lt;&lt; "  类型为" &lt;&lt; typeid(ll).name() &lt;&lt; "  所占内存大小为" &lt;&lt; sizeof(ll) &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; "c=" &lt;&lt; c &lt;&lt; "  类型为" &lt;&lt; typeid(c).name() &lt;&lt; "  所占内存大小为" &lt;&lt; sizeof(c) &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; "f=" &lt;&lt; f &lt;&lt; "  类型为" &lt;&lt; typeid(f).name() &lt;&lt; "  所占内存大小为" &lt;&lt; sizeof(f) &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; "d=" &lt;&lt; d &lt;&lt; "  类型为" &lt;&lt; typeid(d).name() &lt;&lt; "  所占内存大小为" &lt;&lt; sizeof(d) &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; "b=" &lt;&lt; b &lt;&lt; "  类型为" &lt;&lt; typeid(b).name() &lt;&lt; "  所占内存大小为" &lt;&lt; sizeof(b) &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p><img src="/images/LANGUAGE/C++2.png" alt="1"></p>
 <h1 id="C-算术运算"><a href="#C-算术运算" class="headerlink" title="C++算术运算"></a><font size="4">C++算术运算</font></h1><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main() {</span><br><span class="line">	// +(加)，-(减)，*(乘)，/(除)，%(求余)，整数除法结果只能得到整数，注意字符型和布尔型也可以参与运算，字符型的值为ASCII码对应的值，布尔型的true代表1，false代表0</span><br><span class="line">	//进行计算时要注意数据的范围，以及低范围和高范围数据类型进行运算时，数据会发生自动类型转换到高范围，高范围数据向低范围数据要强制类型转换</span><br><span class="line">	int a = 2;</span><br><span class="line">	long l = 999;</span><br><span class="line">	char c = 'A';</span><br><span class="line">	bool b = false;</span><br><span class="line">	double d = 3.14159;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; "a + c =" &lt;&lt; a + c &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; "a * b =" &lt;&lt; a * b &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; "l / a =" &lt;&lt; l / a &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; "l % a =" &lt;&lt; l % a &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; "a * a * d =" &lt;&lt; a * a * d &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; "a * a * d =" &lt;&lt; (int)(a * a * d) &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
@@ -559,8 +559,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/06/29/Java_introduction/" rel="next" title="Java介绍">
-                <i class="fa fa-chevron-left"></i> Java介绍
+              <a href="/2020/06/28/C++_introduction/" rel="next" title="C++介绍">
+                <i class="fa fa-chevron-left"></i> C++介绍
               </a>
             
           </div>
@@ -569,8 +569,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/07/02/Java_operator/" rel="prev" title="Java运算符">
-                Java运算符 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/07/04/C++_control/" rel="prev" title="C++流程控制">
+                C++流程控制 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -682,7 +682,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">140</span>
+                  <span class="site-state-item-count">142</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -693,7 +693,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -773,7 +773,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-介绍"><span class="nav-number">1.</span> <span class="nav-text">C++介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-创建变量"><span class="nav-number">2.</span> <span class="nav-text">C++创建变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-算术运算"><span class="nav-number">3.</span> <span class="nav-text">C++算术运算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-关系运算"><span class="nav-number">4.</span> <span class="nav-text">C++关系运算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-自增自减运算符"><span class="nav-number">5.</span> <span class="nav-text">C++自增自减运算符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-逻辑运算"><span class="nav-number">6.</span> <span class="nav-text">C++逻辑运算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-三目运算符"><span class="nav-number">7.</span> <span class="nav-text">C++三目运算符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-小结"><span class="nav-number">8.</span> <span class="nav-text">C++小结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-运算符"><span class="nav-number">1.</span> <span class="nav-text">C++运算符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-创建变量"><span class="nav-number">2.</span> <span class="nav-text">C++创建变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-算术运算"><span class="nav-number">3.</span> <span class="nav-text">C++算术运算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-关系运算"><span class="nav-number">4.</span> <span class="nav-text">C++关系运算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-自增自减运算符"><span class="nav-number">5.</span> <span class="nav-text">C++自增自减运算符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-逻辑运算"><span class="nav-number">6.</span> <span class="nav-text">C++逻辑运算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-三目运算符"><span class="nav-number">7.</span> <span class="nav-text">C++三目运算符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-小结"><span class="nav-number">8.</span> <span class="nav-text">C++小结</span></a></li></ol></div>
             
 
           </div>
