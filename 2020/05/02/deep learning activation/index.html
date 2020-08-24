@@ -151,7 +151,7 @@
 <meta property="og:image" content="https://ustccoder.github.io/images/deep_learning/swish.png">
 <meta property="og:image" content="https://ustccoder.github.io/images/deep_learning/h_swish.png">
 <meta property="og:image" content="https://ustccoder.github.io/images/deep_learning/softmax.png">
-<meta property="og:updated_time" content="2020-05-12T07:27:54.240Z">
+<meta property="og:updated_time" content="2020-08-16T16:14:51.765Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Activation黑科技">
 <meta name="twitter:description" content="Activation">
@@ -525,14 +525,7 @@
 <p><img src="/images/deep_learning/h_swish.png" alt="h_swish"></p>
 <h1 id="Softmax激活函数"><a href="#Softmax激活函数" class="headerlink" title="Softmax激活函数"></a><font size="5" color="red">Softmax激活函数</font></h1><script type="math/tex; mode=display">\sigma_{i}(z) = \frac{e^{z_i}}{\sum_{j=1}^{m}{e^{z_j}}}</script><p>在TensorFlow2.0中的实现，和其他的激活函数不同，<strong>Softmax激活函数需要指定一个维度，而且使用时也必须先转化为大于一维的tensor形式，numpy格式的数据无法直接使用</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">import tensorflow.keras as keras</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">x = tf.constant([[10, 1, 1, 1]], tf.float32)</span><br><span class="line">y = keras.activations.softmax(x)</span><br></pre></td></tr></tbody></table></figure><p></p>
 <p><img src="/images/deep_learning/softmax.png" alt="softmax"></p>
-<h1 id="优缺点比较"><a href="#优缺点比较" class="headerlink" title="优缺点比较"></a><font size="5" color="red">优缺点比较</font></h1><p><strong>Sigmoid</strong>函数优点：Sigmoid函数处处连续，处处可导。且<strong>能够控制数值的幅度</strong>，不会产生很大的变化，可以<strong>作为二分类任务的输出</strong>，而ReLU类型的激活函数对大于0的值几乎没有约束。<br><strong>Sigmoid</strong>函数缺点<strong>：饱和区的神经元会产生</strong>梯度消失<strong>现象，使得</strong>学习速度大大下降<strong>，并且指数函数计算耗时。
-</strong>tanh<strong>函数优点：tanh函数和Sigmoid类似，但是可以发现</strong>tanh的导数的值域为(0, 1]，而Sigmoid的导数的值域为(0, 0.25]<strong>，因此相当于</strong>延迟了饱和周期<strong>。
-</strong>tanh<strong>函数缺点：tanh函数和Sigmoid类似，也具有</strong>梯度消失<strong>问题，和指数计算耗时问题。
-</strong>ReLU<strong>类函数优点：ReLU类型函数(</strong>ReLU6，Leaky_ReLU，PReLU，SELU，ELU，Mish，Softplus<strong>)会使一部分神经元为0或者非常小，使得网络具有</strong>稀疏性<strong>，</strong>减少了参数的相互依赖关系<strong>，</strong>缓解了过拟合<strong>，而且ReLU函数及其导数的计算非常简单。
-</strong>ReLU<strong>类函数缺点：可能</strong>存在神经元坏死<strong>现象，在x&lt;0的时候，梯度为0，可能会使这个神经元</strong>很难再被激活<strong>，且ReLU函数不能控制参数的幅度，可能会产生</strong>梯度爆炸<strong>现象。
-</strong>Swish<strong>类函数优点：Swish函数是</strong>介于ReLU函数和Sigmoid函数之间的一种平滑函数<strong>，</strong>具有两者的优点<strong>，不会像Sigmoid函数一样产生饱和区，也不会像ReLU函数一样存在坏死神经元。
-</strong>Swish类<strong>函数缺点：Swish函数也</strong>具有两者的缺点<strong>，类似于Sigmoid函数计算耗时，类似于ReLU函数难以控制参数幅度，但整体表现较好。
-</strong>Softmax<strong>函数特点：Softmax函数和其他的激活函数不同，Softmax主要用于</strong>多分类任务<strong>中，如</strong>图像分割<strong>，</strong>目标检测<strong>，需要判断某一个像素或者某一个预测框属于哪一个类别。</strong>Softmax将输入归一化到[0, 1]之间，并且保证和为1<strong>，使人能够联想到概率的条件，也是属于[0, 1]，并且和为1。加上指数的作用是</strong>增加样本之间的差距**，如果输入为90个1和1个10，则直接归一化的结果为90个0.01和1个0.1，如果10是对应的类别，即使已经分类的较好，仍然会使得误差较大。加上指数运算后，归一化的结果为90个0.000122，1个0.989，这样误差就会较小，更加接近于真实的情况。</p>
+<h1 id="优缺点比较"><a href="#优缺点比较" class="headerlink" title="优缺点比较"></a><font size="5" color="red">优缺点比较</font></h1><p><strong>Sigmoid</strong>函数优点：Sigmoid函数处处连续，处处可导。且<strong>能够控制数值的幅度</strong>，不会产生很大的变化，可以<strong>作为二分类任务的输出</strong>，而ReLU类型的激活函数对大于0的值几乎没有约束。<br><strong>Sigmoid</strong>函数缺点：饱和区的神经元会产生<strong>梯度消失</strong>现象，使得<strong>学习速度大大下降</strong>，并且指数函数计算耗时。<br><strong>tanh</strong>函数优点：tanh函数和Sigmoid类似，但是可以发现<strong>tanh的导数的值域为(0, 1]，而Sigmoid的导数的值域为(0, 0.25]</strong>，因此相当于<strong>延迟了饱和周期</strong>。<br><strong>tanh</strong>函数缺点：tanh函数和Sigmoid类似，也具有<strong>梯度消失</strong>问题，和指数计算耗时问题。<br><strong>ReLU</strong>类函数优点：ReLU类型函数(<strong>ReLU6，Leaky_ReLU，PReLU，SELU，ELU，Mish，Softplus</strong>)会使一部分神经元为0或者非常小，使得网络具有<strong>稀疏性</strong>，<strong>减少了参数的相互依赖关系</strong>，<strong>缓解了过拟合</strong>，而且ReLU函数及其导数的计算非常简单。<br><strong>ReLU</strong>类函数缺点：可能<strong>存在神经元坏死</strong>现象，在x&lt;0的时候，梯度为0，可能会使这个神经元<strong>很难再被激活</strong>，且ReLU函数不能控制参数的幅度，可能会产生<strong>梯度爆炸</strong>现象。<br><strong>Swish</strong>类函数优点：Swish函数是<strong>介于ReLU函数和Sigmoid函数之间的一种平滑函数</strong>，<strong>具有两者的优点</strong>，不会像Sigmoid函数一样产生饱和区，也不会像ReLU函数一样存在坏死神经元。<br><strong>Swish类</strong>函数缺点：Swish函数也<strong>具有两者的缺点</strong>，类似于Sigmoid函数计算耗时，类似于ReLU函数难以控制参数幅度，但整体表现较好。<br><strong>Softmax</strong>函数特点：Softmax函数和其他的激活函数不同，Softmax主要用于<strong>多分类任务</strong>中，如<strong>图像分割</strong>，<strong>目标检测</strong>，需要判断某一个像素或者某一个预测框属于哪一个类别。<strong>Softmax将输入归一化到[0, 1]之间，并且保证和为1</strong>，使人能够联想到概率的条件，也是属于[0, 1]，并且和为1。加上指数的作用是<strong>增加样本之间的差距</strong>，如果输入为90个1和1个10，则直接归一化的结果为90个0.01和1个0.1，如果10是对应的类别，即使已经分类的较好，仍然会使得误差较大。加上指数运算后，归一化的结果为90个0.000122，1个0.989，这样误差就会较小，更加接近于真实的情况。</p>
 <h1 id="激活函数的选择"><a href="#激活函数的选择" class="headerlink" title="激活函数的选择"></a><font size="5" color="red">激活函数的选择</font></h1><ol>
 <li>首先<strong>判断任务类型</strong>，是分类任务，回归任务，还是作为隐藏层非线性单元，如果是<strong>多分类任务则考虑Softmax激活函数</strong>，如果是<strong>二分类任务则考虑Sigmoid，tanh激活函数</strong>，如果是<strong>回归任务则可以考虑不加激活函数，因为激活函数可能会对回归的数据产生限制</strong>，如果是<strong>隐藏层非线性单元则考虑Sigmoid，tanh，ReLU，Swish</strong>等等。</li>
 <li>如果是隐藏层非线性单元，<strong>首先尝试ReLU激活函数</strong>，如果<strong>ReLU效果欠佳则考虑ReLU变种激活函数</strong>，ReLU6，Leaky_ReLU，SELU，ELU，Mish，Softplus等等</li>
@@ -728,7 +721,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">164</span>
+                  <span class="site-state-item-count">171</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

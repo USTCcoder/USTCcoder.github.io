@@ -139,7 +139,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ustccoder.github.io/images/deep_learning/normal.png">
 <meta property="og:image" content="https://ustccoder.github.io/images/deep_learning/normalization.png">
-<meta property="og:updated_time" content="2020-06-03T07:43:27.706Z">
+<meta property="og:updated_time" content="2020-08-16T16:13:34.382Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Normalization黑科技">
 <meta name="twitter:description" content="Normalization">
@@ -495,7 +495,7 @@
 <h1 id="Normalization原理分析"><a href="#Normalization原理分析" class="headerlink" title="Normalization原理分析"></a><font size="5" color="red">Normalization原理分析</font></h1><p>  为了解决上述ICS问题，我们需要将变量分布变成相同分布的，这使我们想到了<strong>标准化操作</strong>。<br><img src="/images/deep_learning/normal.png" alt="normal"></p>
 <ol>
 <li>我们可以通过$ \hat{x} = \frac{x - \mu}{\sigma} $，$ \mu $是平移参数，$ \sigma $是缩放参数<strong>将数据变成符合均值为0，方差为1的标准分布</strong>。</li>
-<li>我们再通过$ y = \gamma <em> \hat{x} + \beta $, $ \beta $是再平移参数，$ \gamma $是再缩放参数<em>*将数据变成符合均值为$ \beta $，方差为$ {\gamma}^2 $的标准分布</em></em>。</li>
+<li>我们再通过$ y = \gamma \cdot \hat{x} + \beta $, $ \beta $是再平移参数，$ \gamma $是再缩放参数<strong>将数据变成符合均值为$ \beta $，方差为$ {\gamma}^2 $的标准分布</strong>。</li>
 </ol>
 <p><font size="3" color="red">  奇怪的知识增加了？？？为什么第一步得到标准分布之后，第二步又给变走了？</font><br>  是这样的，首先为了<strong>保证模型的表达能力不因为规范化而下降</strong>，如果没有再平移和缩放，会导致输入的参数分布可能发生较大的变化，这样可能会对模型的表达能力产生影响。其次这两组参数是意义上完全不同的概念，<strong>$ \mu $和$ \sigma $受到上一层输入的影响，$ \beta $和$ \gamma $是独立的，与输入无关</strong>，是网络后来加入的，<strong>会在接下来训练过程中不断学习的，也是为了尊重神经网络的学习结果</strong>。因此这两步是有必要的。</p>
 <h1 id="Normalization优点"><a href="#Normalization优点" class="headerlink" title="Normalization优点"></a><font size="5" color="red">Normalization优点</font></h1><ol>
@@ -704,7 +704,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">164</span>
+                  <span class="site-state-item-count">171</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
