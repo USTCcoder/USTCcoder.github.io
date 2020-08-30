@@ -137,13 +137,13 @@
 <meta property="og:site_name" content="GitHub">
 <meta property="og:description" content="C++容器(String)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://ustccoder.github.io/images/LANGUAGE/C++22.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/LANGUAGE/C++63.png">
 <meta property="og:image" content="https://ustccoder.github.io/images/LANGUAGE/C++64.png">
-<meta property="og:updated_time" content="2020-08-17T15:57:29.610Z">
+<meta property="og:updated_time" content="2020-08-30T01:30:57.026Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++容器(String)">
 <meta name="twitter:description" content="C++容器(String)">
-<meta name="twitter:image" content="https://ustccoder.github.io/images/LANGUAGE/C++22.png">
+<meta name="twitter:image" content="https://ustccoder.github.io/images/LANGUAGE/C++63.png">
 
 
 
@@ -484,7 +484,7 @@
       
 
       
-        <p><img src="/images/LANGUAGE/C++22.png" alt="2"></p>
+        <p><img src="/images/LANGUAGE/C++63.png" alt="2"></p>
 <h1 id="C-容器-String"><a href="#C-容器-String" class="headerlink" title="C++容器(String)"></a><font size="5" color="red">C++容器(String)</font></h1><p>  容器是C++非常方便的功能，今天给小伙伴们介绍string库，string库是C++专门用于处理字符串的库，里面内置了许多字符串的算法，在刷题时常常使用它。<br><a id="more"></a></p>
 <h1 id="string容器"><a href="#string容器" class="headerlink" title="string容器"></a><font size="5">string容器</font></h1><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main() {</span><br><span class="line">	//创建时直接当成数据类型使用即可，不需要记构造函数，使用最广泛最方便。</span><br><span class="line">	string a = "hello world!";</span><br><span class="line">	string b = "hello";</span><br><span class="line">	cout &lt;&lt; "a = " &lt;&lt; a &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; "b = " &lt;&lt; b &lt;&lt; endl;</span><br><span class="line">	</span><br><span class="line">	//length方法，求出字符串的长度。</span><br><span class="line">	int lenA = a.length();</span><br><span class="line">	cout &lt;&lt; "lenA = " &lt;&lt; lenA &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	//字符串截取操作，返回一个字符串。如果不指定，默认截取到最后一个字符。</span><br><span class="line">	string c = a.substr(3);</span><br><span class="line">	string d = a.substr(3, 4);</span><br><span class="line">	cout &lt;&lt; "c = " &lt;&lt; c &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; "d = " &lt;&lt; d &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	//字符串拼接操作，使用加法即可，不需要记append方法。</span><br><span class="line">	string e = a + " hello C++";</span><br><span class="line">	cout &lt;&lt; "e = " &lt;&lt; e &lt;&lt; endl;</span><br><span class="line">	</span><br><span class="line">	//查找操作，find为从左到右查找，rfind为从右到左查找，如果不指定则从头开始查找，如果指定则从指定位置开始。</span><br><span class="line">	int indexL = a.find("l");</span><br><span class="line">	int indexL1 = a.find("l", 3);</span><br><span class="line">	int indexR = a.rfind("l");</span><br><span class="line">	cout &lt;&lt; "indexL = " &lt;&lt; indexL &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; "indexL1 = " &lt;&lt; indexL1 &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; "indexR = " &lt;&lt; indexR &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	//字符串替换操作，replace(pos, n, str)用str替换pos后面n个字符，注意这个操作会改变原字符串。</span><br><span class="line">	string f = a.replace(6, 5, "C++");</span><br><span class="line">	cout &lt;&lt; "f = " &lt;&lt; f &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; "a = " &lt;&lt; a &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	//字符串字典序比较，按照ASCII码进行字符串比较，大于则返回1，小于则返回-1，等于返回0</span><br><span class="line">	int compare = a.compare("Hello world!");</span><br><span class="line">	cout &lt;&lt; "compare = " &lt;&lt; compare &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	//索引操作，返回指定位置的字符，也可以使用at方法。</span><br><span class="line">	char at = a[6];</span><br><span class="line">	cout &lt;&lt; "at = " &lt;&lt; at &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	//插入操作，insert(pos, str)在pos处插入str字符串，注意这个操作会改变原字符串。</span><br><span class="line">	string g = a.insert(6, "world! hello ");</span><br><span class="line">	cout &lt;&lt; "g = " &lt;&lt; g &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; "a = " &lt;&lt; a &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	//删除操作，erase(pos, n)删除pos后面的n个字符，注意这个操作会改变原字符串。</span><br><span class="line">	string h = a.erase(6, 7);</span><br><span class="line">	cout &lt;&lt; "h = " &lt;&lt; h &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; "a = " &lt;&lt; a &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	//字符串打印，有很多种方法，可以使用普通的方法，i从0遍历到length()，对于每一个i，使用索引方法获得。</span><br><span class="line">	//在这里使用一种迭代器方法，begin()返回起始位置的迭代器对象，不可以直接访问，需要用指针才可以访问，end()同理。</span><br><span class="line">	for (string::iterator it = a.begin(); it != a.end(); it++) {</span><br><span class="line">		cout &lt;&lt; *it &lt;&lt; "-";</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p><img src="/images/LANGUAGE/C++64.png" alt="1"></p>
@@ -564,6 +564,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/08/25/C++_stl_vector/" rel="prev" title="C++容器(Vector)">
+                C++容器(Vector) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -674,7 +678,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">171</span>
+                  <span class="site-state-item-count">173</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

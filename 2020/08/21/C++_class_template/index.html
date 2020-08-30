@@ -137,15 +137,15 @@
 <meta property="og:site_name" content="GitHub">
 <meta property="og:description" content="C++类模板">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://ustccoder.github.io/images/LANGUAGE/C++22.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/LANGUAGE/C++59.png">
 <meta property="og:image" content="https://ustccoder.github.io/images/LANGUAGE/C++60.png">
 <meta property="og:image" content="https://ustccoder.github.io/images/LANGUAGE/C++61.png">
 <meta property="og:image" content="https://ustccoder.github.io/images/LANGUAGE/C++62.png">
-<meta property="og:updated_time" content="2020-08-17T14:22:37.361Z">
+<meta property="og:updated_time" content="2020-08-30T01:30:36.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++类模板">
 <meta name="twitter:description" content="C++类模板">
-<meta name="twitter:image" content="https://ustccoder.github.io/images/LANGUAGE/C++22.png">
+<meta name="twitter:image" content="https://ustccoder.github.io/images/LANGUAGE/C++59.png">
 
 
 
@@ -486,7 +486,7 @@
       
 
       
-        <p><img src="/images/LANGUAGE/C++22.png" alt="2"></p>
+        <p><img src="/images/LANGUAGE/C++59.png" alt="2"></p>
 <h1 id="C-类模板"><a href="#C-类模板" class="headerlink" title="C++类模板"></a><font size="5" color="red">C++类模板</font></h1><p>  前天介绍了C++中函数模板的相关知识，函数模板非常简单，使用也很方便，C++中还给我们提供了类模板的相关知识，但是相比较而言，类模板就非常复杂，知识点很多，也并不经常使用，小伙伴作为了解即可。<br><a id="more"></a></p>
 <h1 id="类模板"><a href="#类模板" class="headerlink" title="类模板"></a><font size="5">类模板</font></h1><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">//类模板：建立一个通用类，类的成员数据类型不具体指定，定义方式和函数模板相同。</span><br><span class="line">//区别在于类模板没有自动类型推导，使用时必须指定类型。函数模板中的默认参数没有意义，类模板中默认参数有意义。</span><br><span class="line">//类模板和普通类的区别在于：类模板中的成员函数并不是创建类时创建，而是调用时创建，而普通类中的成员函数是在创建类时创建。</span><br><span class="line">template &lt;class TName, class TAge=int&gt;</span><br><span class="line">class Person</span><br><span class="line">{</span><br><span class="line">public:</span><br><span class="line">	TName tName;</span><br><span class="line">	TAge  tAge;</span><br><span class="line">	Person(TName tName, TAge tAge) {</span><br><span class="line">		this-&gt;tName = tName;</span><br><span class="line">		this-&gt;tAge = tAge;</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	void print() {</span><br><span class="line">		cout &lt;&lt; "我的名字是：" &lt;&lt; this-&gt;tName &lt;&lt; "，我的年龄是：" &lt;&lt; this-&gt;tAge &lt;&lt; endl;</span><br><span class="line">	}</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line">int main() {</span><br><span class="line"></span><br><span class="line">	Person&lt;string&gt; p1("C++程序员", 30);</span><br><span class="line">	p1.print();</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p><img src="/images/LANGUAGE/C++60.png" alt="1"></p>
@@ -684,7 +684,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">171</span>
+                  <span class="site-state-item-count">173</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
