@@ -138,7 +138,7 @@
 <meta property="og:description" content="Leetcode 剑指Offer44">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/leetcodeoffer44.png">
-<meta property="og:updated_time" content="2020-08-14T13:46:45.332Z">
+<meta property="og:updated_time" content="2020-09-02T02:17:34.137Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数字序列中某一位的数字(Leetcode 剑指Offer44)">
 <meta name="twitter:description" content="Leetcode 剑指Offer44">
@@ -454,7 +454,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  505
+                  501
                 </span>
               
 
@@ -483,10 +483,9 @@
       
 
       
-        <p><strong><font size="5" color="gray"></font></strong></p><center><strong><font size="5" color="gray">Leetcode 剑指Offer44</font></strong></center><p></p>
+        <p><img src="/images/ALGORITHM/leetcodeoffer44.png" alt="1"></p>
 <h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   这个题目应该和43题一起做，都是经典的找规律的题目，这个题目相比上一题简单一些，小伙伴们开动脑筋想一想。</p>
 <a id="more"></a>
-<p><img src="/images/ALGORITHM/leetcodeoffer44.png" alt="q"></p>
 <h1 id="数学规律"><a href="#数学规律" class="headerlink" title="数学规律"></a><font size="5" color="red">数学规律</font></h1><p>我们一般按照位数进行找规律，0-9一位数中，每个数字只有一个字符，共10个字符。而10-99中，这90个两位数中，每个数字都有2个字符，共180个字符。而100-999中，共有900个数字，每个数字有3个字符，共2700个字符。我们将其累加，就可以得到从0开始到k位数的字符总和。如果n大于该数，说明还需要继续叠加，如果n小于等于该数，说明n在k位数之中。</p>
 <p>我以2000这个数字举例，0-99有190个字符，0-999有2890个字符，因此2000在100-999之间，而100-999全都是3位数，因此2000-190=1810说明是从100开始的第1810个字符。1810除以3得到的整数位603，即从100开始的第603个数是602，余数为1，说明是602的第1个字符（索引从0开始计算），因此结果为0。时间复杂度为$O(log(n))$，空间复杂度为$O(log(n))$。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def findNthDigit(self, n: int) -&gt; int:</span><br><span class="line">        if n &lt; 10:</span><br><span class="line">            return n</span><br><span class="line">        current, next_ = 10, 190</span><br><span class="line">        k = 2</span><br><span class="line">        while next_ &lt; n:</span><br><span class="line">            k += 1</span><br><span class="line">            current = next_</span><br><span class="line">            next_ = next_ + 9 * k * 10 ** (k - 1)</span><br><span class="line">        number = (n - current) // k + 10 ** (k - 1)</span><br><span class="line">        remain = (n - current) % k</span><br><span class="line">        return int(str(number)[remain])</span><br></pre></td></tr></tbody></table></figure><p></p>
 <h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  数学题目的规律往往需要按照数字的位数进行找规律，先找一位数，然后找两位数，然后找三位数，往往就可以发现一些规律。这种题不经常出现，但也是小伙伴们必须要掌握的，否则遇到就两眼一抹黑。</p>
@@ -679,7 +678,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">173</span>
+                  <span class="site-state-item-count">177</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

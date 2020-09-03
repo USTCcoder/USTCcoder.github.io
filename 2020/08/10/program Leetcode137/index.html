@@ -140,7 +140,7 @@
 <meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/leetcode137.png">
 <meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/leetcode137_solve.png">
 <meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/leetcode137_solve1.png">
-<meta property="og:updated_time" content="2020-08-14T16:44:51.980Z">
+<meta property="og:updated_time" content="2020-09-02T02:18:02.382Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="只出现一次的数字 II(Leetcode 137)">
 <meta name="twitter:description" content="Leetcode 137">
@@ -456,7 +456,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  686
+                  684
                 </span>
               
 
@@ -485,10 +485,9 @@
       
 
       
-        <p><strong><font size="5" color="gray"></font></strong></p><center><strong><font size="5" color="gray">Leetcode 137</font></strong></center><p></p>
+        <p><img src="/images/ALGORITHM/leetcode137.png" alt="1"></p>
 <h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>  这个题目比昨天的题目难度大很多，是谷歌公司面试的一道题目，拍了拍自己的胸脯，幸好没去谷歌（狗头保命）。</p>
 <a id="more"></a>
-<p><img src="/images/ALGORITHM/leetcode137.png" alt="q"></p>
 <h1 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a><font size="5" color="red">位运算</font></h1><p>想一下每个元素出现两次时是咋做的？是不是记录二进制位中1出现的个数，并对2求余。一个数如果某一位是1，出现2次，就为2，然后对2求余就为0。因此单独的一个数对2求余就为1，所以该数在哪些位置上为1，则最后的结果在哪些位置上也为1。设当前某一位为0，下一个数在该位上为1，那么该位的状态位1，下一个数在该为上位0，那么该位的状态位0。设当前某一位为1，下一个数在该位上为1，那么该位的状态位0，下一个数在该为上位0，那么该位的状态位1。这不正好符合异或的定义吗？</p>
 <p>那我们考虑一下每个元素出现三次时的情况，也应该记录二进制位中1出现的个数，并对3求余，一个数如果某一位是1，出现3次，就为3，然后对3求余就为0。因此单独的一个数对3求余就为1，所以该数在哪些位置上为1，则最后的结果在哪些位置上也为1。但是出现了一个问题，出现2次，余数可以用0和1表示，那么出现3次如何表示呢？余数为0，1，2，需要使用3个状态表示，也就是需要两位表示。</p>
 <p>下面借用Leetcode Krahets(K神)的图<br><img src="/images/ALGORITHM/leetcode137_solve.png" alt="q"></p>
@@ -683,7 +682,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">173</span>
+                  <span class="site-state-item-count">177</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

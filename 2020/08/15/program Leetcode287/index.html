@@ -139,7 +139,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/leetcode287.png">
 <meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/leetcode287_solve.png">
-<meta property="og:updated_time" content="2020-08-15T16:34:29.760Z">
+<meta property="og:updated_time" content="2020-09-02T02:18:16.772Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="寻找重复数(Leetcode 287)">
 <meta name="twitter:description" content="Leetcode 287">
@@ -455,7 +455,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  974
+                  972
                 </span>
               
 
@@ -484,10 +484,9 @@
       
 
       
-        <p><strong><font size="5" color="gray"></font></strong></p><center><strong><font size="5" color="gray">Leetcode 287</font></strong></center><p></p>
+        <p><img src="/images/ALGORITHM/leetcode287.png" alt="1"></p>
 <h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   这道题也是找数字的题目，但是不同的是，之前讲的都是在重复数字中找单独出现的数字，而这个题目是在单独的数字中，查找重复数字，又该如何去应对呢？</p>
 <a id="more"></a>
-<p><img src="/images/ALGORITHM/leetcode287.png" alt="q"></p>
 <h1 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a><font size="5" color="red">二分查找</font></h1><p>因为题目中数字是从1到n，而且存在重复元素，元素的总个数为n+1。我们思考，如果元素总个数为n，并且无重复元素的情况下，那么不就是从1到n的随机排列吗？那么多了一个数，必然存在重复的情况，假设重复的元素为x，当$k \ge x$时，那么小于等于k的元素个数有k + 1个，当$k &lt; x$时，那么小于等于k的元素有k个。我们思考如果不是从1到n全都存在的情况下，即有一个数字重复出现很多次的情况，这种思路还正确吗？当然也是正确的，小伙伴们可以举个例子验证一下，我也只可意会不可言传。因此可以考虑二分法进行求解。<br>令k=mid，当mid代入时，数组中小于mid的元素个数大于mid时，说明$mid \ge x$，则令right = mid。否则令left = mid + 1。时间复杂度为O(nlog(n))，空间复杂度为O(1)。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def findDuplicate(self, nums):</span><br><span class="line">        n = len(nums)</span><br><span class="line">        left, right = 1, n - 1</span><br><span class="line">        while left &lt; right:</span><br><span class="line">            mid = (left + right) // 2</span><br><span class="line">            cnt = sum([x &lt;= mid for x in nums])</span><br><span class="line">            if cnt &gt; mid:</span><br><span class="line">                right = mid</span><br><span class="line">            else:</span><br><span class="line">                left = mid + 1</span><br><span class="line">        return left</span><br></pre></td></tr></tbody></table></figure><p></p>
 <h1 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a><font size="5" color="red">位运算</font></h1><p>这个位运算很简单，从1到n，分别计算每一位上出现的总个数，因为有一个数x重复，假设x的某个二进制位为1，则数组中该位为1的数字个数一定大于从1到n所有数字中该位为1的数字个数，否则一定小于等于。因此我们按位进行比较，最后哪些位为1，就可以得到该数字的二进制表示。时间复杂度为O(nlog(n))，空间复杂度为O(1)。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def findDuplicate(self, nums):</span><br><span class="line">        n = len(nums)</span><br><span class="line">        k = len(bin(n)) - 2</span><br><span class="line">        res = 0</span><br><span class="line">        for i in range(k):</span><br><span class="line">            bit_nums, bit_origin = 0, 0</span><br><span class="line">            for x in nums:</span><br><span class="line">                if x &amp; (1 &lt;&lt; i):</span><br><span class="line">                    bit_nums += 1</span><br><span class="line">            for x in range(1, n):</span><br><span class="line">                if x &amp; (1 &lt;&lt; i):</span><br><span class="line">                    bit_origin += 1</span><br><span class="line">            if bit_origin &lt; bit_nums:</span><br><span class="line">                res |= 1 &lt;&lt; i</span><br><span class="line">        return res</span><br></pre></td></tr></tbody></table></figure><p></p>
 <h1 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a><font size="5" color="red">双指针</font></h1><p>这题很难想出和双指针有什么关系，官方和一些民间大神总有一些骚想法，我们来看一看。因为数组的长度为n+1，数组的最大值为n，因此我们可以看成数组中每个元素保存的是下一个元素的索引，这样就相当于一个指针。因此有重复的数字，说明构成了环。我们需要找到环的入口处。<br>这个问题就转化成了一个经典的快慢指针问题。我们以题目中的例子进行讲解。<br><img src="/images/ALGORITHM/leetcode287_solve.png" alt="q"><br>时间复杂度为O(n)，空间复杂度为O(1)。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def findDuplicate(self, nums):</span><br><span class="line">        slow = 0</span><br><span class="line">        fast = 0</span><br><span class="line">        while True:</span><br><span class="line">            slow = nums[slow]</span><br><span class="line">            fast = nums[nums[fast]]</span><br><span class="line">            if slow == fast:</span><br><span class="line">                break</span><br><span class="line">        find = 0</span><br><span class="line">        while True:</span><br><span class="line">            find = nums[find]</span><br><span class="line">            slow = nums[slow]</span><br><span class="line">            if find == slow:</span><br><span class="line">                return find</span><br></pre></td></tr></tbody></table></figure><p></p>
@@ -681,7 +680,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">173</span>
+                  <span class="site-state-item-count">177</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

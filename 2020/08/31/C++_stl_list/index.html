@@ -130,19 +130,20 @@
 
 
 
-<meta name="description" content="Leetcode 5">
+<meta name="description" content="C++容器(List)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="正则表达式匹配(Leetcode 5)">
-<meta property="og:url" content="https://USTCcoder.github.io/2020/02/15/program leetcode10/index.html">
+<meta property="og:title" content="C++容器(List)">
+<meta property="og:url" content="https://USTCcoder.github.io/2020/08/31/C++_stl_list/index.html">
 <meta property="og:site_name" content="GitHub">
-<meta property="og:description" content="Leetcode 5">
+<meta property="og:description" content="C++容器(List)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/interview1.png">
-<meta property="og:updated_time" content="2020-05-23T09:05:11.262Z">
+<meta property="og:image" content="https://ustccoder.github.io/images/LANGUAGE/C++77.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/LANGUAGE/C++78.png">
+<meta property="og:updated_time" content="2020-08-25T16:10:17.437Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="正则表达式匹配(Leetcode 5)">
-<meta name="twitter:description" content="Leetcode 5">
-<meta name="twitter:image" content="https://ustccoder.github.io/images/ALGORITHM/interview1.png">
+<meta name="twitter:title" content="C++容器(List)">
+<meta name="twitter:description" content="C++容器(List)">
+<meta name="twitter:image" content="https://ustccoder.github.io/images/LANGUAGE/C++77.png">
 
 
 
@@ -172,13 +173,13 @@
 
 
 
-  <link rel="canonical" href="https://USTCcoder.github.io/2020/02/15/program leetcode10/">
+  <link rel="canonical" href="https://USTCcoder.github.io/2020/08/31/C++_stl_list/">
 
 
 
 
 
-  <title>正则表达式匹配(Leetcode 5) | GitHub</title>
+  <title>C++容器(List) | GitHub</title>
   
 
 
@@ -343,7 +344,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/02/15/program leetcode10/">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/08/31/C++_stl_list/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="USTCcoder">
@@ -360,7 +361,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">正则表达式匹配(Leetcode 5)</h1>
+          <h1 class="post-title" itemprop="name headline">C++容器(List)</h1>
         
 
         <div class="post-meta">
@@ -372,8 +373,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-15T10:10:37+08:00">
-                2020-02-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-31T23:51:40+08:00">
+                2020-08-31
               </time>
             
 
@@ -395,8 +396,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/计算机基础知识/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机基础知识</span>
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
                   </a>
                 </span>
 
@@ -406,8 +407,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/计算机基础知识/刷题记录/" itemprop="url" rel="index">
-                    <span itemprop="name">刷题记录</span>
+                  <a href="/categories/C/语言学习/" itemprop="url" rel="index">
+                    <span itemprop="name">语言学习</span>
                   </a>
                 </span>
 
@@ -424,8 +425,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/02/15/program leetcode10/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/02/15/program leetcode10/" itemprop="commentCount"></span>
+                <a href="/2020/08/31/C++_stl_list/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/08/31/C++_stl_list/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -454,7 +455,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  750
+                  732
                 </span>
               
 
@@ -466,7 +467,7 @@
 
           
               <div class="post-description">
-                  <table><tr><td bgcolor="grey"><font size="5" face="STXihei" color="white"><center>Leetcode 5</center></font></td></tr></table>
+                  <table><tr><td bgcolor="grey"><font size="5" face="STXihei" color="white"><center>C++容器(List)</center></font></td></tr></table>
               </div>
           
 
@@ -483,14 +484,11 @@
       
 
       
-        <p><strong><font size="5" color="gray"></font></strong></p><center><strong><font size="5" color="gray">Interview</font></strong></center><p></p>
-<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   这个题目思路很清晰，首先想到两种方法，DFS和BFS，但是要注意如何去解决关系中出现环的情况。</p>
-<a id="more"></a>
-<p><img src="/images/ALGORITHM/interview1.png" alt="q"></p>
-<h1 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a><font size="5" color="red">DFS</font></h1><p>深度优先搜索，就是从那个人开始，一直往下搜索，如果找不到可以联系的人，则记录当前的关系并和已知最远关系进行比较，如果大于最远关系，则赋值给最远关系，并回溯。如果在搜索的过程中发现下一个人出现在已经搜索到的人之中，则回溯，防止出现死循环。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def dfs(current_people, current_relationship):</span><br><span class="line">    global result</span><br><span class="line"></span><br><span class="line">    for neighbor in range(1, n + 1):</span><br><span class="line">        if relationship[current_people][neighbor] == 1 and str(neighbor) not in current_relationship:</span><br><span class="line">            dfs(neighbor, current_relationship + str(neighbor))</span><br><span class="line"></span><br><span class="line">    if len(current_relationship) &gt; len(result):</span><br><span class="line">        result = current_relationship</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">for line in sys.stdin:</span><br><span class="line">    n, m = [int(x) for x in line.strip().split()]</span><br><span class="line">    relationship = [[0 for _ in range(n + 1)] for _ in range(n + 1)]</span><br><span class="line">    for i in range(m):</span><br><span class="line">        a, b = [int(x) for x in sys.stdin.readline().strip().split()]</span><br><span class="line">        relationship[a][b] = 1</span><br><span class="line">        relationship[b][a] = 1</span><br><span class="line">    p = int(sys.stdin.readline().strip())</span><br><span class="line">    result = ''</span><br><span class="line">    dfs(p, str(p))</span><br><span class="line">    print(result)</span><br></pre></td></tr></tbody></table></figure><p></p>
-<h1 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a><font size="5" color="red">BFS</font></h1><p>广度优先搜索，就是从那个人开始，将他可以联系到的所有人都记录下来，并称之为朋友，然后再寻找他朋友的朋友，即将和他朋友的朋友都记录下来，然后再寻找他朋友的朋友的朋友。如果再搜索时发现某个朋友已经出现在寻找的路径之中，则不继续搜索这个路径，每次迭代后关系就会增加一轮，直到最远的关系被找到为止。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">for line in sys.stdin:</span><br><span class="line">    n, m = [int(x) for x in line.strip().split()]</span><br><span class="line">    relationship = [[0 for _ in range(n + 1)] for _ in range(n + 1)]</span><br><span class="line">    for i in range(m):</span><br><span class="line">        a, b = [int(x) for x in sys.stdin.readline().strip().split()]</span><br><span class="line">        relationship[a][b] = 1</span><br><span class="line">        relationship[b][a] = 1</span><br><span class="line">    p = int(sys.stdin.readline().strip())</span><br><span class="line">    result = ''</span><br><span class="line">    queue = [[p, str(p)]]</span><br><span class="line">    while queue:</span><br><span class="line">        result = queue[-1]</span><br><span class="line">        current_people, current_relationship = queue.pop(0)</span><br><span class="line">        for neighbor in range(1, n + 1):</span><br><span class="line">            if relationship[current_people][neighbor] == 1 and str(neighbor) not in current_relationship:</span><br><span class="line">                queue.append([neighbor, current_relationship + str(neighbor)])</span><br><span class="line">    print(result[-1])</span><br></pre></td></tr></tbody></table></figure><p></p>
-<h1 id="题目延申"><a href="#题目延申" class="headerlink" title="题目延申"></a><font size="5" color="red">题目延申</font></h1><p>思考：如果本题改为<strong>奇数次最长的子串</strong>该如何去解？<br><strong>思路还是相同的，只不过在寻找状态时要寻找完全相反的状态，如果从初始位置到某个位置的状态为(10101)，那么就去寻找(01010)这个状态最早出现的位置即可</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def findTheLongestSubstring(self, s):</span><br><span class="line">        """</span><br><span class="line">        :type s: str</span><br><span class="line">        :rtype: int</span><br><span class="line">        """</span><br><span class="line">        ans, status, n = 0, 0, len(s)</span><br><span class="line">        chars = ['a', 'e', 'i', 'o', 'u']</span><br><span class="line">        pos = [-1] * (1 &lt;&lt; 5)</span><br><span class="line">        pos[0] = 0</span><br><span class="line"></span><br><span class="line">        for i in range(n):</span><br><span class="line">            if s[i] in chars:</span><br><span class="line">                status ^= 1 &lt;&lt; chars.index(s[i])</span><br><span class="line">            if pos[31 ^ status] != -1:</span><br><span class="line">                ans = max(ans, i + 1 - pos[31 ^ status])</span><br><span class="line">            else:</span><br><span class="line">                pos[status] = i + 1</span><br><span class="line">        return ans</span><br></pre></td></tr></tbody></table></figure><p></p>
-<h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  BFS和DFS是两种重要的路径搜索方法，在绝大多数情况下，两种方法可以相互转换，小伙伴们一定要掌握它。</p>
+        <p><img src="/images/LANGUAGE/C++77.png" alt="2"></p>
+<h1 id="C-容器-List"><a href="#C-容器-List" class="headerlink" title="C++容器(List)"></a><font size="5" color="red">C++容器(List)</font></h1><p>  容器是C++非常方便的功能，今天给小伙伴们介绍List库，List库是C++中的链表容器，其优点是不会造成内存的浪费和溢出，这和Vector相反，而且插入元素非常方便。但是缺点也很明显，需要一个额外的内存空间存放指针，而且因为其不按照内存进行存放，因此遍历花费时间较长。<br><a id="more"></a></p>
+<h1 id="List容器"><a href="#List容器" class="headerlink" title="List容器"></a><font size="5">List容器</font></h1><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;list&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">// 为了方便显示，在这里将打印操作定义为一个函数</span><br><span class="line">void printList(list&lt;int&gt; l) {</span><br><span class="line">	cout &lt;&lt; "l：";</span><br><span class="line">	for (list&lt;int&gt;::iterator it = l.begin(); it != l.end(); it++) {</span><br><span class="line">		cout &lt;&lt; *it &lt;&lt; " ";</span><br><span class="line">	}</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">int main() {</span><br><span class="line"></span><br><span class="line">	// 创建一个list容器，同vector相同，可以存放任意类型的数据，但是需要指定数据类型。</span><br><span class="line">	// 而且建立以后只能存放该类型的数据。</span><br><span class="line">	list&lt;int&gt; l = { 2, 3, 4 };</span><br><span class="line"></span><br><span class="line">	// empty判断容器是否为空，为空则返回true，否则返回false</span><br><span class="line">	cout &lt;&lt; "l是否为空：" &lt;&lt; l.empty() &lt;&lt; endl;</span><br><span class="line">	// list对象没有capacity方法，只有size方法，和vector相同，可以获取容器中的元素个数。</span><br><span class="line">	cout &lt;&lt; "l的尺寸为：" &lt;&lt; l.size() &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	// resize是将list调整大小，如果大于原始数组，则填充数值，达到resize的大小，否则会删除超出的部分。</span><br><span class="line">	l.resize(10);</span><br><span class="line">	printList(l);</span><br><span class="line">	cout &lt;&lt; "l的尺寸为：" &lt;&lt; l.size() &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	// push_front是list最经常用的操作，在头部添加元素。</span><br><span class="line">	// push_back在尾部添加元素。</span><br><span class="line">	l.push_front(1);</span><br><span class="line">	l.push_back(4);</span><br><span class="line">	printList(l);</span><br><span class="line">	cout &lt;&lt; "l的尺寸为：" &lt;&lt; l.size() &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	// 和push_front相反，pop_front时在头部移除元素。</span><br><span class="line">	//pop_back在尾部移除元素。</span><br><span class="line">	l.pop_front();</span><br><span class="line">	l.pop_back();</span><br><span class="line">	printList(l);</span><br><span class="line">	cout &lt;&lt; "l的尺寸为：" &lt;&lt; l.size() &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	// front获取list第一个元素，但是不能使用l[0]，因为list是不连续的内存空间，因此无法通过索引直接访问。</span><br><span class="line">	cout &lt;&lt; "第一个元素为：" &lt;&lt; l.front() &lt;&lt; endl;</span><br><span class="line">	// back获取list最后一个元素。</span><br><span class="line">	cout &lt;&lt; "最后一个元素为：" &lt;&lt; l.back() &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	// remove移除所有值为目标的节点</span><br><span class="line">	l.remove(0);</span><br><span class="line">	printList(l);</span><br><span class="line">	cout &lt;&lt; "l的尺寸为：" &lt;&lt; l.size() &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	// clear清空容器中的所有内容</span><br><span class="line">	l.clear();</span><br><span class="line">	printList(l);</span><br><span class="line">	cout &lt;&lt; "l的尺寸为：" &lt;&lt; l.size() &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/LANGUAGE/C++78.png" alt="1"></p>
+<h1 id="C-小结"><a href="#C-小结" class="headerlink" title="C++小结"></a><font size="5" color="red">C++小结</font></h1><p>  list容器使用并不是很频繁，一般都是使用vector和deque就可以完成大部分的应用场景，而且list不方便的地方在于无法通过下表对元素进行索引，因此小伙伴们作为了解即可。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -557,8 +555,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/02/13/program Leetcode5/" rel="next" title="最长回文字符串(Leetcode 5)">
-                <i class="fa fa-chevron-left"></i> 最长回文字符串(Leetcode 5)
+              <a href="/2020/08/29/C++_stl_stack_queue/" rel="next" title="C++容器(Stack & Queue)">
+                <i class="fa fa-chevron-left"></i> C++容器(Stack & Queue)
               </a>
             
           </div>
@@ -566,10 +564,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/03/08/feature_extraction VGG/" rel="prev" title="VGG">
-                VGG <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -680,7 +674,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">173</span>
+                  <span class="site-state-item-count">177</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -771,7 +765,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目分析"><span class="nav-number">1.</span> <span class="nav-text">题目分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DFS"><span class="nav-number">2.</span> <span class="nav-text">DFS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BFS"><span class="nav-number">3.</span> <span class="nav-text">BFS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#题目延申"><span class="nav-number">4.</span> <span class="nav-text">题目延申</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#刷题总结"><span class="nav-number">5.</span> <span class="nav-text">刷题总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-容器-List"><span class="nav-number">1.</span> <span class="nav-text">C++容器(List)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#List容器"><span class="nav-number">2.</span> <span class="nav-text">List容器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-小结"><span class="nav-number">3.</span> <span class="nav-text">C++小结</span></a></li></ol></div>
             
 
           </div>

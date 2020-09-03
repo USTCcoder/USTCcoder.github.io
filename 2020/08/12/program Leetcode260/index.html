@@ -139,7 +139,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/leetcode260.png">
 <meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/leetcode260_solve.png">
-<meta property="og:updated_time" content="2020-08-15T03:58:33.068Z">
+<meta property="og:updated_time" content="2020-09-02T02:18:10.178Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="只出现一次的数字 III(Leetcode 260)">
 <meta name="twitter:description" content="Leetcode 260">
@@ -455,7 +455,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  412
+                  410
                 </span>
               
 
@@ -484,10 +484,9 @@
       
 
       
-        <p><strong><font size="5" color="gray"></font></strong></p><center><strong><font size="5" color="gray">Leetcode 260</font></strong></center><p></p>
+        <p><img src="/images/ALGORITHM/leetcode260.png" alt="1"></p>
 <h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   前面的两道题目都是找出唯一出现的一个数字，如果有两个数字都出现一次，该如何求解呢？</p>
 <a id="more"></a>
-<p><img src="/images/ALGORITHM/leetcode260.png" alt="q"></p>
 <h1 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a><font size="5" color="red">位运算</font></h1><p>对于136题来说，找出唯一出现的一个数字，通过异或可以直接求出。如果有两个数字x和y都出现了一次，那么所有数字异或的结果应该就是x和y的异或结果。因为x和y不相同，所以异或的结果一定不为0，所以一定在某个位上有1出现。我们从低到高找到第一次出现1的位置。于是可以得出一个结论。一定x在该为上位1，y为0或者x为0，y为1。所以就可以将这个数组分成part1和part2，part1中所有的元素在该位上都是1，part2中所有的元素在该位上都是0。因此对于part1能通过异或的方法找出唯一出现的一个数字，part2也能通过异或的方法找出唯一出现的一个数字。<br><img src="/images/ALGORITHM/leetcode260_solve.png" alt="q"><br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import functools</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Solution(object):</span><br><span class="line">    def singleNumbers(self, nums):</span><br><span class="line">        """</span><br><span class="line">        :type nums: List[int]</span><br><span class="line">        :rtype: List[int]</span><br><span class="line">        """</span><br><span class="line">        p = functools.reduce(lambda x, y: x ^ y, nums)</span><br><span class="line">        p1 = p2 = 0</span><br><span class="line">        b = 1</span><br><span class="line">        while not (p &amp; b):</span><br><span class="line">            b &lt;&lt;= 1</span><br><span class="line">        for i in nums:</span><br><span class="line">            if i &amp; b:</span><br><span class="line">                p1 ^= i</span><br><span class="line">            else:</span><br><span class="line">                p2 ^= i</span><br><span class="line">        return [p1, p2]</span><br></pre></td></tr></tbody></table></figure><p></p>
 <h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  走过路过不要错过，赶紧尝试尝试，新鲜出炉的位运算，小伙伴们一定要掌握它。</p>
 <script>
@@ -679,7 +678,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">173</span>
+                  <span class="site-state-item-count">177</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

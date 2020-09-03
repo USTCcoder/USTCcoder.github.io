@@ -138,7 +138,7 @@
 <meta property="og:description" content="Leetcode 剑指Offer43">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/leetcodeoffer43.png">
-<meta property="og:updated_time" content="2020-08-13T16:41:37.666Z">
+<meta property="og:updated_time" content="2020-09-02T02:17:30.317Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="1～n整数中1出现的次数(Leetcode 剑指Offer43)">
 <meta name="twitter:description" content="Leetcode 剑指Offer43">
@@ -454,7 +454,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  972
+                  968
                 </span>
               
 
@@ -483,10 +483,9 @@
       
 
       
-        <p><strong><font size="5" color="gray"></font></strong></p><center><strong><font size="5" color="gray">Leetcode 剑指Offer43</font></strong></center><p></p>
+        <p><img src="/images/ALGORITHM/leetcodeoffer43.png" alt="1"></p>
 <h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   这道题目典型的找规律，为什么这么说呢？从时间复杂度上就可以看出端倪，一般从数据量上就可以看出，这个题目的数据最大为$2^31$，说明用线性复杂度的算法都会超时，那么一定有特殊的方法进行求解。</p>
 <a id="more"></a>
-<p><img src="/images/ALGORITHM/leetcodeoffer43.png" alt="q"></p>
 <h1 id="数学规律"><a href="#数学规律" class="headerlink" title="数学规律"></a><font size="5" color="red">数学规律</font></h1><p>我们一般按照位数进行找规律，0-9一位数中，只有1个1出现，而00-99中，这100个两位数中，有20个1出现，为什么呢？因为两位数的各位都是0-9，重复了10次，00-09，10-19，20-29，等等，一共10组，每一组的个位都有一个1，因此有10个，但是10-19这十个数中，十位也都是1，那么共有10 + 10 x 1 = 20个1。同理，我们可以得出000-999，这1000个三位数中，000-099，100-199，200-299，等等，一共10组，每一组的后两位都相当于00-99，因此共有10 x 20 = 200个，而且100-199，共有100个1，因此共有100 + 10 x 20 = 300个1。<br>根据这个规律，我们可以使用一种递归的思想，进行求解。<br>我以6666这个数字举例，6666可以分成6000+666因为最高位是6，因此可以看成从0-5999中所有1的个数，加上6000-6666中所有1的个数，0-5999的个数，可以从上面的规律中直接求解，0-999共有300个1，因此0-5999共有1000 + 6 <em> 300 = 2800个1，而6000-6666中，最高位都是6，可以看成0-666中所有的1的个数。就变成求2800 + 0-666中1的个数。再次递归，666可以分成600 + 66，0-599共有 100 + 6 </em> 20 = 220，因此变成求2800 + 220 + 0-66中1的个数。再次递归，66可以分成60 + 6，0-59共有10 + 6 + 1 = 16，因此变为2800 + 220 + 16 + 0-6中1的个数。再次递归，0-6中只有1个，总数为2800 + 220 + 16 + 1 = 3037个。<br>再举一个复杂一点的例子6106，6106可以分成6000 + 106，可以看成0-5999中所有1的个数共有2800个1，加上6000-6106中所有1的个数，因此变成求2800 + 0-106中1的个数。再次递归，106可以分成100 + 6，可以看成0-99中所有1的个数，加上100-106中所有1的个数，0-99中1的个数为20，因为没有超过200，所以不能加100，而且100-106中最高位是1，因此不能看成0-6中1的个数，而是要加上100-106中数字的个数，因为每一个数字的最高位都是1。这样就可以看成0-6中1的个数，因此为2800 + 20 + (106 - 100) + 1 + 0-6中1的个数，等于2828个。<br>因为一位数也满足这个条件，因此可以将一位数也放入该情形，不需要单独进行讨论，所以可以得到下面的代码。时间复杂度为$O(log(n))$，空间复杂度为$O(log(n))$。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    res = 0</span><br><span class="line">    def countDigitOne(self, n):</span><br><span class="line">        lens = len(str(n))</span><br><span class="line">        one_num = [0] * lens</span><br><span class="line">        for i in range(1, lens):</span><br><span class="line">            one_num[i] = one_num[i - 1] * 10 + 10 ** (i - 1)</span><br><span class="line">        self.res = 0</span><br><span class="line">        </span><br><span class="line">        def sub_question(n):</span><br><span class="line">            if n == 0:</span><br><span class="line">                return</span><br><span class="line">            array = [int(x) for x in str(n)]</span><br><span class="line">            lens = len(array)</span><br><span class="line">            high = 10 ** (lens - 1)</span><br><span class="line">            if array[0] == 1:</span><br><span class="line">                self.res += n - high + 1 + one_num[lens - 1]</span><br><span class="line">            elif array[0] != 0:</span><br><span class="line">                self.res += high + one_num[lens - 1] * array[0]</span><br><span class="line">            sub_question(n - high * array[0])</span><br><span class="line">        </span><br><span class="line">        sub_question(n)</span><br><span class="line">        return self.res</span><br></pre></td></tr></tbody></table></figure><p></p>
 <h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  这个题目还是比较有趣的，难度较大，很多同学采用暴力法进行遍历统计1的个数，那么时间复杂度为$O(n \times log(n))$，在数据量很大的时候，是不合适的。这道题是不是非常有趣呢，小伙伴们务必掌握它。</p>
 <script>
@@ -678,7 +677,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">173</span>
+                  <span class="site-state-item-count">177</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

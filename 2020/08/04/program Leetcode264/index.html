@@ -138,7 +138,7 @@
 <meta property="og:description" content="Leetcode 264">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/leetcode264.png">
-<meta property="og:updated_time" content="2020-08-11T16:14:51.605Z">
+<meta property="og:updated_time" content="2020-09-02T02:18:13.546Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="丑数 II(Leetcode 264)">
 <meta name="twitter:description" content="Leetcode 264">
@@ -454,7 +454,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  562
+                  560
                 </span>
               
 
@@ -483,10 +483,9 @@
       
 
       
-        <p><strong><font size="5" color="gray"></font></strong></p><center><strong><font size="5" color="gray">Leetcode 264</font></strong></center><p></p>
+        <p><img src="/images/ALGORITHM/leetcode264.png" alt="1"></p>
 <h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   非常有趣的一道题，看似简单，其实做起来很不容易想到最优的方法，我第一眼看上去就知道需要使用DP进行求解，然而提交时超出了时间限制，下面带小伙伴们看一看。</p>
 <a id="more"></a>
-<p><img src="/images/ALGORITHM/leetcode264.png" alt="q"></p>
 <h1 id="DP-超时"><a href="#DP-超时" class="headerlink" title="DP(超时)"></a><font size="5" color="red">DP(超时)</font></h1><p>第i个数是丑数的前提是，i除以2或i除以3或i除以5是丑数，于是可以从2开始遍历。2除以2等于1，是丑数，因此将2加入哈希表中，3除以3等于1，是丑数，因此将3加入哈希表中，4除以2等于2，是丑数，因此将4加入哈希表中，以此类推。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def nthUglyNumber(self, n):</span><br><span class="line">        """</span><br><span class="line">        :type n: int</span><br><span class="line">        :rtype: int</span><br><span class="line">        """</span><br><span class="line">        dp = set()</span><br><span class="line">        dp.add(1)</span><br><span class="line">        current = 1</span><br><span class="line">        while len(dp) &lt; n:</span><br><span class="line">            current += 1</span><br><span class="line">            if current / 2 in dp or current / 3 in dp or current / 5 in dp:</span><br><span class="line">                dp.add(current)</span><br><span class="line">        return current</span><br></pre></td></tr></tbody></table></figure><p></p>
 <h1 id="DP"><a href="#DP" class="headerlink" title="DP"></a><font size="5" color="red">DP</font></h1><p>上面的方法虽然可行，但是当n=1690时，第n个丑数为2123366400，超过了时间限制。我们需要找一种时间复杂度更小的算法。我们发现丑数除以2，除以3，除以5也都是丑数，因此我们只需要保存丑数序列即可，建立三个指针，都指向1，一个指针每次负责乘2，一个负责乘3，一个负责乘5，因为指针都是指向丑数，因此三个指针乘积结果最小的也就是当前的丑数。再比较这个数是由哪一个指针得到，说明这个指针应该相后移动一个距离，移到下一个可能产生丑数的地方。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def nthUglyNumber(self, n):</span><br><span class="line">        """</span><br><span class="line">        :type n: int</span><br><span class="line">        :rtype: int</span><br><span class="line">        """</span><br><span class="line">        p2, p3, p5 = 0, 0, 0</span><br><span class="line">        dp = [1] * n</span><br><span class="line">        for i in range(1, n):</span><br><span class="line">            mini = min(dp[p2] * 2, dp[p3] * 3, dp[p5] * 5)</span><br><span class="line">            if mini == dp[p2] * 2:</span><br><span class="line">                p2 += 1</span><br><span class="line">            if mini == dp[p3] * 3:</span><br><span class="line">                p3 += 1</span><br><span class="line">            if mini == dp[p5] * 5:</span><br><span class="line">                p5 += 1</span><br><span class="line">            dp[i] = mini</span><br><span class="line">        return dp[-1]</span><br></pre></td></tr></tbody></table></figure><p></p>
 <h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  丑数是不是非常有趣呢？这个题目是一个三指针加动态规划的问题，希望小伙伴可以喜欢。</p>
@@ -679,7 +678,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">173</span>
+                  <span class="site-state-item-count">177</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

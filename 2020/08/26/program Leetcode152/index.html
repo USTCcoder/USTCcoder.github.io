@@ -130,20 +130,19 @@
 
 
 
-<meta name="description" content="C++面向对象提高">
+<meta name="description" content="Leetcode 152">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C++面向对象提高">
-<meta property="og:url" content="https://USTCcoder.github.io/2020/07/21/C++_oop_3/index.html">
+<meta property="og:title" content="乘积最大子数组(Leetcode 152)">
+<meta property="og:url" content="https://USTCcoder.github.io/2020/08/26/program Leetcode152/index.html">
 <meta property="og:site_name" content="GitHub">
-<meta property="og:description" content="C++面向对象提高">
+<meta property="og:description" content="Leetcode 152">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://ustccoder.github.io/images/LANGUAGE/C++41.png">
-<meta property="og:image" content="https://ustccoder.github.io/images/LANGUAGE/C++42.png">
-<meta property="og:updated_time" content="2020-08-11T14:53:13.109Z">
+<meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/leetcode152.png">
+<meta property="og:updated_time" content="2020-09-03T01:36:53.696Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C++面向对象提高">
-<meta name="twitter:description" content="C++面向对象提高">
-<meta name="twitter:image" content="https://ustccoder.github.io/images/LANGUAGE/C++41.png">
+<meta name="twitter:title" content="乘积最大子数组(Leetcode 152)">
+<meta name="twitter:description" content="Leetcode 152">
+<meta name="twitter:image" content="https://ustccoder.github.io/images/ALGORITHM/leetcode152.png">
 
 
 
@@ -173,13 +172,13 @@
 
 
 
-  <link rel="canonical" href="https://USTCcoder.github.io/2020/07/21/C++_oop_3/">
+  <link rel="canonical" href="https://USTCcoder.github.io/2020/08/26/program Leetcode152/">
 
 
 
 
 
-  <title>C++面向对象提高 | GitHub</title>
+  <title>乘积最大子数组(Leetcode 152) | GitHub</title>
   
 
 
@@ -344,7 +343,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/07/21/C++_oop_3/">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/08/26/program Leetcode152/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="USTCcoder">
@@ -361,7 +360,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">C++面向对象提高</h1>
+          <h1 class="post-title" itemprop="name headline">乘积最大子数组(Leetcode 152)</h1>
         
 
         <div class="post-meta">
@@ -373,8 +372,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-21T23:08:19+08:00">
-                2020-07-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-26T13:36:09+08:00">
+                2020-08-26
               </time>
             
 
@@ -396,8 +395,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C++</span>
+                  <a href="/categories/计算机基础知识/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机基础知识</span>
                   </a>
                 </span>
 
@@ -407,8 +406,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/语言学习/" itemprop="url" rel="index">
-                    <span itemprop="name">语言学习</span>
+                  <a href="/categories/计算机基础知识/刷题记录/" itemprop="url" rel="index">
+                    <span itemprop="name">刷题记录</span>
                   </a>
                 </span>
 
@@ -425,8 +424,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/07/21/C++_oop_3/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/21/C++_oop_3/" itemprop="commentCount"></span>
+                <a href="/2020/08/26/program Leetcode152/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/08/26/program Leetcode152/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -455,7 +454,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.2k
+                  670
                 </span>
               
 
@@ -467,7 +466,7 @@
 
           
               <div class="post-description">
-                  <table><tr><td bgcolor="grey"><font size="5" face="STXihei" color="white"><center>C++面向对象提高</center></font></td></tr></table>
+                  <table><tr><td bgcolor="grey"><font size="5" face="STXihei" color="white"><center>Leetcode 152</center></font></td></tr></table>
               </div>
           
 
@@ -484,11 +483,13 @@
       
 
       
-        <p><img src="/images/LANGUAGE/C++41.png" alt="2"></p>
-<h1 id="C-面向对象提高"><a href="#C-面向对象提高" class="headerlink" title="C++面向对象提高"></a><font size="5" color="red">C++面向对象提高</font></h1><p>  之前介绍了C++面向对象的基础内容，其中引入了public关键字，这时C++面向对象的一种访问控制权限，这非常重要，可以更灵活的使用我们创建的类和对象，保护类中的内容，不被其他人调用。今天带小伙们看一看C++中的三种访问控制权限，与Java稍有不同，Java中包括四类访问控制权限，以后再给小伙伴介绍。<br><a id="more"></a></p>
-<h1 id="访问控制权限"><a href="#访问控制权限" class="headerlink" title="访问控制权限"></a><font size="5">访问控制权限</font></h1><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">class Father {</span><br><span class="line"></span><br><span class="line">//成员关键字</span><br><span class="line">//public关键字：类内可以访问，子类可以访问，类外可以访问</span><br><span class="line">public:</span><br><span class="line">	string name;</span><br><span class="line"></span><br><span class="line">	Father() {</span><br><span class="line">		cout &lt;&lt; "我是父类的构造函数" &lt;&lt; endl;</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	~Father() {</span><br><span class="line">		cout &lt;&lt; "我是父类的析构函数" &lt;&lt; endl;</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	void setName(string name) {</span><br><span class="line">		this-&gt;name = name;</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	string getName() {</span><br><span class="line">		return this-&gt;name;</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	void setAge(int age) {</span><br><span class="line">		this-&gt;age = age;</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	int getAge() {</span><br><span class="line">		return this-&gt;age;</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	void setMoney(int money) {</span><br><span class="line">		this-&gt;money = money;</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	int getMoney() {</span><br><span class="line">		return this-&gt;money;</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">//public关键字：类内可以访问，子类可以访问，类外不可以访问</span><br><span class="line">protected:</span><br><span class="line">	int age;</span><br><span class="line"></span><br><span class="line">//public关键字：类内可以访问，子类不可以访问，类外不可以访问</span><br><span class="line">private:</span><br><span class="line">	int money;</span><br><span class="line"></span><br><span class="line">};</span><br><span class="line"></span><br><span class="line">//继承：面向对象的第二大特点，可以获取父类的部分成员，实现代码的复用。</span><br><span class="line">//语法是class 子类名:继承方式 父类名</span><br><span class="line">//继承关键字</span><br><span class="line">//public关键字：继承父类的public,protected成员变量和成员函数，并且保持不变</span><br><span class="line">//protected关键字：继承父类的public,protected成员变量和成员函数，并且都将变为protected类型</span><br><span class="line">//public关键字：继承父类的public,protected成员变量和成员函数，并且都将变为private类型</span><br><span class="line">class Son :public Father {</span><br><span class="line"></span><br><span class="line">public:</span><br><span class="line">	//在子类中，可以定义父类没有的成员，在父类中无法获取子类成员，但是子类可以获取父类成员。</span><br><span class="line">	int score;</span><br><span class="line"></span><br><span class="line">	Son() {</span><br><span class="line">		cout &lt;&lt; "我是子类的构造函数" &lt;&lt; endl;</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	~Son() {</span><br><span class="line">		cout &lt;&lt; "我是子类的析构函数" &lt;&lt; endl;</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	//因为name在父类是public的，因此在子类中可以访问</span><br><span class="line">	void printName() {</span><br><span class="line">		cout &lt;&lt; this-&gt;name;</span><br><span class="line">	}</span><br><span class="line">	</span><br><span class="line">	//因为age在父类是protected的，因此在子类中可以访问</span><br><span class="line">	//但是money成员变量，在父类中是private的，在子类中无法访问</span><br><span class="line">	void printAge() {</span><br><span class="line">		cout &lt;&lt; this-&gt;age;</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">};</span><br><span class="line"></span><br><span class="line">int main() {</span><br><span class="line"></span><br><span class="line">	{</span><br><span class="line">		//创建父类的对象，调用父类的构造函数</span><br><span class="line">		Father f;</span><br><span class="line">		//因为name是public的，所以可以直接进行访问和修改</span><br><span class="line">		f.name = "father";</span><br><span class="line">		cout &lt;&lt; "我的名字是：" &lt;&lt; f.name &lt;&lt; endl;</span><br><span class="line">		//因为age是protected的，所以不可以直接进行访问和修改</span><br><span class="line">		//引入set和get方法，可以实现对protected或这private成员进行类内修改。</span><br><span class="line">		f.setAge(40);</span><br><span class="line">		cout &lt;&lt; "我的年龄是：" &lt;&lt; f.getAge() &lt;&lt; endl;</span><br><span class="line">		//因为age是private的，所以不可以直接进行访问和修改</span><br><span class="line">		f.setMoney(1000000);</span><br><span class="line">		cout &lt;&lt; "我的存款是：" &lt;&lt; f.getMoney() &lt;&lt; endl;</span><br><span class="line">		//当花括号结束时，创建的父类对象会被析构，调用析构方法</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; "********************" &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	{	</span><br><span class="line">		//继承的特点：</span><br><span class="line">		//1.父类中的所有非静态成员都会被子类继承，只是私有的会被编译器隐藏，在子类中不可见。</span><br><span class="line">		//2.具有继承关系的构造函数，首先调用父类的构造函数，初始化属性，然后再调用子类的构造函数，析构时顺序相反。</span><br><span class="line">		//3.子类与父类具有相同的成员时，默认访问子类的成员，可以通过作用域访问父类的成员，父类名::父类成员即可。</span><br><span class="line">		//4.如果在子类中访问父类的静态成员，需要通过子类名::父类名::父类静态成员名。</span><br><span class="line">		//创建子类对象，因此即会打印父类的构造函数，也会打印子类的构造函数。</span><br><span class="line">		Son s;</span><br><span class="line">		//name是父类的public属性，而且通过public继承，因此可以访问</span><br><span class="line">		s.name = "son";</span><br><span class="line">		cout &lt;&lt; "我的名字是：" &lt;&lt; s.name &lt;&lt; endl;</span><br><span class="line">		//setAge是父类的public属性，而且通过public继承，因此可以访问</span><br><span class="line">		s.setAge(20);</span><br><span class="line">		cout &lt;&lt; "我的年龄是：" &lt;&lt; s.getAge() &lt;&lt; endl;</span><br><span class="line">		//setMoney是父类的public属性，而且通过public继承，因此可以访问</span><br><span class="line">		s.setMoney(100);</span><br><span class="line">		cout &lt;&lt; "我的存款是：" &lt;&lt; s.getMoney() &lt;&lt; endl;</span><br><span class="line">		s.score = 90;</span><br><span class="line">		cout &lt;&lt; "我的成绩是：" &lt;&lt; s.score &lt;&lt; endl;</span><br><span class="line">		//当花括号结束时，创建的子类对象会被析构，注意子类对象析构时的顺序</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p><img src="/images/LANGUAGE/C++42.png" alt="1"></p>
-<h1 id="C-小结"><a href="#C-小结" class="headerlink" title="C++小结"></a><font size="5" color="red">C++小结</font></h1><p>  今天给大家介绍三种C++的访问控制权限以及继承的基本概念，这对于C++的学习非常重要，因此小伙伴们务必掌握它。</p>
+        <p><img src="/images/ALGORITHM/leetcode152.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   这个题目和前两天说的一个最大子序和的题目类似，不过这个题目不是求和而是求积。求和和求积有什么区别呢？为啥这个题目的难度就是中等，而上一个题目的难度是简单呢。<strong>求和的题目不会涉及到符号的问题，如果前缀和小于0，则相加时不考虑前缀，这时上一个题目的核心思想。而这个题目的难点在于，可能出现负数乘负数产生正数的情况</strong>。</p>
+<a id="more"></a>
+<h1 id="DP"><a href="#DP" class="headerlink" title="DP"></a><font size="5" color="red">DP</font></h1><p>我们使用动态规划进行求解，这时我们<strong>不但要记录最大值的状态也要记录最小值的状态，对正数和负数进行分别讨论</strong>。dp_max[i]表示右端点选择第i个数可得的最大值，dp_min[i]表示右端点选择第i个数可得的最小值。可以得到状态转移方程</p>
+<script type="math/tex; mode=display">dp_max[i] =  \begin{case} max(dp_max[i - 1] * nums[i] , nums[i]) & nums[i] > 0 \\ nums[i] & max(dp_min[i - 1] * nums[i], nums[i]) \le 0 \end{cases}</script><script type="math/tex; mode=display">dp_min[i] =  \begin{case} min(dp_min[i - 1] * nums[i] , nums[i]) & nums[i] > 0 \\ nums[i] & min(dp_max[i - 1] * nums[i], nums[i]) \le 0 \end{cases}</script><p>当考虑到所有情况后，就可以得到右端点为任何情况下的最大值，然后求dp_max数组的最大值即可。DP的<strong>时间复杂度为$O(n)$，空间复杂度为$O(n)$</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def maxProduct(self, nums):</span><br><span class="line">        lens = len(nums)</span><br><span class="line">        dp_max = [0] * lens</span><br><span class="line">        dp_min = [0] * lens</span><br><span class="line">        dp_max[0] = dp_min[0] = nums[0]</span><br><span class="line">        for i in range(1, lens):</span><br><span class="line">            if nums[i] &gt; 0:</span><br><span class="line">                dp_max[i] = max(dp_max[i - 1] * nums[i], nums[i])</span><br><span class="line">                dp_min[i] = min(dp_min[i - 1] * nums[i], nums[i])</span><br><span class="line">            else:</span><br><span class="line">                dp_max[i] = max(dp_min[i - 1] * nums[i], nums[i])</span><br><span class="line">                dp_min[i] = min(dp_max[i - 1] * nums[i], nums[i])</span><br><span class="line">        return max(dp_max)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="优化DP"><a href="#优化DP" class="headerlink" title="优化DP"></a><font size="5" color="red">优化DP</font></h1><p>我们发现<strong>每次只需要使用到dp_max[i - 1]和dp_min[i - 1]，因此可以使用一个变量pre_num保存dp[i - 1]，然后实时更新这个变量即可，并且更新同时记录最大值</strong>，这样可以节约空间复杂度。这种算法的<strong>时间复杂度为$O(n)$，空间复杂度为$O(1)$</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def maxProduct(self, nums):</span><br><span class="line">        pre_max = pre_min = res = nums[0]</span><br><span class="line">        for num in nums[1:]:</span><br><span class="line">            if num &gt; 0:</span><br><span class="line">                pre_max, pre_min = max(pre_max * num, num), min(pre_min * num, num)</span><br><span class="line">            else:</span><br><span class="line">                pre_max, pre_min = max(pre_min * num, num), min(pre_max * num, num)</span><br><span class="line">            res = max(pre_max, res)</span><br><span class="line">        return res</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  这个题目需要和leetcode53题一起做，并且仔细比较两个题目之间的差异，观察状态转移方程的写法。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -555,8 +556,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/07/21/C++_oop_2/" rel="next" title="C++面向对象基础">
-                <i class="fa fa-chevron-left"></i> C++面向对象基础
+              <a href="/2020/08/25/C++_stl_vector/" rel="next" title="C++容器(Vector)">
+                <i class="fa fa-chevron-left"></i> C++容器(Vector)
               </a>
             
           </div>
@@ -565,8 +566,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/07/23/C++_oop_4/" rel="prev" title="C++面向对象进阶">
-                C++面向对象进阶 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/08/27/C++_stl_deque/" rel="prev" title="C++容器(Deque)">
+                C++容器(Deque) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -678,7 +679,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">173</span>
+                  <span class="site-state-item-count">177</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -769,7 +770,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-面向对象提高"><span class="nav-number">1.</span> <span class="nav-text">C++面向对象提高</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#访问控制权限"><span class="nav-number">2.</span> <span class="nav-text">访问控制权限</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-小结"><span class="nav-number">3.</span> <span class="nav-text">C++小结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目分析"><span class="nav-number">1.</span> <span class="nav-text">题目分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DP"><span class="nav-number">2.</span> <span class="nav-text">DP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#优化DP"><span class="nav-number">3.</span> <span class="nav-text">优化DP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#刷题总结"><span class="nav-number">4.</span> <span class="nav-text">刷题总结</span></a></li></ol></div>
             
 
           </div>

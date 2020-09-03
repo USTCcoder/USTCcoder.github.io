@@ -130,20 +130,20 @@
 
 
 
-<meta name="description" content="LMSE">
+<meta name="description" content="Fisher线性判别">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LMSE(Least Mean Square Error)">
-<meta property="og:url" content="https://USTCcoder.github.io/2019/07/05/classfication LMSE/index.html">
+<meta property="og:title" content="Fisher线性判别">
+<meta property="og:url" content="https://USTCcoder.github.io/2019/06/20/classfication FISHER/index.html">
 <meta property="og:site_name" content="GitHub">
-<meta property="og:description" content="LMSE">
+<meta property="og:description" content="Fisher线性判别">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/knn.png">
-<meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/knn1.png">
-<meta property="og:updated_time" content="2019-08-07T15:53:56.754Z">
+<meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/fisher.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/fisher1.png">
+<meta property="og:updated_time" content="2020-09-01T01:24:25.025Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LMSE(Least Mean Square Error)">
-<meta name="twitter:description" content="LMSE">
-<meta name="twitter:image" content="https://ustccoder.github.io/images/MACHINE/knn.png">
+<meta name="twitter:title" content="Fisher线性判别">
+<meta name="twitter:description" content="Fisher线性判别">
+<meta name="twitter:image" content="https://ustccoder.github.io/images/MACHINE/fisher.png">
 
 
 
@@ -173,13 +173,13 @@
 
 
 
-  <link rel="canonical" href="https://USTCcoder.github.io/2019/07/05/classfication LMSE/">
+  <link rel="canonical" href="https://USTCcoder.github.io/2019/06/20/classfication FISHER/">
 
 
 
 
 
-  <title>LMSE(Least Mean Square Error) | GitHub</title>
+  <title>Fisher线性判别 | GitHub</title>
   
 
 
@@ -344,7 +344,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2019/07/05/classfication LMSE/">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2019/06/20/classfication FISHER/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="USTCcoder">
@@ -361,7 +361,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">LMSE(Least Mean Square Error)</h1>
+          <h1 class="post-title" itemprop="name headline">Fisher线性判别</h1>
         
 
         <div class="post-meta">
@@ -373,8 +373,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-05T08:25:20+08:00">
-                2019-07-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-20T22:07:20+08:00">
+                2019-06-20
               </time>
             
 
@@ -425,8 +425,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/07/05/classfication LMSE/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/05/classfication LMSE/" itemprop="commentCount"></span>
+                <a href="/2019/06/20/classfication FISHER/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/20/classfication FISHER/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -455,7 +455,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  869
+                  1.3k
                 </span>
               
 
@@ -467,7 +467,7 @@
 
           
               <div class="post-description">
-                  <table><tr><td bgcolor="grey"><font size="5" face="STXihei" color="white"><center>LMSE</center></font></td></tr></table>
+                  <table><tr><td bgcolor="grey"><font size="5" face="STXihei" color="white"><center>Fisher线性判别</center></font></td></tr></table>
               </div>
           
 
@@ -484,31 +484,33 @@
       
 
       
-        <p><strong><font size="5" color="gray"></font></strong></p><center><strong><font size="5" color="gray">最小平方误差</font></strong></center><p></p>
-<h1 id="原理解读"><a href="#原理解读" class="headerlink" title="原理解读"></a><font size="5" color="red">原理解读</font></h1><p>  最小平方误差(LMSE):由Ho-kashyap提出，故又称为HK算法.是一种基本分类方法，给定测试实例，基于<strong>某种距离度量</strong>找出训练集中与其<strong>最靠近的k个</strong>实例点，然后基于这k个最近邻的信息使用<strong>投票法</strong>，即选择这k个实例中<strong>出现最多</strong>的标记类别作为分类结果。<br><a id="more"></a></p>
-<h1 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a><font size="5" color="red">核心思想</font></h1><h2 id="距离的度量"><a href="#距离的度量" class="headerlink" title="距离的度量"></a><font size="4">距离的度量</font></h2><p>  <font size="4">1. 欧式距离(Euclidean Distance)</font></p>
-<script type="math/tex; mode=display">L_2(x_i,x_j)=\sqrt{\displaystyle \sum_{k=1}^n ({x_i}^{(k)}-{x_j}^{(k)})^2}</script><p>  <font size="4">2. 曼哈顿距离(Manhattan distance)</font></p>
-<script type="math/tex; mode=display">L_1(x_i,x_j)=\displaystyle \sum_{k=1}^n \lvert{x_i}^{(k)}-{x_j}^{(k)} \rvert</script><p>  <font size="4">3.余弦距离(Cosine Distance)</font></p>
-<script type="math/tex; mode=display">L_{cos}(x_i,x_j)=1-\frac{x_i \cdot x_j}{\lVert x_i \rVert_2 \ \lVert x_j \rVert_2}</script><h2 id="K值的选择"><a href="#K值的选择" class="headerlink" title="K值的选择"></a><font size="4">K值的选择</font></h2><p>  K值的选择会对K近邻法的结果产生重大影响，在应用中，k值一般取一个比较小的数值，通常采用交叉验证法来选取最优的k值。<br>  K=1时K近邻算法退化成最近邻，即数据的类别为距离最近的样本的类别。</p>
-<h1 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a><font size="5" color="red">算法流程</font></h1><p><img src="/images/MACHINE/knn.png" alt="KNN"></p>
-<h1 id="代码实战"><a href="#代码实战" class="headerlink" title="代码实战"></a><font size="5" color="red">代码实战</font></h1><h2 id="KNN-main-m"><a href="#KNN-main-m" class="headerlink" title="KNN_main.m"></a>KNN_main.m</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">clear;clc;close all;</span><br><span class="line">%类别数目，请输入大于1的数</span><br><span class="line">class_num=2;</span><br><span class="line">%k近邻数目</span><br><span class="line">knn=3;</span><br><span class="line">%训练集样本</span><br><span class="line">train_x=[0.7,0.8,0.1,0.4,0.2;...</span><br><span class="line">     0.5,0.6,0.1,0.8,0.2];</span><br><span class="line">train_y=[1,1,2,1,2];</span><br><span class="line">%特征数目</span><br><span class="line">feat_num=size(train_x,1);</span><br><span class="line">%测试集样本</span><br><span class="line">test_x=[rand(1,50);rand(1,50)];</span><br><span class="line">%训练集样本数</span><br><span class="line">train_num=size(train_x,2);</span><br><span class="line">%测试集样本数</span><br><span class="line">test_num=size(test_x,2);</span><br><span class="line">%尺度缩放到0-1</span><br><span class="line">train_x_scale=zeros(size(train_x));</span><br><span class="line">test_x_scale=zeros(size(test_x));</span><br><span class="line">for i=1:feat_num</span><br><span class="line">    train_x_scale(i,:)=(train_x(i,:)-min(train_x(i,:)))/(max(train_x(i,:))-min(train_x(i,:)));</span><br><span class="line">    test_x_scale(i,:)=(test_x(i,:)-min(train_x(i,:)))/(max(train_x(i,:))-min(train_x(i,:)));</span><br><span class="line">end</span><br><span class="line">%如果knn大于样本数，则无法判别</span><br><span class="line">if knn&gt;train_num</span><br><span class="line">    disp('Error');</span><br><span class="line">else</span><br><span class="line">    test_y=KNN_classify(train_x_scale,train_y,test_x_scale,train_num,test_num,knn);</span><br><span class="line">    %如果数据的特征是二维的，可以绘图表示</span><br><span class="line">    if feat_num==2</span><br><span class="line">        KNN_display(train_x,train_y,test_x,test_y,train_num,test_num,class_num);</span><br><span class="line">    else</span><br><span class="line">        disp('The Feature Is Not Two-Dimensional');</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="KNN-classify-m"><a href="#KNN-classify-m" class="headerlink" title="KNN_classify.m"></a>KNN_classify.m</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function test_y=KNN_classify(train_x_scale,train_y,test_x_scale,train_num,test_num,knn)</span><br><span class="line">test_y=zeros(1,test_num);</span><br><span class="line">distance=zeros(test_num,train_num);</span><br><span class="line">for i=1:test_num</span><br><span class="line">    %distance(i,j)代表第i个测试集到第j个训练集的距离</span><br><span class="line">    distance(i,:)=sum((train_x_scale-repmat(test_x_scale(:,i),1,train_num)).^2);</span><br><span class="line">    temp=sort(distance(i,:));</span><br><span class="line">    %找到最近的knn个数据</span><br><span class="line">    tem=tabulate(train_y(distance(i,:)&lt;=temp(knn)));</span><br><span class="line">    %找到最近的数据中最多的类别</span><br><span class="line">    test_y(i)=tem(find(tem(:,2)==max(tem(:,2)),1),1);</span><br><span class="line">end</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="KNN-display-m"><a href="#KNN-display-m" class="headerlink" title="KNN_display.m"></a>KNN_display.m</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function KNN_display(train_x,train_y,test_x,test_y,train_num,test_num,class_num)</span><br><span class="line">hold on;</span><br><span class="line">color_bar=zeros(class_num,3);</span><br><span class="line">for i=1:class_num</span><br><span class="line">    color_bar(i,:)=[rand(1),rand(1),rand(1)];</span><br><span class="line">end</span><br><span class="line">%画出每一类的训练数据，用*表示</span><br><span class="line">for i=1:train_num</span><br><span class="line">    plot(train_x(1,i),train_x(2,i),'color',color_bar(train_y(i),:),'marker','*');</span><br><span class="line">end</span><br><span class="line">%画出每一类的测试数据，用o表示</span><br><span class="line">for j=1:test_num</span><br><span class="line">    plot(test_x(1,j),test_x(2,j),'color',color_bar(test_y(j),:),'marker','o');</span><br><span class="line">end</span><br><span class="line">hold off;</span><br></pre></td></tr></tbody></table></figure>
-<p><br><br></p>
-<h1 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a><font size="5" color="red">实验结果</font></h1><p><img src="/images/MACHINE/knn1.png" alt="KNN"></p>
-<h1 id="KNN优缺点"><a href="#KNN优缺点" class="headerlink" title="KNN优缺点"></a><font size="5" color="red">KNN优缺点</font></h1><ul>
+        <p><img src="/images/MACHINE/fisher.png" alt="fisher"></p>
+<h1 id="原理解读"><a href="#原理解读" class="headerlink" title="原理解读"></a><font size="5" color="red">原理解读</font></h1><p>  <strong>Fisher线性判别</strong>:由<strong>Fisher于1936年提出</strong>，是一种经典的线性学习方法，其根据<strong>方差分析的思想建立起来的一种线性判别法</strong>，该判别方法<strong>对总体的分布不做任何要求</strong>。<br><a id="more"></a></p>
+<h1 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a><font size="5" color="red">核心思想</font></h1><p>核心思想非常朴素，用周志华老师的话就是：<strong>给定训练样例集，设法将样例投影到一条直线上，使得同类样例的投影点尽可能接近，异类样例的投影点尽可能远离。在对新样本进行分类时，将其投影到同样的这条直线上，根据投影点的位置来确定新样本的类别</strong>。</p>
+<p>设$\mu_i, \Sigma_i, i \in {0, 1}$分别表示第i类样本的均值向量和协方差矩阵。<br>设投影直线的表达式为$y = \omega x$，则将样本点投影到直线上，两类样本的投影中心分别为$\omega^T \mu_0, \omega^T \mu_0$，两类样本的协方差分别为$\omega^T \Sigma_0 \omega, \omega^T \Sigma_1 \omega$</p>
+<p><strong>为了寻找一个最优的投影直线，因此我们要尽量使得类内距离越小越好，类间距离越大越好。可以认为是一种高内聚，低耦合的思想</strong>。</p>
+<p><strong>要使同类样例投影点的协方差尽可能小，即$\omega^T \Sigma_0 \omega + \omega^T \Sigma_1 \omega$尽可能小，要使不同样例投影中心的距离尽可能大，即$||\omega^T \mu_0 - \omega^T \mu_1||_2^2$尽可能大</strong>。</p>
+<p>因此得到了我们的<strong>目标函数</strong></p>
+<script type="math/tex; mode=display">\begin{align} J & = \frac{||\omega^T \mu_0 - \omega^T \mu_1||_2^2}{\omega^T \Sigma_0 \omega + \omega^T \Sigma_1 \omega}  \\ & = \frac{\omega^T (\mu_0 - \mu_1)(\mu_0 - \mu_1)^T \omega}{\omega^T (\Sigma_0 + \Sigma_1) \omega} \end{align}</script><p>我们定义<strong>类内散度矩阵</strong></p>
+<script type="math/tex; mode=display">S_{\omega} = \Sigma_0 + \Sigma_1 = \sum_{x \in X_0}(x - \mu_0)(x - \mu_0)^T + \sum_{x \in X_1}(x - \mu_1)(x - \mu_1)^T</script><p>我们定义<strong>类间散度矩阵</strong></p>
+<script type="math/tex; mode=display">S_b = (\mu_0 - \mu_1)(\mu_0 - \mu_1)^T</script><p>则目标函数可以重写为</p>
+<script type="math/tex; mode=display">J = \frac{\omega^T S_b \omega}{\omega^T S_{\omega} \omega}</script><h1 id="求解过程"><a href="#求解过程" class="headerlink" title="求解过程"></a><font size="5" color="red">求解过程</font></h1><p><strong>因为分子和分母都是关于$\omega$的二次项，因此解与$\omega$的长度无关，仅仅与其方向有关</strong>，也就是说，若$\omega$是这个问题的一个解，那么对于任意常数$\alpha$，有$\alpha \omega$也是这个问题的解。因此令$\omega^T S_{\omega} \omega = 1$，则目标函数等价于</p>
+<script type="math/tex; mode=display">\underset{\omega}{argmin} \ -\omega^T S_b \omega, \ s.t. \ \omega^T S_{\omega} \omega = 1</script><p>使用拉格朗日乘子法可求得</p>
+<script type="math/tex; mode=display">S_b \omega = \lambda S_{\omega} \omega</script><p>因为$S_b \omega = (\mu_0 - \mu_1)(\mu_0 - \mu_1)^T \omega, \ (\mu_0 - \mu_1)^T \omega$是标量，因此可以设</p>
+<script type="math/tex; mode=display">S_b \omega = \lambda (\mu_0 - \mu_1)</script><p>综合上面两个式子可以得到</p>
+<script type="math/tex; mode=display">\omega = S_{\omega}^{-1}(\mu_0 - \mu_1)</script><h1 id="代码实战"><a href="#代码实战" class="headerlink" title="代码实战"></a><font size="5" color="red">代码实战</font></h1><h2 id="FISHER-train-m"><a href="#FISHER-train-m" class="headerlink" title="FISHER_train.m"></a>FISHER_train.m</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">clear;clc;close all;</span><br><span class="line">% x为样本，行数代表特征数，列数代表样本数,以列向量的形式输出，label为样本所对应的类别</span><br><span class="line">train_x=[0.5,0.5,0.8,0.2,0.1;...</span><br><span class="line">    0.8,0.7,0.6,0.2,0.4];</span><br><span class="line">% 1为第一类，0为第二类</span><br><span class="line">train_y=[1,1,1,0,0];</span><br><span class="line">%样本数</span><br><span class="line">train_num=size(train_x,2);</span><br><span class="line">%特征数</span><br><span class="line">feat_num=size(train_x,1);</span><br><span class="line">x1=mean(train_x(:,train_y==1),2);</span><br><span class="line">x2=mean(train_x(:,train_y==0),2);</span><br><span class="line">sw=(train_x(:,train_y==1)-repmat(x1,1,sum(train_y==1)))*(train_x(:,train_y==1)-repmat(x1,1,sum(train_y==1)))'...</span><br><span class="line">    +(train_x(:,train_y==0)-repmat(x2,1,sum(train_y==0)))*(train_x(:,train_y==0)-repmat(x2,1,sum(train_y==0)))';</span><br><span class="line">%求出权向量</span><br><span class="line">w=(sw\(x1-x2))';</span><br><span class="line">fprintf('权向量为:');</span><br><span class="line">disp(w);</span><br><span class="line">fprintf('\n\n');</span><br><span class="line">disp('运行FISHER_test开始测试');</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="FISHER-test-m"><a href="#FISHER-test-m" class="headerlink" title="FISHER_test.m"></a>FISHER_test.m</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">close all;</span><br><span class="line">%输入测试集</span><br><span class="line">test_x=rand(2,10);</span><br><span class="line">%测试集样本数</span><br><span class="line">test_num=size(test_x,2);</span><br><span class="line">b_test=w*test_x;</span><br><span class="line">%找到分割平面</span><br><span class="line">tem=w*train_x;</span><br><span class="line">if min(tem(train_y==1))&gt;max(tem(train_y==0))</span><br><span class="line">    mid=(min(tem(train_y==1))+max(tem(train_y==0)))/2;</span><br><span class="line">    test_y=b_test&gt;mid;</span><br><span class="line">else</span><br><span class="line">    mid=(max(tem(train_y==1))+min(tem(train_y==0)))/2;</span><br><span class="line">    test_y=b_test&lt;mid;</span><br><span class="line">end</span><br><span class="line">%如果是二维特征，可以用平面坐标系绘图表示</span><br><span class="line">if feat_num==2</span><br><span class="line">    hold on;</span><br><span class="line">    axis equal;</span><br><span class="line">    k1=w(2)/w(1);</span><br><span class="line">    if w(1)==0</span><br><span class="line">        line1_x=[1,1];</span><br><span class="line">        line1_y=[-1,1];</span><br><span class="line">        x_mid=[-1,1];</span><br><span class="line">        y_mid=[mid,mid];</span><br><span class="line">    elseif w(2)==0</span><br><span class="line">        line1_x=[-1,1];</span><br><span class="line">        line1_y=[1,1];</span><br><span class="line">        x_mid=[mid,mid];</span><br><span class="line">        y_mid=[-1,1];</span><br><span class="line">    else</span><br><span class="line">        line1_x=[-1,1];</span><br><span class="line">        line1_y=k1*line1_x+1;</span><br><span class="line">        x_mid=[-1,1];</span><br><span class="line">        y_mid=(mid-w(1)*x_mid)/w(2);</span><br><span class="line">    end</span><br><span class="line">    %画出投影到一维直线的形状</span><br><span class="line">    plot(line1_x,line1_y,'k');</span><br><span class="line">    plot(x_mid,y_mid,'k');</span><br><span class="line">    </span><br><span class="line">    b_train=w*train_x;</span><br><span class="line">    point_train=zeros(2,train_num);</span><br><span class="line">    %画出训练集投影直线</span><br><span class="line">    for i=1:train_num</span><br><span class="line">        if train_y(i)==1</span><br><span class="line">            point_train(:,i)=[w(1),w(2);k1,-1]\[b_train(i);-1];</span><br><span class="line">            plot([train_x(1,i),point_train(1,i)],[train_x(2,i),point_train(2,i)]','r');</span><br><span class="line">            plot(train_x(1,i),train_x(2,i),'r*');</span><br><span class="line">        else</span><br><span class="line">            point_train(:,i)=[w(1),w(2);k1,-1]\[b_train(i);-1];</span><br><span class="line">            plot([train_x(1,i),point_train(1,i)],[train_x(2,i),point_train(2,i)]','g');</span><br><span class="line">            plot(train_x(1,i),train_x(2,i),'g*')</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">    point_test=zeros(2,test_num);</span><br><span class="line">%     画出测试集投影直线</span><br><span class="line">    for i=1:test_num</span><br><span class="line">        if test_y(i)==1</span><br><span class="line">            point_test(:,i)=[w(1),w(2);k1,-1]\[b_test(i);-1];</span><br><span class="line">            plot([test_x(1,i),point_test(1,i)],[test_x(2,i),point_test(2,i)]','r');</span><br><span class="line">            plot(test_x(1,i),test_x(2,i),'ro');</span><br><span class="line">        else</span><br><span class="line">            point_test(:,i)=[w(1),w(2);k1,-1]\[b_test(i);-1];</span><br><span class="line">            plot([test_x(1,i),point_test(1,i)],[test_x(2,i),point_test(2,i)]','g');</span><br><span class="line">            plot(test_x(1,i),test_x(2,i),'go')</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">else</span><br><span class="line">    disp('The Feature Is Not Two-Dimensional');</span><br><span class="line">end</span><br></pre></td></tr></tbody></table></figure>
+<h1 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a><font size="5" color="red">实验结果</font></h1><p><img src="/images/MACHINE/fisher1.png" alt="fisher"></p>
+<h1 id="Fisher优缺点"><a href="#Fisher优缺点" class="headerlink" title="Fisher优缺点"></a><font size="5" color="red">Fisher优缺点</font></h1><ul>
 <li><font size="4"><strong>优点：</strong><ul>
-<li>无需参数估计，无需训练</li>
-<li>算法简单，易于理解和实现</li>
-<li>适合于对稀有数据进行分类</li>
-<li>特别适合于多分类问题，KNN的表现超过SVM</li>
+<li>无需参数估计，无需训练。</li>
+<li>算法简单，易于理解和实现。</li>
+<li>计算量小，能够达到实时的效率。</li>
 </ul>
 </font></li>
 <li><font size="4"><strong>缺点：</strong><ul>
-<li>无法给出分类规则</li>
-<li>对于高维特征，距离的选择和衡量不准确</li>
-<li>计算量较大，对每一个测试样本都需要计算与其他样本的距离</li>
-<li>样本不平衡时，尤其是一类样本多，其他类样本少时会产生严重的问题</li>
+<li>对于多分类问题，实现起来较为复杂。</li>
+<li>样本不平衡时，尤其是一类样本多，其他类样本少时会产生严重的问题。</li>
 </ul>
 </font></li>
 </ul>
@@ -578,8 +580,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/03/classification DT/" rel="next" title="决策树(Decision Tree)">
-                <i class="fa fa-chevron-left"></i> 决策树(Decision Tree)
+              <a href="/2019/06/15/classfication KNN/" rel="next" title="KNN(K Nearest Neighbor)">
+                <i class="fa fa-chevron-left"></i> KNN(K Nearest Neighbor)
               </a>
             
           </div>
@@ -588,8 +590,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/07/05/classfication KNN/" rel="prev" title="KNN(K Nearest Neighbor)">
-                KNN(K Nearest Neighbor) <i class="fa fa-chevron-right"></i>
+              <a href="/2019/06/24/classification DT/" rel="prev" title="决策树(Decision Tree)">
+                决策树(Decision Tree) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -701,7 +703,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">173</span>
+                  <span class="site-state-item-count">177</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -792,7 +794,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#原理解读"><span class="nav-number">1.</span> <span class="nav-text">原理解读</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#核心思想"><span class="nav-number">2.</span> <span class="nav-text">核心思想</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#距离的度量"><span class="nav-number">2.1.</span> <span class="nav-text">距离的度量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#K值的选择"><span class="nav-number">2.2.</span> <span class="nav-text">K值的选择</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#算法流程"><span class="nav-number">3.</span> <span class="nav-text">算法流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码实战"><span class="nav-number">4.</span> <span class="nav-text">代码实战</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#KNN-main-m"><span class="nav-number">4.1.</span> <span class="nav-text">KNN_main.m</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#KNN-classify-m"><span class="nav-number">4.2.</span> <span class="nav-text">KNN_classify.m</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#KNN-display-m"><span class="nav-number">4.3.</span> <span class="nav-text">KNN_display.m</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实验结果"><span class="nav-number">5.</span> <span class="nav-text">实验结果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#KNN优缺点"><span class="nav-number">6.</span> <span class="nav-text">KNN优缺点</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#原理解读"><span class="nav-number">1.</span> <span class="nav-text">原理解读</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#核心思想"><span class="nav-number">2.</span> <span class="nav-text">核心思想</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#求解过程"><span class="nav-number">3.</span> <span class="nav-text">求解过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码实战"><span class="nav-number">4.</span> <span class="nav-text">代码实战</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#FISHER-train-m"><span class="nav-number">4.1.</span> <span class="nav-text">FISHER_train.m</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FISHER-test-m"><span class="nav-number">4.2.</span> <span class="nav-text">FISHER_test.m</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实验结果"><span class="nav-number">5.</span> <span class="nav-text">实验结果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Fisher优缺点"><span class="nav-number">6.</span> <span class="nav-text">Fisher优缺点</span></a></li></ol></div>
             
 
           </div>

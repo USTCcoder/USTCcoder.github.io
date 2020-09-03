@@ -138,7 +138,7 @@
 <meta property="og:description" content="Leetcode 990">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/leetcode990.png">
-<meta property="og:updated_time" content="2020-06-08T11:23:20.297Z">
+<meta property="og:updated_time" content="2020-09-02T02:18:54.235Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="等式方程的可满足性(Leetcode 990)">
 <meta name="twitter:description" content="Leetcode 990">
@@ -454,7 +454,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  435
+                  433
                 </span>
               
 
@@ -483,10 +483,9 @@
       
 
       
-        <p><strong><font size="5" color="gray"></font></strong></p><center><strong><font size="5" color="gray">Leetcode 990</font></strong></center><p></p>
+        <p><img src="/images/ALGORITHM/leetcode990.png" alt="1"></p>
 <h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   这道题目是一个集合问题，相等的变量位于同一个集合之中，判断不相等的变量是否存在于同一个集合之中，集合之间的查询要想到并查集。</p>
 <a id="more"></a>
-<p><img src="/images/ALGORITHM/leetcode990.png" alt="q"></p>
 <h1 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a><font size="5" color="red">并查集</font></h1><p>先将相等关系进行处理，把所有的变量分成不同的集合，最后再遍历不等关系，判断不相等的两个遍历是否存在于同一个集合之中。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">class UnionFind:</span><br><span class="line">    def __init__(self, equations):</span><br><span class="line">        self.parents = {}</span><br><span class="line">        for x, _, _, y in equations:</span><br><span class="line">            self.parents[x] = x</span><br><span class="line">            self.parents[y] = y</span><br><span class="line"></span><br><span class="line">    def find(self, x):</span><br><span class="line">        if self.parents[x] != x:</span><br><span class="line">            self.parents[x] = self.find(self.parents[x])</span><br><span class="line">        return self.parents[x]</span><br><span class="line"></span><br><span class="line">    def union(self, x, y):</span><br><span class="line">        root_x, root_y = self.find(x), self.find(y)</span><br><span class="line">        if root_x != root_y:</span><br><span class="line">            self.parents[root_x] = self.parents[root_y]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Solution:</span><br><span class="line">    def equationsPossible(self, equations):</span><br><span class="line">        uf = UnionFind(equations)</span><br><span class="line">        for x, c, _, y in equations:</span><br><span class="line">            if c == '=':</span><br><span class="line">                uf.union(x, y)</span><br><span class="line">        for x, c, _, y in equations:</span><br><span class="line">            if c == '!' and uf.find(x) == uf.find(y):</span><br><span class="line">                return False</span><br><span class="line">        return True</span><br></pre></td></tr></tbody></table></figure><p></p>
 <h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  此题还可以使用BFS或者DFS求解，类似于岛屿问题，将这些变量分成不同的集合，但是因为还需要判断变量之间的不等号关系，即判断变量之间是否不在同一个集合，如果使用BFS或者DFS还需要将每一组不等号去搜索两个变量是否为同一个集合，而并查集每个元素都有一个老大，因此比较两个老大是否为同一个就可以比较是否在同一个集合中，思路清晰，代码也很简单。</p>
 <script>
@@ -678,7 +677,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">173</span>
+                  <span class="site-state-item-count">177</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

@@ -138,7 +138,7 @@
 <meta property="og:description" content="Leetcode 645">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/leetcode645.png">
-<meta property="og:updated_time" content="2020-08-15T13:17:25.020Z">
+<meta property="og:updated_time" content="2020-09-02T02:18:33.248Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="错误的集合(Leetcode 645)">
 <meta name="twitter:description" content="Leetcode 645">
@@ -454,7 +454,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  422
+                  420
                 </span>
               
 
@@ -483,10 +483,9 @@
       
 
       
-        <p><strong><font size="5" color="gray"></font></strong></p><center><strong><font size="5" color="gray">Leetcode 645</font></strong></center><p></p>
+        <p><img src="/images/ALGORITHM/leetcode645.png" alt="1"></p>
 <h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   这个题目和昨天讲解的题目非常类似，有的小伙伴就会说骗人，根本不一样，那下面让我们来康一康吧。</p>
 <a id="more"></a>
-<p><img src="/images/ALGORITHM/leetcode645.png" alt="q"></p>
 <h1 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a><font size="5" color="red">位运算</font></h1><p>题目中说集合S中的元素包含从1到n的整数，而且其中的某一个元素替换成了另一个。这其实就是相当于所有数字都出现两次，除了一个出现一次，一个出现三次。因为我们已知数据从1到n，我们可以额外添加一组从1到n的数据，假设x替换成了y，那么新数组为x出现1次，y出现3次，其他的数据都出现2次。是不是和昨天讲解的题目非常相似。只是昨天的数据已经给出了出现两次，今天的数据需要从1到n额外添加一次。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">from functools import reduce</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Solution(object):</span><br><span class="line">    def findErrorNums(self, nums):</span><br><span class="line">        """</span><br><span class="line">        :type nums: List[int]</span><br><span class="line">        :rtype: List[int]</span><br><span class="line">        """</span><br><span class="line">        n = len(nums)</span><br><span class="line">        a = reduce(lambda x, y: x ^ y, nums + list(range(1, n + 1)))</span><br><span class="line">        b = 1</span><br><span class="line">        part1 = 0</span><br><span class="line">        part2 = 0</span><br><span class="line">        while not (a &amp; b):</span><br><span class="line">            b &lt;&lt;= 1</span><br><span class="line">        for x in nums:</span><br><span class="line">            if x &amp; b:</span><br><span class="line">                part1 ^= x</span><br><span class="line">            else:</span><br><span class="line">                part2 ^= x</span><br><span class="line">        for x in range(1, n + 1):</span><br><span class="line">            if x &amp; b:</span><br><span class="line">                part1 ^= x</span><br><span class="line">            else:</span><br><span class="line">                part2 ^= x</span><br><span class="line">        for x in nums:</span><br><span class="line">            if part1 == x:</span><br><span class="line">                return [part1, part2]</span><br><span class="line">        return [part2, part1]</span><br></pre></td></tr></tbody></table></figure><p></p>
 <h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  这几天的强化位运算找数字问题，让小伙伴们明白，遇到相同数字的问题，首先需要考虑异或的方法，往往可以节省大量的内存空间。</p>
 <script>
@@ -678,7 +677,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">173</span>
+                  <span class="site-state-item-count">177</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

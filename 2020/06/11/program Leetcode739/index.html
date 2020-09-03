@@ -139,7 +139,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/leetcode739.png">
 <meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/leetcode739_stack.png">
-<meta property="og:updated_time" content="2020-06-11T08:18:47.909Z">
+<meta property="og:updated_time" content="2020-09-02T02:18:37.429Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="每日温度(Leetcode 739)">
 <meta name="twitter:description" content="Leetcode 739">
@@ -455,7 +455,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  704
+                  702
                 </span>
               
 
@@ -484,10 +484,9 @@
       
 
       
-        <p><strong><font size="5" color="gray"></font></strong></p><center><strong><font size="5" color="gray">Leetcode 739</font></strong></center><p></p>
+        <p><img src="/images/ALGORITHM/leetcode739.png" alt="1"></p>
 <h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   题意很简单，找出比当前数字大的下一个数字的距离，是不是可以按照我们的想法来解题呢？遍历每一个元素，找出比它大的下一个元素的位置。</p>
 <a id="more"></a>
-<p><img src="/images/ALGORITHM/leetcode739.png" alt="q"></p>
 <h1 id="暴力法"><a href="#暴力法" class="headerlink" title="暴力法"></a><font size="5" color="red">暴力法</font></h1><p>最直观的想法，从第一个元素开始遍历，对每一个元素遍历它后面的所有元素，如果找到比它大的数字，则索引相减并break，从下一个元素开始寻找，否则置为0。暴力法的时间复杂度为$O(n^2)$，空间复杂度为$O(n)$。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def dailyTemperatures(self, T):</span><br><span class="line">        """</span><br><span class="line">        :type T: List[int]</span><br><span class="line">        :rtype: List[int]</span><br><span class="line">        """</span><br><span class="line">        lens = len(T)</span><br><span class="line">        res = [0] * lens</span><br><span class="line">        for i in range(lens):</span><br><span class="line">            for j in range(i + 1, lens):</span><br><span class="line">                if T[j] &gt; T[i]:</span><br><span class="line">                    res[i] = j - i</span><br><span class="line">                    break</span><br><span class="line">        return res</span><br></pre></td></tr></tbody></table></figure><p></p>
 <h1 id="优化暴力法"><a href="#优化暴力法" class="headerlink" title="优化暴力法"></a><font size="5" color="red">优化暴力法</font></h1><p>暴力法虽然可以求解，但是无法通过，因为时间复杂度太高，我们观察到题目中的信息，温度的范围在[30, 100]之间，因此我们对于每一个数，找后面比它大的数，哪个出现的最早即可。以题目的示例，第一个数为73，那么只需要寻找74到100，看哪一个数出现的最早即可。从后向前计算，并且用字典记录当前值出现的索引，这样寻找时直接查找是否存在于字典中，不需要遍历，因此可以将暴力法的第二层循环从n次查找变为最多100次的字典查找，时间复杂度为$O(mn)$，其中m最大为100，空间复杂度为$O(n)$，官方题解中有Pythonic的写法，在此我就不献丑了。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def dailyTemperatures(self, T):</span><br><span class="line">        """</span><br><span class="line">        :type T: List[int]</span><br><span class="line">        :rtype: List[int]</span><br><span class="line">        """</span><br><span class="line">        n = len(T)</span><br><span class="line">        ans, nxt, big = [0] * n, dict(), 10**9</span><br><span class="line">        for i in range(n - 1, -1, -1):</span><br><span class="line">            print(i)</span><br><span class="line">            warmer_index = min(nxt.get(t, big) for t in range(T[i] + 1, 102))</span><br><span class="line">            if warmer_index != big:</span><br><span class="line">                ans[i] = warmer_index - i</span><br><span class="line">            nxt[T[i]] = i</span><br><span class="line">        return ans</span><br></pre></td></tr></tbody></table></figure><p></p>
 <h1 id="单调栈"><a href="#单调栈" class="headerlink" title="单调栈"></a><font size="5" color="red">单调栈</font></h1><p>这道题遍历法肯定不是最优的解法，单调栈是这类问题的最优解，下面我用图示说明如何使用单调栈求解这个问题。<br><img src="/images/ALGORITHM/leetcode739_stack.png" alt="stack"><br>单调栈的时间复杂度为$O(n)$，空间复杂度为$O(n)$。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def dailyTemperatures(self, T):</span><br><span class="line">        """</span><br><span class="line">        :type T: List[int]</span><br><span class="line">        :rtype: List[int]</span><br><span class="line">        """</span><br><span class="line">        lens = len(T)</span><br><span class="line">        stack = []</span><br><span class="line">        res = [0] * lens</span><br><span class="line">        for i, v in enumerate(T):</span><br><span class="line">            while stack and T[stack[-1]] &lt; v:</span><br><span class="line">                tmp_i = stack.pop()</span><br><span class="line">                res[tmp_i] = i - tmp_i</span><br><span class="line">            stack.append(i)</span><br><span class="line">        return res</span><br></pre></td></tr></tbody></table></figure><p></p>
@@ -681,7 +680,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">173</span>
+                  <span class="site-state-item-count">177</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

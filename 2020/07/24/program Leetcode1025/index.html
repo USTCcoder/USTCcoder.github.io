@@ -138,7 +138,7 @@
 <meta property="og:description" content="Leetcode 1025">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/leetcode1025.png">
-<meta property="og:updated_time" content="2020-07-26T06:57:08.290Z">
+<meta property="og:updated_time" content="2020-09-02T02:19:01.082Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="除数博弈(Leetcode 1025)">
 <meta name="twitter:description" content="Leetcode 1025">
@@ -483,10 +483,9 @@
       
 
       
-        <p><strong><font size="5" color="gray"></font></strong></p><center><strong><font size="5" color="gray">Leetcode 1025</font></strong></center><p></p>
+        <p><img src="/images/ALGORITHM/leetcode1025.png" alt="1"></p>
 <h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   这道题目是一个<strong>博弈问题</strong>，因为很难去遍历所有的情况，我们只能通过上一步对手的情况，选择我们相应的行为，因此博弈问题一般可以通过动态规划求解。</p>
 <a id="more"></a>
-<p><img src="/images/ALGORITHM/leetcode1025.png" alt="q"></p>
 <h1 id="状态转移方程的求解"><a href="#状态转移方程的求解" class="headerlink" title="状态转移方程的求解"></a><font size="5" color="red">状态转移方程的求解</font></h1><p>题目中说每次选取一个满足条件的数，进行减法替换。所以以可以构建一个从0到N的数组，保存到达这N个数字的胜负情况，博弈的题目要求是<strong>两个人都是最优策略</strong>，因此我们可以推断出，<strong>当判断第N个数时，如果从1到N的所有满足条件的数字有一个会导致败局时，那么第N个数就是必胜局，当从1到N的所有满足条件的数字全都是胜局时，那么第N个数就是必败局</strong>。因为爱丽丝先手，0到N中如果有一个数字K会导致必败局，那么爱丽丝就选择K，这样，鲍勃就会走入必败的局面，因此爱丽丝必胜，如果0到N的所有数字都是必胜局，那么爱丽丝无论如何选择，鲍勃都会到达必胜局，因此爱丽丝必败。</p>
 <h1 id="DP"><a href="#DP" class="headerlink" title="DP"></a><font size="5" color="red">DP</font></h1><p>根据状态转移方程，我们可以轻易的求得该题，x从2遍历到N，对于每一个数x，计算出所有符合条件的数，因为要满足整除条件，因此符合条件的数从1遍历到x的平方根即可。所以时间复杂度为$O(n\sqrt{n})$，空间复杂度为$O(n)$。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def divisorGame(self, N: int) -&gt; bool:</span><br><span class="line">        dp = [False] * (N + 1)</span><br><span class="line"></span><br><span class="line">        for i in range(2, N + 1):</span><br><span class="line">            for x in range(1, int(i ** 0.5) + 1):</span><br><span class="line">                if i % x == 0:</span><br><span class="line">                    if not dp[i - x]:</span><br><span class="line">                        dp[i] = True</span><br><span class="line">                        break</span><br><span class="line">        return dp[-1]</span><br></pre></td></tr></tbody></table></figure><p></p>
 <h1 id="归纳法"><a href="#归纳法" class="headerlink" title="归纳法"></a><font size="5" color="red">归纳法</font></h1><p>归纳法是最简单的方法，但不是我首推的方法，因为归纳法不能解决大多数问题，所以说并不是这个问题的通解。<br>我们已知1为必败态，因为找不到满足条件的数。<br>我们已知2为必胜态，因为我们可以找到因数1满足条件，而且1为必败态，因此爱丽丝选择1，就会让鲍勃陷入必败态。<br>我们尝试3，因为1是满足条件的唯一解，而且2为必胜态，所以3为必败态。<br>我们尝试4，因为3是必败态，所以爱丽丝会选择1，让鲍勃陷入必败态，爱丽丝是必胜态。<br>我们尝试5，因为1是满足条件的唯一解，而且4为必胜态，所以5为必败态。<br>……我们会发现，1，3，5，…是必败态，2，4，…是必胜态。所以我们猜测奇数态都是必败态，偶数态都是必胜态。<br>我们假设k为偶数，并且小于等于k的数都满足条件，奇数为必败态，偶数为必胜态。那么当爱丽丝处于k+1奇数时，由于奇数的因子必定为奇数，所以爱丽丝只能选择奇数。这样鲍勃会处于一个小于等于k的偶数，由假定可知偶数是必胜态，那么鲍勃必胜，爱丽丝必败，满足条件。<br>我们假设k为奇数，并且小于等于k的数都满足条件，奇数为必败态，偶数为必胜态。那么当爱丽丝处于k+1偶数时，爱丽丝可以选择1，这样鲍勃会处于等于k的奇数，由假定可知，奇数为必败态，那么鲍勃必败，爱丽丝必胜，也满足条件。<br>综上可知，我们的推论是正确的。因此只需要判断该数的奇偶，就可以直接给出结论，所以时间复杂度为$O(1)$，空间复杂度为$O(1)$。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def divisorGame(self, N: int) -&gt; bool:</span><br><span class="line">        return N % 2 == 0</span><br></pre></td></tr></tbody></table></figure><p></p>
@@ -557,7 +556,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/07/23/C++_oop_4/" rel="next" title="C++面向对象进阶">
+              <a href="/2020/07/23/C++_oop_3/" rel="next" title="C++面向对象进阶">
                 <i class="fa fa-chevron-left"></i> C++面向对象进阶
               </a>
             
@@ -680,7 +679,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">173</span>
+                  <span class="site-state-item-count">177</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

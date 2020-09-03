@@ -130,20 +130,21 @@
 
 
 
-<meta name="description" content="KNN">
+<meta name="description" content="KNN(K Nearest Neighbor)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="KNN(K Nearest Neighbor)">
-<meta property="og:url" content="https://USTCcoder.github.io/2019/07/05/classfication KNN/index.html">
+<meta property="og:url" content="https://USTCcoder.github.io/2019/06/15/classfication KNN/index.html">
 <meta property="og:site_name" content="GitHub">
-<meta property="og:description" content="KNN">
+<meta property="og:description" content="KNN(K Nearest Neighbor)">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/knn.jpg">
 <meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/knn.png">
 <meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/knn1.png">
-<meta property="og:updated_time" content="2019-08-07T15:53:50.984Z">
+<meta property="og:updated_time" content="2020-09-01T01:24:11.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="KNN(K Nearest Neighbor)">
-<meta name="twitter:description" content="KNN">
-<meta name="twitter:image" content="https://ustccoder.github.io/images/MACHINE/knn.png">
+<meta name="twitter:description" content="KNN(K Nearest Neighbor)">
+<meta name="twitter:image" content="https://ustccoder.github.io/images/MACHINE/knn.jpg">
 
 
 
@@ -173,7 +174,7 @@
 
 
 
-  <link rel="canonical" href="https://USTCcoder.github.io/2019/07/05/classfication KNN/">
+  <link rel="canonical" href="https://USTCcoder.github.io/2019/06/15/classfication KNN/">
 
 
 
@@ -344,7 +345,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2019/07/05/classfication KNN/">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2019/06/15/classfication KNN/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="USTCcoder">
@@ -373,8 +374,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-05T08:25:20+08:00">
-                2019-07-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-15T08:25:20+08:00">
+                2019-06-15
               </time>
             
 
@@ -425,8 +426,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/07/05/classfication KNN/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/05/classfication KNN/" itemprop="commentCount"></span>
+                <a href="/2019/06/15/classfication KNN/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/15/classfication KNN/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -455,7 +456,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  852
+                  853
                 </span>
               
 
@@ -467,7 +468,7 @@
 
           
               <div class="post-description">
-                  <table><tr><td bgcolor="grey"><font size="5" face="STXihei" color="white"><center>KNN</center></font></td></tr></table>
+                  <table><tr><td bgcolor="grey"><font size="5" face="STXihei" color="white"><center>KNN(K Nearest Neighbor)</center></font></td></tr></table>
               </div>
           
 
@@ -484,8 +485,8 @@
       
 
       
-        <p><strong><font size="5" color="gray"></font></strong></p><center><strong><font size="5" color="gray">K近邻</font></strong></center><p></p>
-<h1 id="原理解读"><a href="#原理解读" class="headerlink" title="原理解读"></a><font size="5" color="red">原理解读</font></h1><p>  k近邻法(kNN)是一种基本分类方法，给定测试实例，基于<strong>某种距离度量</strong>找出训练集中与其<strong>最靠近的k个</strong>实例点，然后基于这k个最近邻的信息使用<strong>投票法</strong>，即选择这k个实例中<strong>出现最多</strong>的标记类别作为分类结果。<br><a id="more"></a></p>
+        <p><img src="/images/MACHINE/knn.jpg" alt="knn"></p>
+<h1 id="原理解读"><a href="#原理解读" class="headerlink" title="原理解读"></a><font size="5" color="red">原理解读</font></h1><p>  KNN(K Nearest Neighbor):又称K近邻，是一种基本分类方法，给定测试实例，基于<strong>某种距离度量</strong>找出训练集中与其<strong>最靠近的k个</strong>实例点，然后基于这k个最近邻的信息使用<strong>投票法</strong>，即选择这k个实例中<strong>出现最多</strong>的标记类别作为分类结果。<br><a id="more"></a></p>
 <h1 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a><font size="5" color="red">核心思想</font></h1><h2 id="距离的度量"><a href="#距离的度量" class="headerlink" title="距离的度量"></a><font size="4">距离的度量</font></h2><p>  <font size="4">1. 欧式距离(Euclidean Distance)</font></p>
 <script type="math/tex; mode=display">L_2(x_i,x_j)=\sqrt{\displaystyle \sum_{k=1}^n ({x_i}^{(k)}-{x_j}^{(k)})^2}</script><p>  <font size="4">2. 曼哈顿距离(Manhattan distance)</font></p>
 <script type="math/tex; mode=display">L_1(x_i,x_j)=\displaystyle \sum_{k=1}^n \lvert{x_i}^{(k)}-{x_j}^{(k)} \rvert</script><p>  <font size="4">3.余弦距离(Cosine Distance)</font></p>
@@ -578,8 +579,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/05/classfication LMSE/" rel="next" title="LMSE(Least Mean Square Error)">
-                <i class="fa fa-chevron-left"></i> LMSE(Least Mean Square Error)
+              <a href="/2019/05/27/optimization_DE/" rel="next" title="差分进化算法(DE)">
+                <i class="fa fa-chevron-left"></i> 差分进化算法(DE)
               </a>
             
           </div>
@@ -588,8 +589,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/07/19/algorithm greedy/" rel="prev" title="贪心算法(Greedy)">
-                贪心算法(Greedy) <i class="fa fa-chevron-right"></i>
+              <a href="/2019/06/20/classfication FISHER/" rel="prev" title="Fisher线性判别">
+                Fisher线性判别 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -701,7 +702,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">173</span>
+                  <span class="site-state-item-count">177</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

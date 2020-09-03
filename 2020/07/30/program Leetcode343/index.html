@@ -138,7 +138,7 @@
 <meta property="og:description" content="Leetcode 343">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/leetcode343.png">
-<meta property="og:updated_time" content="2020-08-13T15:22:03.925Z">
+<meta property="og:updated_time" content="2020-09-02T02:18:26.323Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="整数拆分(Leetcode 343)">
 <meta name="twitter:description" content="Leetcode 343">
@@ -454,7 +454,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  841
+                  839
                 </span>
               
 
@@ -483,9 +483,9 @@
       
 
       
-        <p><strong><font size="5" color="gray"></font></strong></p><center><strong><font size="5" color="gray">Leetcode 343</font></strong></center><p></p>
-<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   整数拆分问题是一个数学问题，如果指定拆分个数是2个的话，那么就是小伙伴们小学都学过的问题，可能小伙伴们会抬杠，小学怎么可能学过求二次函数最大值的问题呢？其实二拆分这个问题有另外一种描述：同样周长的正方形和长方形哪一个面积更大？Leetcode这一题将二拆分进行了推广，不指定拆分个数，这应该怎么做呢？暴力穷举当然是不行的，这是指数级的时间复杂度，应该如何优化呢？<br><a id="more"></a></p>
-<p><img src="/images/ALGORITHM/leetcode343.png" alt="q"></p>
+        <p><img src="/images/ALGORITHM/leetcode343.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   整数拆分问题是一个数学问题，如果指定拆分个数是2个的话，那么就是小伙伴们小学都学过的问题，可能小伙伴们会抬杠，小学怎么可能学过求二次函数最大值的问题呢？其实二拆分这个问题有另外一种描述：同样周长的正方形和长方形哪一个面积更大？Leetcode这一题将二拆分进行了推广，不指定拆分个数，这应该怎么做呢？暴力穷举当然是不行的，这是指数级的时间复杂度，应该如何优化呢？</p>
+<a id="more"></a>
 <h1 id="DP"><a href="#DP" class="headerlink" title="DP"></a><font size="5" color="red">DP</font></h1><p>我们使用动态规划进行求解，dp[i]表示第i个数分解可得的最大值，可以得到状态转移方程</p>
 <script type="math/tex; mode=display">dp[i] = \max_{j = 1}^{i}(dp[i], dp[j] \times (i - j), j \times (i - j))</script><p>这个方案不难想到，小伙伴们千万不要忘记还有$i \times j$，DP的时间复杂度为$O(n^2)$，空间复杂度为$O(n)$，因为数字较小，因此很容易通过。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def integerBreak(self, n):</span><br><span class="line">        dp = [0] * (n + 1)</span><br><span class="line">        for i in range(2, n + 1):</span><br><span class="line">            for j in range(1, i):</span><br><span class="line">                dp[i] = max(dp[j] * (i - j), j * (i - j), dp[i])</span><br><span class="line">        return dp[-1]</span><br></pre></td></tr></tbody></table></figure><p></p>
 <h1 id="数学方法"><a href="#数学方法" class="headerlink" title="数学方法"></a><font size="5" color="red">数学方法</font></h1><p>这个方法很巧妙，用一种归纳的方法进行这类问题的求解。有很多算法题，有一些较好的数学解法，这个题目可以给小伙伴们提供一个思路。<br>我们观察，如果一个数大于等于4，它的因子会出现什么情况？</p>
@@ -562,7 +562,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/07/28/C++_oop_5/" rel="next" title="C++面向对象拓展">
+              <a href="/2020/07/28/C++_oop_4/" rel="next" title="C++面向对象拓展">
                 <i class="fa fa-chevron-left"></i> C++面向对象拓展
               </a>
             
@@ -572,7 +572,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/07/31/C++_oop_6/" rel="prev" title="C++面向对象完结">
+              <a href="/2020/07/31/C++_oop_5/" rel="prev" title="C++面向对象完结">
                 C++面向对象完结 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -685,7 +685,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">173</span>
+                  <span class="site-state-item-count">177</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

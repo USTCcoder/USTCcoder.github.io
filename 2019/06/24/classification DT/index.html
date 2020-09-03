@@ -130,21 +130,22 @@
 
 
 
-<meta name="description" content="Decision Tree">
+<meta name="description" content="决策树(Decision Tree)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="决策树(Decision Tree)">
-<meta property="og:url" content="https://USTCcoder.github.io/2019/07/03/classification DT/index.html">
+<meta property="og:url" content="https://USTCcoder.github.io/2019/06/24/classification DT/index.html">
 <meta property="og:site_name" content="GitHub">
-<meta property="og:description" content="Decision Tree">
+<meta property="og:description" content="决策树(Decision Tree)">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/dt.jpg">
 <meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/dt.png">
 <meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/dt2.png">
 <meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/dt1.png">
-<meta property="og:updated_time" content="2019-08-07T15:54:03.738Z">
+<meta property="og:updated_time" content="2020-09-01T01:24:42.349Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="决策树(Decision Tree)">
-<meta name="twitter:description" content="Decision Tree">
-<meta name="twitter:image" content="https://ustccoder.github.io/images/MACHINE/dt.png">
+<meta name="twitter:description" content="决策树(Decision Tree)">
+<meta name="twitter:image" content="https://ustccoder.github.io/images/MACHINE/dt.jpg">
 
 
 
@@ -174,7 +175,7 @@
 
 
 
-  <link rel="canonical" href="https://USTCcoder.github.io/2019/07/03/classification DT/">
+  <link rel="canonical" href="https://USTCcoder.github.io/2019/06/24/classification DT/">
 
 
 
@@ -345,7 +346,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2019/07/03/classification DT/">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2019/06/24/classification DT/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="USTCcoder">
@@ -374,8 +375,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-03T14:45:20+08:00">
-                2019-07-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-24T14:45:20+08:00">
+                2019-06-24
               </time>
             
 
@@ -426,8 +427,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/07/03/classification DT/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/03/classification DT/" itemprop="commentCount"></span>
+                <a href="/2019/06/24/classification DT/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/24/classification DT/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -456,7 +457,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2.2k
+                  2.3k
                 </span>
               
 
@@ -468,7 +469,7 @@
 
           
               <div class="post-description">
-                  <table><tr><td bgcolor="grey"><font size="5" face="STXihei" color="white"><center>Decision Tree</center></font></td></tr></table>
+                  <table><tr><td bgcolor="grey"><font size="5" face="STXihei" color="white"><center>决策树(Decision Tree)</center></font></td></tr></table>
               </div>
           
 
@@ -485,47 +486,46 @@
       
 
       
-        <p><strong><font size="5" color="gray"></font></strong></p><center><strong><font size="5" color="gray">决策树</font></strong></center><p></p>
+        <p><img src="/images/MACHINE/dt.jpg" alt="dt"></p>
 <h1 id="原理解读"><a href="#原理解读" class="headerlink" title="原理解读"></a><font size="5" color="red">原理解读</font></h1><p>  决策树(Decision Tree):是在已知各种情况发生概率的基础上，直观运用概率分析的一种<strong>图解法</strong>。决策树是一种<strong>树形结构</strong>，其中每个<strong>内部节点表示一个属性上的测试</strong>，每个<strong>分支代表一个测试输出</strong>，每个<strong>叶节点代表一种类别</strong>。由于这种决策分支画成图形很像一棵树的枝干，故称决策树。<br><a id="more"></a></p>
 <h1 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a><font size="5" color="red">核心思想</font></h1><h2 id="树的构建"><a href="#树的构建" class="headerlink" title="树的构建"></a><font size="4">树的构建</font></h2><ul>
-<li>步骤1：将所有的数据看成是一个节点（根节点），进入步骤2</li>
-<li>步骤2：根据划分准则，从所有属性中挑选一个对节点进行分割，进入步骤3</li>
-<li>步骤3：生成若干个子节点，对每一个子节点进行判断，如果满足停止分裂的条件，进入步骤4；否则，进入步骤2</li>
-<li>步骤4：设置该节点是叶子节点，其输出的结果为该节点数量占比最大的类别</li>
+<li>步骤1：<strong>将所有的数据看成是一个节点（根节点），进入步骤2</strong></li>
+<li>步骤2：<strong>根据划分准则，从所有属性中挑选一个对节点进行分割，进入步骤3</strong></li>
+<li>步骤3：<strong>生成若干个子节点，对每一个子节点进行判断，如果满足停止分裂的条件，进入步骤4；否则，进入步骤2</strong></li>
+<li>步骤4：<strong>设置该节点是叶子节点，其输出的结果为该节点数量占比最大的类别</strong></li>
 </ul>
 <h2 id="划分准则"><a href="#划分准则" class="headerlink" title="划分准则"></a><font size="4">划分准则</font></h2><h3 id="信息熵"><a href="#信息熵" class="headerlink" title="信息熵"></a>信息熵</h3><p>信息熵：假设样本集合D中第k类样本所占的比例为$p_k(k=1,2,\ldots,y)$，则D的信息熵定义为：</p>
-<script type="math/tex; mode=display">Ent(D)=-\displaystyle \sum_{k=1}^y p_klog_2p_k</script><p>Ent(D)的值越小，则D的纯度越高。</p>
+<script type="math/tex; mode=display">Ent(D)=-\displaystyle \sum_{k=1}^y p_klog_2p_k</script><p><strong>Ent(D)的值越小，则D的纯度越高</strong>。</p>
 <h3 id="信息增益-ID3"><a href="#信息增益-ID3" class="headerlink" title="信息增益(ID3)"></a>信息增益(ID3)</h3><p>假设离散属性a有V个不同的取值$\lbrace a^1,a^2,\ldots,a^V \rbrace$，若使用a来对样本集D进行划分，则会产生V个分支节点，其中第v个分支节点包含了D中所有在属性a上取值为$a^v$的样本，记为$D^v$。我们可以计算出$D^v$的信息熵，再给分支结点赋予权重$\frac{\left| D^v \right|}{\left| D \right|}$<br>则可以计算出用属性a对样本集D进行划分所获得的”信息增益”。</p>
-<script type="math/tex; mode=display">Gain(D,a)=Ent(D)-\displaystyle \sum_{v=1}^V \frac{\left| D^v \right|}{\left| D \right|}Ent(D^v)</script><p>一般而言，信息增益越大，则意味着使用属性a来进行划分所获得的纯度提升越大，ID3决策树学习算法就是以信息增益为准则来划分属性。</p>
+<script type="math/tex; mode=display">Gain(D,a)=Ent(D)-\displaystyle \sum_{v=1}^V \frac{\left| D^v \right|}{\left| D \right|}Ent(D^v)</script><p><strong>一般而言，信息增益越大，则意味着使用属性a来进行划分所获得的纯度提升越大，ID3决策树学习算法就是以信息增益为准则来划分属性</strong>。</p>
 <h3 id="增益率-C4-5"><a href="#增益率-C4-5" class="headerlink" title="增益率(C4.5)"></a>增益率(C4.5)</h3><p>实际上，信息增益准则对可取值数目较多的属性有所偏好，为减少这种偏好可能带来的不利影响，著名的C4.5决策树算法不直接使用信息增益，而是使用”增益率”来选择最优划分属性。<br>增益率定义为</p>
-<script type="math/tex; mode=display">Gain\_ratio=\frac{Gain(D,a)}{IV(a)}</script><script type="math/tex; mode=display">IV(a)=-\displaystyle \sum_{v=1}^V \frac{\left| D^v \right|}{\left| D \right|} log_2 \frac{\left| D^v \right|}{\left| D \right|}</script><p>需要注意的是，增益率准则对可取值数目较少的属性有所偏好，因此C4.5算法先从候选划分属性中找出信息增益高于平均水平的属性，再从中选择增益率最高的。</p>
-<h3 id="基尼指数-CART"><a href="#基尼指数-CART" class="headerlink" title="基尼指数(CART)"></a>基尼指数(CART)</h3><p>基尼指数反应了从数据集D中随机抽取两个样本，其类别标记不一致的概率。因此基尼指数越小，则数据集D的纯度越高。</p>
+<script type="math/tex; mode=display">Gain\_ratio=\frac{Gain(D,a)}{IV(a)}</script><script type="math/tex; mode=display">IV(a)=-\displaystyle \sum_{v=1}^V \frac{\left| D^v \right|}{\left| D \right|} log_2 \frac{\left| D^v \right|}{\left| D \right|}</script><p><strong>需要注意的是，增益率准则对可取值数目较少的属性有所偏好，因此C4.5算法先从候选划分属性中找出信息增益高于平均水平的属性，再从中选择增益率最高的</strong>。</p>
+<h3 id="基尼指数-CART"><a href="#基尼指数-CART" class="headerlink" title="基尼指数(CART)"></a>基尼指数(CART)</h3><p><strong>基尼指数反应了从数据集D中随机抽取两个样本，其类别标记不一致的概率。因此基尼指数越小，则数据集D的纯度越高</strong>。</p>
 <script type="math/tex; mode=display">Gini(D)=1-\displaystyle \sum_{k=1}^y {p_k}^2</script><p>属性a的基尼指数定义为</p>
-<script type="math/tex; mode=display">Gini\_index(D,a)=\displaystyle \sum_{v=1}^V \frac{\left| D^v \right|}{\left| D \right|} Gini(D^v)</script><p>在选择属性集合时，选择使划分后基尼指数最小的属性作为最优划分属性。</p>
-<h2 id="剪枝处理"><a href="#剪枝处理" class="headerlink" title="剪枝处理"></a><font size="4">剪枝处理</font></h2><p>剪枝(pruning)是决策树学习算法对付”过拟合”的主要手段。<br>决策树剪枝的基本策略有”预剪枝(prepruning)”和”后剪枝(postpruning)”。</p>
-<h3 id="预剪枝-prepruning"><a href="#预剪枝-prepruning" class="headerlink" title="预剪枝(prepruning)"></a>预剪枝(prepruning)</h3><p>预剪枝：是在决策树生长过程中，对每个结点在划分前先进行估计，若当前结点的划分不能带来决策树泛化性能提升，则停止划分并将当前结点标记为叶子结点。<br>预剪枝优点：</p>
+<script type="math/tex; mode=display">Gini\_index(D,a)=\displaystyle \sum_{v=1}^V \frac{\left| D^v \right|}{\left| D \right|} Gini(D^v)</script><p><strong>在选择属性集合时，选择使划分后基尼指数最小的属性作为最优划分属性</strong>。</p>
+<h2 id="剪枝处理"><a href="#剪枝处理" class="headerlink" title="剪枝处理"></a><font size="4">剪枝处理</font></h2><p><strong>剪枝(pruning)是决策树学习算法对付”过拟合”的主要手段</strong>。<br>决策树剪枝的基本策略有”预剪枝(prepruning)”和”后剪枝(postpruning)”。</p>
+<h3 id="预剪枝-prepruning"><a href="#预剪枝-prepruning" class="headerlink" title="预剪枝(prepruning)"></a>预剪枝(prepruning)</h3><p><strong>预剪枝：是在决策树生长过程中，对每个结点在划分前先进行估计，若当前结点的划分不能带来决策树泛化性能提升，则停止划分并将当前结点标记为叶子结点</strong>。<br>预剪枝优点：</p>
 <ul>
-<li>降低过拟合风险</li>
-<li>显著减少决策树的训练时间开销和测试时间开销<br>预剪枝缺点：</li>
-<li>因为”贪心”本质，可能带来欠拟合的风险</li>
+<li><strong>降低过拟合风险</strong></li>
+<li><strong>显著减少决策树的训练时间开销和测试时间开销</strong><br>预剪枝缺点：</li>
+<li><strong>因为”贪心”本质，可能带来欠拟合的风险</strong></li>
 </ul>
-<h3 id="后剪枝-postpruning"><a href="#后剪枝-postpruning" class="headerlink" title="后剪枝(postpruning)"></a>后剪枝(postpruning)</h3><p>后剪枝：先从训练集生成一颗完整的决策树，然后自底向上地对非叶结点进行考察，若将该结点对应的子树替换为叶结点能带来决策树泛化性能提升，则将该子树替换为叶节点。<br>后剪枝优点：</p>
+<h3 id="后剪枝-postpruning"><a href="#后剪枝-postpruning" class="headerlink" title="后剪枝(postpruning)"></a>后剪枝(postpruning)</h3><p><strong>后剪枝：先从训练集生成一颗完整的决策树，然后自底向上地对非叶结点进行考察，若将该结点对应的子树替换为叶结点能带来决策树泛化性能提升，则将该子树替换为叶节点</strong>。<br>后剪枝优点：</p>
 <ul>
-<li>泛化性能较好</li>
-<li>欠拟合风险较小<br>后剪枝缺点：</li>
-<li>生成完全决策树后进行，并且自底向上对所有非叶结点进行逐一考察，时间开销大</li>
+<li><strong>泛化性能较好</strong></li>
+<li><strong>欠拟合风险较小</strong><br>后剪枝缺点：</li>
+<li><strong>生成完全决策树后进行，并且自底向上对所有非叶结点进行逐一考察，时间开销大</strong></li>
 </ul>
 <h1 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a><font size="5" color="red">算法流程</font></h1><p><img src="/images/MACHINE/dt.png" alt="DT"></p>
 <p><br><br></p>
-<h1 id="代码实战"><a href="#代码实战" class="headerlink" title="代码实战"></a><font size="5" color="red">代码实战</font></h1><p><font size="4">代码中所用数据为罗斯.昆兰(Ross Quinlan)当年所用的高尔夫模型</font><br><img src="/images/MACHINE/dt2.png" alt="DATA"></p>
+<h1 id="代码实战"><a href="#代码实战" class="headerlink" title="代码实战"></a><font size="5" color="red">代码实战</font></h1><p><font size="4">代码中所用数据为罗斯.昆兰(Ross Quinlan)当年所用的高尔夫模型</font><br>其实这里使用的算法并不是ID3，因为老师上课讲错了，误把ID3讲成最小熵，ID3应该是最小熵增益。但是作业要求是实现最小熵的ID3算法，所以我起名为ID3。但是<strong>标准的ID3，还需要一个比较的过程，确定哪一种分割是最小熵增益</strong>。<br><img src="/images/MACHINE/dt2.png" alt="DATA"></p>
 <h2 id="ID3-main-m"><a href="#ID3-main-m" class="headerlink" title="ID3_main.m"></a>ID3_main.m</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line">%% %获取基本信息</span><br><span class="line">clear;clc;close all;</span><br><span class="line">%设置类别和标签最长为100字符</span><br><span class="line">char_len=100;</span><br><span class="line">%生成一个长度为100的空串</span><br><span class="line">space(1:char_len)=' ';</span><br><span class="line">%读取文本文档</span><br><span class="line">fo=fopen('data1.txt','rt');</span><br><span class="line">txt=textscan(fo,'%s');</span><br><span class="line">fclose(fo);</span><br><span class="line">%class_name为类别名称，如outlook，temperature等等</span><br><span class="line">class_name=strsplit(txt{1}{1},',');</span><br><span class="line">class_name=class_name(1:end-1);</span><br><span class="line">%class_num为类别数</span><br><span class="line">class_num=length(class_name);</span><br><span class="line">%sample_num为样本数</span><br><span class="line">sample_num=length(txt{1})-1;</span><br><span class="line">data{sample_num,class_num+1}=[];</span><br><span class="line">%读入数据</span><br><span class="line">for i=1:sample_num</span><br><span class="line">    temp=strsplit(txt{1}{i+1},',');</span><br><span class="line">    for j=1:class_num</span><br><span class="line">        data{i,j}=[temp{j},'_',class_name{1,j}];</span><br><span class="line">    end</span><br><span class="line">    data{i,j+1}=temp{j+1};</span><br><span class="line">end</span><br><span class="line">%class_info存放每一个类别的标签信息，如第一个元胞中存放rain，sunny，overcast</span><br><span class="line">class_info{1,class_num}=[];</span><br><span class="line">for i=1:class_num</span><br><span class="line">    temp=unique(data(:,i));</span><br><span class="line">    class_info{i}=temp;</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">%% %生成树</span><br><span class="line">No=1;</span><br><span class="line">%创建100*100的字符矩阵存放树的信息。</span><br><span class="line">tree(1:char_len,1:char_len)=' ';</span><br><span class="line">[tree,No] = ID3_creat(data,class_name,tree,No);</span><br><span class="line"></span><br><span class="line">%% %构建连接矩阵</span><br><span class="line">%获取树的节点</span><br><span class="line">tree_node=tree(1:2:No,:);</span><br><span class="line">%获取树的标签</span><br><span class="line">tree_label=tree(2:2:No,:);</span><br><span class="line">%创建连接矩阵</span><br><span class="line">vect{size(tree_node,1),size(tree_node,1)}=[];</span><br><span class="line">%vect元胞记录父子关系</span><br><span class="line">for i=1:size(tree_node,1)</span><br><span class="line">    tem=find(ismember(class_name,deblank(tree_node(i,:))));</span><br><span class="line">    if isempty(tem)</span><br><span class="line">        continue;</span><br><span class="line">    end</span><br><span class="line">    num=size(class_info{1,tem},1);</span><br><span class="line">    for j=1:num</span><br><span class="line">        temp=space;</span><br><span class="line">        temp(1:length(class_info{1,tem}{j}))=class_info{1,tem}{j};</span><br><span class="line">        for k=1:size(tree_label,1)</span><br><span class="line">            if isequal(tree_label(k,:),temp)</span><br><span class="line">                break;</span><br><span class="line">            end</span><br><span class="line">        end</span><br><span class="line">        vect{i,k+1}=temp;</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">%% %绘制树图</span><br><span class="line">node=zeros(1,size(tree_node,1));</span><br><span class="line">%根据vect元胞中的父子关系画出树图</span><br><span class="line">for i=1:size(vect,2)</span><br><span class="line">    tem=vect(:,i);</span><br><span class="line">    for j=1:size(tem,1)</span><br><span class="line">        if ~isempty(tem{j})</span><br><span class="line">            node(i)=j;</span><br><span class="line">            break;</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line">treeplot(node);</span><br><span class="line"></span><br><span class="line">%% %写树的类别（节点）</span><br><span class="line">[x,y]=treelayout(node);</span><br><span class="line">x=x';</span><br><span class="line">y=y';</span><br><span class="line">text(x(:,1),y(:,1),tree_node);</span><br><span class="line"></span><br><span class="line">%% %写树的标签（枝条）</span><br><span class="line">x1=zeros(size(tree_label,1));</span><br><span class="line">y1=zeros(size(tree_label,1));</span><br><span class="line">%根据父子关系在父子节点中点写入标签</span><br><span class="line">for i=2:length(node)</span><br><span class="line">    x1(i-1,1)=(x(i,1)+x(node(i),1))/2;</span><br><span class="line">    y1(i-1,1)=(y(i,1)+y(node(i),1))/2;</span><br><span class="line">end</span><br><span class="line">for i=1:size(tree_label)</span><br><span class="line">    temp=strsplit(tree_label(i,:),'_');</span><br><span class="line">    tree_label(i,:)=[temp{1},space(length(temp{1})+1:end)];</span><br><span class="line">end</span><br><span class="line">text(x1(:,1),y1(:,1),tree_label);</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="ID3-split-m"><a href="#ID3-split-m" class="headerlink" title="ID3_split.m"></a>ID3_split.m</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function bestfeature=ID3_split(data)</span><br><span class="line">%求最小熵的分割算法</span><br><span class="line">numfeatures = size(data,2) -1 ;</span><br><span class="line">bestent = log2(numfeatures);</span><br><span class="line">bestfeature = -1;</span><br><span class="line">for i =1:numfeatures</span><br><span class="line">    ent = ID3_ent(data,i);</span><br><span class="line">    if ent &lt; bestent</span><br><span class="line">        bestent = ent;</span><br><span class="line">        bestfeature = i;</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="ID3-ent-m"><a href="#ID3-ent-m" class="headerlink" title="ID3_ent.m"></a>ID3_ent.m</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function ent=ID3_ent(data,i)</span><br><span class="line">%求最小熵</span><br><span class="line">info=tabulate(data(:,i));</span><br><span class="line">ent=0;</span><br><span class="line">for k=1:size(info,1)</span><br><span class="line">    loc=ismember(data(:,i),info{k,1});</span><br><span class="line">    info1=tabulate(data(loc,end));</span><br><span class="line">    temp=0;</span><br><span class="line">    for n=1:size(info1,1)</span><br><span class="line">        temp=temp-info1{n,3}/100*log2(info1{n,3}/100);</span><br><span class="line">    end</span><br><span class="line">    ent=ent+info{k,3}/100*temp;</span><br><span class="line">end</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="ID3-creat-m"><a href="#ID3-creat-m" class="headerlink" title="ID3_creat.m"></a>ID3_creat.m</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function [tree,No]=ID3_creat(data,class_name,tree,No)</span><br><span class="line">classlist=data(:,end);</span><br><span class="line">%如果标签全为yes或no则已经分完，返回</span><br><span class="line">if size(tabulate(classlist),1)==1</span><br><span class="line">    tree(No,1:length(classlist{1}))=classlist{1};</span><br><span class="line">    return</span><br><span class="line">end</span><br><span class="line">%如果没有分完找到最好的特征，递归生成树</span><br><span class="line">bestfeature_loc = ID3_split(data);</span><br><span class="line">bestfeature=class_name{1,bestfeature_loc};</span><br><span class="line">tree(No,1:length(bestfeature))=bestfeature;</span><br><span class="line">featureValues=tabulate(data(:,bestfeature_loc));</span><br><span class="line">for m=1:size(featureValues,1)</span><br><span class="line">    tree(No+1,1:length(featureValues{m,1}))=featureValues{m,1};</span><br><span class="line">    loc=ismember(data(:,bestfeature_loc),featureValues{m,1});</span><br><span class="line">    data1=data(loc,[1:bestfeature_loc-1,bestfeature_loc+1:end]);</span><br><span class="line">    [tree,No] = ID3_creat(data1,class_name(:,[1:bestfeature_loc-1,bestfeature_loc+1:end]),tree,No+2);</span><br><span class="line">end</span><br></pre></td></tr></tbody></table></figure>
 <p><br><br></p>
 <h1 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a><font size="5" color="red">实验结果</font></h1><p><img src="/images/MACHINE/dt1.png" alt="DT"></p>
-<h1 id="ID3-C4-5-CART性能比较"><a href="#ID3-C4-5-CART性能比较" class="headerlink" title="ID3, C4.5, CART性能比较"></a><font size="5" color="red">ID3, C4.5, CART性能比较</font></h1><p>\begin{array}{|c|c|c|c|c|} 算法 &amp; 结构 &amp; 特征选择 &amp; 连续值 &amp; 缺失值  \ \hline ID3&amp;多叉树&amp;信息增益&amp;不支持&amp;不支持\ C4.5&amp;多叉树&amp;信息增益比&amp;支持&amp;支持\ CART&amp;二叉树&amp;基尼系数&amp;支持&amp;支持\  \end{array}</p>
-<h1 id="决策树分类优缺点"><a href="#决策树分类优缺点" class="headerlink" title="决策树分类优缺点"></a><font size="5" color="red">决策树分类优缺点</font></h1><ul>
+<h1 id="ID3-C4-5-CART性能比较"><a href="#ID3-C4-5-CART性能比较" class="headerlink" title="ID3, C4.5, CART性能比较"></a><font size="5" color="red">ID3, C4.5, CART性能比较</font></h1><script type="math/tex; mode=display">\begin{array}{|c|c|c|c|c|} 算法 & 结构 & 特征选择 & 连续值 & 缺失值  \\ \hline ID3&多叉树&信息增益&不支持&不支持\\ C4.5&多叉树&信息增益比&支持&支持\\ CART&二叉树&基尼系数&支持&支持\\  \end{array}</script><h1 id="决策树分类优缺点"><a href="#决策树分类优缺点" class="headerlink" title="决策树分类优缺点"></a><font size="5" color="red">决策树分类优缺点</font></h1><ul>
 <li><font size="4"><strong>优点：</strong><ul>
 <li>数据量一般不会太大</li>
 <li>具有很强的可解释性</li>
@@ -610,8 +610,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/02/classification LR/" rel="next" title="逻辑回归(Logistics Regression)">
-                <i class="fa fa-chevron-left"></i> 逻辑回归(Logistics Regression)
+              <a href="/2019/06/20/classfication FISHER/" rel="next" title="Fisher线性判别">
+                <i class="fa fa-chevron-left"></i> Fisher线性判别
               </a>
             
           </div>
@@ -620,8 +620,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/07/05/classfication LMSE/" rel="prev" title="LMSE(Least Mean Square Error)">
-                LMSE(Least Mean Square Error) <i class="fa fa-chevron-right"></i>
+              <a href="/2019/06/28/classfication Bayes/" rel="prev" title="朴素贝叶斯">
+                朴素贝叶斯 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -733,7 +733,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">173</span>
+                  <span class="site-state-item-count">177</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

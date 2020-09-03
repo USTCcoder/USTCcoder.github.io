@@ -138,7 +138,7 @@
 <meta property="og:description" content="Leetcode 912">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/leetcode912.png">
-<meta property="og:updated_time" content="2020-05-23T02:09:51.886Z">
+<meta property="og:updated_time" content="2020-09-02T02:18:50.488Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="排序数组(Leetcode 912)">
 <meta name="twitter:description" content="Leetcode 912">
@@ -483,10 +483,9 @@
       
 
       
-        <p><strong><font size="5" color="gray"></font></strong></p><center><strong><font size="5" color="gray">Leetcode 912</font></strong></center><p></p>
+        <p><img src="/images/ALGORITHM/leetcode912.png" alt="1"></p>
 <h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   这个题目非常简单，初学语言的小伙伴们都应该可以求解。排序也是算法中最基础最核心的问题之一，今天不是讲解这一道题目，而是给小伙伴们讲解常见的十种排序算法，就按照题目的要求，升序排列。</p>
 <a id="more"></a>
-<p><img src="/images/ALGORITHM/leetcode912.png" alt="q"></p>
 <h1 id="稳定排序和不稳定排序"><a href="#稳定排序和不稳定排序" class="headerlink" title="稳定排序和不稳定排序"></a><font size="5" color="red">稳定排序和不稳定排序</font></h1><p>在排序算法性能的比较中，除了时间复杂度和空间复杂度外，还有一个因素是排序是否稳。什么是稳定呢？简单来说，稳定是两个相同的数字不会因为排序算法而导致顺序调换，如1，3(1)，5，3(2)排序后为1，3(2)，3(1)，5，本来第一个3和第二个3交换了顺序，那么这个排序就是不稳定的。对于纯数字来说，稳定和不稳定没有太大意义，但是如果对于某个类，将某个属性进行排序，则就非常有必要了。举个例子，有100个人到银行排队，它们都是普通客户，这时候来了一个VIP客户，这时需要对数据进行排序，将VIP客户的优先级提高，但是如果排序是不稳定的，则后面100个人的顺序将会被打乱，这时，之前排在第一个的人肯定是不愿意的。这就是不稳定排序造成的后果。</p>
 <h1 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a><font size="5" color="red">冒泡排序</font></h1><p>冒泡排序可能是我们最早接触的排序算法之一了，什么是冒泡排序呢？比较相邻的两个数值，如果前一个数大于后一个数，则交换两个数，就像吐泡泡一样，每一轮迭代会将最大的数放在最后，而且可以添加一个监视器，如果某一轮迭代都没有发生任何依次交换，说明这个序列已经是有序的，则可以提前停止。冒泡排序算法的时间复杂度为$O(n^2)$，最好情况为$O(n)$，最坏情况为$O(n^2)$，空间复杂度$O(1)$，稳定排序。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def bubble_sort(self, nums):</span><br><span class="line">        for i in range(len(nums) - 1):</span><br><span class="line">             # 改进后的冒泡，设置一个交换标志位</span><br><span class="line">            flag = False </span><br><span class="line">            for j in range(len(nums) - i - 1):</span><br><span class="line">                if nums[j] &gt; nums[j + 1]:</span><br><span class="line">                    nums[j], nums[j + 1] = nums[j + 1], nums[j]</span><br><span class="line">                    flag = True</span><br><span class="line">            if not flag:</span><br><span class="line">                return nums</span><br><span class="line">        return nums</span><br></pre></td></tr></tbody></table></figure><p></p>
 <h1 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a><font size="5" color="red">选择排序</font></h1><p>选择排序思路也非常简单，每次从剩余数组中选择一个最小的放在当前位置上，选择排序算法的时间复杂度为$O(n^2)$，最好情况为$O(n^2)$，最坏情况为$O(n^2)$，空间复杂度$O(1)$，不稳定排序。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def selection_sort(self, nums):</span><br><span class="line">        for i in range(len(nums)):</span><br><span class="line">            min_idx = i</span><br><span class="line">            for j in range(i + 1, len(nums)):</span><br><span class="line">                if nums[min_idx] &gt; nums[j]:</span><br><span class="line">                    min_idx = j</span><br><span class="line"></span><br><span class="line">            nums[i], nums[min_idx] = nums[min_idx], nums[i]</span><br><span class="line">        return nums</span><br></pre></td></tr></tbody></table></figure><p></p>
@@ -688,7 +687,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">173</span>
+                  <span class="site-state-item-count">177</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

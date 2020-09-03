@@ -138,7 +138,7 @@
 <meta property="og:description" content="Leetcode 5490">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/leetcode5490.png">
-<meta property="og:updated_time" content="2020-08-16T12:41:20.968Z">
+<meta property="og:updated_time" content="2020-09-02T02:16:48.573Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="吃掉 N 个橘子的最少天数(Leetcode 5490)">
 <meta name="twitter:description" content="Leetcode 5490">
@@ -454,7 +454,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  883
+                  881
                 </span>
               
 
@@ -483,10 +483,9 @@
       
 
       
-        <p><strong><font size="5" color="gray"></font></strong></p><center><strong><font size="5" color="gray">Leetcode 5490</font></strong></center><p></p>
+        <p><img src="/images/ALGORITHM/leetcode5490.png" alt="1"></p>
 <h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   这是第202周周赛的第四题，题目的意思也很简单，有一堆橘子，每天可以选择吃掉一个，当橘子个数为2的整数倍时，每天还可以选择吃掉一半，当橘子个数为3的整数倍时，每天还可以选择吃掉三分之二，求如何最快吃完这些橘子。</p>
 <a id="more"></a>
-<p><img src="/images/ALGORITHM/leetcode5490.png" alt="q"></p>
 <h1 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a><font size="5" color="red">BFS</font></h1><p>这道题目做法有很多，但是测试样例中，橘子的个数可以达到$2 \times 10^9$，这样就不能使用DP来做了。DP的思路非常清晰，dp[i] = min(dp[i - 1], dp[i // 2], dp[i // 3]) + 1，当然i需要是能整除2和3的，否则去掉对应的那一项即可，这里就不再论述。时间复杂度为O(n)。我们思考，因为吃掉一半或者三分之二的概率非常大，所以结果应该不会很大，所以我们可以使用广搜的方法进行求解。为了避免搜到重复的情况，我们建立一个字典保存当前已经搜到的情况。时间复杂度为O(log(n))，空间复杂度为O(log(n))。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">from collections import deque</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Solution(object):</span><br><span class="line">    def minDays(self, n):</span><br><span class="line">        """</span><br><span class="line">        :type n: int</span><br><span class="line">        :rtype: int</span><br><span class="line">        """</span><br><span class="line">        dic = {n: 0}</span><br><span class="line">        queue = deque([n])</span><br><span class="line">        while 0 not in dic:</span><br><span class="line">            current = queue.popleft()</span><br><span class="line">            if current % 3 == 0 and current // 3 not in dic:</span><br><span class="line">                dic[current // 3] = dic[current] + 1</span><br><span class="line">                queue.append(current // 3)</span><br><span class="line">            if current % 2 == 0 and current // 2 not in dic:</span><br><span class="line">                dic[current // 2] = dic[current] + 1</span><br><span class="line">                queue.append(current // 2)</span><br><span class="line">            if current - 1 not in dic:</span><br><span class="line">                dic[current - 1] = dic[current] + 1</span><br><span class="line">                queue.append(current - 1)</span><br><span class="line">        return dic[0]</span><br></pre></td></tr></tbody></table></figure><p></p>
 <h1 id="贪心-DFS"><a href="#贪心-DFS" class="headerlink" title="贪心+DFS"></a><font size="5" color="red">贪心+DFS</font></h1><p>DFS速度更快，但是更难以想到， 需要一些数学的思路。<br>能整除，我们就不吃一个，这是DFS的核心。如果n个橘子经过了k次吃一个的操作后，出现了除以3的操作，因此可以说明n - k是3的倍数，那么当k大于3时，这一定不是最优解，因为可以吃k - 3次一个橘子，然后除以3，再吃一个橘子。举个例子，101个橘子，如果每天吃一个橘子，吃了5天，然后剩余96个橘子，然后第六条吃了64个橘子，花费6天，橘子数目变为32。我们可以有一种更快到达32的方法，吃2个橘子，剩余99个橘子，然后第三天吃66个橘子，第四天吃一个橘子，花费4天，橘子数目变为32。</p>
 <p>n个橘子经过k次吃一个的操作后，出现了除以2的操作同理。</p>
@@ -681,7 +680,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">173</span>
+                  <span class="site-state-item-count">177</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

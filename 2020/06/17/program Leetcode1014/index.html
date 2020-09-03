@@ -138,7 +138,7 @@
 <meta property="og:description" content="Leetcode 1014">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/leetcode1014.png">
-<meta property="og:updated_time" content="2020-06-17T11:30:28.101Z">
+<meta property="og:updated_time" content="2020-09-02T02:18:57.885Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="最佳观光组合(Leetcode 1014)">
 <meta name="twitter:description" content="Leetcode 1014">
@@ -454,7 +454,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  580
+                  578
                 </span>
               
 
@@ -483,10 +483,9 @@
       
 
       
-        <p><strong><font size="5" color="gray"></font></strong></p><center><strong><font size="5" color="gray">Leetcode 1014</font></strong></center><p></p>
+        <p><img src="/images/ALGORITHM/leetcode1014.png" alt="1"></p>
 <h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   这题思路明显，但是并不简单，暴力法没有难度，但是无法通过所有样例，要寻找一种时间复杂度为O(n)的算法解题。</p>
 <a id="more"></a>
-<p><img src="/images/ALGORITHM/leetcode1014.png" alt="q"></p>
 <h1 id="暴力法"><a href="#暴力法" class="headerlink" title="暴力法"></a><font size="5" color="red">暴力法</font></h1><p>暴力法可以根据题目中给出的公式进行直接求解，<strong>遍历所有的景点对，两层循环，时间复杂度为$O(n^2)$，空间复杂度为$O(1)$，在这里给出了一种更加Pythonic的写法，一行代码实现</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def maxScoreSightseeingPair(self, A):</span><br><span class="line">        """</span><br><span class="line">        :type A: List[int]</span><br><span class="line">        :rtype: int</span><br><span class="line">        """</span><br><span class="line">        return max([A[i] + A[j] + i - j for i in range(len(A)) for j in range(i + 1, len(A))])</span><br></pre></td></tr></tbody></table></figure><p></p>
 <h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a><font size="5" color="red">动态规划</font></h1><p>上面的暴力法虽然简单，容易想到，但是无法通过所有样例，因此我们需要降低时间复杂度，发现在比较中浪费了大量的计算资源，每一个点都需要比较n次，所以时间复杂度为$O(n^2)$，可不可以记录之前的状态，每个点比较一次呢？我们发现<strong>公式可以分为两个部分，一部分是A[i] + i，另一部分是A[j] - j，最终将两部分相加即可。可以推出状态转移方程</strong>。</p>
 <script type="math/tex; mode=display">\begin{case} F = max(F, P + A[i] - i) \\ P = max(P, A[i] + i) \end{case}</script><p><strong>F为最佳观光组合，P为选择当前第i个点时，在i之前的所有点的最优选择，即上面的第一部分，记录A[i] + [i]的最大值为P，然后遍历所有点一次即可</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def maxScoreSightseeingPair(self, A):</span><br><span class="line">        """</span><br><span class="line">        :type A: List[int]</span><br><span class="line">        :rtype: int</span><br><span class="line">        """</span><br><span class="line">        pre_val = A[0]</span><br><span class="line">        res = 0</span><br><span class="line">        for i in range(1, len(A)):</span><br><span class="line">            res = max(res, pre_val + A[i] - i)</span><br><span class="line">            pre_val = max(pre_val, A[i] + i)</span><br><span class="line">        return res</span><br></pre></td></tr></tbody></table></figure><p></p>
@@ -680,7 +679,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">173</span>
+                  <span class="site-state-item-count">177</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

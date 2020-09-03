@@ -138,7 +138,7 @@
 <meta property="og:description" content="Leetcode 28">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/leetcode28.png">
-<meta property="og:updated_time" content="2020-05-21T06:26:16.940Z">
+<meta property="og:updated_time" content="2020-09-02T02:17:44.310Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="实现 strStr()(Leetcode 28)">
 <meta name="twitter:description" content="Leetcode 28">
@@ -454,7 +454,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  568
+                  566
                 </span>
               
 
@@ -483,10 +483,9 @@
       
 
       
-        <p><strong><font size="5" color="gray"></font></strong></p><center><strong><font size="5" color="gray">Leetcode 28</font></strong></center><p></p>
+        <p><img src="/images/ALGORITHM/leetcode28.png" alt="1"></p>
 <h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   这道题目简单来说就是一个字符串匹配问题，看起来很简单，但是想要降低时间复杂度较为困难。可以通过暴力法或者KMP方法求解。</p>
 <a id="more"></a>
-<p><img src="/images/ALGORITHM/leetcode28.png" alt="q"></p>
 <h1 id="暴力法"><a href="#暴力法" class="headerlink" title="暴力法"></a><font size="5" color="red">暴力法</font></h1><p>暴力法很好理解，长度已经给定，穷举所有可能的子串，并且与模板字符串比较，如果相等则输出出现的位置，否则输出-1即可，时间复杂度为O((N-L)L)，空间复杂度为O(1)，其中N为原始字符串长度，L为模板字符串长度。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def strStr(self, haystack, needle):</span><br><span class="line">        """</span><br><span class="line">        :haystack: str</span><br><span class="line">        :needle: str</span><br><span class="line">        :rtype: int</span><br><span class="line">        """</span><br><span class="line">        lens = len(needle)</span><br><span class="line">        for i in range(len(haystack) - lens + 1):</span><br><span class="line">            if haystack[i:i + lens] == needle:</span><br><span class="line">                return i</span><br><span class="line">        return -1</span><br></pre></td></tr></tbody></table></figure><p></p>
 <h1 id="KMP"><a href="#KMP" class="headerlink" title="KMP"></a><font size="5" color="red">KMP</font></h1><p>KMP算法是一种专门解决字符串匹配的算法，因为暴力法浪费了太多的比较次数，尤其是前面的字符都匹配正确后，最后一个字符匹配失败，又要从头开始匹配，效率太低，而KMP算法可以完成O(N)的时间复杂度和O(L)的空间复杂度。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def strStr(self, haystack, needle):</span><br><span class="line">        """</span><br><span class="line">        :haystack: str</span><br><span class="line">        :needle: str</span><br><span class="line">        :rtype: int</span><br><span class="line">        """</span><br><span class="line"></span><br><span class="line">        def getNext(pattern):</span><br><span class="line">            next = [-1] * len(pattern)</span><br><span class="line">            i, j = 0, -1</span><br><span class="line">            while i &lt; len(pattern) - 1:</span><br><span class="line">                if j == -1 or pattern[i] == pattern[j]:</span><br><span class="line">                    i += 1</span><br><span class="line">                    j += 1</span><br><span class="line">                    next[i] = j</span><br><span class="line">                else:</span><br><span class="line">                    j = next[j]</span><br><span class="line">            return next</span><br><span class="line"></span><br><span class="line">        next = getNext(needle)</span><br><span class="line">        i, j = 0, 0</span><br><span class="line">        while i &lt; len(haystack) and j &lt; len(needle):</span><br><span class="line">            if j == -1 or haystack[i] == needle[j]:</span><br><span class="line">                i += 1</span><br><span class="line">                j += 1</span><br><span class="line">            else:</span><br><span class="line">                j = next[j]</span><br><span class="line">        if j &gt;= len(needle):</span><br><span class="line">            return i - len(needle)</span><br><span class="line">        else:</span><br><span class="line">            return -1</span><br></pre></td></tr></tbody></table></figure><p></p>
 <h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  字符串匹配问题是一个经典的问题，大多数学校或者数据结构算法课中都作为例子进行讲解，但是很难讲的非常透彻，因为这个问题太抽象，在这里我只能用文字进行描述，所以描述的可能更不清晰，小伙伴们以要理解我举得例子，尤其是j = Next[j]这一步，可以说是KMP问题的精髓，看懂了这一步基本上就可以明白算法具体在做什么了。</p>
@@ -679,7 +678,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">173</span>
+                  <span class="site-state-item-count">177</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

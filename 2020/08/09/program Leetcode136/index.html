@@ -138,7 +138,7 @@
 <meta property="og:description" content="Leetcode 136">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/leetcode136.png">
-<meta property="og:updated_time" content="2020-08-14T14:14:11.179Z">
+<meta property="og:updated_time" content="2020-09-02T02:17:59.198Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="只出现一次的数字(Leetcode 136)">
 <meta name="twitter:description" content="Leetcode 136">
@@ -454,7 +454,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  362
+                  360
                 </span>
               
 
@@ -483,10 +483,9 @@
       
 
       
-        <p><strong><font size="5" color="gray"></font></strong></p><center><strong><font size="5" color="gray">Leetcode 136</font></strong></center><p></p>
+        <p><img src="/images/ALGORITHM/leetcode136.png" alt="1"></p>
 <h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>  接下来的几天给小伙伴介绍一种新题型，当我看到这个题目的时候，我觉得很简单，但是往往面试或者笔试的时候，会对时间复杂度或者空间复杂度进行限制，让我们一起来康一康吧。</p>
 <a id="more"></a>
-<p><img src="/images/ALGORITHM/leetcode136.png" alt="q"></p>
 <h1 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a><font size="5" color="red">位运算</font></h1><p>当然暴力求解很容易，用一个字典保存每一个值出现的次数即可。但是空间复杂度为O(n)，可不可以使用一种空间复杂度为O(1)的算法呢？位运算应运而生了，异或的特点是相同为0，那么两个相同的数字异或会得到0，0和x异或为x。如果所有的数都出现两次，那么将所有的数字异或的结果为0，如果只有一个数字出现了一次，那么异或的结果为该数字。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">from functools import reduce</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Solution:</span><br><span class="line">    def singleNumber(self, nums):</span><br><span class="line">        return reduce(lambda x, y: x ^ y, nums)</span><br></pre></td></tr></tbody></table></figure><p></p>
 <h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  一个Pythonic的写法，只需要一行代码，非常简洁。妙啊~，位运算往往就是这样，难度可能并不大，但是不容易想到，那接下来让我们看一看难度较大的题目吧。</p>
 <script>
@@ -678,7 +677,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">173</span>
+                  <span class="site-state-item-count">177</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
