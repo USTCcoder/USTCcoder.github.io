@@ -138,7 +138,7 @@
 <meta property="og:description" content="Optimizer">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ustccoder.github.io/images/deep_learning/optimizer.png">
-<meta property="og:updated_time" content="2020-06-14T05:02:05.421Z">
+<meta property="og:updated_time" content="2020-09-04T10:55:09.165Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Optimizer黑科技">
 <meta name="twitter:description" content="Optimizer">
@@ -486,26 +486,33 @@
         <p><strong><font size="5" color="gray"></font></strong></p><center><strong><font size="5" color="gray">Optimizer</font></strong></center><p></p>
 <h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a><font size="5" color="red">背景介绍</font></h1><p>  <strong>Optimizer(优化器)</strong>:在深度神经网络中，<strong>如果说到达Loss最小是我们的终点站，那么出行方式就是优化器，它给我们提供一种方法接近Loss最小的地方</strong>。打一个简单的比方，如果我要从安徽前往北京，北京就是我们的目标，相当于神经网络中的Loss函数，而我们选择的交通方式则是优化器，我可以选择长途汽车出行，也可以选择火车出行，也可以选择飞机出行。选择哪一种交通方式最为合适呢？这也需要根据实际问题确定，优化器也是这样，<strong>没有最好的优化器，只有最适合的优化器</strong>，这里我不写太多的公式，主要是聊一聊各个优化器的用法，特点和参数表达的意义。<br><a id="more"></a></p>
 <p><img src="/images/deep_learning/optimizer.png" alt="optimizer"></p>
-<h1 id="SGD-Stochastic-Gradient-Descent，随机梯度下降"><a href="#SGD-Stochastic-Gradient-Descent，随机梯度下降" class="headerlink" title="SGD(Stochastic Gradient Descent，随机梯度下降)"></a><font size="5" color="red">SGD(Stochastic Gradient Descent，随机梯度下降)</font></h1><script type="math/tex; mode=display">\begin{cases} W_{t+1}=W_{t}-\eta_{t} g_{t} \\\\ g_{t} = \Delta J_{i_{s}}(W_{t}) \end{cases}</script><p>其中$ W<em>{t} $表示t时刻模型参数，$ g</em>{t} $表示第t次迭代的梯度，$ \eta_{t} $表示学习率，一般取值0.001。<br><strong>SGD(随机梯度下降)</strong>：指从一批训练样本中随机选取一个，并引入一些随机性和噪声，然后利用梯度下降法进行训练。<br><strong>SGD优点</strong>：</p>
+<h1 id="SGD-Stochastic-Gradient-Descent，随机梯度下降"><a href="#SGD-Stochastic-Gradient-Descent，随机梯度下降" class="headerlink" title="SGD(Stochastic Gradient Descent，随机梯度下降)"></a><font size="5" color="red">SGD(Stochastic Gradient Descent，随机梯度下降)</font></h1><script type="math/tex; mode=display">\begin{cases} W_{t+1}=W_{t}-\eta_{t} g_{t} \\\\ g_{t} = \Delta J_{i_{s}}(W_{t}) \end{cases}</script><p>其中$W_t$表示t时刻模型参数，$g_t$表示第t次迭代的梯度，$\eta_t$表示学习率，一般取值0.001。<br><strong>SGD(随机梯度下降)</strong>：指从一批训练样本中随机选取一个，并引入一些随机性和噪声，然后利用梯度下降法进行训练。<br><strong>SGD优点</strong>：</p>
 <ol>
 <li>梯度计算快，<strong>引入噪声增加鲁棒性</strong>，并且便于逃离鞍点，实验证明只要噪声不是特别大，SGD都能很好地收敛。</li>
-<li>应用大型数据集，<strong>比标准的梯度下降算法快速很多</strong>。<br><strong>SGD缺点</strong>：</li>
+<li>应用大型数据集，<strong>比标准的梯度下降算法快速很多</strong>。</li>
+</ol>
+<p><strong>SGD缺点</strong>：</p>
+<ol>
 <li><strong>SGD引入噪声，可能使得权值更新的方向不一定正确</strong>。</li>
 <li><strong>SGD难以逃离局部最优解</strong>。<br>在TensorFlow2.0中给我们提供了SGD的类。<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow.keras as keras</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">optimizer = keras.optimizers.SGD(learning_rate=0.001, momentum=0.0, nesterov=False, name='SGD')</span><br></pre></td></tr></tbody></table></figure>
 </li>
 </ol>
-<h1 id="Momentum-使用动量的随机梯度下降"><a href="#Momentum-使用动量的随机梯度下降" class="headerlink" title="Momentum(使用动量的随机梯度下降)"></a><font size="5" color="red">Momentum(使用动量的随机梯度下降)</font></h1><script type="math/tex; mode=display">\begin{cases} W_{t+1}=W_{t} - v_{t} \\\\ v_{t} = \alpha v_{t-1} + \eta \Delta J(W_{t}) \end{cases}</script><p>其中$ W<em>{t} $表示t时刻模型参数，$ v</em>{t} $表示当前积攒的速度，$ \alpha $表示动力大小，一般取值0.9，$ \Delta J(W<em>{t} $表示第t次迭代的梯度，$ \eta</em>{t} $表示学习率，一般取值0.001。<br><strong>Momentum(使用动量的随机梯度下降)</strong>：引入一个积攒的梯度信息动量进行加速随机梯度下降法的训练过程。<br><strong>Momentum优点</strong>：</p>
+<h1 id="Momentum-使用动量的随机梯度下降"><a href="#Momentum-使用动量的随机梯度下降" class="headerlink" title="Momentum(使用动量的随机梯度下降)"></a><font size="5" color="red">Momentum(使用动量的随机梯度下降)</font></h1><script type="math/tex; mode=display">\begin{cases} W_{t+1}=W_{t} - v_{t} \\\\ v_{t} = \alpha v_{t-1} + \eta \Delta J(W_{t}) \end{cases}</script><p>其中$W_t$表示t时刻模型参数，$v_t$表示当前积攒的速度，$\alpha$表示动力大小，一般取值0.9，$\Delta J(W_t)$表示第t次迭代的梯度，$\eta_t$表示学习率，一般取值0.001。<br><strong>Momentum(使用动量的随机梯度下降)</strong>：引入一个积攒的梯度信息动量进行加速随机梯度下降法的训练过程。<br><strong>Momentum优点</strong>：</p>
 <ol>
 <li><strong>加速SGD的收敛</strong>。</li>
-<li><strong>引入动量的思想，可能会冲破局部最小值的影响</strong>。<br><strong>Momentum缺点</strong>：</li>
+<li><strong>引入动量的思想，可能会冲破局部最小值的影响</strong>。</li>
 </ol>
+<p><strong>Momentum缺点</strong>：</p>
 <ul>
 <li><strong>依赖动量可能会使下降速度越来越大，使得冲上另一个山坡</strong>。<br>在TensorFlow2.0中SGD类属性引入了动量因子，因此调用SGD即可。<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow.keras as keras</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">optimizer = keras.optimizers.SGD(learning_rate=0.001, momentum=0.9, nesterov=False, name='Momentum')</span><br></pre></td></tr></tbody></table></figure>
 </li>
 </ul>
-<h1 id="NAG-Nesterov-accelerated-gradient，牛顿加速梯度"><a href="#NAG-Nesterov-accelerated-gradient，牛顿加速梯度" class="headerlink" title="NAG(Nesterov accelerated gradient，牛顿加速梯度)"></a><font size="5" color="red">NAG(Nesterov accelerated gradient，牛顿加速梯度)</font></h1><script type="math/tex; mode=display">\begin{cases} W_{t+1}=W_{t} - v_{t} \\\\ v_{t} = \alpha v_{t-1} + \eta \Delta J(W_{t} - \alpha v_{t - 1}) \end{cases}</script><p>其中$ W<em>{t} $表示t时刻模型参数，$ v</em>{t} $表示当前积攒的速度，$ \alpha $表示动力大小，一般取值0.9，$ \Delta J(W<em>{t} $表示第t次迭代的梯度，$ \eta</em>{t} $表示学习率，一般取值0.001。<br><strong>NAG(牛顿加速梯度)</strong>：是Momentum的变种，引入了一个校正因子，使得Momentum不会盲目听从动量指示，能提前知道自己下一步去哪里，并且预防下坡过头而冲上另一个山坡。<br><strong>NAG优点</strong>：</p>
+<h1 id="NAG-Nesterov-accelerated-gradient，牛顿加速梯度"><a href="#NAG-Nesterov-accelerated-gradient，牛顿加速梯度" class="headerlink" title="NAG(Nesterov accelerated gradient，牛顿加速梯度)"></a><font size="5" color="red">NAG(Nesterov accelerated gradient，牛顿加速梯度)</font></h1><script type="math/tex; mode=display">\begin{cases} W_{t+1}=W_{t} - v_{t} \\\\ v_{t} = \alpha v_{t-1} + \eta \Delta J(W_{t} - \alpha v_{t - 1}) \end{cases}</script><p>其中$W_t$表示t时刻模型参数，$v_t$表示当前积攒的速度，$\alpha$表示动力大小，一般取值0.9，$\Delta J(W_t)$表示第t次迭代的梯度，$\eta_t$表示学习率，一般取值0.001。<br><strong>NAG(牛顿加速梯度)</strong>：是Momentum的变种，引入了一个校正因子，使得Momentum不会盲目听从动量指示，能提前知道自己下一步去哪里，并且预防下坡过头而冲上另一个山坡。<br><strong>NAG优点</strong>：</p>
 <ul>
-<li><strong>较好的解决了Momentum中存在的速度过快的情况</strong>。<br><strong>NAG缺点</strong>：</li>
+<li><strong>较好的解决了Momentum中存在的速度过快的情况</strong>。</li>
+</ul>
+<p><strong>NAG缺点</strong>：</p>
+<ul>
 <li>引入了修正因子，多了一个本次梯度相对上一次梯度的变化量，因此<strong>需要再进行一次前向传播和后向传播，速度大大降低</strong>。<br>在TensorFlow2.0中SGD类属性引入了nesterov动量，因此调用SGD即可。<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow.keras as keras</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">optimizer = keras.optimizers.SGD(learning_rate=0.001, momentum=0.9, nesterov=True, name='NAG')</span><br></pre></td></tr></tbody></table></figure>
 </li>
 </ul>
@@ -731,7 +738,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">177</span>
+                  <span class="site-state-item-count">179</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

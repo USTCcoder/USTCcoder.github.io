@@ -151,7 +151,7 @@
 <meta property="og:image" content="https://ustccoder.github.io/images/deep_learning/swish.png">
 <meta property="og:image" content="https://ustccoder.github.io/images/deep_learning/h_swish.png">
 <meta property="og:image" content="https://ustccoder.github.io/images/deep_learning/softmax.png">
-<meta property="og:updated_time" content="2020-08-16T16:14:51.765Z">
+<meta property="og:updated_time" content="2020-09-04T15:38:44.541Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Activation黑科技">
 <meta name="twitter:description" content="Activation">
@@ -529,7 +529,8 @@
 <h1 id="激活函数的选择"><a href="#激活函数的选择" class="headerlink" title="激活函数的选择"></a><font size="5" color="red">激活函数的选择</font></h1><ol>
 <li>首先<strong>判断任务类型</strong>，是分类任务，回归任务，还是作为隐藏层非线性单元，如果是<strong>多分类任务则考虑Softmax激活函数</strong>，如果是<strong>二分类任务则考虑Sigmoid，tanh激活函数</strong>，如果是<strong>回归任务则可以考虑不加激活函数，因为激活函数可能会对回归的数据产生限制</strong>，如果是<strong>隐藏层非线性单元则考虑Sigmoid，tanh，ReLU，Swish</strong>等等。</li>
 <li>如果是隐藏层非线性单元，<strong>首先尝试ReLU激活函数</strong>，如果<strong>ReLU效果欠佳则考虑ReLU变种激活函数</strong>，ReLU6，Leaky_ReLU，SELU，ELU，Mish，Softplus等等</li>
-<li>如果效果不好，<strong>再考虑Swish类函数和Sigmoid，tanh函数</strong>，但是如果<strong>发现梯度消失问题，则避免使用Sigmoid和tanh函数</strong>。<br>4.如果都不好用，则<strong>考虑是否网络结构，超参数，损失函数设计出现问题</strong>。</li>
+<li>如果效果不好，<strong>再考虑Swish类函数和Sigmoid，tanh函数</strong>，但是如果<strong>发现梯度消失问题，则避免使用Sigmoid和tanh函数</strong>。</li>
+<li>如果都不好用，则<strong>考虑是否网络结构，超参数，损失函数设计出现问题</strong>。</li>
 </ol>
 <h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a><font size="5" color="red">小结</font></h1><p>  深度学习工程问题是一类非常复杂的问题，往往需要<strong>网络结构</strong>，<strong>超参数</strong>，<strong>损失函数</strong>，<strong>激活函数相互配合</strong>工作，可能某个结构或者某个参数适合某个激活函数，而另外的结构适合其他激活函数。因此需要小伙伴们在实际的工程任务中慢慢摸索，多多尝试。</p>
 <script>
@@ -721,7 +722,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">177</span>
+                  <span class="site-state-item-count">179</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
