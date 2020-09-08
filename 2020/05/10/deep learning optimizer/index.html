@@ -137,12 +137,14 @@
 <meta property="og:site_name" content="GitHub">
 <meta property="og:description" content="Optimizer">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://ustccoder.github.io/images/deep_learning/optimizer.png">
-<meta property="og:updated_time" content="2020-09-04T10:55:09.165Z">
+<meta property="og:image" content="https://ustccoder.github.io/images/deep_learning/opt3.webp">
+<meta property="og:image" content="https://ustccoder.github.io/images/deep_learning/opt1.webp">
+<meta property="og:image" content="https://ustccoder.github.io/images/deep_learning/opt2.webp">
+<meta property="og:updated_time" content="2020-09-05T10:47:41.770Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Optimizer黑科技">
 <meta name="twitter:description" content="Optimizer">
-<meta name="twitter:image" content="https://ustccoder.github.io/images/deep_learning/optimizer.png">
+<meta name="twitter:image" content="https://ustccoder.github.io/images/deep_learning/opt3.webp">
 
 
 
@@ -483,10 +485,9 @@
       
 
       
-        <p><strong><font size="5" color="gray"></font></strong></p><center><strong><font size="5" color="gray">Optimizer</font></strong></center><p></p>
-<h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a><font size="5" color="red">背景介绍</font></h1><p>  <strong>Optimizer(优化器)</strong>:在深度神经网络中，<strong>如果说到达Loss最小是我们的终点站，那么出行方式就是优化器，它给我们提供一种方法接近Loss最小的地方</strong>。打一个简单的比方，如果我要从安徽前往北京，北京就是我们的目标，相当于神经网络中的Loss函数，而我们选择的交通方式则是优化器，我可以选择长途汽车出行，也可以选择火车出行，也可以选择飞机出行。选择哪一种交通方式最为合适呢？这也需要根据实际问题确定，优化器也是这样，<strong>没有最好的优化器，只有最适合的优化器</strong>，这里我不写太多的公式，主要是聊一聊各个优化器的用法，特点和参数表达的意义。<br><a id="more"></a></p>
-<p><img src="/images/deep_learning/optimizer.png" alt="optimizer"></p>
-<h1 id="SGD-Stochastic-Gradient-Descent，随机梯度下降"><a href="#SGD-Stochastic-Gradient-Descent，随机梯度下降" class="headerlink" title="SGD(Stochastic Gradient Descent，随机梯度下降)"></a><font size="5" color="red">SGD(Stochastic Gradient Descent，随机梯度下降)</font></h1><script type="math/tex; mode=display">\begin{cases} W_{t+1}=W_{t}-\eta_{t} g_{t} \\\\ g_{t} = \Delta J_{i_{s}}(W_{t}) \end{cases}</script><p>其中$W_t$表示t时刻模型参数，$g_t$表示第t次迭代的梯度，$\eta_t$表示学习率，一般取值0.001。<br><strong>SGD(随机梯度下降)</strong>：指从一批训练样本中随机选取一个，并引入一些随机性和噪声，然后利用梯度下降法进行训练。<br><strong>SGD优点</strong>：</p>
+        <h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a><font size="5" color="red">背景介绍</font></h1><p>  <strong>Optimizer(优化器)</strong>:在深度神经网络中，<strong>如果说到达Loss最小是我们的终点站，那么出行方式就是优化器，它给我们提供一种方法接近Loss最小的地方</strong>。打一个简单的比方，如果我要从安徽前往北京，北京就是我们的目标，相当于神经网络中的Loss函数，而我们选择的交通方式则是优化器，我可以选择长途汽车出行，也可以选择火车出行，也可以选择飞机出行。选择哪一种交通方式最为合适呢？这也需要根据实际问题确定，优化器也是这样，<strong>没有最好的优化器，只有最适合的优化器</strong>，这里我不写太多的公式，主要是聊一聊各个优化器的用法，特点和参数表达的意义。</p>
+<a id="more"></a>
+<h1 id="SGD-Stochastic-Gradient-Descent，随机梯度下降"><a href="#SGD-Stochastic-Gradient-Descent，随机梯度下降" class="headerlink" title="SGD(Stochastic Gradient Descent，随机梯度下降)"></a><font size="5" color="red">SGD(Stochastic Gradient Descent，随机梯度下降)</font></h1><script type="math/tex; mode=display">\begin{cases} W_{t+1}=W_{t}-\eta_{t} g_{t} \\\\ g_{t} = \Delta J_{i_{s}}(W_{t}) \end{cases}</script><p>其中$W_t$表示t时刻模型参数，$g_t$表示第t次迭代的梯度，$\eta_t$表示学习率，一般取值0.001。<br><strong>SGD(随机梯度下降)</strong>：对于每一个样本引入一些随机性和噪声，然后利用梯度下降法进行训练。<br><strong>SGD优点</strong>：</p>
 <ol>
 <li>梯度计算快，<strong>引入噪声增加鲁棒性</strong>，并且便于逃离鞍点，实验证明只要噪声不是特别大，SGD都能很好地收敛。</li>
 <li>应用大型数据集，<strong>比标准的梯度下降算法快速很多</strong>。</li>
@@ -494,9 +495,9 @@
 <p><strong>SGD缺点</strong>：</p>
 <ol>
 <li><strong>SGD引入噪声，可能使得权值更新的方向不一定正确</strong>。</li>
-<li><strong>SGD难以逃离局部最优解</strong>。<br>在TensorFlow2.0中给我们提供了SGD的类。<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow.keras as keras</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">optimizer = keras.optimizers.SGD(learning_rate=0.001, momentum=0.0, nesterov=False, name='SGD')</span><br></pre></td></tr></tbody></table></figure>
-</li>
+<li><strong>SGD难以逃离局部最优解</strong>。</li>
 </ol>
+<p>在TensorFlow2.0中给我们提供了SGD的类。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow.keras as keras</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">optimizer = keras.optimizers.SGD(learning_rate=0.001, momentum=0.0, nesterov=False, name='SGD')</span><br></pre></td></tr></tbody></table></figure><p></p>
 <h1 id="Momentum-使用动量的随机梯度下降"><a href="#Momentum-使用动量的随机梯度下降" class="headerlink" title="Momentum(使用动量的随机梯度下降)"></a><font size="5" color="red">Momentum(使用动量的随机梯度下降)</font></h1><script type="math/tex; mode=display">\begin{cases} W_{t+1}=W_{t} - v_{t} \\\\ v_{t} = \alpha v_{t-1} + \eta \Delta J(W_{t}) \end{cases}</script><p>其中$W_t$表示t时刻模型参数，$v_t$表示当前积攒的速度，$\alpha$表示动力大小，一般取值0.9，$\Delta J(W_t)$表示第t次迭代的梯度，$\eta_t$表示学习率，一般取值0.001。<br><strong>Momentum(使用动量的随机梯度下降)</strong>：引入一个积攒的梯度信息动量进行加速随机梯度下降法的训练过程。<br><strong>Momentum优点</strong>：</p>
 <ol>
 <li><strong>加速SGD的收敛</strong>。</li>
@@ -504,51 +505,62 @@
 </ol>
 <p><strong>Momentum缺点</strong>：</p>
 <ul>
-<li><strong>依赖动量可能会使下降速度越来越大，使得冲上另一个山坡</strong>。<br>在TensorFlow2.0中SGD类属性引入了动量因子，因此调用SGD即可。<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow.keras as keras</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">optimizer = keras.optimizers.SGD(learning_rate=0.001, momentum=0.9, nesterov=False, name='Momentum')</span><br></pre></td></tr></tbody></table></figure>
-</li>
+<li><strong>依赖动量可能会使下降速度越来越大，使得冲上另一个山坡</strong>。</li>
 </ul>
+<p>在TensorFlow2.0中SGD类属性引入了动量因子，因此调用SGD即可。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow.keras as keras</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">optimizer = keras.optimizers.SGD(learning_rate=0.001, momentum=0.9, nesterov=False, name='Momentum')</span><br></pre></td></tr></tbody></table></figure><p></p>
 <h1 id="NAG-Nesterov-accelerated-gradient，牛顿加速梯度"><a href="#NAG-Nesterov-accelerated-gradient，牛顿加速梯度" class="headerlink" title="NAG(Nesterov accelerated gradient，牛顿加速梯度)"></a><font size="5" color="red">NAG(Nesterov accelerated gradient，牛顿加速梯度)</font></h1><script type="math/tex; mode=display">\begin{cases} W_{t+1}=W_{t} - v_{t} \\\\ v_{t} = \alpha v_{t-1} + \eta \Delta J(W_{t} - \alpha v_{t - 1}) \end{cases}</script><p>其中$W_t$表示t时刻模型参数，$v_t$表示当前积攒的速度，$\alpha$表示动力大小，一般取值0.9，$\Delta J(W_t)$表示第t次迭代的梯度，$\eta_t$表示学习率，一般取值0.001。<br><strong>NAG(牛顿加速梯度)</strong>：是Momentum的变种，引入了一个校正因子，使得Momentum不会盲目听从动量指示，能提前知道自己下一步去哪里，并且预防下坡过头而冲上另一个山坡。<br><strong>NAG优点</strong>：</p>
 <ul>
 <li><strong>较好的解决了Momentum中存在的速度过快的情况</strong>。</li>
 </ul>
 <p><strong>NAG缺点</strong>：</p>
 <ul>
-<li>引入了修正因子，多了一个本次梯度相对上一次梯度的变化量，因此<strong>需要再进行一次前向传播和后向传播，速度大大降低</strong>。<br>在TensorFlow2.0中SGD类属性引入了nesterov动量，因此调用SGD即可。<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow.keras as keras</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">optimizer = keras.optimizers.SGD(learning_rate=0.001, momentum=0.9, nesterov=True, name='NAG')</span><br></pre></td></tr></tbody></table></figure>
-</li>
+<li>引入了修正因子，根据本次的权重和上次的速度，得到可能的下一次权重，然后计算该权重的梯度，因此<strong>需要再进行一次前向传播和后向传播，速度大大降低</strong>。</li>
 </ul>
-<h1 id="AdaGrad"><a href="#AdaGrad" class="headerlink" title="AdaGrad"></a><font size="5" color="red">AdaGrad</font></h1><script type="math/tex; mode=display">W_{t+1}=W_{t} - \frac{\eta_{0}}{\sqrt{\sum_{t'=1}^{t}{(g_{t',i})}} + \epsilon} \odot g_{t, i}</script><p>其中$ W<em>{t} $表示t时刻模型参数，$ g</em>{t, i} $表示第t次迭代的梯度，$ \epsilon $避免分母为0，一般取值1e-7，$ \eta_{t} $表示初始学习率，一般取值0.001。<br><strong>AdaGrad</strong>：独立适应所有参数的学习率，缩放每个参数反比于其梯度历史总和的平方根，具有大梯度的参数有较大的学习率，小梯度的参数有较小的学习率<br><strong>AdaGrad优点</strong>：</p>
+<p>在TensorFlow2.0中SGD类属性引入了nesterov动量，因此调用SGD即可。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow.keras as keras</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">optimizer = keras.optimizers.SGD(learning_rate=0.001, momentum=0.9, nesterov=True, name='NAG')</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="AdaGrad"><a href="#AdaGrad" class="headerlink" title="AdaGrad"></a><font size="5" color="red">AdaGrad</font></h1><script type="math/tex; mode=display">W_{t+1}=W_t - \frac{\eta_0}{\sqrt{\sum_{t'=1}^t g_{t',i}^2} + \epsilon} \cdot g_{t, i}</script><p>其中$W_t$表示t时刻模型参数，$g_{t, i}$表示第t次迭代的梯度，$\epsilon$避免分母为0，一般取值1e-7，$\eta_t$表示初始学习率，一般取值0.001。<br><strong>AdaGrad</strong>：独立适应所有参数的学习率，缩放每个参数反比于其梯度历史总和的平方根，具有大梯度的参数有较大的学习率，小梯度的参数有较小的学习率<br><strong>AdaGrad优点</strong>：</p>
 <ol>
-<li>对于<strong>出现较多的类别，给予较小的学习率，对于比较少的类别数据，给予较大的学习率，适合于稀疏数据或者分布不平衡的数据集</strong>。</li>
-<li><strong>不需要人为调节学习率</strong>，它可以完成自动调节。<br><strong>AdaGrad缺点</strong>：</li>
+<li>对于<strong>出现较多的特征或类别，给予较小的学习率，对于出现较少的特征或类别，给予较大的学习率，适合于稀疏数据或者分布不平衡的数据集</strong>。</li>
+<li><strong>不需要人为调节学习率</strong>，它可以完成自动调节。</li>
 </ol>
+<p><strong>AdaGrad缺点</strong>：</p>
 <ul>
-<li><strong>随着迭代次数的增加，学习率会越来越小，最终趋近于0</strong>。<br>在TensorFlow2.0中给我们提供了AdaGrad的类<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow.keras as keras</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">optimizer = keras.optimizers.Adagrad(learning_rate=0.001, epsilon=1e-7)</span><br></pre></td></tr></tbody></table></figure>
-</li>
+<li><strong>随着迭代次数的增加，学习率会越来越小，最终趋近于0</strong>。</li>
 </ul>
-<h1 id="RMSProp"><a href="#RMSProp" class="headerlink" title="RMSProp"></a><font size="5" color="red">RMSProp</font></h1><script type="math/tex; mode=display">\begin{cases} W_{t+1}=W_{t} - \frac{\eta_0}{\sqrt{E[g^2]_t} + \epsilon} \odot g_t \\\\ E[g^2]_t = \alpha E[g^2]_{t - 1} + (1 - \alpha)g_t^2  \end{cases}</script><p>其中$ W<em>{t} $表示t时刻模型参数，$ g_t $表示第t次迭代的梯度，$ \epsilon $避免分母为0，一般取值1e-7，$ \eta</em>{t} $表示全局学习率，一般取值0.001，$ \alpha $表示动力大小，一般取值0.9，$ E[g^2]_t $表示前t次的梯度平方的均值。<br><strong>RMSProp</strong>：是对AdaGrad的改进，<strong>修改了AdaGrad的梯度累加变为加权平均</strong>。<br><strong>RMSProp优点</strong>：</p>
+<p>在TensorFlow2.0中给我们提供了AdaGrad的类<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow.keras as keras</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">optimizer = keras.optimizers.Adagrad(learning_rate=0.001, epsilon=1e-7)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="RMSProp"><a href="#RMSProp" class="headerlink" title="RMSProp"></a><font size="5" color="red">RMSProp</font></h1><script type="math/tex; mode=display">\begin{cases} W_{t+1}=W_{t} - \frac{\eta_0}{\sqrt{E[g^2]_t} + \epsilon} \cdot g_t \\ E[g^2]_t = \alpha E[g^2]_{t - 1} + (1 - \alpha)g_t^2  \end{cases}</script><p>其中$W_t$表示t时刻模型参数，$g_t$表示第t次迭代的梯度，$\epsilon$避免分母为0，一般取值1e-7，$\eta_t$表示全局学习率，一般取值0.001，$\alpha$表示动力大小，一般取值0.9，$E[g^2]_t$表示前t次的梯度平方的均值。<br><strong>RMSProp</strong>：是对AdaGrad的改进，<strong>修改了AdaGrad的梯度累加变为加权平均</strong>。<br><strong>RMSProp优点</strong>：</p>
 <ul>
-<li>由于使用加权平均，可以<strong>避免AdaGrad中学习率越来越低的问题</strong>。<br>在TensorFlow2.0中给我们提供了RMSProp的类<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow.keras as keras</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">optimizer = keras.optimizers.RMSProp(learning_rate=0.001, rho=0.9, epsilon=1e-7)</span><br></pre></td></tr></tbody></table></figure>
-</li>
+<li>由于使用加权平均，可以<strong>避免AdaGrad中学习率越来越低的问题</strong>。</li>
 </ul>
-<h1 id="AdaDelta"><a href="#AdaDelta" class="headerlink" title="AdaDelta"></a><font size="5" color="red">AdaDelta</font></h1><script type="math/tex; mode=display">\begin{cases} W_{t+1}=W_{t} + \Delta W_{t} \\\\ \Delta W_{t} = -\frac{\sqrt{\sum_{i=1}^{t-1}{\Delta W_{i}}}}{\sqrt{E[g^2]_t} + \epsilon} \\\\ E[g^2]_t = \alpha E[g^2]_{t - 1} + (1 - \alpha)g_t^2  \end{cases}</script><p>其中$ W_{t} $表示t时刻模型参数，$ g_t $表示第t次迭代的梯度，$ \epsilon $避免分母为0，一般取值1e-7，$ \alpha $表示动力大小，一般取值0.95，$ E[g^2]_t $表示前t次的梯度平方的均值。<br><strong>AdaDelta</strong>：<strong>结合AdaGrad和RMSProp两种算法每次参数的更新步长</strong>。<br><strong>AdaDelta优点</strong>：</p>
+<p>在TensorFlow2.0中给我们提供了RMSProp的类<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow.keras as keras</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">optimizer = keras.optimizers.RMSProp(learning_rate=0.001, rho=0.9, epsilon=1e-7)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="AdaDelta"><a href="#AdaDelta" class="headerlink" title="AdaDelta"></a><font size="5" color="red">AdaDelta</font></h1><script type="math/tex; mode=display">\begin{cases} W_{t+1}=W_t + \Delta W_t \\ \Delta W_t = -\frac{\sqrt{\sum_{i=1}^{t-1}{\Delta W_i}}}{\sqrt{E[g^2]_t} + \epsilon} \cdot g_t \\ E[g^2]_t = \alpha E[g^2]_{t - 1} + (1 - \alpha)g_t^2  \end{cases}</script><p>其中$W_t$表示t时刻模型参数，$g_t$表示第t次迭代的梯度，$\epsilon$避免分母为0，一般取值1e-7，$\alpha$表示动力大小，一般取值0.95，$E[g^2]_t$表示前t次的梯度平方的均值。<br><strong>AdaDelta</strong>：和RMSProp公式基本相同，在相同的时间被独立的提出。<br><strong>AdaDelta优点</strong>：</p>
 <ul>
-<li><strong>不需要设置全局学习率</strong>。<br><strong>AdaDelta缺点</strong>：</li>
-<li><strong>在模型训练的后期，模型会反复地在局部最小值附近抖动</strong>。<br>在TensorFlow2.0中给我们提供了AdaDelta的类<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow.keras as keras</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 其中的learning_rate匹配论文中的精确形式，使用1.0，等效为实现与学习率无关</span><br><span class="line">optimizer = tf.keras.optimizers.AdaDelta(learning_rate=1.0, rho=0.95, epsilon=1e-7)</span><br></pre></td></tr></tbody></table></figure>
-</li>
+<li><strong>不需要设置全局学习率</strong>。</li>
 </ul>
-<h1 id="Adam"><a href="#Adam" class="headerlink" title="Adam"></a><font size="5" color="red">Adam</font></h1><script type="math/tex; mode=display">\begin{cases} W_{t+1}=W_{t} - \frac{\eta}{\sqrt{\hat{v_t}} + \epsilon} \hat{m_t} \\\\ \hat{m_t} = \frac{m_t}{1-\beta_1^t}，\hat{v_t} = \frac{v_t}{1-\beta_2^t} \\\\ v_t = \beta_2 v_{t-1} + (1-\beta_2)g_t^2 \\\\ m_t = \beta_1 m_{t-1} + (1-\beta_1)g_t   \end{cases}</script><p>其中$ m<em>t，v_t $分别表示一阶动量和二阶动量，$ \beta_1，\beta_2 $分别表示动力大小，一般取值0.9和0.999，$ \hat{m_t}，\hat{v_t} $分别为各自的修正值，$ W</em>{t} $表示第t次迭代模型参数，$ g<em>t $表示第t次迭代的梯度，$ \epsilon $避免分母为0，一般取值1e-7，$ \eta</em>{t} $表示全局学习率，一般取值0.001。<br><strong>Adam</strong>：通过<strong>计算梯度的一阶矩估计和二阶矩估计而为不同的参数设计独立的自适应学习率，同时获得AdaGrad和RMSProp的优点</strong>，在很多情况是算<strong>默认工作性能比较优秀的优化器</strong>。<br><strong>Adam优点</strong>：</p>
+<p><strong>AdaDelta缺点</strong>：</p>
+<ul>
+<li><strong>在模型训练的后期，模型会反复地在局部最小值附近抖动</strong>。</li>
+</ul>
+<p>在TensorFlow2.0中给我们提供了AdaDelta的类<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow.keras as keras</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 其中的learning_rate匹配论文中的精确形式，使用1.0，等效为实现与学习率无关</span><br><span class="line">optimizer = tf.keras.optimizers.AdaDelta(learning_rate=1.0, rho=0.95, epsilon=1e-7)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="Adam"><a href="#Adam" class="headerlink" title="Adam"></a><font size="5" color="red">Adam</font></h1><script type="math/tex; mode=display">\begin{cases} W_{t+1}=W_t - \frac{\eta}{\sqrt{\hat{v_t}} + \epsilon} \hat{m_t} \\ \hat{m_t} = \frac{m_t}{1-\beta_1^t}，\hat{v_t} = \frac{v_t}{1-\beta_2^t} \\ v_t = \beta_2 v_{t-1} + (1-\beta_2)g_t^2 \\ m_t = \beta_1 m_{t-1} + (1-\beta_1)g_t   \end{cases}</script><p>其中$m_t，v_t$分别表示一阶动量和二阶动量，$\beta_1，\beta_2$分别表示动力大小，一般取值0.9和0.999，$\hat{m_t}，\hat{v_t}$分别为各自的修正值，$W_t$表示第t次迭代模型参数，$g_t$表示第t次迭代的梯度，$\epsilon$避免分母为0，一般取值1e-7，$\eta_t$表示全局学习率，一般取值0.001。<br><strong>Adam</strong>：通过<strong>计算梯度的一阶矩估计和二阶矩估计而为不同的参数设计独立的自适应学习率，同时获得AdaGrad和RMSProp的优点</strong>，在很多情况是算<strong>默认工作性能比较优秀的优化器</strong>。<br><strong>Adam优点</strong>：</p>
 <ol>
 <li><strong>充分利用了梯度的二阶矩</strong>。</li>
 <li><strong>适用于不稳定的目标函数，鲁棒性强</strong>。</li>
-<li><strong>适用于大规模的数据和参数的场景</strong>。<br>在TensorFlow2.0中给我们提供了Adam的类<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow.keras as keras</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">optimizer = tf.keras.optimizers.Adam(learning_rate=0.001, beta1=0.9, beta_2=0.999, epsilon=1e-7)</span><br></pre></td></tr></tbody></table></figure>
-</li>
+<li><strong>适用于大规模的数据和参数的场景</strong>。</li>
 </ol>
+<p>在TensorFlow2.0中给我们提供了Adam的类<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow.keras as keras</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">optimizer = tf.keras.optimizers.Adam(learning_rate=0.001, beta1=0.9, beta_2=0.999, epsilon=1e-7)</span><br></pre></td></tr></tbody></table></figure><p></p>
 <h1 id="优化器的比较"><a href="#优化器的比较" class="headerlink" title="优化器的比较"></a><font size="5" color="red">优化器的比较</font></h1><ol>
 <li>在<strong>下降速度</strong>上：<strong>自适应学习优化器(AdaGrad，RMSProp，AdaDelta，Adam)和动量优化器(Momentum，NAG)明显快于SGD</strong>。</li>
+</ol>
+<p><img src="/images/deep_learning/opt3.webp" alt="optimizer"></p>
+<ol>
 <li>在<strong>下降轨迹</strong>上：<strong>SGD和自适应学习优化器大致相同，动量优化器因为动量原因，可能会越过最低点，导致多走一段距离</strong>。</li>
+</ol>
+<p><img src="/images/deep_learning/opt1.webp" alt="optimizer"></p>
+<ol>
 <li>在<strong>运行效果</strong>上：<strong>自适应学习优化器和动量优化器基本不会停留在鞍点，而SGD可能会停留在鞍点</strong>。</li>
 </ol>
-<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a><font size="5" color="red">小结</font></h1><p>  在选择优化器的时候，往往<strong>首先考虑Adam优化器</strong>，如果Adam优化器的效果不好，可以<strong>尝试RMSProp</strong>，然后再考虑其他的优化器。但是在实际的工程应用中，<strong>不同的优化器适合不同的场景，不能说明在任何情况下Adam都比其他的优化器更加优秀，选择哪种优化器应该结合具体的问题进行分析</strong>，而且要小伙伴们要记住<strong>模型效果不好可能是多方面原因造成的</strong>，可能是<strong>模型结构太小</strong>，或者<strong>参数设置不合理</strong>，或者<strong>损失函数设计偏差*等等，</strong>不能盲目地更换优化器**来提升性能。</p>
+<p><img src="/images/deep_learning/opt2.webp" alt="optimizer"></p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a><font size="5" color="red">小结</font></h1><p>  在选择优化器的时候，往往<strong>首先考虑Adam优化器</strong>，如果Adam优化器的效果不好，可以<strong>尝试RMSProp</strong>，然后再考虑其他的优化器。但是在实际的工程应用中，<strong>不同的优化器适合不同的场景，不能说明在任何情况下Adam都比其他的优化器更加优秀，选择哪种优化器应该结合具体的问题进行分析</strong>，而且要小伙伴们要记住<strong>模型效果不好可能是多方面原因造成的</strong>，可能是<strong>模型结构太小</strong>，或者<strong>参数设置不合理</strong>，或者<strong>损失函数设计偏差</strong>等等，<strong>不能盲目地更换优化器</strong>来提升性能。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -615,8 +627,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/05/10/program Interview1/" rel="next" title="寻找最远的关系(某大厂手撕面试题)">
-                <i class="fa fa-chevron-left"></i> 寻找最远的关系(某大厂手撕面试题)
+              <a href="/2020/05/09/deep learning loss/" rel="next" title="Loss黑科技">
+                <i class="fa fa-chevron-left"></i> Loss黑科技
               </a>
             
           </div>
@@ -738,7 +750,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">179</span>
+                  <span class="site-state-item-count">180</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
