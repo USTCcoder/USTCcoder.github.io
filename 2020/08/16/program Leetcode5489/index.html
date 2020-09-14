@@ -130,18 +130,18 @@
 
 
 
-<meta name="description" content="Leetcode 5489">
+<meta name="description" content="Leetcode 202场单周赛第3题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="两球之间的磁力(Leetcode 5489)">
+<meta property="og:title" content="两球之间的磁力(Leetcode 202场单周赛第3题)">
 <meta property="og:url" content="https://USTCcoder.github.io/2020/08/16/program Leetcode5489/index.html">
 <meta property="og:site_name" content="GitHub">
-<meta property="og:description" content="Leetcode 5489">
+<meta property="og:description" content="Leetcode 202场单周赛第3题">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/leetcode5489.png">
-<meta property="og:updated_time" content="2020-09-02T02:16:54.131Z">
+<meta property="og:updated_time" content="2020-09-14T11:01:56.828Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="两球之间的磁力(Leetcode 5489)">
-<meta name="twitter:description" content="Leetcode 5489">
+<meta name="twitter:title" content="两球之间的磁力(Leetcode 202场单周赛第3题)">
+<meta name="twitter:description" content="Leetcode 202场单周赛第3题">
 <meta name="twitter:image" content="https://ustccoder.github.io/images/ALGORITHM/leetcode5489.png">
 
 
@@ -178,7 +178,7 @@
 
 
 
-  <title>两球之间的磁力(Leetcode 5489) | GitHub</title>
+  <title>两球之间的磁力(Leetcode 202场单周赛第3题) | GitHub</title>
   
 
 
@@ -360,7 +360,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">两球之间的磁力(Leetcode 5489)</h1>
+          <h1 class="post-title" itemprop="name headline">两球之间的磁力(Leetcode 202场单周赛第3题)</h1>
         
 
         <div class="post-meta">
@@ -395,8 +395,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/计算机基础知识/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机基础知识</span>
+                  <a href="/categories/刷题记录/" itemprop="url" rel="index">
+                    <span itemprop="name">刷题记录</span>
                   </a>
                 </span>
 
@@ -406,8 +406,19 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/计算机基础知识/刷题记录/" itemprop="url" rel="index">
-                    <span itemprop="name">刷题记录</span>
+                  <a href="/categories/刷题记录/数组/" itemprop="url" rel="index">
+                    <span itemprop="name">数组</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/刷题记录/二分查找/" itemprop="url" rel="index">
+                    <span itemprop="name">二分查找</span>
                   </a>
                 </span>
 
@@ -454,7 +465,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  479
+                  478
                 </span>
               
 
@@ -466,7 +477,7 @@
 
           
               <div class="post-description">
-                  <table><tr><td bgcolor="grey"><font size="5" face="STXihei" color="white"><center>Leetcode 5489</center></font></td></tr></table>
+                  <table><tr><td bgcolor="grey"><font size="5" face="STXihei" color="white"><center>Leetcode 202场单周赛第3题</center></font></td></tr></table>
               </div>
           
 
@@ -484,7 +495,7 @@
 
       
         <p><img src="/images/ALGORITHM/leetcode5489.png" alt="1"></p>
-<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   这是第202周周赛的第三题，我觉得非常有价值。题目的意思很简单，通俗的说就是从数组中找m个节点，使得它们的最小距离最大，也就是说让它们两两之间距离最远。小伙伴们先思考应该如何解答。</p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   这是第202周周赛的第3题，我觉得非常有价值。题目的意思很简单，通俗的说就是从数组中找m个节点，使得它们的最小距离最大，也就是说让它们两两之间距离最远。小伙伴们先思考应该如何解答。</p>
 <a id="more"></a>
 <h1 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a><font size="5" color="red">二分查找</font></h1><p>之前应该说过一句话，这里再强调一次，当遇到最小化最大值问题或者最大化最小值问题，首先考虑二分法。最小距离为1，最大距离为max(position)，当然可以优化，不过也没有太大意义，因为二分法以对数的速度收敛，很快就可以达到最优解。<br>我们可以二分查找它们之间的距离，当对于某一个距离使用贪心算法进行判断时，如果能够创建出m个节点，说明该距离是合适的，我们可以令left = mid，否则令right = mid - 1，但是我们要保证数组是有序的。这样做的时间复杂度为$O(n \times log(n))$，空间复杂度为O(1)。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def maxDistance(self, position, m):</span><br><span class="line">        """</span><br><span class="line">        :type position: List[int]</span><br><span class="line">        :type m: int</span><br><span class="line">        :rtype: int</span><br><span class="line">        """</span><br><span class="line">        position.sort()</span><br><span class="line">        left, right = 1, (position[-1] - position[0]) // (m - 1)</span><br><span class="line">        while left &lt; right:</span><br><span class="line">            mid, res, last, flag = (left + right + 1) // 2, 1, position[0], False</span><br><span class="line">            for x in position[1:]:</span><br><span class="line">                if x - last &gt;= mid:</span><br><span class="line">                    res += 1</span><br><span class="line">                    last = x</span><br><span class="line">                    if res &gt;= m:</span><br><span class="line">                        flag = True</span><br><span class="line">                        break</span><br><span class="line">            if flag:</span><br><span class="line">                left = mid</span><br><span class="line">            else:</span><br><span class="line">                right = mid - 1</span><br><span class="line">        return left</span><br></pre></td></tr></tbody></table></figure><p></p>
 <h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  这种题是非常有价值的，因为二分查找是每一个程序员必备的技能，也是面试官常常喜欢考察的内容。而且题目难度适中，所以小伙伴们务必掌握它。</p>
@@ -564,8 +575,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/08/18/program Leetcode5490/" rel="prev" title="吃掉 N 个橘子的最少天数(Leetcode 5490)">
-                吃掉 N 个橘子的最少天数(Leetcode 5490) <i class="fa fa-chevron-right"></i>
+              <a href="/2020/08/18/program Leetcode5490/" rel="prev" title="吃掉 N 个橘子的最少天数(Leetcode 202场单周赛第4题)">
+                吃掉 N 个橘子的最少天数(Leetcode 202场单周赛第4题) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -677,7 +688,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">180</span>
+                  <span class="site-state-item-count">184</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -688,7 +699,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

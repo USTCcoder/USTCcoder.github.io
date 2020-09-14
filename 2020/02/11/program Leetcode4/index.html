@@ -138,9 +138,8 @@
 <meta property="og:description" content="Leetcode 4">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/leetcode4.png">
-<meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/leetcode4_topk.png">
 <meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/leetcode4_search.png">
-<meta property="og:updated_time" content="2020-09-02T02:17:38.310Z">
+<meta property="og:updated_time" content="2020-09-11T13:03:02.702Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="寻找两个正序数组的中位数(Leetcode 4)">
 <meta name="twitter:description" content="Leetcode 4">
@@ -397,8 +396,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/计算机基础知识/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机基础知识</span>
+                  <a href="/categories/刷题记录/" itemprop="url" rel="index">
+                    <span itemprop="name">刷题记录</span>
                   </a>
                 </span>
 
@@ -408,8 +407,30 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/计算机基础知识/刷题记录/" itemprop="url" rel="index">
-                    <span itemprop="name">刷题记录</span>
+                  <a href="/categories/刷题记录/数组/" itemprop="url" rel="index">
+                    <span itemprop="name">数组</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/刷题记录/排序/" itemprop="url" rel="index">
+                    <span itemprop="name">排序</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/刷题记录/二分查找/" itemprop="url" rel="index">
+                    <span itemprop="name">二分查找</span>
                   </a>
                 </span>
 
@@ -456,7 +477,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  980
+                  696
                 </span>
               
 
@@ -490,7 +511,6 @@
 <a id="more"></a>
 <h1 id="合并数组"><a href="#合并数组" class="headerlink" title="合并数组"></a><font size="5" color="red">合并数组</font></h1><p>合并有序数组的方法是最容易想到的方法，在归并排序中就用到了这种思想，将两个有序的数组合并为一个，然后直接索引寻找中位数，时间复杂度为$O(m+n)$，空间复杂度为$O(m+n)$。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def findMedianSortedArrays(self, nums1, nums2):</span><br><span class="line">        """</span><br><span class="line">        :nums1: List[int]</span><br><span class="line">        :nums2: List[int]</span><br><span class="line">        :rtype: float</span><br><span class="line">        """</span><br><span class="line">        nums = []</span><br><span class="line">        len1, len2 = len(nums1), len(nums2)</span><br><span class="line">        if len1 == 0:</span><br><span class="line">            nums = nums2[:]</span><br><span class="line">        elif len2 == 0:</span><br><span class="line">            nums = nums1[:]</span><br><span class="line">        else:</span><br><span class="line">            p1 = p2 = 0</span><br><span class="line">            while p1 &lt; len1 and p2 &lt; len2:</span><br><span class="line">                if nums1[p1] &lt; nums2[p2]:</span><br><span class="line">                    nums.append(nums1[p1])</span><br><span class="line">                    p1 += 1</span><br><span class="line">                else:</span><br><span class="line">                    nums.append(nums2[p2])</span><br><span class="line">                    p2 += 1</span><br><span class="line">            nums += nums2[p2:] if p1 == len1 else nums1[p1:]</span><br><span class="line">        return nums[(len1 + len2) // 2] if (len1 + len2) % 2 else (nums[(len1 + len2) // 2 - 1] + nums[(len1 + len2) // 2]) / 2</span><br></pre></td></tr></tbody></table></figure><p></p>
 <h1 id="寻找索引"><a href="#寻找索引" class="headerlink" title="寻找索引"></a><font size="5" color="red">寻找索引</font></h1><p>因为不需要其他的数据，因此我们不需要引入一个新数组保存所有数据，只需要记录当前索引即。时间复杂度为$O(m+n)$，空间复杂度为$O(1)$。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def findMedianSortedArrays(self, nums1, nums2):</span><br><span class="line">        """</span><br><span class="line">        :nums1: List[int]</span><br><span class="line">        :nums2: List[int]</span><br><span class="line">        :rtype: float</span><br><span class="line">        """</span><br><span class="line">        p1 = p2 = 0</span><br><span class="line">        len1, len2 = len(nums1), len(nums2)</span><br><span class="line">        prior, current = 0, 0</span><br><span class="line">        for i in range((len1 + len2) // 2 + 1):</span><br><span class="line">            prior = current</span><br><span class="line">            if p1 &lt; len1 and (p2 &gt;= len2 or nums1[p1] &lt; nums2[p2]):</span><br><span class="line">                current = nums1[p1]</span><br><span class="line">                p1 += 1</span><br><span class="line">            else:</span><br><span class="line">                current = nums2[p2]</span><br><span class="line">                p2 += 1</span><br><span class="line">        return current if (len1 + len2) % 2 else (current + prior) / 2</span><br></pre></td></tr></tbody></table></figure><p></p>
-<h1 id="最小k个元素"><a href="#最小k个元素" class="headerlink" title="最小k个元素"></a><font size="5" color="red">最小k个元素</font></h1><p>从上面两种算法的时间复杂度可以看出，虽然能够正确的求解出此题，但是达不到题目所要求的时间复杂度，其实通过题目要求的时间复杂度，我们可以推测本题的算法，大概率是使用二分法来进行求解，因为二分法的时间复杂度一般是$O(log(n))$。这种方法参考windliang在Leetcode题解中的思想。时间复杂度为$O(log(m+n))$，空间复杂度为$O(1)$。<br><img src="/images/ALGORITHM/leetcode4_topk.png" alt="topk"><br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def findMedianSortedArrays(self, nums1, nums2):</span><br><span class="line">        """</span><br><span class="line">        :nums1: List[int]</span><br><span class="line">        :nums2: List[int]</span><br><span class="line">        :rtype: float</span><br><span class="line">        """</span><br><span class="line">        def getk(a1, begin1, end1, a2, begin2, end2, k):</span><br><span class="line">            len1, len2 = end1 - begin1 + 1, end2 - begin2 + 1</span><br><span class="line">            if len1 &gt; len2:</span><br><span class="line">                return getk(a2, begin2, end2, a1, begin1, end1, k)</span><br><span class="line">            if len1 == 0:</span><br><span class="line">                return a2[begin2 + k - 1]</span><br><span class="line">            if k == 1:</span><br><span class="line">                return min(a1[begin1], a2[begin2])</span><br><span class="line">            index1, index2 = begin1 + min(k // 2, len1) - 1, begin2 + k // 2 - 1</span><br><span class="line">            if a1[index1] &gt; a2[index2]:</span><br><span class="line">                return getk(a1, begin1, end1, a2, index2 + 1, end2, k - k // 2)</span><br><span class="line">            else:</span><br><span class="line">                return getk(a1, index1 + 1, end1, a2, begin2, end2, k - min(k // 2, len1))</span><br><span class="line"></span><br><span class="line">        len1, len2 = len(nums1), len(nums2)</span><br><span class="line">        left, right = (len1 + len2 + 1) // 2, (len1 + len2 + 2) // 2</span><br><span class="line">        return (getk(nums1, 0, len1 - 1, nums2, 0, len2 - 1, left) + getk(nums1, 0, len1 - 1, nums2, 0, len2 - 1, right)) / 2</span><br></pre></td></tr></tbody></table></figure><p></p>
 <h1 id="中位数算法"><a href="#中位数算法" class="headerlink" title="中位数算法"></a><font size="5" color="red">中位数算法</font></h1><p>这道题还有更优的算法，利用中位数的性质和二分查找的思想，将两个数组分成左右两个部分，这种方法参考windliang在Leetcode题解中的思想。时间复杂度为$O(log(min(m+n)))$，空间复杂度为$O(1)$。<br><img src="/images/ALGORITHM/leetcode4_search.png" alt="search"><br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def findMedianSortedArrays(self, nums1, nums2):</span><br><span class="line">        """</span><br><span class="line">        :nums1: List[int]</span><br><span class="line">        :nums2: List[int]</span><br><span class="line">        :rtype: float</span><br><span class="line">        """</span><br><span class="line">        if len(nums1) &gt; len(nums2):</span><br><span class="line">            nums1, nums2 = nums2, nums1</span><br><span class="line">        len1, len2 = len(nums1), len(nums2)</span><br><span class="line">        min_index, max_index = 0, len1</span><br><span class="line">        while 1:</span><br><span class="line">            i = (min_index + max_index) // 2</span><br><span class="line">            j = (len1 + len2 + 1) // 2 - i</span><br><span class="line">            if i != len1 and nums2[j - 1] &gt; nums1[i]:</span><br><span class="line">                min_index = i + 1</span><br><span class="line">            elif i != 0 and nums1[i - 1] &gt; nums2[j]:</span><br><span class="line">                max_index = i - 1</span><br><span class="line">            else:</span><br><span class="line">                if i == 0:</span><br><span class="line">                    left_max = nums2[j - 1]</span><br><span class="line">                elif j == 0:</span><br><span class="line">                    left_max = nums1[i - 1]</span><br><span class="line">                else:</span><br><span class="line">                    left_max = max(nums1[i - 1], nums2[j - 1])</span><br><span class="line">                if (len1 + len2) % 2 == 1:</span><br><span class="line">                    return left_max</span><br><span class="line">                if i == len1:</span><br><span class="line">                    right_min = nums2[j]</span><br><span class="line">                elif j == len2:</span><br><span class="line">                    right_min = nums1[i]</span><br><span class="line">                else:</span><br><span class="line">                    right_min = min(nums1[i], nums2[j])</span><br><span class="line">                return (left_max + right_min) / 2</span><br></pre></td></tr></tbody></table></figure><p></p>
 <h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  后面跟两种方法，我也是参考别人的题解，不仅思路清晰，而且代码简单，可以说膜拜了。这道题的难点在于二分法的应用，小伙伴们要多刷题，多见一见世面，比较不同算法之间的区别，增强自己的Coding能力。</p>
 <script>
@@ -682,7 +702,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">180</span>
+                  <span class="site-state-item-count">184</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -693,7 +713,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -773,7 +793,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目分析"><span class="nav-number">1.</span> <span class="nav-text">题目分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#合并数组"><span class="nav-number">2.</span> <span class="nav-text">合并数组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#寻找索引"><span class="nav-number">3.</span> <span class="nav-text">寻找索引</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最小k个元素"><span class="nav-number">4.</span> <span class="nav-text">最小k个元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#中位数算法"><span class="nav-number">5.</span> <span class="nav-text">中位数算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#刷题总结"><span class="nav-number">6.</span> <span class="nav-text">刷题总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目分析"><span class="nav-number">1.</span> <span class="nav-text">题目分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#合并数组"><span class="nav-number">2.</span> <span class="nav-text">合并数组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#寻找索引"><span class="nav-number">3.</span> <span class="nav-text">寻找索引</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#中位数算法"><span class="nav-number">4.</span> <span class="nav-text">中位数算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#刷题总结"><span class="nav-number">5.</span> <span class="nav-text">刷题总结</span></a></li></ol></div>
             
 
           </div>

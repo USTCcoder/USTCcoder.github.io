@@ -140,7 +140,7 @@
 <meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/leetcode137.png">
 <meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/leetcode137_solve.png">
 <meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/leetcode137_solve1.png">
-<meta property="og:updated_time" content="2020-09-02T02:18:02.382Z">
+<meta property="og:updated_time" content="2020-09-11T13:10:48.548Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="只出现一次的数字 II(Leetcode 137)">
 <meta name="twitter:description" content="Leetcode 137">
@@ -397,8 +397,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/计算机基础知识/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机基础知识</span>
+                  <a href="/categories/刷题记录/" itemprop="url" rel="index">
+                    <span itemprop="name">刷题记录</span>
                   </a>
                 </span>
 
@@ -408,8 +408,30 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/计算机基础知识/刷题记录/" itemprop="url" rel="index">
-                    <span itemprop="name">刷题记录</span>
+                  <a href="/categories/刷题记录/数组/" itemprop="url" rel="index">
+                    <span itemprop="name">数组</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/刷题记录/有限状态自动机/" itemprop="url" rel="index">
+                    <span itemprop="name">有限状态自动机</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/刷题记录/位运算/" itemprop="url" rel="index">
+                    <span itemprop="name">位运算</span>
                   </a>
                 </span>
 
@@ -456,7 +478,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  684
+                  680
                 </span>
               
 
@@ -491,7 +513,7 @@
 <h1 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a><font size="5" color="red">位运算</font></h1><p>想一下每个元素出现两次时是咋做的？是不是记录二进制位中1出现的个数，并对2求余。一个数如果某一位是1，出现2次，就为2，然后对2求余就为0。因此单独的一个数对2求余就为1，所以该数在哪些位置上为1，则最后的结果在哪些位置上也为1。设当前某一位为0，下一个数在该位上为1，那么该位的状态位1，下一个数在该为上位0，那么该位的状态位0。设当前某一位为1，下一个数在该位上为1，那么该位的状态位0，下一个数在该为上位0，那么该位的状态位1。这不正好符合异或的定义吗？</p>
 <p>那我们考虑一下每个元素出现三次时的情况，也应该记录二进制位中1出现的个数，并对3求余，一个数如果某一位是1，出现3次，就为3，然后对3求余就为0。因此单独的一个数对3求余就为1，所以该数在哪些位置上为1，则最后的结果在哪些位置上也为1。但是出现了一个问题，出现2次，余数可以用0和1表示，那么出现3次如何表示呢？余数为0，1，2，需要使用3个状态表示，也就是需要两位表示。</p>
 <p>下面借用Leetcode Krahets(K神)的图<br><img src="/images/ALGORITHM/leetcode137_solve.png" alt="q"></p>
-<p>当two为0时，如果下一个数为0，则one的状态不变，如果下一个数为1，则one的状态反转。<br>当two为1时，无论下一个数时0还是1，one都为0。<br>可以列出下表进行推导one为0或者1时，two的变化，注意one为更新后的值。<br><img src="/images/ALGORITHM/leetcode137_solve1.png" alt="q"><br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def singleNumber(self, nums: List[int]) -&gt; int:</span><br><span class="line">        ones, twos = 0, 0</span><br><span class="line">        for num in nums:</span><br><span class="line">            ones = ones ^ num &amp; ~twos</span><br><span class="line">            twos = twos ^ num &amp; ~ones</span><br><span class="line">        return ones</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>当two为0时，如果下一个数为0，则one的状态不变，如果下一个数为1，则one的状态反转。<br>当two为1时，无论下一个数时0还是1，one都为0。<br>可以列出下表进行推导one为0或者1时，two的变化，注意one为更新后的值。<br><img src="/images/ALGORITHM/leetcode137_solve1.png" alt="q"><br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def singleNumber(self, nums):</span><br><span class="line">        ones, twos = 0, 0</span><br><span class="line">        for num in nums:</span><br><span class="line">            ones = ones ^ num &amp; ~twos</span><br><span class="line">            twos = twos ^ num &amp; ~ones</span><br><span class="line">        return ones</span><br></pre></td></tr></tbody></table></figure><p></p>
 <h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  大佬的思路太漂亮，不禁感叹自己还是太菜啦~，我们不是要记住这一题，而是要记住状态转移的方式，然后列表推导出下一个状态的表达式，这个才是这个问题的核心，以后无论数据重复多少次都有类似的解法。</p>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -682,7 +704,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">180</span>
+                  <span class="site-state-item-count">184</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -693,7 +715,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
