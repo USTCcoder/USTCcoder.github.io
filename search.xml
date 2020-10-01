@@ -1,6 +1,311 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>连接所有点的最小费用(Leetcode 206场单周赛第3题)</title>
+    <url>/2020/09/30/program%20Leetcode5513/</url>
+    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode5513.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   这个题目是一个最小生成树问题，可以通过prim算法或者kurskal算法进行求解。</p>
+<a id="more"></a>
+<h1 id="prim"><a href="#prim" class="headerlink" title="prim"></a><font size="5" color="red">prim</font></h1><p>prim算法是通过节点合并实现的，其步骤为：</p>
+<ol>
+<li>首先任意选择一个节点，常常选择第1个节点，然后放入passed集合中。</li>
+<li>计算剩余的所有点可以直接到达1号节点的距离</li>
+<li>选择一个最小的点k加入到passed集合中。</li>
+<li>从剩余节点中如果通过k到达passed集合比之前的更近，则更新该距离。</li>
+<li>重复步骤3和4，直到所有的点都在passed集合中为止。</li>
+<li>此时距离数组的和就是最小生成树的距离</li>
+</ol>
+<p>prim算法时间方面，<strong>对于每一个新加入的节点，要计算其他节点通过该节点到达passed集合的距离，空间方面只需要保存passed集合和剩余点到passed集合的最近距离</strong>。因此算法的<strong>时间复杂度为$O(n^2)$，空间复杂度为$O(n)$</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def minCostConnectPoints(self, points):</span><br><span class="line">        def prim(points):</span><br><span class="line">            no_passed = set(range(1, n))</span><br><span class="line">            close_distance = [distance(points[0], points[i]) for i in range(n)]</span><br><span class="line">            while no_passed:</span><br><span class="line">                mini_distance, idx = float('inf'), -1</span><br><span class="line">                for node in no_passed:</span><br><span class="line">                    if mini_distance &gt; close_distance[node]:</span><br><span class="line">                        mini_distance, idx = close_distance[node], node</span><br><span class="line">                no_passed.remove(idx)</span><br><span class="line">                for node in no_passed:</span><br><span class="line">                    close_distance[node] = min(close_distance[node], distance(points[node], points[idx]))</span><br><span class="line">            return sum(close_distance)</span><br><span class="line"></span><br><span class="line">        distance = lambda x, y: abs(x[0] - y[0]) + abs(x[1] - y[1])</span><br><span class="line">        n = len(points)</span><br><span class="line">        return prim(points)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="kurskal"><a href="#kurskal" class="headerlink" title="kurskal"></a><font size="5" color="red">kurskal</font></h1><p>kurskal算法是通过边合并实现的，其步骤为：<br>1.首先给每个节点定义一个编号，通常i节点的编号为i，结果res赋值为0</p>
+<ol>
+<li>选择距离最近的两个节点，如果两个节点的编号不同，假设为i和j，则将所有等于i的节点的编号改为j相同，说明生成树的结果存在这条边，结果res加上这条边的距离。如果节点相同则说明两个节点已存在一个通路，继续寻找下一个距离最近的边。</li>
+<li>重复步骤2，直到所有的点的编号都相同为止。</li>
+<li>返回结果res即可。</li>
+</ol>
+<p>kurskal算法时间方面，<strong>要对每一条边进行排序，假设边数为e，当e很大时，排序的过程非常耗时，当e很小时，网络最少合并n次，每次要判断每个编号是否需要更新</strong>，因此<strong>时间复杂度为$O(max(elog(e), n^2))，空间复杂度为$O(e)$</strong>。</p>
+<p><strong>在全连接网络中，$e = (n - 1)!$，所以kurskal的时间复杂度和空间复杂度都非常大，如本题，每两个点都有距离定义，因此适合于prim算法，不适合于kurskal算法</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def minCostConnectPoints(self, points):</span><br><span class="line">        def kurskal(points):</span><br><span class="line">            distance_map = [[distance(points[i], points[j]), i, j] for i in range(n) for j in range(i)]</span><br><span class="line">            distance_map.sort(reverse=True)</span><br><span class="line">            label = list(range(n))</span><br><span class="line">            combine_times = 0</span><br><span class="line">            res = 0</span><br><span class="line">            while combine_times != n - 1:</span><br><span class="line">                mini_distance, i, j = distance_map.pop()</span><br><span class="line">                if label[i] != label[j]:</span><br><span class="line">                    label = [label[j] if label[k] == label[i] else label[k] for k in range(n)]</span><br><span class="line">                    combine_times += 1</span><br><span class="line">                    res += mini_distance</span><br><span class="line">            return res</span><br><span class="line"></span><br><span class="line">        distance = lambda x, y: abs(x[0] - y[0]) + abs(x[1] - y[1])</span><br><span class="line">        n = len(points)</span><br><span class="line">        return kurskal(points)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  最小生成树问题时经典的贪心问题，其实难度并不大，记住思路就可以很容易的写出来，这时一个非常重要的算法，小伙伴们务必掌握它。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>刷题记录</category>
+        <category>贪心</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>特殊编辑距离(某大厂手撕笔试题)</title>
+    <url>/2020/09/29/program%20Interview5/</url>
+    <content><![CDATA[<p><img src="/images/ALGORITHM/interview5.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   编辑距离是一个非常经典的问题了，这是小伙伴们必须掌握的算法，这个题目在编辑距离的基础上加以修改，其思路并没有变换，先用20分钟动手尝试一下如何求解。</p>
+<a id="more"></a>
+<h1 id="DP"><a href="#DP" class="headerlink" title="DP"></a><font size="5" color="red">DP</font></h1><p>用二维数组dp[i][j]表示a的前i个单词与b的前j个单词的编辑距离。</p>
+<ul>
+<li>当a[i]与b[j]相同时<script type="math/tex; mode=display">dp[i][j] = dp[i - 1][j - 1]</script></li>
+<li>当a[i]与b[j]不相同时，又可以分成4种情况<ul>
+<li>当a[i]和b[j]都是s中的元素时<script type="math/tex; mode=display">dp[i][j] = min(dp[i - 1][j - 1], dp[i][j - 1], dp[i - 1][j])</script>其中第一项为a[i]与b[j]都跳过，第二项为跳过a[i]，第三项为跳过b[j]</li>
+<li>当a[i]是s中的元素时<script type="math/tex; mode=display">dp[i][j] = min(dp[i - 1][j - 1] + 1, dp[i - 1][j], dp[i][j - 1] + 1)</script>其中第一项为将a[i]替换为b[j]，第二项为跳过a[i]，第三项为删除b[j]</li>
+<li>当b[j]是s中的元素时<script type="math/tex; mode=display">dp[i][j] = min(dp[i - 1][j - 1] + 1, dp[i - 1][j] + 1, dp[i][j])</script>其中第一项为将a[i]替换为b[j]，第二项为删除a[i]，第三项为跳过b[j]</li>
+<li>当a[i]和b[j]都不是s中的元素时<script type="math/tex; mode=display">dp[i][j] = min(dp[i - 1][j - 1], dp[i - 1][j], dp[i][j - 1]) + 1</script>其中第一项为将a[i]替换为b[j]，第二项为删除a[i]，第三项为删除b[j]</li>
+</ul>
+</li>
+</ul>
+<p>状态转移方程较为复杂，小伙伴们好好理解。算法的<strong>时间复杂度为$O(mn)$，空间复杂度为$O(mn)$</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">import sys</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">for line in sys.stdin:</span><br><span class="line">    stop_word = line.strip().split()</span><br><span class="line">    a = sys.stdin.readline().strip().split()</span><br><span class="line">    b = sys.stdin.readline().strip().split()</span><br><span class="line">    lena, lenb = len(a), len(b)</span><br><span class="line">    dp = [[0 for _ in range(lenb + 1)] for _ in range(lena + 1)]</span><br><span class="line">    for i in range(1, lena + 1):</span><br><span class="line">        dp[i][0] = dp[i - 1][0]</span><br><span class="line">        dp[i][0] += 1 if a[i - 1] not in stop_word else 0</span><br><span class="line">    for i in range(1, lenb + 1):</span><br><span class="line">        dp[0][i] = dp[0][i - 1]</span><br><span class="line">        dp[0][i] += 1 if b[i - 1] not in stop_word else 0</span><br><span class="line">    for i in range(1, lena + 1):</span><br><span class="line">        for j in range(1, lenb + 1):</span><br><span class="line">            if a[i - 1] == b[j - 1]:</span><br><span class="line">                dp[i][j] = dp[i - 1][j - 1]</span><br><span class="line">            else:</span><br><span class="line">                if a[i - 1] in stop_word and b[j - 1] in stop_word:</span><br><span class="line">                    dp[i][j] = min(dp[i - 1][j - 1], dp[i][j - 1], dp[i - 1][j])</span><br><span class="line">                elif a[i - 1] in stop_word:</span><br><span class="line">                    dp[i][j] = min(dp[i - 1][j], dp[i - 1][j - 1] + 1, dp[i][j - 1] + 1)</span><br><span class="line">                elif b[j - 1] in stop_word:</span><br><span class="line">                    dp[i][j] = min(dp[i][j - 1], dp[i - 1][j - 1] + 1, dp[i - 1][j] + 1)</span><br><span class="line">                else:</span><br><span class="line">                    dp[i][j] = min(dp[i - 1][j - 1], dp[i][j - 1], dp[i - 1][j]) + 1</span><br><span class="line">    print(dp[-1][-1])</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="优化DP"><a href="#优化DP" class="headerlink" title="优化DP"></a><font size="5" color="red">优化DP</font></h1><p>这个题目有趣的地方在于，我们可以将a和b中的所有出现在s中的字符都跳过，进行普通的编辑距离即可。<br>假设a[i]在s中，那么a[i]会被保留或者跳过，如果选择保留，那么一定和某个单词进行了匹配，则进行修改操作。那么等价于将其忽略，然后增加一个单词。<br>如A是s中的单词，字符串a为BAC，字符串b为BBC，此时a想变为b，可以将a中的A保留，并且进行修改，将A改成B，那么两个字符串相同，此时编辑距离为1，这个操作等价于将A忽略，然后插入一个单词B。<br>用公式进行说明，当a[i]是s中的元素时</p>
+<script type="math/tex; mode=display">dp[i][j] = min(dp[i - 1][j - 1] + 1, dp[i - 1][j], dp[i][j - 1] + 1)</script><p>其中第一项为将a[i]替换为b[j]，第二项为跳过a[i]，第三项为删除b[j]<br>第一项一定大于等于第二项，我们可以认为dp[i - 1][j - 1]在插入了一个b[j]单词，因此</p>
+<script type="math/tex; mode=display">dp[i - 1][j - 1] + 1 \ge dp[i - 1][j]</script><p>所以上面的式子可以转换为</p>
+<script type="math/tex; mode=display">dp[i][j] = min(dp[i - 1][j], dp[i][j - 1] + 1)</script><p>这个状态还可以继续简化</p>
+<script type="math/tex; mode=display">dp[i][0] = dp[i - 1][0] \ \ if \ \ j = 0</script><script type="math/tex; mode=display">\begin{align} dp[i][1] & = min(dp[i - 1][1], dp[i][0] + 1) \ \ if \ \ j = 0 \\ & = min(dp[i - 1][1], dp[i - 1][0] + 1)\\ \end{align}</script><p>上面已经说明了</p>
+<script type="math/tex; mode=display">dp[i - 1][j - 1] + 1 \ge dp[i - 1][j]</script><script type="math/tex; mode=display">dp[i][1] = dp[i - 1][1] \ \ if \ \ j = 0</script><p>利用数学归纳法可以轻易求得</p>
+<script type="math/tex; mode=display">dp[i][j] = dp[i - 1][j]</script><p>因此当a[i]出现在单词列表s中，可以将a[i]直接忽略，不会对结果产生影响。<br>算法的<strong>时间复杂度为$O(mn)$，空间复杂度为$O(mn)$</strong>。在很多单词出现在单词列表中，时间复杂度和空间复杂度比第一种算法低得多。<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">import sys</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">for line in sys.stdin:</span><br><span class="line">    stop_word = line.strip().split()</span><br><span class="line">    a = sys.stdin.readline().strip().split()</span><br><span class="line">    b = sys.stdin.readline().strip().split()</span><br><span class="line">    a = [x for x in a if x not in stop_word]</span><br><span class="line">    b = [x for x in b if x not in stop_word]</span><br><span class="line">    lena, lenb = len(a), len(b)</span><br><span class="line">    dp = [[0 for _ in range(lenb + 1)] for _ in range(lena + 1)]</span><br><span class="line">    for i in range(1, lena + 1):</span><br><span class="line">        dp[i][0] = i</span><br><span class="line">    for i in range(1, lenb + 1):</span><br><span class="line">        dp[0][i] = i</span><br><span class="line">    for i in range(1, lena + 1):</span><br><span class="line">        for j in range(1, lenb + 1):</span><br><span class="line">            if a[i - 1] == b[j - 1]:</span><br><span class="line">                dp[i][j] = dp[i - 1][j - 1]</span><br><span class="line">            else:</span><br><span class="line">                dp[i][j] = min(dp[i - 1][j - 1], dp[i][j - 1], dp[i - 1][j]) + 1</span><br><span class="line">    print(dp[-1][-1])</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  编辑距离的问题，小伙伴们一定要掌握它，肯定是通过动态规划来解决的，当题目变化时，我们的状态转移方程可能也会发生改动，一定要开动脑筋，思考如何去修改。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>刷题记录</category>
+        <category>动态规划</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>寻找符合条件的节点数(某大厂手撕笔试题)</title>
+    <url>/2020/09/27/program%20Interview4/</url>
+    <content><![CDATA[<p><img src="/images/ALGORITHM/interview4.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   遇到树形的问题，肯定要想到深搜和广搜，但是这个题目并不是一个树，只是一些邻接关系，没有left和right节点。如何转换到树的思想？当然可以创建树，但是还需要写递归创建树结构，思路不是非常好，小伙伴们能否使用数组容器实现呢？</p>
+<a id="more"></a>
+<h1 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a><font size="5" color="red">DFS</font></h1><p>我们可以<strong>使用二维数组保存，第一个维度大小是101，代表最多101个结点，第二个维度大小是2，分别代表左孩子和右孩子。因为节点从1开始，因此我们初始值设为0，进行DFS，当某个节点的两个孩子都不为0，并且每个孩子的两个孩子都为0，则计数器+1</strong>。算法的<strong>时间复杂度为$O(n)$，空间复杂度为$O(n)$</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">import sys</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def dfs(current):</span><br><span class="line">    global res</span><br><span class="line">    if dic[current][0] and dic[dic[current][0]] == leaf and dic[current][1] and dic[dic[current][1]] == leaf:</span><br><span class="line">        res += 1</span><br><span class="line">        return</span><br><span class="line">    for child in dic[current]:</span><br><span class="line">        if child:</span><br><span class="line">            dfs(child)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">for line in sys.stdin:</span><br><span class="line">    m, n = [int(x) for x in line.strip().split()]</span><br><span class="line">    leaf = [0, 0]</span><br><span class="line">    dic = [[0, 0] for _ in range(101)]</span><br><span class="line">    for _ in range(n):</span><br><span class="line">        p, relation, c = sys.stdin.readline().strip().split()</span><br><span class="line">        p, c = int(p), int(c)</span><br><span class="line">        if relation == 'left':</span><br><span class="line">            dic[p][0] = c</span><br><span class="line">        else:</span><br><span class="line">            dic[p][1] = c</span><br><span class="line">    res = 0</span><br><span class="line">    dfs(1)</span><br><span class="line">    print(res)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a><font size="5" color="red">BFS</font></h1><p>思路和DFS相同，只是搜索方式是按层搜索，直接看代码即可。算法的<strong>时间复杂度为$O(n)$，空间复杂度为$O(n)$</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">import sys</span><br><span class="line">from collections import deque</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">for line in sys.stdin:</span><br><span class="line">    m, n = [int(x) for x in line.strip().split()]</span><br><span class="line">    leaf = [0, 0]</span><br><span class="line">    dic = [[0, 0] for _ in range(101)]</span><br><span class="line">    for _ in range(n):</span><br><span class="line">        p, relation, c = sys.stdin.readline().strip().split()</span><br><span class="line">        p, c = int(p), int(c)</span><br><span class="line">        if relation == 'left':</span><br><span class="line">            dic[p][0] = c</span><br><span class="line">        else:</span><br><span class="line">            dic[p][1] = c</span><br><span class="line">    res = 0</span><br><span class="line"></span><br><span class="line">    queue = deque([1])</span><br><span class="line">    while queue:</span><br><span class="line">        current = queue.popleft()</span><br><span class="line">        if dic[current][0] and dic[dic[current][0]] == leaf and dic[current][1] and dic[dic[current][1]] == leaf:</span><br><span class="line">            res += 1</span><br><span class="line">            continue</span><br><span class="line">        for child in dic[current]:</span><br><span class="line">            if child:</span><br><span class="line">                queue.append(child)</span><br><span class="line">    print(res)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="数学"><a href="#数学" class="headerlink" title="数学"></a><font size="5" color="red">数学</font></h1><p>严格意义来说不是一种数学推导，但是又具有数学的逆向思维思路，勉强归为数学部分吧。<br>我们<strong>将每一个关系读入，将父节点保存在父节点哈希表中，将子节点加入到子节点哈希表中，让子节点哈希表减父节点哈希表，则可以得到叶子节点的哈希表。并且在读入时维护一个从子节点指向父节点的字典。我们对每个叶子节点寻找其父节点，如果某个父节点出现两次，说明该父节点有两个叶子节点，给计数器+1即可</strong>。在Python中可以from collections import Counter，这时一个计数器，当某个父节点的计数器值为2时，说明该父节点是满足条件的。算法的<strong>时间复杂度为$O(n)$，空间复杂度为$O(n)$</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">import sys</span><br><span class="line">from collections import Counter</span><br><span class="line"></span><br><span class="line">for line in sys.stdin:</span><br><span class="line">    m, n = [int(x) for x in line.strip().split()]</span><br><span class="line">    dic = dict()</span><br><span class="line">    node = set()</span><br><span class="line">    not_leaf = set()</span><br><span class="line">    for _ in range(n):</span><br><span class="line">        p, relation, c = sys.stdin.readline().strip().split()</span><br><span class="line">        p, c = int(p), int(c)</span><br><span class="line">        node.add(c)</span><br><span class="line">        not_leaf.add(p)</span><br><span class="line">        dic[c] = p</span><br><span class="line">    leaf = node - not_leaf</span><br><span class="line">    res = len(list(filter(lambda x: x == 2, Counter([dic[leaf_node] for leaf_node in leaf]).values())))</span><br><span class="line">    print(res)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  这时一种BFS和DFS的变形题目，通过数组记录父子关系，这种题和leetcode的题型不同，因为<strong>leetcode是只需要写函数实现，因此输入输出已经定义好了树形结构</strong>，直接搜索即可。而<strong>牛客网的题型需要自己读入数据，如果需要创建树结构，则需要自己定义构造函数，所以并不是很方便，这时候通过其他方式保存树结构就非常重要</strong>。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>刷题记录</category>
+        <category>深度优先搜索</category>
+        <category>数学</category>
+        <category>广度优先搜索</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>打印数组的形状(某大厂手撕面试题)</title>
+    <url>/2020/09/25/program%20Interview3/</url>
+    <content><![CDATA[<p><img src="/images/ALGORITHM/interview3.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   这个题目是我在面试时遇到的一个手撕代码题，题目意思非常简单，可以利用栈的思想，小伙伴们使用20分钟，看一看能否实现。</p>
+<a id="more"></a>
+<h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a><font size="5" color="red">栈</font></h1><p>这道题有如下三点说明：</p>
+<ol>
+<li><p>在N层括号中，数据的个数就是数组的N维的维度。<br>如[[1, 2, 3], [4, 5, 6]]，在第一层括号中，有两个数据，分别是[1, 2, 3]和[4, 5, 6]，在第二层括号中有3个数据，为[1, 2, 3]，计算[4, 5, 6]也一样。判断层数时，根据右括号进行判断，栈中存在多少个左括号说明在多少层中。</p>
+</li>
+<li><p>给定的数组都是正确的，假设第k维的尺寸为K，计算k维所有数字是计算k - 1维所有数字的K倍，因为对于k - 1维的每一个数据，都时一个长度维K的数组。<br>如[[1, 2, 3], [4, 5, 6]]，第2维的所有数字为6，第1维的所有数字为3，说明第二维的长度为2。</p>
+</li>
+<li><p>可以通过检查逗号判断数据个数，遇到左括号或者逗号，可以将相应层数的数字加1。</p>
+</li>
+</ol>
+<p>对于上面这个例子，用一个图进行说明。<br><img src="/images/ALGORITHM/interview3_solve.png" alt="1"></p>
+<p>算法只需要遍历一次字符串即可，且只需要一个数组保存前k维的数据个数，因此<strong>时间复杂度为$O(n)$，空间复杂度为$O(n)$</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">import sys</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">for line in sys.stdin:</span><br><span class="line">    s = line.strip()</span><br><span class="line">    stack = []</span><br><span class="line">    res = []</span><br><span class="line">    for c in s:</span><br><span class="line">        if c == '[':</span><br><span class="line">            stack.append('[')</span><br><span class="line">            if len(res) &lt; len(stack):</span><br><span class="line">                res.append(1)</span><br><span class="line">            else:</span><br><span class="line">                res[len(stack) - 1] += 1</span><br><span class="line">        elif c == ',':</span><br><span class="line">            res[len(stack) - 1] += 1</span><br><span class="line">        elif c == ']':</span><br><span class="line">            stack.pop()</span><br><span class="line">    for i in range(len(res) - 1, 0, -1):</span><br><span class="line">        res[i] //= res[i - 1]</span><br><span class="line">    print(res)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="思维拓展"><a href="#思维拓展" class="headerlink" title="思维拓展"></a><font size="5" color="red">思维拓展</font></h1><p>如果要判断数组是否合法，合法输出shape，不合法输出-1，则该如何求解呢？</p>
+<p>其实只需要再加一个数组，每次遇到右括号，将当前维度的大小保存到数组中，下次再遇到相同维度的右括号时，进行比较，如果大小不一致，则返回-1即可。</p>
+<p>用一个图进行说明，与上面那种算法思想类似，但是实现有所区别，小伙伴们可以比较一下两种算法。<br><img src="/images/ALGORITHM/interview3_solve2.png" alt="1"></p>
+<p>算法也只需要遍历一次字符串即可，需要两个数组，temp保存当前第k维的数据个数，res保存之前第k维的数据个数，因此<strong>时间复杂度为$O(n)$，空间复杂度为$O(n)$</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">import sys</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">for line in sys.stdin:</span><br><span class="line">    s = line.strip()</span><br><span class="line">    stack = []</span><br><span class="line">    res = []</span><br><span class="line">    temp = []</span><br><span class="line">    for idx, c in enumerate(s):</span><br><span class="line">        if c == '[':</span><br><span class="line">            stack.append('[')</span><br><span class="line">            if len(temp) &lt; len(stack):</span><br><span class="line">                temp.append(1)</span><br><span class="line">                res.append(0)</span><br><span class="line">            else:</span><br><span class="line">                temp[len(stack) - 1] = 1</span><br><span class="line">        elif c == ',':</span><br><span class="line">            temp[len(stack) - 1] += 1</span><br><span class="line">        elif c == ']':</span><br><span class="line">            if not stack or s[idx - 1] == '[':</span><br><span class="line">                res = -1</span><br><span class="line">                break</span><br><span class="line">            if not res[len(stack) - 1]:</span><br><span class="line">                res[len(stack) - 1] = temp[len(stack) - 1]</span><br><span class="line">            elif res[len(stack) - 1] != temp[len(stack) - 1]:</span><br><span class="line">                res = -1</span><br><span class="line">                break</span><br><span class="line">            stack.pop()</span><br><span class="line">    print(res) if not stack and s else print(-1)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  两种栈的做法都可以解决这个问题，我更推荐第二种做法，不但提高了代码的鲁棒性而且思路非常好，符合人的思考方式，小伙伴们如何认为呢？</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>刷题记录</category>
+        <category>栈</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>比特位计数(Leetcode 338)</title>
+    <url>/2020/09/24/program%20Leetcode338/</url>
+    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode338.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   一个简单的题目，正是因为思路简单，所以会忽略一些技巧。先提示一下，可以通过动态规划进行求解，小伙伴们先尝试一下如何实现。</p>
+<a id="more"></a>
+<h1 id="暴力法"><a href="#暴力法" class="headerlink" title="暴力法"></a><font size="5" color="red">暴力法</font></h1><p>对每一个元素都求二进制表示，然后统计1的个数，因为求二进制表示需要log(n)的时间。所以算法的<strong>时间复杂度为$O(nlog(n))$，空间复杂度为$O(n)$</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def countBits(self, num):</span><br><span class="line">        return [bin(x).count('1') for x in range(num + 1)]</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a><font size="5" color="red">动态规划</font></h1><p><strong>动态规划并不一定需要有固定的写法，同学们可能存在一种思维定势，如一维DP，就是i从0到n，找i和i - 1的关系，二维DP，就是i从0到n，j从0到n或者从0到i，找i和j的关系</strong>。其实<strong>动态规划只是记忆化的搜索过程，只要是以前保存的结果，都可以在$O(1)$的复杂度将其取出</strong>。</p>
+<p>我们已知前k - 1个数二进制表示中1的个数，要计算第k个数的二进制表示中1的个数，如何可以通过$O(1)$的时间复杂度计算呢？</p>
+<p>在大于0的数中，至少有一位为1，而且在<strong>位运算中有一个操作可以删除最后一位的1，这个操作就是x &amp; (x - 1)</strong>，小伙伴们可以想一想为什么可以这样做？将k的最后一位的1删除以后，必然比k小，一定在记录之中，而且只少了一个1，因此状态转移方程为</p>
+<script type="math/tex; mode=display">dp[i] = dp[i & (i - 1)] + 1</script><p>算法的<strong>时间复杂度为O(n)，空间复杂度为O(n)</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def countBits(self, num):</span><br><span class="line">        dp = [0] * (num + 1)</span><br><span class="line">        for i in range(1, num + 1):</span><br><span class="line">            dp[i] = dp[i &amp; (i - 1)] + 1</span><br><span class="line">        return dp</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  有没有写出来呢？小伙伴们要打破思维定势，寻找更加精妙的解法。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>刷题记录</category>
+        <category>动态规划</category>
+        <category>位运算</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>俄罗斯套娃信封问题(Leetcode 354)</title>
+    <url>/2020/09/22/program%20Leetcode354/</url>
+    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode354.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   题目的名字起得非常有意思哈，禁止套娃。这个题目在某厂的笔试题中遇到过，当时太菜了，没有想出来该如何求解，当时的题目是多米诺骨牌，前面的长和宽必须都小于后面的长和宽，问最长的多米多骨牌长度为多少。当初被虐，今天一定要学会它。</p>
+<a id="more"></a>
+<h1 id="DP"><a href="#DP" class="headerlink" title="DP"></a><font size="5" color="red">DP</font></h1><p>这个题目搞清楚方法之后也非常简单，其实相当于一个二维的最长上升子序列问题，必须满足在两个维度上都上升。其实就是一个排序就可以解决。我们按照第一个维度的升序进行排列，这个小伙伴们都想得到，然后按照第二个维度的降序进行排列，再找第二个维度的最长上升子序列的长度即可。这个如何理解呢？</p>
+<p>按照第一个维度升序排列后，后面元素的第一个维度一定大于等于前面的，而且按照第二个维度降序排列后，寻找最长上升子序列时，上升子序列后面的元素值一定大于前面的元素值，因此后面的元素的第一个维度一定大于前面的元素，不会出现等于的情况，如果等于，那么第二个维度降序排列，后面的元素值一定小于等于前面的元素值，上升子序列无法找到。</p>
+<p>举一个例子，[3, 5], [5, 8], [5, 6], [5, 4], [6, 8]，按照第二个维度寻找[5, 8, 6, 4, 8]上升子序列的结果是[5, 6, 8]，[3, 5]的两个维度都严格小于[5, 6]，[5, 6]的两个维度都严格小于[6, 8]。也就是说第一个维度为5的元素，在[5, 6]后面时，其第二个维度一定小于6，如[5, 4]，那么寻找上升子序列时，要寻找大于6的元素，找不到4，所以保证上升子序列中的后面元素两个维度都一定大于前面的元素。</p>
+<p>为什么给这道题目DP的标签呢，其实是最长上升子序列的DP求法</p>
+<p>我们使用动态规划进行求解，<strong>dp[i]表示右端点选择第i个数可得的最长上升子序列</strong>，可以得到状态转移方程</p>
+<script type="math/tex; mode=display">dp[i] = \max_{j = 1}^{i - 1} dp[j] + 1 if nums[i] > nums[j]</script><p><strong>当考虑到所有情况后，就可以得到右端点为任何情况下的最大值，然后求dp数组的最大值即可</strong>。DP的<strong>时间复杂度为$O(n^2)$，空间复杂度为$O(n)$</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def maxEnvelopes(self, envelopes):</span><br><span class="line">        def lis(nums):</span><br><span class="line">            lens = len(nums)</span><br><span class="line">            dp = [1] * lens </span><br><span class="line">            for i in range(1, lens):</span><br><span class="line">                for j in range(i):</span><br><span class="line">                    if nums[i] &gt; nums[j]:</span><br><span class="line">                        dp[i] = max(dp[i], dp[j] + 1)</span><br><span class="line">            return max(dp) if lens else 0</span><br><span class="line">        </span><br><span class="line">        if not envelopes:</span><br><span class="line">            return 0</span><br><span class="line">        envelopes.sort(key=lambda x:(x[0], -x[1]))</span><br><span class="line">        nums = [x[1] for x in envelopes]</span><br><span class="line">        return lis(nums)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="二分"><a href="#二分" class="headerlink" title="二分"></a><font size="5" color="red">二分</font></h1><p>和DP中的分析过程相同，只是在求最长上升子序列时采用二分的算法，降低时间复杂度。<br>我们思考一些可能出现的情况，假设前k个元素的最长上升子序列为[1, 3, 5, 7, 9]。</p>
+<ol>
+<li><strong>如果第k + 1个元素大于9，假设为11，则最长上升子序列变为[1, 3, 5, 7, 9, 11]</strong>。</li>
+<li><strong>如果第k + 1个元素小于9，假设为6，最长上升子序列长度不变，但是会将大于6的最小值变为6，则此时最长上升子序列变为[1, 3, 5, 6, 9]，当以后再出现7时，最长上升子序列的长度仍然不变，但是子序列就已经更新为更好的一组值了[1, 3, 5, 6, 7]</strong>。<br>也就是说<strong>当后续出现更小的值时，不会立刻改变最长子序列的长度，而是从中间的某个地方开始逐渐替换，当此时出现更大的数字时，仍然按照替换之前的子序列继续追加。如果此时出现较小的数字时，则继续替换。当替换到最后一个数字时，说明子序列已经出现了更优解，以后按照更优解进行计算</strong>。<br><strong>从上升子序列中寻找大于某个值的最小值时，可以使用二分查找法，这样可以将第二次遍历的时间复杂度大大缩小</strong>。算法的<strong>时间复杂度为O(nlog(n))，空间复杂度为O(n)</strong>。<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def maxEnvelopes(self, envelopes):</span><br><span class="line">        def lis(nums):</span><br><span class="line">            res = []</span><br><span class="line">            for x in nums:</span><br><span class="line">                if not res or res[-1] &lt; x:</span><br><span class="line">                    res.append(x)</span><br><span class="line">                else:</span><br><span class="line">                    left, right = 0, len(res) - 1</span><br><span class="line">                    while left &lt; right:</span><br><span class="line">                        mid = (left + right) // 2</span><br><span class="line">                        if res[mid] &lt; x:</span><br><span class="line">                            left = mid + 1</span><br><span class="line">                        else:</span><br><span class="line">                            right = mid</span><br><span class="line">                    res[left] = x</span><br><span class="line">            return len(res)</span><br><span class="line">        </span><br><span class="line">        if not envelopes:</span><br><span class="line">            return 0</span><br><span class="line">        envelopes.sort(key=lambda x:(x[0], -x[1]))</span><br><span class="line">        nums = [x[1] for x in envelopes]</span><br><span class="line">        return lis(nums)</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  现在想想其实这个题目并不是非常困难，有时候只是一个排序的问题，就可以将一个中等难度的题目变成困难题目，小伙伴们要多做多练，这样遇到时才能够迅速反应过来。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>刷题记录</category>
+        <category>动态规划</category>
+        <category>二分查找</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>加油站(Leetcode 134)</title>
+    <url>/2020/09/20/program%20Leetcode134/</url>
+    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode134.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>  加油站是经典的贪心问题，代码量很少，但是思路非常灵活，小伙伴们先尝试能否求解。</p>
+<a id="more"></a>
+<h1 id="贪心"><a href="#贪心" class="headerlink" title="贪心"></a><font size="5" color="red">贪心</font></h1><p>贪心算法代码量非常少，但是证明难度非常大，这道题更是不容易理解。小伙伴们要清楚一件事情，如果油的总数大于等于走完所有路径所需要的油量，一定能够找到一个合适的起点。最后走的点一定是花费大于等于提供油量的点，如果提供的油量大于花费量，我们可以将起点提前，这样是一种更好的解法。如gas = [1, 3, 5], cost = [3, 2, 4]。这时如果选择2号为起点，走到0号还剩1升油，不够，而且发现终点1号位置的提供油量大于花费，所以可以将起点从2号提前到1号，从1号加油站出发。</p>
+<p>因此<strong>贪心的目的是尽可能在前期多保存油量，操作是要从提供多，消耗少的加油站出发</strong>。可以根据提供和消耗算出累积的油量，也就是说要让累积越多越好。也就是让累积为负的放在最后。所以我们找出累积最小值作为结束的加油站编号。</p>
+<p>**不妨设k是累积最小值，则k + 1作为起点编号。</p>
+<ul>
+<li>k + 1的提供量一定大于等于消耗量，因为k是累积的最小值，如果k + 1的提供小于消耗，则k + 1的净增加是负数，那么累积的最小值是k + 1，与条件矛盾，所以这时将k + 2作为起点不如将k + 1作为起点。</li>
+<li>k的提供量一定小于消耗量，因为k是累积的最小值，如果k的提供大于等于消耗，则k的净增加是非数，那么累积的最小值是k - 1，与条件矛盾，所以这时将k作为起点不如将k + 1作为起点**。<br>k + 2作为起点的分析同k + 1，k - 1作为起点的分析同k，这个思路非常难以理解，仔细想想好像有道理，但是又很难证明。</li>
+</ul>
+<p>因此要找出累积的最小值即可，然后加1可得出发编号。这里直接给出代码，算法的<strong>时间复杂度为$O(n)，空间复杂度为$O(1)$</strong><br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def canCompleteCircuit(self, gas, cost):</span><br><span class="line">        current, mini_idx, mini_val = 0, 0, float('inf')</span><br><span class="line">        for i in range(len(gas)):</span><br><span class="line">            current += gas[i] - cost[i]</span><br><span class="line">            if current &lt; mini_val:</span><br><span class="line">                mini_val, mini_idx = current, i</span><br><span class="line">        return -1 if current &lt; 0 else (mini_idx + 1) % len(gas)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="数学"><a href="#数学" class="headerlink" title="数学"></a><font size="5" color="red">数学</font></h1><p>数学方法相对容易理解，不理解上面思路的小伙伴们可以掌握这种算法。</p>
+<p>这个算法<strong>模拟开车过程，i为出发加油站的编号，i从0开始索引到最后一个站点，j为经过了多少个站点，j=1说明到达了i的下一站，remain为当前油量，当j=lens时，如果还有剩余则说明从i出发可以到达最后，因此返回i即可，当remain &lt; 0时，说明无法到达，此时i += j + 1，这一步是这个算法的精华。如果i += 1则相当于遍历所有的情况，时间复杂度为$O(n^2)$，而i += j + 1大大减少了时间复杂度，相当于i和j共用一层循环</strong>。</p>
+<p>这句话如何理解呢？<strong>如果从i出发，经过了j个站点最后无法到达，那么中间这些站点都没必要进行尝试，假设中间的站点为k，从i到k是满足条件的，说明在k时，remain大于等于0，但是从k到i + j无法到达。那么从k出发时，如果remain等于0，那么必定也无法到达i + j的位置，因此不需要模拟</strong>。这个算法的<strong>时间复杂度为$O(n)，空间复杂度为$O(1)$</strong><br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def canCompleteCircuit(self, gas, cost):</span><br><span class="line">        lens, i = len(gas), 0</span><br><span class="line">        while i &lt; lens:</span><br><span class="line">            remain = 0</span><br><span class="line">            for j in range(lens):</span><br><span class="line">                current = (i + j) % lens</span><br><span class="line">                remain += gas[current] - cost[current]</span><br><span class="line">                if remain &lt; 0:</span><br><span class="line">                    break</span><br><span class="line">                if j == lens - 1:</span><br><span class="line">                    return i</span><br><span class="line">            i += j + 1</span><br><span class="line">        return -1</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  这个题目短小而精悍，看似非常简单，但是做起来却非常困难，小伙伴没有没有感受到这个题目的精妙之处。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>刷题记录</category>
+        <category>数学</category>
+        <category>贪心</category>
+      </categories>
+  </entry>
+  <entry>
     <title>C++常用算法</title>
     <url>/2020/09/18/C++_algorithm/</url>
     <content><![CDATA[<p><img src="/images/LANGUAGE/C++88.png" alt="2"></p>
@@ -65,9 +370,9 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
+        <category>动态规划</category>
         <category>数组</category>
         <category>贪心</category>
-        <category>动态规划</category>
       </categories>
   </entry>
   <entry>
@@ -385,8 +690,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>数组</category>
         <category>动态规划</category>
+        <category>数组</category>
         <category>二分查找</category>
       </categories>
   </entry>
@@ -455,8 +760,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>字符串</category>
         <category>动态规划</category>
+        <category>字符串</category>
       </categories>
   </entry>
   <entry>
@@ -522,8 +827,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>数组</category>
         <category>动态规划</category>
+        <category>数组</category>
       </categories>
   </entry>
   <entry>
@@ -589,8 +894,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>数组</category>
         <category>动态规划</category>
+        <category>数组</category>
       </categories>
   </entry>
   <entry>
@@ -905,8 +1210,8 @@
       <categories>
         <category>刷题记录</category>
         <category>数组</category>
-        <category>有限状态自动机</category>
         <category>位运算</category>
+        <category>有限状态自动机</category>
       </categories>
   </entry>
   <entry>
@@ -1287,8 +1592,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>数组</category>
         <category>动态规划</category>
+        <category>数组</category>
         <category>二分查找</category>
       </categories>
   </entry>
@@ -1323,8 +1628,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>博弈</category>
         <category>动态规划</category>
+        <category>博弈</category>
       </categories>
   </entry>
   <entry>
@@ -1900,8 +2205,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>数组</category>
         <category>动态规划</category>
+        <category>数组</category>
       </categories>
   </entry>
   <entry>
