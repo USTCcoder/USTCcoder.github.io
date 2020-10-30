@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>132模式(Leetcode 456)</title>
+    <url>/2020/10/29/program%20Leetcode456/</url>
+    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode456.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   题目非常有趣，而且题意清晰，考察单调栈的思路，单调栈的题目时间复杂度往往是<strong>$O(n)$</strong>量级，小伙伴们先思考应该如何求解，如果不是$O(n)$的时间复杂度，再去想一想如何优化。<br><a id="more"></a></p>
+<h1 id="暴力法"><a href="#暴力法" class="headerlink" title="暴力法"></a><font size="5" color="red">暴力法</font></h1><p>我们先分析这个题目，要求是132模式，因此<strong>对于$a_i, a_j, a_k, \ i &lt; j &lt; k$来说，$a_i$应当越小越好，所以若$a_i$满足条件，则取前j个数的最小值一定也满足条件</strong>。</p>
+<p>首先我们记录最小的前缀，然后我们遍历所有的元素，将每一个元素作为$a_j$，然后寻找在j索引之后，小于$a_j$的最大值$a_k$即可。若找到$a_k$大于$a_i$则返回True，如果遍历所有元素都没有找到则返回False。</p>
+<p>算法的<strong>时间复杂度为$O(n^2)$，空间复杂度为$O(n)$</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def find132pattern(self, nums):</span><br><span class="line">        """</span><br><span class="line">        :type nums: List[int]</span><br><span class="line">        :rtype: bool</span><br><span class="line">        """</span><br><span class="line">        mini = [nums[0]]</span><br><span class="line">        for x in nums[1:]:</span><br><span class="line">            mini.append(min(mini[-1], x))</span><br><span class="line">        for j in range(1, len(nums) - 1):</span><br><span class="line">            if nums[j] &gt; mini[j]:</span><br><span class="line">                maxi = -float('inf')</span><br><span class="line">                for k in range(j + 1, len(nums)):</span><br><span class="line">                    if maxi &lt; nums[k] &lt; nums[j]:</span><br><span class="line">                        maxi = nums[k]</span><br><span class="line">                if maxi &gt; mini[j]:</span><br><span class="line">                    return True</span><br><span class="line">        return False</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="单调栈"><a href="#单调栈" class="headerlink" title="单调栈"></a><font size="5" color="red">单调栈</font></h1><p>单调栈的思路是维护一个单调递减的栈，栈内元素的含义是，当前元素之后的备选方案，是132模式中的2，最小前缀的含义是当前元素之前的备选方案，是132模式中的1。</p>
+<p><strong>如果栈顶元素小于等于最小前缀，说明$a_k$较小，应当弹出，当某个元素$a_k$大于最小前缀时，说明满足了$a_k &gt; a_i$的条件，再判断$a_k$和$a_j$的大小关系即可。如果$a_k &lt; a_j$则找到了符合132模式的序列，返回True，如果遍历所有的j都没有找到，则返回False</strong>。</p>
+<p>算法的<strong>时间复杂度为$O(n)$，空间复杂度为$O(n)$</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def find132pattern(self, nums):</span><br><span class="line">        """</span><br><span class="line">        :type nums: List[int]</span><br><span class="line">        :rtype: bool</span><br><span class="line">        """</span><br><span class="line">        mini, stack = [nums[0]], []</span><br><span class="line">        for x in nums[1:]:</span><br><span class="line">            mini.append(min(mini[-1], x))</span><br><span class="line">        for i in range(len(nums) - 1, -1, -1):</span><br><span class="line">            if nums[i] &gt; mini[i]:</span><br><span class="line">                while stack and stack[-1] &lt;= mini[i]:</span><br><span class="line">                    stack.pop()</span><br><span class="line">                if stack and stack[-1] &lt; nums[i]:</span><br><span class="line">                    return True</span><br><span class="line">                stack.append(nums[i])</span><br><span class="line">        return False</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  对于数组题目来说，有一些常用的算法，如单调栈，单调队列，二分查找，动态规划等等，小伙伴们一定要多多练手，才能迅速求解。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>刷题记录</category>
+        <category>数组</category>
+        <category>单调栈</category>
+      </categories>
+  </entry>
+  <entry>
     <title>滑动窗口最大值(Leetcode 239)</title>
     <url>/2020/10/27/program%20Leetcode239/</url>
     <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode239.png" alt="1"></p>
@@ -448,8 +485,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>数学</category>
         <category>深度优先搜索</category>
+        <category>数学</category>
         <category>广度优先搜索</category>
       </categories>
   </entry>
@@ -832,8 +869,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>排序</category>
         <category>堆</category>
+        <category>排序</category>
       </categories>
   </entry>
   <entry>
@@ -4895,9 +4932,9 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>排序</category>
         <category>堆</category>
         <category>数组</category>
+        <category>排序</category>
         <category>分治</category>
       </categories>
   </entry>
@@ -5593,8 +5630,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>排序</category>
         <category>数组</category>
+        <category>排序</category>
         <category>二分查找</category>
         <category>双指针</category>
       </categories>
