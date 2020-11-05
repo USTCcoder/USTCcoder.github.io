@@ -1,6 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>连续数组(Leetcode 525)</title>
+    <url>/2020/11/04/program%20Leetcode525/</url>
+    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode525.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   最近的题目是哈希表专题，希望小伙伴能够坚持练习，这个问题难度不大，先认真思考5分钟，看一看能够想出多少种解法。<br><a id="more"></a></p>
+<h1 id="暴力法"><a href="#暴力法" class="headerlink" title="暴力法"></a><font size="5" color="red">暴力法</font></h1><p><strong>枚举起点和终点，计算区间内0和1的个数是否相等</strong>。这个思路最容易想到，但是时间复杂度最高。</p>
+<p>此题可以进行稍微优化，因为要求最长的连续子数组，因此可以按照长度从大到小进行遍历。</p>
+<p>算法的<strong>时间复杂度为$O(n^3)$，空间复杂度为$O(1)$</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def findMaxLength(self, nums):</span><br><span class="line">        """</span><br><span class="line">        :type nums: List[int]</span><br><span class="line">        :rtype: int</span><br><span class="line">        """</span><br><span class="line">        for interval in range(len(nums), -1, -1):</span><br><span class="line">            if not interval % 2:</span><br><span class="line">                for i in range(len(nums) - interval + 1):</span><br><span class="line">                    if len([1 for j in range(i, i + interval) if nums[j] == 0]) == interval / 2:</span><br><span class="line">                        return interval</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="优化暴力法"><a href="#优化暴力法" class="headerlink" title="优化暴力法"></a><font size="5" color="red">优化暴力法</font></h1><p><strong>利用前缀和的特点，计算区间内0和1个数时，节省一层循环。但是要牺牲一些空间复杂度用于存放前缀和</strong>。</p>
+<p>算法的<strong>时间复杂度为$O(n^2)$，空间复杂度为$O(n)$</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def findMaxLength(self, nums):</span><br><span class="line">        """</span><br><span class="line">        :type nums: List[int]</span><br><span class="line">        :rtype: int</span><br><span class="line">        """</span><br><span class="line">        cursum = [0]</span><br><span class="line">        for i in range(len(nums)):</span><br><span class="line">            cursum.append(cursum[-1] + nums[i])</span><br><span class="line">        for interval in range(len(nums), -1, -1):</span><br><span class="line">            if not interval % 2:</span><br><span class="line">                for i in range(len(nums) - interval + 1):</span><br><span class="line">                    if cursum[i + interval] - cursum[i] == interval / 2:</span><br><span class="line">                        return interval</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a><font size="5" color="red">哈希表</font></h1><p>根据一般性规律，我们可以从题目中寻找一些提示。<strong>算法一般能够接受的时间复杂度再1e8以内，而这个题目的长度可以达到50000，因此使用$O(n^2)$的时间复杂度都会TLE。因此我们要想出一些$O(n)$或者$O(nlog(n))$的算法进行求解</strong>。</p>
+<p>数量相同的0和1是包含着一些规律的，如果出现0则计数加1，出现1则计数减1，那么这个计数代表着0和1的相对差。如果i处和j处的相对差相等，说明从i+1到j的序列中0和1的个数是相同的。</p>
+<p>我们只需要记录每个绝对差第一次出现的索引i，如果出现相等的绝对差，则记录长度，求出最大的长度即可。</p>
+<p>算法的<strong>时间复杂度为$O(n)$，空间复杂度为$O(n)$</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def findMaxLength(self, nums):</span><br><span class="line">        """</span><br><span class="line">        :type nums: List[int]</span><br><span class="line">        :rtype: int</span><br><span class="line">        """</span><br><span class="line">        cur, dic, max_val = 0, {0: -1}, 0</span><br><span class="line">        for i, v in enumerate(nums):</span><br><span class="line">            if v == 0:</span><br><span class="line">                cur += 1</span><br><span class="line">            else:</span><br><span class="line">                cur -= 1</span><br><span class="line">            if cur in dic:</span><br><span class="line">                max_val = max(max_val, i - dic[cur])</span><br><span class="line">            else:</span><br><span class="line">                dic[cur] = i</span><br><span class="line">        return max_val</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  有感而发~，随着内卷越来越严重，公司对人才的要求也越来越苛刻，小伙伴们如果想要大的平台和更多的机遇，一定要加强代码能力，有些人就会说这有什么用？当你做的题目足够多的时候，就会慢慢的察觉到它的作用。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>刷题记录</category>
+        <category>数组</category>
+        <category>哈希表</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>和为K的子数组(Leetcode 560)</title>
+    <url>/2020/11/02/program%20Leetcode560/</url>
+    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode560.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   连续子数组的和，一定会用得到前缀和概念，可以节省大量的计算。cursum数组表示前缀和，cursum[i]表示前i个元素的和。cursum[0] = 0，那么从第m个元素到第n个元素的连续子数组的和为cursum[n] - cursum[m - 1]。<br><a id="more"></a></p>
+<h1 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a><font size="5" color="red">哈希表</font></h1><p><strong>首先计算数组的前缀和，如果前缀和cursum[j] - cursum[i] = k，那么说明从第i + 1个元素到第j个元素组成的子序列之和为k。因此题目转换为遍历j，寻找满足cursum[i] = cursum[j] - k公式中i的个数</strong>。</p>
+<p>将遍历过的数都加入哈希表，这样寻找满足公式中i的个数时直接取出即可。</p>
+<p><strong>注意此题是有顺序的，即i是小于j的，因此不能将所有cursum的值都存入哈希表，只能遍历过的点存入，这样才能保证取出的点都是小于j的。而有的题目是需要将cursum的值先全部存入哈希表，然后再进行遍历。</strong></p>
+<p>算法的<strong>时间复杂度为$O(n)$，空间复杂度为$O(n)$</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">from collections import defaultdict</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Solution(object):</span><br><span class="line">    def subarraySum(self, nums, k):</span><br><span class="line">        """</span><br><span class="line">        :type nums: List[int]</span><br><span class="line">        :type k: int</span><br><span class="line">        :rtype: int</span><br><span class="line">        """</span><br><span class="line">        cursum, res, dic = 0, 0, defaultdict(int)</span><br><span class="line">        dic[0] = 1</span><br><span class="line">        for x in nums:</span><br><span class="line">            cursum += x</span><br><span class="line">            res += dic[cursum - k]</span><br><span class="line">            dic[cursum] += 1</span><br><span class="line">        return res</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  有趣的数组题，数组是笔试面试中的常考题型，表述简单，思路清晰，是小伙伴们需要加强的重点题型。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>刷题记录</category>
+        <category>数组</category>
+        <category>哈希表</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>四数相加 II(Leetcode 454)</title>
+    <url>/2020/10/31/program%20Leetcode454/</url>
+    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode454.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   第一次见到这个题目是在2年前了，当初的我比现在还要菜得多，拿到题目想了10秒，4个for循环嘛~，然后TLE，随着刷的题目越来越多，时间复杂度逐渐降低。<br><a id="more"></a></p>
+<h1 id="暴力法"><a href="#暴力法" class="headerlink" title="暴力法"></a><font size="5" color="red">暴力法</font></h1><p>4个for循环，没啥好说的。</p>
+<p>算法的<strong>时间复杂度为$O(n^4)$，空间复杂度为$O(1)$</strong>。用Python3的列表表达式可以简化代码，但是空间复杂度会变高，在这里就采用简化写法。<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def fourSumCount(self, A, B, C, D):</span><br><span class="line">        """</span><br><span class="line">        :type A: List[int]</span><br><span class="line">        :type B: List[int]</span><br><span class="line">        :type C: List[int]</span><br><span class="line">        :type D: List[int]</span><br><span class="line">        :rtype: int</span><br><span class="line">        """</span><br><span class="line">        return len([0 for a in A for b in B for c in C for d in D if a + b + c + d == 0])</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="优化暴力法"><a href="#优化暴力法" class="headerlink" title="优化暴力法"></a><font size="5" color="red">优化暴力法</font></h1><p><strong>第4个for循环可以改成哈希表，进行查询即可，如前3层循环得到了k，则查找D列表中-k的个数即可。这样时间复杂度可以降低一个维度</strong>。</p>
+<p>而且<strong>遇到重复元素，可以保存在该层的哈希表中，如A中存在多个a元素，那么只需要计算第一次出现的a，当下次遍历到a时，直接查表取出数值即可</strong>。但是要注意这个哈希表是该层的，如B中存在多个b元素，那么对于每一个A中的元素，B都要重新创建该层的哈希表。</p>
+<p>算法的<strong>时间复杂度为$O(n^3)$，空间复杂度为$O(n)$</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">from collections import Counter</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Solution(object):</span><br><span class="line">    def fourSumCount(self, A, B, C, D):</span><br><span class="line">        """</span><br><span class="line">        :type A: List[int]</span><br><span class="line">        :type B: List[int]</span><br><span class="line">        :type C: List[int]</span><br><span class="line">        :type D: List[int]</span><br><span class="line">        :rtype: int</span><br><span class="line">        """</span><br><span class="line">        res = 0</span><br><span class="line">        dic_d = Counter(D)</span><br><span class="line">        dic_a = dict()</span><br><span class="line">        for a in A:</span><br><span class="line">            if a in dic_a:</span><br><span class="line">                res += dic_a[a]</span><br><span class="line">            else:</span><br><span class="line">                dic_b = dict()</span><br><span class="line">                for b in B:</span><br><span class="line">                    if b in dic_b:</span><br><span class="line">                        res += dic_b[b]</span><br><span class="line">                    else:</span><br><span class="line">                        dic_c = dict()</span><br><span class="line">                        for c in C:</span><br><span class="line">                            if c in dic_c:</span><br><span class="line">                                res += dic_c[c]</span><br><span class="line">                            else:</span><br><span class="line">                                res += dic_d[-a - b - c]</span><br><span class="line">        return res</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a><font size="5" color="red">分治法</font></h1><p>这里的分治法只是意义上的将一个问题转换为两个子问题的表述。其实优化的暴力版本已经使用了分治法的思想。我们将a+b+c+d=0的问题看成了a+b+c=-d，因此将d放入哈希表中进行查找。那么如果将a+b+c+d=0看成a+b=-c-d如何呢？</p>
+<p><strong>我们计算a+b的值，存放在哈希表中，计算c+d的值也存放在哈希表中。那么又会减少一层循环，但是空间复杂度会高，因为不是存放d的值，而是存放c+d的值</strong>。</p>
+<p>算法的<strong>时间复杂度为$O(n^2)$，空间复杂度为$O(n^2)$</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">from collections import Counter</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Solution(object):</span><br><span class="line">    def fourSumCount(self, A, B, C, D):</span><br><span class="line">        """</span><br><span class="line">        :type A: List[int]</span><br><span class="line">        :type B: List[int]</span><br><span class="line">        :type C: List[int]</span><br><span class="line">        :type D: List[int]</span><br><span class="line">        :rtype: int</span><br><span class="line">        """</span><br><span class="line">        dic_ab, dic_cd = Counter([a + b for a in A for b in B]), Counter([-c - d for c in C for d in D])</span><br><span class="line">        return sum([dic_ab[x] * dic_cd[x] for x in dic_ab])</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  这种题型并不难，和其他题型不同的是，其他类型的变种很复杂，可能这个题目会做，换一个题目就不会了，而该题型只要见过一次，一定会想起来如何求解。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>刷题记录</category>
+        <category>数组</category>
+        <category>哈希表</category>
+      </categories>
+  </entry>
+  <entry>
     <title>132模式(Leetcode 456)</title>
     <url>/2020/10/29/program%20Leetcode456/</url>
     <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode456.png" alt="1"></p>
@@ -34,7 +148,7 @@
       <categories>
         <category>刷题记录</category>
         <category>数组</category>
-        <category>单调栈</category>
+        <category>单调栈/单调队列</category>
       </categories>
   </entry>
   <entry>
@@ -70,7 +184,7 @@
       <categories>
         <category>刷题记录</category>
         <category>数组</category>
-        <category>单调队列</category>
+        <category>单调栈/单调队列</category>
       </categories>
   </entry>
   <entry>
@@ -351,8 +465,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
+        <category>栈/队列</category>
         <category>字符串</category>
-        <category>队列</category>
       </categories>
   </entry>
   <entry>
@@ -533,7 +647,7 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>栈</category>
+        <category>栈/队列</category>
       </categories>
   </entry>
   <entry>
@@ -2345,13 +2459,13 @@
 <p><img src="/images/LANGUAGE/C++2.png" alt="1"></p>
 <h1 id="C-算术运算"><a href="#C-算术运算" class="headerlink" title="C++算术运算"></a><font size="4">C++算术运算</font></h1><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main() {</span><br><span class="line">	// +(加)，-(减)，*(乘)，/(除)，%(求余)，整数除法结果只能得到整数，注意字符型和布尔型也可以参与运算，字符型的值为ASCII码对应的值，布尔型的true代表1，false代表0</span><br><span class="line">	//进行计算时要注意数据的范围，以及低范围和高范围数据类型进行运算时，数据会发生自动类型转换到高范围，高范围数据向低范围数据要强制类型转换</span><br><span class="line">	int a = 2;</span><br><span class="line">	long l = 999;</span><br><span class="line">	char c = 'A';</span><br><span class="line">	bool b = false;</span><br><span class="line">	double d = 3.14159;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; "a + c =" &lt;&lt; a + c &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; "a * b =" &lt;&lt; a * b &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; "l / a =" &lt;&lt; l / a &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; "l % a =" &lt;&lt; l % a &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; "a * a * d =" &lt;&lt; a * a * d &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; "a * a * d =" &lt;&lt; (int)(a * a * d) &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p><img src="/images/LANGUAGE/C++3.png" alt="2"></p>
-<h1 id="C-关系运算"><a href="#C-关系运算" class="headerlink" title="C++关系运算"></a><font size="4">C++关系运算</font></h1><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main() {</span><br><span class="line">	// &gt;(大于)，&lt;(小于)，&gt;=(大于等于)，&lt;=(小于等于)，==(等于)，!=(不等于)</span><br><span class="line">	int a = 99;</span><br><span class="line">	int b = 'b';</span><br><span class="line">	char c = 'c';</span><br><span class="line">	bool d = a == c;</span><br><span class="line">	bool e = b &gt; c;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; "99是否等于c？ " &lt;&lt; d &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; "b是否d大于c " &lt;&lt; e &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h1 id="C-关系运算"><a href="#C-关系运算" class="headerlink" title="C++关系运算"></a><font size="4">C++关系运算</font></h1><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main() {</span><br><span class="line">	// &gt;(大于)，&lt;(小于)，&gt;=(大于等于)，&lt;=(小于等于)，==(等于)，!=(不等于)</span><br><span class="line">	int a = 99;</span><br><span class="line">	int b = 'b';</span><br><span class="line">	char c = 'c';</span><br><span class="line">	bool d = a == c;</span><br><span class="line">	bool e = b &gt; c;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; "99是否等于c？ " &lt;&lt; d &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; "b是否大于c " &lt;&lt; e &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p><img src="/images/LANGUAGE/C++4.png" alt="4"></p>
 <h1 id="C-自增自减运算符"><a href="#C-自增自减运算符" class="headerlink" title="C++自增自减运算符"></a><font size="4">C++自增自减运算符</font></h1><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main() {</span><br><span class="line">	// ++(自增运算符)，--(自减运算符)，++在前代表先进行加1，然后将值代入表达式，++在后代表先将值代入表达式，然后再进行加1，自减操作符同理。</span><br><span class="line">	int a = 1;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; a &lt;&lt; " 此时a=1" &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; a++ &lt;&lt; " ++在后，先打印a=1，然后a=a+1" &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; a &lt;&lt; " 此时a=2" &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; ++a &lt;&lt; " ++在前，先计算a=a+1，然后再打印a=3" &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; a &lt;&lt; " 此时a=3" &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; a-- &lt;&lt; " --在后，先打印a=3，然后a=a-1" &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; a &lt;&lt; " 此时a=2" &lt;&lt; endl;;</span><br><span class="line">	cout &lt;&lt; --a &lt;&lt; " --在前，先计算a=a-1，然后再打印a=1" &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; a &lt;&lt; " 此时a=1" &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p><img src="/images/LANGUAGE/C++5.png" alt="5"></p>
 <h1 id="C-逻辑运算"><a href="#C-逻辑运算" class="headerlink" title="C++逻辑运算"></a><font size="4">C++逻辑运算</font></h1><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main() {</span><br><span class="line">	// &amp;&amp;(与)，||(或)，!(非)，注意与或操作只要可以判断出最后结果则停止，具有短路效果。</span><br><span class="line">	//如果与操作的第一个条件为假，则不执行第二个条件，如果或操作的第一个条件为真，则不执行第二个条件。</span><br><span class="line">	int a = 5;</span><br><span class="line">	int b = 6;</span><br><span class="line">	int c = 7;</span><br><span class="line">	int i = 0;</span><br><span class="line">	bool d = a &gt; b || ++i; //此时或操作的第一个表达式为假，需要执行++i，因此i=1</span><br><span class="line">	cout &lt;&lt; "i = " &lt;&lt; i &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; "d = " &lt;&lt; d &lt;&lt; endl;</span><br><span class="line">	bool e = a &gt; b &amp;&amp; ++i; //此时与操作的第一个表达式为假，不需要执行++i，因此i=1</span><br><span class="line">	cout &lt;&lt; "i = " &lt;&lt; i &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; "e = " &lt;&lt; e &lt;&lt; endl;</span><br><span class="line">	bool f = !d;</span><br><span class="line">	cout &lt;&lt; "f = " &lt;&lt; f &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p><img src="/images/LANGUAGE/C++6.png" alt="6"></p>
-<h1 id="C-三目运算符"><a href="#C-三目运算符" class="headerlink" title="C++三目运算符"></a><font size="4">C++三目运算符</font></h1><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main() {</span><br><span class="line">	// 条件?表达式1:表达式2，当条件成立时，执行表达式1的内容，否则执行表达式2的内容。</span><br><span class="line">	int a = 5 &gt; 3 ? 2 : 1; // 5 &gt; 3成立，因此a = 2</span><br><span class="line">	cout &lt;&lt; a &lt;&lt; endl;</span><br><span class="line">	int b = ++a &gt;= a++ ? ++a : a++; // ++a中a的值为3，a++中a的值为2，此时++a &gt;= a++成立，当条件判断结束后，a自增了两次，变为4，然后b = ++a，a先自增为5，并且赋值给b</span><br><span class="line">	cout &lt;&lt; a &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; b &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h1 id="C-三目运算符"><a href="#C-三目运算符" class="headerlink" title="C++三目运算符"></a><font size="4">C++三目运算符</font></h1><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main() {</span><br><span class="line">	// 条件?表达式1:表达式2，当条件成立时，执行表达式1的内容，否则执行表达式2的内容。</span><br><span class="line">	int a = 5 &gt; 3 ? 2 : 1; // 5 &gt; 3成立，因此a = 2</span><br><span class="line">	cout &lt;&lt; a &lt;&lt; endl;</span><br><span class="line">	int b = ++a &gt;= a++ ? ++a : a++; // ++a中a的值先计算为3，再赋值为a，a++中a的值为3，此时++a &gt;= a++等价于3 &gt;= 3成立，当条件判断结束后，a又自增一次，变为4，然后b = ++a，a先自增为5，并且赋值给b</span><br><span class="line">	cout &lt;&lt; a &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; b &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p><img src="/images/LANGUAGE/C++7.png" alt="7"></p>
 <h1 id="C-小结"><a href="#C-小结" class="headerlink" title="C++小结"></a><font size="5" color="red">C++小结</font></h1><p>  运算符操作每种语言都大同小异，因为运算符是所有语言的基础，学习每一种语言都离不开运算操作，虽然难度较小，但是非常重要，无论以后从事什么样的研究，都是必不可少的，因此需要熟练掌握。</p>
 <script>
@@ -2386,6 +2500,8 @@
 <p><img src="/images/LANGUAGE/C++.png" alt="0"></p>
 <h1 id="语言的比较"><a href="#语言的比较" class="headerlink" title="语言的比较"></a><font size="5" color="red">语言的比较</font></h1><p>  <font size="3">将其他语言翻译成机器语言的工具称为编译器，编译的方式有两种，一种是编译，一种是解释</font><br>  <font size="3">编译型语言：C/C++，Pascal等语言都属于编译型语言，先由编译器生成可执行文件，运行时不需要重新编译，直接使用编译的结果即可，因此程序执行效率高，跨平台能力差。</font><br>  <font size="3">解释型语言：Java，C++等语言都属于解释型语言，运行时由解释器逐行解释每一句源代码，每次运行都需要解释一次，因此程序执行效率低，跨平台能力强。</font><br><img src="/images/LANGUAGE/python1.jpg" alt="1"></p>
 <h1 id="C-特点"><a href="#C-特点" class="headerlink" title="C++特点"></a><font size="5" color="red">C++特点</font></h1><p>  <font size="3">在C语言的基础上进行扩充和完善，兼容了C的面向过程，也成为了一种面向对象的程序设计语言。</font><br>  <font size="3">功能强大，接近底层，但是也最为复杂，这是C++语言的优点同时也是它的缺点。</font></p>
+<h1 id="C-特点-1"><a href="#C-特点-1" class="headerlink" title="C++特点"></a><font size="5" color="red">C++特点</font></h1><p>  <font size="3">在C语言的基础上进行扩充和完善，兼容了C的面向过程，也成为了一种面向对象的程序设计语言。</font><br>  <font size="3">功能强大，接近底层，但是也最为复杂，这是C++语言的优点同时也是它的缺点。</font></p>
+<h1 id="C-的开发步骤"><a href="#C-的开发步骤" class="headerlink" title="C++的开发步骤"></a><font size="5" color="red">C++的开发步骤</font></h1><p>首先编写一个.cpp后缀的源程序，接着通过预编译生成.i后缀的预处理文件，然后通过编译获得.s后缀的编译文件，然后通过汇编语言翻译成.o后缀的汇编程序，最后链接过程生成.exe后缀的可执行文件。</p>
 <h1 id="C-小结"><a href="#C-小结" class="headerlink" title="C++小结"></a><font size="5" color="red">C++小结</font></h1><p>  C++是大多数高校同学们所接触的第一门语言，因为它经典而且可以学习更多底层的知识体系，所以是我们学习编程的第一个关卡。如果不做C++开发工程师并且具有很长时间的工作经验，很难将这门语言学习透彻，有的小伙伴就会问为什么我们还要学习C++呢？我不做C++开发工程师是不是可以不用学习C++了呢？我认为无论在什么时候，只要是程序员，都需要和C++,Java等语言打交道，因为你的项目总要落地，总要应用在不同的场景之中(服务器开发，游戏开发，图形图像处理，嵌入式等等)，所以了解其他的语言可以更好的和其他部门的同事合作。想要在程序员的道路上越走越远，那么你就需要掌握多种语言，少年，你渴望力量吗<del>~</del>~</p>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -2596,7 +2712,7 @@
       <categories>
         <category>刷题记录</category>
         <category>数组</category>
-        <category>单调栈</category>
+        <category>单调栈/单调队列</category>
       </categories>
   </entry>
   <entry>
@@ -5344,7 +5460,7 @@
       <categories>
         <category>刷题记录</category>
         <category>字符串</category>
-        <category>kmp</category>
+        <category>特定算法</category>
       </categories>
   </entry>
   <entry>
@@ -5596,7 +5712,7 @@
       <categories>
         <category>刷题记录</category>
         <category>字符串</category>
-        <category>manacher</category>
+        <category>特定算法</category>
       </categories>
   </entry>
   <entry>
