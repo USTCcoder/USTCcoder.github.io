@@ -143,7 +143,7 @@
 <meta property="og:image" content="https://ustccoder.github.io/images/LANGUAGE/C++20.png">
 <meta property="og:image" content="https://ustccoder.github.io/images/LANGUAGE/C++20.png">
 <meta property="og:image" content="https://ustccoder.github.io/images/LANGUAGE/C++21.png">
-<meta property="og:updated_time" content="2020-08-11T14:52:56.718Z">
+<meta property="og:updated_time" content="2020-11-06T15:52:30.937Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++函数">
 <meta name="twitter:description" content="C++函数">
@@ -500,7 +500,7 @@
 <p><img src="/images/LANGUAGE/C++20.png" alt="4"></p>
 <h1 id="函数重载"><a href="#函数重载" class="headerlink" title="函数重载"></a><font size="5">函数重载</font></h1><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">//函数重载是指，一个函数名有不同的功能实现，当传入的参数个数不同，类型不同或者顺序不同时，函数可以发生重载，调用时，根据和哪一个函数更匹配则调用相应的函数。</span><br><span class="line">//特别注意，参数名和返回值不同不能成为函数重载的发生条件，编译器会报错。</span><br><span class="line">double calcArea(int r, double pi) {</span><br><span class="line"></span><br><span class="line">	double area = pi * r * r;</span><br><span class="line"></span><br><span class="line">	return area;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">double calcArea(int r, double pi, int) {</span><br><span class="line"></span><br><span class="line">	double area = pi * r * r;</span><br><span class="line"></span><br><span class="line">	return area;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">double calcArea(double r, double pi) {</span><br><span class="line"></span><br><span class="line">	double area = pi * r * r;</span><br><span class="line"></span><br><span class="line">	return area;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">double calcArea(double pi, int r) {</span><br><span class="line"></span><br><span class="line">	double area = pi * r * r;</span><br><span class="line"></span><br><span class="line">	return area;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">int main() {</span><br><span class="line"></span><br><span class="line">	double c = calcArea(3, 3.14);</span><br><span class="line">	double d = calcArea(3, 3.14, 0);</span><br><span class="line">	double e = calcArea(3.0, 3.14);</span><br><span class="line">	double f = calcArea(3.14, 3);</span><br><span class="line">	</span><br><span class="line">	cout &lt;&lt; "圆c的面积为 " &lt;&lt; c &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; "圆d的面积为 " &lt;&lt; d &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; "圆e的面积为 " &lt;&lt; e &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; "圆f的面积为 " &lt;&lt; f &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p><img src="/images/LANGUAGE/C++21.png" alt="4"></p>
-<h1 id="C-小结"><a href="#C-小结" class="headerlink" title="C++小结"></a><font size="5" color="red">C++小结</font></h1><p>  函数是我们面向过程编程的重要思想，同时也是面向对象中封装特性的体现，有了函数我们可以节约大量的时间和空间管理我们的代码，提高了代码的复用率，但是我们要注意编程习惯，尽量一个函数实现一个功能，不要将多个功能写在同一个函数之中。。</p>
+<h1 id="C-小结"><a href="#C-小结" class="headerlink" title="C++小结"></a><font size="5" color="red">C++小结</font></h1><p>  函数是我们面向过程编程的重要思想，同时也是面向对象中封装特性的体现，有了函数我们可以节约大量的时间和空间管理我们的代码，提高了代码的复用率，但是我们要注意编程习惯，尽量一个函数实现一个功能，不要将多个功能写在同一个函数之中。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -690,7 +690,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">204</span>
+                  <span class="site-state-item-count">208</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -701,7 +701,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
