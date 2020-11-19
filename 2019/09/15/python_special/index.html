@@ -130,22 +130,21 @@
 
 
 
-<meta name="description" content="Special Structure(特殊结构)">
+<meta name="description" content="else &amp; with(Python特殊结构)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Special Structure(特殊结构)">
+<meta property="og:title" content="else &amp; with(Python特殊结构)">
 <meta property="og:url" content="https://USTCcoder.github.io/2019/09/15/python_special/index.html">
 <meta property="og:site_name" content="GitHub">
-<meta property="og:description" content="Special Structure(特殊结构)">
+<meta property="og:description" content="else &amp; with(Python特殊结构)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://ustccoder.github.io/images/LANGUAGE/python11.jpg">
-<meta property="og:image" content="https://ustccoder.github.io/images/LANGUAGE/python72.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/LANGUAGE/python113.png">
 <meta property="og:image" content="https://ustccoder.github.io/images/LANGUAGE/python73.png">
-<meta property="og:image" content="https://ustccoder.github.io/images/LANGUAGE/python75.png">
-<meta property="og:updated_time" content="2020-07-27T06:13:52.065Z">
+<meta property="og:image" content="https://ustccoder.github.io/images/LANGUAGE/python74.png">
+<meta property="og:updated_time" content="2020-11-18T05:57:35.835Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Special Structure(特殊结构)">
-<meta name="twitter:description" content="Special Structure(特殊结构)">
-<meta name="twitter:image" content="https://ustccoder.github.io/images/LANGUAGE/python11.jpg">
+<meta name="twitter:title" content="else &amp; with(Python特殊结构)">
+<meta name="twitter:description" content="else &amp; with(Python特殊结构)">
+<meta name="twitter:image" content="https://ustccoder.github.io/images/LANGUAGE/python113.png">
 
 
 
@@ -181,7 +180,7 @@
 
 
 
-  <title>Special Structure(特殊结构) | GitHub</title>
+  <title>else & with(Python特殊结构) | GitHub</title>
   
 
 
@@ -363,7 +362,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Special Structure(特殊结构)</h1>
+          <h1 class="post-title" itemprop="name headline">else & with(Python特殊结构)</h1>
         
 
         <div class="post-meta">
@@ -457,7 +456,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  829
+                  543
                 </span>
               
 
@@ -469,7 +468,7 @@
 
           
               <div class="post-description">
-                  <table><tr><td bgcolor="grey"><font size="5" face="STXihei" color="white"><center>Special Structure(特殊结构)</center></font></td></tr></table>
+                  <table><tr><td bgcolor="grey"><font size="5" face="STXihei" color="white"><center>else & with(Python特殊结构)</center></font></td></tr></table>
               </div>
           
 
@@ -486,15 +485,18 @@
       
 
       
-        <p><img src="/images/LANGUAGE/python11.jpg" alt="11"></p>
-<h1 id="Special-Structure介绍"><a href="#Special-Structure介绍" class="headerlink" title="Special Structure介绍"></a><font size="5" color="red">Special Structure介绍</font></h1><p>  Python中的特殊结构指除了条件，循环之外的结构，如异常处理结构，else语句，with语句以及assert语句。<br><a id="more"></a></p>
-<h1 id="Special-Structure分类"><a href="#Special-Structure分类" class="headerlink" title="Special Structure分类"></a><font size="5" color="red">Special Structure分类</font></h1><h2 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a><font size="4">异常处理</font></h2><script type="math/tex; mode=display">\begin{array}{|c|c|} 名称 & 描述 \\  AssertionError & 断言失败 \\ AttributeError & 访问位置的对象属性 \\ IndexError & 索引错误 \\ KeyError & 关键字错误 \\ NameError & 访问不存在的变量 \\ OSError & 操作系统异常 \\ OverflowError & 数值运算超过限制 \\ SyntaxError & 语法错误 \\ TypeError & 不同类型的无效操作 \\ ZeroDivisionError & 除数为0 \\ \end{array}</script><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># try: 语句1 except: 语句2 (finally: 语句3) 执行语句1如果发生异常则直接跳到except中执行语句2，如果没有异常则不执行语句2，最终都要执行finally中的语句3，finally可省略</span><br><span class="line"># try:</span><br><span class="line">#     语句1(可能出错的步骤)</span><br><span class="line"># except ErrorName(默认为所有异常都抛弃):</span><br><span class="line">#     语句2(出现错误的处理过程)</span><br><span class="line"># finally:</span><br><span class="line">#     语句3(最终都要执行的代码)</span><br><span class="line"></span><br><span class="line">try:</span><br><span class="line">    print('除以0之前')</span><br><span class="line">    a = 5 / 0</span><br><span class="line">    print('除以0之后')</span><br><span class="line">except ZeroDivisionError:</span><br><span class="line">    a = 5</span><br><span class="line">    print('except')</span><br><span class="line">finally:</span><br><span class="line">    print('finally')</span><br><span class="line">print(a)</span><br></pre></td></tr></tbody></table></figure>
-<p><img src="/images/LANGUAGE/python72.png" alt="72"></p>
-<h2 id="else语句"><a href="#else语句" class="headerlink" title="else语句"></a><font size="4">else语句</font></h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"># else语句有4种组合方式，可以和if组合成if condition: 语句1 else: 语句2，可以和while组合成while condition: 循环语句 else 语句，可以和for组合成for target in iterable: 循环语句 else: 语句，可以和try组合成try: 语句1 except: 语句2 else: 语句3</span><br><span class="line"></span><br><span class="line"># if condition: 语句1 else: 语句2，如果condition正确则执行语句1，否则执行语句2</span><br><span class="line"># if condition:</span><br><span class="line">#     语句1</span><br><span class="line"># else:</span><br><span class="line">#     语句2</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># while condition: 循环语句 else 语句，如果循环执行完毕则执行else中的语句，如果中间跳出循环则不执行else中的语句</span><br><span class="line"># while condition:</span><br><span class="line">#     循环语句</span><br><span class="line"># else:</span><br><span class="line">#     语句</span><br><span class="line">a = 3</span><br><span class="line">while a &gt; 0:</span><br><span class="line">    a -= 1</span><br><span class="line">else:</span><br><span class="line">    print('else')</span><br><span class="line"></span><br><span class="line"># for target in iterable: 循环语句 else: 语句，如果循环执行完毕则执行else中的语句，如果中间跳出循环则不执行else中的语句</span><br><span class="line"># for target in iterable: </span><br><span class="line">#     循环语句</span><br><span class="line"># else:</span><br><span class="line">#     语句</span><br><span class="line">a = 3</span><br><span class="line">for i in range(3):</span><br><span class="line">    a -= 1</span><br><span class="line">else:</span><br><span class="line">    print('else')</span><br><span class="line"></span><br><span class="line"># try: 语句1 except: 语句2 else: 语句3，如果发生异常则不执行else后面的语句3，没有异常则执行else后面的语句3</span><br><span class="line"># try:</span><br><span class="line">#     语句1</span><br><span class="line"># except:</span><br><span class="line">#     语句2</span><br><span class="line"># else: </span><br><span class="line">#     语句3</span><br><span class="line">try:</span><br><span class="line">    a = 4 / 0</span><br><span class="line">except:</span><br><span class="line">    a = 4 / 1</span><br><span class="line">else:</span><br><span class="line">    print('else')</span><br></pre></td></tr></tbody></table></figure>
+        <p><img src="/images/LANGUAGE/python113.png" alt="11"></p>
+<h1 id="else-amp-with-Python特殊结构"><a href="#else-amp-with-Python特殊结构" class="headerlink" title="else &amp; with(Python特殊结构)"></a><font size="5" color="red">else &amp; with(Python特殊结构)</font></h1><p>  Python中的特殊结构指除了条件，循环之外的结构，如else语句，with语句,在一些特定的条件下可以发挥出较好的效果。<br><a id="more"></a></p>
+<h1 id="Python特殊结构"><a href="#Python特殊结构" class="headerlink" title="Python特殊结构"></a><font size="5" color="red">Python特殊结构</font></h1><h2 id="else语句"><a href="#else语句" class="headerlink" title="else语句"></a><font size="4">else语句</font></h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"># else语句有4种组合方式，可以和if组合成if condition: 语句1 else: 语句2，可以和while组合成while condition: 循环语句 else 语句，可以和for组合成for target in iterable: 循环语句 else: 语句，可以和try组合成try: 语句1 except: 语句2 else: 语句3</span><br><span class="line"></span><br><span class="line"># if condition: 语句1 else: 语句2，如果condition正确则执行语句1，否则执行语句2</span><br><span class="line"># if condition:</span><br><span class="line">#     语句1</span><br><span class="line"># else:</span><br><span class="line">#     语句2</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># while condition: 循环语句 else 语句，如果循环执行完毕则执行else中的语句，如果中间跳出循环则不执行else中的语句</span><br><span class="line"># while condition:</span><br><span class="line">#     循环语句</span><br><span class="line"># else:</span><br><span class="line">#     语句</span><br><span class="line">a = 3</span><br><span class="line">while a &gt; 0:</span><br><span class="line">    a -= 1</span><br><span class="line">else:</span><br><span class="line">    print('else')</span><br><span class="line"></span><br><span class="line"># for target in iterable: 循环语句 else: 语句，如果循环执行完毕则执行else中的语句，如果中间跳出循环则不执行else中的语句</span><br><span class="line"># for target in iterable: </span><br><span class="line">#     循环语句</span><br><span class="line"># else:</span><br><span class="line">#     语句</span><br><span class="line">a = 3</span><br><span class="line">for i in range(3):</span><br><span class="line">    a -= 1</span><br><span class="line">else:</span><br><span class="line">    print('else')</span><br><span class="line"></span><br><span class="line"># try: 语句1 except: 语句2 else: 语句3，如果发生异常则不执行else后面的语句3，没有异常则执行else后面的语句3</span><br><span class="line"># try:</span><br><span class="line">#     语句1</span><br><span class="line"># except:</span><br><span class="line">#     语句2</span><br><span class="line"># else: </span><br><span class="line">#     语句3</span><br><span class="line">try:</span><br><span class="line">    a = 4 / 0</span><br><span class="line">except:</span><br><span class="line">    a = 4 / 1</span><br><span class="line">else:</span><br><span class="line">    print('else')</span><br></pre></td></tr></tbody></table></figure>
 <p><img src="/images/LANGUAGE/python73.png" alt="73"></p>
-<h2 id="with语句"><a href="#with语句" class="headerlink" title="with语句"></a><font size="4">with语句</font></h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># with 语句1: 语句2 用于文件操作或者进程线程互斥时，语句2执行完之后会自动释放语句1所产生的资源，不需要再手动完成后续处理</span><br><span class="line"># with 语句1:</span><br><span class="line">#     语句2</span><br><span class="line">with open('dm01.txt') as f:</span><br><span class="line">    print(f.read())</span><br><span class="line">print(f.closed)</span><br><span class="line">``` </span><br><span class="line">![74](/images/LANGUAGE/python74.png)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## &lt;font size=4&gt;assert语句&lt;/font&gt;</span><br></pre></td></tr></tbody></table></figure>
-<h1 id="assert-condition-当condition为假，程序自动崩溃，并且抛出AssertError异常，condition为真，不做任何操作"><a href="#assert-condition-当condition为假，程序自动崩溃，并且抛出AssertError异常，condition为真，不做任何操作" class="headerlink" title="assert condition 当condition为假，程序自动崩溃，并且抛出AssertError异常，condition为真，不做任何操作"></a>assert condition 当condition为假，程序自动崩溃，并且抛出AssertError异常，condition为真，不做任何操作</h1><h1 id="assert-condition"><a href="#assert-condition" class="headerlink" title="assert condition"></a>assert condition</h1><p>assert 3 &lt; 0<br>print(f.closed)<br>```<br><img src="/images/LANGUAGE/python75.png" alt="75"></p>
-<h1 id="Special-Structure小结"><a href="#Special-Structure小结" class="headerlink" title="Special Structure小结"></a><font size="5" color="red">Special Structure小结</font></h1><p>  Special Structure特殊结构使用频率相对较低，但是在维护代码稳定性方面有着重要的应用，当出现异常时不会终止程序，而是具有友善的提示界面，适合于企业级应用开发，因此要熟练掌握这些特殊结构的应用。</p>
+<h2 id="with语句"><a href="#with语句" class="headerlink" title="with语句"></a><font size="4">with语句</font></h2><pre><code># with 语句1: 语句2 用于文件操作或者进程线程互斥时，语句2执行完之后会自动释放语句1所产生的资源，不需要再手动完成后续处理
+# with 语句1:
+#     语句2
+with open('dm01.txt') as f:
+    print(f.read())
+print(f.closed)
+</code></pre><p><img src="/images/LANGUAGE/python74.png" alt="74"></p>
+<h1 id="Python特殊结构小结"><a href="#Python特殊结构小结" class="headerlink" title="Python特殊结构小结"></a><font size="5" color="red">Python特殊结构小结</font></h1><p>  特殊结构使用频率相对较低，当小伙伴们遇到能够认识它们即可，如果忘记了具体的用法，直接去网上搜索，仅仅作为了解即可。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -571,8 +573,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/16/python_function/" rel="prev" title="Function(函数)">
-                Function(函数) <i class="fa fa-chevron-right"></i>
+              <a href="/2019/09/16/python_exception/" rel="prev" title="Exception(异常)">
+                Exception(异常) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -684,7 +686,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">208</span>
+                  <span class="site-state-item-count">213</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -695,7 +697,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -775,7 +777,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Special-Structure介绍"><span class="nav-number">1.</span> <span class="nav-text">Special Structure介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Special-Structure分类"><span class="nav-number">2.</span> <span class="nav-text">Special Structure分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#异常处理"><span class="nav-number">2.1.</span> <span class="nav-text">异常处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#else语句"><span class="nav-number">2.2.</span> <span class="nav-text">else语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#with语句"><span class="nav-number">2.3.</span> <span class="nav-text">with语句</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#assert-condition-当condition为假，程序自动崩溃，并且抛出AssertError异常，condition为真，不做任何操作"><span class="nav-number">3.</span> <span class="nav-text">assert condition 当condition为假，程序自动崩溃，并且抛出AssertError异常，condition为真，不做任何操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#assert-condition"><span class="nav-number">4.</span> <span class="nav-text">assert condition</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Special-Structure小结"><span class="nav-number">5.</span> <span class="nav-text">Special Structure小结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#else-amp-with-Python特殊结构"><span class="nav-number">1.</span> <span class="nav-text">else &amp; with(Python特殊结构)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python特殊结构"><span class="nav-number">2.</span> <span class="nav-text">Python特殊结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#else语句"><span class="nav-number">2.1.</span> <span class="nav-text">else语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#with语句"><span class="nav-number">2.2.</span> <span class="nav-text">with语句</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python特殊结构小结"><span class="nav-number">3.</span> <span class="nav-text">Python特殊结构小结</span></a></li></ol></div>
             
 
           </div>
