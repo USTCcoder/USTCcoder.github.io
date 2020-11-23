@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://USTCcoder.github.io/"/>
-  <updated>2020-11-02T02:24:05.319Z</updated>
+  <updated>2020-11-02T07:17:22.943Z</updated>
   <id>https://USTCcoder.github.io/</id>
   
   <author>
@@ -15,6 +15,54 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>二叉搜索树与双向链表(Leetcode 剑指Offer36)</title>
+    <link href="https://USTCcoder.github.io/2020/11/22/program%20Leetcode_offer36/"/>
+    <id>https://USTCcoder.github.io/2020/11/22/program Leetcode_offer36/</id>
+    <published>2020-11-22T06:50:05.000Z</published>
+    <updated>2020-11-02T07:17:22.943Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/images/ALGORITHM/leetcodeoffer36.png" alt="1"></p><h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   这个题目虽然标签为中等，实际上却是一个简单题。主要考察二叉树的中序遍历，小伙伴们先想一想如何求解？</p><a id="more"></a><h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a><font size="5" color="red">递归</font></h1><p>我们要将BST转化为双向循环列表，<strong>可以进行中序遍历，将遍历到的节点都存放起来，然后在数组中将这些节点相互连接</strong>。</p><p>算法的<strong>时间复杂度为$O(n)$，空间复杂度为$O(n)$</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def treeToDoublyList(self, root):</span><br><span class="line">        """</span><br><span class="line">        :type root: Node</span><br><span class="line">        :rtype: Node</span><br><span class="line">        """</span><br><span class="line">        def inorder(node):</span><br><span class="line">            if not node:</span><br><span class="line">                return</span><br><span class="line">            inorder(node.left)</span><br><span class="line">            array.append(node)</span><br><span class="line">            inorder(node.right)</span><br><span class="line"></span><br><span class="line">        array = []</span><br><span class="line">        inorder(root)</span><br><span class="line">        lens = len(array)</span><br><span class="line">        for i in range(lens):</span><br><span class="line">            array[i].right = array[(i + 1) % lens]</span><br><span class="line">            array[i].left = array[(i - 1) % lens]</span><br><span class="line">        return array[0] if lens else root</span><br></pre></td></tr></tbody></table></figure><p></p><h1 id="优化递归"><a href="#优化递归" class="headerlink" title="优化递归"></a><font size="5" color="red">优化递归</font></h1><p>我们<strong>将这些节点都保存在数组中，其实是一种投机取巧的方法，除了栈空间外还用到了额外的数组空间，而且每个节点也遍历了两次，递归时访问了一次，遍历数组时又访问了一次，虽然时间复杂度和空间复杂度都是$O(n)$，但是相对复杂了一些</strong>。</p><p>我们能否在递归的时候就完成链表操作呢？答案是可以的，<strong>只需要添加一个pre变量，指向上一个节点，当前节点执行时，pre.right = node, node.left = pre即可，最后pre = node，就可以实现递归时完成双向链表操作</strong>。</p><p>算法的<strong>时间复杂度为$O(n)$，空间复杂度为$O(n)$</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def treeToDoublyList(self, root):</span><br><span class="line">        """</span><br><span class="line">        :type root: Node</span><br><span class="line">        :rtype: Node</span><br><span class="line">        """</span><br><span class="line">        def inorder(node):</span><br><span class="line">            if not node:</span><br><span class="line">                return</span><br><span class="line">            nonlocal pre, head</span><br><span class="line">            inorder(node.left)</span><br><span class="line">            if pre:</span><br><span class="line">                node.left, pre.right = pre, node</span><br><span class="line">            else:</span><br><span class="line">                head = node</span><br><span class="line">            pre = node</span><br><span class="line">            inorder(node.right)</span><br><span class="line"></span><br><span class="line">        if not root:</span><br><span class="line">            return None</span><br><span class="line">        pre, head = None, None</span><br><span class="line">        inorder(root)</span><br><span class="line">        head.left, pre.right = pre, head</span><br><span class="line">        return head</span><br></pre></td></tr></tbody></table></figure><p></p><h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  许多小伙伴们说我为什么博客更新的慢或者刷题数量好少，几天才刷一道题目。其实不是这样的，博客里的题目都是我在笔试面试中遇到的题目，或者刷题时不会做的题目或者是有意义的题目才会给大家分享，有时也会遇到一些简单的题目，就没有必要去写，因此写在博客里的题目更值得小伙伴们去思考。</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;table&gt;&lt;tr&gt;&lt;td bgcolor=grey&gt;&lt;font size=5 face=&quot;STXihei&quot; color=white&gt;&lt;center&gt;Leetcode 剑指Offer36&lt;/center&gt;&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+    
+    </summary>
+    
+      <category term="刷题记录" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
+    
+      <category term="树" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E6%A0%91/"/>
+    
+      <category term="递归" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E9%80%92%E5%BD%92/"/>
+    
+      <category term="链表" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E9%93%BE%E8%A1%A8/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>第 K 条最小指令(Leetcode 213场单周赛第4题)</title>
+    <link href="https://USTCcoder.github.io/2020/11/20/program%20Leetcode5557/"/>
+    <id>https://USTCcoder.github.io/2020/11/20/program Leetcode5557/</id>
+    <published>2020-11-20T02:21:12.000Z</published>
+    <updated>2020-11-23T06:19:44.471Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/images/ALGORITHM/leetcode5557.png" alt="1"></p><h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   这个题目是231场周赛的第四题，题目难度并不大，需要小伙伴们仔细思考。</p><a id="more"></a><h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a><font size="5" color="red">递归</font></h1><p>要按照指令进行排序，可以想到的方法是遍历所有指令，使用DFS进行搜索，题目的row和column都是小于等于15的，在不剪枝的情况下有$2^{30}=1073741824$量级的计算量，在剪枝的情况下有$C_{30}^{15}=155117520$量级的计算量，一般在1e8以上时就会TLE，因此DFS无法求解。有兴趣的小伙伴们可以练习一下。</p><p><strong>我们发现在一个row，column的地图中，一共有<script type="math/tex">C_{row+col}^{row}</script>种方案。前<script type="math/tex">C_{row+col-1}^{col-1}</script>种方案的第一个字符都是”H”，因为H的字典序排在前面，因此第一步一定是水平方向。因此我们每次只要判断一步该如何走，如果指令数小于等于<script type="math/tex">C_{row+col-1}^{col-1}</script>，那么第一步是水平方向，否则第一步为垂直方向，然后变成另一个更小地图的子问题即可</strong>。</p><p>在这里我又做了一些优化，如果小于等于<script type="math/tex">C_{row+col-1}^{col-1}</script>，我们再判断是否小于等于<script type="math/tex">C_{row+col-i}^{col-i}</script>，如果是，则一次可以向水平方向走i步。</p><p>算法的时间主要浪费在组合数的计算中，因此可以记忆化存储累积的结果，这样时间复杂度就会大大降低，<strong>时间复杂度为$O(row+column)$，空间复杂度为$O(row+column)$</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">from functools import lru_cache</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Solution(object):</span><br><span class="line">    def kthSmallestPath(self, destination, k):</span><br><span class="line">        """</span><br><span class="line">        :type destination: List[int]</span><br><span class="line">        :type k: int</span><br><span class="line">        :rtype: str</span><br><span class="line">        """</span><br><span class="line">        @lru_cache(None)</span><br><span class="line">        def prod(x):</span><br><span class="line">            if x &lt;= 1:</span><br><span class="line">                return 1</span><br><span class="line">            return x * prod(x - 1)</span><br><span class="line"></span><br><span class="line">        row, col = destination</span><br><span class="line">        if k == 1:</span><br><span class="line">            return 'H' * col + 'V' * row</span><br><span class="line">        for i in range(col + row):</span><br><span class="line">            c = prod(col - 1 - i + row) // prod(row) // prod(col - 1 - i)</span><br><span class="line">            if k - 1 &gt;= c:</span><br><span class="line">                return 'H' * i + 'V' + self.kthSmallestPath([row - 1, col - i], k - c)</span><br></pre></td></tr></tbody></table></figure><p></p><h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  小伙伴们也可以经常打一打周赛，给定时间进行练习，代码功力不是看懂思路这么简单的，<strong>将自己的思路用代码的方式表达出来是一种更加重要的能力</strong>，希望小伙伴们不要眼高手低，一定要多写多练。</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;table&gt;&lt;tr&gt;&lt;td bgcolor=grey&gt;&lt;font size=5 face=&quot;STXihei&quot; color=white&gt;&lt;center&gt;Leetcode 5557&lt;/center&gt;&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+    
+    </summary>
+    
+      <category term="刷题记录" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
+    
+      <category term="递归" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E9%80%92%E5%BD%92/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>可以到达的最远建筑(Leetcode 213场单周赛第3题)</title>
@@ -417,9 +465,9 @@
     
       <category term="刷题记录" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
     
-      <category term="数组" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E6%95%B0%E7%BB%84/"/>
-    
       <category term="动态规划" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+      <category term="数组" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E6%95%B0%E7%BB%84/"/>
     
       <category term="二分查找" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"/>
     
@@ -675,9 +723,9 @@
     
       <category term="刷题记录" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
     
-      <category term="数组" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E6%95%B0%E7%BB%84/"/>
-    
       <category term="动态规划" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+      <category term="数组" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E6%95%B0%E7%BB%84/"/>
     
       <category term="贪心" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E8%B4%AA%E5%BF%83/"/>
     
@@ -861,9 +909,9 @@
     
       <category term="刷题记录" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
     
-      <category term="数组" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E6%95%B0%E7%BB%84/"/>
-    
       <category term="动态规划" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+      <category term="数组" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E6%95%B0%E7%BB%84/"/>
     
       <category term="二分查找" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"/>
     
@@ -955,9 +1003,9 @@
     
       <category term="刷题记录" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
     
-      <category term="数组" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E6%95%B0%E7%BB%84/"/>
-    
       <category term="动态规划" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+      <category term="数组" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E6%95%B0%E7%BB%84/"/>
     
     
   </entry>
@@ -1001,9 +1049,9 @@
     
       <category term="刷题记录" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
     
-      <category term="数组" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E6%95%B0%E7%BB%84/"/>
-    
       <category term="动态规划" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+      <category term="数组" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E6%95%B0%E7%BB%84/"/>
     
     
   </entry>
@@ -1311,9 +1359,9 @@
     
       <category term="刷题记录" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
     
-      <category term="动态规划" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
-    
       <category term="数学" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E6%95%B0%E5%AD%A6/"/>
+    
+      <category term="动态规划" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
     
   </entry>
@@ -1403,9 +1451,9 @@
     
       <category term="刷题记录" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
     
-      <category term="动态规划" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
-    
       <category term="数学" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E6%95%B0%E5%AD%A6/"/>
+    
+      <category term="动态规划" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
     
   </entry>
@@ -1475,9 +1523,9 @@
     
       <category term="刷题记录" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
     
-      <category term="数组" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E6%95%B0%E7%BB%84/"/>
-    
       <category term="动态规划" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+      <category term="数组" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E6%95%B0%E7%BB%84/"/>
     
       <category term="二分查找" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"/>
     
@@ -1833,9 +1881,9 @@
     
       <category term="刷题记录" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
     
-      <category term="数组" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E6%95%B0%E7%BB%84/"/>
-    
       <category term="动态规划" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+      <category term="数组" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E6%95%B0%E7%BB%84/"/>
     
     
   </entry>
@@ -3337,9 +3385,9 @@
     
       <category term="数组" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E6%95%B0%E7%BB%84/"/>
     
-      <category term="二分查找" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"/>
-    
       <category term="排序" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E6%8E%92%E5%BA%8F/"/>
+    
+      <category term="二分查找" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"/>
     
       <category term="双指针" scheme="https://USTCcoder.github.io/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E5%8F%8C%E6%8C%87%E9%92%88/"/>
     
