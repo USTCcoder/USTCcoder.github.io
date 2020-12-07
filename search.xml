@@ -1,6 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Java运算符</title>
+    <url>/2020/12/07/Java_operator/</url>
+    <content><![CDATA[<p><img src="/images/LANGUAGE/python3.jpg" alt="2"></p>
+<h1 id="Java运算符"><a href="#Java运算符" class="headerlink" title="Java运算符"></a><font size="5" color="red">Java运算符</font></h1><p>  在前面已经介绍了Java的由来，这里主要介绍Java的运算符，包括赋值运算符，算术运算符，关系运算符，逻辑运算符，三目运算符。<br><a id="more"></a></p>
+<h1 id="Java创建变量"><a href="#Java创建变量" class="headerlink" title="Java创建变量"></a><font size="4">Java创建变量</font></h1><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">// Java中的变量创建时必须写清楚数据类型，也可以先定义，然后在其他地方赋初始值</span><br><span class="line">// 注意在C++中的char类型是占用1个字节，在Java中char类型占用2个字节</span><br><span class="line">// C++中的布尔类型是bool，Java中的布尔类型是boolean</span><br><span class="line">// 在Java中所有类型都是继承自Object基类，对每一个类无法直接像C++一样通过typeid()获得类型，也无法通过sizeof()获得大小。</span><br><span class="line"></span><br><span class="line">public class Operator {</span><br><span class="line">    public static void main(String[] args) {</span><br><span class="line">        short s = 1;</span><br><span class="line">        int i = 20;</span><br><span class="line">        long l = 300;</span><br><span class="line">        char c = 'A';</span><br><span class="line">        float f = 3.14f;</span><br><span class="line">        double d = 1.234567;</span><br><span class="line">        boolean b;</span><br><span class="line">        b = true;</span><br><span class="line">        System.out.println("s的类型为：" + getType(s) + " 所占的空间为：" + "2Bit");</span><br><span class="line">        System.out.println("i的类型为：" + getType(i) + " 所占的空间为：" + "4Bit");</span><br><span class="line">        System.out.println("l的类型为：" + getType(l) + " 所占的空间为：" + "8Bit");</span><br><span class="line">        System.out.println("c的类型为：" + getType(c) + " 所占的空间为：" + "2Bit");</span><br><span class="line">        System.out.println("f的类型为：" + getType(f) + " 所占的空间为：" + "4Bit");</span><br><span class="line">        System.out.println("d的类型为：" + getType(d) + " 所占的空间为：" + "8Bit");</span><br><span class="line">        System.out.println("b的类型为：" + getType(b) + " 所占的空间为：" + "1Bit");</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public static String getType(Object o) {</span><br><span class="line">        return o.getClass().toString();</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/LANGUAGE/Java4.png" alt="1"></p>
+<h1 id="Java算术运算"><a href="#Java算术运算" class="headerlink" title="Java算术运算"></a><font size="4">Java算术运算</font></h1><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">// +(加)，-(减)，*(乘)，/(除)，%(求余)，整数除法结果只能得到整数，注意字符型可以参与运算，字符型的值为ASCII码对应的值，但是布尔型不可以参与算术运算。</span><br><span class="line">//进行计算时要注意数据的范围，以及低范围和高范围数据类型进行运算时，数据会发生自动类型转换到高范围，高范围数据向低范围数据要强制类型转换</span><br><span class="line">public class Operator {</span><br><span class="line">    public static void main(String[] args) {</span><br><span class="line">        int a = 2;</span><br><span class="line">        long l = 999;</span><br><span class="line">        char c = 'A';</span><br><span class="line">        double d = 3.14159;</span><br><span class="line"></span><br><span class="line">        System.out.println("a + c =" + " " + (a + c));</span><br><span class="line">        System.out.println("l / a =" + " " + (l / a));</span><br><span class="line">        System.out.println("l % a =" + " " + (l % a));</span><br><span class="line">        System.out.println("a * a * d =" + " " + (a * a * d));</span><br><span class="line">        System.out.println("a * a * d =" + " " + (int)(a * a * d));</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/LANGUAGE/Java5.png" alt="2"></p>
+<h1 id="Java关系运算"><a href="#Java关系运算" class="headerlink" title="Java关系运算"></a><font size="4">Java关系运算</font></h1><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">// &gt;(大于)，&lt;(小于)，&gt;=(大于等于)，&lt;=(小于等于)，==(等于)，!=(不等于)</span><br><span class="line">public class Operator {</span><br><span class="line">    public static void main(String[] args) {</span><br><span class="line">        int a = 99;</span><br><span class="line">        int b = 'b';</span><br><span class="line">        char c = 'c';</span><br><span class="line">        boolean d = a == c;</span><br><span class="line">        boolean e = b &gt; c;</span><br><span class="line"></span><br><span class="line">        System.out.println("99是否等于c？ " + d);</span><br><span class="line">        System.out.println("b是否大于c " + e);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/LANGUAGE/Java6.png" alt="4"></p>
+<h1 id="Java自增自减运算符"><a href="#Java自增自减运算符" class="headerlink" title="Java自增自减运算符"></a><font size="4">Java自增自减运算符</font></h1><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">// ++(自增运算符)，--(自减运算符)，++在前代表先进行加1，然后将值代入表达式，++在后代表先将值代入表达式，然后再进行加1，自减操作符同理。</span><br><span class="line">public class Operator {</span><br><span class="line">    public static void main(String[] args) {</span><br><span class="line">        int a = 1;</span><br><span class="line"></span><br><span class="line">        System.out.println(a + " 此时a=1");</span><br><span class="line">        System.out.println(a++ + " ++在后，先打印a=1，然后a=a+1");</span><br><span class="line">        System.out.println(a + " 此时a=2");</span><br><span class="line">        System.out.println(++a + " ++在前，先计算a=a+1，然后再打印a=3");</span><br><span class="line">        System.out.println(a + " 此时a=3");</span><br><span class="line">        System.out.println(a-- + " --在后，先打印a=3，然后a=a-1");</span><br><span class="line">        System.out.println(a + " 此时a=2");</span><br><span class="line">        System.out.println(--a + " --在前，先计算a=a-1，然后再打印a=1");</span><br><span class="line">        System.out.println(a + " 此时a=1");</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/LANGUAGE/Java7.png" alt="5"></p>
+<h1 id="Java逻辑运算"><a href="#Java逻辑运算" class="headerlink" title="Java逻辑运算"></a><font size="4">Java逻辑运算</font></h1><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">// &amp;&amp;(与)，||(或)，!(非)，注意与或操作只要可以判断出最后结果则停止，具有短路效果。</span><br><span class="line">//如果与操作的第一个条件为假，则不执行第二个条件，如果或操作的第一个条件为真，则不执行第二个条件。</span><br><span class="line">public class Operator {</span><br><span class="line">    public static void main(String[] args) {</span><br><span class="line">        int a = 5;</span><br><span class="line">        int b = 6;</span><br><span class="line">        int i = 0;</span><br><span class="line">        boolean d = a &gt; b || ++i &gt; 0; //此时或操作的第一个表达式为假，需要执行++i，因此i=1</span><br><span class="line">        System.out.println("i = " + i);</span><br><span class="line">        System.out.println("d = " + d);</span><br><span class="line">        boolean e = a &gt; b &amp;&amp; ++i &gt; 0; //此时与操作的第一个表达式为假，不需要执行++i，因此i=1</span><br><span class="line">        System.out.println("i = " + i);</span><br><span class="line">        System.out.println("e = " + e);</span><br><span class="line">        boolean f = !d;</span><br><span class="line">        System.out.println("f = " + f);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/LANGUAGE/Java8.png" alt="6"></p>
+<h1 id="Java三目运算符"><a href="#Java三目运算符" class="headerlink" title="Java三目运算符"></a><font size="4">Java三目运算符</font></h1><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">// 条件?表达式1:表达式2，当条件成立时，执行表达式1的内容，否则执行表达式2的内容。</span><br><span class="line">public class Operator {</span><br><span class="line">    public static void main(String[] args) {</span><br><span class="line">        int a = 5 &gt; 3 ? 2 : 1; // 5 &gt; 3成立，因此a = 2</span><br><span class="line">        System.out.println("a = " + a);</span><br><span class="line">        int b = ++a &gt;= a++ ? ++a : a++; // ++a中a的值先计算为3，再赋值为a，a++中a的值为3，此时++a &gt;= a++等价于3 &gt;= 3成立，当条件判断结束后，a又自增一次，变为4，然后b = ++a，a先自增为5，并且赋值给b</span><br><span class="line">        System.out.println("a = " + a);</span><br><span class="line">        System.out.println("b = " + b);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/LANGUAGE/Java9.png" alt="7"></p>
+<h1 id="Java小结"><a href="#Java小结" class="headerlink" title="Java小结"></a><font size="5" color="red">Java小结</font></h1><p>  运算符操作每种语言都大同小异，因为运算符是所有语言的基础，学习每一种语言都离不开运算操作，虽然难度较小，但是非常重要，无论以后从事什么样的研究，都是必不可少的，因此需要熟练掌握。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>Java</category>
+        <category>语言学习</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>平衡二叉树(Leetcode 剑指Offer55-Ⅱ)</title>
+    <url>/2020/12/06/program%20Leetcode_offer55-%E2%85%A1/</url>
+    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcodeoffer55-Ⅱ.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   平衡二叉树指的是左右孩子的深度相差最多为1，这个条件就告诉了我们解法。为了练习C++语言，在今后一段时间内我就用C++写代码，小伙伴要做的事情不是关注于语言，而是关注算法本身，要深刻理解语言只是一门表达方式，只要思路正确，哪一种语言都可以解答。</p>
+<a id="more"></a>
+<h1 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a><font size="5" color="red">哈希表</font></h1><p>我们可以<strong>求得每一个节点的高度放在哈希表中，然后再次遍历这棵树，求每个节点的左右孩子高度之差是否都小于等于1即可</strong>。</p>
+<p>代码难度较小，也容易想到，算法的<strong>时间复杂度为$O(n)$，空间复杂度为$O(n)$</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;map&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">struct TreeNode {</span><br><span class="line">    int val;</span><br><span class="line">    TreeNode *left;</span><br><span class="line">    TreeNode *right;</span><br><span class="line">    TreeNode(int x) : val(x), left(NULL), right(NULL) {}</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line">class Solution {</span><br><span class="line">public:</span><br><span class="line">    map&lt;TreeNode*, int&gt; m;</span><br><span class="line"></span><br><span class="line">    bool isBalanced(TreeNode* root) {</span><br><span class="line">        m.clear();</span><br><span class="line">        subQuestion(root);</span><br><span class="line">        for (auto au : m) {</span><br><span class="line">            if (abs(subQuestion(au.first-&gt;left) - subQuestion(au.first-&gt;right)) &gt; 1) {</span><br><span class="line">                return false;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        return true;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    int subQuestion(TreeNode* node) {</span><br><span class="line">        if (!node) {</span><br><span class="line">            return 0;</span><br><span class="line">        }</span><br><span class="line">        if (!m.count(node)) {</span><br><span class="line">            int left = subQuestion(node-&gt;left) + 1;</span><br><span class="line">            int right = subQuestion(node-&gt;right) + 1;</span><br><span class="line">            m[node] = max(left, right);</span><br><span class="line">        }</span><br><span class="line">        return m[node];</span><br><span class="line">    }</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a><font size="5" color="red">递归</font></h1><p>在哈希表的方法中，我们使用了哈希表，而且遍历了树结构两次。虽然时间复杂度仍是$O(n)$没有变化，但是可不可以寻找一种更优的解决方案呢？</p>
+<p><strong>我们可以自底向上进行递归，如果左右孩子的高度已知，那么就可以判断该节点是否满足条件。我们如何通过函数得到int类型的左右孩子高度和bool类型的该节点是否是平衡树呢？</strong>在我们的认识中，Python语言可以一次性返回多个不同类型的对象，但是其他语言怎么做呢？</p>
+<p><strong>在C++语言中，有一个其他语言无法比拟的优势——引用，我们将左右孩子的高度作为引用传入函数中，在函数中进行修改，那么就不需要返回int类型</strong>。</p>
+<p>思路是：我们先定义根节点的高度为depth，然后传入函数subQuestion中，在函数中创建左右孩子的高度left和right，在判断左右孩子是否是平衡树时进行赋值。当左右孩子都是平衡树的时候，left和right已经被赋值了，计算left和right是否满足之差小于等于1，如果是则根节点的高度depth = max(left, right) + 1。</p>
+<p>这种方法是这个题目的最优解，思路巧妙，代码难度较大，算法的<strong>时间复杂度为$O(n)$，空间复杂度为$O(n)$</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">struct TreeNode {</span><br><span class="line">    int val;</span><br><span class="line">    TreeNode *left;</span><br><span class="line">    TreeNode *right;</span><br><span class="line">    TreeNode(int x) : val(x), left(NULL), right(NULL) {}</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line">class Solution {</span><br><span class="line">public:</span><br><span class="line">    map&lt;TreeNode*, int&gt; m;</span><br><span class="line"></span><br><span class="line">    bool isBalanced(TreeNode* root) {</span><br><span class="line">        if (!root) return true;</span><br><span class="line">        int depth = 0;</span><br><span class="line">        return subQuestion(root, depth);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    bool subQuestion(TreeNode* node, int&amp; pDepth) {</span><br><span class="line">        if (!node) {</span><br><span class="line">            pDepth = 0;</span><br><span class="line">            return true;</span><br><span class="line">        }</span><br><span class="line">        int left = 0, right = 0;</span><br><span class="line">        if (subQuestion(node-&gt;left, left) &amp;&amp; subQuestion(node-&gt;right, right)) {</span><br><span class="line">            if (abs(left - right) &lt;= 1) {</span><br><span class="line">                pDepth = max(left, right) + 1;</span><br><span class="line">                return true;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        return false;</span><br><span class="line">    }</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  这个题目虽然标记为简单题，但是做起来并不简单，希望小伙伴们多加练习。而且我的建议是小伙伴们不能仅仅局限于一门语言之中，对于程序员来说，必须要掌握一门编译型语言和一门脚本语言，不能认为算法就不用关心语言本身，我认为这是不正确的，在编译型语言中，我首推C++，这是一门永远不会过时的语言，在学校中觉得Python就足够了，但是一旦进入到真正的工作中去，尤其是一些开发岗位，Python的需求还是很少的。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>刷题记录</category>
+        <category>树</category>
+        <category>递归</category>
+        <category>哈希表</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Java介绍</title>
+    <url>/2020/12/05/Java_introduction/</url>
+    <content><![CDATA[<p><img src="/images/LANGUAGE/Java1.png" alt="0"></p>
+<h1 id="Java由来"><a href="#Java由来" class="headerlink" title="Java由来"></a><font size="5" color="red">Java由来</font></h1><p>  等了好久，最近闲下来了，接下来的一段时间给大家介绍Java的一些基本语法，因为没有多年的Java开发经验，在这里只能点到为止，带着大家入门，如何提升代码能力和实际开发能力，还需要小伙伴们多多刷题，多多进行工程实践。Java的创始人为加拿大人詹姆斯·高斯林(James Gosling)和他的小组成员。其开发的主要目的是解决C++语言的复杂性和无法跨平台运行的问题。对C++语言进行了改造，去除了C++中一些不太实用及影响安全的成分，创建了一种完全面向对象的语言。<br><a id="more"></a></p>
+<p><img src="/images/LANGUAGE/Java.png" alt="0"></p>
+<h1 id="语言的比较"><a href="#语言的比较" class="headerlink" title="语言的比较"></a><font size="5" color="red">语言的比较</font></h1><p>  <font size="3">将其他语言翻译成机器语言的工具称为编译器，编译的方式有两种，一种是编译，一种是解释</font><br>  <font size="3">编译型语言：C/C++，Pascal等语言都属于编译型语言，先由编译器生成可执行文件，运行时不需要重新编译，直接使用编译的结果即可，因此程序执行效率高，跨平台能力差。</font><br>  <font size="3">解释型语言：Java，Python等语言都属于解释型语言，运行时由解释器逐行解释每一句源代码，每次运行都需要解释一次，因此程序执行效率低，跨平台能力强。</font><br><img src="/images/LANGUAGE/python1.jpg" alt="1"></p>
+<h1 id="Java语言的特点"><a href="#Java语言的特点" class="headerlink" title="Java语言的特点"></a><font size="5" color="red">Java语言的特点</font></h1><p>  <font size="3">简单性：Java的简单性是相对于C++语言来说的，省去了最难的两个问题，指针和内存管理。</font><br>  <font size="3">跨平台性：Java语言借助于JVM(Java Virtual Machine, Java虚拟机)，使我们的代码都运行于JVM之上，不依赖于操作系统。</font><br>  <font size="3">面向对象：Java的面向对象和其他语言完全不同，是完全面向对象的语言，哪怕打印一行字也要在一个类中实现。</font></p>
+<h1 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a><font size="5" color="red">JVM</font></h1><p><img src="/images/LANGUAGE/Java2.png" alt="0"><br>在这里先简单介绍一下JVM，后面有时间会专门介绍JVM这个重要的机制。<br>JVM(Java Virtual Machine, Java虚拟机)是运行在所有Java程序上的假想计算机，是Java程序的运行环境，是Java最具有吸引力的特性之一，具有跨平台的特性。任何的软件都要运行在操作系统指上，而我们使用的Java程序之所以可以跨平台，就是因为我们写的程序都是运行在JVM上，JVM运行在各个版本的操作系统之上。</p>
+<h1 id="JRE和JDK"><a href="#JRE和JDK" class="headerlink" title="JRE和JDK"></a><font size="5" color="red">JRE和JDK</font></h1><p><img src="/images/LANGUAGE/Java3.png" alt="0"><br>我们在学习Java时常常听别人说什么JRE，JDK等，但是新手往往不知道它们在说啥，这里给小伙伴们科普一下。<br>JRE(Java Runtime Environment, Java运行环境)：其中包含JVM和运行时包含的一些核心类库。<br>JDK(Java Development Kit, Java开发工具包)：其中包含了JRE和一些编译开发工具。<br>如果想要运行一个已有的Java程序，那么仅仅需要安装JRE即可，如果想开发一个Java程序，那么就需要安装JDK。</p>
+<h1 id="Java的开发步骤"><a href="#Java的开发步骤" class="headerlink" title="Java的开发步骤"></a><font size="5" color="red">Java的开发步骤</font></h1><p>首先编写一个.java后缀的源程序，然后通过编译获得.class后缀的字节码文件，最后由JVM解释运行.class文件即可。</p>
+<h1 id="Java小结"><a href="#Java小结" class="headerlink" title="Java小结"></a><font size="5" color="red">Java小结</font></h1><p>  Java的完全面向对象和跨平台的特性，使得在企业中受到了广泛的应用，在各个软件排行榜中，Java基本上都是在第一的位置，现在很多小伙伴都使用Python作为自己的擅长，他们就会问为什么我们还要学习Java呢？我不做Java开发工程师是不是可以不用学习Java了呢？我认为无论在什么时候，只要是程序员，都需要和C++,Java等语言打交道，因为你的项目总要落地，总要应用在不同的场景之中(大型网站，游戏，安卓开发等等)，所以了解其他的语言可以更好的和其他部门的同事合作。想要在程序员的道路上越走越远，那么你就需要掌握多种语言，少年，你渴望力量吗<del>~</del>~</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>Java</category>
+        <category>语言学习</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>单词接龙(Leetcode 127)</title>
+    <url>/2020/12/04/program%20Leetcode127/</url>
+    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode127.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   这个题目一看就是使用广度优先算法，如何一看就知道，这个分析很重要。原因有两个，其一是搜索过程很简单，已知当前状态，从字典中搜索下一个匹配的状态。其二是要求最短的转换序列长度，这就说明了BFS是优于DFS的。<br><a id="more"></a></p>
+<h1 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a><font size="5" color="red">BFS</font></h1><p>BFS大家也已经非常熟悉了，在这里我就介绍两个重要的点。<br>一个是当列表单词很多的时候，我们可以枚举单词的位置，枚举每个位置的字符，假如有字典中10000个单词，每个单词长度为10。如果我们逐一和所有单词比较是否相差一个字符，就需要10000次比较，如果只是枚举长度和可能出现的单词，只需要枚举10*26=260次。</p>
+<p>二是如果某个单词a首先变换到了b，那么可以将b添加到passed集合中，说明最先到达了b，后面所有到达b的长度一定不小于本次，所有以后到达b的都不需要在进行查找。</p>
+<p>算法的<strong>时间复杂度为$O(nm)$，空间复杂度为$O(nm)$，其中n为字典中单词的个数，m为每个单词的长度</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def ladderLength(self, beginWord, endWord, wordList):</span><br><span class="line">        """</span><br><span class="line">        :type beginWord: str</span><br><span class="line">        :type endWord: str</span><br><span class="line">        :type wordList: List[str]</span><br><span class="line">        :rtype: int</span><br><span class="line">        """</span><br><span class="line">        if endWord not in wordList:</span><br><span class="line">            return 0</span><br><span class="line">        queue, word_lens, wordList, passed = deque([[beginWord, 1]]), len(beginWord), set(wordList), set()</span><br><span class="line">        while queue:</span><br><span class="line">            cur, n = queue.popleft()</span><br><span class="line">            if cur == endWord:</span><br><span class="line">                return n</span><br><span class="line">            for i in range(len(beginWord)):</span><br><span class="line">                for c in range(97, 123):</span><br><span class="line">                    next_ = cur[:i] + chr(c) + cur[i + 1:]</span><br><span class="line">                    if next_ in wordList and next_ not in passed:</span><br><span class="line">                        queue.append([next_, n + 1])</span><br><span class="line">                        passed.add(next_)</span><br><span class="line">        return 0</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="优化BFS"><a href="#优化BFS" class="headerlink" title="优化BFS"></a><font size="5" color="red">优化BFS</font></h1><p>看了题解中powcai大佬的解答，才发现BFS还是可以进一步优化的。我们可以从首尾双向开始查找，当它们有交集的时候，说明找到了一条通路。就类似于两个人见面，上面的做法是一个人在原地等待，一个人去找。而现在介绍的算法是两个人都向中间走。</p>
+<p>代码很好理解，我们来看一看大神的思路。</p>
+<p>算法的<strong>时间复杂度为$O(nm)$，空间复杂度为$O(nm)$，其中n为字典中单词的个数，m为每个单词的长度</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -&gt; int:</span><br><span class="line">        if endWord not in wordList:</span><br><span class="line">            return 0</span><br><span class="line">        wordict = set(wordList)</span><br><span class="line">        s1 = {beginWord}</span><br><span class="line">        s2 = {endWord}</span><br><span class="line">        n = len(beginWord)</span><br><span class="line">        step = 0</span><br><span class="line">        wordict.remove(endWord)</span><br><span class="line">        while s1 and s2:</span><br><span class="line">            step += 1</span><br><span class="line">            if len(s1) &gt; len(s2): s1, s2 = s2, s1</span><br><span class="line">            s = set()</span><br><span class="line">            for word in s1:</span><br><span class="line">                nextword = [word[:i] + chr(j) + word[i + 1:] for j in range(97, 123) for i in range(n)]</span><br><span class="line">                for w in nextword:</span><br><span class="line">                    if w in s2:</span><br><span class="line">                        return step + 1</span><br><span class="line">                    if w not in wordict: continue</span><br><span class="line">                    wordict.remove(w)</span><br><span class="line">                    s.add(w)</span><br><span class="line">            s1 = s</span><br><span class="line">        return 0</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  小伙伴们认真刷题，现在刷题是软件岗位的必备技能，即使小伙伴们已经找到了工作，但也不能放弃刷题提升自己。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>刷题记录</category>
+        <category>字符串</category>
+        <category>广度优先搜素</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>不用加减乘除做加法(Leetcode 剑指Offer65)</title>
+    <url>/2020/12/02/program%20Leetcode_offer65/</url>
+    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcodeoffer65.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   这个题目很有趣，虽然是一个简单题目，但是做起来是非常有难度的，对于理解计算机数据存储有重要的意义，我认为难度应该是中等以上，小伙伴们也不能轻视它。</p>
+<a id="more"></a>
+<h1 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a><font size="5" color="red">位运算</font></h1><p>我们先考虑正数的相加问题，用下图进行说明。<br><img src="/images/ALGORITHM/leetcodeoffer65_solve.png" alt="q"></p>
+<p>那么负数如何计算呢，首先要明白负数为了计算的方便在计算机中是以补码的形式保存起来的。相关内容可以参考<a href="https://ustccoder.github.io/2019/08/02/algorithm%20bit%20operation/">位运算(Bit Operation)</a>。计算过程也用一张图进行说明。<br><img src="/images/ALGORITHM/leetcodeoffer65_solve1.png" alt="q"></p>
+<p>诡异的事情发生了，<strong>在Python中没有位的概念</strong>，因此负数的补码需要通过其他手段获得。如C++中，对于8位的有符号整型，首位是符号位，将其他的位取反加1可以得到补码，但是Python没有位的概念，也就没有首位，更无法将其他位取反。这应该怎么考虑呢？</p>
+<p>因为题目中数据的范围不会超出32位，因此我们<strong>将a和b都和0xffffffff做与运算，这样就可以保证超过32位的位都是0</strong>，但是此时正数数k与0xffffffff还是原始k，而负数k就会得到0xffffffff + k - 1。在Python中k = -1，k &amp; 0xffffffff的结果是0xffffffff + (-1) - 1。这是因为-1代表全1，做与运算后，得到前32个1，会认为一个正数，因此等于0xffffffff。</p>
+<p>上面这段话是说明我们只要和0xffffffff做与操作即可，不需要过分关注于与后的结果。我一开始就出现了这个错误，当我计算-28的时候，结果是4294967268，我一直在纠结为什么要用这个结果参与计算。其实这一步的操作只是为了取负数的前32位，这时Python的特性，会导致将前32位的数当作一个正数来计算，对于位运算来说并没有影响。</p>
+<p>然后<strong>最终的结果res我们要判断首尾是否位1</strong>，$res \le 0xffffffff$说明首位为0，代表正数，直接输出即可，否则说明首位为1，代表负数，但是此时res为32位的，在Python中一定为正数，我们需要在首位加1，并且在高位也都补上1。举个例子，<strong>假如最终的结果为15，则res = 0000 0000 0000 0000 0000 0000 0000 1111，在Python中的15也是这样的表达。但是如果最终的结果为-15，则res = 1111 1111 1111 1111 1111 1111 1111 0001，但是Python中的-15不是这样的，Python没有位的概念，可以认为在前面还有无数个1。因此res在Python中的值为4294967281。我们要保留前32位的值，并且给前面都加上1，这样才能得到正确结果。异或1能达到取反的效果，因此我们可以异或0xffffffff然后再取反操作，这样就可以实现高于32位的数据只取反，低于32位数据不变，达到我们想要的效果</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def add(self, a, b):</span><br><span class="line">        """</span><br><span class="line">        :type a: int</span><br><span class="line">        :type b: int</span><br><span class="line">        :rtype: int</span><br><span class="line">        """</span><br><span class="line">        x = 0xffffffff</span><br><span class="line">        a, b = a &amp; x, b &amp; x</span><br><span class="line">        while b != 0:</span><br><span class="line">            a, b = (a ^ b), (a &amp; b) &lt;&lt; 1 &amp; x</span><br><span class="line">        return a if a &lt;= 0x7fffffff else ~(a ^ x)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  这个题目太有意思了，也是我遇到的第一题Python比C++和Java都要复杂的一题。这道题目推荐大家使用C++去写，没必要在Python的思路中绕来绕去。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>刷题记录</category>
+        <category>数学</category>
+        <category>位运算</category>
+      </categories>
+  </entry>
+  <entry>
     <title>串联所有单词的子串(Leetcode 30)</title>
     <url>/2020/11/30/program%20Leetcode30/</url>
     <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode30.png" alt="1"></p>
@@ -186,8 +379,8 @@
   </entry>
   <entry>
     <title>第 K 条最小指令(Leetcode 213场单周赛第4题)</title>
-    <url>/2020/11/20/program%20Leetcode5557/</url>
-    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode5557.png" alt="1"></p>
+    <url>/2020/11/20/program%20Leetcode1643/</url>
+    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode1643.png" alt="1"></p>
 <h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   这个题目是231场周赛的第四题，题目难度并不大，需要小伙伴们仔细思考。</p>
 <a id="more"></a>
 <h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a><font size="5" color="red">递归</font></h1><p>要按照指令进行排序，可以想到的方法是遍历所有指令，使用DFS进行搜索，题目的row和column都是小于等于15的，在不剪枝的情况下有$2^{30}=1073741824$量级的计算量，在剪枝的情况下有$C_{30}^{15}=155117520$量级的计算量，一般在1e8以上时就会TLE，因此DFS无法求解。有兴趣的小伙伴们可以练习一下。</p>
@@ -221,8 +414,8 @@
   </entry>
   <entry>
     <title>可以到达的最远建筑(Leetcode 213场单周赛第3题)</title>
-    <url>/2020/11/18/program%20Leetcode5556/</url>
-    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode5556.png" alt="1"></p>
+    <url>/2020/11/18/program%20Leetcode1642/</url>
+    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode1642.png" alt="1"></p>
 <h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   这是第213场周赛的第三题，我觉得这个题目很好，因此拿出来和小伙伴们分享。<br><a id="more"></a></p>
 <h1 id="贪心"><a href="#贪心" class="headerlink" title="贪心"></a><font size="5" color="red">贪心</font></h1><p>贪心思路非常明显，<strong>从0开始到最远的建筑这段距离中，我们的梯子使用在差距最大的楼层一定是最优解</strong>。<br>我们只需要关注后面楼层高于前面楼层的这些位置即可，我们的梯子个数为n，那么我们要把所经过的差距最大的n个楼层使用梯子。因此我们要维护一个大小为n的最小堆，当某个楼层后面的楼层高于它时，如果此时堆的元素小于梯子数，那么可以直接加入，不使用砖块。如果此时堆的元素大于梯子数，此时如果楼层差距delta大于堆顶元素heap[0]，说明堆顶使用砖块会更少一些，因此，已使用砖块个数要加上堆顶元素heap[0]。否则当前楼层使用砖块个数会更少，已使用砖块个数要加上当前delta。</p>
 <p>算法的<strong>时间复杂度为$O(nlog(n))$，空间复杂度为$O(n)$</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">import heapq</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Solution(object):</span><br><span class="line">    def furthestBuilding(self, heights, bricks, ladders):</span><br><span class="line">        """</span><br><span class="line">        :type heights: List[int]</span><br><span class="line">        :type bricks: int</span><br><span class="line">        :type ladders: int</span><br><span class="line">        :rtype: int</span><br><span class="line">        """</span><br><span class="line">        heap, cur_brick = [], 0</span><br><span class="line">        for i in range(len(heights) - 1):</span><br><span class="line">            delta = heights[i + 1] - heights[i]</span><br><span class="line">            if delta &gt; 0:</span><br><span class="line">                if len(heap) &lt; ladders:</span><br><span class="line">                    heapq.heappush(heap, delta)</span><br><span class="line">                else:</span><br><span class="line">                    cur_brick += heapq.heappushpop(heap, delta)</span><br><span class="line">                    if cur_brick &gt; bricks:</span><br><span class="line">                        return i</span><br><span class="line">        return len(heights) - 1</span><br></pre></td></tr></tbody></table></figure><p></p>
@@ -251,8 +444,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>堆</category>
         <category>贪心</category>
+        <category>堆</category>
         <category>二分查找</category>
       </categories>
   </entry>
@@ -443,8 +636,8 @@
       <categories>
         <category>刷题记录</category>
         <category>树</category>
-        <category>哈希表</category>
         <category>递归</category>
+        <category>哈希表</category>
       </categories>
   </entry>
   <entry>
@@ -879,8 +1072,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>动态规划</category>
         <category>数组</category>
+        <category>动态规划</category>
         <category>二分查找</category>
       </categories>
   </entry>
@@ -929,8 +1122,8 @@
   </entry>
   <entry>
     <title>检查字符串是否可以通过排序子字符串得到另一个字符串(Leetcode 206场单周赛第4题)</title>
-    <url>/2020/10/02/program%20Leetcode5514/</url>
-    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode5514.png" alt="1"></p>
+    <url>/2020/10/02/program%20Leetcode1585/</url>
+    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode1585.png" alt="1"></p>
 <h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   这个题目难度较大，代码量很少，主要考察思路，如何寻找一种合适的数据结构表达这种关系非常重要。</p>
 <a id="more"></a>
 <h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a><font size="5" color="red">队列</font></h1><p><strong>某个数前面比它小的数在变换后必须也要在它前面</strong>，这句话非常重要。<br>如s = “84532” t = “34852”<br>看t的第一个数字3，s的3前面没有比他小的数字，因此可以。<br>看t的第二个数字4，s的4前面没有比他小的数字，因此可以。<br>看t的第一个数字8，s的8前面没有比他小的数字，因此可以。<br>看t的第二个数字5，s的5前面有比他小的数字4，而t中5前面也有4，因此可以。<br>看t的第一个数字2，s的2前面没有比他小的数字，因此可以，输出True</p>
@@ -965,8 +1158,8 @@
   </entry>
   <entry>
     <title>连接所有点的最小费用(Leetcode 206场单周赛第3题)</title>
-    <url>/2020/09/30/program%20Leetcode5513/</url>
-    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode5513.png" alt="1"></p>
+    <url>/2020/09/30/program%20Leetcode1584/</url>
+    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode1584.png" alt="1"></p>
 <h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   这个题目是一个最小生成树问题，可以通过prim算法或者kurskal算法进行求解。</p>
 <a id="more"></a>
 <h1 id="prim"><a href="#prim" class="headerlink" title="prim"></a><font size="5" color="red">prim</font></h1><p>prim算法是通过节点合并实现的，其步骤为：</p>
@@ -1010,6 +1203,7 @@
       <categories>
         <category>刷题记录</category>
         <category>贪心</category>
+        <category>特定算法</category>
       </categories>
   </entry>
   <entry>
@@ -1093,8 +1287,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>深度优先搜索</category>
         <category>数学</category>
+        <category>深度优先搜索</category>
         <category>广度优先搜索</category>
       </categories>
   </entry>
@@ -1333,8 +1527,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>动态规划</category>
         <category>数组</category>
+        <category>动态规划</category>
         <category>贪心</category>
       </categories>
   </entry>
@@ -1513,8 +1707,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>堆</category>
         <category>递归</category>
+        <category>堆</category>
       </categories>
   </entry>
   <entry>
@@ -1653,8 +1847,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>动态规划</category>
         <category>数组</category>
+        <category>动态规划</category>
         <category>二分查找</category>
       </categories>
   </entry>
@@ -1790,8 +1984,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>动态规划</category>
         <category>数组</category>
+        <category>动态规划</category>
       </categories>
   </entry>
   <entry>
@@ -1857,8 +2051,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>动态规划</category>
         <category>数组</category>
+        <category>动态规划</category>
       </categories>
   </entry>
   <entry>
@@ -1969,8 +2163,8 @@
   </entry>
   <entry>
     <title>吃掉 N 个橘子的最少天数(Leetcode 202场单周赛第4题)</title>
-    <url>/2020/08/18/program%20Leetcode5490/</url>
-    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode5490.png" alt="1"></p>
+    <url>/2020/08/18/program%20Leetcode1553/</url>
+    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode1553.png" alt="1"></p>
 <h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   这是第202周周赛的第四题，题目的意思也很简单，有一堆橘子，每天可以选择吃掉一个，当橘子个数为2的整数倍时，每天还可以选择吃掉一半，当橘子个数为3的整数倍时，每天还可以选择吃掉三分之二，求如何最快吃完这些橘子。</p>
 <a id="more"></a>
 <h1 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a><font size="5" color="red">BFS</font></h1><p>这道题目做法有很多，但是测试样例中，橘子的个数可以达到$2 \times 10^9$，这样就不能使用DP来做了。DP的思路非常清晰，dp[i] = min(dp[i - 1], dp[i // 2], dp[i // 3]) + 1，当然i需要是能整除2和3的，否则去掉对应的那一项即可，这里就不再论述。时间复杂度为O(n)。我们思考，因为吃掉一半或者三分之二的概率非常大，所以结果应该不会很大，所以我们可以使用广搜的方法进行求解。为了避免搜到重复的情况，我们建立一个字典保存当前已经搜到的情况。时间复杂度为O(log(n))，空间复杂度为O(log(n))。<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">from collections import deque</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Solution(object):</span><br><span class="line">    def minDays(self, n):</span><br><span class="line">        """</span><br><span class="line">        :type n: int</span><br><span class="line">        :rtype: int</span><br><span class="line">        """</span><br><span class="line">        dic = {n: 0}</span><br><span class="line">        queue = deque([n])</span><br><span class="line">        while 0 not in dic:</span><br><span class="line">            current = queue.popleft()</span><br><span class="line">            if current % 3 == 0 and current // 3 not in dic:</span><br><span class="line">                dic[current // 3] = dic[current] + 1</span><br><span class="line">                queue.append(current // 3)</span><br><span class="line">            if current % 2 == 0 and current // 2 not in dic:</span><br><span class="line">                dic[current // 2] = dic[current] + 1</span><br><span class="line">                queue.append(current // 2)</span><br><span class="line">            if current - 1 not in dic:</span><br><span class="line">                dic[current - 1] = dic[current] + 1</span><br><span class="line">                queue.append(current - 1)</span><br><span class="line">        return dic[0]</span><br></pre></td></tr></tbody></table></figure><p></p>
@@ -2006,8 +2200,8 @@
   </entry>
   <entry>
     <title>两球之间的磁力(Leetcode 202场单周赛第3题)</title>
-    <url>/2020/08/16/program%20Leetcode5489/</url>
-    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode5489.png" alt="1"></p>
+    <url>/2020/08/16/program%20Leetcode1552/</url>
+    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode1552.png" alt="1"></p>
 <h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   这是第202周周赛的第3题，我觉得非常有价值。题目的意思很简单，通俗的说就是从数组中找m个节点，使得它们的最小距离最大，也就是说让它们两两之间距离最远。小伙伴们先思考应该如何解答。</p>
 <a id="more"></a>
 <h1 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a><font size="5" color="red">二分查找</font></h1><p>之前应该说过一句话，这里再强调一次，当遇到最小化最大值问题或者最大化最小值问题，首先考虑二分法。最小距离为1，最大距离为max(position)，当然可以优化，不过也没有太大意义，因为二分法以对数的速度收敛，很快就可以达到最优解。<br>我们可以二分查找它们之间的距离，当对于某一个距离使用贪心算法进行判断时，如果能够创建出m个节点，说明该距离是合适的，我们可以令left = mid，否则令right = mid - 1，但是我们要保证数组是有序的。这样做的时间复杂度为$O(n \times log(n))$，空间复杂度为O(1)。<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def maxDistance(self, position, m):</span><br><span class="line">        """</span><br><span class="line">        :type position: List[int]</span><br><span class="line">        :type m: int</span><br><span class="line">        :rtype: int</span><br><span class="line">        """</span><br><span class="line">        position.sort()</span><br><span class="line">        left, right = 1, (position[-1] - position[0]) // (m - 1)</span><br><span class="line">        while left &lt; right:</span><br><span class="line">            mid, res, last, flag = (left + right + 1) // 2, 1, position[0], False</span><br><span class="line">            for x in position[1:]:</span><br><span class="line">                if x - last &gt;= mid:</span><br><span class="line">                    res += 1</span><br><span class="line">                    last = x</span><br><span class="line">                    if res &gt;= m:</span><br><span class="line">                        flag = True</span><br><span class="line">                        break</span><br><span class="line">            if flag:</span><br><span class="line">                left = mid</span><br><span class="line">            else:</span><br><span class="line">                right = mid - 1</span><br><span class="line">        return left</span><br></pre></td></tr></tbody></table></figure><p></p>
@@ -2555,8 +2749,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>动态规划</category>
         <category>数组</category>
+        <category>动态规划</category>
         <category>二分查找</category>
       </categories>
   </entry>
@@ -3204,8 +3398,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>动态规划</category>
         <category>数组</category>
+        <category>动态规划</category>
       </categories>
   </entry>
   <entry>
@@ -4351,8 +4545,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>深度优先搜索</category>
         <category>动态规划</category>
+        <category>深度优先搜索</category>
         <category>广度优先搜索</category>
       </categories>
   </entry>
@@ -5576,8 +5770,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>堆</category>
         <category>数组</category>
+        <category>堆</category>
         <category>排序</category>
         <category>分治</category>
       </categories>
