@@ -1,6 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Java数组</title>
+    <url>/2020/12/11/Java_array/</url>
+    <content><![CDATA[<p><img src="/images/LANGUAGE/C++17.png" alt="2"></p>
+<h1 id="Java数组"><a href="#Java数组" class="headerlink" title="Java数组"></a><font size="5" color="red">Java数组</font></h1><p>  在前面已经介绍了Java的运算符和流程控制语句，这里主要介绍Java的数组，建议大家在学习Java数组之前先去学习C++中的数组，可以更好的理解数组的存放方式和地址的概念。<br><a id="more"></a></p>
+<h1 id="创建数组"><a href="#创建数组" class="headerlink" title="创建数组"></a><font size="5">创建数组</font></h1><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">//Java创建数组有三种常见方式，可以先定义然后赋初值，也可以定义的时候赋初值</span><br><span class="line">//创建时数组的大小必须要固定，和C++不同的是可以使用变量作为数组的长度，在C++中int a[b]是错误的语法，在Java中new int[b]是合法的。虽然第二种和第三种方式没有指定数组大小，但是编译器会根据值的个数自动确定。</span><br><span class="line">//和C++不同点还在于初始化的问题，Java中整型默认为0，浮点型默认为0.0，字符型默认为"\u0000"，布尔默认false，引用类型默认为null。C++中一般需要先赋值再使用，否则容易出错。</span><br><span class="line">//C++中打印数组名是数组的首个元素的地址，Java中打印数组名得到的是内存地址的哈希值。</span><br><span class="line">//C++中计算数组长度，需要用总的空间大小除以每一个元素的大小，但是Java中可有使用数组名.length获取数组长度，是一个常用的操作。</span><br><span class="line">public class Array {</span><br><span class="line">    public static void main(String[] args) {</span><br><span class="line">        int[] a = new int[5];</span><br><span class="line"></span><br><span class="line">        for (int i = 0; i &lt; 5; i++) {</span><br><span class="line">            a[i] = i;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        int[] b = new int[]{ 1, 2, 3, 4, 5 };</span><br><span class="line">        int[] c = { 1, 2, 3, 4, 5 };</span><br><span class="line"></span><br><span class="line">        for (int i = 0; i &lt; 5; i++) {</span><br><span class="line">            System.out.printf("a[%d] = %d ", i, a[i]);</span><br><span class="line">            System.out.printf("b[%d] = %d ", i, b[i]);</span><br><span class="line">            System.out.printf("c[%d] = %d\n", i, c[i]);</span><br><span class="line">        }</span><br><span class="line">        System.out.println("a的长度为: " + a.length + " a的哈希值为: " + a);</span><br><span class="line">        System.out.println("b的长度为: " + b.length + " b的哈希值为: " + b);</span><br><span class="line">        System.out.println("c的长度为: " + c.length + " c的哈希值为: " + c);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/LANGUAGE/Java15.png" alt="1"></p>
+<h1 id="二维数组"><a href="#二维数组" class="headerlink" title="二维数组"></a><font size="5">二维数组</font></h1><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">public class Array {</span><br><span class="line">    public static void main(String[] args) {</span><br><span class="line">        //二维数组和一维数组类似，有相似的创建方法，但是和C++不同点在于创建二维数组不能省略第二个维度，而且静态初始化时必须写成二维的形式。不可以写成int[][4] c = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };但是C++这么写是合法的。</span><br><span class="line">        int[][] a = new int[3][4];</span><br><span class="line">        int[][] b = new int[][]{{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}};</span><br><span class="line">        int[][] c = { {1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12} };</span><br><span class="line"></span><br><span class="line">        //和C++不同的是，Java二维数组中每一个一维数组的长度可以不相同。</span><br><span class="line">        int[][] d = new int[3][];</span><br><span class="line">        d[0] = new int[]{1, 2, 3};</span><br><span class="line">        d[1] = new int[]{1, 2, 3, 4};</span><br><span class="line">        d[2] = new int[]{1, 2, 3, 4, 5};</span><br><span class="line">        for (int[] x: d){</span><br><span class="line">            for (int xx: x){</span><br><span class="line">                System.out.print(xx + " ");</span><br><span class="line">            }</span><br><span class="line">            System.out.println();</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        System.out.println("二维数组d的长度为: " + d.length + " 二维数组d的哈希值为: " + d);</span><br><span class="line">        System.out.println("一维数组d[0]的长度为: " + d[0].length + " 一维数组d[0]的哈希值为: " + d[0]);</span><br><span class="line">        System.out.println("一维数组d[1]的长度为: " + d[1].length + " 一维数组d[1]的哈希值为: " + d[1]);</span><br><span class="line">        System.out.println("一维数组d[2]的长度为: " + d[2].length + " 一维数组d[2]的哈希值为: " + d[2]);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/LANGUAGE/Java16.png" alt="4"></p>
+<h1 id="Java小结"><a href="#Java小结" class="headerlink" title="Java小结"></a><font size="5" color="red">Java小结</font></h1><p>  数组是我们存放数据的好方法，就如同抽屉一样，每一个抽屉都放置同样的物品，数组的学习非常重要，无论以后从事什么样的研究，数组的使用都是必不可少的，因此需要熟练掌握。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>Java</category>
+        <category>语言学习</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>二叉搜索树的第k大节点(Leetcode 剑指Offer54)</title>
+    <url>/2020/12/10/program%20Leetcode_offer54/</url>
+    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcodeoffer54.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   二叉搜索树第k大的节点，这个题目还是非常简单的，除了常规解法还给小伙伴们推荐一个奇妙的方法，小伙伴先尝试如何求解。</p>
+<a id="more"></a>
+<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a><font size="5" color="red">递归</font></h1><p>根据二叉搜索树的规律，使用中序遍历访问所有节点，将节点存放在容器中，然后取出容器倒数第k个值即可。</p>
+<p>算法的<strong>时间复杂度为$O(n)$，空间复杂度为$O(n)$</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">struct TreeNode {</span><br><span class="line">    int val;</span><br><span class="line">    TreeNode *left;</span><br><span class="line">    TreeNode *right;</span><br><span class="line">    TreeNode(int x) : val(x), left(NULL), right(NULL) {}</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line">class Solution {</span><br><span class="line">public:</span><br><span class="line">    int kthLargest(TreeNode* root, int k) {</span><br><span class="line">        vector&lt;int&gt; res;</span><br><span class="line">        inorder(root, res);</span><br><span class="line">        return res[res.size() - k];</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    void inorder(TreeNode* node, vector&lt;int&gt;&amp; v) {</span><br><span class="line">        if (!node) {</span><br><span class="line">            return;</span><br><span class="line">        }</span><br><span class="line">        inorder(node-&gt;left, v);</span><br><span class="line">        v.push_back(node-&gt;val);</span><br><span class="line">        inorder(node-&gt;right, v);</span><br><span class="line">    }</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="优化递归"><a href="#优化递归" class="headerlink" title="优化递归"></a><font size="5" color="red">优化递归</font></h1><p>本题还有一个更加巧妙的方法，我们要求第k大的元素，如果按照中序遍历的方法，需要遍历所有节点，如果k=1，我们也需要访问所有的节点，这样是不划算的。虽然最坏情况的时间复杂度都是$O(n)$，但是我们不希望这么做。</p>
+<p>我们可以逆中序遍历进行访问，使用一个计数器cnt，访问一个节点cnt++，当cnt=k的时候停止递归。</p>
+<p>算法的<strong>时间复杂度为$O(n)$，空间复杂度为$O(n)$</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">struct TreeNode {</span><br><span class="line">    int val;</span><br><span class="line">    TreeNode *left;</span><br><span class="line">    TreeNode *right;</span><br><span class="line">    TreeNode(int x) : val(x), left(NULL), right(NULL) {}</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line">class Solution {</span><br><span class="line">public:</span><br><span class="line">    int kthLargest(TreeNode* root, int k) {</span><br><span class="line">        int res = 0, cnt = 0;</span><br><span class="line">        inorder(root, res, cnt, k);</span><br><span class="line">        return res;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    void inorder(TreeNode* node, int&amp; res, int &amp;cnt, int k) {</span><br><span class="line">        if (!node) {</span><br><span class="line">            return;</span><br><span class="line">        }</span><br><span class="line">        inorder(node-&gt;right, res, cnt, k);</span><br><span class="line">        if (++cnt == k) res = node-&gt;val;</span><br><span class="line">        if (cnt &gt;= k) return;</span><br><span class="line">        inorder(node-&gt;left, res, cnt, k);</span><br><span class="line">    }</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a><font size="5" color="red">迭代</font></h1><p>中序遍历是可以通过迭代进行的，先访问左子树，在访问左子树之前将根节点加入容器，然后容器的尾部就是最左端的节点，取出该节点，访问其右子树，在访问右子树的过程中也是先访问其左子树。</p>
+<p>在这里也是按照一个逆中序遍历的顺序进行的，代码也比较简单，小伙伴直接看代码即可。</p>
+<p>算法的<strong>时间复杂度为$O(n)$，空间复杂度为$O(n)$</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">struct TreeNode {</span><br><span class="line">    int val;</span><br><span class="line">    TreeNode *left;</span><br><span class="line">    TreeNode *right;</span><br><span class="line">    TreeNode(int x) : val(x), left(NULL), right(NULL) {}</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line">class Solution {</span><br><span class="line">public:</span><br><span class="line">    int kthLargest(TreeNode* root, int k) {</span><br><span class="line">        vector&lt;TreeNode*&gt; v;</span><br><span class="line">        TreeNode* cur = root;</span><br><span class="line">        while (cur || v.size()) {</span><br><span class="line">            while (cur) {</span><br><span class="line">                v.push_back(cur);</span><br><span class="line">                cur = cur-&gt;right;</span><br><span class="line">            }</span><br><span class="line">            cur = v.back();</span><br><span class="line">            v.pop_back();</span><br><span class="line">            if (--k == 0) return cur-&gt;val;</span><br><span class="line">            cur = cur-&gt;left;</span><br><span class="line">        }</span><br><span class="line">        return root-&gt;val;</span><br><span class="line">    }</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  中序遍历的递归求解是大家都比较清楚的，但是如何迭代求解是大多数人都没有了解过的，迭代求解思路奇妙，代码量相对递归求解较长，作为拓展知识。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>刷题记录</category>
+        <category>树</category>
+        <category>递归</category>
+        <category>迭代</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Java流程控制</title>
+    <url>/2020/12/09/Java_control/</url>
+    <content><![CDATA[<p><img src="/images/LANGUAGE/python4.jpg" alt="2"></p>
+<h1 id="Java流程控制"><a href="#Java流程控制" class="headerlink" title="Java流程控制"></a><font size="5" color="red">Java流程控制</font></h1><p>  在前面已经介绍了Java的运算符，这里主要介绍Java的流程控制，包括if条件语句，switch条件语句，while循环，do…while循环，for循环，以及continue和break跳转语句，但是和C++不同的是Java中没有goto语句，避免了逻辑隐患。<br><a id="more"></a></p>
+<h1 id="Java条件语句"><a href="#Java条件语句" class="headerlink" title="Java条件语句"></a><font size="5" color="red">Java条件语句</font></h1><h2 id="if条件语句"><a href="#if条件语句" class="headerlink" title="if条件语句"></a><font size="4">if条件语句</font></h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">public class Control {</span><br><span class="line">    public static void main(String[] args) {</span><br><span class="line">        int a = 10;</span><br><span class="line"></span><br><span class="line">        //if单分支语句</span><br><span class="line">        if (a &gt; 5) {</span><br><span class="line">            System.out.println("a &gt; 5");</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        //if...else双分支语句</span><br><span class="line">        if (a &gt; 20) {</span><br><span class="line">            System.out.println("a &gt; 20");</span><br><span class="line">        }else{</span><br><span class="line">            System.out.println("a &lt;= 20");</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        //if...else if...else多分支语句</span><br><span class="line">        if (a &gt; 20) {</span><br><span class="line">            System.out.println("a &gt; 20");</span><br><span class="line">        }else if (a &lt; 0) {</span><br><span class="line">            System.out.println("a &lt; 0");</span><br><span class="line">        }else{</span><br><span class="line">            System.out.println("0 &lt;= a &lt;= 20");</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/LANGUAGE/Java10.png" alt="1"></p>
+<h2 id="switch-case语句"><a href="#switch-case语句" class="headerlink" title="switch case语句"></a><font size="4">switch case语句</font></h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">public class Control {</span><br><span class="line">    public static void main(String[] args) {</span><br><span class="line">        int a = 6;</span><br><span class="line"></span><br><span class="line">        //switch中的表达式可以为整型，字符型或者字符串型，不能为浮点型，或者一段区间。而且switch语句具有穿透效果，直至遇到break才会跳出。功能和C++相同，但是C++不支持字符串类型。</span><br><span class="line">        switch (a){</span><br><span class="line"></span><br><span class="line">            case 1:</span><br><span class="line">                System.out.println("Monday");</span><br><span class="line">                break;</span><br><span class="line">            case 2:</span><br><span class="line">                System.out.println("Tuesday");</span><br><span class="line">                break;</span><br><span class="line">            case 3:</span><br><span class="line">                System.out.println("Wednesday");</span><br><span class="line">                break;</span><br><span class="line">            case 4:</span><br><span class="line">                System.out.println("Thursday");</span><br><span class="line">                break;</span><br><span class="line">            case 5:</span><br><span class="line">                System.out.println("Friday");</span><br><span class="line">                break;</span><br><span class="line">            case 6:</span><br><span class="line">                System.out.println("Saturday is free");</span><br><span class="line">            case 7:</span><br><span class="line">                System.out.println("Sunday is free");</span><br><span class="line">                break;</span><br><span class="line">            default:</span><br><span class="line">                System.out.println("Wrong");</span><br><span class="line">                break;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/LANGUAGE/Java11.png" alt="2"></p>
+<h2 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a><font size="4">while循环</font></h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">public class Control {</span><br><span class="line">    public static void main(String[] args) {</span><br><span class="line">        int i = 1;</span><br><span class="line">        int sum = 0;</span><br><span class="line"></span><br><span class="line">        //while循环，每次循环开始时，判断表达式的内容，为真时执行循环体，否则跳出循环</span><br><span class="line">        while (i &lt; 10) {</span><br><span class="line">            sum += i++;</span><br><span class="line">        }</span><br><span class="line">        System.out.println("1 + 2 + 3 + ... + 9 = " + sum);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/LANGUAGE/Java12.png" alt="4"></p>
+<h2 id="do…while循环"><a href="#do…while循环" class="headerlink" title="do…while循环"></a><font size="4">do…while循环</font></h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">public class Control {</span><br><span class="line">    public static void main(String[] args) {</span><br><span class="line">        int i = 1;</span><br><span class="line">        int sum = 0;</span><br><span class="line"></span><br><span class="line">        //do...while循环，每次循环结束后，判断表达式的内容，为真时执行下一次循环体，否则跳出循环</span><br><span class="line">        //注意do...while语句，一定会执行一次，而且最后有分号。而while语句，可能一次都不会执行。</span><br><span class="line">        do{</span><br><span class="line">            sum += i++;</span><br><span class="line">        } while (i &lt; 10);</span><br><span class="line">        System.out.println("1 + 2 + 3 + ... + 9 = " + sum);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/LANGUAGE/Java12.png" alt="5"></p>
+<h2 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a><font size="4">for循环</font></h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">public class Control {</span><br><span class="line">    public static void main(String[] args) {</span><br><span class="line">        int sum = 0;</span><br><span class="line"></span><br><span class="line">        //for循环，括号中有三个表达式，分别为初始化表达式1，布尔表达式2，步进表达式3，循环体内容记为4</span><br><span class="line">        //for循环的执行过程为1-&gt;2-&gt;4-&gt;3-&gt;2-&gt;4-&gt;3-&gt;...-&gt;2，注意表达式1，2，3都可以省略，但是分号不可以省略。</span><br><span class="line">        //三种循环往往可以得到相同的结果，如果确定执行次数一般使用for循环，如果不确定执行次数则可以使用while循环</span><br><span class="line">        for (int i = 1; i &lt; 10; i++) {</span><br><span class="line">            sum += i;</span><br><span class="line">        }</span><br><span class="line">        System.out.println("1 + 2 + 3 + ... + 9 = " + sum);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/LANGUAGE/Java12.png" alt="6"></p>
+<h2 id="continue关键字"><a href="#continue关键字" class="headerlink" title="continue关键字"></a><font size="4">continue关键字</font></h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">public class Control {</span><br><span class="line">    public static void main(String[] args) {</span><br><span class="line">        int sum = 0;</span><br><span class="line"></span><br><span class="line">        //continue关键字，立即结束本次循环体中的内容，继续进行下一次循环</span><br><span class="line">        for (int i = 0; i &lt; 10; i++) {</span><br><span class="line">            if (i == 5) {</span><br><span class="line">                continue;</span><br><span class="line">            }</span><br><span class="line">            sum += i;</span><br><span class="line">        }</span><br><span class="line">        System.out.println("1 + 2 + 3 + 4 + 6 + 7 + 8 + 9 = " + sum);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/LANGUAGE/Java13.png" alt="4"></p>
+<h2 id="break关键字"><a href="#break关键字" class="headerlink" title="break关键字"></a><font size="4">break关键字</font></h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">public class Control {</span><br><span class="line">    public static void main(String[] args) {</span><br><span class="line">        int sum = 0;</span><br><span class="line"></span><br><span class="line">        //break关键字，立即结束该层循环，如果是多层循环嵌套，则进行上一层循环的下一次循环</span><br><span class="line">        //break语句除了用于循环结构，还可以用于switch语句中，跳出选择结构</span><br><span class="line">        for (int i = 0; i &lt; 10; i++) {</span><br><span class="line">            if (i == 5) {</span><br><span class="line">                break;</span><br><span class="line">            }</span><br><span class="line">            sum += i;</span><br><span class="line">        }</span><br><span class="line">        System.out.println("1 + 2 + 3 + 4 = " + sum);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/LANGUAGE/Java14.png" alt="5"></p>
+<h1 id="Java小结"><a href="#Java小结" class="headerlink" title="Java小结"></a><font size="5" color="red">Java小结</font></h1><p>  流程控制每种语言都大同小异，因为流程控制是所有语言的基础，只有掌握不同的流程控制语句，才能达到我们想要的目的，虽然难度较小，但是非常重要，无论以后从事什么样的研究，流程控制都是必不可少的，因此需要熟练掌握。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>Java</category>
+        <category>语言学习</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>二叉树的最近公共祖先(Leetcode 剑指Offer68-Ⅱ)</title>
+    <url>/2020/12/08/program%20Leetcode_offer68-%E2%85%A1/</url>
+    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcodeoffer68-Ⅱ.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   有关树的题目，小伙伴们就要想到递归，这个要深深的印在脑海里面。本题和Leetcode 剑指Offer68-Ⅰ是姐妹类型，这个题目难度稍微大一些，上一题我没有拿出来讲解是因为过于简单。在二叉搜索树中查找，因为是搜索树，我们可以根据节点的大小选择固定的路，不用进行回溯，所以通过迭代即可，不用递归进行查找，<strong>时间复杂度为$O(log(n))$</strong>。这个题目我们不知道树中节点的大小关系，因此需要进行递归查找，<strong>时间复杂度为$O(n)$</strong>。</p>
+<a id="more"></a>
+<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a><font size="5" color="red">递归</font></h1><p>在这里先给出我的笨方法，虽然时间复杂度和空间复杂度并不高，但是代码长度大，不美观。</p>
+<p>我的思路是自底向上进行查找，当找到p或者q时，数量加1，当数量等于2时，说明该节点是最近的公共祖先。</p>
+<p>算法的<strong>时间复杂度为$O(n)$，空间复杂度为$O(n)$</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">struct TreeNode {</span><br><span class="line">    int val;</span><br><span class="line">    TreeNode *left;</span><br><span class="line">    TreeNode *right;</span><br><span class="line">    TreeNode(int x) : val(x), left(NULL), right(NULL) {}</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line">class Solution {</span><br><span class="line">public:</span><br><span class="line">    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {</span><br><span class="line">        int nums = 0;</span><br><span class="line">        return subQuestion(root, p, q, nums);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    TreeNode* subQuestion(TreeNode* root, TreeNode* p, TreeNode* q, int&amp; nums) {</span><br><span class="line">        if (!root) {</span><br><span class="line">            return NULL;</span><br><span class="line">        }</span><br><span class="line">        int left = 0, right = 0;</span><br><span class="line">        TreeNode* leftChild = subQuestion(root-&gt;left, p, q, left);</span><br><span class="line">        TreeNode* rightChild = subQuestion(root-&gt;right, p, q, right);</span><br><span class="line">        nums = left + right;</span><br><span class="line">        if (root == p || root == q) {</span><br><span class="line">            nums++;</span><br><span class="line">        }</span><br><span class="line">        if (left == 2) {</span><br><span class="line">            return leftChild;</span><br><span class="line">        }</span><br><span class="line">        else if (right == 2) {</span><br><span class="line">            return rightChild;</span><br><span class="line">        }</span><br><span class="line">        else {</span><br><span class="line">            if (nums == 2) {</span><br><span class="line">                return root;</span><br><span class="line">            }</span><br><span class="line">            else {</span><br><span class="line">                return NULL;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="优化递归"><a href="#优化递归" class="headerlink" title="优化递归"></a><font size="5" color="red">优化递归</font></h1><p>要找两个节点的最近公共祖先，<strong>现在有三种情况，一个是两个节点都在某个节点的左孩子中，第二个是两个节点都存在于某个节点的右孩子中，第三个是两个节点一左一右分别存在于左孩子和右孩子中。</strong></p>
+<p>我们自底向上进行查找，当找到p或者q时返回p和q，p和q一定在某个节点的左右子树上，一个在左，一个在右，如果没有找到该节点，那么左右子树一定有一个是NULL，如果left = NULL，则return right，如果right = NULL，则return left，如果左右都不是NULL，说明找到了最近的公共祖先，返回root即可。</p>
+<p>这个思路是比较难想的，代码却非常简单，也非常漂亮。算法的<strong>时间复杂度为$O(n)$，空间复杂度为$O(n)$</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">struct TreeNode {</span><br><span class="line">    int val;</span><br><span class="line">    TreeNode *left;</span><br><span class="line">    TreeNode *right;</span><br><span class="line">    TreeNode(int x) : val(x), left(NULL), right(NULL) {}</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line">class Solution {</span><br><span class="line">public:</span><br><span class="line">    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {</span><br><span class="line">        if (!root || root == p || root == q) return root;</span><br><span class="line">        TreeNode* left = lowestCommonAncestor(root-&gt;left, p, q);</span><br><span class="line">        TreeNode* right = lowestCommonAncestor(root-&gt;right, p, q);</span><br><span class="line">        if (!left) return right;</span><br><span class="line">        if (!right) return left;</span><br><span class="line">        return root;</span><br><span class="line">    }</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  这个题目作为简单题，我不能接受，我想了很久，用了一种很笨的方法，虽然也是自底向上，但是代码不优美，这里提醒小伙伴们在刷题的时候，不能提交没有问题就进行下一题，一定要看一看别人的思路和方法，多多学习，这样才可以更好的提升自己。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>刷题记录</category>
+        <category>树</category>
+        <category>递归</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Java运算符</title>
     <url>/2020/12/07/Java_operator/</url>
     <content><![CDATA[<p><img src="/images/LANGUAGE/python3.jpg" alt="2"></p>
@@ -78,8 +235,8 @@
       <categories>
         <category>刷题记录</category>
         <category>树</category>
-        <category>递归</category>
         <category>哈希表</category>
+        <category>递归</category>
       </categories>
   </entry>
   <entry>
@@ -152,7 +309,7 @@
       <categories>
         <category>刷题记录</category>
         <category>字符串</category>
-        <category>广度优先搜素</category>
+        <category>广度优先搜索</category>
       </categories>
   </entry>
   <entry>
@@ -267,10 +424,10 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>动态规划</category>
+        <category>深度优先搜索</category>
         <category>字符串</category>
+        <category>动态规划</category>
         <category>记忆化</category>
-        <category>深度优先搜素</category>
       </categories>
   </entry>
   <entry>
@@ -444,9 +601,9 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>贪心</category>
         <category>堆</category>
         <category>二分查找</category>
+        <category>贪心</category>
       </categories>
   </entry>
   <entry>
@@ -487,10 +644,10 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>动态规划</category>
+        <category>深度优先搜索</category>
         <category>字符串</category>
+        <category>动态规划</category>
         <category>记忆化</category>
-        <category>深度优先搜素</category>
       </categories>
   </entry>
   <entry>
@@ -636,8 +793,8 @@
       <categories>
         <category>刷题记录</category>
         <category>树</category>
-        <category>递归</category>
         <category>哈希表</category>
+        <category>递归</category>
       </categories>
   </entry>
   <entry>
@@ -1287,8 +1444,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>数学</category>
         <category>深度优先搜索</category>
+        <category>数学</category>
         <category>广度优先搜索</category>
       </categories>
   </entry>
@@ -1707,8 +1864,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>递归</category>
         <category>堆</category>
+        <category>递归</category>
       </categories>
   </entry>
   <entry>
@@ -1917,8 +2074,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>动态规划</category>
         <category>字符串</category>
+        <category>动态规划</category>
       </categories>
   </entry>
   <entry>
@@ -2263,8 +2420,8 @@
       <categories>
         <category>刷题记录</category>
         <category>数组</category>
-        <category>位运算</category>
         <category>二分查找</category>
+        <category>位运算</category>
         <category>双指针</category>
       </categories>
   </entry>
@@ -2785,8 +2942,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>动态规划</category>
         <category>博弈</category>
+        <category>动态规划</category>
       </categories>
   </entry>
   <entry>
@@ -4545,8 +4702,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>动态规划</category>
         <category>深度优先搜索</category>
+        <category>动态规划</category>
         <category>广度优先搜索</category>
       </categories>
   </entry>
@@ -5649,8 +5806,8 @@
       <categories>
         <category>刷题记录</category>
         <category>深度优先搜索</category>
-        <category>并查集</category>
         <category>广度优先搜索</category>
+        <category>并查集</category>
       </categories>
   </entry>
   <entry>
@@ -6469,9 +6626,9 @@
       <categories>
         <category>刷题记录</category>
         <category>数组</category>
-        <category>排序</category>
         <category>二分查找</category>
         <category>双指针</category>
+        <category>排序</category>
       </categories>
   </entry>
   <entry>
