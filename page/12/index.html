@@ -341,7 +341,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/07/26/program Leetcode329/">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/09/05/C++_stl_map/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="USTCcoder">
@@ -360,7 +360,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/07/26/program Leetcode329/" itemprop="url">矩阵中的最长递增路径(Leetcode 329)</a></h1>
+                <a class="post-title-link" href="/2020/09/05/C++_stl_map/" itemprop="url">C++容器(Map)</a></h1>
         
 
         <div class="post-meta">
@@ -372,660 +372,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-26T15:36:59+08:00">
-                2020-07-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/刷题记录/" itemprop="url" rel="index">
-                    <span itemprop="name">刷题记录</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/刷题记录/深度优先搜索/" itemprop="url" rel="index">
-                    <span itemprop="name">深度优先搜索</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/刷题记录/记忆化/" itemprop="url" rel="index">
-                    <span itemprop="name">记忆化</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/刷题记录/广度优先搜索/" itemprop="url" rel="index">
-                    <span itemprop="name">广度优先搜索</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/07/26/program Leetcode329/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/26/program Leetcode329/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                  <span class="post-meta-divider">|</span>
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.3k
-                </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-              <div class="post-description">
-                  <table><tr><td bgcolor="grey"><font size="5" face="STXihei" color="white"><center>Leetcode 329</center></font></td></tr></table>
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-	  
-        <p><img src="/images/ALGORITHM/leetcode329.png" alt="1"></p>
-<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   最长递增路径问题，是一个有向图问题，而且要更为复杂一些，不是一个简单的单向图，而是<strong>多向图</strong>。要想找到最长的一条路径，必然要使用两种常见的搜索方法，<strong>DFS和BFS</strong>。但是这两个搜索方法都有一个特点，就是<strong>已知起始点然后进行搜索</strong>，如果不知道起始点，如何搜索得到最长路径呢？一个最暴力的方法是遍历所有起始点，从每一个点开始搜索，并且比较哪一个最长。这样的方法时间复杂度太高，浪费的太多的计算资源，必然无法通过所有的样例，那么如何保存计算过程中的计算结果呢？有一个专业术语称为<strong>记忆化</strong>，下面给小伙伴聊一聊记忆化的DFS。</p>   
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/07/26/program Leetcode329/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/07/25/program Leetcode410/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="USTCcoder">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/github.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GitHub">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/07/25/program Leetcode410/" itemprop="url">分割数组的最大值(Leetcode 410)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-25T14:59:35+08:00">
-                2020-07-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/刷题记录/" itemprop="url" rel="index">
-                    <span itemprop="name">刷题记录</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/刷题记录/动态规划/" itemprop="url" rel="index">
-                    <span itemprop="name">动态规划</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/刷题记录/数组/" itemprop="url" rel="index">
-                    <span itemprop="name">数组</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/刷题记录/二分查找/" itemprop="url" rel="index">
-                    <span itemprop="name">二分查找</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/07/25/program Leetcode410/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/25/program Leetcode410/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                  <span class="post-meta-divider">|</span>
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1k
-                </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-              <div class="post-description">
-                  <table><tr><td bgcolor="grey"><font size="5" face="STXihei" color="white"><center>Leetcode 410</center></font></td></tr></table>
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-	  
-        <p><img src="/images/ALGORITHM/leetcode410.png" alt="1"></p>
-<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   这个题目非常有难度，<strong>要将一个数组拆分成若干个子数组，并且要求得到的各个子数组之和的最大值最小。也就是说我们要切割的非常巧妙，尽量让每一个子数组之和相同，这样就不会产生有的很大，有的很小的问题</strong>。</p>   
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/07/25/program Leetcode410/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/07/24/program Leetcode1025/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="USTCcoder">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/github.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GitHub">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/07/24/program Leetcode1025/" itemprop="url">除数博弈(Leetcode 1025)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-24T19:24:04+08:00">
-                2020-07-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/刷题记录/" itemprop="url" rel="index">
-                    <span itemprop="name">刷题记录</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/刷题记录/动态规划/" itemprop="url" rel="index">
-                    <span itemprop="name">动态规划</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/刷题记录/博弈/" itemprop="url" rel="index">
-                    <span itemprop="name">博弈</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/07/24/program Leetcode1025/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/24/program Leetcode1025/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                  <span class="post-meta-divider">|</span>
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.1k
-                </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-              <div class="post-description">
-                  <table><tr><td bgcolor="grey"><font size="5" face="STXihei" color="white"><center>Leetcode 1025</center></font></td></tr></table>
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-	  
-        <p><img src="/images/ALGORITHM/leetcode1025.png" alt="1"></p>
-<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   这道题目是一个<strong>博弈问题</strong>，因为很难去遍历所有的情况，我们只能通过上一步对手的情况，选择我们相应的行为，因此博弈问题一般可以通过动态规划求解。</p>   
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/07/24/program Leetcode1025/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/07/23/C++_oop_3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="USTCcoder">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/github.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GitHub">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/07/23/C++_oop_3/" itemprop="url">C++面向对象进阶</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-23T20:26:24+08:00">
-                2020-07-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-05T09:50:40+08:00">
+                2020-09-05
               </time>
             
 
@@ -1076,207 +424,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/07/23/C++_oop_3/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/23/C++_oop_3/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                  <span class="post-meta-divider">|</span>
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.8k
-                </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-              <div class="post-description">
-                  <table><tr><td bgcolor="grey"><font size="5" face="STXihei" color="white"><center>C++面向对象进阶</center></font></td></tr></table>
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-	  
-        <p><img src="/images/LANGUAGE/C++43.png" alt="2"></p>
-<h1 id="C-面向对象进阶"><a href="#C-面向对象进阶" class="headerlink" title="C++面向对象进阶"></a><font size="5" color="red">C++面向对象进阶</font></h1><p>  前面介绍了面向对象的三种访问控制权限。今天带小伙们看一看C++面向对象中的static，const，friend关键字。<br></p>   
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/07/23/C++_oop_3/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/07/21/C++_oop_2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="USTCcoder">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/github.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GitHub">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/07/21/C++_oop_2/" itemprop="url">C++面向对象提高</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-21T23:08:19+08:00">
-                2020-07-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/语言学习/" itemprop="url" rel="index">
-                    <span itemprop="name">语言学习</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/语言学习/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C++</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/07/21/C++_oop_2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/21/C++_oop_2/" itemprop="commentCount"></span>
+                <a href="/2020/09/05/C++_stl_map/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/09/05/C++_stl_map/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1312,7 +461,7 @@
 
           
               <div class="post-description">
-                  <table><tr><td bgcolor="grey"><font size="5" face="STXihei" color="white"><center>C++面向对象提高</center></font></td></tr></table>
+                  <table><tr><td bgcolor="grey"><font size="5" face="STXihei" color="white"><center>C++容器(Map)</center></font></td></tr></table>
               </div>
           
 
@@ -1331,12 +480,12 @@
       
         
 	  
-        <p><img src="/images/LANGUAGE/C++41.png" alt="2"></p>
-<h1 id="C-面向对象提高"><a href="#C-面向对象提高" class="headerlink" title="C++面向对象提高"></a><font size="5" color="red">C++面向对象提高</font></h1><p>  之前介绍了C++面向对象的基础内容，其中引入了public关键字，这时C++面向对象的一种访问控制权限，这非常重要，可以更灵活的使用我们创建的类和对象，保护类中的内容，不被其他人调用。今天带小伙们看一看C++中的三种访问控制权限，与Java稍有不同，Java中包括四类访问控制权限，以后再给小伙伴介绍。<br></p>   
+        <p><img src="/images/LANGUAGE/C++75.png" alt="2"></p>
+<h1 id="C-容器-Map"><a href="#C-容器-Map" class="headerlink" title="C++容器(Map)"></a><font size="5" color="red">C++容器(Map)</font></h1><p>  容器是C++非常方便的功能，今天给小伙伴们介绍map库，map库是C++中的字典，，其特点是字典中的每一项存储一个键值对，每一个键对应一个确定的值，键不能重复，在统计元素出现个数等题目中有很好的使用场景，也是小伙伴们必须掌握的一种数据结构。<br></p>   
 
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2020/07/21/C++_oop_2/" rel="contents">
+            <a class="btn" href="/2020/09/05/C++_stl_map/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1391,7 +540,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/07/19/C++_oop_1/">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/09/03/C++_stl_set/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="USTCcoder">
@@ -1410,7 +559,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/07/19/C++_oop_1/" itemprop="url">C++面向对象基础</a></h1>
+                <a class="post-title-link" href="/2020/09/03/C++_stl_set/" itemprop="url">C++容器(Set)</a></h1>
         
 
         <div class="post-meta">
@@ -1422,8 +571,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-19T23:55:46+08:00">
-                2020-07-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-03T00:11:00+08:00">
+                2020-09-03
               </time>
             
 
@@ -1474,8 +623,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/07/19/C++_oop_1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/19/C++_oop_1/" itemprop="commentCount"></span>
+                <a href="/2020/09/03/C++_stl_set/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/09/03/C++_stl_set/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1499,7 +648,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2.4k
+                  1.3k
                 </span>
               
 
@@ -1511,7 +660,7 @@
 
           
               <div class="post-description">
-                  <table><tr><td bgcolor="grey"><font size="5" face="STXihei" color="white"><center>C++面向对象基础</center></font></td></tr></table>
+                  <table><tr><td bgcolor="grey"><font size="5" face="STXihei" color="white"><center>C++容器(Set)</center></font></td></tr></table>
               </div>
           
 
@@ -1530,12 +679,12 @@
       
         
 	  
-        <p><img src="/images/LANGUAGE/C++37.png" alt="2"></p>
-<h1 id="C-面向对象基础"><a href="#C-面向对象基础" class="headerlink" title="C++面向对象基础"></a><font size="5" color="red">C++面向对象基础</font></h1><p>  面向对象的编程思想(Object Oriented Programming, OOP)是程序设计发展的必然阶段，在70年代初，人们使用面向过程的编程思想解决问题，但是随着时代的进步，人们发现这种编程思想非常繁琐，尤其是定义多个相同或相似的变量，需要进行非常冗余的代码编写。这就引入了OOP的观念，面向对象的思想是C++语言的核心内容，因此我们分成多个篇章进行叙述，今天主要给大家介绍类的创建和使用，以及封装，构造析构函数等内容。<br></p>   
+        <p><img src="/images/LANGUAGE/C++73.png" alt="2"></p>
+<h1 id="C-容器-Set"><a href="#C-容器-Set" class="headerlink" title="C++容器(Set)"></a><font size="5" color="red">C++容器(Set)</font></h1><p>  容器是C++非常方便的功能，今天给小伙伴们介绍set库，set库是C++中的哈希表，也可以称其为集合，其特点是每个元素只出现一次，可以查找某个元素是否在集合中出现，在判重或者记忆化等题目中有很好的使用场景，是小伙伴们必须掌握的一种数据结构。<br></p>   
 
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2020/07/19/C++_oop_1/" rel="contents">
+            <a class="btn" href="/2020/09/03/C++_stl_set/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1590,7 +739,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/07/18/C++_exception/">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/08/31/C++_stl_list/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="USTCcoder">
@@ -1609,7 +758,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/07/18/C++_exception/" itemprop="url">C++异常</a></h1>
+                <a class="post-title-link" href="/2020/08/31/C++_stl_list/" itemprop="url">C++容器(List)</a></h1>
         
 
         <div class="post-meta">
@@ -1621,8 +770,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-18T14:03:59+08:00">
-                2020-07-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-31T23:51:40+08:00">
+                2020-08-31
               </time>
             
 
@@ -1673,8 +822,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/07/18/C++_exception/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/18/C++_exception/" itemprop="commentCount"></span>
+                <a href="/2020/08/31/C++_stl_list/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/08/31/C++_stl_list/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1698,7 +847,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  453
+                  732
                 </span>
               
 
@@ -1710,7 +859,7 @@
 
           
               <div class="post-description">
-                  <table><tr><td bgcolor="grey"><font size="5" face="STXihei" color="white"><center>C++异常</center></font></td></tr></table>
+                  <table><tr><td bgcolor="grey"><font size="5" face="STXihei" color="white"><center>C++容器(List)</center></font></td></tr></table>
               </div>
           
 
@@ -1729,12 +878,12 @@
       
         
 	  
-        <p><img src="/images/LANGUAGE/C++90.png" alt="2"></p>
-<h1 id="C-异常"><a href="#C-异常" class="headerlink" title="C++异常"></a><font size="5" color="red">C++异常</font></h1><p>  在学习C++时，如果一些操作不当，会导致程序异常终止，没有得到我们想要的输出，这是怎么回事呢？今天我会专门介绍C++中的一些异常，这和Python，Java等绝大部分语言都是类似的。<br></p>   
+        <p><img src="/images/LANGUAGE/C++77.png" alt="2"></p>
+<h1 id="C-容器-List"><a href="#C-容器-List" class="headerlink" title="C++容器(List)"></a><font size="5" color="red">C++容器(List)</font></h1><p>  容器是C++非常方便的功能，今天给小伙伴们介绍List库，List库是C++中的链表容器，其优点是不会造成内存的浪费和溢出，这和Vector相反，而且插入元素非常方便。但是缺点也很明显，需要一个额外的内存空间存放指针，而且因为其不按照内存进行存放，因此遍历花费时间较长。<br></p>   
 
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2020/07/18/C++_exception/" rel="contents">
+            <a class="btn" href="/2020/08/31/C++_stl_list/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1789,7 +938,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/07/17/C++_quote/">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/08/30/program Leetcode300/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="USTCcoder">
@@ -1808,7 +957,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/07/17/C++_quote/" itemprop="url">C++引用</a></h1>
+                <a class="post-title-link" href="/2020/08/30/program Leetcode300/" itemprop="url">最长上升子序列(Leetcode 300)</a></h1>
         
 
         <div class="post-meta">
@@ -1820,8 +969,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-17T23:39:36+08:00">
-                2020-07-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-30T23:26:14+08:00">
+                2020-08-30
               </time>
             
 
@@ -1843,8 +992,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/语言学习/" itemprop="url" rel="index">
-                    <span itemprop="name">语言学习</span>
+                  <a href="/categories/刷题记录/" itemprop="url" rel="index">
+                    <span itemprop="name">刷题记录</span>
                   </a>
                 </span>
 
@@ -1854,8 +1003,30 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/语言学习/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C++</span>
+                  <a href="/categories/刷题记录/数组/" itemprop="url" rel="index">
+                    <span itemprop="name">数组</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/刷题记录/动态规划/" itemprop="url" rel="index">
+                    <span itemprop="name">动态规划</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/刷题记录/二分查找/" itemprop="url" rel="index">
+                    <span itemprop="name">二分查找</span>
                   </a>
                 </span>
 
@@ -1872,8 +1043,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/07/17/C++_quote/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/17/C++_quote/" itemprop="commentCount"></span>
+                <a href="/2020/08/30/program Leetcode300/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/08/30/program Leetcode300/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1897,7 +1068,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.7k
+                  815
                 </span>
               
 
@@ -1909,7 +1080,7 @@
 
           
               <div class="post-description">
-                  <table><tr><td bgcolor="grey"><font size="5" face="STXihei" color="white"><center>C++引用</center></font></td></tr></table>
+                  <table><tr><td bgcolor="grey"><font size="5" face="STXihei" color="white"><center>Leetcode 300</center></font></td></tr></table>
               </div>
           
 
@@ -1928,12 +1099,12 @@
       
         
 	  
-        <p><img src="/images/LANGUAGE/C++33.png" alt="2"></p>
-<h1 id="C-引用"><a href="#C-引用" class="headerlink" title="C++引用"></a><font size="5" color="red">C++引用</font></h1><p>  从今天开始，正式进入C++的内容中，引用时C++的代码风格，为了使代码简单清晰，C++引入了引用这个概念。为什么要引入呢？因为人们发现用指针指来指去，非常复杂，而且容易出错，所以提出了一种更加简单的形式。引用可以看成是起别名，就像小名一样，小伙伴们应该都有小名，在家里一般不会直呼其名，常常会给小孩子起一个小名。那么小名就是你，大名也是你，因此对小名进行操作时，相当于对这个变量进行了操作。<br></p>   
+        <p><img src="/images/ALGORITHM/leetcode300.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>  <strong>最长上升子序列(Longest  Increasing Subsequence, LIS)</strong>:这是非常有趣的一个题目，也是笔试面试常常出现的一道数组题，这道题目小伙伴们必须要掌握动态规划的解法，但是能否想到更加巧妙的方法呢？</p>   
 
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2020/07/17/C++_quote/" rel="contents">
+            <a class="btn" href="/2020/08/30/program Leetcode300/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1988,7 +1159,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/07/15/C++_struct/">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/08/29/C++_stl_stack_queue/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="USTCcoder">
@@ -2007,7 +1178,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/07/15/C++_struct/" itemprop="url">C++结构体</a></h1>
+                <a class="post-title-link" href="/2020/08/29/C++_stl_stack_queue/" itemprop="url">C++容器(Stack & Queue)</a></h1>
         
 
         <div class="post-meta">
@@ -2019,8 +1190,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-15T23:04:37+08:00">
-                2020-07-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-29T23:40:33+08:00">
+                2020-08-29
               </time>
             
 
@@ -2071,8 +1242,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/07/15/C++_struct/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/15/C++_struct/" itemprop="commentCount"></span>
+                <a href="/2020/08/29/C++_stl_stack_queue/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/08/29/C++_stl_stack_queue/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -2096,7 +1267,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.1k
+                  1.2k
                 </span>
               
 
@@ -2108,7 +1279,7 @@
 
           
               <div class="post-description">
-                  <table><tr><td bgcolor="grey"><font size="5" face="STXihei" color="white"><center>C++结构体</center></font></td></tr></table>
+                  <table><tr><td bgcolor="grey"><font size="5" face="STXihei" color="white"><center>C++容器(Stack & Queue)</center></font></td></tr></table>
               </div>
           
 
@@ -2127,12 +1298,12 @@
       
         
 	  
-        <p><img src="/images/LANGUAGE/C++28.png" alt="2"></p>
-<h1 id="C-结构体"><a href="#C-结构体" class="headerlink" title="C++结构体"></a><font size="5" color="red">C++结构体</font></h1><p>  结构体进一步体现了面向对象的思想，但是和真正的面向对象有很大的差别，没有继承和多态的思想，但是已经可以定义成员函数和成员变量了，而且创建结构体变量时，可以实现将成员变量和成员函数封装在一个变量之中，实现多个结构体变量具有相同的结构，这一点类似于面向对象中的类。<br></p>   
+        <p><img src="/images/LANGUAGE/C++70.png" alt="2"></p>
+<h1 id="C-容器-Stack-amp-Queue"><a href="#C-容器-Stack-amp-Queue" class="headerlink" title="C++容器(Stack &amp; Queue)"></a><font size="5" color="red">C++容器(Stack &amp; Queue)</font></h1><p>  容器是C++非常方便的功能，今天给小伙伴们介绍stack和queue库，一个是栈，一个是队列，在数据结构中这两个内容也是必须掌握的重点内容，在刷题时也常常使用它们，因此在一篇博客中将它们放在一起介绍。<br></p>   
 
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2020/07/15/C++_struct/" rel="contents">
+            <a class="btn" href="/2020/08/29/C++_stl_stack_queue/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2187,7 +1358,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/07/12/C++_point/">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/08/28/program Leetcode1143/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="USTCcoder">
@@ -2206,7 +1377,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/07/12/C++_point/" itemprop="url">C++指针</a></h1>
+                <a class="post-title-link" href="/2020/08/28/program Leetcode1143/" itemprop="url">最长公共子序列(Leetcode 1143)</a></h1>
         
 
         <div class="post-meta">
@@ -2218,8 +1389,218 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-12T20:46:33+08:00">
-                2020-07-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-28T09:31:15+08:00">
+                2020-08-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/刷题记录/" itemprop="url" rel="index">
+                    <span itemprop="name">刷题记录</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/刷题记录/动态规划/" itemprop="url" rel="index">
+                    <span itemprop="name">动态规划</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/刷题记录/字符串/" itemprop="url" rel="index">
+                    <span itemprop="name">字符串</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/08/28/program Leetcode1143/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/08/28/program Leetcode1143/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  555
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  <table><tr><td bgcolor="grey"><font size="5" face="STXihei" color="white"><center>Leetcode 1143</center></font></td></tr></table>
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+	  
+        <p><img src="/images/ALGORITHM/leetcode1143.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   最长公共子序列(Longest Common Subsequence, LCS):是一个经典的问题，也是在某厂的笔试中遇到了这个问题，小伙伴们一定要会做呀。</p>   
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/08/28/program Leetcode1143/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/08/27/C++_stl_deque/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="USTCcoder">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/github.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GitHub">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/08/27/C++_stl_deque/" itemprop="url">C++容器(Deque)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-27T22:32:13+08:00">
+                2020-08-27
               </time>
             
 
@@ -2270,8 +1651,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/07/12/C++_point/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/12/C++_point/" itemprop="commentCount"></span>
+                <a href="/2020/08/27/C++_stl_deque/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/08/27/C++_stl_deque/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -2295,7 +1676,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2.5k
+                  790
                 </span>
               
 
@@ -2307,7 +1688,7 @@
 
           
               <div class="post-description">
-                  <table><tr><td bgcolor="grey"><font size="5" face="STXihei" color="white"><center>C++指针</center></font></td></tr></table>
+                  <table><tr><td bgcolor="grey"><font size="5" face="STXihei" color="white"><center>C++容器(Deque)</center></font></td></tr></table>
               </div>
           
 
@@ -2326,12 +1707,631 @@
       
         
 	  
-        <p><img src="/images/LANGUAGE/C++22.png" alt="2"></p>
-<h1 id="C-指针"><a href="#C-指针" class="headerlink" title="C++指针"></a><font size="5" color="red">C++指针</font></h1><p>  指针是C/C++最精髓的内容，也是大多数程序员幼崽的童年阴影，噩梦的开始。当然也包括本菜鸟也深受其害，在这里我们不说的很详尽，因为我也是个freshman，这个博客的内容是普及一下指针的基本用法，至于复杂的情况，可以参考上面的三本宝典，都是C/C++程序员走上不归路的必读书籍。<br></p>   
+        <p><img src="/images/LANGUAGE/C++68.png" alt="2"></p>
+<h1 id="C-容器-Deque"><a href="#C-容器-Deque" class="headerlink" title="C++容器(Deque)"></a><font size="5" color="red">C++容器(Deque)</font></h1><p>  容器是C++非常方便的功能，今天给小伙伴们介绍deque库，vector库是C++专门用于处理动态双端数组的库，里面内置了许多增删改查的算法，在刷题时常常使用它。<br></p>   
 
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2020/07/12/C++_point/" rel="contents">
+            <a class="btn" href="/2020/08/27/C++_stl_deque/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/08/26/program Leetcode152/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="USTCcoder">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/github.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GitHub">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/08/26/program Leetcode152/" itemprop="url">乘积最大子数组(Leetcode 152)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-26T13:36:09+08:00">
+                2020-08-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/刷题记录/" itemprop="url" rel="index">
+                    <span itemprop="name">刷题记录</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/刷题记录/数组/" itemprop="url" rel="index">
+                    <span itemprop="name">数组</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/刷题记录/动态规划/" itemprop="url" rel="index">
+                    <span itemprop="name">动态规划</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/08/26/program Leetcode152/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/08/26/program Leetcode152/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  670
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  <table><tr><td bgcolor="grey"><font size="5" face="STXihei" color="white"><center>Leetcode 152</center></font></td></tr></table>
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+	  
+        <p><img src="/images/ALGORITHM/leetcode152.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   这个题目和前两天说的一个最大子序和的题目类似，不过这个题目不是求和而是求积。求和和求积有什么区别呢？为啥这个题目的难度就是中等，而上一个题目的难度是简单呢。<strong>求和的题目不会涉及到符号的问题，如果前缀和小于0，则相加时不考虑前缀，这时上一个题目的核心思想。而这个题目的难点在于，可能出现负数乘负数产生正数的情况</strong>。</p>   
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/08/26/program Leetcode152/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/08/25/C++_stl_vector/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="USTCcoder">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/github.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GitHub">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/08/25/C++_stl_vector/" itemprop="url">C++容器(Vector)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-25T23:53:58+08:00">
+                2020-08-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/语言学习/" itemprop="url" rel="index">
+                    <span itemprop="name">语言学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/语言学习/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/08/25/C++_stl_vector/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/08/25/C++_stl_vector/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  939
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  <table><tr><td bgcolor="grey"><font size="5" face="STXihei" color="white"><center>C++容器(Vector)</center></font></td></tr></table>
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+	  
+        <p><img src="/images/LANGUAGE/C++66.png" alt="2"></p>
+<h1 id="C-容器-Vector"><a href="#C-容器-Vector" class="headerlink" title="C++容器(Vector)"></a><font size="5" color="red">C++容器(Vector)</font></h1><p>  容器是C++非常方便的功能，今天给小伙伴们介绍vector库，vector库是C++专门用于处理动态单端数组的库，里面内置了许多增删改查的算法，在刷题时常常使用它。<br></p>   
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/08/25/C++_stl_vector/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/08/24/program Leetcode53/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="USTCcoder">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/github.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GitHub">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/08/24/program Leetcode53/" itemprop="url">最大子序和(Leetcode 53)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-24T09:52:47+08:00">
+                2020-08-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/刷题记录/" itemprop="url" rel="index">
+                    <span itemprop="name">刷题记录</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/刷题记录/数组/" itemprop="url" rel="index">
+                    <span itemprop="name">数组</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/刷题记录/动态规划/" itemprop="url" rel="index">
+                    <span itemprop="name">动态规划</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/08/24/program Leetcode53/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/08/24/program Leetcode53/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  463
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  <table><tr><td bgcolor="grey"><font size="5" face="STXihei" color="white"><center>Leetcode 53</center></font></td></tr></table>
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+	  
+        <p><img src="/images/ALGORITHM/leetcode53.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   从今天开始进入另一个有趣的部分——<strong>子序列相关题目</strong>，这是笔试面试中最最经典的问题之一，常用的解法是<strong>动态规划</strong>，小伙伴们一定要留心这类题目。虽然看起来难度并不大，但是遇到时可能会出现眼高手低的情况。</p>   
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/08/24/program Leetcode53/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2377,7 +2377,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/27/">27</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2427,7 +2427,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">263</span>
+                  <span class="site-state-item-count">291</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2438,7 +2438,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
