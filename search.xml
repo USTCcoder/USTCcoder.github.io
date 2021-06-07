@@ -1,6 +1,519 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>目标和(Leetcode 494)</title>
+    <url>/2021/06/06/program%20Leetcode494/</url>
+    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode494.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   本题也是一个非常有趣的题目，很容易想到回溯法进行求解，但是时间复杂度为$O(2^n)$，对于数据量稍大的场景都无法适用。小伙伴们思考是否还要其他的方法？<br><a id="more"></a></p>
+<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a><font size="5" color="red">动态规划</font></h1><p>如果数据量较大，又没有特殊方法的题目，小伙伴们思路可以向动态规划靠近。</p>
+<p><strong>本题的要求是从前n个数，进行组合找到和为target的数。因此存在最优子问题，假设最后一个数为k，那么最优子问题等价于从前n - 1个数，组合找到和为target - k或者target + k的结果之和。用dp[i][j]代表前i个数之和为j的表达式数目</strong>。</p>
+<script type="math/tex; mode=display">dp[i][j] = dp[i - 1][j - nums[i]] + dp[i - 1][j + nums[i]]</script><p>算法的<strong>时间复杂度为$O(n \cdot target)$，空间复杂度为$O(n \cdot target)$</strong></p>
+<p>下面是C++语言的题解<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution {</span><br><span class="line">public:</span><br><span class="line">    int findTargetSumWays(vector&lt;int&gt;&amp; nums, int target) {</span><br><span class="line">        vector&lt;vector&lt;int&gt;&gt; dp(nums.size() + 1, vector&lt;int&gt;(2001));</span><br><span class="line">        dp[0][1000] = 1;</span><br><span class="line">        for (int i = 0; i &lt; nums.size(); i++) {</span><br><span class="line">            for (int j = -1000; j &lt;= 1000; j++) {</span><br><span class="line">                if (j + nums[i] &gt;= -1000 &amp;&amp; j + nums[i] &lt;= 1000) { dp[i + 1][j + nums[i] + 1000] += dp[i][j + 1000]; }</span><br><span class="line">                if (j - nums[i] &gt;= -1000 &amp;&amp; j - nums[i] &lt;= 1000) { dp[i + 1][j - nums[i] + 1000] += dp[i][j + 1000]; }</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        return dp.back()[target + 1000];</span><br><span class="line">    }</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>下面是Kotlin语言的题解<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution {</span><br><span class="line">    fun findTargetSumWays(nums: IntArray, target: Int): Int {</span><br><span class="line">        val dp = Array(nums.size + 1) {IntArray(2001)}</span><br><span class="line">        dp[0][1000] = 1</span><br><span class="line">        for ((idx, x) in nums.withIndex()) {</span><br><span class="line">            for (i in -1000..1000) {</span><br><span class="line">                if (i + x &gt;= -1000 &amp;&amp; i + x &lt;= 1000) { dp[idx + 1][i + x + 1000] += dp[idx][i + 1000]}</span><br><span class="line">                if (i - x &gt;= -1000 &amp;&amp; i - x &lt;= 1000) { dp[idx + 1][i - x + 1000] += dp[idx][i + 1000]}</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        return dp[nums.size][target + 1000]</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="优化动态规划"><a href="#优化动态规划" class="headerlink" title="优化动态规划"></a><font size="5" color="red">优化动态规划</font></h1><p>上面这种做法已经可以满足面试笔试的需求，但是本题有一种更巧妙的方法，转化为0-1背包问题进行求解。</p>
+<p><strong>因为nums都是正数，假设将其全部相加结果为sums，如果在某些位置加上负号，令这些数字之和为neg，所以其余的正数之和为sums - neg，此时整体数组之和为sums - neg + (-neg) = sums - 2neg = target</strong>。所以</p>
+<script type="math/tex; mode=display">neg = \frac{sums - target}{2}</script><p>即我们从nums中找出和为neg的子集数量即可，可以采用0-1背包的问题进行求解。用dp[i][j]表示前i个数和为j的子集数量。</p>
+<script type="math/tex; mode=display">dp[i][j] = dp[i - 1][j - nums[i]]</script><p>因为第i层状态仅与第i - 1层有关，可以适用一维dp进行求解。</p>
+<p>算法的<strong>时间复杂度为$O(n \cdot (sum - target))$，空间复杂度为$O(sum - target)$</strong></p>
+<p>下面是C++语言的题解<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution {</span><br><span class="line">public:</span><br><span class="line">    int findTargetSumWays(vector&lt;int&gt;&amp; nums, int target) {</span><br><span class="line">        int sums = 0;</span><br><span class="line">        for (int x : nums) { sums += x; }</span><br><span class="line">        int diff = sums - target;</span><br><span class="line">        if (diff &lt; 0 || diff &amp; 1) { return 0; }</span><br><span class="line">        int neg = diff &gt;&gt; 1;</span><br><span class="line">        vector&lt;int&gt; dp(neg + 1);</span><br><span class="line">        dp[0] = 1;</span><br><span class="line">        for (int i = 0; i &lt; nums.size(); i++) {</span><br><span class="line">            for (int j = neg; j &gt;= nums[i]; j--) {</span><br><span class="line">                dp[j] += dp[j - nums[i]];</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        return dp.back();</span><br><span class="line">    }</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>下面是Kotlin语言的题解<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution {</span><br><span class="line">    fun findTargetSumWays(nums: IntArray, target: Int): Int {</span><br><span class="line">        var sums = 0</span><br><span class="line">        for (x in nums) { sums += x }</span><br><span class="line">        val diff = sums - target</span><br><span class="line">        if (diff &lt; 0 || diff.and(1) == 1) { return 0 }</span><br><span class="line">        val neg = diff.shr(1)</span><br><span class="line">        val dp = IntArray(neg + 1)</span><br><span class="line">        dp[0] = 1</span><br><span class="line">        for (x in nums) {</span><br><span class="line">            for (i in neg downTo x) {</span><br><span class="line">                dp[i] += dp[i - x]</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        return dp.last()</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>对比C++和Kotlin两种语言，可以C++语言中布尔类型就是0和1，可以直接将运算结果进行布尔判断，而Kotlin布尔和整型不可以直接运算。而且在位操作时，C++是使用位运算符进行操作，如a&amp;b，Kotlin使用成员方法进行操作，如a.and(b)或者a and b。</p>
+<h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  本题的重点是动态规划思路，并不是说优化的DP比普通的DP更好，小伙伴们要进行对比，将两者方法都掌握。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>刷题记录</category>
+        <category>动态规划</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>一和零(Leetcode 474)</title>
+    <url>/2021/06/06/program%20Leetcode474/</url>
+    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode474.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   这个题目第一眼看上去，很面熟，但是又想不起来在哪里见到过。在翻看题解之后，发现这个题目和之前的背包问题非常相似，类似于一个二维的背包问题。下面我将题目进行转化，给你一个背包，背包的宽度和高度为m和n，其中宝物数组为strs，每个宝物也有宽度和高度两个属性，问最多能够装入多少个宝物？现在小伙伴们尝试一下能否独立求解出本题呢？<br><a id="more"></a></p>
+<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a><font size="5" color="red">动态规划</font></h1><p>背包问题的经典解法是动态规划，在0-1背包中，一维问题，创建一个二维数组dp[k][n]，其中k为宝物的个数，n为空间的大小。dp[i][j]代表遍历底i个物体时，当使用j个空间时能装入的物品个数。</p>
+<script type="math/tex; mode=display">\begin{cases} dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - w[i]] + 1) & j \ge w[i] \\ dp[i - 1][j] & j < w[i] \end{cases}</script><p>在本题二维问题中，创建一个三位数组dp[k][m][n]，其中k为字符串个数，m为0的个数，n为1的个数。dp[k][i][j]代表遍历底k个字符串时，共有i个0，j个1时子集中包含字符串的最大个数。</p>
+<script type="math/tex; mode=display">\begin{cases} dp[k][i][j] = max(dp[k - 1][i][j], dp[k - 1][i - mm[k]][j - nn[k]] + 1) & i \ge mm[k] \&\& j \ge nn[k] \\ dp[k - 1][i][j] & else \end{cases}</script><p>算法的<strong>时间复杂度为$O(mnk)$，空间复杂度为$O(mnk)$</strong></p>
+<p><strong>在0-1背包中，因为dp[i]仅与dp[i - 1]的状态有关，因此在一维问题中，可以使用一维数组记录状态，为了第i层的状态变化不影响上一层，可以使用倒序遍历实现。如果使用顺序遍历，dp[j] = dp[j - w[i]]会更新dp[j]的值，当使用dp[j]的值时，就不是更新前的值了，因此顺序遍历是不正确的，而逆序遍历，每次先更新后面的值，可以保证以后不会使用到。同理二维问题类似，可以进一步将时间复杂都缩小为$O(mn)$</strong></p>
+<p>下面是Python语言的题解<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def findMaxForm(self, strs: List[str], m: int, n: int) -&gt; int:</span><br><span class="line">        dp = [[0 for _ in range(n + 1)] for _ in range(m + 1)]</span><br><span class="line">        for s in strs:</span><br><span class="line">            mm = s.count('0')</span><br><span class="line">            nn = len(s) - mm</span><br><span class="line">            for i in range(m, mm - 1, -1):</span><br><span class="line">                for j in range(n, nn - 1, -1):</span><br><span class="line">                    dp[i][j] = max(dp[i - mm][j - nn] + 1, dp[i][j])</span><br><span class="line">        return dp[-1][-1]</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>下面是Kotlin语言的题解<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution {</span><br><span class="line">    fun findMaxForm(strs: Array&lt;String&gt;, m: Int, n: Int): Int {</span><br><span class="line">        val dp = Array(m + 1){IntArray(n + 1)}</span><br><span class="line">        for (str in strs) {</span><br><span class="line">            val mm = str.count{it == '0'}</span><br><span class="line">            val nn = str.length - mm</span><br><span class="line">            for (i in m downTo mm) {</span><br><span class="line">                for (j in n downTo nn) {</span><br><span class="line">                    dp[i][j] = Math.max(dp[i][j], dp[i - mm][j - nn] + 1)</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        return dp[m][n];</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>对比Python和Kotlin两种语言，可以发现在创建多维数组时，相对于C++或Java语言较为麻烦，在字符串操作时，Python的内置函数较为方便，Kotlin语言需要使用lambda表达式。而且在倒序时，Python和正序类似，只用修改倒序的步长，Kotlin需要使用downTo语句。可以看出来Kotlin更像一种Java和Python的结合体，在变量声明和每行代码结尾不用分号，更类似于Python，而循环，选择结构中的大括号，以及代码的逻辑结构上更类似于Java。</p>
+<h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  这个题目难度适中，如果能够联想到背包问题，相信对于小伙伴们来说是不难的，如果联想不到，暴力法或者回溯法可能无法求解本题。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>刷题记录</category>
+        <category>动态规划</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>连续的子数组和(Leetcode 523)</title>
+    <url>/2021/06/02/program%20Leetcode523/</url>
+    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode523.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   这个题目和Leetcode第560题很像，第560题是最基础的前缀和题目，本题进行了扩展，不是求和为k的子数组，而是要求和为k的倍数的子数组，且必须满足子数组的长度至少为2。能否使用类似的方法进行求解呢？<br><a id="more"></a></p>
+<h1 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a><font size="5" color="red">哈希表</font></h1><p>本题的题解是第560题的扩展，如果没有做过第560题的小伙伴，建议先去学习该题目。掌握如何在线性的时间复杂度内完成子数组之和的题目。</p>
+<p>我们可以通过哈希表查找dic[curSum - k]来判断是否含有值为curSum - k的前缀和，假设第i个前缀和为curSum，第j个前缀和为curSum - k，则从j + 1到i的子数组和为k。这是第560题的主要思路。在本题中k的倍数，无法枚举curSum - k，curSum - 2k等等，要挖掘倍数的特征，<strong>如果前i个前缀和模k为p，前j个前缀和模k也为p，则可以得到从j + 1到i的子数组和为k的倍数</strong>。此时如果子数组的长度大于等于2，则返回true即可。</p>
+<p>算法的<strong>时间复杂度为$O(n)$</strong>，因为哈希表只需要保留模k后第一次出现的索引，<strong>空间复杂度为$O(k)$</strong>。</p>
+<p>下面是Java语言的题解<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution {</span><br><span class="line">    public boolean checkSubarraySum(int[] nums, int k) {</span><br><span class="line">        HashMap&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();</span><br><span class="line">        map.put(0, -1);</span><br><span class="line">        int cur = 0;</span><br><span class="line">        for (int i = 0; i &lt; nums.length; i++) {</span><br><span class="line">            cur = (cur + nums[i]) % k;</span><br><span class="line">            if (map.containsKey(cur)) {</span><br><span class="line">                if (map.get(cur) + 1 &lt; i) {</span><br><span class="line">                    return true;</span><br><span class="line">                }</span><br><span class="line">            } else {</span><br><span class="line">                map.put(cur, i);</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        return false;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>下面是Kotlin语言的题解<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution {</span><br><span class="line">    fun checkSubarraySum(nums: IntArray, k: Int): Boolean {</span><br><span class="line">        val map = mutableMapOf&lt;Int, Int&gt;(0 to -1)</span><br><span class="line">        var cur = 0</span><br><span class="line">        for ((idx, x) in nums.withIndex()) {</span><br><span class="line">            cur = (cur + x) % k</span><br><span class="line">            if (map.containsKey(cur)) {</span><br><span class="line">                if (idx - map[cur]!! &gt; 1) {</span><br><span class="line">                    return true</span><br><span class="line">                }</span><br><span class="line">            } else {</span><br><span class="line">              map[cur] = idx</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        return false</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>对比两种语言，可以看出在哈希表的获取和插入时，<strong>Java语言必须通过put和get方法进行操作，而Kotlin可以类似于数组一样进行操作</strong>，但是<strong>Kotlin语言获取哈希表中的value时，要防止为null，否则无法直接和数值进行计算，因此要使用特殊符号?:0(如果为空则等于0)或者!!(一定不为空)</strong>。</p>
+<h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  前缀和的题目也已经做过很多次了，多总结，多练习，时间久了就会从量变引起质变。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>刷题记录</category>
+        <category>数组</category>
+        <category>哈希表</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>和为K的子数组(Leetcode 1074)</title>
+    <url>/2021/05/31/program%20Leetcode1074/</url>
+    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode1074.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   这个题目是一个困难题，问题描述比较简单，就是子矩阵之和等于target，求子矩阵的个数。思路很容易想到，但是能否找到一种时间复杂都最小的方法呢？<br><a id="more"></a></p>
+<h1 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a><font size="5" color="red">哈希表</font></h1><p>看到这个题目，一开始并没有联想到Leetcode560题，而是直接使用二维数组前缀和来求解。首先计算二维数组curSum[i, j]，其中[i, j]代表从(0, 0)到(i, j)的所有元素之和。然后使用四重循环遍历矩阵的起始行，起始列，终止行和终止列，算法的时间复杂度为$O(n^2m^2)$，其中n和m分别代表行数和列数。</p>
+<p>上述方法虽然可以得到正确结果，但是当n和m为1e2时，计算量达到1e8，这会TLE。因此无法正确提交，这时想到Leetcode560题，该题目是一维的问题，二维也可以类似求解。</p>
+<p>遍历起始行i，在每个起始行中遍历终止行j，对于每一个终止行类似于一维问题，遍历终止列c，我们记录从[i, 0]到[j, c]之和sums，查看哈希表中sums - target的个数，然后将sums放入哈希表中。假如[i, 0]到[j, c1]之和为k1，从[i, 0]到[j, c2]之和为k1 + target，说明，从[i, c1 + 1]到[j, c2]的子矩阵是满足之和为target的。</p>
+<p>算法只需要遍历起始行，终止行和终止列即可，且在循环时只需要用一维数组记录矩阵[i, 0]到[j, c]之和。<strong>时间复杂度为$O(n^2m)$，空间复杂度为$O(m)$</strong>。</p>
+<p>下面是Python语言的题解<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">from collections import defaultdict</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Solution:</span><br><span class="line">    def numSubmatrixSumTarget(self, matrix, target):</span><br><span class="line">        row, col = len(matrix), len(matrix[0])</span><br><span class="line">        res = 0</span><br><span class="line">        for i in range(row):</span><br><span class="line">            dp = [0] * (col + 1)</span><br><span class="line">            for j in range(i, row):</span><br><span class="line">                for c in range(col):</span><br><span class="line">                    dp[c + 1] += matrix[j][c]</span><br><span class="line">                dic = defaultdict(int)</span><br><span class="line">                cur = 0</span><br><span class="line">                for x in dp:</span><br><span class="line">                    cur += x</span><br><span class="line">                    res += dic[cur - target]</span><br><span class="line">                    dic[cur] += 1</span><br><span class="line">        return res</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>下面是Kotlin语言的题解<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution {</span><br><span class="line">    fun numSubmatrixSumTarget(matrix: Array&lt;IntArray&gt;, target: Int): Int {</span><br><span class="line">        val row = matrix.size</span><br><span class="line">        val col = matrix[0].size</span><br><span class="line">        var res = 0</span><br><span class="line">        for (i in 0 until row) {</span><br><span class="line">            val dp = IntArray(col + 1)</span><br><span class="line">            for (j in i until row) {</span><br><span class="line">                for (c in 0 until col) {</span><br><span class="line">                    dp[c + 1] += matrix[j][c]</span><br><span class="line">                }</span><br><span class="line">                val dic = mutableMapOf&lt;Int, Int&gt;()</span><br><span class="line">                var cur = 0</span><br><span class="line">                for (x in dp) {</span><br><span class="line">                    cur += x</span><br><span class="line">                    res += dic[cur - target] ?: 0</span><br><span class="line">                    dic[cur] = (dic[cur] ?: 0)  + 1</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        return res</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  前缀和是经典的笔试面试题，因为这些年内卷的太严重了，导致算法题的难度逐渐增加，普通的前缀和已经不能满足要求了，需要小伙伴们多做一些难度较大的题目来扩展自己的视野。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>刷题记录</category>
+        <category>数组</category>
+        <category>哈希表</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>PPT排版</title>
+    <url>/2021/05/30/skill%20PPT/</url>
+    <content><![CDATA[<p><strong><font size="5" color="gray"></font></strong></p><center><strong><font size="5" color="gray">PPT</font></strong></center><p></p>
+<h1 id="PPT介绍"><a href="#PPT介绍" class="headerlink" title="PPT介绍"></a><font size="5" color="red">PPT介绍</font></h1><p>  <strong>PPT(Microsoft Office PowerPoint):</strong>是微软公司的演示文稿软件，用户可以再投影仪或者计算机上进行演示，也可以制作海报，胶片等。尤其对于学生、职工来说，PPT是必不可少的工具之一。PPT常用在组会，报告，答辩等场合，很多人都会做PPT，然而是否真正会做PPT呢？这篇博客的目的是分享一些常用的PPT制作技巧和排版方式。<br><a id="more"></a></p>
+<h1 id="PPT"><a href="#PPT" class="headerlink" title="PPT"></a><font size="5" color="red">PPT</font></h1><h2 id="PPT基本操作"><a href="#PPT基本操作" class="headerlink" title="PPT基本操作"></a><font size="4">PPT基本操作</font></h2><ol>
+<li>设置PPT页面尺寸，点击设计菜单栏下的幻灯片大小选项，然后选择自定义幻灯片大小即可<br><img src="/images/SKILL/ppt14.png" alt="1"></li>
+<li>Ctrl + Z撤回操作</li>
+<li>保存为PDF文件，可以用于制作海报等场景，点击文件菜单栏，选择导出，创建PDF/XPS文档。<br><img src="/images/SKILL/ppt15.png" alt="1"></li>
+</ol>
+<h2 id="生成页面"><a href="#生成页面" class="headerlink" title="生成页面"></a><font size="4">生成页面</font></h2><ol>
+<li>使用开始菜单栏下的新建幻灯片选项</li>
+<li>使用快捷键Ctrl + M</li>
+<li>使用回车快捷键<br><img src="/images/SKILL/ppt1.png" alt="1"></li>
+</ol>
+<h2 id="调整当前视图和预览视图的比例"><a href="#调整当前视图和预览视图的比例" class="headerlink" title="调整当前视图和预览视图的比例"></a><font size="4">调整当前视图和预览视图的比例</font></h2><p>选择当前视图和预览视图中间的实线，左右拖动可以调整比例<br><img src="/images/SKILL/ppt2.png" alt="1"></p>
+<h2 id="调整当前视图大小"><a href="#调整当前视图大小" class="headerlink" title="调整当前视图大小"></a><font size="4">调整当前视图大小</font></h2><p>选择右下角的缩放栏，可以调节视图大小，点击右侧的自适应选项可以调整到最合适的尺寸<br><img src="/images/SKILL/ppt3.png" alt="1"></p>
+<h2 id="页面移动"><a href="#页面移动" class="headerlink" title="页面移动"></a><font size="4">页面移动</font></h2><p>如果第2页PPT想放到第1页，可以在预览视图中，将第2页拖动到第1页前面。如果跨越页面比较多，如从第10页移动到第1页，可以点击右下角的幻灯片浏览选项，然后将第10页拖拽到第1页。<br><img src="/images/SKILL/ppt4.png" alt="1"></p>
+<h2 id="页面复制、粘贴和删除"><a href="#页面复制、粘贴和删除" class="headerlink" title="页面复制、粘贴和删除"></a><font size="4">页面复制、粘贴和删除</font></h2><p>复制：和文档复制一样，在预览视图中选择一页PPT，使用快捷键Ctrl+C，即可复制到剪贴板中<br>粘贴：在预览视图中点击想要插入的地方，此时可以选择两个页面之间的空白区域，使用快捷键Ctrl+V，即可插入在两页面之间<br>删除：在预览视图中点击想删除的页面，按下后退快捷键BackSpace或者删除快捷键Delete即可删除该页面，如果想删除多个页面，则可以点击幻灯片浏览，点击要删除的起始页面，然后按下Shift键，再点击要删除的最终页面即可选中中间的所有页面，然后按下Delete即可。</p>
+<h2 id="插入文本框"><a href="#插入文本框" class="headerlink" title="插入文本框"></a><font size="4">插入文本框</font></h2><ol>
+<li>在开始菜单栏下的形状内，或者插入菜单栏下的形状选项内，可以选择横向或纵向文本框。<br><img src="/images/SKILL/ppt5.png" alt="1"></li>
+<li>在插入菜单栏下有文本框的选项，可以点击默认横向文本框，也可以点击下面的小箭头，选择横向或者纵向文本框。<br><img src="/images/SKILL/ppt6.png" alt="1"><br>关于文字的操作，和Word基本相同，可以调整大小，字体，颜色，间距，斜体等操作</li>
+</ol>
+<h2 id="插入图形"><a href="#插入图形" class="headerlink" title="插入图形"></a><font size="4">插入图形</font></h2><p>第一步：在开始菜单栏下的形状内，点击右侧第三个按钮，即可显示所有形状，或者点击插入菜单栏下的形状选项，也可以显示所有形状。<br><img src="/images/SKILL/ppt7.png" alt="1"><br>第二步：选择相应的形状，在画布上拖拽即可生成想要的图形，如果想生成标准图形，比如圆形，拖拽很可能生成一个椭圆，此时有两种方法。</p>
+<ol>
+<li>点击右键，选择大小和位置，然后在右侧会出现设置形状格式的设置栏，在其中可以设置需要的宽和高。将椭圆的宽和高都设为相同的数字，就会变为正圆。<br><img src="/images/SKILL/ppt8.png" alt="1"></li>
+<li>不拖拽生成椭圆，直接左键点击，即可生成标准正圆。<br>第三步：如果想等比例放大，可以按住Shift键，然后点击左上，左下，右上和右下四个拐角，即可等比例放大图形。如果想让图形中心不变，任意放大图形，可以按住Ctrl键，改变形状即可。如果想中心不变等比例放大，则需要同时按下Shift和Ctrl键。<br>第四步：可以点击右键设置填充颜色和轮廓，可以根据需要设置填充的样式或者轮廓的大小，线形等功能。<br><img src="/images/SKILL/ppt9.png" alt="1"></li>
+</ol>
+<h2 id="形状高阶操作"><a href="#形状高阶操作" class="headerlink" title="形状高阶操作"></a><font size="4">形状高阶操作</font></h2><ol>
+<li>设置透明度，右键图形，点击设置形状格式，然后在右侧任务窗格中形状选项的填充与线条下可以调整透明度<br><img src="/images/SKILL/ppt59.png" alt="1"></li>
+<li>渐变填充，在填充与线条下，选择渐变填充，然后可以看到渐变光圈调节框，可以修改颜色光圈调节渐变的属性<br><img src="/images/SKILL/ppt60.png" alt="1"></li>
+<li>图片填充，在填充与线条下，选择图片或纹理填充，然后选中要填充的图片，按下Ctrl + C，将图片保存至剪贴板中，然后在形状任务窗格里点击插入图片来自剪贴板，而且一般要选择将图片平铺为纹理，否则图片可能产生变形，但是平铺时可能导致形状中的图片是非重点区域，可以通过调整偏移量，对其方式等将感兴趣的区域调整在形状中心<br><img src="/images/SKILL/ppt61.png" alt="1"></li>
+<li>调整形状的样式，在形状中，某些图形可以调整样式，如圆角矩形，可以点击大小调节点旁边的黄色端点，左右拖动可以控制圆角的大小，同理，拖动三角形顶点，可以控制三角形的形状。但是不是所有的图形都可以调整，例如椭圆，没有调节点<br><img src="/images/SKILL/ppt67.png" alt="1"></li>
+<li>编辑顶点，右键图形，点击编辑顶点，右键要编辑的顶点，可以增加顶点，删除顶点，平滑顶点，或者修改边的形状等，小伙伴们可以自己尝试使用<br><img src="/images/SKILL/ppt68.png" alt="1"></li>
+</ol>
+<h2 id="形状组合"><a href="#形状组合" class="headerlink" title="形状组合"></a><font size="4">形状组合</font></h2><p>图形组合至少使用两个图形，因此使用一个圆形和一个矩形进行介绍</p>
+<ol>
+<li>联合：对两个图形进行并集操作。选中两个图形，点击格式菜单栏下的合并形状，然后选择联合<br><img src="/images/SKILL/ppt62.png" alt="1"></li>
+<li>组合：对两个图形进行异或操作。选中两个图形，点击格式菜单栏下的合并形状，然后选择组合<br><img src="/images/SKILL/ppt63.png" alt="1"></li>
+<li>拆分：将两张图形根据边界进行拆分。选中两个图形，点击格式菜单栏下的合并形状，然后选择拆分<br><img src="/images/SKILL/ppt64.png" alt="1"></li>
+<li>相交：对两个图形进行交集操作。选中两个图形，点击格式菜单栏下的合并形状，然后选择相交<br><img src="/images/SKILL/ppt65.png" alt="1"></li>
+<li>剪除：从先选择的图形中减去后选择的图形。选中两个图形，点击格式菜单栏下的合并形状，然后选择剪除<br><img src="/images/SKILL/ppt66.png" alt="1"></li>
+</ol>
+<h2 id="形状实战"><a href="#形状实战" class="headerlink" title="形状实战"></a><font size="4">形状实战</font></h2><p>在学习完形状高阶操作和形状组合后，基本上可以实现任意想要的形状，一些常用的形状可以到<a href="https://www.iconfont.cn/" target="_blank" rel="noopener">阿里巴巴矢量图标库</a>中下载。下面展示如何使用PPT图形制作一个简单的照相机图标<br><img src="/images/SKILL/ppt69.png" alt="1"><br>首先观察图标中的样式，由三个圆角矩形和一个圆环组成。</p>
+<ol>
+<li>构建四个基本形状<br><img src="/images/SKILL/ppt70.png" alt="1"></li>
+<li>对左上角和大的圆角矩形进行联合，设置无轮廓；修改小的圆角矩形的填充颜色，设置无轮廓；调整圆形轮廓的线宽<br><img src="/images/SKILL/ppt71.png" alt="1"></li>
+</ol>
+<h2 id="对齐操作"><a href="#对齐操作" class="headerlink" title="对齐操作"></a><font size="4">对齐操作</font></h2><p>在PPT的制作过程中，常常需要合理放置图形的位置，下面讲解对齐操作。对齐操作至少使用两个图形，因此使用三个圆形进行介绍。选中三个图形，点击格式菜单栏下的对齐，可以进行样式选择</p>
+<ol>
+<li>左对齐、右对齐、顶端对齐和底端对齐，是指将其他图形和最左端、最右端、最顶端和最底端的图形对齐，以左对齐为例，如下图所示<br><img src="/images/SKILL/ppt89.png" alt="1"></li>
+<li>横向分布和纵向分布，是指选取两侧形状的位置不动，将中间的所有图形等比例分布。如果选择横向分布，则最左端和最右端的图形位置不动，如果选择纵向分布，则最上端和最下端的图形位置不动，以横向分布为例，如下图所示<br><img src="/images/SKILL/ppt90.png" alt="1"></li>
+</ol>
+<h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a><font size="4">插入图片</font></h2><p>第一步：点击插入菜单栏下的图片选项，会弹出图片选择路径，选择合适的图片即可插入PPT中<br><img src="/images/SKILL/ppt10.png" alt="1"><br>第二步：一般来说图片插入后都需要调整大小，和形状类似，可以选择拖动八个方位调整大小，要注意的是图片拖动四个角是等比例放大，而且一般为了保持图片宽高比不失衡，都不会拖动上下和左右四个方向。</p>
+<ol>
+<li>如果要修改图片的宽高比，如应用于16：9的背景，则一般先放大，使图片的一对边等于画布的尺寸，另一对边大于画布尺寸，然后采用裁剪的方式，右键图片，选择裁剪，八个方向的拖拽标记会变为T形，此时选择裁剪大于画布尺寸的对边，移动其中的T形标记可以裁剪图片。<br><img src="/images/SKILL/ppt11.png" alt="1"></li>
+<li>也可以选中图片，点击格式菜单栏下，右侧裁剪选项下方的倒三角形按钮，选择一个合适的裁剪形状，并选择合适的宽高比，会出现一个裁剪框，将要保留的部分放在白色区域中即可。<br><img src="/images/SKILL/ppt12.png" alt="1"><br>第三步：如果想对图片增加一些特效，可以选择图片，点击格式菜单栏或者右键设置图片格式，可以在里面设置各种图片颜色、样式、边框、效果等功能，小伙伴们可以根据需要多多尝试，这里不做过多介绍。当需要取消这些效果时，点击重设图片即可。<br><img src="/images/SKILL/ppt13.png" alt="1"></li>
+</ol>
+<h2 id="图片去除背景"><a href="#图片去除背景" class="headerlink" title="图片去除背景"></a><font size="4">图片去除背景</font></h2><p>第一步：选中图片，点击格式菜单栏下的删除背景<br><img src="/images/SKILL/ppt101.png" alt="1"><br>第二步：其中紫色的部分为要删除的区域，然后将调整框缩放到合适的位置<br><img src="/images/SKILL/ppt100.png" alt="1"><br>第三步：可以编辑要保留的区域和要删除的区域来调整前景和背景区域<br><img src="/images/SKILL/ppt99.png" alt="1"><br>第四步：最后点击保留更改或者点击空白区域可以进行背景去除<br><img src="/images/SKILL/ppt102.png" alt="1"><br>这种操作常常用于虚化背景，将整张图片进行虚化，然后在相同的位置放置原图，并中扣除人物前景进行保留，因此只对背景虚化<br><img src="/images/SKILL/ppt103.png" alt="1"></p>
+<h2 id="字体选择"><a href="#字体选择" class="headerlink" title="字体选择"></a><font size="4">字体选择</font></h2><p>粗犷的字体：微软雅黑加粗，常用于封面、标题等<br>高端的字体：微软雅黑Light，常用于演讲、正文等<br>国风的字体：楷体、宋体，常用于党建、文化、历史等<br><img src="/images/SKILL/ppt16.png" alt="1"></p>
+<h2 id="字体的修改"><a href="#字体的修改" class="headerlink" title="字体的修改"></a><font size="4">字体的修改</font></h2><p>这个内容和Word基本相同，这里不做过多介绍，要修改哪部分文字，选中该文字，然后在开始菜单栏字体区域中进行调整即可。可以对字体进行加粗，斜体，下划线，调整颜色，文字间距等等。<br><img src="/images/SKILL/ppt17.png" alt="1"></p>
+<h2 id="字体特效"><a href="#字体特效" class="headerlink" title="字体特效"></a><font size="4">字体特效</font></h2><p>字体的特效和字体的修改类似，选择要增加特效的字体，然后点击格式菜单栏，可以看到艺术字样式的区域，可以设置已有的艺术字样式，或者给文本进行填充，设置轮廓，或者在文本效果中添加阴影，映像等操作。<br><img src="/images/SKILL/ppt18.png" alt="1"></p>
+<h2 id="字体外边框"><a href="#字体外边框" class="headerlink" title="字体外边框"></a><font size="4">字体外边框</font></h2><ol>
+<li>右键点击文本框，选择轮廓，然后设置需要的颜色、线宽等。这种方法修改的是文本框的参数，因此无法绘制其他形状的边框<br><img src="/images/SKILL/ppt19.png" alt="1"></li>
+<li>绘制之前学习的任意形状，然后将形状放在合适的位置，右键形状，设置无填充颜色，然后再右键轮廓，设置需要的颜色、线宽等，即可设置任意形状的字体外边框<br><img src="/images/SKILL/ppt20.png" alt="1"><br>推荐使用方法2，设置后效果如下<br><img src="/images/SKILL/ppt21.png" alt="1"></li>
+</ol>
+<h2 id="图文结合"><a href="#图文结合" class="headerlink" title="图文结合"></a><font size="4">图文结合</font></h2><p>在图片中，插入合适的文字<br><img src="/images/SKILL/ppt22.png" alt="1"></p>
+<h2 id="文字笔画拆分"><a href="#文字笔画拆分" class="headerlink" title="文字笔画拆分"></a><font size="4">文字笔画拆分</font></h2><ol>
+<li>在文本框中输入要拆分的文字，并设置合适的字体和大小</li>
+<li>选择形状，插入一个大于文本框的矩形框</li>
+<li>选中文本框和矩形框，点击格式菜单栏下的合并形状，然后选择拆分<br><img src="/images/SKILL/ppt57.png" alt="1"></li>
+<li>此时已经将文字中的笔画进行了拆分，然后移动相应的距离，并将拆分后形状的透明度设置较高，则可以充当背景，再其中添加一些主要的字和修饰作为前景即可<br><img src="/images/SKILL/ppt58.png" alt="1"></li>
+</ol>
+<h2 id="图片文字镂空"><a href="#图片文字镂空" class="headerlink" title="图片文字镂空"></a><font size="4">图片文字镂空</font></h2><ol>
+<li>在图片中，插入合适的文字</li>
+<li>设置和幕布同样大小的矩形框，并设置填充为黑色，无轮廓，并且设置形状格式中透明度为需要的值<br><img src="/images/SKILL/ppt23.png" alt="1"></li>
+<li>将幕布缩放，选择矩形框，按下Shift键，从幕布外开始拖动选中要镂空的文本框，然后点击格式菜单栏下的合并形状，选择剪除。<br><img src="/images/SKILL/ppt24.png" alt="1"></li>
+</ol>
+<h2 id="制作PPT的样式"><a href="#制作PPT的样式" class="headerlink" title="制作PPT的样式"></a><font size="4">制作PPT的样式</font></h2><p>下面展示的图片为珞珈老师的PPT制作教程，课程可以在Bilibili中搜索到</p>
+<h3 id="大标题型PPT"><a href="#大标题型PPT" class="headerlink" title="大标题型PPT"></a><font size="4">大标题型PPT</font></h3><p>这类PPT的特点是当前页仅有一句关键的话，或者作为引领主题的PPT首页。<br><img src="/images/SKILL/ppt72.png" alt="1"><br>下面介绍这张PPT的制作过程</p>
+<ol>
+<li>首先将图片按照要求铺面整个幕布，这部分内容可以参考插入图片相关内容<br><img src="/images/SKILL/ppt75.png" alt="1"></li>
+<li>在幕布中间绘制一个平行四边形，设置填充颜色为黑色，并设置合适的透明度(30%左右)，然后设置边框颜色为白色，宽度为2.25磅<br><img src="/images/SKILL/ppt76.png" alt="1"></li>
+<li>绘制一个面积稍小一些的平行四边形，设置无填充颜色，设置边框颜色为白色，宽度为1.5磅，设置合适的透明度(50%左右)<br><img src="/images/SKILL/ppt77.png" alt="1"></li>
+<li>在平行四边形中插入文本框，设置合适的字体、大小、颜色<br><img src="/images/SKILL/ppt78.png" alt="1"></li>
+<li>在文本框下方加入一条直线，增加美感<br><img src="/images/SKILL/ppt79.png" alt="1"></li>
+</ol>
+<p><img src="/images/SKILL/ppt91.png" alt="1"><br>下面介绍这张PPT的制作过程</p>
+<ol>
+<li>首先将图片按照要求铺面整个幕布，这部分内容可以参考插入图片相关内容<br><img src="/images/SKILL/ppt92.png" alt="1"></li>
+<li>如果背景太亮或者太花，可以加上一个黑色的蒙版<br><img src="/images/SKILL/ppt93.png" alt="1"></li>
+<li>插入文本框，设置合适的字体、大小、颜色<br><img src="/images/SKILL/ppt94.png" alt="1"></li>
+<li>先绘制一个矩形框，将中国科学技术大学八个字框起来，并设置无填充颜色，轮廓为白色，然后再使用任意多边形绘制旁边的矩形框，先点击起始点，然后按住Shift键，则可以水平垂直绘制直线，绘制完成后，按下回车键，则可以停止绘制，设置轮廓为白色即可<br><img src="/images/SKILL/ppt98.png" alt="1"></li>
+</ol>
+<p><img src="/images/SKILL/ppt95.png" alt="1"><br>下面介绍这张PPT的制作过程</p>
+<ol>
+<li>首先将图片按照要求铺面整个幕布，这部分内容可以参考插入图片相关内容<br><img src="/images/SKILL/ppt96.png" alt="1"></li>
+<li>直接在图片中留白的位置插入文本框，设置合适的字体、大小、颜色即可<br><img src="/images/SKILL/ppt97.png" alt="1"></li>
+</ol>
+<p><img src="/images/SKILL/ppt74.png" alt="1"><br>下面介绍这张PPT的制作过程</p>
+<ol>
+<li>首先将图片按照要求铺面整个幕布，这部分内容可以参考插入图片相关内容<br><img src="/images/SKILL/ppt84.png" alt="1"></li>
+<li>在图形中选择任意多边形，沿着山脉的走向，左键点击绘制端点，最后一个端点点击起始点会形成一个封闭图形，然后设置填充颜色和透明度，选择轮廓为白色，然后右键形状编辑端点，将图形的左、右和底边稍微超出幕布，这样可以只保留上边缘的边框线<br><img src="/images/SKILL/ppt85.png" alt="1"></li>
+<li>绘制圆形，设置填充颜色为黑色，轮廓为白色，并复制多个圆形作为山脉走向折线的端点。<br><img src="/images/SKILL/ppt86.png" alt="1"></li>
+<li>可以添加一些文本，并且从阿里巴巴矢量库中下载一些形状进行美化<br><img src="/images/SKILL/ppt87.png" alt="1"></li>
+</ol>
+<h3 id="小标题型PPT"><a href="#小标题型PPT" class="headerlink" title="小标题型PPT"></a><font size="4">小标题型PPT</font></h3><p>这类PPT的特点是汇报人对关键内容进行解释和说明，可能是内容较为复杂或者文本内容较为抽象不便于展开。<br><img src="/images/SKILL/ppt73.png" alt="1"><br>下面介绍这张PPT的制作过程</p>
+<ol>
+<li>首先将图片按照要求铺面整个幕布，这部分内容可以参考插入图片相关内容<br><img src="/images/SKILL/ppt80.png" alt="1"></li>
+<li>在幕布下方绘制一个矩形框和五个合适大小的圆形，并排列至合适的位置<br><img src="/images/SKILL/ppt81.png" alt="1"></li>
+<li>选中图形，并进行联合，然后设置填充颜色，最好使用取色器选择背景中的一个深色，并且设置轮廓线为白色，选择联合后的图形进行等比例放大，这步操作是为了使形状的底部和两侧不显露白色边框<br><img src="/images/SKILL/ppt82.png" alt="1"></li>
+<li>选择合适的小图标，然后在下方添加子标题和相应的文字即可<br><img src="/images/SKILL/ppt83.png" alt="1"></li>
+</ol>
+<p><img src="/images/SKILL/ppt25.png" alt="1"><br>下面介绍这张PPT的制作过程</p>
+<ol>
+<li>首先将图片按照要求铺面整个幕布，这部分内容可以参考插入图片相关内容<br><img src="/images/SKILL/ppt31.png" alt="1"></li>
+<li>选择形状，绘制两个矩形框，设置填充颜色，并设置无轮廓，分别放在顶端和底端<br><img src="/images/SKILL/ppt32.png" alt="1"></li>
+<li>插入合适的当前页面标题，如本页介绍坚持，则可以在顶端写上总标题，并用形状中的直线将中文和英文分开，直线设置一定的宽度<br><img src="/images/SKILL/ppt33.png" alt="1"></li>
+<li>根据要介绍的部分设置相应数量的子标题形状，这里使用圆形放置标题，调整圆形的颜色和大小，并点击形状右键设置形状格式，调整圆形的透明度<br><img src="/images/SKILL/ppt34.png" alt="1"></li>
+<li>根据子标题的内容，选择合适的小图标，并在下方配上关键字<br><img src="/images/SKILL/ppt35.png" alt="1"></li>
+</ol>
+<h3 id="图文结合型PPT"><a href="#图文结合型PPT" class="headerlink" title="图文结合型PPT"></a><font size="4">图文结合型PPT</font></h3><p>这类PPT的特点是汇报人提取出关键的段落，适用于大段文字过于冗长，简短的标题无法包含重要内容的场景。<br><img src="/images/SKILL/ppt26.png" alt="1"><br>下面介绍这张PPT的制作过程</p>
+<ol>
+<li>首先将图片裁剪，切记不要缩放，然后将图片的一条边紧贴幕布，可以根据需要放在左侧、右侧、上侧或者下侧。<br><img src="/images/SKILL/ppt36.png" alt="1"></li>
+<li>设置该页PPT的总标题，如本页介绍坚持，则可以在右上方写上总标题，并使用直线增加美感<br><img src="/images/SKILL/ppt37.png" alt="1"></li>
+<li>根据要介绍的部分设置相应数量的子标题形状，这里使用圆形放置标题，调整圆形的颜色和大小，并选择合适的小图标，然后在右侧添加子标题<br><img src="/images/SKILL/ppt38.png" alt="1"></li>
+<li>可以根据需要设置背景，可以选择公司logo，或者自己制作的一些小形状，这里我就将科大的校徽当作背景，设置合适的颜色并置于底层，即可使文字覆盖在上面<br><img src="/images/SKILL/ppt39.png" alt="1"></li>
+</ol>
+<p><img src="/images/SKILL/ppt27.png" alt="1"><br>下面介绍这张PPT的制作过程</p>
+<ol>
+<li>首先将图片按照要求铺面整个幕布，这部分内容可以参考插入图片相关内容<br><img src="/images/SKILL/ppt40.png" alt="1"></li>
+<li>设置该页PPT的总标题，如本页介绍坚持，则可以在右上方写上总标题，并使用直线增加美感<br><img src="/images/SKILL/ppt41.png" alt="1"></li>
+<li>选择圆角矩形，并设置相应的大小、颜色和透明度<br><img src="/images/SKILL/ppt42.png" alt="1"></li>
+<li>根据要介绍的部分设置相应数量的子标题形状，这里使用圆形放置标题，设置无填充颜色，边框为白色，并根据子标题的内容，选择合适的小图标，并在下方配上关键字<br><img src="/images/SKILL/ppt43.png" alt="1"></li>
+<li>在子标题下方添加要介绍的文本段落，并设置文字对其方式为居中<br><img src="/images/SKILL/ppt44.png" alt="1"></li>
+</ol>
+<h3 id="全文字型PPT"><a href="#全文字型PPT" class="headerlink" title="全文字型PPT"></a><font size="4">全文字型PPT</font></h3><p>这类PPT的特点是段落内容都很重要，删去后会导致语句不连贯或者影响表达的完整性，因此PPT中出现大量的文字。<br><img src="/images/SKILL/ppt28.png" alt="1"><br>下面介绍这张PPT的制作过程</p>
+<ol>
+<li>根据要介绍的部分设置相应数量的子标题形状，这里使用圆形放置标题，调整圆形的颜色和大小，并选择合适的小图标，然后再右侧添加子标题<br><img src="/images/SKILL/ppt45.png" alt="1"></li>
+<li>在下方插入文本框，尽量使文本框的左侧和小标题对其<br><img src="/images/SKILL/ppt46.png" alt="1"></li>
+<li>在子标题之间加上虚线，增加PPT的美感<br><img src="/images/SKILL/ppt47.png" alt="1"></li>
+<li>可以根据需要设置背景，可以选择公司logo，或者自己制作的一些小形状，这里我就将科大的校徽当作背景，设置合适的颜色并置于底层，即可使文字覆盖在上面<br><img src="/images/SKILL/ppt48.png" alt="1"></li>
+</ol>
+<p><img src="/images/SKILL/ppt29.png" alt="1"><br>这张PPT虽然有图，但是基本上被文字占据，文字数量较多，因此也归为全文字型PPT，下面介绍这张PPT的制作过程。</p>
+<ol>
+<li>首先将图片按照要求铺面整个幕布，这部分内容可以参考插入图片相关内容<br><img src="/images/SKILL/ppt49.png" alt="1"></li>
+<li>添加一个矩形框，设置合适的填充颜色，这里选择灰色，并且设置无边框颜色<br><img src="/images/SKILL/ppt50.png" alt="1"></li>
+<li>后面的部分和上一张PPT的制作方法完全相同，这里不做重复介绍，直接看最终的效果图<br><img src="/images/SKILL/ppt51.png" alt="1"></li>
+</ol>
+<p><img src="/images/SKILL/ppt30.png" alt="1"><br>这张PPT和上一张类似，文字数量较多，因此也归为全文字型PPT，下面介绍这张PPT的制作过程。</p>
+<ol>
+<li>首先将图片按照要求铺面整个幕布，这部分内容可以参考插入图片相关内容<br><img src="/images/SKILL/ppt52.png" alt="1"></li>
+<li>设置该页PPT的总标题，如本页介绍坚持，则可以在右上方写上总标题，并使用直线增加美感<br><img src="/images/SKILL/ppt53.png" alt="1"></li>
+<li>选择矩形，并设置相应的大小、颜色和透明度。然后将矩形的一条边紧贴幕布，可以根据需要放在左侧、右侧、上侧或者下侧。<br><img src="/images/SKILL/ppt54.png" alt="1"></li>
+<li>根据要介绍的部分设置相应数量的子标题形状，这里使用圆形放置标题，设置无填充颜色，边框为白色，并根据子标题的内容，选择合适的小图标，并在右侧配上关键字<br><img src="/images/SKILL/ppt55.png" alt="1"></li>
+<li>在子标题下方添加要介绍的文本段落，为了增加层次感，可以设置文本为灰色，防止和小标题颜色一致<br><img src="/images/SKILL/ppt56.png" alt="1"></li>
+</ol>
+<h2 id="交叉引用"><a href="#交叉引用" class="headerlink" title="交叉引用"></a><font size="4">交叉引用</font></h2><p>交叉引用非常重要，图片、表格、公式、编号等都可以使用交叉引用。以图片为例，相当于将文本与图片题注进行结合，假设文字图1对应图片题注1，那么如果在前面插入一个图片题注，此时文字图1对应题注2，如果不设置交叉引用，则需要手动修改文字图1为图2，当题注很多时，可能有几百个题注，对于后面的每一个题注都要修改对应文字，容易遗漏。当使用交叉引用时，文字图1会自动变成图2。<br>第一步：使用交叉引用的前提是建立了题注，在要插入题注的位置，点击插入菜单栏下的交叉引用，选择引用类型，这里以图片题注为例，将引用内容选择只有标签和编号，并从图片题注中选择一个要引用的题注，点击插入即可。<br><img src="/images/SKILL/word52.png" alt="1"><br>第二步：新插入的交叉引用，字体可能是题注中的字体，可以选中新插入的交叉引用，点击正文样式或者使用格式刷更新插入的字体。<br><img src="/images/SKILL/word53.png" alt="1"><br>点击Ctrl + 交叉引用，可以快速访问到该题注。</p>
+<h2 id="纸张大小与页边距"><a href="#纸张大小与页边距" class="headerlink" title="纸张大小与页边距"></a><font size="4">纸张大小与页边距</font></h2><p>第一步：点击菜单栏中的布局，先选择纸张大小，这个部分应该在最开始介绍，因为一般不会修改这个参数，写博客的时候忘记了。如果要指定纸张大小，记得在这里设置即可。<br><img src="/images/SKILL/word54.png" alt="1"><br>第二步：点击菜单栏中的布局，选择页边距，一般情况下也不会修改。了解如何设置即可。<br><img src="/images/SKILL/word55.png" alt="1"></p>
+<h2 id="插入特殊符号"><a href="#插入特殊符号" class="headerlink" title="插入特殊符号"></a><font size="4">插入特殊符号</font></h2><p>特殊符号主要介绍分页符和分节符，分节符在下一部分页眉页脚中具体介绍，首先介绍分页符。分页符很简单，一般另起一章时常常要使用单独的一页，如果在上一章的最后加入很多回车，那么修改上一张时，回车会影响下一章的位置。举个例子，如果上一章的最后一句话在20页中间，那么下一章的标题会在20页的下方，如果加入10个回车使下一章的标题在21页最上方，但是如果修改了上一章的内容，上一章的最后一句话变成20页的下方，那么10个回车仍然存在，这样下一章的标题会出现在21页的中间，不符合要求。这个时候就需要分页符。<br>步骤：点击要插入分页符的地方，选择菜单栏中的布局，点击分隔符，选择分页符。<br><img src="/images/SKILL/word56.png" alt="1"><br>插入后的结果如图所示<br><img src="/images/SKILL/word57.png" alt="1"></p>
+<h2 id="页眉"><a href="#页眉" class="headerlink" title="页眉"></a><font size="4">页眉</font></h2><p>第一步：双击页面最上方，会弹出页眉设计菜单栏，首先设置页眉到顶端的距离为1.5厘米<br>第二步：可以根据需要插入章节的名称，点击文档部件，选择域<br><img src="/images/SKILL/word58.png" alt="1"><br>第三步：在域名中选择StyleRef，并在样式名中选择标题1，在域选项中点击插入段落编号<br><img src="/images/SKILL/word59.png" alt="1"><br>第四步：重复第二步和第三步，这次域选项什么都不选择，直接确定即可<br><img src="/images/SKILL/word60.png" alt="1"><br>第五步：在章节编号和章节名中间插入空格，并调整字体大小，居中显示。可以看到每一页的页眉都自动更新完成。第一章的页眉是第一章的编号和名称，第二章的页眉是第二章的编号和名称。但是目录页出现问题。<br><img src="/images/SKILL/word61.png" alt="1"><br>第六步：此时不能直接跳转到目录页，输入目录两个字，这样做会导致后面的所有页面也会变成目录两个字。正确的做法是在第一章标题名称第一个字符前插入分节符，选中该位置，点击布局菜单栏下的分隔符，选择下一页即可插入分节符。<br><img src="/images/SKILL/word62.png" alt="1"><br>第七步：双击第一章顶部弹出页眉，可以看到此时目录的页眉是第1节，第一章的页眉是第2节，说明分节符将两个页面分开操作。将第2节页眉中链接到前一条页眉取消，这样就使得修改第1节得页眉不会影响到第2节。<br><img src="/images/SKILL/word63.png" alt="1"><br>第八步：此时再修改目录页的页眉文字即可。<br><img src="/images/SKILL/word64.png" alt="1"></p>
+<h2 id="页脚"><a href="#页脚" class="headerlink" title="页脚"></a><font size="4">页脚</font></h2><p>第一步：双击页面最下方，会弹出页脚设计菜单栏，首先设置页脚到底端的距离为1.75厘米<br>第二步：可以根据需要插入页码，点击页码，选择页面底端，并挑选合适的样式，一般在底端居中的位置<br><img src="/images/SKILL/word65.png" alt="1"><br>第三步：根据需要设置合适大小，此时可以发现每一页都加上了页码，并且连续编号。<br><img src="/images/SKILL/word66.png" alt="1"><br>第四步：有时正文的页码和前言，附录等页码符号不同，这时也需要加上分节符，对每一节进行编号，分节符在页眉中进行了详细介绍，可以进行参考。因为在页眉介绍部分已经在第一章前面插入了分节符，这里不需要插入了。选择第1章的页脚，将链接到前一条页眉取消，并点击页码，设置页码格式<br><img src="/images/SKILL/word67.png" alt="1"><br>第五步：设置第一章的页码编号格式为1,2,3,…，将页码编号中的续前节取消，并将起始页码设置为1<br><img src="/images/SKILL/word68.png" alt="1"><br>第六步：设置目录的页码编号格式为I,II,III,…，将起始页码设置为I<br><img src="/images/SKILL/word69.png" alt="1"><br>设置完成后的效果如图所示<br><img src="/images/SKILL/word70.png" alt="1"></p>
+<h2 id="分栏"><a href="#分栏" class="headerlink" title="分栏"></a><font size="4">分栏</font></h2><p>分栏并不常用，可能在某些期刊论文中需要进行排版<br>步骤：选中要分栏的文字，如果不选中文字则对整节进行分栏，点击布局菜单栏下的分栏，并选择两栏<br><img src="/images/SKILL/word71.png" alt="1"><br><img src="/images/SKILL/word72.png" alt="1"></p>
+<h2 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a><font size="4">超链接</font></h2><p>第一步：选中要超链接的文字，点击插入菜单栏中的超链接<br><img src="/images/SKILL/word73.png" alt="1"><br>第二步：选择要超链接到网页还是电子邮箱，并输入相应的网址或者邮件地址<br><img src="/images/SKILL/word74.png" alt="1"><br>第三步：超链接完成后，发下字体不一样，并且按下Ctrl + 文字会进入相应的链接中<br><img src="/images/SKILL/word75.png" alt="1"></p>
+<h2 id="查找与替换"><a href="#查找与替换" class="headerlink" title="查找与替换"></a><font size="4">查找与替换</font></h2><h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a><font size="4">查找</font></h3><p>第一步：点击开始菜单栏下的查找，或者快捷键Ctrl + F<br><img src="/images/SKILL/word76.png" alt="1"><br>第二步：会在导航窗中出现要搜索的文本框，在里面输入要搜索的文字，就会在文本中高亮显示<br><img src="/images/SKILL/word77.png" alt="1"></p>
+<h3 id="替换"><a href="#替换" class="headerlink" title="替换"></a><font size="4">替换</font></h3><p>第一步：点击开始菜单栏下的替换，或者快捷键Ctrl + H<br><img src="/images/SKILL/word78.png" alt="1"><br>第二步：输入查找内容和替换内容，可以手动逐一替换，也可以全部替换<br><img src="/images/SKILL/word79.png" alt="1"><br>可以发现相应的文字已被替换<br><img src="/images/SKILL/word80.png" alt="1"></p>
+<h1 id="Word小结"><a href="#Word小结" class="headerlink" title="Word小结"></a><font size="5" color="red">Word小结</font></h1><p>  Word的功能非常丰富，一篇博客很难描述完全，常用的一些基本技巧已经介绍给大家，如果遇到了一些博客中没有介绍过的问题，小伙伴们可以寻求网络的帮助。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>Computer Science</category>
+        <category>PPT</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>汉明距离总和(Leetcode 477)</title>
+    <url>/2021/05/28/program%20Leetcode477/</url>
+    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode477.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   这个题目是第461题的扩展，在第461题中，只需要计算两个数之间的汉明距离，这个题目是计算任意两个数之间的汉明距离之和。很简单的思路是遍历两层循环，可是数组长度最大为10000，如果两层循环会超时，会不会有更好的方法呢？<br><a id="more"></a></p>
+<h1 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a><font size="5" color="red">位运算</font></h1><p>因为这里元素范围是1e9，因此肯定在int范围之内，而且我们发现汉明距离是衡量每一位之间的差异，汉明距离等于所有数字每一位之间的差异，因此可以按照位来衡量，以第k位为例，如果第k位为1的数字有m个，总数有n个，则第k位为0的数字有n - m个，所以第k位的汉明距离为n x (n - m)，最终的结果只需要遍历32位即可。</p>
+<p>算法的<strong>时间复杂度为$O(n)$，空间复杂度为$O(1)$</strong>。<br>下面是Java语言的题解<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution {</span><br><span class="line">    public int totalHammingDistance(int[] nums) {</span><br><span class="line">        int cur_num = 1, length = nums.length, res = 0;</span><br><span class="line">        for (int i = 0; i &lt; 32; i++) {</span><br><span class="line">            int cur = 0;</span><br><span class="line">            for (int x : nums) {</span><br><span class="line">                cur += (cur_num &amp; x) &gt; 0 ? 1 : 0;</span><br><span class="line">            }</span><br><span class="line">            res += cur * (length - cur);</span><br><span class="line">            cur_num &lt;&lt;= 1;</span><br><span class="line">        }</span><br><span class="line">        return res;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>下面是Python语言的题解<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def totalHammingDistance(self, nums: List[int]) -&gt; int:</span><br><span class="line">        length, cur, res = len(nums), 1, 0</span><br><span class="line">        for i in range(32):</span><br><span class="line">            cur_num = 0</span><br><span class="line">            for x in nums:</span><br><span class="line">                cur_num += (x &amp; cur) &gt; 0</span><br><span class="line">            res += cur_num * (length - cur_num)</span><br><span class="line">            cur &lt;&lt;= 1</span><br><span class="line">        return res</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>对比两种语言，可以发现Python语言中的布尔类型可以直接参与运算，即true为1，false为0。但是Java中的boolean不能直接和int进行运算，只能通过三目运算符进行操作。</p>
+<h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  这个题目不难，能否想到按位计算是关键步骤。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>刷题记录</category>
+        <category>位运算</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>反转每对括号间的子串(Leetcode 1190)</title>
+    <url>/2021/05/26/program%20Leetcode1190/</url>
+    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode1190.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   看到成对的括号问题，脑中就会自然想到括号匹配，顺理成章的想到栈的思路。这个题目是否可以从这里入手呢？前一段时间没有经常写博客，因为忙于毕业论文和答辩的事情，搞得人焦头烂额，现在很多事情已经解决，可以继续和朋友们分享博客了。因为想学习一下Android，毕竟在国内企业发展，了解一些Android毕竟不是坏事，而偏偏Google现在首推Kotlin语言进行Android开发，因此这段时间也顺带学习了一下Kotlin，有时间也会给小伙伴们科普Kotlin语言的学习。以后当作练手，在博客的题解中，从C++，Java，Python和Kotlin中随机选择2个给出答案。因为之前Python和C++练习的比较多，因此权重稍微少一些，控制在比例分别控制在0.17，0.33，0.17，0.33。希望小伙伴们也要学习我的这个方法，对新语言多多练习，对已经会使用的语言也不能放弃。</p>
+<a id="more"></a>
+<h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a><font size="5" color="red">栈</font></h1><p>这里就介绍栈的方法，以(u(love)i)为例，依次将元素入栈，如果出现了右括号，则将对应左括号之间的所有字符反转，并入栈。在本例中，e后面出现第一次右括号，对应的左括号在l之前，因此将两者之间的love反转，变为evol，然后入栈，此时栈中元素为uevol，然后i入栈，又遇到右括号，此时对应的左括号在u之前，因此将两者之间的uevoli反转，变为iloveu，然后再入栈。此时没有元素，此时顺序读出即可。但是要注意，这个题目要求将反转的结果输出，因此栈无法顺序读出，因此可以使用双端队列代替栈。<br>算法的<strong>时间复杂度为$O(n^2)$，空间复杂度为$O(n)$</strong>。<br>如下使用C++语言求解<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution {</span><br><span class="line">public:</span><br><span class="line">    string reverseParentheses(string s) {</span><br><span class="line">        deque&lt;int&gt; q;</span><br><span class="line">        for (char c : s) {</span><br><span class="line">            if (c != ')') q.push_back(c);</span><br><span class="line">            else {</span><br><span class="line">                string cur = "";</span><br><span class="line">                while (q.back() != '(') {</span><br><span class="line">                    cur += q.back();</span><br><span class="line">                    q.pop_back();</span><br><span class="line">                }</span><br><span class="line">                q.pop_back();</span><br><span class="line">                for (char cc : cur) q.push_back(cc);</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        string res = "";</span><br><span class="line">        for (char c : q) res += c;</span><br><span class="line">        return res;</span><br><span class="line">    }</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>如下使用Java语言求解<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution {</span><br><span class="line">    public String reverseParentheses(String s) {</span><br><span class="line">        LinkedList&lt;Character&gt; arr = new LinkedList&lt;&gt;();</span><br><span class="line">        for (int i = 0; i &lt; s.length(); i++) {</span><br><span class="line">            char cur = s.charAt(i);</span><br><span class="line">            if (cur != ')') arr.addLast(cur);</span><br><span class="line">            else {</span><br><span class="line">                StringBuilder pop = new StringBuilder();</span><br><span class="line">                while (arr.getLast() != '(') {</span><br><span class="line">                    pop.append(arr.removeLast());</span><br><span class="line">                }</span><br><span class="line">                arr.removeLast();</span><br><span class="line">                for (int j = 0; j &lt; pop.length(); j++) {</span><br><span class="line">                    arr.addLast(pop.charAt(j));</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        StringBuilder res = new StringBuilder();</span><br><span class="line">        while (!arr.isEmpty()) { res.append(arr.removeFirst()); }</span><br><span class="line">        return res.toString();</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  有小伙伴们说这个题目是华为的笔试题，这太正常了，相比于字节和阿里的变态笔试题，华为的笔试题相对轻松一些，一般是中等难度的题目。而且括号问题是笔试面试的经典题型之一，一定要牢牢掌握。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>刷题记录</category>
+        <category>字符串</category>
+        <category>栈</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Turing Reward in 2020</title>
+    <url>/2021/05/20/TuringReward-2020/</url>
+    <content><![CDATA[<p>  2021 年 3 月 31 日，ACM 宣布了2020年图灵奖获得者，美国哥伦比亚大学教授Alfred Aho和斯坦福大学教授Jeffrey Ullman，以表彰他们在编程语言实现的基本算法和理论方面做出的巨大贡献，以及其所编撰的书籍对于几代计算机科学家所带来的积极影响。</p>
+<a id="more"></a>
+<p>我们目前生活在智能化的时代中，这都是人类用高级编程语言编写，再编译成计算机看得懂的低级语言并运行的。而Alfred Aho和Jeffrey Ullman的工作在让电脑认识低级语言方面起到了巨大的作用。他们连接了高级语言和低级语言的桥梁，奠定了编程语言理论，实现和算法设计的基础。</p>
+<p>让我们来看看两位大佬的研究历程：<br><strong>阿尔弗雷德·艾侯(Alfred Aho)</strong><br><img src="/images/TURING/alfred.png" alt="Alfred Aho"><br>   1941年生于加拿大安大略省提明斯，是一位计算机科学家，毕业于多伦多大学，并在普林斯顿大学获得电子工程硕士学位和计算机科学博士学位。毕业后在贝尔实验室担任计算科学研究副总裁，并在此工作了三十多年。1995年加入哥伦比亚大学计算机科学系，并成为其名誉教授。</p>
+<p><strong>杰弗里·乌尔曼(Jeffrey Ullman)</strong><br><img src="/images/TURING/jeffrey.png" alt="Hanrahan"><br>  生于1942年，也是一位计算机科学家，1963年获得哥伦比亚大学数学工程学士学位，1966年获得普林斯顿大学计算机科学博士学位。1966年至1969年在贝尔实验室担任技术人员，正是这段时间认识了Alfred Aho，并持续了几十年的合作。1969年至1979年在普林斯顿大学任教，在1979年后加入斯坦福大学，并称为其名誉教授。</p>
+<p>   今年获奖的两位教授在计算机科学教育方面影响力全世界的计算机系学生，科学家和相关从业者。其中最著名的是他们合著的编译原理，因为封面设计是一条龙，因此也被称为”龙书”。在书中整理了高级语言到机器码的各个阶段，并深入讨论了编译器设计的重要概念和实例，可以称为计算机从业人员必读书籍之一，在全球大量高等院校均作为教材进行讲解。毫不夸张的说，Alfred Aho 和 Jeffrey Ullman 能称得上是全球程序员的启蒙老师。</p>
+<p>   1977年，Alfred Aho和Jeffrey Ullman出版的《Principles of Compiler Design》,因为其封面是一只绿色的龙，因此被人称为绿龙书。<br><img src="/images/TURING/compiler1.png" alt="dragon1"> </p>
+<p>   9年后，1986年对该书进行升级，增加了一位合著者Ravi Sethi，并将书名改为《Compilers: Principles, Techniques and Tools》,而封面仍然使用一条龙，龙的颜色改为红色，因此被人称为红龙书。<br><img src="/images/TURING/compiler2.png" alt="dragon1"> </p>
+<p>   2006年，作者又增加了Monica Lam，书名沿用《Principles of Compiler Design》,而封面仍然使用一条龙，龙的颜色改为紫色，因此被人称为紫龙书。<br><img src="/images/TURING/compiler3.png" alt="dragon1"> </p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>Computer Science</category>
+        <category>Turing Reward</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Word文档排版</title>
+    <url>/2021/04/30/skill%20Word/</url>
+    <content><![CDATA[<p><strong><font size="5" color="gray"></font></strong></p><center><strong><font size="5" color="gray">Word</font></strong></center><p></p>
+<h1 id="Word介绍"><a href="#Word介绍" class="headerlink" title="Word介绍"></a><font size="5" color="red">Word介绍</font></h1><p>  <strong>Word(Microsoft Office Word):</strong>最初由”Richard Brodie”于1983年编写，一直以来都是最流行的文字处理程序。尤其对于学生、职工来说，Word是必不可少的工具之一。尤其是最近在写毕业论文的时候，遇到很多排版、格式等问题，每次都要花费一段时间去网上寻找解决方案，非常繁琐。这篇博客的目的是记录一些常用的Word操作分享给小伙伴们，而且还可以方便以后查询。<br><a id="more"></a></p>
+<h1 id="Word常用操作"><a href="#Word常用操作" class="headerlink" title="Word常用操作"></a><font size="5" color="red">Word常用操作</font></h1><h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a><font size="4">标题</font></h2><p>首先介绍标题的制作方法，以学习C语言为例。我们要创建一个如下图所示的标题，应该如何操作？<br><img src="/images/SKILL/word1.png" alt="1"><br>第一步：点击<strong>开始</strong>菜单，找到<strong>多级列表</strong>，选择<strong>定义新的多级列表</strong>。<br><img src="/images/SKILL/word2.png" alt="1"><br>第二步：出现一个设置页面，点击<strong>更多</strong>，然后要修改的级别选择1，将级别链接到样式选择标题1，在库中显示的级别选择级别1，起始编号设置为1，输入编号的格式写为第1章，此级别的编号样式选择1,2,3,…，文本缩进位置设置为0，编号之后设置为空格。</p>
+<p>这里是设置编号的重点，其中要修改的级别代表当前是第几级标题。将级别链接到样式为标题1代表设置后，在样式的标题1就是我们刚才新建的标题。设置前的标题1是word自建的，并非我们需要的。在库中显示的级别不是特别重要，一般随着级别变化即可。起始编号一般都是从1开始，代表文章从第1章开始。输入编号的格式，其中可以看到1是有一个灰色的框，这是会变化的意思，第和章这两个字不会变化，也就是说下一章就是第2章。此级别的编号样式如果设置1,2,3,…则为第1章，如果设置一,二,三,…则是第一章，此处修改，则输入编号的格式也会跟着变化。文本缩进位置，根据需要设置，一般为0即可。编号之后，根据需要设置，一般空格即可。<br><img src="/images/SKILL/word3.png" alt="1"></p>
+<p>第三步：设置二级标题，一级标题按照上述操作设置完成后，要修改的级别选择2，同理链接到样式选择标题2，在库中显示的级别选择级别2，起始编号仍然选择1，说明二级标题也是从1开始编号。此时要注意，先将输入编号的格式全部删去，然后先选择包含的级别编号来自级别1，然后加上一个小数点，再选择此级别的编号样式为1,2,3,…。这一步的目的是，首先让级别1出现在最前面，并且一级标题后面出现一个小数点，如第一章就是1.x，第2章就是2.x，最后才能选择本级别的样式。文本缩进位置，编号之后都和一级标题类似。<br><img src="/images/SKILL/word4.png" alt="1"></p>
+<p>第四步：设置三级标题等，三级标题基本上和二级类似，只有一点，在选择包含的级别编号来自时，要从小到大选择，并且选择一个加上一个小数点。<br><img src="/images/SKILL/word5.png" alt="1"></p>
+<p>第五步：等到所有需要的标题都设置完毕后，点击确定，此时开始中的样式栏里面就会出现我们刚才设置的标题1、2、3等等。右键点击标题1，选择修改。<br><img src="/images/SKILL/word6.png" alt="1"></p>
+<p>第六步：点击格式，选择字体，设置合适的中文字体和西文字体，这里设置中文为黑体三号，西文为Times三号<br><img src="/images/SKILL/word7.png" alt="1"></p>
+<p>第七步：点击格式，选择段落，设置合适的对齐方式和间距，这里让一级标题居中，间距段前24磅，段后18磅，行距为单倍行距<br><img src="/images/SKILL/word8.png" alt="1"></p>
+<p>第八步：右键点击标题2、3等等，选择修改，同样修改字体，格式等内容。根据要求或者美观来自己设置。这里标题二中文为黑体四号，西文为Times四号，左对齐，段前24磅，段后6磅，单倍行距。标题三中文为黑体13磅，西文为Times13磅，左对齐，段前12磅，段后6磅，单倍行距。</p>
+<p>第九步：选中要设为一级标题的文字，点击标题1，即可自动设为一级标题，二级三级同理。<br><img src="/images/SKILL/word9.png" alt="1"></p>
+<p>第十步：点击菜单栏视图，将导航窗格打勾，即可看到标题页，最后设置的结果如下图。<br><img src="/images/SKILL/word10.png" alt="1"></p>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a><font size="4">目录</font></h2><p>设置好标题以后，要对文档设置目录，Word给我们提供了目录的自动生成方法，只要设置好标题，即可自动生成。仍然以上例进行操作。<br>第一步：点击<strong>引用</strong>菜单，找到<strong>目录</strong>，选择<strong>自定义目录</strong>。<br><img src="/images/SKILL/word11.png" alt="1"><br>第二步：选择目录显示页码，页码右对齐，制表符前导符……，想显示的标题级别。<br><img src="/images/SKILL/word12.png" alt="1"><br>第三步：点击修改，会出现目录级别的样式，点击目录1再进行修改，可以设置一级目录的字体，段落等格式，和标题第六步和第七步相同，这里设置一级目录为宋体14磅，段前6磅，二级目录为宋体12磅，段前6磅，左侧缩进1字符，三级目录为仿宋12磅，段前6磅，左侧缩进2字符。<br><img src="/images/SKILL/word13.png" alt="1"><br>设置完毕后，可以看到目录已经自动生成。如果修改了文本，要记得更新目录页数。<br><img src="/images/SKILL/word14.png" alt="1"></p>
+<h2 id="目录-1"><a href="#目录-1" class="headerlink" title="目录"></a><font size="4">目录</font></h2><p>设置好标题以后，要对文档设置目录，Word给我们提供了目录的自动生成方法，只要设置好标题，即可自动生成。仍然以上例进行操作。<br>第一步：点击<strong>引用</strong>菜单，找到<strong>目录</strong>，选择<strong>自定义目录</strong>。<br><img src="/images/SKILL/word11.png" alt="1"><br>第二步：选择目录显示页码，页码右对齐，制表符前导符……，想显示的标题级别。<br><img src="/images/SKILL/word12.png" alt="1"><br>第三步：点击修改，会出现目录级别的样式，点击目录1再进行修改，可以设置一级目录的字体，段落等格式，和标题第六步和第七步相同，这里设置一级目录为宋体14磅，段前6磅，二级目录为宋体12磅，段前6磅，左侧缩进1字符，三级目录为仿宋12磅，段前6磅，左侧缩进2字符。<br><img src="/images/SKILL/word13.png" alt="1"><br>设置完毕后，可以看到目录已经自动生成。<br><img src="/images/SKILL/word14.png" alt="1"></p>
+<h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a><font size="4">插入图片</font></h2><p>第一步：选择要插入图片的位置，点击菜单栏下的插入选项。<br><img src="/images/SKILL/word21.png" alt="1"><br>第二步：从弹出的文件路径中选择需要插入的图片。<br><img src="/images/SKILL/word22.png" alt="1"><br>第三步：可以右键设置图片格式，大小位置，环绕文字格式等操作，常用的是嵌入型。</p>
+<h2 id="插入表格"><a href="#插入表格" class="headerlink" title="插入表格"></a><font size="4">插入表格</font></h2><p>第一步：选择要插入表格的位置，点击菜单栏下的插入选项，点击表格，选择合适的行列数量。<br><img src="/images/SKILL/word30.png" alt="1"><br>第二步：在表格中写上相应的文字，点击表格左上方，选中所有行列，将文字居中，并且选择无框线。<br><img src="/images/SKILL/word31.png" alt="1"><br>第三步：选择第一行，点击菜单栏中的设计，选择上边框1.5磅<br><img src="/images/SKILL/word32.png" alt="1"><br>第四步：同理，选择第一行下边框0.5磅，最后一行下边框1.5磅，此时论文常用的三线表就制作完成了。<br><img src="/images/SKILL/word33.png" alt="1"></p>
+<h2 id="插入公式"><a href="#插入公式" class="headerlink" title="插入公式"></a><font size="4">插入公式</font></h2><h3 id="Word插入公式"><a href="#Word插入公式" class="headerlink" title="Word插入公式"></a><font size="4">Word插入公式</font></h3><p>第一步：点击插入菜单栏右侧的公式<br><img src="/images/SKILL/word23.png" alt="1"><br>第二步：弹出一个公式编辑框，在菜单栏中选择设计，此时可以看到数学公式常用的各种符号，即可编辑公式。<br><img src="/images/SKILL/word24.png" alt="1"></p>
+<h3 id="Microsoft-公式3-0"><a href="#Microsoft-公式3-0" class="headerlink" title="Microsoft 公式3.0"></a><font size="4">Microsoft 公式3.0</font></h3><p>第一步：点击插入菜单栏右侧的对象<br><img src="/images/SKILL/word25.png" alt="1"><br>第二步：选择对象类型为Microsoft 公式3.0<br><img src="/images/SKILL/word26.png" alt="1"><br>第三步：弹出一个公式编辑框，此时可以看到数学公式常用的各种符号，即可编辑公式。<br><img src="/images/SKILL/word27.png" alt="1"></p>
+<h3 id="Mathtype"><a href="#Mathtype" class="headerlink" title="Mathtype"></a><font size="4">Mathtype</font></h3><p>第一步：需要下载Mathtype插件，网络上有很多教程。配置完成后，即可在菜单栏看到Mathtype的选项。<br><img src="/images/SKILL/word28.png" alt="1"><br>第二步：点击Mathtype可以看到有内联和显示两种，内联是指嵌入在文字中，显示是指单独作为一行并居中。后面的操作和插入Microsoft 公式3.0相同，下面对内联和插入进行分别展示。<br><img src="/images/SKILL/word29.png" alt="1"></p>
+<h2 id="样式"><a href="#样式" class="headerlink" title="样式"></a><font size="4">样式</font></h2><p>这里的样式不仅仅是文字的样式，对于图片来说也是可以适用的，往往图片要居中处理，如果一篇文档有很多图片，每一张都要点击居中，再设置前后缩进，非常麻烦，可以定义一个图片样式，插入图片时直接选择该样式即可。</p>
+<h3 id="修改已有样式"><a href="#修改已有样式" class="headerlink" title="修改已有样式"></a><font size="4">修改已有样式</font></h3><p>第一步：开始菜单栏下，已有正文样式，右键该样式，点击修改。<br><img src="/images/SKILL/word15.png" alt="1"><br>第二步：和标题第六步和第七步相同，设置需要的格式，这里设置正文字体为宋体五号，两端对其，首行缩进2字符，行距20磅。<br><img src="/images/SKILL/word16.png" alt="1"><br>第三步：选中正文，点击正文样式，则该文字会变成设置的样式。<br><img src="/images/SKILL/word17.png" alt="1"><br>要注意，当行距设为20磅时，有时内联公式较大会遮挡部分公式，此时可以设置该段落为单倍行距即可。<br><img src="/images/SKILL/word38.png" alt="1"></p>
+<h3 id="新建样式"><a href="#新建样式" class="headerlink" title="新建样式"></a><font size="4">新建样式</font></h3><p>第一步：开始菜单栏下，样式列表右下角，点击会出现弹窗，再点击左下角第一个新建样式。<br><img src="/images/SKILL/word18.png" alt="1"><br>第二步：给新建的样式起名字，这里新建图片样式，命名为图片，因为图片不需要字体，只需要设置段落格式即可，居中，缩进0，单倍行距。<br><img src="/images/SKILL/word19.png" alt="1"><br>第三步：选中图片，点击图片样式，则图片会变成设置的样式。<br><img src="/images/SKILL/word20.png" alt="1"></p>
+<h2 id="编号"><a href="#编号" class="headerlink" title="编号"></a><font size="4">编号</font></h2><p>对下面几个并列的内容进行编号。<br>第一步：右键开始菜单栏下样式中的列出段落，在我的Word中，列出段落样式在第三行。修改该样式，一般使用缩进0，特殊格式无。<br><img src="/images/SKILL/word34.png" alt="1"><br>第二步：选择要编号的文本，左键该格式。<br><img src="/images/SKILL/word35.png" alt="1"><br>第三步：选中文本，点击开始菜单栏下编号右侧的向下箭头，弹出编号选择页面，选择合适的编号类型。<br><img src="/images/SKILL/word36.png" alt="1"><br>编号完成后的文本如下图所示<br><img src="/images/SKILL/word37.png" alt="1"></p>
+<h2 id="题注"><a href="#题注" class="headerlink" title="题注"></a><font size="4">题注</font></h2><p>题注有很多种，常用的包括图片题注，表格题注，公式题注这三类。下面进行分别介绍。</p>
+<h3 id="图片题注"><a href="#图片题注" class="headerlink" title="图片题注"></a><font size="4">图片题注</font></h3><p>第一步：右键点击图片，选择插入题注<br><img src="/images/SKILL/word39.png" alt="1"><br>第二步：在题注中选择标签为图，英文的图注可以选择Figure，也可以新建标签，图片的题注一般位于图片下方。点击编号，可以设置是否包含章节号，并且章节号之间的分隔符可以选择，一般使用连字符-或者句点.<br><img src="/images/SKILL/word40.png" alt="1"><br>第三步：建立好题注后，可以为图片的题注设置一个单独的样式，这样就不需要每次修改题注的文字型号。最后给题注加上相关的文字即可。<br><img src="/images/SKILL/word41.png" alt="1"></p>
+<h3 id="表格题注"><a href="#表格题注" class="headerlink" title="表格题注"></a><font size="4">表格题注</font></h3><p>第一步：全选表格，右键插入题注<br><img src="/images/SKILL/word42.png" alt="1"><br>第二步：在题注中选择标签为表，英文的图注可以选择Table，也可以新建标签，表格的题注一般位于表格上方。点击编号，可以设置是否包含章节号，并且章节号之间的分隔符可以选择，一般使用连字符-或者句点.<br><img src="/images/SKILL/word43.png" alt="1"><br>第三步：建立好题注后，可以为表格的题注设置一个单独的样式，这样就不需要每次修改题注的文字型号。最后给题注加上相关的文字即可。<br><img src="/images/SKILL/word44.png" alt="1"></p>
+<h3 id="公式题注"><a href="#公式题注" class="headerlink" title="公式题注"></a><font size="4">公式题注</font></h3><p>第一步：选中公式，右键插入题注<br><img src="/images/SKILL/word45.png" alt="1"><br>第二步：新建标签(，为什么要建立左括号标签，因为这样公式的题注就是(1.1)<br><img src="/images/SKILL/word46.png" alt="1"><br>第三步：在题注中选择标签(，点击编号，可以设置是否包含章节号，并且章节号之间的分隔符可以选择，一般使用连字符-或者句点.<br><img src="/images/SKILL/word47.png" alt="1"><br>第四步：建立好题注后，结果如下图所示。<br><img src="/images/SKILL/word48.png" alt="1"><br>第五步：创建一个新的公式样式，查看页面的总字符数大约是39左右，将公式放在中间19字符处，将题注放在39字符处。选择格式制表位，先全部清除制表位，然后写入19字符，选择居中，点击设置，再写入39字符，选择右对齐，点击设置。公式样式制作完成。<br><img src="/images/SKILL/word49.png" alt="1"><br>第六步：此时公式和题注不在同一行，此时在公式后面按下Ctrl + Alt + Enter，输入一个样式分隔符，这样将公式和题注分开，方便后面的交叉引用。输入样式分隔符后公式和题注变成了同一行，如图所示。<br><img src="/images/SKILL/word50.png" alt="1"><br>第七步：删掉左括号后的一个多余空格，并选中公式和题注，应用新建立的公式样式，并在公式后，分隔符前输入Tab制表位，即可完成公式的题注插入。<br><img src="/images/SKILL/word51.png" alt="1"></p>
+<h2 id="交叉引用"><a href="#交叉引用" class="headerlink" title="交叉引用"></a><font size="4">交叉引用</font></h2><p>交叉引用非常重要，图片、表格、公式、编号等都可以使用交叉引用。以图片为例，相当于将文本与图片题注进行结合，假设文字图1对应图片题注1，那么如果在前面插入一个图片题注，此时文字图1对应题注2，如果不设置交叉引用，则需要手动修改文字图1为图2，当题注很多时，可能有几百个题注，对于后面的每一个题注都要修改对应文字，容易遗漏。当使用交叉引用时，文字图1会自动变成图2。<br>第一步：使用交叉引用的前提是建立了题注，在要插入题注的位置，点击插入菜单栏下的交叉引用，选择引用类型，这里以图片题注为例，将引用内容选择只有标签和编号，并从图片题注中选择一个要引用的题注，点击插入即可。<br><img src="/images/SKILL/word52.png" alt="1"><br>第二步：新插入的交叉引用，字体可能是题注中的字体，可以选中新插入的交叉引用，点击正文样式或者使用格式刷更新插入的字体。<br><img src="/images/SKILL/word53.png" alt="1"><br>点击Ctrl + 交叉引用，可以快速访问到该题注。</p>
+<h2 id="纸张大小与页边距"><a href="#纸张大小与页边距" class="headerlink" title="纸张大小与页边距"></a><font size="4">纸张大小与页边距</font></h2><p>第一步：点击菜单栏中的布局，先选择纸张大小，这个部分应该在最开始介绍，因为一般不会修改这个参数，写博客的时候忘记了。如果要指定纸张大小，记得在这里设置即可。<br><img src="/images/SKILL/word54.png" alt="1"><br>第二步：点击菜单栏中的布局，选择页边距，一般情况下也不会修改。了解如何设置即可。<br><img src="/images/SKILL/word55.png" alt="1"></p>
+<h2 id="插入特殊符号"><a href="#插入特殊符号" class="headerlink" title="插入特殊符号"></a><font size="4">插入特殊符号</font></h2><p>特殊符号主要介绍分页符和分节符，分节符在下一部分页眉页脚中具体介绍，首先介绍分页符。分页符很简单，一般另起一章时常常要使用单独的一页，如果在上一章的最后加入很多回车，那么修改上一张时，回车会影响下一章的位置。举个例子，如果上一章的最后一句话在20页中间，那么下一章的标题会在20页的下方，如果加入10个回车使下一章的标题在21页最上方，但是如果修改了上一章的内容，上一章的最后一句话变成20页的下方，那么10个回车仍然存在，这样下一章的标题会出现在21页的中间，不符合要求。这个时候就需要分页符。<br>步骤：点击要插入分页符的地方，选择菜单栏中的布局，点击分隔符，选择分页符。<br><img src="/images/SKILL/word56.png" alt="1"><br>插入后的结果如图所示<br><img src="/images/SKILL/word57.png" alt="1"></p>
+<h2 id="页眉"><a href="#页眉" class="headerlink" title="页眉"></a><font size="4">页眉</font></h2><p>第一步：双击页面最上方，会弹出页眉设计菜单栏，首先设置页眉到顶端的距离为1.5厘米<br>第二步：可以根据需要插入章节的名称，点击文档部件，选择域<br><img src="/images/SKILL/word58.png" alt="1"><br>第三步：在域名中选择StyleRef，并在样式名中选择标题1，在域选项中点击插入段落编号<br><img src="/images/SKILL/word59.png" alt="1"><br>第四步：重复第二步和第三步，这次域选项什么都不选择，直接确定即可<br><img src="/images/SKILL/word60.png" alt="1"><br>第五步：在章节编号和章节名中间插入空格，并调整字体大小，居中显示。可以看到每一页的页眉都自动更新完成。第一章的页眉是第一章的编号和名称，第二章的页眉是第二章的编号和名称。但是目录页出现问题。<br><img src="/images/SKILL/word61.png" alt="1"><br>第六步：此时不能直接跳转到目录页，输入目录两个字，这样做会导致后面的所有页面也会变成目录两个字。正确的做法是在第一章标题名称第一个字符前插入分节符，选中该位置，点击布局菜单栏下的分隔符，选择下一页即可插入分节符。<br><img src="/images/SKILL/word62.png" alt="1"><br>第七步：双击第一章顶部弹出页眉，可以看到此时目录的页眉是第1节，第一章的页眉是第2节，说明分节符将两个页面分开操作。将第2节页眉中链接到前一条页眉取消，这样就使得修改第1节得页眉不会影响到第2节。<br><img src="/images/SKILL/word63.png" alt="1"><br>第八步：此时再修改目录页的页眉文字即可。<br><img src="/images/SKILL/word64.png" alt="1"></p>
+<h2 id="页脚"><a href="#页脚" class="headerlink" title="页脚"></a><font size="4">页脚</font></h2><p>第一步：双击页面最下方，会弹出页脚设计菜单栏，首先设置页脚到底端的距离为1.75厘米<br>第二步：可以根据需要插入页码，点击页码，选择页面底端，并挑选合适的样式，一般在底端居中的位置<br><img src="/images/SKILL/word65.png" alt="1"><br>第三步：根据需要设置合适大小，此时可以发现每一页都加上了页码，并且连续编号。<br><img src="/images/SKILL/word66.png" alt="1"><br>第四步：有时正文的页码和前言，附录等页码符号不同，这时也需要加上分节符，对每一节进行编号，分节符在页眉中进行了详细介绍，可以进行参考。因为在页眉介绍部分已经在第一章前面插入了分节符，这里不需要插入了。选择第1章的页脚，将链接到前一条页眉取消，并点击页码，设置页码格式<br><img src="/images/SKILL/word67.png" alt="1"><br>第五步：设置第一章的页码编号格式为1,2,3,…，将页码编号中的续前节取消，并将起始页码设置为1<br><img src="/images/SKILL/word68.png" alt="1"><br>第六步：设置目录的页码编号格式为I,II,III,…，将起始页码设置为I<br><img src="/images/SKILL/word69.png" alt="1"><br>设置完成后的效果如图所示<br><img src="/images/SKILL/word70.png" alt="1"></p>
+<h2 id="分栏"><a href="#分栏" class="headerlink" title="分栏"></a><font size="4">分栏</font></h2><p>分栏并不常用，可能在某些期刊论文中需要进行排版<br>步骤：选中要分栏的文字，如果不选中文字则对整节进行分栏，点击布局菜单栏下的分栏，并选择两栏<br><img src="/images/SKILL/word71.png" alt="1"><br><img src="/images/SKILL/word72.png" alt="1"></p>
+<h2 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a><font size="4">超链接</font></h2><p>第一步：选中要超链接的文字，点击插入菜单栏中的超链接<br><img src="/images/SKILL/word73.png" alt="1"><br>第二步：选择要超链接到网页还是电子邮箱，并输入相应的网址或者邮件地址<br><img src="/images/SKILL/word74.png" alt="1"><br>第三步：超链接完成后，发下字体不一样，并且按下Ctrl + 文字会进入相应的链接中<br><img src="/images/SKILL/word75.png" alt="1"></p>
+<h2 id="查找与替换"><a href="#查找与替换" class="headerlink" title="查找与替换"></a><font size="4">查找与替换</font></h2><h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a><font size="4">查找</font></h3><p>第一步：点击开始菜单栏下的查找，或者快捷键Ctrl + F<br><img src="/images/SKILL/word76.png" alt="1"><br>第二步：会在导航窗中出现要搜索的文本框，在里面输入要搜索的文字，就会在文本中高亮显示<br><img src="/images/SKILL/word77.png" alt="1"></p>
+<h3 id="替换"><a href="#替换" class="headerlink" title="替换"></a><font size="4">替换</font></h3><p>第一步：点击开始菜单栏下的替换，或者快捷键Ctrl + H<br><img src="/images/SKILL/word78.png" alt="1"><br>第二步：输入查找内容和替换内容，可以手动逐一替换，也可以全部替换<br><img src="/images/SKILL/word79.png" alt="1"><br>可以发现相应的文字已被替换<br><img src="/images/SKILL/word80.png" alt="1"></p>
+<h1 id="Word小结"><a href="#Word小结" class="headerlink" title="Word小结"></a><font size="5" color="red">Word小结</font></h1><p>  Word的功能非常丰富，一篇博客很难描述完全，常用的一些基本技巧已经介绍给大家，如果遇到了一些博客中没有介绍过的问题，小伙伴们可以寻求网络的帮助。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>Computer Science</category>
+        <category>Word</category>
+      </categories>
+  </entry>
+  <entry>
     <title>按要求补齐数组(Leetcode 189)</title>
     <url>/2021/04/24/program%20Leetcode189/</url>
     <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode189.png" alt="1"></p>
@@ -46,8 +559,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>数组</category>
         <category>数学</category>
+        <category>数组</category>
       </categories>
   </entry>
   <entry>
@@ -120,9 +633,9 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
+        <category>数学</category>
         <category>数组</category>
         <category>贪心</category>
-        <category>数学</category>
       </categories>
   </entry>
   <entry>
@@ -462,8 +975,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>贪心</category>
         <category>数学</category>
+        <category>贪心</category>
         <category>双指针</category>
       </categories>
   </entry>
@@ -499,8 +1012,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>数组</category>
         <category>栈/队列</category>
+        <category>数组</category>
       </categories>
   </entry>
   <entry>
@@ -699,9 +1212,9 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>贪心</category>
         <category>栈/队列</category>
         <category>博弈</category>
+        <category>贪心</category>
       </categories>
   </entry>
   <entry>
@@ -741,8 +1254,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>数组</category>
         <category>数学</category>
+        <category>数组</category>
       </categories>
   </entry>
   <entry>
@@ -779,9 +1292,9 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
+        <category>数学</category>
         <category>数组</category>
         <category>贪心</category>
-        <category>数学</category>
         <category>排序</category>
       </categories>
   </entry>
@@ -859,9 +1372,9 @@
       <categories>
         <category>刷题记录</category>
         <category>深度优先搜索</category>
-        <category>迭代</category>
         <category>递归</category>
         <category>广度优先搜索</category>
+        <category>迭代</category>
       </categories>
   </entry>
   <entry>
@@ -898,8 +1411,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>数组</category>
         <category>数学</category>
+        <category>数组</category>
         <category>排序</category>
       </categories>
   </entry>
@@ -1011,10 +1524,10 @@
       <categories>
         <category>刷题记录</category>
         <category>树</category>
-        <category>哈希表</category>
         <category>字符串</category>
-        <category>双指针</category>
+        <category>哈希表</category>
         <category>特定算法</category>
+        <category>双指针</category>
       </categories>
   </entry>
   <entry>
@@ -1098,8 +1611,8 @@
       <categories>
         <category>刷题记录</category>
         <category>深度优先搜索</category>
-        <category>并查集</category>
         <category>广度优先搜索</category>
+        <category>并查集</category>
       </categories>
   </entry>
   <entry>
@@ -1140,9 +1653,9 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>贪心</category>
         <category>堆</category>
         <category>数学</category>
+        <category>贪心</category>
       </categories>
   </entry>
   <entry>
@@ -1180,9 +1693,9 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
+        <category>堆</category>
         <category>数组</category>
         <category>贪心</category>
-        <category>堆</category>
       </categories>
   </entry>
   <entry>
@@ -1349,9 +1862,9 @@
       <categories>
         <category>刷题记录</category>
         <category>树</category>
-        <category>位运算</category>
-        <category>二分查找</category>
         <category>广度优先搜索</category>
+        <category>二分查找</category>
+        <category>位运算</category>
         <category>深度优先搜素</category>
       </categories>
   </entry>
@@ -1483,10 +1996,10 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>数组</category>
         <category>数学</category>
-        <category>位运算</category>
+        <category>数组</category>
         <category>哈希表</category>
+        <category>位运算</category>
       </categories>
   </entry>
   <entry>
@@ -1562,8 +2075,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>数组</category>
         <category>数学</category>
+        <category>数组</category>
         <category>模拟</category>
       </categories>
   </entry>
@@ -1606,10 +2119,10 @@
       <categories>
         <category>刷题记录</category>
         <category>数组</category>
-        <category>迭代</category>
         <category>递归</category>
         <category>栈</category>
         <category>队列</category>
+        <category>迭代</category>
       </categories>
   </entry>
   <entry>
@@ -2384,9 +2897,9 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>迭代</category>
         <category>树</category>
         <category>递归</category>
+        <category>迭代</category>
       </categories>
   </entry>
   <entry>
@@ -2534,9 +3047,9 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>迭代</category>
         <category>树</category>
         <category>递归</category>
+        <category>迭代</category>
       </categories>
   </entry>
   <entry>
@@ -2890,8 +3403,8 @@
         <category>刷题记录</category>
         <category>深度优先搜索</category>
         <category>动态规划</category>
-        <category>记忆化</category>
         <category>字符串</category>
+        <category>记忆化</category>
       </categories>
   </entry>
   <entry>
@@ -3065,8 +3578,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>贪心</category>
         <category>堆</category>
+        <category>贪心</category>
         <category>二分查找</category>
       </categories>
   </entry>
@@ -3110,8 +3623,8 @@
         <category>刷题记录</category>
         <category>深度优先搜索</category>
         <category>动态规划</category>
-        <category>记忆化</category>
         <category>字符串</category>
+        <category>记忆化</category>
       </categories>
   </entry>
   <entry>
@@ -3693,8 +4206,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>数组</category>
         <category>动态规划</category>
+        <category>数组</category>
         <category>二分查找</category>
       </categories>
   </entry>
@@ -4079,8 +4592,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>贪心</category>
         <category>数学</category>
+        <category>贪心</category>
       </categories>
   </entry>
   <entry>
@@ -4148,9 +4661,9 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
+        <category>动态规划</category>
         <category>数组</category>
         <category>贪心</category>
-        <category>动态规划</category>
       </categories>
   </entry>
   <entry>
@@ -4468,8 +4981,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>数组</category>
         <category>动态规划</category>
+        <category>数组</category>
         <category>二分查找</category>
       </categories>
   </entry>
@@ -4605,8 +5118,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>数组</category>
         <category>动态规划</category>
+        <category>数组</category>
       </categories>
   </entry>
   <entry>
@@ -4672,8 +5185,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>数组</category>
         <category>动态规划</category>
+        <category>数组</category>
       </categories>
   </entry>
   <entry>
@@ -4884,8 +5397,8 @@
       <categories>
         <category>刷题记录</category>
         <category>数组</category>
-        <category>位运算</category>
         <category>二分查找</category>
+        <category>位运算</category>
         <category>双指针</category>
       </categories>
   </entry>
@@ -5376,8 +5889,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>数组</category>
         <category>动态规划</category>
+        <category>数组</category>
         <category>二分查找</category>
       </categories>
   </entry>
@@ -6025,8 +6538,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>数组</category>
         <category>动态规划</category>
+        <category>数组</category>
       </categories>
   </entry>
   <entry>
@@ -8276,8 +8789,8 @@
       <categories>
         <category>刷题记录</category>
         <category>深度优先搜索</category>
-        <category>并查集</category>
         <category>广度优先搜索</category>
+        <category>并查集</category>
       </categories>
   </entry>
   <entry>
@@ -8397,8 +8910,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>数组</category>
         <category>堆</category>
+        <category>数组</category>
         <category>排序</category>
         <category>分治</category>
       </categories>
@@ -9096,8 +9609,8 @@
       <categories>
         <category>刷题记录</category>
         <category>数组</category>
-        <category>二分查找</category>
         <category>排序</category>
+        <category>二分查找</category>
         <category>双指针</category>
       </categories>
   </entry>
@@ -12879,6 +13392,66 @@ print(f.closed)
       </categories>
   </entry>
   <entry>
+    <title>Scikit-Learn</title>
+    <url>/2019/08/12/library%20Sklearn/</url>
+    <content><![CDATA[<p><img src="/images/LIBRARY/sklearn.jpg" alt="0"></p>
+<h1 id="Scikit-Learn介绍"><a href="#Scikit-Learn介绍" class="headerlink" title="Scikit-Learn介绍"></a><font size="5" color="red">Scikit-Learn介绍</font></h1><p>  Scikit-Learn库自2007年发布以来，已经称为最受欢迎的机器学习库之一，基于广受欢迎的Numpy和Scipy库构建，能够提供用于机器学习的算法，数据预处理等功能。<br><a id="more"></a></p>
+<h1 id="Scikit-Learn应用"><a href="#Scikit-Learn应用" class="headerlink" title="Scikit-Learn应用"></a><font size="5" color="red">Scikit-Learn应用</font></h1><h2 id="Scikit-Learn线性回归"><a href="#Scikit-Learn线性回归" class="headerlink" title="Scikit-Learn线性回归"></a><font size="4">Scikit-Learn线性回归</font></h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from sklearn.linear_model import LinearRegression</span><br><span class="line"></span><br><span class="line">x_train = np.array([[6], [8], [10], [14], [18]]).reshape(-1, 1)</span><br><span class="line">y_train = np.array([7, 9, 13, 17.5, 18])</span><br><span class="line"></span><br><span class="line"># model = LinearRegression() 创建线性回归模型</span><br><span class="line">model = LinearRegression()</span><br><span class="line"></span><br><span class="line"># model.fit(X, y) 用训练数据X，y拟合模型</span><br><span class="line">model.fit(x_train, y_train)</span><br><span class="line"></span><br><span class="line">x_test = np.array([[12]]).reshape(-1, 1)</span><br><span class="line"></span><br><span class="line"># model.predict(X) 用训练后的模型预测数据X</span><br><span class="line">y_test = model.predict(x_test)[0]</span><br><span class="line"></span><br><span class="line">x_max, x_min = max(x_train), min(x_train)</span><br><span class="line">y_max, y_min = model.predict([x_max, x_min])</span><br><span class="line"></span><br><span class="line"># model.coef_ 获取模型的权值系数</span><br><span class="line">k = model.coef_[0]</span><br><span class="line">x_mean, y_mean = np.mean(x_train), np.mean(y_train)</span><br><span class="line">b = y_mean - k * x_mean</span><br><span class="line"></span><br><span class="line">plt.figure()</span><br><span class="line">plt.title('Pizza price against diameter:\n' + str(k) + 'x + ' + str(b) + '= y')</span><br><span class="line">plt.xlabel('Pizza diamter')</span><br><span class="line">plt.ylabel('Pizza price')</span><br><span class="line">plt.plot(x_train, y_train, 'k.', label='train_dot')</span><br><span class="line">plt.plot(x_test, y_test, 'ro', label='predict_dot')</span><br><span class="line">plt.plot([x_max, x_min], [y_max, y_min])</span><br><span class="line">plt.text(x_test, y_test, '(' + str(x_test[0][0]) + ',' + str(y_test) + ')')</span><br><span class="line">plt.legend()</span><br><span class="line">plt.grid(True)</span><br><span class="line">plt.style.use('ggplot')</span><br><span class="line">plt.show()</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/LIBRARY/sklearn1.png" alt="1"></p>
+<h2 id="Scikit-LearnK近邻分类算法"><a href="#Scikit-LearnK近邻分类算法" class="headerlink" title="Scikit-LearnK近邻分类算法"></a><font size="4">Scikit-LearnK近邻分类算法</font></h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from sklearn.preprocessing import LabelBinarizer</span><br><span class="line">from sklearn.neighbors import KNeighborsClassifier</span><br><span class="line">from sklearn.metrics import accuracy_score</span><br><span class="line">from sklearn.metrics import precision_score</span><br><span class="line">from sklearn.metrics import recall_score</span><br><span class="line">from sklearn.metrics import f1_score</span><br><span class="line">from sklearn.metrics import matthews_corrcoef</span><br><span class="line">from sklearn.metrics import classification_report</span><br><span class="line"></span><br><span class="line">def classify(x, y):</span><br><span class="line">    male_height, male_weight, female_height, female_weight = [], [], [], []</span><br><span class="line">    for i in range(len(x)):</span><br><span class="line">        if y[i] == 'male':</span><br><span class="line">            male_height.append(x[i][0])</span><br><span class="line">            male_weight.append(x[i][1])</span><br><span class="line">        else:</span><br><span class="line">            female_height.append(x[i][0])</span><br><span class="line">            female_weight.append(x[i][1])</span><br><span class="line">    return male_height, male_weight, female_height, female_weight</span><br><span class="line"></span><br><span class="line">x_train = np.array([[158, 64], [170, 66], [183, 84], [191, 80], [155, 49], [163, 59], [180, 67], [158, 54], [178, 77]])</span><br><span class="line">y_train = ['male', 'male', 'male', 'male', 'female', 'female', 'female', 'female', 'female'] </span><br><span class="line"></span><br><span class="line"># lb = LabelBinarizer() 创建一个标签转换器接口，将标签变成整数</span><br><span class="line">lb = LabelBinarizer()</span><br><span class="line"></span><br><span class="line"># lb.fit_transform(y) 在训练数据集上对标签进行拟合并转换为整数</span><br><span class="line">y_train_binarized = lb.fit_transform(y_train)</span><br><span class="line"></span><br><span class="line">k = 3</span><br><span class="line"></span><br><span class="line"># clf = KNeighborsClassifier(n_neighbors=k) 创建KNN分类器模型</span><br><span class="line">clf = KNeighborsClassifier(n_neighbors=k)</span><br><span class="line"></span><br><span class="line"># clf.fit(X, y) 用训练数据X，y拟合模型</span><br><span class="line">clf.fit(x_train,y_train_binarized.reshape(-1))</span><br><span class="line"></span><br><span class="line">x_test = np.array([[168, 65], [170, 61], [160, 52], [169, 67]])</span><br><span class="line">y_test = ['male', 'male', 'female', 'female']</span><br><span class="line"></span><br><span class="line"># clf.predict(X) 用训练后的模型预测数据X</span><br><span class="line">y_pre_binarized = clf.predict(x_test)</span><br><span class="line"></span><br><span class="line"># lb.inverse_transform(Y) 将预测后的整数转换成标签</span><br><span class="line">y_pre = lb.inverse_transform(y_pre_binarized)</span><br><span class="line"></span><br><span class="line">male_height_train, male_weight_train, female_height_train, female_weight_train = classify(x_train, y_train)</span><br><span class="line">male_height_pre, male_weight_pre, female_height_pre, female_weight_pre = classify(x_test, y_pre)</span><br><span class="line"></span><br><span class="line">y_test_binarized = lb.transform(y_test).T[0]</span><br><span class="line">print(y_test_binarized)</span><br><span class="line">print(y_pre_binarized)</span><br><span class="line"></span><br><span class="line"># accuracy_score(y_test, y_predict) 求真实值与预测值的准确率</span><br><span class="line">print('预测准确率为:%.2f' %accuracy_score(y_test_binarized, y_pre_binarized))</span><br><span class="line"></span><br><span class="line"># precision_score(y_test, y_predict) 求真实值与预测值的精准率</span><br><span class="line">print('预测精准率为:%.2f' %precision_score(y_test_binarized, y_pre_binarized))</span><br><span class="line"></span><br><span class="line"># recall_score(y_test, y_predict) 求真实值与预测值的召回率</span><br><span class="line">print('预测召回率为:%.2f' %recall_score(y_test_binarized, y_pre_binarized))</span><br><span class="line"></span><br><span class="line"># f1_score(y_test, y_predict) 求真实值与预测值的F1得分</span><br><span class="line">print('预测F1得分为:%.2f' %f1_score(y_test_binarized, y_pre_binarized))</span><br><span class="line"></span><br><span class="line"># matthews_corrcoef(y_test, y_predict) 求真实值与预测值的马修斯系数</span><br><span class="line">print('马修斯系数为:%.2f' %matthews_corrcoef(y_test_binarized, y_pre_binarized))</span><br><span class="line"></span><br><span class="line"># classification_report(y_test, y_predict, target_names=None, labels=None) 同时生成真实值与预测值的精准率，召回率和F1得分，目标标签为target_name，对应的值为label</span><br><span class="line">print(classification_report(y_test_binarized, y_pre_binarized, target_names={'male'}, labels=[1]))</span><br><span class="line"></span><br><span class="line">plt.style.use('ggplot')</span><br><span class="line">plt.figure()</span><br><span class="line">plt.title('Human Height and Weight By Sex:')</span><br><span class="line">plt.xlabel('Height')</span><br><span class="line">plt.ylabel('Weight')</span><br><span class="line">plt.grid(True)</span><br><span class="line">plt.scatter(male_height_train, male_weight_train, color='b', marker='o', label='train_male')</span><br><span class="line">plt.scatter(female_height_train, female_weight_train, color='r', marker='o', label='train_female')</span><br><span class="line">plt.scatter(male_height_pre, male_weight_pre, color='b', marker='*', label='pre_male')</span><br><span class="line">plt.scatter(female_height_pre, female_weight_pre, color='r', marker='*', label='pre_female')</span><br><span class="line">plt.legend()</span><br><span class="line">plt.show()</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/LIBRARY/sklearn2.png" alt="2"></p>
+<h2 id="Scikit-LearnK近邻回归算法"><a href="#Scikit-LearnK近邻回归算法" class="headerlink" title="Scikit-LearnK近邻回归算法"></a><font size="4">Scikit-LearnK近邻回归算法</font></h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">from sklearn.neighbors import KNeighborsRegressor</span><br><span class="line">from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score</span><br><span class="line">from sklearn.preprocessing import StandardScaler</span><br><span class="line"></span><br><span class="line">x_train = np.array([[158, 1], [170, 1], [183, 1], [191, 1], [155, 0], [163, 0], [180, 0], [158, 0], [170, 0]])</span><br><span class="line">y_train = np.array([64, 86, 84, 80, 49, 59, 67, 54, 67])</span><br><span class="line">x_test = np.array([[168, 1], [180, 1], [160, 0], [169, 0]])</span><br><span class="line">y_test = [65, 96, 52, 67]</span><br><span class="line">k = 3</span><br><span class="line"></span><br><span class="line"># clf = KNeighborsRegressor(n_neighbors=k) 创建KNN回归模型</span><br><span class="line">clf = KNeighborsRegressor(n_neighbors=k)</span><br><span class="line"></span><br><span class="line"># clf.fit(X, y) 用训练数据X，y拟合模型</span><br><span class="line">clf.fit(x_train, y_train)</span><br><span class="line"></span><br><span class="line"># clf.predict(X) 用训练后的模型预测数据X</span><br><span class="line">pre = clf.predict(x_test)</span><br><span class="line"></span><br><span class="line">print([np.around(x, 2) for x in pre])</span><br><span class="line"></span><br><span class="line"># r2_score(y_test, y_predict) 求真实值与预测值的决定系数</span><br><span class="line">print('Coefficiet of determination: %.2f' %r2_score(y_test, pre))</span><br><span class="line"></span><br><span class="line"># mean_absolute_erro(y_test, y_predict) 求真实值与预测值的平均绝对误差MAE</span><br><span class="line">print('Mean absolute error: %.2f' %mean_absolute_error(y_test, pre))</span><br><span class="line"></span><br><span class="line"># mean_squared_error(y_test, y_predict) 求真实值与预测值的均方误差MSE</span><br><span class="line">print('Mean squared error: %.2f' %mean_squared_error(y_test, pre))</span><br><span class="line"></span><br><span class="line">print('\n' + 'Scaled Processing'.center(30, '~') + '\n')</span><br><span class="line"></span><br><span class="line"># ss = StandardScaler() 创建一个特征缩放转换接口</span><br><span class="line">ss = StandardScaler()</span><br><span class="line"></span><br><span class="line"># ss.fit_transform(x) 在训练数据集上对数据特征进行缩放</span><br><span class="line">x_train_scaled = ss.fit_transform(x_train)</span><br><span class="line"></span><br><span class="line"># ss.transform(x) 在测试数据集上对数据特征进行缩放</span><br><span class="line">x_test_scaled = ss.transform(x_test) </span><br><span class="line"></span><br><span class="line">clf.fit(x_train_scaled, y_train)</span><br><span class="line"></span><br><span class="line">pre_scaled = clf.predict(x_test_scaled)</span><br><span class="line"></span><br><span class="line">print([np.around(x, 2) for x in pre_scaled])</span><br><span class="line">print('Coefficiet of determination: %.2f' %r2_score(y_test, pre_scaled))</span><br><span class="line">print('Mean absolute error: %.2f' %mean_absolute_error(y_test, pre_scaled))</span><br><span class="line">print('Mean squared error: %.2f' %mean_squared_error(y_test, pre_scaled))</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/LIBRARY/sklearn3.png" alt="3"></p>
+<h2 id="Scikit-Learn独热编码"><a href="#Scikit-Learn独热编码" class="headerlink" title="Scikit-Learn独热编码"></a><font size="4">Scikit-Learn独热编码</font></h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">from sklearn.feature_extraction import DictVectorizer</span><br><span class="line"></span><br><span class="line"># onehot_encoder = DictVectorizer() 创建独热编码转换器</span><br><span class="line">onehot_encoder = DictVectorizer()</span><br><span class="line"></span><br><span class="line">x = [{'city': 'New York'}, {'city': 'San Francisco'}, {'city:': 'Chapel Hill'}]</span><br><span class="line"></span><br><span class="line"># onehot_encoder.fit_transform(x).toarray() 将字典的值value进行独热编码</span><br><span class="line">onehot_x = onehot_encoder.fit_transform(x).toarray()</span><br><span class="line"></span><br><span class="line">print(onehot_x)</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/LIBRARY/sklearn4.png" alt="4"></p>
+<h2 id="Scikit-Learn特征标准化"><a href="#Scikit-Learn特征标准化" class="headerlink" title="Scikit-Learn特征标准化"></a><font size="4">Scikit-Learn特征标准化</font></h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">from sklearn import preprocessing</span><br><span class="line"></span><br><span class="line">x = np.array([[0., 0., 5., 13., 9., 1.], [0., 0., 13., 15., 10., 15.], [0., 3., 15., 2., 0., 11.]])</span><br><span class="line"></span><br><span class="line"># preprocessing.StandardScaler().fit_transform(x) 使用标准化转换器类函数</span><br><span class="line">x_standard_scaled = preprocessing.StandardScaler().fit_transform(x)</span><br><span class="line">print(x_standard_scaled)</span><br><span class="line"></span><br><span class="line"># preprocessing.scale(x) 使用标准化函数scale</span><br><span class="line">x_scaled = preprocessing.scale(x)</span><br><span class="line">print(x_scaled)</span><br><span class="line"></span><br><span class="line"># preprocessing.robust_scale(x) 使用鲁棒性标准化函数robust_scale</span><br><span class="line">x_robust_scaled = preprocessing.robust_scale(x)</span><br><span class="line">print(x_robust_scaled)</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/LIBRARY/sklearn5.png" alt="5"></p>
+<h2 id="Scikit-Learn多元线性回归"><a href="#Scikit-Learn多元线性回归" class="headerlink" title="Scikit-Learn多元线性回归"></a><font size="4">Scikit-Learn多元线性回归</font></h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">from sklearn.linear_model import LinearRegression</span><br><span class="line"></span><br><span class="line">x = [[6, 2], [8, 1], [10, 0], [14, 2], [18, 0]]</span><br><span class="line">y = [[7], [9], [13], [17.5], [18]]</span><br><span class="line"></span><br><span class="line"># model = LinearRegression() 创建线性回归模型</span><br><span class="line">model = LinearRegression()</span><br><span class="line"></span><br><span class="line"># model.fit(X, y) 用训练数据X，y拟合模型</span><br><span class="line">model.fit(x, y)</span><br><span class="line"></span><br><span class="line">x_test = [[8, 2], [9, 0], [11, 2], [16, 2], [12, 0]]</span><br><span class="line">y_test = [[11], [8.5], [15], [18], [11]]</span><br><span class="line"></span><br><span class="line"># model.predict(X) 用训练后的模型预测数据X</span><br><span class="line">predictions = model.predict(x_test)</span><br><span class="line"></span><br><span class="line">for i, prediction in enumerate(predictions):</span><br><span class="line">    print('prediction: %s, truth: %s' %(prediction, y_test[i]))</span><br><span class="line"></span><br><span class="line"># model.score(x, y) 求模型的决定系数</span><br><span class="line">print('R-squared: %.2f' %model.score(x_test, y_test))</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/LIBRARY/sklearn6.png" alt="6"></p>
+<h2 id="Scikit-Learn多项式回归"><a href="#Scikit-Learn多项式回归" class="headerlink" title="Scikit-Learn多项式回归"></a><font size="4">Scikit-Learn多项式回归</font></h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from sklearn.linear_model import LinearRegression</span><br><span class="line">from sklearn.preprocessing import PolynomialFeatures</span><br><span class="line"></span><br><span class="line">plt.style.use('ggplot')</span><br><span class="line"></span><br><span class="line">x_train = [[6], [8], [10], [14], [18]]</span><br><span class="line">y_train = [[7], [9], [13], [17.5], [18]]</span><br><span class="line">x_test = [[6], [8], [11], [16]]</span><br><span class="line">y_test = [[8], [12], [15], [18]]</span><br><span class="line"></span><br><span class="line"># model = LinearRegression() 创建线性回归模型</span><br><span class="line">regressor = LinearRegression()</span><br><span class="line"></span><br><span class="line"># model.fit(X, y) 用训练数据X，y拟合模型</span><br><span class="line">regressor.fit(x_train, y_train)</span><br><span class="line"></span><br><span class="line">xx = np.linspace(0, 26, 100)</span><br><span class="line"></span><br><span class="line"># model.predict(X) 用训练后的模型预测数据X</span><br><span class="line">yy = regressor.predict(xx.reshape(xx.shape[0], 1))</span><br><span class="line"></span><br><span class="line">plt.plot(xx, yy, c='b', label='Linear_poly')</span><br><span class="line"></span><br><span class="line"># quadratic_featurizer = PolynomialFeatures(degree=n) 创建n阶多项式转换器</span><br><span class="line">quadratic_featurizer = PolynomialFeatures(degree=2)</span><br><span class="line"></span><br><span class="line"># quadratic_featurizer.fit_transform(x_train) 在训练数据集上对数据特征进行多项式变换</span><br><span class="line">x_train_quadratic = quadratic_featurizer.fit_transform(x_train)</span><br><span class="line"></span><br><span class="line"># ss.fit_transform(x) 在训练数据集上对数据特征进行多项式变换</span><br><span class="line">x_test_quadratic = quadratic_featurizer.transform(x_test)</span><br><span class="line"></span><br><span class="line"># model = LinearRegression() 创建线性回归模型</span><br><span class="line">regressor_quadratic = LinearRegression()</span><br><span class="line"></span><br><span class="line"># model.fit(X, y) 用训练数据X，y拟合模型</span><br><span class="line">regressor_quadratic.fit(x_train_quadratic, y_train)</span><br><span class="line"></span><br><span class="line"># ss.fit_transform(x) 对数据特征进行多项式变换</span><br><span class="line">xx_quadratic = quadratic_featurizer.transform(xx.reshape(xx.shape[0], 1))</span><br><span class="line"></span><br><span class="line"># model.predict(X) 用训练后的模型预测数据X</span><br><span class="line">yy_quadratic = regressor_quadratic.predict(xx_quadratic)</span><br><span class="line"></span><br><span class="line">print('linear regression r-squared', regressor.score(x_test, y_test))</span><br><span class="line">print('quadratic regression r-squared', regressor_quadratic.score(x_test_quadratic, y_test))</span><br><span class="line"></span><br><span class="line">plt.plot(xx, yy_quadratic, c='r', label='square_poly')</span><br><span class="line">plt.scatter(x_train, y_train, label='data')</span><br><span class="line">plt.axis([0, 25, 0, 25])</span><br><span class="line">plt.title('Pizza price and diameter')</span><br><span class="line">plt.xlabel('Diameter in inches')</span><br><span class="line">plt.ylabel('Pizza Price')</span><br><span class="line">plt.grid(True)</span><br><span class="line">plt.legend()</span><br><span class="line">plt.show()</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/LIBRARY/sklearn7.png" alt="7"></p>
+<h2 id="Scikit-Learn逻辑回归和朴素贝叶斯"><a href="#Scikit-Learn逻辑回归和朴素贝叶斯" class="headerlink" title="Scikit-Learn逻辑回归和朴素贝叶斯"></a><font size="4">Scikit-Learn逻辑回归和朴素贝叶斯</font></h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">from sklearn.datasets import load_breast_cancer</span><br><span class="line">from sklearn.linear_model import LogisticRegression</span><br><span class="line">from sklearn.naive_bayes import GaussianNB</span><br><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line"># from sklearn.datasets import load_breast_cancer 从sklearn数据集中导入胸部癌症的数据</span><br><span class="line">x, y = load_breast_cancer(return_X_y=True)</span><br><span class="line"></span><br><span class="line"># train_test_split(x, y, stratify=y, test_size=n) 将x和y按照test_size划分成数据集和测试集，stratify=y按照y中的比例分配</span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(x, y, stratify=y, test_size=0.2, random_state=31)</span><br><span class="line"></span><br><span class="line"># lr = LogisticRegression() 创建逻辑回归模型</span><br><span class="line">lr = LogisticRegression(solver='liblinear')</span><br><span class="line"></span><br><span class="line"># nb = GaussianNB() 创建朴素贝叶斯模型</span><br><span class="line">nb = GaussianNB()</span><br><span class="line"></span><br><span class="line">lr_scores = []</span><br><span class="line">nb_scores = []</span><br><span class="line"></span><br><span class="line">train_sizes = range(10, len(x_train), 25)</span><br><span class="line">for train_size in train_sizes:</span><br><span class="line">    # train_test_split(x, y, stratify=y, train_size=n) 将x和y按照test_size划分成数据集和测试集，stratify=y按照y中的比例分配</span><br><span class="line">    x_slice, _, y_slice, _ = train_test_split(x_train, y_train, train_size=train_size, stratify=y_train, random_state=31)</span><br><span class="line"></span><br><span class="line">    # nb.fit(X, y) 用训练数据X，y拟合朴素贝叶斯模型</span><br><span class="line">    nb.fit(x_slice, y_slice)</span><br><span class="line"></span><br><span class="line">    # nb.score(x, y) 求朴素贝叶斯模型的决定系数</span><br><span class="line">    nb_scores.append(nb.score(x_test, y_test))</span><br><span class="line"></span><br><span class="line">    # lr.fit(X, y) 用训练数据X，y拟合逻辑回归模型</span><br><span class="line">    lr.fit(x_slice, y_slice)</span><br><span class="line"></span><br><span class="line">    # lr.score(x, y) 求逻辑回归模型的决定系数</span><br><span class="line">    lr_scores.append(lr.score(x_test, y_test))</span><br><span class="line"></span><br><span class="line">plt.plot(train_sizes, nb_scores, label='Naive Bayes')</span><br><span class="line">plt.plot(train_sizes, lr_scores, linestyle='--', label='Logistic Regression')</span><br><span class="line">plt.title('Naive Bayes and Logistic Regression accuracies')</span><br><span class="line">plt.xlabel('Number of training instances')</span><br><span class="line">plt.ylabel('Test set accuracy')</span><br><span class="line">plt.legend()</span><br><span class="line">plt.show()</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/LIBRARY/sklearn8.png" alt="8"></p>
+<h2 id="Scikit-Learn决策树和袋装集成学习"><a href="#Scikit-Learn决策树和袋装集成学习" class="headerlink" title="Scikit-Learn决策树和袋装集成学习"></a><font size="4">Scikit-Learn决策树和袋装集成学习</font></h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">from sklearn.tree import DecisionTreeClassifier</span><br><span class="line">from sklearn.ensemble import RandomForestClassifier</span><br><span class="line">from sklearn.datasets import make_classification</span><br><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line">from sklearn.metrics import classification_report</span><br><span class="line"></span><br><span class="line"># from sklearn.datasets import make_classification 从sklearn数据集中导入make_classification用于创建分类数据集，样本数为n_samples，特征数为n_features，有用的特征数为n_informative，每一类的簇的个数为n_clusters_per_class</span><br><span class="line">x, y = make_classification(n_samples=1000, n_features=100, n_informative=20, n_clusters_per_class=2, random_state=11)</span><br><span class="line"></span><br><span class="line"># train_test_split(x, y) 将x和y划分成数据集和测试集</span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(x, y, random_state=11)</span><br><span class="line"></span><br><span class="line"># clf = DecisionTreeClassifier() 创建决策树模型</span><br><span class="line">clf = DecisionTreeClassifier(random_state=11)</span><br><span class="line"></span><br><span class="line"># clf.fit(X, y) 用训练数据X，y拟合模型</span><br><span class="line">clf.fit(x_train, y_train)</span><br><span class="line"></span><br><span class="line"># clf.predict(X) 用训练后的模型预测数据X</span><br><span class="line">predictions = clf.predict(x_test)</span><br><span class="line"></span><br><span class="line"># classification_report(y_test, y_predict, target_names=None, labels=None) 同时生成真实值与预测值的精准率，召回率和F1得分，目标标签为target_name，对应的值为label</span><br><span class="line">print(classification_report(y_test, predictions))</span><br><span class="line"></span><br><span class="line"># clf = RandomForestClassifier(n_estimators=n) 创建包含n个树的随机森林分类器</span><br><span class="line">clf = RandomForestClassifier(n_estimators=10, random_state=11)</span><br><span class="line"></span><br><span class="line"># clf.fit(X, y) 用训练数据X，y拟合模型</span><br><span class="line">clf.fit(x_train, y_train)</span><br><span class="line"></span><br><span class="line"># clf.predict(X) 用训练后的模型预测数据X</span><br><span class="line">predictions = clf.predict(x_test)</span><br><span class="line"></span><br><span class="line"># classification_report(y_test, y_predict, target_names=None, labels=None) 同时生成真实值与预测值的精准率，召回率和F1得分，目标标签为target_name，对应的值为label</span><br><span class="line">print(classification_report(y_test, predictions))</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/LIBRARY/sklearn9.png" alt="9"></p>
+<h2 id="Scikit-Learn推进集成学习"><a href="#Scikit-Learn推进集成学习" class="headerlink" title="Scikit-Learn推进集成学习"></a><font size="4">Scikit-Learn推进集成学习</font></h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">from sklearn.ensemble import AdaBoostClassifier</span><br><span class="line">from sklearn.tree import DecisionTreeClassifier</span><br><span class="line">from sklearn.datasets import make_classification</span><br><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line"># from sklearn.datasets import make_classification 从sklearn数据集中导入make_classification用于创建分类数据集，样本数为n_samples，特征数为n_features，有用的特征数为n_informative，每一类的簇的个数为n_clusters_per_class</span><br><span class="line">x, y = make_classification(n_samples=1000, n_features=50, n_informative=30, n_clusters_per_class=3, random_state=11)</span><br><span class="line"></span><br><span class="line"># train_test_split(x, y) 将x和y划分成数据集和测试集</span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(x, y, random_state=11)</span><br><span class="line"></span><br><span class="line"># clf = DecisionTreeClassifier() 创建决策树模型</span><br><span class="line">clf = DecisionTreeClassifier()</span><br><span class="line"></span><br><span class="line"># clf.fit(X, y) 用训练数据X，y拟合模型</span><br><span class="line">clf.fit(x_train, y_train)</span><br><span class="line"></span><br><span class="line"># clf.score(x, y) 求模型的决定系数</span><br><span class="line">print('DecisionTree accuracy:%s' %clf.score(x_test, y_test))</span><br><span class="line"></span><br><span class="line"># clf = AdaBoostClassifier(n_estimators=n) 创建具有n个弱学习器的AdaBoost模型</span><br><span class="line">clf = AdaBoostClassifier(n_estimators=50, random_state=11)</span><br><span class="line"></span><br><span class="line"># clf.fit(X, y) 用训练数据X，y拟合模型</span><br><span class="line">clf.fit(x_train, y_train)</span><br><span class="line"></span><br><span class="line">plt.title('Ensemble Accuracy')</span><br><span class="line">plt.xlabel('Accuracy')</span><br><span class="line">plt.ylabel('Number of base estimators in ensemble')</span><br><span class="line"></span><br><span class="line"># clf.staged_score(x, y) 求AdaBoost模型的弱分类器个数的决定系数</span><br><span class="line">plt.plot(range(1, 51), [accuracy for accuracy in clf.staged_score(x_test, y_test)])</span><br><span class="line">plt.show()</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/LIBRARY/sklearn10.png" alt="10"></p>
+<h2 id="Scikit-Learn感知机"><a href="#Scikit-Learn感知机" class="headerlink" title="Scikit-Learn感知机"></a><font size="4">Scikit-Learn感知机</font></h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">from sklearn.datasets import make_classification</span><br><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line">from sklearn.metrics import classification_report</span><br><span class="line">from sklearn.linear_model import Perceptron</span><br><span class="line"></span><br><span class="line"># from sklearn.datasets import make_classification 从sklearn数据集中导入make_classification用于创建分类数据集，样本数为n_samples，特征数为n_features，有用的特征数为n_informative，每一类的簇的个数为n_clusters_per_class</span><br><span class="line">x, y = make_classification(n_samples=1000, n_features=100, n_informative=20, n_clusters_per_class=2, random_state=11)</span><br><span class="line"></span><br><span class="line"># train_test_split(x, y) 将x和y划分成数据集和测试集</span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(x, y, random_state=11)</span><br><span class="line"></span><br><span class="line"># clf = Perceptron() 创建感知机模型</span><br><span class="line">clf = Perceptron(random_state=11)</span><br><span class="line"></span><br><span class="line"># clf.fit(X, y) 用训练数据X，y拟合模型</span><br><span class="line">clf.fit(x_train, y_train)</span><br><span class="line"></span><br><span class="line"># clf.predict(X) 用训练后的模型预测数据X</span><br><span class="line">predictions = clf.predict(x_test)</span><br><span class="line"></span><br><span class="line"># classification_report(y_test, y_predict, target_names=None, labels=None) 同时生成真实值与预测值的精准率，召回率和F1得分，目标标签为target_name，对应的值为label</span><br><span class="line">print(classification_report(y_test, predictions))</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/LIBRARY/sklearn11.png" alt="11"></p>
+<h2 id="Scikit-Learn支持向量机"><a href="#Scikit-Learn支持向量机" class="headerlink" title="Scikit-Learn支持向量机"></a><font size="4">Scikit-Learn支持向量机</font></h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">from sklearn.datasets import make_classification</span><br><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line">from sklearn.metrics import classification_report</span><br><span class="line">from sklearn.svm import SVC</span><br><span class="line"></span><br><span class="line"># from sklearn.datasets import make_classification 从sklearn数据集中导入make_classification用于创建分类数据集，样本数为n_samples，特征数为n_features，有用的特征数为n_informative，每一类的簇的个数为n_clusters_per_class</span><br><span class="line">x, y = make_classification(n_samples=1000, n_features=100, n_informative=20, n_clusters_per_class=2, random_state=11)</span><br><span class="line"></span><br><span class="line"># train_test_split(x, y) 将x和y划分成数据集和测试集</span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(x, y, random_state=11)</span><br><span class="line"></span><br><span class="line"># clf = SVC(kernel='rbf', gamma='auto deprecated', C=1.0) 创建支持向量机模型，核函数默认为rbf高斯核，正则化参数C默认为1.0，核系数参数gamma默认为不使用</span><br><span class="line">clf = SVC(kernel='rbf', gamma=0.01, C=100, random_state=11)</span><br><span class="line"></span><br><span class="line"># clf.fit(X, y) 用训练数据X，y拟合模型</span><br><span class="line">clf.fit(x_train, y_train)</span><br><span class="line"></span><br><span class="line"># clf.predict(X) 用训练后的模型预测数据X</span><br><span class="line">predictions = clf.predict(x_test)</span><br><span class="line"></span><br><span class="line"># classification_report(y_test, y_predict, target_names=None, labels=None) 同时生成真实值与预测值的精准率，召回率和F1得分，目标标签为target_name，对应的值为label</span><br><span class="line">print(classification_report(y_test, predictions))</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/LIBRARY/sklearn12.png" alt="12"></p>
+<h2 id="Scikit-Learn多层感知机"><a href="#Scikit-Learn多层感知机" class="headerlink" title="Scikit-Learn多层感知机"></a><font size="4">Scikit-Learn多层感知机</font></h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">from sklearn.datasets import load_digits</span><br><span class="line">from sklearn.model_selection import cross_val_score</span><br><span class="line">from sklearn.neural_network.multilayer_perceptron import MLPClassifier</span><br><span class="line"></span><br><span class="line"># from sklearn.datasets import load_digits 从sklearn数据集中导入手写数字的数据</span><br><span class="line">digits = load_digits()</span><br><span class="line">x = digits.data</span><br><span class="line">y = digits.target</span><br><span class="line"></span><br><span class="line"># clf = MLPClassifier(hidden_layer_sizes=(100,), alpha=0.0001, max_iter=200, random_state=20) 创建多层感知机模型，每一层的神经元个数为hidden_layer_sizes，正则化参数alpha默认为0.0001，最大迭代次数默认为200</span><br><span class="line">clf = MLPClassifier(hidden_layer_sizes=(150, 100), alpha=0.1, max_iter=500)</span><br><span class="line"></span><br><span class="line"># cross_val_score(estimator, X, y, n_jobs=None, cv=n) n折交叉验证，估计器为estimator，数据为X和y，同时工作的CPU个数为1</span><br><span class="line">print(cross_val_score(clf, x, y, n_jobs=-1, cv=5))</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/LIBRARY/sklearn13.png" alt="13"></p>
+<h2 id="Scikit-LearnKmeans聚类"><a href="#Scikit-LearnKmeans聚类" class="headerlink" title="Scikit-LearnKmeans聚类"></a><font size="4">Scikit-LearnKmeans聚类</font></h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">from sklearn.cluster import KMeans</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line">plt.subplot(3, 2, 1)</span><br><span class="line">x1 = np.array([1, 2, 3, 1, 5, 6, 5, 5, 6, 7, 8, 9, 7, 9])</span><br><span class="line">x2 = np.array([1, 3, 2, 2, 8, 6, 7, 6, 7, 1, 2, 1, 1, 3])</span><br><span class="line">x = np.vstack((x1, x2)).T</span><br><span class="line">plt.xlim([0, 10])</span><br><span class="line">plt.ylim([0, 10])</span><br><span class="line">plt.title('Instances')</span><br><span class="line">plt.scatter(x1, x2)</span><br><span class="line"></span><br><span class="line">colors = ['b', 'g', 'r', 'c', 'm', 'y', 'k', 'b']</span><br><span class="line">markers = ['o', 's', 'D', 'v', '^', 'p', '*', '+']</span><br><span class="line">tests = [2, 3, 4, 5, 8]</span><br><span class="line">subplot_counter = 1</span><br><span class="line"></span><br><span class="line">for t in tests:</span><br><span class="line">    subplot_counter +=1</span><br><span class="line">    plt.subplot(3, 2, subplot_counter)</span><br><span class="line"></span><br><span class="line">    # kmeans_model = KMeans(n_clusters=n) 创建Kmeans模型，类别个数为n</span><br><span class="line">    kmeans_model = KMeans(n_clusters=t)</span><br><span class="line"></span><br><span class="line">    # kmeans_model.fit(x) 用训练数据X拟合模型</span><br><span class="line">    kmeans_model.fit(x)</span><br><span class="line"></span><br><span class="line">    for i, l in enumerate(kmeans_model.labels_):</span><br><span class="line">        plt.plot(x1[i], x2[i], color=colors[l], marker=markers[l])</span><br><span class="line"></span><br><span class="line">    plt.xlim([0, 10])</span><br><span class="line">    plt.ylim([0, 10])</span><br><span class="line">    plt.title('k=%s' %t)</span><br><span class="line">plt.show()</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/LIBRARY/sklearn14.png" alt="14"></p>
+<h3 id="Scikit-LearnPCA降维"><a href="#Scikit-LearnPCA降维" class="headerlink" title="Scikit-LearnPCA降维"></a><font size="3">Scikit-LearnPCA降维</font></h3><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from sklearn.decomposition import PCA</span><br><span class="line">from sklearn.datasets import load_iris</span><br><span class="line"></span><br><span class="line">data = load_iris()</span><br><span class="line">x = data.data</span><br><span class="line">y = data.target</span><br><span class="line"></span><br><span class="line"># pca = PCA(n_components=n) 创建n维PCA转换器</span><br><span class="line">pca = PCA(n_components=2)</span><br><span class="line"></span><br><span class="line"># pca.fit_transform(X) 在训练数据集进行PCA降维</span><br><span class="line">reduced_x = pca.fit_transform(x) </span><br><span class="line"></span><br><span class="line">red_x, red_y = [], []</span><br><span class="line">blue_x, blue_y = [], []</span><br><span class="line">green_x, green_y = [], []</span><br><span class="line"></span><br><span class="line">for i in range(len(reduced_x)):</span><br><span class="line">    if y[i] == 0:</span><br><span class="line">        red_x.append(reduced_x[i][0])</span><br><span class="line">        red_y.append(reduced_x[i][1])</span><br><span class="line">    elif y[i] == 1:</span><br><span class="line">        blue_x.append(reduced_x[i][0])</span><br><span class="line">        blue_y.append(reduced_x[i][1])</span><br><span class="line">    else:</span><br><span class="line">        green_x.append(reduced_x[i][0])</span><br><span class="line">        green_y.append(reduced_x[i][1])</span><br><span class="line"></span><br><span class="line">plt.scatter(red_x, red_y, c='r', marker='x')</span><br><span class="line">plt.scatter(blue_x, blue_y, c='b', marker='D')</span><br><span class="line">plt.scatter(green_x, green_y, c='g', marker='.')</span><br><span class="line">plt.show()</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/images/LIBRARY/sklearn15.png" alt="15"></p>
+<h1 id="Scikit-Learn小结"><a href="#Scikit-Learn小结" class="headerlink" title="Scikit-Learn小结"></a><font size="5" color="red">Scikit-Learn小结</font></h1><p>  由于Scikit-Learn集成了许多常用的机器学习算法，如决策树，SVM，多层感知机，Kmeans等，可以让使用者节约大量的时间。而且其拥有很好的官方文档，让开发者，研究者可以方便的入门和使用。因此Scikit-Learn在机器学习领域受到广大使用者的喜爱。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>语言学习</category>
+        <category>Python常用库</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Numpy</title>
     <url>/2019/08/12/library%20Numpy/</url>
     <content><![CDATA[<p><img src="/images/LIBRARY/numpy.jpg" alt="0"></p>
@@ -12971,66 +13544,6 @@ print(f.closed)
 <h3 id="savetxt，loadtxt方法"><a href="#savetxt，loadtxt方法" class="headerlink" title="savetxt，loadtxt方法"></a><font size="3">savetxt，loadtxt方法</font></h3><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">a = np.arange(12).reshape(3, 4)</span><br><span class="line">b = np.array([1,2,3,4])</span><br><span class="line">c = np.array([5,6,7,8])</span><br><span class="line"></span><br><span class="line"># np.savetxt(filename, obj, fmt='%f', delimiter=' ') 将多个一维数据(相同大小)或者一个二维维数据保存在文件名为filename的.txt文件中(要加.txt扩展名)，格式为fmt(默认为浮点型)，分隔符为delimiter(默认为' ')，保存时会将多个一维数组转化成一个二维数组</span><br><span class="line">np.savetxt('save4.txt', a)</span><br><span class="line">np.savetxt('save5.txt', (b, c))</span><br><span class="line"></span><br><span class="line"># np.loadtxt(filename, dtype='float', delimiter=' ') 读取文件名为filename的数组数据(要加.txt扩展名)，类型为dtypefloat(默认为浮点型)，分隔符为delimiter(默认为' ')</span><br><span class="line">d = np.loadtxt('save4.txt')</span><br><span class="line">e = np.loadtxt('save5.txt')</span><br></pre></td></tr></tbody></table></figure>
 <p><img src="/images/LIBRARY/numpy43.png" alt="43"></p>
 <h1 id="Numpy小结"><a href="#Numpy小结" class="headerlink" title="Numpy小结"></a><font size="5" color="red">Numpy小结</font></h1><p>  由于numpy支持各种矩阵运算，且运算效率非常高，因此numpy库广泛应用于数据分析，机器学习，深度学习等各个领域，其作为机器学习三剑客之一，也受到广大使用者的喜爱。</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>语言学习</category>
-        <category>Python常用库</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Scikit-Learn</title>
-    <url>/2019/08/12/library%20Sklearn/</url>
-    <content><![CDATA[<p><img src="/images/LIBRARY/sklearn.jpg" alt="0"></p>
-<h1 id="Scikit-Learn介绍"><a href="#Scikit-Learn介绍" class="headerlink" title="Scikit-Learn介绍"></a><font size="5" color="red">Scikit-Learn介绍</font></h1><p>  Scikit-Learn库自2007年发布以来，已经称为最受欢迎的机器学习库之一，基于广受欢迎的Numpy和Scipy库构建，能够提供用于机器学习的算法，数据预处理等功能。<br><a id="more"></a></p>
-<h1 id="Scikit-Learn应用"><a href="#Scikit-Learn应用" class="headerlink" title="Scikit-Learn应用"></a><font size="5" color="red">Scikit-Learn应用</font></h1><h2 id="Scikit-Learn线性回归"><a href="#Scikit-Learn线性回归" class="headerlink" title="Scikit-Learn线性回归"></a><font size="4">Scikit-Learn线性回归</font></h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from sklearn.linear_model import LinearRegression</span><br><span class="line"></span><br><span class="line">x_train = np.array([[6], [8], [10], [14], [18]]).reshape(-1, 1)</span><br><span class="line">y_train = np.array([7, 9, 13, 17.5, 18])</span><br><span class="line"></span><br><span class="line"># model = LinearRegression() 创建线性回归模型</span><br><span class="line">model = LinearRegression()</span><br><span class="line"></span><br><span class="line"># model.fit(X, y) 用训练数据X，y拟合模型</span><br><span class="line">model.fit(x_train, y_train)</span><br><span class="line"></span><br><span class="line">x_test = np.array([[12]]).reshape(-1, 1)</span><br><span class="line"></span><br><span class="line"># model.predict(X) 用训练后的模型预测数据X</span><br><span class="line">y_test = model.predict(x_test)[0]</span><br><span class="line"></span><br><span class="line">x_max, x_min = max(x_train), min(x_train)</span><br><span class="line">y_max, y_min = model.predict([x_max, x_min])</span><br><span class="line"></span><br><span class="line"># model.coef_ 获取模型的权值系数</span><br><span class="line">k = model.coef_[0]</span><br><span class="line">x_mean, y_mean = np.mean(x_train), np.mean(y_train)</span><br><span class="line">b = y_mean - k * x_mean</span><br><span class="line"></span><br><span class="line">plt.figure()</span><br><span class="line">plt.title('Pizza price against diameter:\n' + str(k) + 'x + ' + str(b) + '= y')</span><br><span class="line">plt.xlabel('Pizza diamter')</span><br><span class="line">plt.ylabel('Pizza price')</span><br><span class="line">plt.plot(x_train, y_train, 'k.', label='train_dot')</span><br><span class="line">plt.plot(x_test, y_test, 'ro', label='predict_dot')</span><br><span class="line">plt.plot([x_max, x_min], [y_max, y_min])</span><br><span class="line">plt.text(x_test, y_test, '(' + str(x_test[0][0]) + ',' + str(y_test) + ')')</span><br><span class="line">plt.legend()</span><br><span class="line">plt.grid(True)</span><br><span class="line">plt.style.use('ggplot')</span><br><span class="line">plt.show()</span><br></pre></td></tr></tbody></table></figure>
-<p><img src="/images/LIBRARY/sklearn1.png" alt="1"></p>
-<h2 id="Scikit-LearnK近邻分类算法"><a href="#Scikit-LearnK近邻分类算法" class="headerlink" title="Scikit-LearnK近邻分类算法"></a><font size="4">Scikit-LearnK近邻分类算法</font></h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from sklearn.preprocessing import LabelBinarizer</span><br><span class="line">from sklearn.neighbors import KNeighborsClassifier</span><br><span class="line">from sklearn.metrics import accuracy_score</span><br><span class="line">from sklearn.metrics import precision_score</span><br><span class="line">from sklearn.metrics import recall_score</span><br><span class="line">from sklearn.metrics import f1_score</span><br><span class="line">from sklearn.metrics import matthews_corrcoef</span><br><span class="line">from sklearn.metrics import classification_report</span><br><span class="line"></span><br><span class="line">def classify(x, y):</span><br><span class="line">    male_height, male_weight, female_height, female_weight = [], [], [], []</span><br><span class="line">    for i in range(len(x)):</span><br><span class="line">        if y[i] == 'male':</span><br><span class="line">            male_height.append(x[i][0])</span><br><span class="line">            male_weight.append(x[i][1])</span><br><span class="line">        else:</span><br><span class="line">            female_height.append(x[i][0])</span><br><span class="line">            female_weight.append(x[i][1])</span><br><span class="line">    return male_height, male_weight, female_height, female_weight</span><br><span class="line"></span><br><span class="line">x_train = np.array([[158, 64], [170, 66], [183, 84], [191, 80], [155, 49], [163, 59], [180, 67], [158, 54], [178, 77]])</span><br><span class="line">y_train = ['male', 'male', 'male', 'male', 'female', 'female', 'female', 'female', 'female'] </span><br><span class="line"></span><br><span class="line"># lb = LabelBinarizer() 创建一个标签转换器接口，将标签变成整数</span><br><span class="line">lb = LabelBinarizer()</span><br><span class="line"></span><br><span class="line"># lb.fit_transform(y) 在训练数据集上对标签进行拟合并转换为整数</span><br><span class="line">y_train_binarized = lb.fit_transform(y_train)</span><br><span class="line"></span><br><span class="line">k = 3</span><br><span class="line"></span><br><span class="line"># clf = KNeighborsClassifier(n_neighbors=k) 创建KNN分类器模型</span><br><span class="line">clf = KNeighborsClassifier(n_neighbors=k)</span><br><span class="line"></span><br><span class="line"># clf.fit(X, y) 用训练数据X，y拟合模型</span><br><span class="line">clf.fit(x_train,y_train_binarized.reshape(-1))</span><br><span class="line"></span><br><span class="line">x_test = np.array([[168, 65], [170, 61], [160, 52], [169, 67]])</span><br><span class="line">y_test = ['male', 'male', 'female', 'female']</span><br><span class="line"></span><br><span class="line"># clf.predict(X) 用训练后的模型预测数据X</span><br><span class="line">y_pre_binarized = clf.predict(x_test)</span><br><span class="line"></span><br><span class="line"># lb.inverse_transform(Y) 将预测后的整数转换成标签</span><br><span class="line">y_pre = lb.inverse_transform(y_pre_binarized)</span><br><span class="line"></span><br><span class="line">male_height_train, male_weight_train, female_height_train, female_weight_train = classify(x_train, y_train)</span><br><span class="line">male_height_pre, male_weight_pre, female_height_pre, female_weight_pre = classify(x_test, y_pre)</span><br><span class="line"></span><br><span class="line">y_test_binarized = lb.transform(y_test).T[0]</span><br><span class="line">print(y_test_binarized)</span><br><span class="line">print(y_pre_binarized)</span><br><span class="line"></span><br><span class="line"># accuracy_score(y_test, y_predict) 求真实值与预测值的准确率</span><br><span class="line">print('预测准确率为:%.2f' %accuracy_score(y_test_binarized, y_pre_binarized))</span><br><span class="line"></span><br><span class="line"># precision_score(y_test, y_predict) 求真实值与预测值的精准率</span><br><span class="line">print('预测精准率为:%.2f' %precision_score(y_test_binarized, y_pre_binarized))</span><br><span class="line"></span><br><span class="line"># recall_score(y_test, y_predict) 求真实值与预测值的召回率</span><br><span class="line">print('预测召回率为:%.2f' %recall_score(y_test_binarized, y_pre_binarized))</span><br><span class="line"></span><br><span class="line"># f1_score(y_test, y_predict) 求真实值与预测值的F1得分</span><br><span class="line">print('预测F1得分为:%.2f' %f1_score(y_test_binarized, y_pre_binarized))</span><br><span class="line"></span><br><span class="line"># matthews_corrcoef(y_test, y_predict) 求真实值与预测值的马修斯系数</span><br><span class="line">print('马修斯系数为:%.2f' %matthews_corrcoef(y_test_binarized, y_pre_binarized))</span><br><span class="line"></span><br><span class="line"># classification_report(y_test, y_predict, target_names=None, labels=None) 同时生成真实值与预测值的精准率，召回率和F1得分，目标标签为target_name，对应的值为label</span><br><span class="line">print(classification_report(y_test_binarized, y_pre_binarized, target_names={'male'}, labels=[1]))</span><br><span class="line"></span><br><span class="line">plt.style.use('ggplot')</span><br><span class="line">plt.figure()</span><br><span class="line">plt.title('Human Height and Weight By Sex:')</span><br><span class="line">plt.xlabel('Height')</span><br><span class="line">plt.ylabel('Weight')</span><br><span class="line">plt.grid(True)</span><br><span class="line">plt.scatter(male_height_train, male_weight_train, color='b', marker='o', label='train_male')</span><br><span class="line">plt.scatter(female_height_train, female_weight_train, color='r', marker='o', label='train_female')</span><br><span class="line">plt.scatter(male_height_pre, male_weight_pre, color='b', marker='*', label='pre_male')</span><br><span class="line">plt.scatter(female_height_pre, female_weight_pre, color='r', marker='*', label='pre_female')</span><br><span class="line">plt.legend()</span><br><span class="line">plt.show()</span><br></pre></td></tr></tbody></table></figure>
-<p><img src="/images/LIBRARY/sklearn2.png" alt="2"></p>
-<h2 id="Scikit-LearnK近邻回归算法"><a href="#Scikit-LearnK近邻回归算法" class="headerlink" title="Scikit-LearnK近邻回归算法"></a><font size="4">Scikit-LearnK近邻回归算法</font></h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">from sklearn.neighbors import KNeighborsRegressor</span><br><span class="line">from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score</span><br><span class="line">from sklearn.preprocessing import StandardScaler</span><br><span class="line"></span><br><span class="line">x_train = np.array([[158, 1], [170, 1], [183, 1], [191, 1], [155, 0], [163, 0], [180, 0], [158, 0], [170, 0]])</span><br><span class="line">y_train = np.array([64, 86, 84, 80, 49, 59, 67, 54, 67])</span><br><span class="line">x_test = np.array([[168, 1], [180, 1], [160, 0], [169, 0]])</span><br><span class="line">y_test = [65, 96, 52, 67]</span><br><span class="line">k = 3</span><br><span class="line"></span><br><span class="line"># clf = KNeighborsRegressor(n_neighbors=k) 创建KNN回归模型</span><br><span class="line">clf = KNeighborsRegressor(n_neighbors=k)</span><br><span class="line"></span><br><span class="line"># clf.fit(X, y) 用训练数据X，y拟合模型</span><br><span class="line">clf.fit(x_train, y_train)</span><br><span class="line"></span><br><span class="line"># clf.predict(X) 用训练后的模型预测数据X</span><br><span class="line">pre = clf.predict(x_test)</span><br><span class="line"></span><br><span class="line">print([np.around(x, 2) for x in pre])</span><br><span class="line"></span><br><span class="line"># r2_score(y_test, y_predict) 求真实值与预测值的决定系数</span><br><span class="line">print('Coefficiet of determination: %.2f' %r2_score(y_test, pre))</span><br><span class="line"></span><br><span class="line"># mean_absolute_erro(y_test, y_predict) 求真实值与预测值的平均绝对误差MAE</span><br><span class="line">print('Mean absolute error: %.2f' %mean_absolute_error(y_test, pre))</span><br><span class="line"></span><br><span class="line"># mean_squared_error(y_test, y_predict) 求真实值与预测值的均方误差MSE</span><br><span class="line">print('Mean squared error: %.2f' %mean_squared_error(y_test, pre))</span><br><span class="line"></span><br><span class="line">print('\n' + 'Scaled Processing'.center(30, '~') + '\n')</span><br><span class="line"></span><br><span class="line"># ss = StandardScaler() 创建一个特征缩放转换接口</span><br><span class="line">ss = StandardScaler()</span><br><span class="line"></span><br><span class="line"># ss.fit_transform(x) 在训练数据集上对数据特征进行缩放</span><br><span class="line">x_train_scaled = ss.fit_transform(x_train)</span><br><span class="line"></span><br><span class="line"># ss.transform(x) 在测试数据集上对数据特征进行缩放</span><br><span class="line">x_test_scaled = ss.transform(x_test) </span><br><span class="line"></span><br><span class="line">clf.fit(x_train_scaled, y_train)</span><br><span class="line"></span><br><span class="line">pre_scaled = clf.predict(x_test_scaled)</span><br><span class="line"></span><br><span class="line">print([np.around(x, 2) for x in pre_scaled])</span><br><span class="line">print('Coefficiet of determination: %.2f' %r2_score(y_test, pre_scaled))</span><br><span class="line">print('Mean absolute error: %.2f' %mean_absolute_error(y_test, pre_scaled))</span><br><span class="line">print('Mean squared error: %.2f' %mean_squared_error(y_test, pre_scaled))</span><br></pre></td></tr></tbody></table></figure>
-<p><img src="/images/LIBRARY/sklearn3.png" alt="3"></p>
-<h2 id="Scikit-Learn独热编码"><a href="#Scikit-Learn独热编码" class="headerlink" title="Scikit-Learn独热编码"></a><font size="4">Scikit-Learn独热编码</font></h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">from sklearn.feature_extraction import DictVectorizer</span><br><span class="line"></span><br><span class="line"># onehot_encoder = DictVectorizer() 创建独热编码转换器</span><br><span class="line">onehot_encoder = DictVectorizer()</span><br><span class="line"></span><br><span class="line">x = [{'city': 'New York'}, {'city': 'San Francisco'}, {'city:': 'Chapel Hill'}]</span><br><span class="line"></span><br><span class="line"># onehot_encoder.fit_transform(x).toarray() 将字典的值value进行独热编码</span><br><span class="line">onehot_x = onehot_encoder.fit_transform(x).toarray()</span><br><span class="line"></span><br><span class="line">print(onehot_x)</span><br></pre></td></tr></tbody></table></figure>
-<p><img src="/images/LIBRARY/sklearn4.png" alt="4"></p>
-<h2 id="Scikit-Learn特征标准化"><a href="#Scikit-Learn特征标准化" class="headerlink" title="Scikit-Learn特征标准化"></a><font size="4">Scikit-Learn特征标准化</font></h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">from sklearn import preprocessing</span><br><span class="line"></span><br><span class="line">x = np.array([[0., 0., 5., 13., 9., 1.], [0., 0., 13., 15., 10., 15.], [0., 3., 15., 2., 0., 11.]])</span><br><span class="line"></span><br><span class="line"># preprocessing.StandardScaler().fit_transform(x) 使用标准化转换器类函数</span><br><span class="line">x_standard_scaled = preprocessing.StandardScaler().fit_transform(x)</span><br><span class="line">print(x_standard_scaled)</span><br><span class="line"></span><br><span class="line"># preprocessing.scale(x) 使用标准化函数scale</span><br><span class="line">x_scaled = preprocessing.scale(x)</span><br><span class="line">print(x_scaled)</span><br><span class="line"></span><br><span class="line"># preprocessing.robust_scale(x) 使用鲁棒性标准化函数robust_scale</span><br><span class="line">x_robust_scaled = preprocessing.robust_scale(x)</span><br><span class="line">print(x_robust_scaled)</span><br></pre></td></tr></tbody></table></figure>
-<p><img src="/images/LIBRARY/sklearn5.png" alt="5"></p>
-<h2 id="Scikit-Learn多元线性回归"><a href="#Scikit-Learn多元线性回归" class="headerlink" title="Scikit-Learn多元线性回归"></a><font size="4">Scikit-Learn多元线性回归</font></h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">from sklearn.linear_model import LinearRegression</span><br><span class="line"></span><br><span class="line">x = [[6, 2], [8, 1], [10, 0], [14, 2], [18, 0]]</span><br><span class="line">y = [[7], [9], [13], [17.5], [18]]</span><br><span class="line"></span><br><span class="line"># model = LinearRegression() 创建线性回归模型</span><br><span class="line">model = LinearRegression()</span><br><span class="line"></span><br><span class="line"># model.fit(X, y) 用训练数据X，y拟合模型</span><br><span class="line">model.fit(x, y)</span><br><span class="line"></span><br><span class="line">x_test = [[8, 2], [9, 0], [11, 2], [16, 2], [12, 0]]</span><br><span class="line">y_test = [[11], [8.5], [15], [18], [11]]</span><br><span class="line"></span><br><span class="line"># model.predict(X) 用训练后的模型预测数据X</span><br><span class="line">predictions = model.predict(x_test)</span><br><span class="line"></span><br><span class="line">for i, prediction in enumerate(predictions):</span><br><span class="line">    print('prediction: %s, truth: %s' %(prediction, y_test[i]))</span><br><span class="line"></span><br><span class="line"># model.score(x, y) 求模型的决定系数</span><br><span class="line">print('R-squared: %.2f' %model.score(x_test, y_test))</span><br></pre></td></tr></tbody></table></figure>
-<p><img src="/images/LIBRARY/sklearn6.png" alt="6"></p>
-<h2 id="Scikit-Learn多项式回归"><a href="#Scikit-Learn多项式回归" class="headerlink" title="Scikit-Learn多项式回归"></a><font size="4">Scikit-Learn多项式回归</font></h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from sklearn.linear_model import LinearRegression</span><br><span class="line">from sklearn.preprocessing import PolynomialFeatures</span><br><span class="line"></span><br><span class="line">plt.style.use('ggplot')</span><br><span class="line"></span><br><span class="line">x_train = [[6], [8], [10], [14], [18]]</span><br><span class="line">y_train = [[7], [9], [13], [17.5], [18]]</span><br><span class="line">x_test = [[6], [8], [11], [16]]</span><br><span class="line">y_test = [[8], [12], [15], [18]]</span><br><span class="line"></span><br><span class="line"># model = LinearRegression() 创建线性回归模型</span><br><span class="line">regressor = LinearRegression()</span><br><span class="line"></span><br><span class="line"># model.fit(X, y) 用训练数据X，y拟合模型</span><br><span class="line">regressor.fit(x_train, y_train)</span><br><span class="line"></span><br><span class="line">xx = np.linspace(0, 26, 100)</span><br><span class="line"></span><br><span class="line"># model.predict(X) 用训练后的模型预测数据X</span><br><span class="line">yy = regressor.predict(xx.reshape(xx.shape[0], 1))</span><br><span class="line"></span><br><span class="line">plt.plot(xx, yy, c='b', label='Linear_poly')</span><br><span class="line"></span><br><span class="line"># quadratic_featurizer = PolynomialFeatures(degree=n) 创建n阶多项式转换器</span><br><span class="line">quadratic_featurizer = PolynomialFeatures(degree=2)</span><br><span class="line"></span><br><span class="line"># quadratic_featurizer.fit_transform(x_train) 在训练数据集上对数据特征进行多项式变换</span><br><span class="line">x_train_quadratic = quadratic_featurizer.fit_transform(x_train)</span><br><span class="line"></span><br><span class="line"># ss.fit_transform(x) 在训练数据集上对数据特征进行多项式变换</span><br><span class="line">x_test_quadratic = quadratic_featurizer.transform(x_test)</span><br><span class="line"></span><br><span class="line"># model = LinearRegression() 创建线性回归模型</span><br><span class="line">regressor_quadratic = LinearRegression()</span><br><span class="line"></span><br><span class="line"># model.fit(X, y) 用训练数据X，y拟合模型</span><br><span class="line">regressor_quadratic.fit(x_train_quadratic, y_train)</span><br><span class="line"></span><br><span class="line"># ss.fit_transform(x) 对数据特征进行多项式变换</span><br><span class="line">xx_quadratic = quadratic_featurizer.transform(xx.reshape(xx.shape[0], 1))</span><br><span class="line"></span><br><span class="line"># model.predict(X) 用训练后的模型预测数据X</span><br><span class="line">yy_quadratic = regressor_quadratic.predict(xx_quadratic)</span><br><span class="line"></span><br><span class="line">print('linear regression r-squared', regressor.score(x_test, y_test))</span><br><span class="line">print('quadratic regression r-squared', regressor_quadratic.score(x_test_quadratic, y_test))</span><br><span class="line"></span><br><span class="line">plt.plot(xx, yy_quadratic, c='r', label='square_poly')</span><br><span class="line">plt.scatter(x_train, y_train, label='data')</span><br><span class="line">plt.axis([0, 25, 0, 25])</span><br><span class="line">plt.title('Pizza price and diameter')</span><br><span class="line">plt.xlabel('Diameter in inches')</span><br><span class="line">plt.ylabel('Pizza Price')</span><br><span class="line">plt.grid(True)</span><br><span class="line">plt.legend()</span><br><span class="line">plt.show()</span><br></pre></td></tr></tbody></table></figure>
-<p><img src="/images/LIBRARY/sklearn7.png" alt="7"></p>
-<h2 id="Scikit-Learn逻辑回归和朴素贝叶斯"><a href="#Scikit-Learn逻辑回归和朴素贝叶斯" class="headerlink" title="Scikit-Learn逻辑回归和朴素贝叶斯"></a><font size="4">Scikit-Learn逻辑回归和朴素贝叶斯</font></h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">from sklearn.datasets import load_breast_cancer</span><br><span class="line">from sklearn.linear_model import LogisticRegression</span><br><span class="line">from sklearn.naive_bayes import GaussianNB</span><br><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line"># from sklearn.datasets import load_breast_cancer 从sklearn数据集中导入胸部癌症的数据</span><br><span class="line">x, y = load_breast_cancer(return_X_y=True)</span><br><span class="line"></span><br><span class="line"># train_test_split(x, y, stratify=y, test_size=n) 将x和y按照test_size划分成数据集和测试集，stratify=y按照y中的比例分配</span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(x, y, stratify=y, test_size=0.2, random_state=31)</span><br><span class="line"></span><br><span class="line"># lr = LogisticRegression() 创建逻辑回归模型</span><br><span class="line">lr = LogisticRegression(solver='liblinear')</span><br><span class="line"></span><br><span class="line"># nb = GaussianNB() 创建朴素贝叶斯模型</span><br><span class="line">nb = GaussianNB()</span><br><span class="line"></span><br><span class="line">lr_scores = []</span><br><span class="line">nb_scores = []</span><br><span class="line"></span><br><span class="line">train_sizes = range(10, len(x_train), 25)</span><br><span class="line">for train_size in train_sizes:</span><br><span class="line">    # train_test_split(x, y, stratify=y, train_size=n) 将x和y按照test_size划分成数据集和测试集，stratify=y按照y中的比例分配</span><br><span class="line">    x_slice, _, y_slice, _ = train_test_split(x_train, y_train, train_size=train_size, stratify=y_train, random_state=31)</span><br><span class="line"></span><br><span class="line">    # nb.fit(X, y) 用训练数据X，y拟合朴素贝叶斯模型</span><br><span class="line">    nb.fit(x_slice, y_slice)</span><br><span class="line"></span><br><span class="line">    # nb.score(x, y) 求朴素贝叶斯模型的决定系数</span><br><span class="line">    nb_scores.append(nb.score(x_test, y_test))</span><br><span class="line"></span><br><span class="line">    # lr.fit(X, y) 用训练数据X，y拟合逻辑回归模型</span><br><span class="line">    lr.fit(x_slice, y_slice)</span><br><span class="line"></span><br><span class="line">    # lr.score(x, y) 求逻辑回归模型的决定系数</span><br><span class="line">    lr_scores.append(lr.score(x_test, y_test))</span><br><span class="line"></span><br><span class="line">plt.plot(train_sizes, nb_scores, label='Naive Bayes')</span><br><span class="line">plt.plot(train_sizes, lr_scores, linestyle='--', label='Logistic Regression')</span><br><span class="line">plt.title('Naive Bayes and Logistic Regression accuracies')</span><br><span class="line">plt.xlabel('Number of training instances')</span><br><span class="line">plt.ylabel('Test set accuracy')</span><br><span class="line">plt.legend()</span><br><span class="line">plt.show()</span><br></pre></td></tr></tbody></table></figure>
-<p><img src="/images/LIBRARY/sklearn8.png" alt="8"></p>
-<h2 id="Scikit-Learn决策树和袋装集成学习"><a href="#Scikit-Learn决策树和袋装集成学习" class="headerlink" title="Scikit-Learn决策树和袋装集成学习"></a><font size="4">Scikit-Learn决策树和袋装集成学习</font></h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">from sklearn.tree import DecisionTreeClassifier</span><br><span class="line">from sklearn.ensemble import RandomForestClassifier</span><br><span class="line">from sklearn.datasets import make_classification</span><br><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line">from sklearn.metrics import classification_report</span><br><span class="line"></span><br><span class="line"># from sklearn.datasets import make_classification 从sklearn数据集中导入make_classification用于创建分类数据集，样本数为n_samples，特征数为n_features，有用的特征数为n_informative，每一类的簇的个数为n_clusters_per_class</span><br><span class="line">x, y = make_classification(n_samples=1000, n_features=100, n_informative=20, n_clusters_per_class=2, random_state=11)</span><br><span class="line"></span><br><span class="line"># train_test_split(x, y) 将x和y划分成数据集和测试集</span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(x, y, random_state=11)</span><br><span class="line"></span><br><span class="line"># clf = DecisionTreeClassifier() 创建决策树模型</span><br><span class="line">clf = DecisionTreeClassifier(random_state=11)</span><br><span class="line"></span><br><span class="line"># clf.fit(X, y) 用训练数据X，y拟合模型</span><br><span class="line">clf.fit(x_train, y_train)</span><br><span class="line"></span><br><span class="line"># clf.predict(X) 用训练后的模型预测数据X</span><br><span class="line">predictions = clf.predict(x_test)</span><br><span class="line"></span><br><span class="line"># classification_report(y_test, y_predict, target_names=None, labels=None) 同时生成真实值与预测值的精准率，召回率和F1得分，目标标签为target_name，对应的值为label</span><br><span class="line">print(classification_report(y_test, predictions))</span><br><span class="line"></span><br><span class="line"># clf = RandomForestClassifier(n_estimators=n) 创建包含n个树的随机森林分类器</span><br><span class="line">clf = RandomForestClassifier(n_estimators=10, random_state=11)</span><br><span class="line"></span><br><span class="line"># clf.fit(X, y) 用训练数据X，y拟合模型</span><br><span class="line">clf.fit(x_train, y_train)</span><br><span class="line"></span><br><span class="line"># clf.predict(X) 用训练后的模型预测数据X</span><br><span class="line">predictions = clf.predict(x_test)</span><br><span class="line"></span><br><span class="line"># classification_report(y_test, y_predict, target_names=None, labels=None) 同时生成真实值与预测值的精准率，召回率和F1得分，目标标签为target_name，对应的值为label</span><br><span class="line">print(classification_report(y_test, predictions))</span><br></pre></td></tr></tbody></table></figure>
-<p><img src="/images/LIBRARY/sklearn9.png" alt="9"></p>
-<h2 id="Scikit-Learn推进集成学习"><a href="#Scikit-Learn推进集成学习" class="headerlink" title="Scikit-Learn推进集成学习"></a><font size="4">Scikit-Learn推进集成学习</font></h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">from sklearn.ensemble import AdaBoostClassifier</span><br><span class="line">from sklearn.tree import DecisionTreeClassifier</span><br><span class="line">from sklearn.datasets import make_classification</span><br><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line"># from sklearn.datasets import make_classification 从sklearn数据集中导入make_classification用于创建分类数据集，样本数为n_samples，特征数为n_features，有用的特征数为n_informative，每一类的簇的个数为n_clusters_per_class</span><br><span class="line">x, y = make_classification(n_samples=1000, n_features=50, n_informative=30, n_clusters_per_class=3, random_state=11)</span><br><span class="line"></span><br><span class="line"># train_test_split(x, y) 将x和y划分成数据集和测试集</span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(x, y, random_state=11)</span><br><span class="line"></span><br><span class="line"># clf = DecisionTreeClassifier() 创建决策树模型</span><br><span class="line">clf = DecisionTreeClassifier()</span><br><span class="line"></span><br><span class="line"># clf.fit(X, y) 用训练数据X，y拟合模型</span><br><span class="line">clf.fit(x_train, y_train)</span><br><span class="line"></span><br><span class="line"># clf.score(x, y) 求模型的决定系数</span><br><span class="line">print('DecisionTree accuracy:%s' %clf.score(x_test, y_test))</span><br><span class="line"></span><br><span class="line"># clf = AdaBoostClassifier(n_estimators=n) 创建具有n个弱学习器的AdaBoost模型</span><br><span class="line">clf = AdaBoostClassifier(n_estimators=50, random_state=11)</span><br><span class="line"></span><br><span class="line"># clf.fit(X, y) 用训练数据X，y拟合模型</span><br><span class="line">clf.fit(x_train, y_train)</span><br><span class="line"></span><br><span class="line">plt.title('Ensemble Accuracy')</span><br><span class="line">plt.xlabel('Accuracy')</span><br><span class="line">plt.ylabel('Number of base estimators in ensemble')</span><br><span class="line"></span><br><span class="line"># clf.staged_score(x, y) 求AdaBoost模型的弱分类器个数的决定系数</span><br><span class="line">plt.plot(range(1, 51), [accuracy for accuracy in clf.staged_score(x_test, y_test)])</span><br><span class="line">plt.show()</span><br></pre></td></tr></tbody></table></figure>
-<p><img src="/images/LIBRARY/sklearn10.png" alt="10"></p>
-<h2 id="Scikit-Learn感知机"><a href="#Scikit-Learn感知机" class="headerlink" title="Scikit-Learn感知机"></a><font size="4">Scikit-Learn感知机</font></h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">from sklearn.datasets import make_classification</span><br><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line">from sklearn.metrics import classification_report</span><br><span class="line">from sklearn.linear_model import Perceptron</span><br><span class="line"></span><br><span class="line"># from sklearn.datasets import make_classification 从sklearn数据集中导入make_classification用于创建分类数据集，样本数为n_samples，特征数为n_features，有用的特征数为n_informative，每一类的簇的个数为n_clusters_per_class</span><br><span class="line">x, y = make_classification(n_samples=1000, n_features=100, n_informative=20, n_clusters_per_class=2, random_state=11)</span><br><span class="line"></span><br><span class="line"># train_test_split(x, y) 将x和y划分成数据集和测试集</span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(x, y, random_state=11)</span><br><span class="line"></span><br><span class="line"># clf = Perceptron() 创建感知机模型</span><br><span class="line">clf = Perceptron(random_state=11)</span><br><span class="line"></span><br><span class="line"># clf.fit(X, y) 用训练数据X，y拟合模型</span><br><span class="line">clf.fit(x_train, y_train)</span><br><span class="line"></span><br><span class="line"># clf.predict(X) 用训练后的模型预测数据X</span><br><span class="line">predictions = clf.predict(x_test)</span><br><span class="line"></span><br><span class="line"># classification_report(y_test, y_predict, target_names=None, labels=None) 同时生成真实值与预测值的精准率，召回率和F1得分，目标标签为target_name，对应的值为label</span><br><span class="line">print(classification_report(y_test, predictions))</span><br></pre></td></tr></tbody></table></figure>
-<p><img src="/images/LIBRARY/sklearn11.png" alt="11"></p>
-<h2 id="Scikit-Learn支持向量机"><a href="#Scikit-Learn支持向量机" class="headerlink" title="Scikit-Learn支持向量机"></a><font size="4">Scikit-Learn支持向量机</font></h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">from sklearn.datasets import make_classification</span><br><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line">from sklearn.metrics import classification_report</span><br><span class="line">from sklearn.svm import SVC</span><br><span class="line"></span><br><span class="line"># from sklearn.datasets import make_classification 从sklearn数据集中导入make_classification用于创建分类数据集，样本数为n_samples，特征数为n_features，有用的特征数为n_informative，每一类的簇的个数为n_clusters_per_class</span><br><span class="line">x, y = make_classification(n_samples=1000, n_features=100, n_informative=20, n_clusters_per_class=2, random_state=11)</span><br><span class="line"></span><br><span class="line"># train_test_split(x, y) 将x和y划分成数据集和测试集</span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(x, y, random_state=11)</span><br><span class="line"></span><br><span class="line"># clf = SVC(kernel='rbf', gamma='auto deprecated', C=1.0) 创建支持向量机模型，核函数默认为rbf高斯核，正则化参数C默认为1.0，核系数参数gamma默认为不使用</span><br><span class="line">clf = SVC(kernel='rbf', gamma=0.01, C=100, random_state=11)</span><br><span class="line"></span><br><span class="line"># clf.fit(X, y) 用训练数据X，y拟合模型</span><br><span class="line">clf.fit(x_train, y_train)</span><br><span class="line"></span><br><span class="line"># clf.predict(X) 用训练后的模型预测数据X</span><br><span class="line">predictions = clf.predict(x_test)</span><br><span class="line"></span><br><span class="line"># classification_report(y_test, y_predict, target_names=None, labels=None) 同时生成真实值与预测值的精准率，召回率和F1得分，目标标签为target_name，对应的值为label</span><br><span class="line">print(classification_report(y_test, predictions))</span><br></pre></td></tr></tbody></table></figure>
-<p><img src="/images/LIBRARY/sklearn12.png" alt="12"></p>
-<h2 id="Scikit-Learn多层感知机"><a href="#Scikit-Learn多层感知机" class="headerlink" title="Scikit-Learn多层感知机"></a><font size="4">Scikit-Learn多层感知机</font></h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">from sklearn.datasets import load_digits</span><br><span class="line">from sklearn.model_selection import cross_val_score</span><br><span class="line">from sklearn.neural_network.multilayer_perceptron import MLPClassifier</span><br><span class="line"></span><br><span class="line"># from sklearn.datasets import load_digits 从sklearn数据集中导入手写数字的数据</span><br><span class="line">digits = load_digits()</span><br><span class="line">x = digits.data</span><br><span class="line">y = digits.target</span><br><span class="line"></span><br><span class="line"># clf = MLPClassifier(hidden_layer_sizes=(100,), alpha=0.0001, max_iter=200, random_state=20) 创建多层感知机模型，每一层的神经元个数为hidden_layer_sizes，正则化参数alpha默认为0.0001，最大迭代次数默认为200</span><br><span class="line">clf = MLPClassifier(hidden_layer_sizes=(150, 100), alpha=0.1, max_iter=500)</span><br><span class="line"></span><br><span class="line"># cross_val_score(estimator, X, y, n_jobs=None, cv=n) n折交叉验证，估计器为estimator，数据为X和y，同时工作的CPU个数为1</span><br><span class="line">print(cross_val_score(clf, x, y, n_jobs=-1, cv=5))</span><br></pre></td></tr></tbody></table></figure>
-<p><img src="/images/LIBRARY/sklearn13.png" alt="13"></p>
-<h2 id="Scikit-LearnKmeans聚类"><a href="#Scikit-LearnKmeans聚类" class="headerlink" title="Scikit-LearnKmeans聚类"></a><font size="4">Scikit-LearnKmeans聚类</font></h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">from sklearn.cluster import KMeans</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line">plt.subplot(3, 2, 1)</span><br><span class="line">x1 = np.array([1, 2, 3, 1, 5, 6, 5, 5, 6, 7, 8, 9, 7, 9])</span><br><span class="line">x2 = np.array([1, 3, 2, 2, 8, 6, 7, 6, 7, 1, 2, 1, 1, 3])</span><br><span class="line">x = np.vstack((x1, x2)).T</span><br><span class="line">plt.xlim([0, 10])</span><br><span class="line">plt.ylim([0, 10])</span><br><span class="line">plt.title('Instances')</span><br><span class="line">plt.scatter(x1, x2)</span><br><span class="line"></span><br><span class="line">colors = ['b', 'g', 'r', 'c', 'm', 'y', 'k', 'b']</span><br><span class="line">markers = ['o', 's', 'D', 'v', '^', 'p', '*', '+']</span><br><span class="line">tests = [2, 3, 4, 5, 8]</span><br><span class="line">subplot_counter = 1</span><br><span class="line"></span><br><span class="line">for t in tests:</span><br><span class="line">    subplot_counter +=1</span><br><span class="line">    plt.subplot(3, 2, subplot_counter)</span><br><span class="line"></span><br><span class="line">    # kmeans_model = KMeans(n_clusters=n) 创建Kmeans模型，类别个数为n</span><br><span class="line">    kmeans_model = KMeans(n_clusters=t)</span><br><span class="line"></span><br><span class="line">    # kmeans_model.fit(x) 用训练数据X拟合模型</span><br><span class="line">    kmeans_model.fit(x)</span><br><span class="line"></span><br><span class="line">    for i, l in enumerate(kmeans_model.labels_):</span><br><span class="line">        plt.plot(x1[i], x2[i], color=colors[l], marker=markers[l])</span><br><span class="line"></span><br><span class="line">    plt.xlim([0, 10])</span><br><span class="line">    plt.ylim([0, 10])</span><br><span class="line">    plt.title('k=%s' %t)</span><br><span class="line">plt.show()</span><br></pre></td></tr></tbody></table></figure>
-<p><img src="/images/LIBRARY/sklearn14.png" alt="14"></p>
-<h3 id="Scikit-LearnPCA降维"><a href="#Scikit-LearnPCA降维" class="headerlink" title="Scikit-LearnPCA降维"></a><font size="3">Scikit-LearnPCA降维</font></h3><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from sklearn.decomposition import PCA</span><br><span class="line">from sklearn.datasets import load_iris</span><br><span class="line"></span><br><span class="line">data = load_iris()</span><br><span class="line">x = data.data</span><br><span class="line">y = data.target</span><br><span class="line"></span><br><span class="line"># pca = PCA(n_components=n) 创建n维PCA转换器</span><br><span class="line">pca = PCA(n_components=2)</span><br><span class="line"></span><br><span class="line"># pca.fit_transform(X) 在训练数据集进行PCA降维</span><br><span class="line">reduced_x = pca.fit_transform(x) </span><br><span class="line"></span><br><span class="line">red_x, red_y = [], []</span><br><span class="line">blue_x, blue_y = [], []</span><br><span class="line">green_x, green_y = [], []</span><br><span class="line"></span><br><span class="line">for i in range(len(reduced_x)):</span><br><span class="line">    if y[i] == 0:</span><br><span class="line">        red_x.append(reduced_x[i][0])</span><br><span class="line">        red_y.append(reduced_x[i][1])</span><br><span class="line">    elif y[i] == 1:</span><br><span class="line">        blue_x.append(reduced_x[i][0])</span><br><span class="line">        blue_y.append(reduced_x[i][1])</span><br><span class="line">    else:</span><br><span class="line">        green_x.append(reduced_x[i][0])</span><br><span class="line">        green_y.append(reduced_x[i][1])</span><br><span class="line"></span><br><span class="line">plt.scatter(red_x, red_y, c='r', marker='x')</span><br><span class="line">plt.scatter(blue_x, blue_y, c='b', marker='D')</span><br><span class="line">plt.scatter(green_x, green_y, c='g', marker='.')</span><br><span class="line">plt.show()</span><br></pre></td></tr></tbody></table></figure>
-<p><img src="/images/LIBRARY/sklearn15.png" alt="15"></p>
-<h1 id="Scikit-Learn小结"><a href="#Scikit-Learn小结" class="headerlink" title="Scikit-Learn小结"></a><font size="5" color="red">Scikit-Learn小结</font></h1><p>  由于Scikit-Learn集成了许多常用的机器学习算法，如决策树，SVM，多层感知机，Kmeans等，可以让使用者节约大量的时间。而且其拥有很好的官方文档，让开发者，研究者可以方便的入门和使用。因此Scikit-Learn在机器学习领域受到广大使用者的喜爱。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
