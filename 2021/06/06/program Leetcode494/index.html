@@ -138,7 +138,7 @@
 <meta property="og:description" content="Leetcode 494">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/leetcode494.png">
-<meta property="og:updated_time" content="2021-06-07T03:03:43.922Z">
+<meta property="og:updated_time" content="2021-06-07T23:58:53.574Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="目标和(Leetcode 494)">
 <meta name="twitter:description" content="Leetcode 494">
@@ -493,7 +493,7 @@
 <h1 id="优化动态规划"><a href="#优化动态规划" class="headerlink" title="优化动态规划"></a><font size="5" color="red">优化动态规划</font></h1><p>上面这种做法已经可以满足面试笔试的需求，但是本题有一种更巧妙的方法，转化为0-1背包问题进行求解。</p>
 <p><strong>因为nums都是正数，假设将其全部相加结果为sums，如果在某些位置加上负号，令这些数字之和为neg，所以其余的正数之和为sums - neg，此时整体数组之和为sums - neg + (-neg) = sums - 2neg = target</strong>。所以</p>
 <script type="math/tex; mode=display">neg = \frac{sums - target}{2}</script><p>即我们从nums中找出和为neg的子集数量即可，可以采用0-1背包的问题进行求解。用dp[i][j]表示前i个数和为j的子集数量。</p>
-<script type="math/tex; mode=display">dp[i][j] = dp[i - 1][j - nums[i]]</script><p>因为第i层状态仅与第i - 1层有关，可以适用一维dp进行求解。</p>
+<script type="math/tex; mode=display">dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - nums[i]])</script><p>因为第i层状态仅与第i - 1层有关，可以使用一维dp进行求解。</p>
 <p>算法的<strong>时间复杂度为$O(n \cdot (sum - target))$，空间复杂度为$O(sum - target)$</strong></p>
 <p>下面是C++语言的题解<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Solution {</span><br><span class="line">public:</span><br><span class="line">    int findTargetSumWays(vector&lt;int&gt;&amp; nums, int target) {</span><br><span class="line">        int sums = 0;</span><br><span class="line">        for (int x : nums) { sums += x; }</span><br><span class="line">        int diff = sums - target;</span><br><span class="line">        if (diff &lt; 0 || diff &amp; 1) { return 0; }</span><br><span class="line">        int neg = diff &gt;&gt; 1;</span><br><span class="line">        vector&lt;int&gt; dp(neg + 1);</span><br><span class="line">        dp[0] = 1;</span><br><span class="line">        for (int i = 0; i &lt; nums.size(); i++) {</span><br><span class="line">            for (int j = neg; j &gt;= nums[i]; j--) {</span><br><span class="line">                dp[j] += dp[j - nums[i]];</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        return dp.back();</span><br><span class="line">    }</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure><p></p>
 <p>下面是Kotlin语言的题解<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution {</span><br><span class="line">    fun findTargetSumWays(nums: IntArray, target: Int): Int {</span><br><span class="line">        var sums = 0</span><br><span class="line">        for (x in nums) { sums += x }</span><br><span class="line">        val diff = sums - target</span><br><span class="line">        if (diff &lt; 0 || diff.and(1) == 1) { return 0 }</span><br><span class="line">        val neg = diff.shr(1)</span><br><span class="line">        val dp = IntArray(neg + 1)</span><br><span class="line">        dp[0] = 1</span><br><span class="line">        for (x in nums) {</span><br><span class="line">            for (i in neg downTo x) {</span><br><span class="line">                dp[i] += dp[i - x]</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        return dp.last()</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
@@ -565,8 +565,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2021/06/06/program Leetcode474/" rel="next" title="一和零(Leetcode 474)">
-                <i class="fa fa-chevron-left"></i> 一和零(Leetcode 474)
+              <a href="/2021/06/02/program Leetcode523/" rel="next" title="连续的子数组和(Leetcode 523)">
+                <i class="fa fa-chevron-left"></i> 连续的子数组和(Leetcode 523)
               </a>
             
           </div>
@@ -574,6 +574,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/06/06/program Leetcode474/" rel="prev" title="一和零(Leetcode 474)">
+                一和零(Leetcode 474) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -684,7 +688,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">300</span>
+                  <span class="site-state-item-count">303</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
