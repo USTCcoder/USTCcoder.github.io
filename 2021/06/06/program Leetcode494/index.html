@@ -138,7 +138,7 @@
 <meta property="og:description" content="Leetcode 494">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/leetcode494.png">
-<meta property="og:updated_time" content="2021-06-07T23:58:53.574Z">
+<meta property="og:updated_time" content="2021-06-26T12:15:15.996Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="目标和(Leetcode 494)">
 <meta name="twitter:description" content="Leetcode 494">
@@ -497,7 +497,7 @@
 <p>算法的<strong>时间复杂度为$O(n \cdot (sum - target))$，空间复杂度为$O(sum - target)$</strong></p>
 <p>下面是C++语言的题解<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Solution {</span><br><span class="line">public:</span><br><span class="line">    int findTargetSumWays(vector&lt;int&gt;&amp; nums, int target) {</span><br><span class="line">        int sums = 0;</span><br><span class="line">        for (int x : nums) { sums += x; }</span><br><span class="line">        int diff = sums - target;</span><br><span class="line">        if (diff &lt; 0 || diff &amp; 1) { return 0; }</span><br><span class="line">        int neg = diff &gt;&gt; 1;</span><br><span class="line">        vector&lt;int&gt; dp(neg + 1);</span><br><span class="line">        dp[0] = 1;</span><br><span class="line">        for (int i = 0; i &lt; nums.size(); i++) {</span><br><span class="line">            for (int j = neg; j &gt;= nums[i]; j--) {</span><br><span class="line">                dp[j] += dp[j - nums[i]];</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        return dp.back();</span><br><span class="line">    }</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure><p></p>
 <p>下面是Kotlin语言的题解<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution {</span><br><span class="line">    fun findTargetSumWays(nums: IntArray, target: Int): Int {</span><br><span class="line">        var sums = 0</span><br><span class="line">        for (x in nums) { sums += x }</span><br><span class="line">        val diff = sums - target</span><br><span class="line">        if (diff &lt; 0 || diff.and(1) == 1) { return 0 }</span><br><span class="line">        val neg = diff.shr(1)</span><br><span class="line">        val dp = IntArray(neg + 1)</span><br><span class="line">        dp[0] = 1</span><br><span class="line">        for (x in nums) {</span><br><span class="line">            for (i in neg downTo x) {</span><br><span class="line">                dp[i] += dp[i - x]</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        return dp.last()</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
-<p>对比C++和Kotlin两种语言，可以C++语言中布尔类型就是0和1，可以直接将运算结果进行布尔判断，而Kotlin布尔和整型不可以直接运算。而且在位操作时，C++是使用位运算符进行操作，如a&amp;b，Kotlin使用成员方法进行操作，如a.and(b)或者a and b。</p>
+<p>对比C++和Kotlin两种语言，可以看出C++语言中布尔类型就是0和1，可以直接将运算结果进行布尔判断，而Kotlin布尔和整型不可以直接运算。而且在位操作时，C++是使用位运算符进行操作，如a&amp;b，Kotlin使用成员方法进行操作，如a.and(b)或者a and b。</p>
 <h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  本题的重点是动态规划思路，并不是说优化的DP比普通的DP更好，小伙伴们要进行对比，将两者方法都掌握。</p>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -688,7 +688,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">313</span>
+                  <span class="site-state-item-count">315</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
