@@ -139,7 +139,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/leetcode316.png">
 <meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/leetcode316_solve.png">
-<meta property="og:updated_time" content="2020-12-23T02:52:12.677Z">
+<meta property="og:updated_time" content="2021-07-09T03:27:24.486Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="去除重复字母(Leetcode 316)">
 <meta name="twitter:description" content="Leetcode 316">
@@ -407,8 +407,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/刷题记录/栈-队列/" itemprop="url" rel="index">
-                    <span itemprop="name">栈/队列</span>
+                  <a href="/categories/刷题记录/栈/" itemprop="url" rel="index">
+                    <span itemprop="name">栈</span>
                   </a>
                 </span>
 
@@ -466,7 +466,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  643
+                  635
                 </span>
               
 
@@ -497,7 +497,7 @@
       
         <p><img src="/images/ALGORITHM/leetcode316.png" alt="1"></p>
 <h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>  第一次做这个题目的时候，犯了一个错误，没有注意到不能打乱其他字符的相对位置这个要求，也正是因为这个要求让这个题目的难度上升了一个档次，小伙伴们想一想如何解答？<br><a id="more"></a></p>
-<h1 id="单调栈"><a href="#单调栈" class="headerlink" title="单调栈"></a><font size="5" color="red">单调栈</font></h1><p>我们分析下面几种场景</p>
+<h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a><font size="5" color="red">栈</font></h1><p>我们分析下面几种场景</p>
 <p>**1. 如果当前字符已经出现在res中，那么直接跳过。如res = “bc”，此时遍历到b，b已经存在res中，遍历下一个字符。</p>
 <ol>
 <li>如果res为空或者当前字符大于res中的最后一个字符或者res最后一个字符在后面不会出现，那么直接将该字符放在末尾。如res = “bc”，此时遍历到d，那么res = “bcd”一定是最优解。</li>
@@ -506,7 +506,7 @@
 <p>分析了这三个场景，我们用样例2来模拟这个过程。<br><img src="/images/ALGORITHM/leetcode316_solve.png" alt="1"></p>
 <p>因为s由小写英文字母组成，建立一个长度为26的数组，其中<strong>保存每一个字符最后出现的位置，这样就可以判断该某个字符在后面是否还会出现</strong>。如c最后出现的位置是5，此时遍历到第3个元素a，那么就可以将c弹出，因为在3后面还会有c出现。</p>
 <p>算法的<strong>时间复杂度为$O(n)$，空间复杂度为$O(n)$</strong>。<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">class Solution {</span><br><span class="line">public:</span><br><span class="line">    string removeDuplicateLetters(string s) {</span><br><span class="line">        vector&lt;int&gt; alpha(26);</span><br><span class="line">        vector&lt;bool&gt; visited(26, false);</span><br><span class="line">        string res;</span><br><span class="line">        for (int i = 0; i &lt; s.size(); i++) { alpha[s[i] - 'a'] = i; }</span><br><span class="line">        for (int i = 0; i &lt; s.size(); i++) {</span><br><span class="line">            if (!visited[s[i] - 'a']) {</span><br><span class="line">                while (res.size() &amp;&amp; res.back() &gt; s[i] &amp;&amp; alpha[res.back() - 'a'] &gt; i) {</span><br><span class="line">                    visited[res.back() - 'a'] = false;</span><br><span class="line">                    res.pop_back();</span><br><span class="line">                }</span><br><span class="line">                res.push_back(s[i]);</span><br><span class="line">                visited[res.back() - 'a'] = true;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        return res;</span><br><span class="line">    }</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure><p></p>
-<h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  这是一个单调栈的变形问题，稍微困难一些，不容易想到单调栈的方法去解答，这时候我们可以模拟输出的过程，可能会引导我们想出单调栈的思路。</p>
+<h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  这是一个栈的变形问题，稍微困难一些，不容易想到栈的方法去解答，这时候我们可以模拟输出的过程，可能会引导我们想出栈的思路。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -696,7 +696,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">315</span>
+                  <span class="site-state-item-count">320</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -707,7 +707,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">62</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -787,7 +787,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目分析"><span class="nav-number">1.</span> <span class="nav-text">题目分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#单调栈"><span class="nav-number">2.</span> <span class="nav-text">单调栈</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#刷题总结"><span class="nav-number">3.</span> <span class="nav-text">刷题总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目分析"><span class="nav-number">1.</span> <span class="nav-text">题目分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#栈"><span class="nav-number">2.</span> <span class="nav-text">栈</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#刷题总结"><span class="nav-number">3.</span> <span class="nav-text">刷题总结</span></a></li></ol></div>
             
 
           </div>
