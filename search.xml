@@ -1,6 +1,225 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>K 站中转内最便宜的航班(Leetcode 787)</title>
+    <url>/2021/08/24/program%20Leetcode787/</url>
+    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode787.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   这个题目小伙伴们会下意识的想到使用记忆化+DFS来解决，但是因为题目的特殊性，会导致记忆化DFS也会占用非常多的时间，所以还会给小伙伴们推荐动态规划的解法。<br><a id="more"></a></p>
+<h1 id="记忆化-DFS"><a href="#记忆化-DFS" class="headerlink" title="记忆化+DFS"></a><font size="5" color="red">记忆化+DFS</font></h1><p>在常规的记忆化DFS算法中，使用memory数组或者哈希表保存已搜索过的状态，下一次访问时，如果存在于哈希表中，直接取出即可，不需要进行搜索。</p>
+<p>假设本题最多经历11次中转，如果已经搜索到了某个点k，可能经过了10次中转，花费了100元，但是这次经过了1次中转，花费了110元，那么可能10次中转的最后无法抵达终点，而1次中转的可以抵达终点，说明仍然需要重新搜索该节点。</p>
+<p>但是仍然可以使用记忆化，如果存在某次遍历，中转次数小于本次，并且花费小于本次，那么就可以省去本次遍历，这也是非常好理解的。但是条件稍微苛刻一些，记忆化的效率一般。</p>
+<p>算法的<strong>时间复杂度为$O(k x n!)$，空间复杂度为$O(nk)$</strong>，因为可以记忆化剪枝，所以时间复杂度远远小于这个值，本题可以勉强通过。</p>
+<p>下面是Java语言的题解<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution {</span><br><span class="line">    private int cost = Integer.MAX_VALUE;</span><br><span class="line"></span><br><span class="line">    public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {</span><br><span class="line">        int[][] map = new int[n][n];</span><br><span class="line">        for (int[] flight : flights) {</span><br><span class="line">            map[flight[0]][flight[1]] = flight[2];</span><br><span class="line">        }</span><br><span class="line">        int[][] visit = new int[n][k + 1];</span><br><span class="line">        for (int i = 0; i &lt; n; i++) {</span><br><span class="line">            Arrays.fill(visit[i], Integer.MAX_VALUE);</span><br><span class="line">        }</span><br><span class="line">        dfs(n, src, dst, k, map, visit, 0);</span><br><span class="line">        return cost == Integer.MAX_VALUE ? -1 : cost;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    private void dfs(int n, int cur, int dst, int k, int[][] map, int[][] visit, int curCost) {</span><br><span class="line">        if (cur == dst) {</span><br><span class="line">            cost = Math.min(cost, curCost);</span><br><span class="line">            return;</span><br><span class="line">        }</span><br><span class="line">        if (k &lt; 0) {</span><br><span class="line">            return;</span><br><span class="line">        }</span><br><span class="line">        for (int i = k; i &lt; visit[0].length; i++) {</span><br><span class="line">            if (visit[cur][k] &lt;= curCost) {</span><br><span class="line">                return;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        visit[cur][k] = curCost;</span><br><span class="line">        for (int i = 0; i &lt; n; i++) {</span><br><span class="line">            if (map[cur][i] &gt;= 1) {</span><br><span class="line">                dfs(n, i, dst, k - 1, map, visit, curCost + map[cur][i]);</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="DP"><a href="#DP" class="headerlink" title="DP"></a><font size="5" color="red">DP</font></h1><p>DP的思想就非常巧妙，dp[i][j]表示经过i次中转到达第j个城市需要的花费。</p>
+<script type="math/tex; mode=display">dp[i][j] = min(dp[i][j], dp[i - 1][k] + cost[k][j])</script><p>其中cost[k][j]表示从k到j节点的花费，最后返回dp[0][src], dp[1][src], …, dp[k][src]中的最小值即可。</p>
+<p>算法的<strong>时间复杂度为$O(k x n^2)$，空间复杂度为$O(nk)$</strong></p>
+<p>下面是Java语言的题解<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution {</span><br><span class="line">    public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {</span><br><span class="line">        int MAX = 1000000;</span><br><span class="line">        int[][] dp = new int[k + 1][n];</span><br><span class="line">        Arrays.fill(dp[0], MAX);</span><br><span class="line">        for (int[] flight : flights) {</span><br><span class="line">            if (flight[0] == src) {</span><br><span class="line">                dp[0][flight[1]] = flight[2];</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        int res = dp[0][dst];</span><br><span class="line">        for (int i = 1; i &lt; k + 1; i++) {</span><br><span class="line">            Arrays.fill(dp[i], MAX);</span><br><span class="line">            for (int[] flight : flights) {</span><br><span class="line">                dp[i][flight[1]] = Math.min(dp[i][flight[1]], dp[i - 1][flight[0]] + flight[2]);</span><br><span class="line">            }</span><br><span class="line">            res = Math.min(res, dp[i][dst]);</span><br><span class="line">        }</span><br><span class="line">        return res == MAX ? -1 : res;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  DP的思想是保存之前计算过的结果，那么看起来记忆化DFS也是一种DP，小伙伴们要好好理解两者之间的关系。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>刷题记录</category>
+        <category>深度优先搜索</category>
+        <category>动态规划</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>划分为k个相等的子集(Leetcode 698)</title>
+    <url>/2021/08/20/program%20Leetcode698/</url>
+    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode698.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   这个题目和前几天做的第473题类似，不过难度要更大一些，在473题中，要使用火柴棒拼成一个正方形，是本题k为4的一个特例。<br><a id="more"></a></p>
+<h1 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a><font size="5" color="red">DFS</font></h1><p>本题类似与排列组合题目，n个数，先判断n个数之和是否能被k整除，如果能整除，求出整除后的值mean。然后进行全排列，和小于mean的值则给当前集合添加元素，和等于mean则开始判断下一个集合，和大于mean则说明该排列不符合要求。</p>
+<p>算法的<strong>时间复杂度为$O(n!)$，空间复杂度为$O(n)$</strong>，因为n最大可以为16，因此可能会产生TLE的情况，但是存在剪枝操作，因此不会真正进行全排列的操作，所以本题可以勉强通过。</p>
+<p>下面是Java语言的题解<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution {</span><br><span class="line">    public boolean canPartitionKSubsets(int[] nums, int k) {</span><br><span class="line">        int sums = 0;</span><br><span class="line">        for (int val : nums) {</span><br><span class="line">            sums += val;</span><br><span class="line">        }</span><br><span class="line">        if (sums % k != 0) {</span><br><span class="line">            return false;</span><br><span class="line">        }</span><br><span class="line">        int mean = sums / k;</span><br><span class="line">        return dfs(1, 0, new boolean[nums.length], nums, mean, k);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    private boolean dfs(int layer, int cur, boolean[] visit, int[] nums, int mean, int k) {</span><br><span class="line">        if (layer &gt; k - 1) {</span><br><span class="line">            return true;</span><br><span class="line">        }</span><br><span class="line">        for (int i = 0; i &lt; visit.length; i++) {</span><br><span class="line">            if (!visit[i]) {</span><br><span class="line">                if (cur + nums[i] &lt;= mean) {</span><br><span class="line">                    visit[i] = true;</span><br><span class="line">                    boolean res = cur + nums[i] == mean ? dfs(layer + 1, 0, visit, nums, mean, k) : dfs(layer, cur + nums[i], visit, nums, mean, k);</span><br><span class="line">                    if (res) {</span><br><span class="line">                        return true;</span><br><span class="line">                    }</span><br><span class="line">                    visit[i] = false;</span><br><span class="line">                } else {</span><br><span class="line">                    return false;</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        return false;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="状态压缩DP"><a href="#状态压缩DP" class="headerlink" title="状态压缩DP"></a><font size="5" color="red">状态压缩DP</font></h1><p>状态压缩DP的思想非常巧妙，状态压缩是指用bit位来表示该元素是否已经选择。本题的n最大位16，而int值为32位，因此足够表示16个数，0…0001表示选择了第一个数，0…1010表示选择了第二个数和第四个数。sum[i]表示状态i所选取的数字之和，isSatisfy[i]表示状态i所选取的数字是否有可能满足条件。</p>
+<p>其中状态i从0到(1 &lt;&lt; n) - 1，然后遍历元素索引j，如果当前状态的第j位为不为0，定义前一个状态为pre = i ^ (1 &lt;&lt; j)。说明该状态i可由pre添加第j个元素转化而来，但是此时不一定能够成功转化。如果状态pre是满足条件的，并且sum[pre] % mean + nums[j] &lt;= mean说明本状态可以由pre状态成功转化而来。</p>
+<p>算法的<strong>时间复杂度为$O(k x 2^n)$，空间复杂度为$O(2^n)$</strong></p>
+<p>下面是Java语言的题解<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution {</span><br><span class="line">    public boolean canPartitionKSubsets(int[] nums, int k) {</span><br><span class="line">        int sums = 0;</span><br><span class="line">        for (int val : nums) {</span><br><span class="line">            sums += val;</span><br><span class="line">        }</span><br><span class="line">        if (sums % k != 0) {</span><br><span class="line">            return false;</span><br><span class="line">        }</span><br><span class="line">        int length = nums.length;</span><br><span class="line">        int mean = sums / k;</span><br><span class="line">        int bit = 1 &lt;&lt; length;</span><br><span class="line">        boolean[] isSatisfy = new boolean[bit];</span><br><span class="line">        int[] sum = new int[bit];</span><br><span class="line">        isSatisfy[0] = true;</span><br><span class="line">        for (int i = 0; i &lt; bit; i++) {</span><br><span class="line">            for (int j = 0; j &lt; length; j++) {</span><br><span class="line">                if ((i &amp; (1 &lt;&lt; j)) != 0 &amp;&amp; isSatisfy[i ^ (1 &lt;&lt; j)] &amp;&amp; (sum[i ^ (1 &lt;&lt; j)] % mean) + nums[j] &lt;= mean) {</span><br><span class="line">                    isSatisfy[i] = true;</span><br><span class="line">                    sum[i] = sum[i ^ (1 &lt;&lt; j)] + nums[j];</span><br><span class="line">                    break;</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        return isSatisfy[bit - 1];</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  小伙伴们要仔细比较两中算法在时间复杂度上的差异，并深刻理解$2^n$和$n!$在速度上相差了多少。很多人默认为指数爆炸的时间复杂都最高，其实阶乘的复杂度会更大一些，一般来说1e8是我们写算法题的极限运算量，此时对于指数量级来说，n可以取到26-27左右，但是对于阶乘来说，n只能取到12-13左右，所以对于全排列这类问题，一定要小心谨慎。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>刷题记录</category>
+        <category>深度优先搜索</category>
+        <category>动态规划</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>数组中最大数对和的最小值(Leetcode 1877)</title>
+    <url>/2021/07/20/program%20Leetcode1877/</url>
+    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode1877.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   小伙伴们遇到这样的题目，不能傻乎乎的去配对，要从中间找到规律，能否使用贪心的思路进行求解呢？<br><a id="more"></a></p>
+<h1 id="贪心"><a href="#贪心" class="headerlink" title="贪心"></a><font size="5" color="red">贪心</font></h1><p>如何配对能使最大数对和最小呢？小伙伴想一想，如果将最大值和次大值配对，那么无论后面的元素如何配对，最大数对和都是最大值和次大值之和，这是最大数对和最大的情况。同理，如果想使最大数对和最小，能否将最大值和最小值配对呢？让次大值和次小值配对，让他们的值都尽量相等，是不是更合理一些？</p>
+<p>这里不妨设最大值为max，最小值为min，以及任意两个值为m和n，组成$min \le n \le m \le max$<br>此时有三种配对方法<br>max + min和m + n，max + m和min + n，max + n和min + m<br>因为$max + m \ge max + min$且$max + n \ge max + min$，因此将最大值和最小值进行配对的方法是最优的。</p>
+<p>推广到n个数对也是可以证明的，感兴趣的小伙伴们可以参考官方题解。因此本题可以排序，求将第i个元素和倒数第i个元素配对，然后计算最大值即可。</p>
+<p>算法的<strong>时间复杂度为$O(nlog(n))$，空间复杂度为$O(1)$</strong></p>
+<p>下面是Java语言的题解<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution {</span><br><span class="line">    public int minPairSum(int[] nums) {</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        int res = 0;</span><br><span class="line">        for (int i = 0; i &lt; nums.length / 2; i++) {</span><br><span class="line">            res = Math.max(res, nums[i] + nums[nums.length - 1 - i]);</span><br><span class="line">        }</span><br><span class="line">        return res;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  本题是一个非常有趣的数学题，这里告诉大家的是在考试的过程中，有思路就可以去写，只要不限制次数，时间就是最重要的。不需要每一道题都严格证明，可以在考试完成后再进行推导。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>刷题记录</category>
+        <category>数学</category>
+        <category>数组</category>
+        <category>贪心</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>绝对差值和(Leetcode 1838)</title>
+    <url>/2021/07/19/program%20Leetcode1838/</url>
+    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode1838.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   一开始做这个题目的时候，使用暴力法进行求解，先进行排序，再以每一个数为基准，并将小于该元素的数加至该元素，当加k个值时停止。这种方法时间复杂都为O(nk)，因为n和k都是1e5的数据，因此无法通过所有样例。小伙伴们能否找到更好的算法呢？<br><a id="more"></a></p>
+<h1 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a><font size="5" color="red">滑动窗口</font></h1><p>我们寻找时间复杂都较大的原因，我们对于从低到高的所有元素都计算了差值，举一个例子nums = [1,2,3,4,5,6] , k = 4，使用分析中的方法时<br>以1为上界，后面没有元素，因此频数为1<br>以2为上界，后面只有1，而且2 - 1 = 1，可以将1变为2，因此频数为2<br>以3为上界，后面有2和1，而且3 - 2 = 1，3 - 1 = 2，将2和1都变为3，因此频数为3<br>以4为上界，后面有3，2和1，而且4 - 3 = 1，4 - 2 = 2，4 - 1 = 3 将3和2都变为4，因此频数为3<br>后面同理，可以发现一个问题，下标为i的数到后面的距离之和等于下标为i - 1的数到后面的距离之和 + (nums[i] - nums[i + 1]) * i。这个规律很好理解，后面的数不但要补齐与第i - 1个元素的差距，还要额外补齐到第i个元素的差距。因此就可以省去遍历后面元素的计算过程。</p>
+<p>算法的<strong>时间复杂度为$O(nlog(n))$，空间复杂度为$O(1)$</strong></p>
+<p>下面是Java语言的题解<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution {</span><br><span class="line">    public int maxFrequency(int[] nums, int k) {</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        int left = 0;</span><br><span class="line">        int right = 1;</span><br><span class="line">        long cur = 0;</span><br><span class="line">        int res = 1;</span><br><span class="line">        while (right &lt; nums.length) {</span><br><span class="line">            while (right &lt; nums.length &amp;&amp; cur + (right - left) * (nums[right] - nums[right - 1]) &lt;= k) {</span><br><span class="line">                cur += (right - left) * (nums[right] - nums[right++ - 1]);</span><br><span class="line">            }</span><br><span class="line">            res = Math.max(res, right - left);</span><br><span class="line">            cur -= nums[right - 1] - nums[left++];</span><br><span class="line">        }</span><br><span class="line">        return res;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  本题是一个非常有趣的滑动窗口题目，小伙伴们没有思路时可以从暴力法中获得灵感。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>刷题记录</category>
+        <category>数组</category>
+        <category>滑动窗口</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>天际线问题(Leetcode 218)</title>
+    <url>/2021/07/13/program%20Leetcode218/</url>
+    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode218.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   题目很清晰，很容易能想到$O(n^2)$的算法进行求解。但是本题的数据量为1e4，因此使用暴力法求解会导致TLE，因此需要寻找一种更合适的算法解答。<br><a id="more"></a></p>
+<h1 id="堆"><a href="#堆" class="headerlink" title="堆"></a><font size="5" color="red">堆</font></h1><p>我们可以先将每一段的起始点和终止点都加入到一个数组中，因为在这些点会产生突变，因此输出结果一定是数组中的某些点。我们将数组进行排序，因此得到按照时间排序的节点。</p>
+<p>遍历这些节点，将起点出现在该节点之前的所有建筑入堆，其中堆中元素按照建筑高度从大到小排序，并将堆顶元素中结束时间小于该节点的元素出堆。此时堆顶元素就是满足时间条件且建筑最高的元素。如果该元素的高度不等于前一个元素的高度，则该高度是一个天际线，需要记录该高度。</p>
+<p>算法的<strong>时间复杂度为$O(nlog(n))$，空间复杂度为$O(n)$</strong></p>
+<p>下面是Java语言的题解<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution {</span><br><span class="line">    public List&lt;List&lt;Integer&gt;&gt; getSkyline(int[][] buildings) {</span><br><span class="line">        int length = buildings.length;</span><br><span class="line">        PriorityQueue&lt;int[]&gt; queue = new PriorityQueue&lt;&gt;(new Comparator&lt;int[]&gt;() {</span><br><span class="line">            @Override</span><br><span class="line">            public int compare(int[] o1, int[] o2) {</span><br><span class="line">                return o2[1] - o1[1];</span><br><span class="line">            }</span><br><span class="line">        });</span><br><span class="line">        int[] timeNodes = new int[length * 2];</span><br><span class="line">        for (int i = 0; i &lt; length; i++) {</span><br><span class="line">            timeNodes[i * 2] = buildings[i][0];</span><br><span class="line">            timeNodes[i * 2 + 1] = buildings[i][1];</span><br><span class="line">        }</span><br><span class="line">        Arrays.sort(timeNodes);</span><br><span class="line">        int idx = 0;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; res = new ArrayList&lt;&gt;();</span><br><span class="line">        for (int time : timeNodes) {</span><br><span class="line">            while (idx &lt; length &amp;&amp; buildings[idx][0] &lt;= time) {</span><br><span class="line">                queue.add(new int[]{buildings[idx][1], buildings[idx][2]});</span><br><span class="line">                idx++;</span><br><span class="line">            }</span><br><span class="line">            while (!queue.isEmpty() &amp;&amp; queue.peek()[0] &lt;= time) {</span><br><span class="line">                queue.poll();</span><br><span class="line">            }</span><br><span class="line">            int cur = queue.isEmpty() ? 0 : queue.peek()[1];</span><br><span class="line">            if (res.size() == 0 || res.get(res.size() - 1).get(1) != cur) {</span><br><span class="line">                res.add(Arrays.asList(time, cur));</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        return res;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  本题的难点是在于能否想到将每一个建筑的起始时间和终止时间进行统计排序，然后利用堆的思想进行元素判断。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>刷题记录</category>
+        <category>堆</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>绝对差值和(Leetcode 1818)</title>
+    <url>/2021/07/13/program%20Leetcode1818/</url>
+    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode1818.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   题目有一定的难度，如果想明白一个问题，则本题可以迎刃而解。下面给小伙伴们一些提示，其实本题就是在nums1中寻找与每个nums1元素对应的num2元素最接近的一个数。<br><a id="more"></a></p>
+<h1 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a><font size="5" color="red">二分查找</font></h1><p>遍历num1所有索引，可以得到对应的num2元素，因此原本的绝对值之差为abs(nums1[i] - nums2[i])，如果将num1[i]换成与num2[i]最接近的一个数，那么绝对值之差就会最小，本题即寻找每一个索引对应的绝对值之差最小值。</p>
+<p>我们可以新建一个数组，其中对nums1的元素进行排序，这样可以通过二分查找距离nums2[i]最近的元素，因为距离最近可以是大于nums2[i]的值，也可以是小于num2[i]的值，所以先找到大于等于nums[i]的最小值，然后找小于nums[i]的最大值即可。找到了距离nums2[i]最近的元素，我们判断该索引的绝对差变化了多少，原始的绝对差为abs(nums1[i] - nums2[i])，现在的绝对差为abs(find - nums2[i])，因此求abs(nums1[i] - nums2[i]) - abs(find - nums2[i])的最大值。</p>
+<p>在每一步索引都计算绝对差，最后用总绝对差减去绝对差的变化量，即可求得替换后绝对差的最小值。</p>
+<p>算法的<strong>时间复杂度为$O(nlog(n))$，空间复杂度为$O(n)$</strong></p>
+<p>下面是Java语言的题解<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution {</span><br><span class="line">    public int minAbsoluteSumDiff(int[] nums1, int[] nums2) {</span><br><span class="line">        int mod = 1000000007;</span><br><span class="line">        int length = nums1.length;</span><br><span class="line">        int[] sortNum1 = Arrays.copyOf(nums1, length);</span><br><span class="line">        Arrays.sort(sortNum1);</span><br><span class="line">        int res = 0;</span><br><span class="line">        int diff = 0;</span><br><span class="line">        for (int i = 0; i &lt; length; i++) {</span><br><span class="line">            int cur = Math.abs(nums1[i] - nums2[i]);</span><br><span class="line">            res = (res + cur) % mod;</span><br><span class="line">            int left = 0, right = length - 1;</span><br><span class="line">            while (left &lt; right) {</span><br><span class="line">                int mid = left + ((right - left) &gt;&gt; 1);</span><br><span class="line">                if (sortNum1[mid] &gt;= nums2[i]) {</span><br><span class="line">                    right = mid;</span><br><span class="line">                } else {</span><br><span class="line">                    left = mid + 1;</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">            diff = Math.max(diff, cur - Math.abs(sortNum1[left] - nums2[i]));</span><br><span class="line">            if (left &gt; 0) { diff = Math.max(diff, cur - Math.abs(sortNum1[left - 1] - nums2[i])); }</span><br><span class="line">        }</span><br><span class="line">        return (res - diff + mod) % mod;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  本题是一个非常有趣的二分查找算法，希望小伙伴们能够举一反三多加练习。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>刷题记录</category>
+        <category>数组</category>
+        <category>二分查找</category>
+      </categories>
+  </entry>
+  <entry>
     <title>基于时间的键值存储(Leetcode 981)</title>
     <url>/2021/07/10/program%20Leetcode981/</url>
     <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode981.png" alt="1"></p>
@@ -155,8 +374,8 @@
       <categories>
         <category>刷题记录</category>
         <category>堆</category>
-        <category>哈希表</category>
         <category>字符串</category>
+        <category>哈希表</category>
       </categories>
   </entry>
   <entry>
@@ -194,8 +413,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>哈希表</category>
         <category>广度优先搜索</category>
+        <category>哈希表</category>
       </categories>
   </entry>
   <entry>
@@ -230,8 +449,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>哈希表</category>
         <category>广度优先搜索</category>
+        <category>哈希表</category>
       </categories>
   </entry>
   <entry>
@@ -274,8 +493,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>哈希表</category>
         <category>广度优先搜索</category>
+        <category>哈希表</category>
       </categories>
   </entry>
   <entry>
@@ -402,8 +621,8 @@
       <categories>
         <category>刷题记录</category>
         <category>深度优先搜索</category>
-        <category>位运算</category>
         <category>广度优先搜索</category>
+        <category>位运算</category>
       </categories>
   </entry>
   <entry>
@@ -789,24 +1008,18 @@
       </categories>
   </entry>
   <entry>
-    <title>目标和(Leetcode 494)</title>
-    <url>/2021/06/06/program%20Leetcode494/</url>
-    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode494.png" alt="1"></p>
-<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   本题也是一个非常有趣的题目，很容易想到回溯法进行求解，但是时间复杂度为$O(2^n)$，对于数据量稍大的场景都无法适用。小伙伴们思考是否还要其他的方法？<br><a id="more"></a></p>
-<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a><font size="5" color="red">动态规划</font></h1><p>如果数据量较大，又没有特殊方法的题目，小伙伴们思路可以向动态规划靠近。</p>
-<p><strong>本题的要求是从前n个数，进行组合找到和为target的数。因此存在最优子问题，假设最后一个数为k，那么最优子问题等价于从前n - 1个数，组合找到和为target - k或者target + k的结果之和。用dp[i][j]代表前i个数之和为j的表达式数目</strong>。</p>
-<script type="math/tex; mode=display">dp[i][j] = dp[i - 1][j - nums[i]] + dp[i - 1][j + nums[i]]</script><p>算法的<strong>时间复杂度为$O(n \cdot target)$，空间复杂度为$O(n \cdot target)$</strong></p>
-<p>下面是C++语言的题解<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution {</span><br><span class="line">public:</span><br><span class="line">    int findTargetSumWays(vector&lt;int&gt;&amp; nums, int target) {</span><br><span class="line">        vector&lt;vector&lt;int&gt;&gt; dp(nums.size() + 1, vector&lt;int&gt;(2001));</span><br><span class="line">        dp[0][1000] = 1;</span><br><span class="line">        for (int i = 0; i &lt; nums.size(); i++) {</span><br><span class="line">            for (int j = -1000; j &lt;= 1000; j++) {</span><br><span class="line">                if (j + nums[i] &gt;= -1000 &amp;&amp; j + nums[i] &lt;= 1000) { dp[i + 1][j + nums[i] + 1000] += dp[i][j + 1000]; }</span><br><span class="line">                if (j - nums[i] &gt;= -1000 &amp;&amp; j - nums[i] &lt;= 1000) { dp[i + 1][j - nums[i] + 1000] += dp[i][j + 1000]; }</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        return dp.back()[target + 1000];</span><br><span class="line">    }</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure><p></p>
-<p>下面是Kotlin语言的题解<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution {</span><br><span class="line">    fun findTargetSumWays(nums: IntArray, target: Int): Int {</span><br><span class="line">        val dp = Array(nums.size + 1) {IntArray(2001)}</span><br><span class="line">        dp[0][1000] = 1</span><br><span class="line">        for ((idx, x) in nums.withIndex()) {</span><br><span class="line">            for (i in -1000..1000) {</span><br><span class="line">                if (i + x &gt;= -1000 &amp;&amp; i + x &lt;= 1000) { dp[idx + 1][i + x + 1000] += dp[idx][i + 1000]}</span><br><span class="line">                if (i - x &gt;= -1000 &amp;&amp; i - x &lt;= 1000) { dp[idx + 1][i - x + 1000] += dp[idx][i + 1000]}</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        return dp[nums.size][target + 1000]</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
-<h1 id="优化动态规划"><a href="#优化动态规划" class="headerlink" title="优化动态规划"></a><font size="5" color="red">优化动态规划</font></h1><p>上面这种做法已经可以满足面试笔试的需求，但是本题有一种更巧妙的方法，转化为0-1背包问题进行求解。</p>
-<p><strong>因为nums都是正数，假设将其全部相加结果为sums，如果在某些位置加上负号，令这些数字之和为neg，所以其余的正数之和为sums - neg，此时整体数组之和为sums - neg + (-neg) = sums - 2neg = target</strong>。所以</p>
-<script type="math/tex; mode=display">neg = \frac{sums - target}{2}</script><p>即我们从nums中找出和为neg的子集数量即可，可以采用0-1背包的问题进行求解。用dp[i][j]表示前i个数和为j的子集数量。</p>
-<script type="math/tex; mode=display">dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - nums[i]])</script><p>因为第i层状态仅与第i - 1层有关，可以使用一维dp进行求解。</p>
-<p>算法的<strong>时间复杂度为$O(n \cdot (sum - target))$，空间复杂度为$O(sum - target)$</strong></p>
-<p>下面是C++语言的题解<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution {</span><br><span class="line">public:</span><br><span class="line">    int findTargetSumWays(vector&lt;int&gt;&amp; nums, int target) {</span><br><span class="line">        int sums = 0;</span><br><span class="line">        for (int x : nums) { sums += x; }</span><br><span class="line">        int diff = sums - target;</span><br><span class="line">        if (diff &lt; 0 || diff &amp; 1) { return 0; }</span><br><span class="line">        int neg = diff &gt;&gt; 1;</span><br><span class="line">        vector&lt;int&gt; dp(neg + 1);</span><br><span class="line">        dp[0] = 1;</span><br><span class="line">        for (int i = 0; i &lt; nums.size(); i++) {</span><br><span class="line">            for (int j = neg; j &gt;= nums[i]; j--) {</span><br><span class="line">                dp[j] += dp[j - nums[i]];</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        return dp.back();</span><br><span class="line">    }</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure><p></p>
-<p>下面是Kotlin语言的题解<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution {</span><br><span class="line">    fun findTargetSumWays(nums: IntArray, target: Int): Int {</span><br><span class="line">        var sums = 0</span><br><span class="line">        for (x in nums) { sums += x }</span><br><span class="line">        val diff = sums - target</span><br><span class="line">        if (diff &lt; 0 || diff.and(1) == 1) { return 0 }</span><br><span class="line">        val neg = diff.shr(1)</span><br><span class="line">        val dp = IntArray(neg + 1)</span><br><span class="line">        dp[0] = 1</span><br><span class="line">        for (x in nums) {</span><br><span class="line">            for (i in neg downTo x) {</span><br><span class="line">                dp[i] += dp[i - x]</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        return dp.last()</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
-<p>对比C++和Kotlin两种语言，可以看出C++语言中布尔类型就是0和1，可以直接将运算结果进行布尔判断，而Kotlin布尔和整型不可以直接运算。而且在位操作时，C++是使用位运算符进行操作，如a&amp;b，Kotlin使用成员方法进行操作，如a.and(b)或者a and b。</p>
-<h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  本题的重点是动态规划思路，并不是说优化的DP比普通的DP更好，小伙伴们要进行对比，将两者方法都掌握。</p>
+    <title>一和零(Leetcode 474)</title>
+    <url>/2021/06/06/program%20Leetcode474/</url>
+    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode474.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   这个题目第一眼看上去，很面熟，但是又想不起来在哪里见到过。在翻看题解之后，发现这个题目和之前的背包问题非常相似，类似于一个二维的背包问题。下面我将题目进行转化，给你一个背包，背包的宽度和高度为m和n，其中宝物数组为strs，每个宝物也有宽度和高度两个属性，问最多能够装入多少个宝物？现在小伙伴们尝试一下能否独立求解出本题呢？<br><a id="more"></a></p>
+<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a><font size="5" color="red">动态规划</font></h1><p>背包问题的经典解法是动态规划，在0-1背包中，一维问题，创建一个二维数组dp[k][n]，其中k为宝物的个数，n为空间的大小。dp[i][j]代表遍历底i个物体时，当使用j个空间时能装入的物品个数。</p>
+<script type="math/tex; mode=display">\begin{cases} dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - w[i]] + 1) & j \ge w[i] \\ dp[i - 1][j] & j < w[i] \end{cases}</script><p>在本题二维问题中，创建一个三位数组dp[k][m][n]，其中k为字符串个数，m为0的个数，n为1的个数。dp[k][i][j]代表遍历底k个字符串时，共有i个0，j个1时子集中包含字符串的最大个数。</p>
+<script type="math/tex; mode=display">\begin{cases} dp[k][i][j] = max(dp[k - 1][i][j], dp[k - 1][i - mm[k]][j - nn[k]] + 1) & i \ge mm[k] \&\& j \ge nn[k] \\ dp[k - 1][i][j] & else \end{cases}</script><p>算法的<strong>时间复杂度为$O(mnk)$，空间复杂度为$O(mnk)$</strong></p>
+<p><strong>在0-1背包中，因为dp[i]仅与dp[i - 1]的状态有关，因此在一维问题中，可以使用一维数组记录状态，为了第i层的状态变化不影响上一层，可以使用倒序遍历实现。如果使用顺序遍历，dp[j] = dp[j - w[i]]会更新dp[j]的值，当使用dp[j]的值时，就不是更新前的值了，因此顺序遍历是不正确的，而逆序遍历，每次先更新后面的值，可以保证以后不会使用到。同理二维问题类似，可以进一步将时间复杂都缩小为$O(mn)$</strong></p>
+<p>下面是Python语言的题解<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def findMaxForm(self, strs: List[str], m: int, n: int) -&gt; int:</span><br><span class="line">        dp = [[0 for _ in range(n + 1)] for _ in range(m + 1)]</span><br><span class="line">        for s in strs:</span><br><span class="line">            mm = s.count('0')</span><br><span class="line">            nn = len(s) - mm</span><br><span class="line">            for i in range(m, mm - 1, -1):</span><br><span class="line">                for j in range(n, nn - 1, -1):</span><br><span class="line">                    dp[i][j] = max(dp[i - mm][j - nn] + 1, dp[i][j])</span><br><span class="line">        return dp[-1][-1]</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>下面是Kotlin语言的题解<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution {</span><br><span class="line">    fun findMaxForm(strs: Array&lt;String&gt;, m: Int, n: Int): Int {</span><br><span class="line">        val dp = Array(m + 1){IntArray(n + 1)}</span><br><span class="line">        for (str in strs) {</span><br><span class="line">            val mm = str.count{it == '0'}</span><br><span class="line">            val nn = str.length - mm</span><br><span class="line">            for (i in m downTo mm) {</span><br><span class="line">                for (j in n downTo nn) {</span><br><span class="line">                    dp[i][j] = Math.max(dp[i][j], dp[i - mm][j - nn] + 1)</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        return dp[m][n];</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>对比Python和Kotlin两种语言，可以发现在创建多维数组时，相对于C++或Java语言较为麻烦，在字符串操作时，Python的内置函数较为方便，Kotlin语言需要使用lambda表达式。而且在倒序时，Python和正序类似，只用修改倒序的步长，Kotlin需要使用downTo语句。可以看出来Kotlin更像一种Java和Python的结合体，在变量声明和每行代码结尾不用分号，更类似于Python，而循环，选择结构中的大括号，以及代码的逻辑结构上更类似于Java。</p>
+<h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  这个题目难度适中，如果能够联想到背包问题，相信对于小伙伴们来说是不难的，如果联想不到，暴力法或者回溯法可能无法求解本题。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -832,18 +1045,24 @@
       </categories>
   </entry>
   <entry>
-    <title>一和零(Leetcode 474)</title>
-    <url>/2021/06/06/program%20Leetcode474/</url>
-    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode474.png" alt="1"></p>
-<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   这个题目第一眼看上去，很面熟，但是又想不起来在哪里见到过。在翻看题解之后，发现这个题目和之前的背包问题非常相似，类似于一个二维的背包问题。下面我将题目进行转化，给你一个背包，背包的宽度和高度为m和n，其中宝物数组为strs，每个宝物也有宽度和高度两个属性，问最多能够装入多少个宝物？现在小伙伴们尝试一下能否独立求解出本题呢？<br><a id="more"></a></p>
-<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a><font size="5" color="red">动态规划</font></h1><p>背包问题的经典解法是动态规划，在0-1背包中，一维问题，创建一个二维数组dp[k][n]，其中k为宝物的个数，n为空间的大小。dp[i][j]代表遍历底i个物体时，当使用j个空间时能装入的物品个数。</p>
-<script type="math/tex; mode=display">\begin{cases} dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - w[i]] + 1) & j \ge w[i] \\ dp[i - 1][j] & j < w[i] \end{cases}</script><p>在本题二维问题中，创建一个三位数组dp[k][m][n]，其中k为字符串个数，m为0的个数，n为1的个数。dp[k][i][j]代表遍历底k个字符串时，共有i个0，j个1时子集中包含字符串的最大个数。</p>
-<script type="math/tex; mode=display">\begin{cases} dp[k][i][j] = max(dp[k - 1][i][j], dp[k - 1][i - mm[k]][j - nn[k]] + 1) & i \ge mm[k] \&\& j \ge nn[k] \\ dp[k - 1][i][j] & else \end{cases}</script><p>算法的<strong>时间复杂度为$O(mnk)$，空间复杂度为$O(mnk)$</strong></p>
-<p><strong>在0-1背包中，因为dp[i]仅与dp[i - 1]的状态有关，因此在一维问题中，可以使用一维数组记录状态，为了第i层的状态变化不影响上一层，可以使用倒序遍历实现。如果使用顺序遍历，dp[j] = dp[j - w[i]]会更新dp[j]的值，当使用dp[j]的值时，就不是更新前的值了，因此顺序遍历是不正确的，而逆序遍历，每次先更新后面的值，可以保证以后不会使用到。同理二维问题类似，可以进一步将时间复杂都缩小为$O(mn)$</strong></p>
-<p>下面是Python语言的题解<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def findMaxForm(self, strs: List[str], m: int, n: int) -&gt; int:</span><br><span class="line">        dp = [[0 for _ in range(n + 1)] for _ in range(m + 1)]</span><br><span class="line">        for s in strs:</span><br><span class="line">            mm = s.count('0')</span><br><span class="line">            nn = len(s) - mm</span><br><span class="line">            for i in range(m, mm - 1, -1):</span><br><span class="line">                for j in range(n, nn - 1, -1):</span><br><span class="line">                    dp[i][j] = max(dp[i - mm][j - nn] + 1, dp[i][j])</span><br><span class="line">        return dp[-1][-1]</span><br></pre></td></tr></tbody></table></figure><p></p>
-<p>下面是Kotlin语言的题解<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution {</span><br><span class="line">    fun findMaxForm(strs: Array&lt;String&gt;, m: Int, n: Int): Int {</span><br><span class="line">        val dp = Array(m + 1){IntArray(n + 1)}</span><br><span class="line">        for (str in strs) {</span><br><span class="line">            val mm = str.count{it == '0'}</span><br><span class="line">            val nn = str.length - mm</span><br><span class="line">            for (i in m downTo mm) {</span><br><span class="line">                for (j in n downTo nn) {</span><br><span class="line">                    dp[i][j] = Math.max(dp[i][j], dp[i - mm][j - nn] + 1)</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        return dp[m][n];</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
-<p>对比Python和Kotlin两种语言，可以发现在创建多维数组时，相对于C++或Java语言较为麻烦，在字符串操作时，Python的内置函数较为方便，Kotlin语言需要使用lambda表达式。而且在倒序时，Python和正序类似，只用修改倒序的步长，Kotlin需要使用downTo语句。可以看出来Kotlin更像一种Java和Python的结合体，在变量声明和每行代码结尾不用分号，更类似于Python，而循环，选择结构中的大括号，以及代码的逻辑结构上更类似于Java。</p>
-<h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  这个题目难度适中，如果能够联想到背包问题，相信对于小伙伴们来说是不难的，如果联想不到，暴力法或者回溯法可能无法求解本题。</p>
+    <title>目标和(Leetcode 494)</title>
+    <url>/2021/06/06/program%20Leetcode494/</url>
+    <content><![CDATA[<p><img src="/images/ALGORITHM/leetcode494.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size="5" color="red">题目分析</font></h1><p>   本题也是一个非常有趣的题目，很容易想到回溯法进行求解，但是时间复杂度为$O(2^n)$，对于数据量稍大的场景都无法适用。小伙伴们思考是否还要其他的方法？<br><a id="more"></a></p>
+<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a><font size="5" color="red">动态规划</font></h1><p>如果数据量较大，又没有特殊方法的题目，小伙伴们思路可以向动态规划靠近。</p>
+<p><strong>本题的要求是从前n个数，进行组合找到和为target的数。因此存在最优子问题，假设最后一个数为k，那么最优子问题等价于从前n - 1个数，组合找到和为target - k或者target + k的结果之和。用dp[i][j]代表前i个数之和为j的表达式数目</strong>。</p>
+<script type="math/tex; mode=display">dp[i][j] = dp[i - 1][j - nums[i]] + dp[i - 1][j + nums[i]]</script><p>算法的<strong>时间复杂度为$O(n \cdot target)$，空间复杂度为$O(n \cdot target)$</strong></p>
+<p>下面是C++语言的题解<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution {</span><br><span class="line">public:</span><br><span class="line">    int findTargetSumWays(vector&lt;int&gt;&amp; nums, int target) {</span><br><span class="line">        vector&lt;vector&lt;int&gt;&gt; dp(nums.size() + 1, vector&lt;int&gt;(2001));</span><br><span class="line">        dp[0][1000] = 1;</span><br><span class="line">        for (int i = 0; i &lt; nums.size(); i++) {</span><br><span class="line">            for (int j = -1000; j &lt;= 1000; j++) {</span><br><span class="line">                if (j + nums[i] &gt;= -1000 &amp;&amp; j + nums[i] &lt;= 1000) { dp[i + 1][j + nums[i] + 1000] += dp[i][j + 1000]; }</span><br><span class="line">                if (j - nums[i] &gt;= -1000 &amp;&amp; j - nums[i] &lt;= 1000) { dp[i + 1][j - nums[i] + 1000] += dp[i][j + 1000]; }</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        return dp.back()[target + 1000];</span><br><span class="line">    }</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>下面是Kotlin语言的题解<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution {</span><br><span class="line">    fun findTargetSumWays(nums: IntArray, target: Int): Int {</span><br><span class="line">        val dp = Array(nums.size + 1) {IntArray(2001)}</span><br><span class="line">        dp[0][1000] = 1</span><br><span class="line">        for ((idx, x) in nums.withIndex()) {</span><br><span class="line">            for (i in -1000..1000) {</span><br><span class="line">                if (i + x &gt;= -1000 &amp;&amp; i + x &lt;= 1000) { dp[idx + 1][i + x + 1000] += dp[idx][i + 1000]}</span><br><span class="line">                if (i - x &gt;= -1000 &amp;&amp; i - x &lt;= 1000) { dp[idx + 1][i - x + 1000] += dp[idx][i + 1000]}</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        return dp[nums.size][target + 1000]</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="优化动态规划"><a href="#优化动态规划" class="headerlink" title="优化动态规划"></a><font size="5" color="red">优化动态规划</font></h1><p>上面这种做法已经可以满足面试笔试的需求，但是本题有一种更巧妙的方法，转化为0-1背包问题进行求解。</p>
+<p><strong>因为nums都是正数，假设将其全部相加结果为sums，如果在某些位置加上负号，令这些数字之和为neg，所以其余的正数之和为sums - neg，此时整体数组之和为sums - neg + (-neg) = sums - 2neg = target</strong>。所以</p>
+<script type="math/tex; mode=display">neg = \frac{sums - target}{2}</script><p>即我们从nums中找出和为neg的子集数量即可，可以采用0-1背包的问题进行求解。用dp[i][j]表示前i个数和为j的子集数量。</p>
+<script type="math/tex; mode=display">dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - nums[i]])</script><p>因为第i层状态仅与第i - 1层有关，可以使用一维dp进行求解。</p>
+<p>算法的<strong>时间复杂度为$O(n \cdot (sum - target))$，空间复杂度为$O(sum - target)$</strong></p>
+<p>下面是C++语言的题解<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution {</span><br><span class="line">public:</span><br><span class="line">    int findTargetSumWays(vector&lt;int&gt;&amp; nums, int target) {</span><br><span class="line">        int sums = 0;</span><br><span class="line">        for (int x : nums) { sums += x; }</span><br><span class="line">        int diff = sums - target;</span><br><span class="line">        if (diff &lt; 0 || diff &amp; 1) { return 0; }</span><br><span class="line">        int neg = diff &gt;&gt; 1;</span><br><span class="line">        vector&lt;int&gt; dp(neg + 1);</span><br><span class="line">        dp[0] = 1;</span><br><span class="line">        for (int i = 0; i &lt; nums.size(); i++) {</span><br><span class="line">            for (int j = neg; j &gt;= nums[i]; j--) {</span><br><span class="line">                dp[j] += dp[j - nums[i]];</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        return dp.back();</span><br><span class="line">    }</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>下面是Kotlin语言的题解<br></p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">class Solution {</span><br><span class="line">    fun findTargetSumWays(nums: IntArray, target: Int): Int {</span><br><span class="line">        var sums = 0</span><br><span class="line">        for (x in nums) { sums += x }</span><br><span class="line">        val diff = sums - target</span><br><span class="line">        if (diff &lt; 0 || diff.and(1) == 1) { return 0 }</span><br><span class="line">        val neg = diff.shr(1)</span><br><span class="line">        val dp = IntArray(neg + 1)</span><br><span class="line">        dp[0] = 1</span><br><span class="line">        for (x in nums) {</span><br><span class="line">            for (i in neg downTo x) {</span><br><span class="line">                dp[i] += dp[i - x]</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        return dp.last()</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>对比C++和Kotlin两种语言，可以看出C++语言中布尔类型就是0和1，可以直接将运算结果进行布尔判断，而Kotlin布尔和整型不可以直接运算。而且在位操作时，C++是使用位运算符进行操作，如a&amp;b，Kotlin使用成员方法进行操作，如a.and(b)或者a and b。</p>
+<h1 id="刷题总结"><a href="#刷题总结" class="headerlink" title="刷题总结"></a><font size="5" color="red">刷题总结</font></h1><p>  本题的重点是动态规划思路，并不是说优化的DP比普通的DP更好，小伙伴们要进行对比，将两者方法都掌握。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1496,9 +1715,9 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>贪心</category>
         <category>数学</category>
         <category>数组</category>
+        <category>贪心</category>
       </categories>
   </entry>
   <entry>
@@ -1838,8 +2057,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>贪心</category>
         <category>数学</category>
+        <category>贪心</category>
         <category>双指针</category>
       </categories>
   </entry>
@@ -2075,8 +2294,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>贪心</category>
         <category>博弈</category>
+        <category>贪心</category>
         <category>队列</category>
       </categories>
   </entry>
@@ -2155,9 +2374,9 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>贪心</category>
         <category>数学</category>
         <category>数组</category>
+        <category>贪心</category>
         <category>排序</category>
       </categories>
   </entry>
@@ -2235,9 +2454,9 @@
       <categories>
         <category>刷题记录</category>
         <category>深度优先搜索</category>
-        <category>迭代</category>
-        <category>递归</category>
         <category>广度优先搜索</category>
+        <category>递归</category>
+        <category>迭代</category>
       </categories>
   </entry>
   <entry>
@@ -2387,10 +2606,10 @@
       <categories>
         <category>刷题记录</category>
         <category>树</category>
-        <category>哈希表</category>
         <category>字符串</category>
-        <category>双指针</category>
+        <category>哈希表</category>
         <category>特定算法</category>
+        <category>双指针</category>
       </categories>
   </entry>
   <entry>
@@ -2474,8 +2693,8 @@
       <categories>
         <category>刷题记录</category>
         <category>深度优先搜索</category>
-        <category>并查集</category>
         <category>广度优先搜索</category>
+        <category>并查集</category>
       </categories>
   </entry>
   <entry>
@@ -2516,9 +2735,9 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>贪心</category>
         <category>堆</category>
         <category>数学</category>
+        <category>贪心</category>
       </categories>
   </entry>
   <entry>
@@ -2556,9 +2775,9 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>贪心</category>
         <category>堆</category>
         <category>数组</category>
+        <category>贪心</category>
       </categories>
   </entry>
   <entry>
@@ -2681,8 +2900,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>数组</category>
         <category>栈</category>
+        <category>数组</category>
         <category>递归</category>
         <category>双指针</category>
       </categories>
@@ -2726,9 +2945,9 @@
         <category>刷题记录</category>
         <category>深度优先搜索</category>
         <category>树</category>
+        <category>广度优先搜索</category>
         <category>二分查找</category>
         <category>位运算</category>
-        <category>广度优先搜索</category>
       </categories>
   </entry>
   <entry>
@@ -2981,11 +3200,11 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>数组</category>
-        <category>迭代</category>
         <category>栈</category>
+        <category>数组</category>
         <category>递归</category>
         <category>队列</category>
+        <category>迭代</category>
       </categories>
   </entry>
   <entry>
@@ -3761,8 +3980,8 @@
       <categories>
         <category>刷题记录</category>
         <category>树</category>
-        <category>迭代</category>
         <category>递归</category>
+        <category>迭代</category>
       </categories>
   </entry>
   <entry>
@@ -3911,8 +4130,8 @@
       <categories>
         <category>刷题记录</category>
         <category>树</category>
-        <category>迭代</category>
         <category>递归</category>
+        <category>迭代</category>
       </categories>
   </entry>
   <entry>
@@ -4075,8 +4294,8 @@
       <categories>
         <category>刷题记录</category>
         <category>树</category>
-        <category>哈希表</category>
         <category>递归</category>
+        <category>哈希表</category>
       </categories>
   </entry>
   <entry>
@@ -4266,8 +4485,8 @@
         <category>刷题记录</category>
         <category>深度优先搜索</category>
         <category>动态规划</category>
-        <category>记忆化</category>
         <category>字符串</category>
+        <category>记忆化</category>
       </categories>
   </entry>
   <entry>
@@ -4441,8 +4660,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>贪心</category>
         <category>堆</category>
+        <category>贪心</category>
         <category>二分查找</category>
       </categories>
   </entry>
@@ -4486,8 +4705,8 @@
         <category>刷题记录</category>
         <category>深度优先搜索</category>
         <category>动态规划</category>
-        <category>记忆化</category>
         <category>字符串</category>
+        <category>记忆化</category>
       </categories>
   </entry>
   <entry>
@@ -4633,8 +4852,8 @@
       <categories>
         <category>刷题记录</category>
         <category>树</category>
-        <category>哈希表</category>
         <category>递归</category>
+        <category>哈希表</category>
       </categories>
   </entry>
   <entry>
@@ -5069,8 +5288,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>数组</category>
         <category>动态规划</category>
+        <category>数组</category>
         <category>二分查找</category>
       </categories>
   </entry>
@@ -5455,8 +5674,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>贪心</category>
         <category>数学</category>
+        <category>贪心</category>
       </categories>
   </entry>
   <entry>
@@ -5524,9 +5743,9 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>贪心</category>
-        <category>数组</category>
         <category>动态规划</category>
+        <category>数组</category>
+        <category>贪心</category>
       </categories>
   </entry>
   <entry>
@@ -5844,8 +6063,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>数组</category>
         <category>动态规划</category>
+        <category>数组</category>
         <category>二分查找</category>
       </categories>
   </entry>
@@ -5981,8 +6200,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>数组</category>
         <category>动态规划</category>
+        <category>数组</category>
       </categories>
   </entry>
   <entry>
@@ -6048,8 +6267,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>数组</category>
         <category>动态规划</category>
+        <category>数组</category>
       </categories>
   </entry>
   <entry>
@@ -6190,8 +6409,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>贪心</category>
         <category>深度优先搜索</category>
+        <category>贪心</category>
         <category>广度优先搜索</category>
       </categories>
   </entry>
@@ -6363,9 +6582,9 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>有限状态自动机</category>
         <category>数组</category>
         <category>位运算</category>
+        <category>有限状态自动机</category>
       </categories>
   </entry>
   <entry>
@@ -6752,8 +6971,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>数组</category>
         <category>动态规划</category>
+        <category>数组</category>
         <category>二分查找</category>
       </categories>
   </entry>
@@ -7401,8 +7620,8 @@
       </script>]]></content>
       <categories>
         <category>刷题记录</category>
-        <category>数组</category>
         <category>动态规划</category>
+        <category>数组</category>
       </categories>
   </entry>
   <entry>
@@ -9652,8 +9871,8 @@
       <categories>
         <category>刷题记录</category>
         <category>深度优先搜索</category>
-        <category>并查集</category>
         <category>广度优先搜索</category>
+        <category>并查集</category>
       </categories>
   </entry>
   <entry>
