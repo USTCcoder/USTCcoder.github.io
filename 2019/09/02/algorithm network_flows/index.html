@@ -1,0 +1,1423 @@
+﻿<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-fill-left.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/github_logo.jpeg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/github_logo.jpeg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/github_logo.jpeg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/github_logo.jpeg?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/github_logo.jpeg">
+
+
+  <meta name="msapplication-config" content="/images/github_logo.jpeg" />
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="GitHub" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Network Flows">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络流(Network Flows)">
+<meta property="og:url" content="https://ustccoder.github.io/2019/09/02/algorithm%20network_flows/index.html">
+<meta property="og:site_name" content="GitHub">
+<meta property="og:description" content="Network Flows">
+<meta property="og:locale">
+<meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/union1.jpg">
+<meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/network1.jpg">
+<meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/network2.jpg">
+<meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/network3.jpg">
+<meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/network4.jpg">
+<meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/network1.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/network2.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/network4.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/network3.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/network5.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/network6.png">
+<meta property="article:published_time" content="2019-09-02T04:55:58.000Z">
+<meta property="article:modified_time" content="2020-11-30T09:19:32.000Z">
+<meta property="article:author" content="USTCcoder">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ustccoder.github.io/images/ALGORITHM/union1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"perspectiveLeftIn","post_header":"fadeIn","post_body":"fadeIn","coll_header":"fadeIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://USTCcoder.github.io/2019/09/02/algorithm network_flows/"/>
+
+
+
+
+
+  <title>网络流(Network Flows) | GitHub</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<!--
+<link rel="stylesheet" href="/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script type="text/javascript" src="/dist/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/music.js"></script>
+-->
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a target="_blank" rel="noopener" href="https://github.com/USTCcoder" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">GitHub</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            我的主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            日志总览
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分门别类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于博主
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2019/09/02/algorithm%20network_flows/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/github.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GitHub">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">网络流(Network Flows)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-02T12:55:58+08:00">
+                2019-09-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构和算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E9%83%A8%E5%88%86/" itemprop="url" rel="index">
+                    <span itemprop="name">算法部分</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/02/algorithm%20network_flows/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/02/algorithm%20network_flows/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读数<i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Network Flows</center></font></td></tr></table>
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong><font size=5 color=gray><center>网络流</center></font></strong></p>
+<h1 id="原理介绍"><a href="#原理介绍" class="headerlink" title="原理介绍"></a><font size=5 color=red>原理介绍</font></h1><p>&emsp;&emsp; <strong>Network Flows:网络流</strong>，是运筹学中的最优化问题，也是图论中的一种理论方法。类比水流的解决问题，与线性规划密切相关，常常用来解决实际的生活问题。</p>
+<span id="more"></span>
+
+<p><img src="/images/ALGORITHM/union1.jpg" alt="1"></p>
+<h1 id="算法基础"><a href="#算法基础" class="headerlink" title="算法基础"></a><font size=5 color=red>算法基础</font></h1><h2 id="图的基本术语"><a href="#图的基本术语" class="headerlink" title="图的基本术语"></a><font size=4>图的基本术语</font></h2><p>&emsp;&emsp;<font size=3>(1)无向图：G中的每条边都是没有方向的，顶点v1和v2之间的边记为(v1,v2)或(v2,v1)。</font><br><img src="/images/ALGORITHM/network1.jpg" alt="2"><br>&emsp;&emsp;<font size=3>(2)有向图：G中的每条边都是有方向的，顶点v1和v2之间的边记为&lt;v1,v2&gt;，不能写成&lt;v2,v1&gt;。</font><br><img src="/images/ALGORITHM/network2.jpg" alt="3"><br>&emsp;&emsp;<font size=3>(3)网：在边上标注距离，时间，花费等等数值，称为边的权值，带有权值的图称为网。</font><br><img src="/images/ALGORITHM/network3.jpg" alt="4"><br>&emsp;&emsp;<font size=3>(4)二分图：如果顶点集V可分割为两个互不相交的子集V1,V2，并且图中的每条边所对应的两个顶点分别属于这两个不同的顶点集，称G为二分图。</font><br><img src="/images/ALGORITHM/network4.jpg" alt="5"></p>
+<h2 id="网络的基本术语"><a href="#网络的基本术语" class="headerlink" title="网络的基本术语"></a><font size=4>网络的基本术语</font></h2><p>&emsp;&emsp;<font size=3>(1)网络：在有向网中，有两个特殊的点，源点s和汇点t，图中各边的方向表示允许的流向，边上的权值表示可允许的最大流量，且两个结点之间最多只有一条边，称这样的图为网络。</font><br><img src="/images/ALGORITHM/network1.png" alt="6"><br>&emsp;&emsp;<font size=3>(2)网络流：网络上的流，即定义在边集E上的非负函数flow称为网络流。</font><br>&emsp;&emsp;<font size=3>(3)可行流：满足容量约束（每个边的实际流量不大于最大容量）和流量守恒（除了源点s和汇点t外，所有内部结点流入量等于流出量）两个性质的网络流称为可行流。</font><br>&emsp;&emsp;<font size=3>(4)最大流：在满足可行流的条件下，在网络中找到一个净输出最大的网络流称为最大流。</font></p>
+<h1 id="经典例题-最大网络流，最短增广路算法"><a href="#经典例题-最大网络流，最短增广路算法" class="headerlink" title="经典例题(最大网络流，最短增广路算法)"></a><font size=5 color=red>经典例题(最大网络流，最短增广路算法)</font></h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a><font size=4>问题描述</font></h2><p>&emsp;&emsp;一家公司要把一批货物从工厂运到北京，中间经过若干个城市，已知城市数，连接数和城市之间的最大运输量，求如何运输使运输量最大。<br>&emsp;&emsp;第一行输入结点个数和边数，然后每行输入连通的两个城市以及最大运输量，使用空格分隔。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">6 9 # 结点个数n和边数m</span><br><span class="line">1 2 12 # 说明1号城市和2号城市之间的最大运输量为12</span><br><span class="line">1 3 10</span><br><span class="line">2 4 8</span><br><span class="line">3 2 2</span><br><span class="line">3 5 13</span><br><span class="line">4 3 5</span><br><span class="line">4 6 18</span><br><span class="line">5 4 6</span><br><span class="line">5 6 4</span><br></pre></td></tr></table></figure>
+<h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a><font size=4>算法分析</font></h2><p>&emsp;&emsp;如果一条边的容量为n，已经流出了m则该点最多可以正向流出(n-m)或者反向流入m，因此引入一个残余网络，正向代表可增量，即还可以流出的容量，反向代表流量，即已经流出的容量，等于可以流入的流量。<br><img src="/images/ALGORITHM/network2.png" alt="12"><br>&emsp;&emsp;利用深度优先或者广度优先从源点s对该图进行遍历，如果从i点到达j点的值大于0，说明可以流通，则继续。当搜索到t点时，说明该路径是一条可行流，找到该路径上边的最小值，最大流加上该值，然后修改网络，将路径上的边正向减去该值，反向加上该值。重新搜索，直到无法到达t点算法结束。</p>
+<h2 id="python代码实战"><a href="#python代码实战" class="headerlink" title="python代码实战"></a><font size=4>python代码实战</font></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">def sap(connect_map, n):</span><br><span class="line">    real_map = [[0 for i in range(n + 1)] for j in range(n + 1)]</span><br><span class="line">    residue_map = [[x for x in row] for row in connect_map]</span><br><span class="line">    max_flow, find_flag = 0, True</span><br><span class="line">    while find_flag:</span><br><span class="line">        queue, find_flag = [[1, [1]]], False</span><br><span class="line">        while queue:</span><br><span class="line">            i, route = queue.pop(0)</span><br><span class="line">            for j in range(1, n + 1):</span><br><span class="line">                if residue_map[i][j] &gt; 0 and j not in route:</span><br><span class="line">                    if j == n:</span><br><span class="line">                        flow, route, queue, find_flag = [], route + [j], [], True</span><br><span class="line">                        for k in range(len(route) - 1):</span><br><span class="line">                            flow.append(residue_map[route[k]][route[k + 1]])</span><br><span class="line">                        min_flow = min(flow)</span><br><span class="line">                        max_flow += min_flow</span><br><span class="line">                        for p in range(len(route) - 1):</span><br><span class="line">                            real_map[route[p]][route[p + 1]] += min_flow</span><br><span class="line">                            residue_map[route[p]][route[p + 1]] -= min_flow</span><br><span class="line">                            residue_map[route[p + 1]][route[p]] += min_flow</span><br><span class="line">                        break</span><br><span class="line">                    else:</span><br><span class="line">                        queue.append([j, route + [j]])</span><br><span class="line">    return real_map, max_flow</span><br><span class="line"></span><br><span class="line">print(&#x27;请输入结点个数n和边数m:&#x27;)</span><br><span class="line">for line in sys.stdin:</span><br><span class="line">    n, m = [int(x) for x in line.strip().split()]</span><br><span class="line">    connect_map, label, direction = [[0 for i in range(n + 1)] for j in range(n + 1)], [&#x27;v&#x27; + str(i) for i in range(1, n + 1)], []</span><br><span class="line">    print(&#x27;请输入结点个数u,v及边u-v的容量w:&#x27;)</span><br><span class="line">    for i in range(m):</span><br><span class="line">        u, v, w = [int(x) for x in sys.stdin.readline().strip().split()]</span><br><span class="line">        connect_map[u][v] = w</span><br><span class="line">        direction.append([u, v])</span><br><span class="line">    real_map, max_flow = sap(connect_map, n)</span><br><span class="line">    for k in direction:</span><br><span class="line">        real_map[k[0]][k[1]] -= real_map[k[1]][k[0]]</span><br><span class="line">        real_map[k[1]][k[0]] = 0</span><br><span class="line">    net_work = pd.DataFrame([[x for x in row[1:]] for row in real_map[1:]], index=label, columns=label)</span><br><span class="line">    print(&#x27;网络的最大流值为:&#x27;, max_flow, &#x27;\n---------实流网络如下:---------\n&#x27;, net_work)</span><br></pre></td></tr></table></figure>
+
+<h2 id="代码运行结果"><a href="#代码运行结果" class="headerlink" title="代码运行结果"></a><font size=4>代码运行结果</font></h2><p><img src="/images/ALGORITHM/network4.png" alt="14"></p>
+<h1 id="经典例题-最大网络流，重贴标签算法"><a href="#经典例题-最大网络流，重贴标签算法" class="headerlink" title="经典例题(最大网络流，重贴标签算法)"></a><font size=5 color=red>经典例题(最大网络流，重贴标签算法)</font></h1><h2 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a><font size=4>问题描述</font></h2><p>&emsp;&emsp;一家公司要把一批货物从工厂运到北京，中间经过若干个城市，已知城市数，连接数和城市之间的最大运输量，求如何运输使运输量最大。<br>&emsp;&emsp;第一行输入结点个数和边数，然后每行输入连通的两个城市以及最大运输量，使用空格分隔。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">6 9 # 结点个数n和边数m</span><br><span class="line">1 2 12 # 说明1号城市和2号城市之间的最大运输量为12</span><br><span class="line">1 3 10</span><br><span class="line">2 4 8</span><br><span class="line">3 2 2</span><br><span class="line">3 5 13</span><br><span class="line">4 3 5</span><br><span class="line">4 6 18</span><br><span class="line">5 4 6</span><br><span class="line">5 6 4</span><br></pre></td></tr></table></figure>
+<h2 id="算法分析-1"><a href="#算法分析-1" class="headerlink" title="算法分析"></a><font size=4>算法分析</font></h2><p>&emsp;&emsp;在上例算法中，浪费了许多时间，因为要从源点重复进行深度优先遍历或者广度优先遍历，因此有重复的大量计算。<br>&emsp;&emsp;引入混合网络，将残余网络进行优化，同向边为一个元组(cap, flow)记录容量和当前流量，反向边也是一个元组(0, -flow)记录容量个当前流量，可以通过该网络直接看出方向和流量。<br><img src="/images/ALGORITHM/network3.png" alt="13"><br>&emsp;&emsp;(1)从汇点开始，利用广度优先算法对结点添加标签，从0开始，第一次直接访问到的点标记为1，第二次间接访问到的点标记为2，依次贴标签。<br>&emsp;&emsp;(2)如果源点高度大于等于结点数，说明已经找到了最大流，算法结束，否则从源点开始，搜索源点高度-1的点，观察是否可以前进，如果可以，当结点为汇点时，进行增流减流操作(同向边增流，反向边减流)，如果不可以则需要重贴标签。<br>&emsp;&emsp;(3)重贴标签：如果拥有当前结点高度的结点只有一个，则算法结束，否则寻找是否有可行邻接边(容量大于流量)，如果有则令当前结点高度等于邻接点高度的最小值+1，否则令当前结点的高度等于结点数。重新回到(2)</p>
+<h2 id="python代码实战-1"><a href="#python代码实战-1" class="headerlink" title="python代码实战"></a><font size=4>python代码实战</font></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">def isap(mix_net, height_table, n):</span><br><span class="line">    max_flow, real_map = 0, [[0 for i in range(n + 1)] for j in range(n + 1)]</span><br><span class="line">    while height_table[1] &lt; n:</span><br><span class="line">        current_node, stack = 1, []</span><br><span class="line">        while current_node != n:</span><br><span class="line">            next_height, flag, index = height_table[current_node] - 1, False, 0</span><br><span class="line">            for i in range(1, n + 1):</span><br><span class="line">                if height_table[i] == next_height and mix_net[current_node][i][0] &gt; mix_net[current_node][i][1]:</span><br><span class="line">                    flag, index = True, i</span><br><span class="line">                    break</span><br><span class="line">            if flag:</span><br><span class="line">                stack.append(current_node)</span><br><span class="line">                current_node = index</span><br><span class="line">                if current_node == n:</span><br><span class="line">                    stack.append(current_node)</span><br><span class="line">                    flow = []</span><br><span class="line">                    for k in range(len(stack) - 1):</span><br><span class="line">                        flow.append(mix_net[stack[k]][stack[k + 1]][0] - mix_net[stack[k]][stack[k + 1]][1])</span><br><span class="line">                    min_flow = min(flow)</span><br><span class="line">                    max_flow += min_flow</span><br><span class="line">                    for p in range(len(stack) - 1):</span><br><span class="line">                        real_map[stack[p]][stack[p + 1]] += min_flow</span><br><span class="line">                        mix_net[stack[p]][stack[p + 1]][1] += min_flow</span><br><span class="line">                        mix_net[stack[p + 1]][stack[p]][1] -= min_flow</span><br><span class="line">            else:</span><br><span class="line">                if height_table.count(height_table[current_node]) == 1:</span><br><span class="line">                    return real_map, max_flow</span><br><span class="line">                min_neibor, no_neibor = n, True</span><br><span class="line">                for i in range(1, n + 1):</span><br><span class="line">                    if mix_net[current_node][i][0] &gt; mix_net[current_node][i][1]:</span><br><span class="line">                        no_neibor, min_neibor = False, min(min_neibor, height_table[i])</span><br><span class="line">                height_table[current_node] = n if no_neibor else min_neibor + 1</span><br><span class="line">                if stack:</span><br><span class="line">                    current_node = stack[-1]</span><br><span class="line">                    stack.pop()</span><br><span class="line">                else:</span><br><span class="line">                    current_node = 1</span><br><span class="line">    return real_map, max_flow</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def init_height(queue):</span><br><span class="line">    global height_table</span><br><span class="line">    while queue:</span><br><span class="line">        j, height = queue.pop(0)</span><br><span class="line">        for i in range(1, n + 1):</span><br><span class="line">            if mix_net[i][j][0] &gt; 0 and height_table[i] == -1:</span><br><span class="line">                height_table[i] = height + 1</span><br><span class="line">                queue.append([i, height + 1])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(&#x27;请输入结点个数n和边数m:&#x27;)</span><br><span class="line">for line in sys.stdin:</span><br><span class="line">    n, m = [int(x) for x in line.strip().split()]</span><br><span class="line">    mix_net, label, height_table, direction = [[[0, 0] for i in range(n + 1)] for j in range(n + 1)], [&#x27;v&#x27; + str(i) for i in range(1, n + 1)], [-1] * n + [0], []</span><br><span class="line">    print(&#x27;请输入结点个数u,v及边u-v的容量w:&#x27;)</span><br><span class="line">    for i in range(m):</span><br><span class="line">        u, v, w = [int(x) for x in sys.stdin.readline().strip().split()]</span><br><span class="line">        mix_net[u][v], mix_net[v][u] = [w, 0], [0, 0]</span><br><span class="line">        direction.append([u, v])</span><br><span class="line">    init_height([[n, 0]])</span><br><span class="line">    real_map, max_flow = isap(mix_net, height_table, n)</span><br><span class="line">    for k in direction:</span><br><span class="line">        real_map[k[0]][k[1]] -= real_map[k[1]][k[0]]</span><br><span class="line">        real_map[k[1]][k[0]] = 0</span><br><span class="line">    net_work = pd.DataFrame([[x for x in row[1:]] for row in real_map[1:]], index=label, columns=label)</span><br><span class="line">    print(&#x27;网络的最大流值为:&#x27;, max_flow, &#x27;\n---------实流网络如下:---------\n&#x27;, net_work)</span><br></pre></td></tr></table></figure>
+
+<h2 id="代码运行结果-1"><a href="#代码运行结果-1" class="headerlink" title="代码运行结果"></a><font size=4>代码运行结果</font></h2><p><img src="/images/ALGORITHM/network5.png" alt="15"></p>
+<h1 id="经典例题-最小费用最大流"><a href="#经典例题-最小费用最大流" class="headerlink" title="经典例题(最小费用最大流)"></a><font size=5 color=red>经典例题(最小费用最大流)</font></h1><h2 id="问题描述-2"><a href="#问题描述-2" class="headerlink" title="问题描述"></a><font size=4>问题描述</font></h2><p>&emsp;&emsp;一家公司要把一批货物从工厂运到北京，中间经过若干个城市，已知城市数，连接数和城市之间的最大运输量，以及单位货物的运送费用，如何找到一种流量最大费用尽可能小的方法。<br>&emsp;&emsp;第一行输入结点个数和边数，然后每行输入连通的两个城市以及最大运输量，和单位货物运输费用，使用空格分隔。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">6 10 # 结点个数n和边数m</span><br><span class="line">1 2 3 1 # 说明1号城市和2号城市之间的最大运输量为3，单位运输量费用为1</span><br><span class="line">1 3 4 7</span><br><span class="line">2 3 1 1</span><br><span class="line">2 4 6 4</span><br><span class="line">2 5 4 5</span><br><span class="line">3 4 5 3</span><br><span class="line">3 5 3 6</span><br><span class="line">4 6 7 6</span><br><span class="line">5 4 3 3</span><br><span class="line">5 6 3 2</span><br></pre></td></tr></table></figure>
+<h2 id="算法分析-2"><a href="#算法分析-2" class="headerlink" title="算法分析"></a><font size=4>算法分析</font></h2><p>&emsp;&emsp;(1)最短增广路算法类似，先建立混合网络。<br>&emsp;&emsp;(2)从源点开始搜索，找到一条最短费用路，如果无法搜索到汇点，则算法结束，已经找到最小费用最大流，否则总花费加上该路径边上的最小值乘路径上的所有花费之和作为目前的总花费。<br>&emsp;&emsp;(3)然后更新混合网络，正向增流，反向减流。回到步骤(2)</p>
+<h2 id="python代码实战-2"><a href="#python代码实战-2" class="headerlink" title="python代码实战"></a><font size=4>python代码实战</font></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">def spfa(mix_net, n):</span><br><span class="line">    real_map = [[0 for i in range(n + 1)] for j in range(n + 1)]</span><br><span class="line">    max_flow, total_cost, find_flag, min_cost, min_route = 0, 0, True, 65535, [1]</span><br><span class="line">    while min_route:</span><br><span class="line">        queue, find_flag, min_cost, min_route = [[1, [1], 0]], False, 65535, []</span><br><span class="line">        while queue:</span><br><span class="line">            i, route, cost = queue.pop(0)</span><br><span class="line">            if i == n and min_cost &gt; cost:</span><br><span class="line">                min_cost, min_route = cost, route</span><br><span class="line">            for j in range(1, n + 1):</span><br><span class="line">                if mix_net[i][j][0] &gt; mix_net[i][j][1] and j not in route:</span><br><span class="line">                    queue.append([j, route + [j], cost + mix_net[i][j][2]])</span><br><span class="line">        if min_route:</span><br><span class="line">            flow = []</span><br><span class="line">            for k in range(len(min_route) - 1):</span><br><span class="line">                flow.append(mix_net[min_route[k]][min_route[k + 1]][0] - mix_net[min_route[k]][min_route[k + 1]][1])</span><br><span class="line">            min_flow = min(flow)</span><br><span class="line">            max_flow += min_flow</span><br><span class="line">            total_cost += min_cost * min_flow</span><br><span class="line">            for p in range(len(min_route) - 1):</span><br><span class="line">                real_map[min_route[p]][min_route[p + 1]] += min_flow</span><br><span class="line">                mix_net[min_route[p]][min_route[p + 1]][1] += min_flow</span><br><span class="line">                mix_net[min_route[p + 1]][min_route[p]][1] -= min_flow</span><br><span class="line">    return real_map, max_flow, total_cost</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(&#x27;请输入结点个数n和边数m:&#x27;)</span><br><span class="line">for line in sys.stdin:</span><br><span class="line">    n, m = [int(x) for x in line.strip().split()]</span><br><span class="line">    mix_net, label, direction = [[[0, 0, 0] for i in range(n + 1)] for j in range(n + 1)], [&#x27;v&#x27; + str(i) for i in range(1, n + 1)], []</span><br><span class="line">    print(&#x27;请输入结点个数u，v及边u-v的容量w，单位容量费用c:&#x27;)</span><br><span class="line">    for i in range(m):</span><br><span class="line">        u, v, w, c = [int(x) for x in sys.stdin.readline().strip().split()]</span><br><span class="line">        mix_net[u][v], mix_net[v][u] = [w, 0, c], [0, 0, -c]</span><br><span class="line">        direction.append([u, v])</span><br><span class="line">    real_map, max_flow, total_cost = spfa(mix_net, n)</span><br><span class="line">    for k in direction:</span><br><span class="line">        real_map[k[0]][k[1]] -= real_map[k[1]][k[0]]</span><br><span class="line">        real_map[k[1]][k[0]] = 0</span><br><span class="line">    net_work = pd.DataFrame([[x for x in row[1:]] for row in real_map[1:]], index=label, columns=label)</span><br><span class="line">    print(&#x27;网络的最大流值为:&#x27;, max_flow, &#x27;\n网络的最小费用为:&#x27;, total_cost, &#x27;\n---------实流网络如下:---------\n&#x27;, net_work)</span><br></pre></td></tr></table></figure>
+
+<h2 id="代码运行结果-2"><a href="#代码运行结果-2" class="headerlink" title="代码运行结果"></a><font size=4>代码运行结果</font></h2><p><img src="/images/ALGORITHM/network6.png" alt="16"></p>
+<h1 id="算法总结"><a href="#算法总结" class="headerlink" title="算法总结"></a><font size=5 color=red>算法总结</font></h1><p>&emsp;&emsp;网络流是一种较为复杂的算法，通常用来解决实际的问题，其模板固定，难点在于如何将问题转化为一个网络流表示的形式，因此需要多加练习，做到熟练掌握。</p>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        <div> 
+  
+    <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div> 
+   
+</div>
+
+
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/20/library%20opencv/" rel="next" title="OpenCV">
+                <i class="fa fa-chevron-left"></i> OpenCV
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/06/frame%20TensorFlow/" rel="prev" title="TensorFlow">
+                TensorFlow <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "1",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      },
+      "slide": {
+        "bdImg": "5",
+        "bdPos": "left",
+        "bdTop": "100"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/github.jpeg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">348</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">77</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/USTCcoder" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/5754061944" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  </span>
+                
+            </div>
+          
+
+  <div id="music163player"> 
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=436675656&auto=0&height=32"></iframe>
+  </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度搜索" target="_blank">百度搜索</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.ustc.edu.cn/" title="中国科学技术大学" target="_blank">中国科学技术大学</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">原理介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80"><span class="nav-number">2.</span> <span class="nav-text">算法基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%9C%AF%E8%AF%AD"><span class="nav-number">2.1.</span> <span class="nav-text">图的基本术语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%9C%AF%E8%AF%AD"><span class="nav-number">2.2.</span> <span class="nav-text">网络的基本术语</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E4%BE%8B%E9%A2%98-%E6%9C%80%E5%A4%A7%E7%BD%91%E7%BB%9C%E6%B5%81%EF%BC%8C%E6%9C%80%E7%9F%AD%E5%A2%9E%E5%B9%BF%E8%B7%AF%E7%AE%97%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">经典例题(最大网络流，最短增广路算法)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="nav-number">3.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90"><span class="nav-number">3.2.</span> <span class="nav-text">算法分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%88%98"><span class="nav-number">3.3.</span> <span class="nav-text">python代码实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C"><span class="nav-number">3.4.</span> <span class="nav-text">代码运行结果</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E4%BE%8B%E9%A2%98-%E6%9C%80%E5%A4%A7%E7%BD%91%E7%BB%9C%E6%B5%81%EF%BC%8C%E9%87%8D%E8%B4%B4%E6%A0%87%E7%AD%BE%E7%AE%97%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">经典例题(最大网络流，重贴标签算法)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0-1"><span class="nav-number">4.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90-1"><span class="nav-number">4.2.</span> <span class="nav-text">算法分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%88%98-1"><span class="nav-number">4.3.</span> <span class="nav-text">python代码实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C-1"><span class="nav-number">4.4.</span> <span class="nav-text">代码运行结果</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E4%BE%8B%E9%A2%98-%E6%9C%80%E5%B0%8F%E8%B4%B9%E7%94%A8%E6%9C%80%E5%A4%A7%E6%B5%81"><span class="nav-number">5.</span> <span class="nav-text">经典例题(最小费用最大流)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0-2"><span class="nav-number">5.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90-2"><span class="nav-number">5.2.</span> <span class="nav-text">算法分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%88%98-2"><span class="nav-number">5.3.</span> <span class="nav-text">python代码实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C-2"><span class="nav-number">5.4.</span> <span class="nav-text">代码运行结果</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">算法总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+
+      
+
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-star"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">USTCcoder</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由USTCcoder强力驱动</div>
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+-->
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数<i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量<i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 't9SI7AusOApNt2xEqzwPKdgu-gzGzoHsz',
+        appKey: 'HL9HMS3c39n0mcXn11GkeE0S',
+        placeholder: '给主人一点鼓励吧( ⊙ o ⊙ )',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: ,
+    el: 'wpac-rating',
+    color: 'fc79533'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+
+<!-- 动态可交互背景（js引入）
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+ <script>
+ $("body").backstretch("/images/github_logo.jpeg");
+  </script>
+-->
+</body>
+</html>
+<!-- 页面点击小红心 
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+-->
