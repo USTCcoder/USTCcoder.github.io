@@ -1,0 +1,1475 @@
+﻿<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-fill-left.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/github_logo.jpeg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/github_logo.jpeg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/github_logo.jpeg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/github_logo.jpeg?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/github_logo.jpeg">
+
+
+  <meta name="msapplication-config" content="/images/github_logo.jpeg" />
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="GitHub" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Matplotlib">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Matplotlib">
+<meta property="og:url" content="https://ustccoder.github.io/2019/08/15/library%20matplotlib/index.html">
+<meta property="og:site_name" content="GitHub">
+<meta property="og:description" content="Matplotlib">
+<meta property="og:locale">
+<meta property="og:image" content="https://ustccoder.github.io/images/LIBRARY/matplotlib.jpg">
+<meta property="og:image" content="https://ustccoder.github.io/images/LIBRARY/matplotlib1.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/LIBRARY/matplotlib24.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/LIBRARY/matplotlib20.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/LIBRARY/matplotlib20.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/LIBRARY/matplotlib21.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/LIBRARY/matplotlib22.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/LIBRARY/matplotlib23.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/LIBRARY/matplotlib3.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/LIBRARY/matplotlib4.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/LIBRARY/matplotlib5.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/LIBRARY/matplotlib6.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/LIBRARY/matplotlib7.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/LIBRARY/matplotlib8.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/LIBRARY/matplotlib9.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/LIBRARY/matplotlib10.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/LIBRARY/matplotlib11.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/LIBRARY/matplotlib12.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/LIBRARY/matplotlib13.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/LIBRARY/matplotlib14.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/LIBRARY/matplotlib15.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/LIBRARY/matplotlib16.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/LIBRARY/matplotlib17.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/LIBRARY/matplotlib18.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/LIBRARY/matplotlib19.png">
+<meta property="article:published_time" content="2019-08-15T13:59:32.000Z">
+<meta property="article:modified_time" content="2020-12-30T15:04:54.000Z">
+<meta property="article:author" content="USTCcoder">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ustccoder.github.io/images/LIBRARY/matplotlib.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"perspectiveLeftIn","post_header":"fadeIn","post_body":"fadeIn","coll_header":"fadeIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://USTCcoder.github.io/2019/08/15/library matplotlib/"/>
+
+
+
+
+
+  <title>Matplotlib | GitHub</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<!--
+<link rel="stylesheet" href="/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script type="text/javascript" src="/dist/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/music.js"></script>
+-->
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a target="_blank" rel="noopener" href="https://github.com/USTCcoder" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">GitHub</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            我的主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            日志总览
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分门别类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于博主
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2019/08/15/library%20matplotlib/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="USTCcoder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/github.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GitHub">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Matplotlib</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-15T21:59:32+08:00">
+                2019-08-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">语言学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/Python%E5%B8%B8%E7%94%A8%E5%BA%93/" itemprop="url" rel="index">
+                    <span itemprop="name">Python常用库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/15/library%20matplotlib/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/15/library%20matplotlib/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读数<i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.6k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  13
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Matplotlib</center></font></td></tr></table>
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="/images/LIBRARY/matplotlib.jpg" alt="0"></p>
+<h1 id="Matplotlib介绍"><a href="#Matplotlib介绍" class="headerlink" title="Matplotlib介绍"></a><font size=5 color=red>Matplotlib介绍</font></h1><p>&emsp;&emsp;Matplotlib是python绘图领域使用最广泛的库。它能让使用者很轻松地将数据图形化，并且提供多样化的输出格式。</p>
+<span id="more"></span>
+
+<h1 id="Matplotlib特点"><a href="#Matplotlib特点" class="headerlink" title="Matplotlib特点"></a><font size=5 color=red>Matplotlib特点</font></h1><p>&emsp;&emsp;<font size=3>Matplotlib支持LaTeX 的公式插入。</font><br>&emsp;&emsp;<font size=3>Matplotlib支持交互式和非交互式绘图。</font><br>&emsp;&emsp;<font size=3>Matplotlib可将图像保存成PNG等多种形式。</font><br>&emsp;&emsp;<font size=3>Matplotlib支持曲线(折线)图、条形图、柱状图、饼图。</font><br>&emsp;&emsp;<font size=3>Matplotlib类似于MATLAB的绘图函数，上手较为简单。</font></p>
+<h1 id="Matplotlib应用"><a href="#Matplotlib应用" class="headerlink" title="Matplotlib应用"></a><font size=5 color=red>Matplotlib应用</font></h1><h2 id="Matplotlib绘制二维直线"><a href="#Matplotlib绘制二维直线" class="headerlink" title="Matplotlib绘制二维直线"></a><font size=4>Matplotlib绘制二维直线</font></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">x = np.linspace(-1, 1, 21)</span><br><span class="line">y = np.power(x, 2) - 0.5</span><br><span class="line"></span><br><span class="line"># plt.plot(x, y, color, linewidth, linestyle, label, alpha, marker=None) 画出x-y二维图形，color指颜色，linewidth指线宽，linestyle指线的形式，label指图形的标签，alpha指透明度，marker指该点的形状</span><br><span class="line">plt.plot(x, y, color=&#x27;red&#x27;, linewidth=0.5, alpha=0.8)</span><br><span class="line"></span><br><span class="line"># plt.show() 显示所画的图形</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/LIBRARY/matplotlib1.png" alt="1"></p>
+<h2 id="matplotlib修饰图形"><a href="#matplotlib修饰图形" class="headerlink" title="matplotlib修饰图形"></a><font size=4>matplotlib修饰图形</font></h2><h3 id="style-use方法"><a href="#style-use方法" class="headerlink" title="style.use方法"></a><font size=3>style.use方法</font></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line"># plt.style.use(option) 设置窗口风格，option可选&#x27;dark_background&#x27;，&#x27;bmh&#x27;，&#x27;grayscale&#x27;，&#x27;ggplot&#x27;，&#x27;fivethirtyeight&#x27;</span><br><span class="line">plt.style.use(&#x27;ggplot&#x27;)</span><br><span class="line"></span><br><span class="line">x = np.linspace(-1, 1, 21)</span><br><span class="line">y = np.power(x, 2) - 0.5</span><br><span class="line"></span><br><span class="line">plt.plot(x, y)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/LIBRARY/matplotlib24.png" alt="24"></p>
+<h3 id="grid方法"><a href="#grid方法" class="headerlink" title="grid方法"></a><font size=3>grid方法</font></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">x = np.linspace(-1, 1, 21)</span><br><span class="line">y = np.power(x, 2) - 0.5</span><br><span class="line"></span><br><span class="line">plt.plot(x, y)</span><br><span class="line"></span><br><span class="line"># plt.grid(b=True, color, linewidth, linestyle) 设置坐标系网格，b=True表示显示网格(默认为True)，False表示关闭网格，color指网格的颜色，linewidth指网格的宽度，linestyle指网格的类型</span><br><span class="line">plt.grid()</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/LIBRARY/matplotlib20.png" alt="20"></p>
+<h3 id="grid方法-1"><a href="#grid方法-1" class="headerlink" title="grid方法"></a><font size=3>grid方法</font></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">x = np.linspace(-1, 1, 21)</span><br><span class="line">y = np.power(x, 2) - 0.5</span><br><span class="line"></span><br><span class="line">plt.plot(x, y)</span><br><span class="line"></span><br><span class="line"># plt.grid(b=True, color, linewidth, linestyle) 设置坐标系网格，b=True表示显示网格(默认为True)，False表示关闭网格，color指网格的颜色，linewidth指网格的宽度，linestyle指网格的类型</span><br><span class="line">plt.grid()</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/LIBRARY/matplotlib20.png" alt="20"></p>
+<h3 id="axis方法"><a href="#axis方法" class="headerlink" title="axis方法"></a><font size=3>axis方法</font></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">x = np.linspace(-3, 3, 31)</span><br><span class="line">y = x ** 2</span><br><span class="line"></span><br><span class="line">plt.plot(x, y)</span><br><span class="line"></span><br><span class="line"># plt.axis(b) 设置坐标系网格，b=&#x27;on&#x27;表示显示坐标轴(默认为&#x27;on&#x27;)，&#x27;off&#x27;表示关闭坐标轴，&#x27;equal&#x27;指坐标轴比例相同，&#x27;auto&#x27;自动调整坐标轴比例</span><br><span class="line">plt.axis(&#x27;equal&#x27;)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/LIBRARY/matplotlib21.png" alt="21"></p>
+<h3 id="subplot方法"><a href="#subplot方法" class="headerlink" title="subplot方法"></a><font size=3>subplot方法</font></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">x = np.linspace(-3, 3, 31)</span><br><span class="line">y_1 = x</span><br><span class="line">y_2 = x ** 2</span><br><span class="line">y_3 = np.exp(x)</span><br><span class="line">y_4 = np.log(x)</span><br><span class="line"></span><br><span class="line"># plt.subplot(r, c, n) 将一个窗口分成r行c列，当前子窗口处于第n个</span><br><span class="line">plt.subplot(2,2,1)</span><br><span class="line">plt.plot(x, y_1, label=&#x27;$x$&#x27;)</span><br><span class="line">plt.legend()</span><br><span class="line"></span><br><span class="line">plt.subplot(2,2,2)</span><br><span class="line">plt.plot(x, y_2, label=&#x27;$x^2$&#x27;)</span><br><span class="line">plt.legend()</span><br><span class="line"></span><br><span class="line">plt.subplot(2,2,3)</span><br><span class="line">plt.plot(x, y_3, label=&#x27;$e^x$&#x27;)</span><br><span class="line">plt.legend()</span><br><span class="line"></span><br><span class="line">plt.subplot(2,2,4)</span><br><span class="line">plt.plot(x, y_4, label=&#x27;$log(x)$&#x27;)</span><br><span class="line">plt.legend()</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/LIBRARY/matplotlib22.png" alt="22"></p>
+<h3 id="subplot2grid方法"><a href="#subplot2grid方法" class="headerlink" title="subplot2grid方法"></a><font size=3>subplot2grid方法</font></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">x = np.linspace(-3, 3, 31)</span><br><span class="line">y_1 = x</span><br><span class="line">y_2 = x ** 2</span><br><span class="line">y_3 = np.exp(x)</span><br><span class="line">y_4 = np.log(x)</span><br><span class="line"></span><br><span class="line"># plt.subplot2grid((r, c), (begin, end), colspan=1, rowspan=1) 将一个窗口分成r行c列，当前窗口的位置在(begin, end)，横跨m个单位(默认为1个单位)，纵跨n个单位(默认为1个单位)</span><br><span class="line">plt.subplot2grid((3, 2),(0, 0), colspan=2, rowspan=1)</span><br><span class="line">plt.plot(x, y_1, label=&#x27;$x$&#x27;)</span><br><span class="line">plt.legend()</span><br><span class="line"></span><br><span class="line">plt.subplot2grid((3, 2), (1, 0))</span><br><span class="line">plt.plot(x, y_2, label=&#x27;$x^2$&#x27;)</span><br><span class="line">plt.legend()</span><br><span class="line"></span><br><span class="line">plt.subplot2grid((3, 2), (1, 1))</span><br><span class="line">plt.plot(x, y_3, label=&#x27;$e^x$&#x27;)</span><br><span class="line">plt.legend()</span><br><span class="line"></span><br><span class="line">plt.subplot2grid((3, 2), (2, 0), colspan=2, rowspan=1)</span><br><span class="line">plt.plot(x, y_4, label=&#x27;$log(x)$&#x27;)</span><br><span class="line">plt.legend()</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/LIBRARY/matplotlib23.png" alt="23"></p>
+<h3 id="xlim，ylim方法"><a href="#xlim，ylim方法" class="headerlink" title="xlim，ylim方法"></a><font size=3>xlim，ylim方法</font></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">x = np.linspace(-1, 1, 21)</span><br><span class="line">y = np.power(x, 2) - 0.5</span><br><span class="line"></span><br><span class="line">plt.plot(x, y)</span><br><span class="line"></span><br><span class="line"># plt.xlim((x_min, x_max))，plt.ylim((y_min, y_max)) 限制x，y坐标轴的范围</span><br><span class="line">plt.xlim((-1.5, 1.5))</span><br><span class="line">plt.ylim((-1, 1))</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/LIBRARY/matplotlib3.png" alt="3"></p>
+<h3 id="xlabel，ylabel方法"><a href="#xlabel，ylabel方法" class="headerlink" title="xlabel，ylabel方法"></a><font size=3>xlabel，ylabel方法</font></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">x = np.linspace(-1, 1, 21)</span><br><span class="line">y = np.power(x, 2) - 0.5</span><br><span class="line"></span><br><span class="line">plt.plot(x, y)</span><br><span class="line"></span><br><span class="line"># plt.xlabel(x_describe)，plt.ylabel(y_describe) 设置x，y的坐标轴标签</span><br><span class="line">plt.xlabel(&#x27;x&#x27;)</span><br><span class="line">plt.ylabel(&#x27;x^2-0.5&#x27;)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/LIBRARY/matplotlib4.png" alt="4"></p>
+<h3 id="xticks，yticks方法"><a href="#xticks，yticks方法" class="headerlink" title="xticks，yticks方法"></a><font size=3>xticks，yticks方法</font></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">np.random.seed(2)</span><br><span class="line"></span><br><span class="line">x = np.arange(1,13)</span><br><span class="line">y = np.random.randint(50, 100, 12)</span><br><span class="line"></span><br><span class="line">plt.plot(x, y)</span><br><span class="line"></span><br><span class="line"># plt.xticks(list_x)，plt.yticks(list_y) 设置x，y的角标，支持latex格式。</span><br><span class="line">plt.xticks(x)</span><br><span class="line">plt.yticks([60, 80, 90, 100], [r&#x27;$bad$&#x27;, r&#x27;$good$&#x27;, r&#x27;$nice$&#x27;, r&#x27;$excellent$&#x27;])</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/LIBRARY/matplotlib5.png" alt="5"></p>
+<h3 id="gca方法"><a href="#gca方法" class="headerlink" title="gca方法"></a><font size=3>gca方法</font></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">x = np.linspace(-1, 1, 21)</span><br><span class="line">y = np.power(x, 2) - 0.5</span><br><span class="line"></span><br><span class="line">plt.plot(x, y)</span><br><span class="line"></span><br><span class="line"># plt.gca 获取坐标脊</span><br><span class="line">ax = plt.gca()</span><br><span class="line"></span><br><span class="line"># 将上方和右侧的坐标轴删除</span><br><span class="line">ax.spines[&#x27;right&#x27;].set_color(&#x27;none&#x27;)</span><br><span class="line">ax.spines[&#x27;top&#x27;].set_color(&#x27;none&#x27;)</span><br><span class="line"></span><br><span class="line"># 设置x，y轴为下方和左侧的脊</span><br><span class="line">ax.xaxis.set_ticks_position(&#x27;bottom&#x27;)</span><br><span class="line">ax.yaxis.set_ticks_position(&#x27;left&#x27;)</span><br><span class="line"></span><br><span class="line"># 设置坐标轴原点为(-0.1, -0.2)</span><br><span class="line">ax.spines[&#x27;bottom&#x27;].set_position((&#x27;data&#x27;, -0.2))</span><br><span class="line">ax.spines[&#x27;left&#x27;].set_position((&#x27;data&#x27;, -0.1))</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/LIBRARY/matplotlib6.png" alt="6"></p>
+<h3 id="legend方法"><a href="#legend方法" class="headerlink" title="legend方法"></a><font size=3>legend方法</font></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">x = np.linspace(-1, 1, 21)</span><br><span class="line">y = np.power(x, 2) + 1</span><br><span class="line">z = np.exp(x)</span><br><span class="line"></span><br><span class="line">plt.plot(x, y)</span><br><span class="line">plt.plot(x, z)</span><br><span class="line"></span><br><span class="line"># plt.legend(handles, labels, loc=&#x27;best&#x27;) 设置图例，可以在handles和labels中写入多个，handle省略则按照图形的产生顺序设置图例，loc=&#x27;best&#x27;指默认放在空白最好的位置</span><br><span class="line">plt.legend(labels=[r&#x27;$x^2+1$&#x27;, r&#x27;$e^x$&#x27;])</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/LIBRARY/matplotlib7.png" alt="7"></p>
+<h3 id="annotate方法"><a href="#annotate方法" class="headerlink" title="annotate方法"></a><font size=3>annotate方法</font></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">x = np.linspace(-1, 1, 21)</span><br><span class="line">y = np.power(x, 2) - 0.5</span><br><span class="line"></span><br><span class="line">plt.plot(x, y)</span><br><span class="line"></span><br><span class="line"># plt.annotate(formulation, xy, xytext, fontsize, arrowprops) 在xy附近添加注解formulation，xytext为注解的位置，fontsize为注解的大小，arrowprops为箭头类型</span><br><span class="line">plt.annotate(r&#x27;$x^2-0.5$&#x27;, (0, -0.5), xytext=(+0.25, 0), arrowprops=dict(arrowstyle=&#x27;-&gt;&#x27;, connectionstyle=&#x27;arc3, rad=0.2&#x27;))</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/LIBRARY/matplotlib8.png" alt="8"></p>
+<h3 id="text方法"><a href="#text方法" class="headerlink" title="text方法"></a><font size=3>text方法</font></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">x = np.linspace(-1, 1, 21)</span><br><span class="line">y = np.power(x, 2) - 0.5</span><br><span class="line"></span><br><span class="line">plt.plot(x, y)</span><br><span class="line"></span><br><span class="line"># plt.text(x, y, text, fontdict) 在(x，y)处添加文本文字text，文字的大小颜色在fontdict定义</span><br><span class="line">plt.text(0, -0.2, r&#x27;$x^2-0.5$&#x27;, fontdict=&#123;&#x27;size&#x27;:20, &#x27;color&#x27;:&#x27;red&#x27;&#125;)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/LIBRARY/matplotlib9.png" alt="9"></p>
+<h2 id="matplotlib绘制散点图"><a href="#matplotlib绘制散点图" class="headerlink" title="matplotlib绘制散点图"></a><font size=4>matplotlib绘制散点图</font></h2><h3 id="scatter方法"><a href="#scatter方法" class="headerlink" title="scatter方法"></a><font size=3>scatter方法</font></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">x = np.linspace(-1, 1, 21)</span><br><span class="line">y = np.power(x, 2) - 0.5</span><br><span class="line"></span><br><span class="line"># plt.scatter(x, y, color, s, label) 绘制x-y散点图，颜色为color，大小为s，标签为label</span><br><span class="line">plt.scatter(x, y, color=&#x27;blue&#x27;, s=3.0)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/LIBRARY/matplotlib10.png" alt="10"></p>
+<h2 id="matplotlib绘制条形图"><a href="#matplotlib绘制条形图" class="headerlink" title="matplotlib绘制条形图"></a><font size=4>matplotlib绘制条形图</font></h2><h3 id="bar方法"><a href="#bar方法" class="headerlink" title="bar方法"></a><font size=3>bar方法</font></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">np.random.seed(1)</span><br><span class="line"></span><br><span class="line">x = np.arange(10)</span><br><span class="line">y = np.random.rand(10)</span><br><span class="line"></span><br><span class="line"># plt.bar(x, y, facecolor, edgecolor) 绘制x-y条形图，facecolor为内部颜色，edgecolor为边缘颜色</span><br><span class="line">plt.bar(x, y)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/LIBRARY/matplotlib11.png" alt="11"></p>
+<h2 id="matplotlib绘制等高线图"><a href="#matplotlib绘制等高线图" class="headerlink" title="matplotlib绘制等高线图"></a><font size=4>matplotlib绘制等高线图</font></h2><h3 id="contourf，contour，clabel方法"><a href="#contourf，contour，clabel方法" class="headerlink" title="contourf，contour，clabel方法"></a><font size=3>contourf，contour，clabel方法</font></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">x=np.linspace(-1,1,100)</span><br><span class="line">y=np.linspace(-1,1,100)</span><br><span class="line">x, y=np.meshgrid(x, y)</span><br><span class="line">z = np.power(x, 2) + np.power(y, 2)</span><br><span class="line"></span><br><span class="line"># plt.contourf(x, y, z, n, alpha, cmap) 绘制(x, y, z)二维等高线图，n指等高线的条数，alpha为透明度，cmap=plt.hot()绘制热图，cmap=plt.cool()绘制冷图</span><br><span class="line">plt.contourf(x, y, z, 8, alpha=0.5, cmap=plt.hot())</span><br><span class="line"></span><br><span class="line"># plt.contour(x, y, z, n, colors) 绘制(x, y, z)二维等高线</span><br><span class="line">contour=plt.contour(x, y, z, 8, colors=&#x27;black&#x27;)</span><br><span class="line"></span><br><span class="line"># plt.clabel(contour, inline=True, fontsize) #在等高线contour中添加数字</span><br><span class="line">plt.clabel(contour)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/LIBRARY/matplotlib12.png" alt="12"></p>
+<h2 id="matplotlib绘制直方图"><a href="#matplotlib绘制直方图" class="headerlink" title="matplotlib绘制直方图"></a><font size=4>matplotlib绘制直方图</font></h2><h3 id="hist方法"><a href="#hist方法" class="headerlink" title="hist方法"></a><font size=3>hist方法</font></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">np.random.seed(1)</span><br><span class="line"></span><br><span class="line">x = np.random.randn(10000)</span><br><span class="line"></span><br><span class="line"># plt.hist(x, bins, color, normed=False) 将x绘制直方图，bins为直方图分组的个数，color为直方图的颜色，normed为是否标准化</span><br><span class="line">plt.hist(x, 100)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/LIBRARY/matplotlib13.png" alt="13"></p>
+<h2 id="matplotlib绘制饼状图"><a href="#matplotlib绘制饼状图" class="headerlink" title="matplotlib绘制饼状图"></a><font size=4>matplotlib绘制饼状图</font></h2><h3 id="pie方法"><a href="#pie方法" class="headerlink" title="pie方法"></a><font size=4>pie方法</font></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line">x = [0.2236, 0.2664, 0.3218, 0.1882]</span><br><span class="line">label = [&#x27;first quarter&#x27;, &#x27;second quarter&#x27;, &#x27;third quarter&#x27;, &#x27;fourth quarter&#x27;]</span><br><span class="line"></span><br><span class="line"># plt.pie(x, labels, autopct, explode, shadow=False) 将x绘制饼状图，labels为每个部分的标签，autopct为百分数的格式，explode指是否突出显示，shadow为是否添加阴影</span><br><span class="line">plt.pie(x, labels=label, autopct=&#x27;%.2f%%&#x27;, explode=[0, 0, 0.1, 0], shadow=True)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/LIBRARY/matplotlib14.png" alt="14"></p>
+<h2 id="matplotlib填充图形"><a href="#matplotlib填充图形" class="headerlink" title="matplotlib填充图形"></a><font size=4>matplotlib填充图形</font></h2><h3 id="fill，fill-between方法"><a href="#fill，fill-between方法" class="headerlink" title="fill，fill_between方法"></a><font size=3>fill，fill_between方法</font></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">x=np.linspace(0,4*np.pi,100)</span><br><span class="line">y_1 =np.sin(x)</span><br><span class="line">y_2 =np.sin(2 * x)</span><br><span class="line"></span><br><span class="line"># plt.fill(x, y, color, alpha, interpolate=False) 对x，y图形与x轴进行填充，颜色为color，透明度为alpha，interpolate为是否精确填充</span><br><span class="line">plt.figure(1)</span><br><span class="line">plt.fill(x, y_1, color=&#x27;r&#x27;, alpha=0.5)</span><br><span class="line"></span><br><span class="line"># plt.fill_between(x, y_1, y_2, where, facecolor, interpolate=False) 对x，y_1图形与x，y_2图形进行填充，填充方式为where，颜色为color，透明度为alpha，interpolate为是否精确填充</span><br><span class="line">plt.figure(2)</span><br><span class="line">plt.plot(x, y_1)</span><br><span class="line">plt.plot(x, y_2)</span><br><span class="line">plt.fill_between(x, y_1, y_2, where=y_1 &gt; y_2, facecolor=&#x27;red&#x27;, interpolate=True)</span><br><span class="line">plt.fill_between(x, y_1, y_2, where=y_1 &lt; y_2, facecolor=&#x27;blue&#x27;, interpolate=True)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/LIBRARY/matplotlib15.png" alt="15"></p>
+<h2 id="matplotlib绘制几何图形"><a href="#matplotlib绘制几何图形" class="headerlink" title="matplotlib绘制几何图形"></a><font size=4>matplotlib绘制几何图形</font></h2><h3 id="Cicle，Rectangle，Polygon，Ellipse方法"><a href="#Cicle，Rectangle，Polygon，Ellipse方法" class="headerlink" title="Cicle，Rectangle，Polygon，Ellipse方法"></a><font size=3>Cicle，Rectangle，Polygon，Ellipse方法</font></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import matplotlib.patches as mpatches</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">fig, ax=plt.subplots()</span><br><span class="line"></span><br><span class="line">clc=[.2,.2]</span><br><span class="line">rec=[.2,.8]</span><br><span class="line">pol=np.array([0.7,0.1,0.8,0.3,0.9,0.3,0.6,0.5]).reshape(4,2)</span><br><span class="line">eli=[.8,.8]</span><br><span class="line"></span><br><span class="line"># mpatches.Circle(c, r, color) 产生c为圆心，r为半径，颜色为color的圆形</span><br><span class="line">cicle=mpatches.Circle(clc,0.1,color=&#x27;blue&#x27;)</span><br><span class="line">ax.add_patch(cicle)</span><br><span class="line"></span><br><span class="line"># mpatches.Rectangle(c, length, width, color) 产生左下角坐标为c，长为length，宽为width，颜色为color的矩形</span><br><span class="line">rectangle=mpatches.Rectangle(rec,0.2,0.1,color=&#x27;red&#x27;)</span><br><span class="line">ax.add_patch(rectangle)</span><br><span class="line"></span><br><span class="line"># mpatches.Polygon(pol, color) 产生各个定点为pol的多边形</span><br><span class="line">polygon=mpatches.Polygon(pol,color=&#x27;green&#x27;)</span><br><span class="line">ax.add_patch(polygon)</span><br><span class="line"></span><br><span class="line"># mpatches.Ellipse(c, a, b,color) 产生圆心为c，长轴为a，短轴为b的椭圆</span><br><span class="line">ellipse=mpatches.Ellipse(eli,0.4,0.2,color=&#x27;yellow&#x27;)</span><br><span class="line">ax.add_patch(ellipse)</span><br><span class="line"></span><br><span class="line">plt.axis(&#x27;equal&#x27;)</span><br><span class="line">plt.grid(True)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/LIBRARY/matplotlib16.png" alt="16"></p>
+<h2 id="matplotlib绘制二维数据"><a href="#matplotlib绘制二维数据" class="headerlink" title="matplotlib绘制二维数据"></a><font size=4>matplotlib绘制二维数据</font></h2><h3 id="imshow，colorbar方法"><a href="#imshow，colorbar方法" class="headerlink" title="imshow，colorbar方法"></a><font size=3>imshow，colorbar方法</font></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">np.random.seed(1)</span><br><span class="line"></span><br><span class="line">x = np.random.uniform(0, 255, (5,5))</span><br><span class="line">x</span><br><span class="line"># plt.imshow(array, interpolation=&#x27;nearest&#x27;, cmap=&#x27;hot&#x27;, origin=&#x27;upper&#x27;) 显示二维数据，interpolation为插值方式，默认为最近邻，cmap为颜色显示方式(默认为hot)，可以为&#x27;hot&#x27;，&#x27;cool&#x27;，&#x27;rainbow&#x27;，&#x27;bone&#x27;，origin为图形绘制的方向，upper从上到下，lower自下而上。</span><br><span class="line">plt.imshow(x, cmap=&#x27;bone&#x27;)</span><br><span class="line"></span><br><span class="line"># plt.colorbar() 添加颜色棒</span><br><span class="line">plt.colorbar()</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/LIBRARY/matplotlib17.png" alt="17"></p>
+<h2 id="matplotlib绘制3D图形"><a href="#matplotlib绘制3D图形" class="headerlink" title="matplotlib绘制3D图形"></a><font size=4>matplotlib绘制3D图形</font></h2><h3 id="Axes3D，plot-surface方法"><a href="#Axes3D，plot-surface方法" class="headerlink" title="Axes3D，plot_surface方法"></a><font size=3>Axes3D，plot_surface方法</font></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import mpl_toolkits.mplot3d as mp</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">fig = plt.figure()</span><br><span class="line">x = np.arange(-4, 4, 0.25)</span><br><span class="line">y = np.arange(-4, 4, 0.25)</span><br><span class="line">x, y = np.meshgrid(x, y)</span><br><span class="line">z = np.sqrt(x**2 + y**2)</span><br><span class="line">z = np.sin(z)</span><br><span class="line"></span><br><span class="line"># mp.Axes3D(fig) 生成3D窗口</span><br><span class="line">ax = mp.Axes3D(fig)</span><br><span class="line"></span><br><span class="line"># obj.plot_surface(x, y, z, rstride=1, cstride=1, cmap=None) 画出3D表面图形，rstride为行跨度，cstride为列跨度，cmap为颜色显示方式同plt.imshow</span><br><span class="line">ax.plot_surface(x, y, z, cmap=&#x27;rainbow&#x27;)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/LIBRARY/matplotlib18.png" alt="18"></p>
+<h2 id="matplotlib极坐标系"><a href="#matplotlib极坐标系" class="headerlink" title="matplotlib极坐标系"></a><font size=4>matplotlib极坐标系</font></h2><h3 id="subplot方法-1"><a href="#subplot方法-1" class="headerlink" title="subplot方法"></a><font size=3>subplot方法</font></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">theta = np.linspace(-np.pi, np.pi, 100)</span><br><span class="line">r = 0.5 * (1 + np.cos(theta))</span><br><span class="line"></span><br><span class="line"># plt.subplot(111, projection=&#x27;polar&#x27;) 绘制极坐标</span><br><span class="line">fig = plt.subplot(111, projection=&#x27;polar&#x27;)</span><br><span class="line"></span><br><span class="line">fig.plot(theta, r)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/LIBRARY/matplotlib19.png" alt="19"></p>
+<h1 id="Matplotlib小结"><a href="#Matplotlib小结" class="headerlink" title="Matplotlib小结"></a><font size=5 color=red>Matplotlib小结</font></h1><p>&emsp;&emsp;通过Matplotlib，开发者可以仅需要几行代码，便可以生成绘图。在数据分析，机器学习，深度学习中，要对当前的数据进行实时的显示或者对准确率有直观的展示，需要借助Matplotlib的帮助，因此Matplotlib也作为机器学习三剑客之一。</p>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        <div> 
+  
+    <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div> 
+   
+</div>
+
+
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/13/library%20Pandas/" rel="next" title="Pandas">
+                <i class="fa fa-chevron-left"></i> Pandas
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/16/library%20scipy/" rel="prev" title="Scipy">
+                Scipy <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "1",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      },
+      "slide": {
+        "bdImg": "5",
+        "bdPos": "left",
+        "bdTop": "100"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/github.jpeg"
+                alt="USTCcoder" />
+            
+              <p class="site-author-name" itemprop="name">USTCcoder</p>
+              <p class="site-description motion-element" itemprop="description">身体和灵魂总有一个在路上</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+                <a href="/archives">
+                  <span class="site-state-item-count">392</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">79</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/USTCcoder" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/5754061944" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  </span>
+                
+            </div>
+          
+
+  <div id="music163player"> 
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=436675656&auto=0&height=32"></iframe>
+  </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度搜索" target="_blank">百度搜索</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.ustc.edu.cn/" title="中国科学技术大学" target="_blank">中国科学技术大学</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Matplotlib%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">Matplotlib介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Matplotlib%E7%89%B9%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text">Matplotlib特点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Matplotlib%E5%BA%94%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">Matplotlib应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Matplotlib%E7%BB%98%E5%88%B6%E4%BA%8C%E7%BB%B4%E7%9B%B4%E7%BA%BF"><span class="nav-number">3.1.</span> <span class="nav-text">Matplotlib绘制二维直线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matplotlib%E4%BF%AE%E9%A5%B0%E5%9B%BE%E5%BD%A2"><span class="nav-number">3.2.</span> <span class="nav-text">matplotlib修饰图形</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#style-use%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.1.</span> <span class="nav-text">style.use方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#grid%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.2.</span> <span class="nav-text">grid方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#grid%E6%96%B9%E6%B3%95-1"><span class="nav-number">3.2.3.</span> <span class="nav-text">grid方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#axis%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.4.</span> <span class="nav-text">axis方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#subplot%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.5.</span> <span class="nav-text">subplot方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#subplot2grid%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.6.</span> <span class="nav-text">subplot2grid方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#xlim%EF%BC%8Cylim%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.7.</span> <span class="nav-text">xlim，ylim方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#xlabel%EF%BC%8Cylabel%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.8.</span> <span class="nav-text">xlabel，ylabel方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#xticks%EF%BC%8Cyticks%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.9.</span> <span class="nav-text">xticks，yticks方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gca%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.10.</span> <span class="nav-text">gca方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#legend%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.11.</span> <span class="nav-text">legend方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#annotate%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.12.</span> <span class="nav-text">annotate方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#text%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.13.</span> <span class="nav-text">text方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matplotlib%E7%BB%98%E5%88%B6%E6%95%A3%E7%82%B9%E5%9B%BE"><span class="nav-number">3.3.</span> <span class="nav-text">matplotlib绘制散点图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#scatter%E6%96%B9%E6%B3%95"><span class="nav-number">3.3.1.</span> <span class="nav-text">scatter方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matplotlib%E7%BB%98%E5%88%B6%E6%9D%A1%E5%BD%A2%E5%9B%BE"><span class="nav-number">3.4.</span> <span class="nav-text">matplotlib绘制条形图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bar%E6%96%B9%E6%B3%95"><span class="nav-number">3.4.1.</span> <span class="nav-text">bar方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matplotlib%E7%BB%98%E5%88%B6%E7%AD%89%E9%AB%98%E7%BA%BF%E5%9B%BE"><span class="nav-number">3.5.</span> <span class="nav-text">matplotlib绘制等高线图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#contourf%EF%BC%8Ccontour%EF%BC%8Cclabel%E6%96%B9%E6%B3%95"><span class="nav-number">3.5.1.</span> <span class="nav-text">contourf，contour，clabel方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matplotlib%E7%BB%98%E5%88%B6%E7%9B%B4%E6%96%B9%E5%9B%BE"><span class="nav-number">3.6.</span> <span class="nav-text">matplotlib绘制直方图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hist%E6%96%B9%E6%B3%95"><span class="nav-number">3.6.1.</span> <span class="nav-text">hist方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matplotlib%E7%BB%98%E5%88%B6%E9%A5%BC%E7%8A%B6%E5%9B%BE"><span class="nav-number">3.7.</span> <span class="nav-text">matplotlib绘制饼状图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pie%E6%96%B9%E6%B3%95"><span class="nav-number">3.7.1.</span> <span class="nav-text">pie方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matplotlib%E5%A1%AB%E5%85%85%E5%9B%BE%E5%BD%A2"><span class="nav-number">3.8.</span> <span class="nav-text">matplotlib填充图形</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fill%EF%BC%8Cfill-between%E6%96%B9%E6%B3%95"><span class="nav-number">3.8.1.</span> <span class="nav-text">fill，fill_between方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matplotlib%E7%BB%98%E5%88%B6%E5%87%A0%E4%BD%95%E5%9B%BE%E5%BD%A2"><span class="nav-number">3.9.</span> <span class="nav-text">matplotlib绘制几何图形</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Cicle%EF%BC%8CRectangle%EF%BC%8CPolygon%EF%BC%8CEllipse%E6%96%B9%E6%B3%95"><span class="nav-number">3.9.1.</span> <span class="nav-text">Cicle，Rectangle，Polygon，Ellipse方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matplotlib%E7%BB%98%E5%88%B6%E4%BA%8C%E7%BB%B4%E6%95%B0%E6%8D%AE"><span class="nav-number">3.10.</span> <span class="nav-text">matplotlib绘制二维数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#imshow%EF%BC%8Ccolorbar%E6%96%B9%E6%B3%95"><span class="nav-number">3.10.1.</span> <span class="nav-text">imshow，colorbar方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matplotlib%E7%BB%98%E5%88%B63D%E5%9B%BE%E5%BD%A2"><span class="nav-number">3.11.</span> <span class="nav-text">matplotlib绘制3D图形</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Axes3D%EF%BC%8Cplot-surface%E6%96%B9%E6%B3%95"><span class="nav-number">3.11.1.</span> <span class="nav-text">Axes3D，plot_surface方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matplotlib%E6%9E%81%E5%9D%90%E6%A0%87%E7%B3%BB"><span class="nav-number">3.12.</span> <span class="nav-text">matplotlib极坐标系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#subplot%E6%96%B9%E6%B3%95-1"><span class="nav-number">3.12.1.</span> <span class="nav-text">subplot方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Matplotlib%E5%B0%8F%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">Matplotlib小结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+
+      
+
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-star"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">USTCcoder</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由USTCcoder强力驱动</div>
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+-->
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数<i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量<i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '37HNVv1wwpKB3vg0A6yqm9TB-gzGzoHsz',
+        appKey: 'kGYPNb5xWnFV2pcjCPAREbkg',
+        placeholder: '给主人一点鼓励吧( ⊙ o ⊙ )',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: ,
+    el: 'wpac-rating',
+    color: 'fc79533'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+
+<!-- 动态可交互背景（js引入）
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+ <script>
+ $("body").backstretch("/images/github_logo.jpeg");
+  </script>
+-->
+</body>
+</html>
+<!-- 页面点击小红心 
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+-->

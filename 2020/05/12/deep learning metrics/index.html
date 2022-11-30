@@ -1,0 +1,1491 @@
+﻿<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-fill-left.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/github_logo.jpeg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/github_logo.jpeg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/github_logo.jpeg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/github_logo.jpeg?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/github_logo.jpeg">
+
+
+  <meta name="msapplication-config" content="/images/github_logo.jpeg" />
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="GitHub" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Metrics">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Metrics黑科技">
+<meta property="og:url" content="https://ustccoder.github.io/2020/05/12/deep%20learning%20metrics/index.html">
+<meta property="og:site_name" content="GitHub">
+<meta property="og:description" content="Metrics">
+<meta property="og:locale">
+<meta property="og:image" content="https://ustccoder.github.io/images/deep_learning/confuse.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/deep_learning/roc.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/deep_learning/pr.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/Semantic_segmentation/Dataset_I.png">
+<meta property="article:published_time" content="2020-05-12T02:46:07.000Z">
+<meta property="article:modified_time" content="2020-09-03T15:41:18.000Z">
+<meta property="article:author" content="USTCcoder">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ustccoder.github.io/images/deep_learning/confuse.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"perspectiveLeftIn","post_header":"fadeIn","post_body":"fadeIn","coll_header":"fadeIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://USTCcoder.github.io/2020/05/12/deep learning metrics/"/>
+
+
+
+
+
+  <title>Metrics黑科技 | GitHub</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<!--
+<link rel="stylesheet" href="/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script type="text/javascript" src="/dist/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/music.js"></script>
+-->
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a target="_blank" rel="noopener" href="https://github.com/USTCcoder" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">GitHub</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            我的主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            日志总览
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分门别类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于博主
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/05/12/deep%20learning%20metrics/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="USTCcoder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/github.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GitHub">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Metrics黑科技</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-12T10:46:07+08:00">
+                2020-05-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/" itemprop="url" rel="index">
+                    <span itemprop="name">常用技巧</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/05/12/deep%20learning%20metrics/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/12/deep%20learning%20metrics/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读数<i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Metrics</center></font></td></tr></table>
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong><font size=5 color=gray><center>Metrics</center></font></strong></p>
+<h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a><font size=5 color=red>背景介绍</font></h1><p>&emsp;&emsp;<strong>Metrics(评价指标)</strong>:评价指标是<strong>检验神经网络模型好坏的评定依据</strong>，也是<strong>我们要达到的最终目标</strong>，指标越好则我们的任务完成的越好。有时我们需要<strong>根据评价指标修改我们的网络模型，参数</strong>等等，就类似于考试成绩一样，我们根据成绩检验自己薄弱的地方，然后去调整和修改，神经网络也是一样，只有建立好合适的评价指标，才能真正区分网络的优劣。今天给小伙伴们介绍深度学习中常用的评价指标。</p>
+<span id="more"></span>
+
+<p><img src="/images/deep_learning/confuse.png" alt="confuse"></p>
+<h1 id="Confusion-matrix-混淆矩阵"><a href="#Confusion-matrix-混淆矩阵" class="headerlink" title="Confusion matrix(混淆矩阵)"></a><font size=5 color=red>Confusion matrix(混淆矩阵)</font></h1><p>在介绍评价指标之前，首先要介绍混淆矩阵，以一个二分类问题来说，行标签代表预测值为正还是为负，列标签代表真实值为正还是为负，因此产生4中状态。</p>
+<ol>
+<li><strong>TP(True Positive，真正率)<strong>：真代表预测正确，正代表预测为正样本，因此含义为</strong>将正样本预测为正样本的个数</strong>。</li>
+<li><strong>TN(True Negative，真负率)<strong>：真代表预测正确，负代表预测为负样本，因此含义为</strong>将负样本预测为负样本的个数</strong>。</li>
+<li><strong>FP(False Positive，假正率)<strong>：假代表预测错误，正代表预测为正样本，因此含义为</strong>将负样本预测为正样本的个数</strong>。</li>
+<li><strong>FN(False Negative，假负率)<strong>：假代表预测错误，负代表预测为负样本，因此含义为</strong>将正样本预测为负样本的个数</strong>。</li>
+</ol>
+<p>混淆矩阵是将所有可能的状态列举出来，然后通过表格可以计算出相应的评价指标，<strong>对于样本不平衡问题非常有效</strong>。</p>
+<h1 id="Accuracy-准确率"><a href="#Accuracy-准确率" class="headerlink" title="Accuracy(准确率)"></a><font size=5 color=red>Accuracy(准确率)</font></h1><p>$$ acc = \frac{TP + TN}{TP + TN + FP + FN} $$<br><strong>Accuracy(准确率)<strong>：指</strong>正确预测的数量与总数的比值，准确率越高则代表预测的越准确</strong>。在TensorFlow2.0中已经给我们提供了计算Accuracy的评价函数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">import tensorflow.keras as keras</span><br><span class="line"></span><br><span class="line"># 计算准确率，必须完全相等才算准确</span><br><span class="line">metrics = keras.metrics.Accuracy()</span><br><span class="line"></span><br><span class="line"># 计算二分类准确率，大于threshold即算为准确</span><br><span class="line">metrics = keras.metrics.BinaryAccuracy(threshold=0.5)</span><br><span class="line"></span><br><span class="line"># 计算多分类准确率</span><br><span class="line">metrics = keras.metrics.CategoricalAccuracy()</span><br><span class="line"></span><br><span class="line"># 计算TopK多分类准确率，k默认为5</span><br><span class="line">metrics = keras.metrics.TopKCategoricalAccuracy(k=5)</span><br></pre></td></tr></table></figure>
+
+<h1 id="Precision-精确度"><a href="#Precision-精确度" class="headerlink" title="Precision(精确度)"></a><font size=5 color=red>Precision(精确度)</font></h1><p>$$ precision = \frac{TP}{TP + FP} $$<br><strong>Precision(精确度)<strong>：又称为查准率，指</strong>正样本预测为正的数量与所有样本预测为正的数量的比值，精确度越高，代表对预测为正的样本中，正样本的比例越高</strong>。当<strong>负样本判断错误的成本非常高，正样本判断错误的成本非常低的时候，我们选择较高的精确度</strong>，保证预测为正的样本中，负样本尽可能少，减少负样本判断错误的成本。在TensorFlow2.0中已经给我们提供了计算Precision的评价函数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">import tensorflow.keras as keras</span><br><span class="line"></span><br><span class="line"># 默认选择阈值为0.5</span><br><span class="line">metrics = keras.metrics.Precision(thresholds=None)</span><br></pre></td></tr></table></figure>
+
+<h1 id="Recall-召回率"><a href="#Recall-召回率" class="headerlink" title="Recall(召回率)"></a><font size=5 color=red>Recall(召回率)</font></h1><p>$$ recall = \frac{TP}{TP + FN} $$<br><strong>Recall(召回率)<strong>：又称为敏感度(Sensitivity)，查全率，指</strong>正样本预测为正的数量与所有正样本的数量的比值，召回率越高，代表所有正样本中，预测为正的样本的比例越高</strong>。当<strong>正样本判断错误的成本非常高，负样本判断错误的成本非常低的时候，我们选择较高的召回率</strong>，保证正样本尽可能被判断正确，减少正样本判断错误的成本。在TensorFlow2.0中已经给我们提供了计算Recall的评价函数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">import tensorflow.keras as keras</span><br><span class="line"></span><br><span class="line"># 默认选择阈值为0.5</span><br><span class="line">metrics = keras.metrics.Recall(thresholds=None)</span><br></pre></td></tr></table></figure>
+
+<h1 id="F1-score"><a href="#F1-score" class="headerlink" title="F1-score"></a><font size=5 color=red>F1-score</font></h1><p>$$ F1-score = \frac{2}{\frac{1}{precision} + \frac{1}{recall}} = \frac{2 \times precision \times recall}{precision + recall} $$<br><strong>F1-score</strong>：<strong>精确度和召回率的分子是相同的，分母有差异，两者是此消彼长的</strong>，究竟如何选择两者之间的权重，需要结合具体问题具体分析，判断是正样本判断错误的成本高还是负样本判断错误的成本高。<strong>为了兼顾精确度和召回率，引入了两者的调和平均数F1-score作为指标</strong>。在TensorFlow2.0中没有计算F1-score的评价函数，<strong>需要自己定义计算方法</strong>。</p>
+<ol>
+<li><strong>继承keras.metrics.Metric类</strong></li>
+<li><strong>在__init__(): 中变量要通过下面这种方式创建self.var = self.add_weight(name=name, initializer=’zeros’)</strong></li>
+<li><strong>在update_state():中变量要通过下面这种方式更新self.var.assign_add()</strong></li>
+<li><strong>在result()中: 返回变量</strong></li>
+</ol>
+<h1 id="Specificity-特异度"><a href="#Specificity-特异度" class="headerlink" title="Specificity(特异度)"></a><font size=5 color=red>Specificity(特异度)</font></h1><p>$$ specificity = \frac{TN}{FP + TN} $$<br><strong>Specificity(特异度)<strong>：指</strong>负样本预测为负的数量与所有负样本的数量的比值，特异度越高，代表所有负样本中，预测为负的样本的比例越高</strong>。在TensorFlow2.0中没有计算Specificity的评价函数，<strong>需要自己定义计算方法</strong>，步骤如下。</p>
+<ol>
+<li><strong>继承keras.metrics.Metric类</strong></li>
+<li><strong>在__init__(): 中变量要通过下面这种方式创建self.var = self.add_weight(name=name, initializer=’zeros’)</strong></li>
+<li><strong>在update_state():中变量要通过下面这种方式更新self.var.assign_add()</strong></li>
+<li><strong>在result()中: 返回变量</strong></li>
+</ol>
+<h1 id="FPR-假正率"><a href="#FPR-假正率" class="headerlink" title="FPR(假正率)"></a><font size=5 color=red>FPR(假正率)</font></h1><p>$$ FPR = 1 - specificity = \frac{FP}{FP + TN} $$<br><strong>FPR(假正率)<strong>：指</strong>负样本预测为正的数量与所有负样本的数量的比值，假正率越低，代表所有负样本中，预测为正样本的比例越低</strong>。在TensorFlow2.0中已经给我们提供了计算假正个数的评价函数，是<strong>将数据最后一个维度计算之后，对所有结果求和</strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">import tensorflow.keras as keras</span><br><span class="line"></span><br><span class="line"># 默认选择阈值为0.5，注意计算的是个数，而不是比例</span><br><span class="line">metrics = keras.metrics.FalsePositives(thresholds=None)</span><br></pre></td></tr></table></figure>
+
+<h1 id="ROC-Curve-Receiver-Operating-Characteristic，受试者操作特性曲线"><a href="#ROC-Curve-Receiver-Operating-Characteristic，受试者操作特性曲线" class="headerlink" title="ROC Curve(Receiver Operating Characteristic，受试者操作特性曲线)"></a><font size=5 color=red>ROC Curve(Receiver Operating Characteristic，受试者操作特性曲线)</font></h1><p><strong>ROC Curve</strong>：是一条<strong>以不同阈值下的FPR(假正率)为横坐标，不同阈值下的Recall(召回率)为纵坐标的曲线</strong>。<br><strong>ROC曲线绘制步骤</strong>：</p>
+<ol>
+<li><strong>从高到低，依次将每个测试样本属于正样本的概率值从大到小排序</strong>。</li>
+<li>根据排序，<strong>从高到低依次将概率值作为阈值，当概率大于等于这个阈值时，预测为正样本，否则预测为负样本</strong>。</li>
+<li>根据步骤2得到的结果计算FPR和Recall，<strong>遍历所有样本，得到一组(FPR, Recall)，并和阈值取值为0和1下的(FPR, Recall)结合在图像上绘制出来</strong>，就可以得到ROC曲线。</li>
+</ol>
+<p>ROC曲线特性：</p>
+<ol>
+<li>当测试集中的<strong>正负样本的分布变化的时候，ROC曲线能够保持不变</strong>，这是ROC曲线的最大优点，但是<strong>如果正负样本的成本差距较大，则很难从ROC曲线中看出结论</strong>。</li>
+<li>ROC曲线<strong>越接近左上角代表模型的效果越好</strong>。<br><img src="/images/deep_learning/roc.png" alt="roc"></li>
+</ol>
+<h1 id="AUC-Area-Under-Curve，ROC曲线下的面积"><a href="#AUC-Area-Under-Curve，ROC曲线下的面积" class="headerlink" title="AUC(Area Under Curve，ROC曲线下的面积)"></a><font size=5 color=red>AUC(Area Under Curve，ROC曲线下的面积)</font></h1><p><strong>AUC</strong>：<strong>定义为ROC曲线下的面积，值域为[0, 1]<strong>，</strong>该值越大，代表ROC曲线越接近左上角，说明模型效果越好</strong>。在TensorFlow2.0中已经给我们提供了计算AUC的评价函数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">import tensorflow.keras as keras</span><br><span class="line"></span><br><span class="line"># 默认选择计算阈值的个数为200个</span><br><span class="line">metrics = keras.metrics.AUC(num_thresholds=200)</span><br></pre></td></tr></table></figure>
+
+<h1 id="PR-Curve-Precision-Recall-Curve，查准率查全率曲线"><a href="#PR-Curve-Precision-Recall-Curve，查准率查全率曲线" class="headerlink" title="PR Curve(Precision Recall Curve，查准率查全率曲线)"></a><font size=5 color=red>PR Curve(Precision Recall Curve，查准率查全率曲线)</font></h1><p><strong>PR Curve</strong>：是一条<strong>以不同阈值下的Recall(查全率)为横坐标，不同阈值下的Precision(查准率)为纵坐标的曲线</strong>。<br><strong>PR曲线绘制步骤</strong>：</p>
+<ol>
+<li><strong>从高到低，依次将每个测试样本属于正样本的概率值从大到小排序</strong>。</li>
+<li>根据排序，<strong>从高到低依次将概率值作为阈值，当概率大于等于这个阈值时，预测为正样本，否则预测为负样本</strong>。</li>
+<li>根据步骤2得到的结果计算Recall和Precision，<strong>遍历所有样本，得到一组(Recall, Precision)，并和阈值取值为0和1下的(Recall, Precision)结合在图像上绘制出来</strong>，就可以得到PR曲线。</li>
+</ol>
+<p>PR曲线特性：</p>
+<ol>
+<li>PR曲线的两个指标都聚焦于正样本，因此在类别不平衡问题中主要关心正样本，在正负样本的成本差距较大情况下，PR曲线优于ROC曲线。</li>
+<li>PR曲线<strong>越接近右上角代表模型的效果越好</strong>。<br><img src="/images/deep_learning/pr.png" alt="pr"></li>
+</ol>
+<h1 id="AP-Average-Precision，平均精度-和mAP-mean-Average-Precision"><a href="#AP-Average-Precision，平均精度-和mAP-mean-Average-Precision" class="headerlink" title="AP(Average Precision，平均精度)和mAP(mean Average Precision)"></a><font size=5 color=red>AP(Average Precision，平均精度)和mAP(mean Average Precision)</font></h1><p><strong>AP(平均精度)<strong>：</strong>定义为PR曲线下的面积，值域为[0, 1]<strong>，</strong>该值越大，代表PR曲线越接近右上角，说明模型效果越好</strong>。<br><strong>mAP</strong>：<strong>对每个类的AP求平均，值域为[0, 1]<strong>，</strong>该值越大，说明模型效果越好，因为目标检测算法中存在正负样本不平衡的问题，因此mAP是目标检测算法中最重要的指标之一</strong>。在TensorFlow2.0中没有计算AP的评价函数，<strong>需要自己定义计算方法</strong>，步骤如下。</p>
+<ol>
+<li><strong>继承keras.metrics.Metric类</strong></li>
+<li><strong>在__init__(): 中变量要通过下面这种方式创建self.var = self.add_weight(name=name, initializer=’zeros’)</strong></li>
+<li><strong>在update_state():中变量要通过下面这种方式更新self.var.assign_add()</strong></li>
+<li><strong>在result()中: 返回变量</strong></li>
+</ol>
+<h1 id="IOU-Intersection-Over-Union，交并比"><a href="#IOU-Intersection-Over-Union，交并比" class="headerlink" title="IOU(Intersection Over Union，交并比)"></a><font size=5 color=red>IOU(Intersection Over Union，交并比)</font></h1><p><strong>IOU(交并比)<strong>：可以理解为算法的结果与标记结果的重合程度，算法的结果与真实物体进行</strong>交运算的结果除以进行并运算的结果</strong>。用于<strong>评估语义分割算法性能的指标是平均IOU</strong>，通过下图可以直观的看出IOU的计算方法，IOU的值越大，算法的效果越好。在TensorFlow2.0中没有计算IOU的评价函数，<strong>需要自己定义计算方法</strong>，步骤如下。</p>
+<ol>
+<li><strong>继承keras.metrics.Metric类</strong></li>
+<li><strong>在__init__(): 中变量要通过下面这种方式创建self.var = self.add_weight(name=name, initializer=’zeros’)</strong></li>
+<li><strong>在update_state():中变量要通过下面这种方式更新self.var.assign_add()</strong></li>
+<li><strong>在result()中: 返回变量</strong><br><img src="/images/Semantic_segmentation/Dataset_I.png" alt="IOU"></li>
+</ol>
+<h1 id="MSE-Mean-Squared-Error，均方误差"><a href="#MSE-Mean-Squared-Error，均方误差" class="headerlink" title="MSE(Mean Squared Error，均方误差)"></a><font size=5 color=red>MSE(Mean Squared Error，均方误差)</font></h1><p>$$ MSE = \frac{1}{N} \sum_{i=1}^{N}{(y^{(i)} - f(x^{(i)}))^2} $$<br><strong>MSE(均方误差)<strong>：指</strong>预测结果与真实值之差平方的期望值</strong>，其中<strong>平方误差是估计值和实际值之差的平方，也称为(L2 Loss)<strong>，MSE可以评价数据的变化程度，MSE的值越小，说明预测模型描述实验数据具有更好的精确度。在TensorFlow2.0中已经给我们提供了计算MSE的评价函数，是</strong>将数据最后一个维度计算之后，对所有结果求平均值</strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">import tensorflow.keras as keras</span><br><span class="line"></span><br><span class="line">metrics = keras.metrics.MeanSquaredError()</span><br></pre></td></tr></table></figure>
+
+<h1 id="MAE-Mean-Absolute-Error，平均绝对误差"><a href="#MAE-Mean-Absolute-Error，平均绝对误差" class="headerlink" title="MAE(Mean Absolute Error，平均绝对误差)"></a><font size=5 color=red>MAE(Mean Absolute Error，平均绝对误差)</font></h1><p>$$ MAE = \frac{1}{N} \sum_{i=1}^{N}{|y^{(i)} - f(x^{(i)})|} $$<br><strong>MAE(平均绝对误差)<strong>：指</strong>预测结果与真实值绝对误差的平均值</strong>，其中<strong>绝对误差是估计值和实际值之间的距离，也称为(L1 Loss)<strong>，MAE能更好地反映预测值误差的实际情况。在TensorFlow2.0中已经给我们提供了计算MAE的评价函数，是</strong>将数据最后一个维度计算之后，对所有结果求平均值</strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">import tensorflow.keras as keras</span><br><span class="line"></span><br><span class="line">metrics = keras.metrics.MeanAbsoluteError()</span><br></pre></td></tr></table></figure>
+
+<h1 id="Binary-Cross-Entropy-二分类交叉熵"><a href="#Binary-Cross-Entropy-二分类交叉熵" class="headerlink" title="Binary Cross Entropy(二分类交叉熵)"></a><font size=5 color=red>Binary Cross Entropy(二分类交叉熵)</font></h1><p>$$ Binary \ Cross \ Entropy =  -\frac{1}{N} \sum_{i=1}^{N}{(y^{(i)} \cdot \ln{(f(x^{(i)})}) + (1 - y^{(i)}) \cdot (1 - \ln{(f(x^{(i)})}))} $$<br><strong>Binary Cross Entropy</strong>：用来<strong>评估当前训练得到的概率分布与真实分布的差异情况</strong>，它刻画的是实际概率与期望概率的距离，也就是交叉熵的值越小，两个概率分布就越接近。在<strong>二分类中，每个数据独立计算交叉熵，和同一维度其他数据无关，允许多个1同时出现，经常配合sigmoid激活函数使用</strong>。在TensorFlow2.0中已经给我们提供了计算Binary Cross Entropy的评价函数，是<strong>将每一个数据单独计算之后，对所有数据求平均值</strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">import tensorflow.keras as keras</span><br><span class="line"></span><br><span class="line">metrics = keras.metrics.BinaryCrossentropy()</span><br></pre></td></tr></table></figure>
+
+<h1 id="Categorical-Cross-Entropy-多分类交叉熵"><a href="#Categorical-Cross-Entropy-多分类交叉熵" class="headerlink" title="Categorical Cross Entropy(多分类交叉熵)"></a><font size=5 color=red>Categorical Cross Entropy(多分类交叉熵)</font></h1><p>$$ Categorical \ Cross \ Entropy =  -\frac{1}{N} \sum_{i=1}^{N}{(y^{(i)} \cdot \ln{(f(x^{(i)})))}} $$<br><strong>Categorical Cross Entropy</strong>：用来<strong>评估当前训练得到的概率分布与真实分布的差异情况</strong>，它刻画的是实际概率与期望概率的距离，也就是交叉熵的值越小，两个概率分布就越接近。在<strong>多分类中，在某个维度上计算交叉熵，在该维度上其他数据一般只有一个1出现，其他全为0，经常配合Softmax激活函数使用</strong>。在TensorFlow2.0中已经给我们提供了计算Categorical Cross Entropy的评价函数，是<strong>将数据最后一个维度计算之后，对所有结果求平均值</strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">import tensorflow.keras as keras</span><br><span class="line"></span><br><span class="line">metrics = keras.metrics.BinaryCrossentropy()</span><br></pre></td></tr></table></figure>
+
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a><font size=5 color=red>小结</font></h1><p>&emsp;&emsp;评价函数和损失函数类似，<strong>评价函数在一定程度上可以和损失函数相互转化</strong>，如<strong>MSE，MAE，交叉熵既可以作为评价函数，又可以作为损失函数</strong>。在选择评价函数时，我们首先要<strong>判断任务类型</strong>，是分类任务还是回归任务。<strong>分类任务可以考虑Accuracy评价函数，回归任务可以考虑MSE或者MAE评价函数</strong>。也可以<strong>根据正负样本的损失比例，来给予Precision和Recall一定的权重</strong>。在实际的工程应用之中，往往需要自己设计一个合适的评价函数，如<strong>目标检测问题，就需要设计一个mAP评价函数</strong>，<strong>目标分割问题，就需要设计一个IOU评价函数</strong>。因此小伙伴们需要<strong>多实践，多尝试</strong>，实践出真知。</p>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        <div> 
+  
+    <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div> 
+   
+</div>
+
+
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/05/11/deep%20learning%20learning_rate/" rel="next" title="Learning Rate黑科技">
+                <i class="fa fa-chevron-left"></i> Learning Rate黑科技
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/13/deep%20learning%20data_augmentation/" rel="prev" title="Data Augmentation(数据增强)">
+                Data Augmentation(数据增强) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "1",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      },
+      "slide": {
+        "bdImg": "5",
+        "bdPos": "left",
+        "bdTop": "100"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/github.jpeg"
+                alt="USTCcoder" />
+            
+              <p class="site-author-name" itemprop="name">USTCcoder</p>
+              <p class="site-description motion-element" itemprop="description">身体和灵魂总有一个在路上</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+                <a href="/archives">
+                  <span class="site-state-item-count">392</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">79</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/USTCcoder" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/5754061944" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  </span>
+                
+            </div>
+          
+
+  <div id="music163player"> 
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=436675656&auto=0&height=32"></iframe>
+  </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度搜索" target="_blank">百度搜索</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.ustc.edu.cn/" title="中国科学技术大学" target="_blank">中国科学技术大学</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">背景介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Confusion-matrix-%E6%B7%B7%E6%B7%86%E7%9F%A9%E9%98%B5"><span class="nav-number">2.</span> <span class="nav-text">Confusion matrix(混淆矩阵)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Accuracy-%E5%87%86%E7%A1%AE%E7%8E%87"><span class="nav-number">3.</span> <span class="nav-text">Accuracy(准确率)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Precision-%E7%B2%BE%E7%A1%AE%E5%BA%A6"><span class="nav-number">4.</span> <span class="nav-text">Precision(精确度)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Recall-%E5%8F%AC%E5%9B%9E%E7%8E%87"><span class="nav-number">5.</span> <span class="nav-text">Recall(召回率)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#F1-score"><span class="nav-number">6.</span> <span class="nav-text">F1-score</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Specificity-%E7%89%B9%E5%BC%82%E5%BA%A6"><span class="nav-number">7.</span> <span class="nav-text">Specificity(特异度)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#FPR-%E5%81%87%E6%AD%A3%E7%8E%87"><span class="nav-number">8.</span> <span class="nav-text">FPR(假正率)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ROC-Curve-Receiver-Operating-Characteristic%EF%BC%8C%E5%8F%97%E8%AF%95%E8%80%85%E6%93%8D%E4%BD%9C%E7%89%B9%E6%80%A7%E6%9B%B2%E7%BA%BF"><span class="nav-number">9.</span> <span class="nav-text">ROC Curve(Receiver Operating Characteristic，受试者操作特性曲线)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AUC-Area-Under-Curve%EF%BC%8CROC%E6%9B%B2%E7%BA%BF%E4%B8%8B%E7%9A%84%E9%9D%A2%E7%A7%AF"><span class="nav-number">10.</span> <span class="nav-text">AUC(Area Under Curve，ROC曲线下的面积)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PR-Curve-Precision-Recall-Curve%EF%BC%8C%E6%9F%A5%E5%87%86%E7%8E%87%E6%9F%A5%E5%85%A8%E7%8E%87%E6%9B%B2%E7%BA%BF"><span class="nav-number">11.</span> <span class="nav-text">PR Curve(Precision Recall Curve，查准率查全率曲线)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AP-Average-Precision%EF%BC%8C%E5%B9%B3%E5%9D%87%E7%B2%BE%E5%BA%A6-%E5%92%8CmAP-mean-Average-Precision"><span class="nav-number">12.</span> <span class="nav-text">AP(Average Precision，平均精度)和mAP(mean Average Precision)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IOU-Intersection-Over-Union%EF%BC%8C%E4%BA%A4%E5%B9%B6%E6%AF%94"><span class="nav-number">13.</span> <span class="nav-text">IOU(Intersection Over Union，交并比)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MSE-Mean-Squared-Error%EF%BC%8C%E5%9D%87%E6%96%B9%E8%AF%AF%E5%B7%AE"><span class="nav-number">14.</span> <span class="nav-text">MSE(Mean Squared Error，均方误差)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MAE-Mean-Absolute-Error%EF%BC%8C%E5%B9%B3%E5%9D%87%E7%BB%9D%E5%AF%B9%E8%AF%AF%E5%B7%AE"><span class="nav-number">15.</span> <span class="nav-text">MAE(Mean Absolute Error，平均绝对误差)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Binary-Cross-Entropy-%E4%BA%8C%E5%88%86%E7%B1%BB%E4%BA%A4%E5%8F%89%E7%86%B5"><span class="nav-number">16.</span> <span class="nav-text">Binary Cross Entropy(二分类交叉熵)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Categorical-Cross-Entropy-%E5%A4%9A%E5%88%86%E7%B1%BB%E4%BA%A4%E5%8F%89%E7%86%B5"><span class="nav-number">17.</span> <span class="nav-text">Categorical Cross Entropy(多分类交叉熵)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">18.</span> <span class="nav-text">小结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+
+      
+
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-star"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">USTCcoder</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由USTCcoder强力驱动</div>
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+-->
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数<i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量<i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '37HNVv1wwpKB3vg0A6yqm9TB-gzGzoHsz',
+        appKey: 'kGYPNb5xWnFV2pcjCPAREbkg',
+        placeholder: '给主人一点鼓励吧( ⊙ o ⊙ )',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: ,
+    el: 'wpac-rating',
+    color: 'fc79533'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+
+<!-- 动态可交互背景（js引入）
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+ <script>
+ $("body").backstretch("/images/github_logo.jpeg");
+  </script>
+-->
+</body>
+</html>
+<!-- 页面点击小红心 
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+-->

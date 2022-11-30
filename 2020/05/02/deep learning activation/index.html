@@ -1,0 +1,1462 @@
+﻿<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-fill-left.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/github_logo.jpeg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/github_logo.jpeg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/github_logo.jpeg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/github_logo.jpeg?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/github_logo.jpeg">
+
+
+  <meta name="msapplication-config" content="/images/github_logo.jpeg" />
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="GitHub" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Activation">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Activation黑科技">
+<meta property="og:url" content="https://ustccoder.github.io/2020/05/02/deep%20learning%20activation/index.html">
+<meta property="og:site_name" content="GitHub">
+<meta property="og:description" content="Activation">
+<meta property="og:locale">
+<meta property="og:image" content="https://ustccoder.github.io/images/deep_learning/activation.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/deep_learning/sigmoid.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/deep_learning/tanh.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/deep_learning/relu.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/deep_learning/leaky_relu.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/deep_learning/leaky_relu.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/deep_learning/relu6.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/deep_learning/elu.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/deep_learning/selu.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/deep_learning/mish.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/deep_learning/softplus.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/deep_learning/swish.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/deep_learning/h_swish.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/deep_learning/softmax.png">
+<meta property="article:published_time" content="2020-05-02T02:48:16.000Z">
+<meta property="article:modified_time" content="2020-09-04T15:38:46.000Z">
+<meta property="article:author" content="USTCcoder">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ustccoder.github.io/images/deep_learning/activation.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"perspectiveLeftIn","post_header":"fadeIn","post_body":"fadeIn","coll_header":"fadeIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://USTCcoder.github.io/2020/05/02/deep learning activation/"/>
+
+
+
+
+
+  <title>Activation黑科技 | GitHub</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<!--
+<link rel="stylesheet" href="/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script type="text/javascript" src="/dist/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/music.js"></script>
+-->
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a target="_blank" rel="noopener" href="https://github.com/USTCcoder" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">GitHub</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            我的主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            日志总览
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分门别类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于博主
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/05/02/deep%20learning%20activation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="USTCcoder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/github.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GitHub">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Activation黑科技</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-02T10:48:16+08:00">
+                2020-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/" itemprop="url" rel="index">
+                    <span itemprop="name">常用技巧</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/05/02/deep%20learning%20activation/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/02/deep%20learning%20activation/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读数<i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Activation</center></font></td></tr></table>
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong><font size=5 color=gray><center>Activation</center></font></strong></p>
+<h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a><font size=5 color=red>背景介绍</font></h1><p>&emsp;&emsp;<strong>Activation(激活函数)</strong>:在多层神经网络中，上层节点的输出和下层节点的输入之间具有一个函数关系，这个函数称为激活函数。如果不用激活函数每一层节点的输入都是上层输出的线性函数，很容易验证，无论你神经网络有多少层，输出都是输入的线性组合，与没有隐藏层效果相当，这样会导致网络的逼近能力大大降低，所以需要引入非线性函数作为激活函数，这样可以提高神经网络的表达能力，可以逼近任意函数，不再是输入的线性组合。</p>
+<span id="more"></span>
+
+<p><img src="/images/deep_learning/activation.png" alt="activation"></p>
+<h1 id="Sigmoid激活函数"><a href="#Sigmoid激活函数" class="headerlink" title="Sigmoid激活函数"></a><font size=5 color=red>Sigmoid激活函数</font></h1><p>$$ f(z) = \frac{1}{1+e^{-z}} $$<br>在TensorFlow2.0中的实现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow.keras as keras</span><br><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def plot(x, y):</span><br><span class="line">    plt.plot(x, y)</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line">plt.style.use(&#x27;ggplot&#x27;)</span><br><span class="line">x = np.linspace(-10, 10, 201)</span><br><span class="line">y = keras.activations.sigmoid(x)</span><br><span class="line">plot(x, y)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/deep_learning/sigmoid.png" alt="sigmoid"></p>
+<h1 id="tanh激活函数"><a href="#tanh激活函数" class="headerlink" title="tanh激活函数"></a><font size=5 color=red>tanh激活函数</font></h1><p>$$ f(x) = \frac{e^{x}-e^{-x}}{e^{x}+e^{-x}} $$<br>在TensorFlow2.0中的实现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow.keras as keras</span><br><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def plot(x, y):</span><br><span class="line">    plt.plot(x, y)</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line">plt.style.use(&#x27;ggplot&#x27;)</span><br><span class="line">x = np.linspace(-10, 10, 201)</span><br><span class="line">y = keras.activations.tanh(x)</span><br><span class="line">plot(x, y)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/deep_learning/tanh.png" alt="tanh"></p>
+<h1 id="ReLU激活函数"><a href="#ReLU激活函数" class="headerlink" title="ReLU激活函数"></a><font size=5 color=red>ReLU激活函数</font></h1><p>$$ f(x) = \max(0, x) $$<br>在TensorFlow2.0中的实现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow.keras as keras</span><br><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def plot(x, y):</span><br><span class="line">    plt.plot(x, y)</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line">plt.style.use(&#x27;ggplot&#x27;)</span><br><span class="line">x = np.linspace(-10, 10, 201)</span><br><span class="line">y = keras.activations.relu(x)</span><br><span class="line">plot(x, y)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/deep_learning/relu.png" alt="relu"></p>
+<h1 id="Leaky-ReLU激活函数"><a href="#Leaky-ReLU激活函数" class="headerlink" title="Leaky-ReLU激活函数"></a><font size=5 color=red>Leaky-ReLU激活函数</font></h1><p>$$ f(x) = \max(\alpha x, x), \alpha=0.01 $$<br>在TensorFlow2.0中的实现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow.keras as keras</span><br><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def plot(x, y):</span><br><span class="line">    plt.plot(x, y)</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line">plt.style.use(&#x27;ggplot&#x27;)</span><br><span class="line">x = np.linspace(-10, 10, 201)</span><br><span class="line">y = keras.activations.relu(x, alpha=0.01)</span><br><span class="line">plot(x, y)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/deep_learning/leaky_relu.png" alt="leaky_relu"></p>
+<h1 id="PReLU激活函数"><a href="#PReLU激活函数" class="headerlink" title="PReLU激活函数"></a><font size=5 color=red>PReLU激活函数</font></h1><p>$$ f(x) = \max(\alpha x, x) $$<br><strong>PReLU和Leaky-ReLU的表达式是相同的</strong>，区别在于<strong>Leaky-ReLU中的$$ \alpha $$是预先设定的</strong>，而<strong>PReLU中的参数是根据数据，通过网络自身学习的</strong>。TensorFlow2.0中直接提供了PReLU层</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow.keras as keras</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">keras.layers.layers.PReLU()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/deep_learning/leaky_relu.png" alt="prelu"></p>
+<h1 id="ReLU6激活函数"><a href="#ReLU6激活函数" class="headerlink" title="ReLU6激活函数"></a><font size=5 color=red>ReLU6激活函数</font></h1><p>$$ f(x) = \min(6, \max(0, x)) $$<br>在TensorFlow2.0中的实现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow.keras as keras</span><br><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def plot(x, y):</span><br><span class="line">    plt.plot(x, y)</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line">plt.style.use(&#x27;ggplot&#x27;)</span><br><span class="line">x = np.linspace(-10, 10, 201)</span><br><span class="line">y = keras.activations.relu(x, max_value=6)</span><br><span class="line">plot(x, y)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/deep_learning/relu6.png" alt="relu6"></p>
+<h1 id="ELU激活函数"><a href="#ELU激活函数" class="headerlink" title="ELU激活函数"></a><font size=5 color=red>ELU激活函数</font></h1><p>$$ f(x) = \begin{cases}  x &amp;  x &gt; 0 \\ \alpha(e^{x} - 1) &amp; x \le 0 \end{cases}, \alpha=1 $$<br>在TensorFlow2.0中的实现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow.keras as keras</span><br><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def plot(x, y):</span><br><span class="line">    plt.plot(x, y)</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line">plt.style.use(&#x27;ggplot&#x27;)</span><br><span class="line">x = np.linspace(-10, 10, 201)</span><br><span class="line">y = keras.activations.elu(x, alpha=1)</span><br><span class="line">plot(x, y)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/deep_learning/elu.png" alt="elu"></p>
+<h1 id="SELU激活函数"><a href="#SELU激活函数" class="headerlink" title="SELU激活函数"></a><font size=5 color=red>SELU激活函数</font></h1><p>$$ f(x) = \lambda \begin{cases}  x &amp;  x &gt; 0 \\ \alpha(e^{x} - 1) &amp; x \le 0 \end{cases}$$<br>$$ \begin{cases} \lambda=1.0507009873554804934193349852946 \\ \alpha=1.6732632423543772848170429916717 \end{cases}$$<br>在TensorFlow2.0中的实现，在SELU函数中，经过大量论证后，<strong>两个参数都为定值，因此不需要设置参数</strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow.keras as keras</span><br><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def plot(x, y):</span><br><span class="line">    plt.plot(x, y)</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line">plt.style.use(&#x27;ggplot&#x27;)</span><br><span class="line">x = np.linspace(-10, 10, 201)</span><br><span class="line">y = keras.activations.selu(x)</span><br><span class="line">plot(x, y)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/deep_learning/selu.png" alt="selu"></p>
+<h1 id="Mish激活函数"><a href="#Mish激活函数" class="headerlink" title="Mish激活函数"></a><font size=5 color=red>Mish激活函数</font></h1><p>$$ f(x) = x * tanh(\ln{(1+e^x)}) $$<br>综合了tanh和Softplus的优点，类似于ReLU函数，但是对负值有轻微的梯度，其平滑的特点可能允许更好的信息深入神经网络，几乎在所有的问题上都有很好的表现，在TensorFlow2.0中的实现。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow.keras as keras</span><br><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def plot(x, y):</span><br><span class="line">    plt.plot(x, y)</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line">plt.style.use(&#x27;ggplot&#x27;)</span><br><span class="line">x = np.linspace(-10, 10, 201)</span><br><span class="line">y = x * keras.activations.tanh(keras.activations.softplus(x))</span><br><span class="line">plot(x, y)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/deep_learning/mish.png" alt="mish"></p>
+<h1 id="Softplus激活函数"><a href="#Softplus激活函数" class="headerlink" title="Softplus激活函数"></a><font size=5 color=red>Softplus激活函数</font></h1><p>$$ f(x) = \ln{(1+e^x)} $$<br>在TensorFlow2.0中的实现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow.keras as keras</span><br><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def plot(x, y):</span><br><span class="line">    plt.plot(x, y)</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line">plt.style.use(&#x27;ggplot&#x27;)</span><br><span class="line">x = np.linspace(-10, 10, 201)</span><br><span class="line">y = keras.activations.softplus(x)</span><br><span class="line">plot(x, y)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/deep_learning/softplus.png" alt="softplus"></p>
+<h1 id="Swish激活函数"><a href="#Swish激活函数" class="headerlink" title="Swish激活函数"></a><font size=5 color=red>Swish激活函数</font></h1><p>$$ f(x) = x * sigmoid(x) $$<br>在TensorFlow2.0中的实现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow.keras as keras</span><br><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def plot(x, y):</span><br><span class="line">    plt.plot(x, y)</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line">plt.style.use(&#x27;ggplot&#x27;)</span><br><span class="line">x = np.linspace(-10, 10, 201)</span><br><span class="line">y = x * keras.activations.sigmoid(x)</span><br><span class="line">plot(x, y)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/deep_learning/swish.png" alt="swish"></p>
+<h1 id="H-Swish激活函数"><a href="#H-Swish激活函数" class="headerlink" title="H-Swish激活函数"></a><font size=5 color=red>H-Swish激活函数</font></h1><p>$$ f(x) = x * \frac{ReLU6(x + 3)}{6} $$<br>在TensorFlow2.0中的实现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow.keras as keras</span><br><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def plot(x, y):</span><br><span class="line">    plt.plot(x, y)</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line">plt.style.use(&#x27;ggplot&#x27;)</span><br><span class="line">x = np.linspace(-10, 10, 201)</span><br><span class="line">y = x * keras.activations.relu(x + 3, max_value=6) / 6</span><br><span class="line">plot(x, y)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/deep_learning/h_swish.png" alt="h_swish"></p>
+<h1 id="Softmax激活函数"><a href="#Softmax激活函数" class="headerlink" title="Softmax激活函数"></a><font size=5 color=red>Softmax激活函数</font></h1><p>$$ \sigma_{i}(z) = \frac{e^{z_i}}{\sum_{j=1}^{m}{e^{z_j}}} $$<br>在TensorFlow2.0中的实现，和其他的激活函数不同，<strong>Softmax激活函数需要指定一个维度，而且使用时也必须先转化为大于一维的tensor形式，numpy格式的数据无法直接使用</strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">import tensorflow.keras as keras</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">x = tf.constant([[10, 1, 1, 1]], tf.float32)</span><br><span class="line">y = keras.activations.softmax(x)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/deep_learning/softmax.png" alt="softmax"></p>
+<h1 id="优缺点比较"><a href="#优缺点比较" class="headerlink" title="优缺点比较"></a><font size=5 color=red>优缺点比较</font></h1><p><strong>Sigmoid</strong>函数优点：Sigmoid函数处处连续，处处可导。且<strong>能够控制数值的幅度</strong>，不会产生很大的变化，可以<strong>作为二分类任务的输出</strong>，而ReLU类型的激活函数对大于0的值几乎没有约束。<br><strong>Sigmoid</strong>函数缺点：饱和区的神经元会产生<strong>梯度消失</strong>现象，使得<strong>学习速度大大下降</strong>，并且指数函数计算耗时。<br><strong>tanh</strong>函数优点：tanh函数和Sigmoid类似，但是可以发现<strong>tanh的导数的值域为(0, 1]，而Sigmoid的导数的值域为(0, 0.25]<strong>，因此相当于</strong>延迟了饱和周期</strong>。<br><strong>tanh</strong>函数缺点：tanh函数和Sigmoid类似，也具有<strong>梯度消失</strong>问题，和指数计算耗时问题。<br><strong>ReLU</strong>类函数优点：ReLU类型函数(<strong>ReLU6，Leaky_ReLU，PReLU，SELU，ELU，Mish，Softplus</strong>)会使一部分神经元为0或者非常小，使得网络具有<strong>稀疏性</strong>，<strong>减少了参数的相互依赖关系</strong>，<strong>缓解了过拟合</strong>，而且ReLU函数及其导数的计算非常简单。<br><strong>ReLU</strong>类函数缺点：可能<strong>存在神经元坏死</strong>现象，在x&lt;0的时候，梯度为0，可能会使这个神经元<strong>很难再被激活</strong>，且ReLU函数不能控制参数的幅度，可能会产生<strong>梯度爆炸</strong>现象。<br><strong>Swish</strong>类函数优点：Swish函数是<strong>介于ReLU函数和Sigmoid函数之间的一种平滑函数</strong>，<strong>具有两者的优点</strong>，不会像Sigmoid函数一样产生饱和区，也不会像ReLU函数一样存在坏死神经元。<br><strong>Swish类</strong>函数缺点：Swish函数也<strong>具有两者的缺点</strong>，类似于Sigmoid函数计算耗时，类似于ReLU函数难以控制参数幅度，但整体表现较好。<br><strong>Softmax</strong>函数特点：Softmax函数和其他的激活函数不同，Softmax主要用于<strong>多分类任务</strong>中，如<strong>图像分割</strong>，<strong>目标检测</strong>，需要判断某一个像素或者某一个预测框属于哪一个类别。<strong>Softmax将输入归一化到[0, 1]之间，并且保证和为1</strong>，使人能够联想到概率的条件，也是属于[0, 1]，并且和为1。加上指数的作用是<strong>增加样本之间的差距</strong>，如果输入为90个1和1个10，则直接归一化的结果为90个0.01和1个0.1，如果10是对应的类别，即使已经分类的较好，仍然会使得误差较大。加上指数运算后，归一化的结果为90个0.000122，1个0.989，这样误差就会较小，更加接近于真实的情况。</p>
+<h1 id="激活函数的选择"><a href="#激活函数的选择" class="headerlink" title="激活函数的选择"></a><font size=5 color=red>激活函数的选择</font></h1><ol>
+<li>首先<strong>判断任务类型</strong>，是分类任务，回归任务，还是作为隐藏层非线性单元，如果是<strong>多分类任务则考虑Softmax激活函数</strong>，如果是<strong>二分类任务则考虑Sigmoid，tanh激活函数</strong>，如果是<strong>回归任务则可以考虑不加激活函数，因为激活函数可能会对回归的数据产生限制</strong>，如果是<strong>隐藏层非线性单元则考虑Sigmoid，tanh，ReLU，Swish</strong>等等。</li>
+<li>如果是隐藏层非线性单元，<strong>首先尝试ReLU激活函数</strong>，如果<strong>ReLU效果欠佳则考虑ReLU变种激活函数</strong>，ReLU6，Leaky_ReLU，SELU，ELU，Mish，Softplus等等</li>
+<li>如果效果不好，<strong>再考虑Swish类函数和Sigmoid，tanh函数</strong>，但是如果<strong>发现梯度消失问题，则避免使用Sigmoid和tanh函数</strong>。</li>
+<li>如果都不好用，则<strong>考虑是否网络结构，超参数，损失函数设计出现问题</strong>。</li>
+</ol>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a><font size=5 color=red>小结</font></h1><p>&emsp;&emsp;深度学习工程问题是一类非常复杂的问题，往往需要<strong>网络结构</strong>，<strong>超参数</strong>，<strong>损失函数</strong>，<strong>激活函数相互配合</strong>工作，可能某个结构或者某个参数适合某个激活函数，而另外的结构适合其他激活函数。因此需要小伙伴们在实际的工程任务中慢慢摸索，多多尝试。</p>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        <div> 
+  
+    <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div> 
+   
+</div>
+
+
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/30/Object%20detection%20Dataset/" rel="next" title="目标检测数据集">
+                <i class="fa fa-chevron-left"></i> 目标检测数据集
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/03/program%20Interview1/" rel="prev" title="寻找最远的关系(某大厂手撕面试题)">
+                寻找最远的关系(某大厂手撕面试题) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "1",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      },
+      "slide": {
+        "bdImg": "5",
+        "bdPos": "left",
+        "bdTop": "100"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/github.jpeg"
+                alt="USTCcoder" />
+            
+              <p class="site-author-name" itemprop="name">USTCcoder</p>
+              <p class="site-description motion-element" itemprop="description">身体和灵魂总有一个在路上</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+                <a href="/archives">
+                  <span class="site-state-item-count">392</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">79</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/USTCcoder" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/5754061944" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  </span>
+                
+            </div>
+          
+
+  <div id="music163player"> 
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=436675656&auto=0&height=32"></iframe>
+  </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度搜索" target="_blank">百度搜索</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.ustc.edu.cn/" title="中国科学技术大学" target="_blank">中国科学技术大学</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">背景介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Sigmoid%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">Sigmoid激活函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tanh%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text">tanh激活函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ReLU%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="nav-number">4.</span> <span class="nav-text">ReLU激活函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Leaky-ReLU%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="nav-number">5.</span> <span class="nav-text">Leaky-ReLU激活函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PReLU%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="nav-number">6.</span> <span class="nav-text">PReLU激活函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ReLU6%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="nav-number">7.</span> <span class="nav-text">ReLU6激活函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ELU%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="nav-number">8.</span> <span class="nav-text">ELU激活函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SELU%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="nav-number">9.</span> <span class="nav-text">SELU激活函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mish%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="nav-number">10.</span> <span class="nav-text">Mish激活函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Softplus%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="nav-number">11.</span> <span class="nav-text">Softplus激活函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Swish%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="nav-number">12.</span> <span class="nav-text">Swish激活函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#H-Swish%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="nav-number">13.</span> <span class="nav-text">H-Swish激活函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Softmax%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="nav-number">14.</span> <span class="nav-text">Softmax激活函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9%E6%AF%94%E8%BE%83"><span class="nav-number">15.</span> <span class="nav-text">优缺点比较</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E7%9A%84%E9%80%89%E6%8B%A9"><span class="nav-number">16.</span> <span class="nav-text">激活函数的选择</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">17.</span> <span class="nav-text">小结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+
+      
+
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-star"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">USTCcoder</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由USTCcoder强力驱动</div>
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+-->
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数<i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量<i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '37HNVv1wwpKB3vg0A6yqm9TB-gzGzoHsz',
+        appKey: 'kGYPNb5xWnFV2pcjCPAREbkg',
+        placeholder: '给主人一点鼓励吧( ⊙ o ⊙ )',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: ,
+    el: 'wpac-rating',
+    color: 'fc79533'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+
+<!-- 动态可交互背景（js引入）
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+ <script>
+ $("body").backstretch("/images/github_logo.jpeg");
+  </script>
+-->
+</body>
+</html>
+<!-- 页面点击小红心 
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+-->

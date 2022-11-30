@@ -1,0 +1,1416 @@
+﻿<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-fill-left.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/github_logo.jpeg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/github_logo.jpeg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/github_logo.jpeg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/github_logo.jpeg?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/github_logo.jpeg">
+
+
+  <meta name="msapplication-config" content="/images/github_logo.jpeg" />
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="GitHub" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Kotlin数组">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin数组">
+<meta property="og:url" content="https://ustccoder.github.io/2021/06/20/Kotlin_array/index.html">
+<meta property="og:site_name" content="GitHub">
+<meta property="og:description" content="Kotlin数组">
+<meta property="og:locale">
+<meta property="og:image" content="https://ustccoder.github.io/images/LANGUAGE/C++17.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/LANGUAGE/Kotlin14.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/LANGUAGE/Kotlin15.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/LANGUAGE/Kotlin16.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/LANGUAGE/Kotlin17.png">
+<meta property="article:published_time" content="2021-06-20T03:09:24.000Z">
+<meta property="article:modified_time" content="2021-06-15T10:20:44.000Z">
+<meta property="article:author" content="USTCcoder">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ustccoder.github.io/images/LANGUAGE/C++17.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"perspectiveLeftIn","post_header":"fadeIn","post_body":"fadeIn","coll_header":"fadeIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://USTCcoder.github.io/2021/06/20/Kotlin_array/"/>
+
+
+
+
+
+  <title>Kotlin数组 | GitHub</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<!--
+<link rel="stylesheet" href="/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script type="text/javascript" src="/dist/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/music.js"></script>
+-->
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a target="_blank" rel="noopener" href="https://github.com/USTCcoder" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">GitHub</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            我的主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            日志总览
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分门别类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于博主
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2021/06/20/Kotlin_array/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="USTCcoder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/github.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GitHub">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Kotlin数组</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-06-20T11:09:24+08:00">
+                2021-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">语言学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/Kotlin/" itemprop="url" rel="index">
+                    <span itemprop="name">Kotlin</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/06/20/Kotlin_array/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2021/06/20/Kotlin_array/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读数<i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  15
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Kotlin数组</center></font></td></tr></table>
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="/images/LANGUAGE/C++17.png" alt="2"></p>
+<h1 id="Kotlin数组"><a href="#Kotlin数组" class="headerlink" title="Kotlin数组"></a><font size=5 color=red>Kotlin数组</font></h1><p>&emsp;&emsp;在前面已经介绍了Kotlin的运算符和流程控制语句，这里主要介绍Kotlin的数组</p>
+<span id="more"></span>
+
+<h1 id="创建数组"><a href="#创建数组" class="headerlink" title="创建数组"></a><font size=5>创建数组</font></h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">// Kotlin创建数组有三种常见方式</span><br><span class="line">// 使用Array创建数组，创建时指定数组的大小和初始值，其中初始值通过一个函数映射定义，也可以使用lambda表达式，在函数映射或lambda表达式中it为数组的索引，根据返回值的类型确定数组的类型</span><br><span class="line">// 使用arrayOf创建数组，直接给数组赋值</span><br><span class="line">// 使用arrayOfNulls创建可以为空的数组，创建时指定数组的大小</span><br><span class="line">fun main() &#123;</span><br><span class="line">    val arr1 = Array(5, arrInit())</span><br><span class="line">    for ((idx, x) in arr1.withIndex()) &#123; println(&quot;arr1[$&#123;idx&#125;] = $&#123;x&#125;&quot;) &#125;</span><br><span class="line"></span><br><span class="line">    val arr2 = Array(5) &#123; &quot;arr2[$&#123;it&#125;] = $&#123;it * 2&#125;&quot; &#125;</span><br><span class="line">    for (x in arr2) &#123; println(x) &#125;</span><br><span class="line"></span><br><span class="line">    val arr3 = arrayOf(0, 2, 4, 6, 8)</span><br><span class="line">    for ((idx, x) in arr3.withIndex()) &#123; println(&quot;arr3[$&#123;idx&#125;] = $&#123;x&#125;&quot;) &#125;</span><br><span class="line"></span><br><span class="line">    val arr4 = arrayOfNulls&lt;Int&gt;(5)</span><br><span class="line">    for ((idx, x) in arr4.withIndex()) &#123; println(&quot;arr4[$&#123;idx&#125;] = $&#123;x&#125;&quot;) &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun arrInit(): (Int) -&gt; Int = &#123; it -&gt; it * 2 &#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/LANGUAGE/Kotlin14.png" alt="1"></p>
+<h1 id="二维数组"><a href="#二维数组" class="headerlink" title="二维数组"></a><font size=5>二维数组</font></h1><p>// 二维数组和一维数组的创建方法类似，也有三种创建方法。但是第一种方法中，it要指向一个新的一维数组</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">fun main() &#123;</span><br><span class="line">    val arr1 = Array(3) &#123; it1 -&gt; Array(4) &#123;it1 * 4 + it&#125; &#125;</span><br><span class="line">    for ((idx1, x) in arr1.withIndex()) &#123;</span><br><span class="line">        for ((idx2, y) in x.withIndex()) &#123;</span><br><span class="line">            print(&quot;arr1[$&#123;idx1&#125;][$&#123;idx2&#125;] = $&#123;y&#125; &quot;)</span><br><span class="line">        &#125;</span><br><span class="line">        println()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    println(&quot;------------------------------------------------------------&quot;)</span><br><span class="line"></span><br><span class="line">    val arr2 = arrayOf(arrayOf(0, 1, 2, 3), arrayOf(4, 5, 6, 7), arrayOf(8, 9, 10, 11))</span><br><span class="line">    for ((idx1, x) in arr2.withIndex()) &#123;</span><br><span class="line">        for ((idx2, y) in x.withIndex()) &#123;</span><br><span class="line">            print(&quot;arr2[$&#123;idx1&#125;][$&#123;idx2&#125;] = $&#123;y&#125; &quot;)</span><br><span class="line">        &#125;</span><br><span class="line">        println()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    println(&quot;------------------------------------------------------------&quot;)</span><br><span class="line"></span><br><span class="line">    val arr3 = Array(3) &#123; arrayOfNulls&lt;Int&gt;(4) &#125;</span><br><span class="line">    for ((idx1, x) in arr3.withIndex()) &#123;</span><br><span class="line">        for ((idx2, y) in x.withIndex()) &#123;</span><br><span class="line">            print(&quot;arr3[$&#123;idx1&#125;][$&#123;idx2&#125;] = $&#123;y&#125; &quot;)</span><br><span class="line">        &#125;</span><br><span class="line">        println()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/LANGUAGE/Kotlin15.png" alt="4"></p>
+<h1 id="确定类型数组"><a href="#确定类型数组" class="headerlink" title="确定类型数组"></a><font size=5>确定类型数组</font></h1><p>// 除了上面介绍的使用Array和arrayOf创建数组以外，还可以指定数组的类型，使用IntArray或者intArrayOf创建Int类型的数组，Byte、Short、Long、Char、Float、Double、Boolean同理<br>// 正是因为arrayOf没有指定元素的类型，因此可以放入不同的元素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">fun main() &#123;</span><br><span class="line">    val arr1 = arrayOf(0, 2.0, &#x27;4&#x27;, 6.toShort(), &quot;8&quot;)</span><br><span class="line">    for ((idx, x) in arr1.withIndex()) &#123; println(&quot;arr1[$&#123;idx&#125;] = $&#123;x&#125;&quot;) &#125;</span><br><span class="line"></span><br><span class="line">    val arr2 = IntArray(5) &#123;it * 2&#125;</span><br><span class="line">    for ((idx, x) in arr2.withIndex()) &#123; println(&quot;arr2[$&#123;idx&#125;] = $&#123;x&#125;&quot;) &#125;</span><br><span class="line"></span><br><span class="line">    val arr3 = doubleArrayOf(0.0, 2.0, 4.0, 6.0, 8.0)</span><br><span class="line">    for ((idx, x) in arr3.withIndex()) &#123; println(&quot;arr3[$&#123;idx&#125;] = $&#123;x&#125;&quot;) &#125;</span><br><span class="line"></span><br><span class="line">    val arr4 = charArrayOf(&#x27;0&#x27;, &#x27;2&#x27;, &#x27;4&#x27;, &#x27;6&#x27;, &#x27;8&#x27;)</span><br><span class="line">    for ((idx, x) in arr4.withIndex()) &#123; println(&quot;arr4[$&#123;idx&#125;] = $&#123;x&#125;&quot;) &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/LANGUAGE/Kotlin16.png" alt="4"></p>
+<h1 id="数组高阶操作"><a href="#数组高阶操作" class="headerlink" title="数组高阶操作"></a><font size=5>数组高阶操作</font></h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br></pre></td><td class="code"><pre><span class="line">// Kotlin中的数组和Java中的差异很大，具有非常多的高阶操作，有些类似于其他语言中的集合框架，如C++中的vector，Java中的ArrayList，Python中的list，这里将常用的一些操作介绍给大家。</span><br><span class="line">fun main() &#123;</span><br><span class="line">    val arr1 = arrayOf(28, 10, 50, 40, 20)</span><br><span class="line"></span><br><span class="line">    // copyOf函数，是复制一个新的数组，和原数组内容相同，但是地址不同，修改原数组，新数组不会改变</span><br><span class="line">    val arr2 = arr1.copyOf()</span><br><span class="line">    arr1[0]++</span><br><span class="line">    for ((idx, x) in arr2.withIndex()) &#123; print(&quot;arr2[$&#123;idx&#125;] = $&#123;x&#125; &quot;) &#125;</span><br><span class="line">    println()</span><br><span class="line"></span><br><span class="line">    // 这是直接赋值操作，可以看出两个指针指向同一个地址，因此修改原数组，新数组也发生变化</span><br><span class="line">    val  arr3 = arr1</span><br><span class="line">    arr1[0]++</span><br><span class="line">    for ((idx, x) in arr3.withIndex()) &#123; print(&quot;arr3[$&#123;idx&#125;] = $&#123;x&#125; &quot;) &#125;</span><br><span class="line">    println()</span><br><span class="line"></span><br><span class="line">    // silce切片操作，取出切片范围内的元素形成新List集合，不是数组，通过对象.javaClass可以查看对象的类型。但是要注意两边都是闭区间</span><br><span class="line">    val arr4 = arr1.slice(0..2)</span><br><span class="line">    println(&quot;$&#123;arr4.javaClass&#125;类型的arr4 = $&#123;arr4&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // plus追加操作，在原数组后面追加元素形成新数组，原数组不会发生变化，可以是单个元素，也可以是数组或者集合</span><br><span class="line">    val arr5 = arr1.plus(arrayOf(70, 60))</span><br><span class="line">    for ((idx, x) in arr5.withIndex()) &#123; print(&quot;arr5[$&#123;idx&#125;] = $&#123;x&#125; &quot;) &#125;</span><br><span class="line">    println()</span><br><span class="line">    println(&quot;arr5的大小为 = $&#123;arr5.size&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // contains判断数组中是否包含元素，返回Boolean类型true或者false</span><br><span class="line">    val arr6 = arr1.contains(50)</span><br><span class="line">    println(&quot;arr1是否包含50 = $&#123;arr6&#125;&quot;)</span><br><span class="line">    val arr7 = arr1.contains(60)</span><br><span class="line">    println(&quot;arr1是否包含60 = $&#123;arr7&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // all判断数组中的元素是否都满足某一条件，any判断数组中的元素是否存在满足某一条件，其中条件是一个谓词，常用lambda表达式</span><br><span class="line">    val arr8 = arr1.all &#123; it &gt; 1 &#125;</span><br><span class="line">    println(&quot;arr1是否全都大于1 = $&#123;arr8&#125;&quot;)</span><br><span class="line">    val arr9 = arr1.any &#123; it &gt; 1 &#125;</span><br><span class="line">    println(&quot;arr1是否存在大于1 = $&#123;arr9&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // 判断数组中满足条件的元素个数，其中条件是一个谓词，常用lambda表达式</span><br><span class="line">    val arr10 = arr1.count &#123; it &gt; 2 &#125;</span><br><span class="line">    println(&quot;arr1中大于1的数有 = $&#123;arr10&#125;个&quot;)</span><br><span class="line"></span><br><span class="line">    // drop在原数组中删除前面n个元素组成新List集合，原数组不发生变化</span><br><span class="line">    val arr11 = arr1.drop(2)</span><br><span class="line">    println(&quot;arr1删去前两个元素为 = $&#123;arr11&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // dropWhile在原数组中删除前面符合条件的所有元素组成新List集合，原数组不发生变化，其中条件是一个谓词，常用lambda表达式</span><br><span class="line">    val arr12 = arr1.dropWhile &#123; it &gt; 15 &#125;</span><br><span class="line">    println(&quot;arr1从前面删除所有大于15的元素 = $&#123;arr12&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // dropLast在原数组中删除后面n个元素组成新List集合，原数组不发生变化</span><br><span class="line">    val arr13 = arr1.dropLast(2)</span><br><span class="line">    println(&quot;arr1删除后两个元素为 = $&#123;arr13&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // dropLastWhile在原数组中删除后面符合条件的所有元素组成新List集合，原数组不发生变化，其中条件是一个谓词，常用lambda表达式</span><br><span class="line">    val arr14 = arr1.dropLastWhile &#123; it &gt; 15 &#125;</span><br><span class="line">    println(&quot;arr1从后面删除所有大于15的元素 = $&#123;arr14&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // reversed将原数组逆序排列组成新List集合，原数组不发生变化。如果想直接修改原始数组，使用reverse方法</span><br><span class="line">    val arr15 = arr1.reversed()</span><br><span class="line">    println(&quot;arr1逆序排列为 = $&#123;arr15&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // sorted将原数组从小到大排序组成新List集合，原数组不发生变化。如果想直接修改原始数组，使用sort方法</span><br><span class="line">    val arr16 = arr1.sorted()</span><br><span class="line">    println(&quot;arr1从小到大排列为 = $&#123;arr16&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // sortedDescending将原数组从大到小排序组成新List集合，原数组不发生变化。如果想直接修改原始数组，使用sortDescending方法</span><br><span class="line">    val arr17 = arr1.sortedDescending()</span><br><span class="line">    println(&quot;arr1从大到小排列为 = $&#123;arr17&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // sortedBy将原数组根据条件从小到大排序组成新List集合，原数组不发生变化，其中条件是一个谓词，常用lambda表达式。如果想直接修改原始数组，使用sortBy方法</span><br><span class="line">    val arr18 = arr1.sortedBy &#123; Math.abs(it - 36) &#125;</span><br><span class="line">    println(&quot;arr1中的按照元素减36并取绝对值从小到大排列为 = $&#123;arr18&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // sortedByDescending将原数组根据条件从大到小排序组成新List集合，原数组不发生变化，其中条件是一个谓词，常用lambda表达式。如果想直接修改原始数组，使用sortByDescending方法</span><br><span class="line">    val arr19 = arr1.sortedByDescending() &#123; Math.abs(it - 36) &#125;</span><br><span class="line">    println(&quot;arr1中的按照元素减36并取绝对值从大到小排列为 = $&#123;arr19&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // filter删除数组中所有满足条件的元素，其中条件是一个谓词，常用lambda表达式</span><br><span class="line">    val arr20 = arr1.filter &#123; it &gt; 25 &#125;</span><br><span class="line">    println(&quot;arr1删除大于25的所有元素为 = $&#123;arr20&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // forEach将数组中的元素取出，进行某些操作。forEachIndexed将数组中的索引和对应的元素都取出，进行某些操作，其中操作，常用lambda表达式</span><br><span class="line">    arr1.forEachIndexed &#123; index, i -&gt; print(&quot;arr1[$&#123;index&#125;] = $&#123;i&#125; &quot;) &#125;</span><br><span class="line">    println()</span><br><span class="line"></span><br><span class="line">    // first返回数组的第一个元素</span><br><span class="line">    val arr21 = arr1.first()</span><br><span class="line">    println(&quot;arr1的第一个元素为 = $&#123;arr21&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // first带有谓词作为参数，返回数组第一个符合条件的元素，其中谓词常用lambda表达式</span><br><span class="line">    val arr22 = arr1.first() &#123;it &gt; 30&#125;</span><br><span class="line">    println(&quot;arr1中大于30的第一个元素为 = $&#123;arr22&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // indexOfFirst返回数组第一个符合条件的元素的索引，其中谓词常用lambda表达式</span><br><span class="line">    val arr23 = arr1.indexOfFirst &#123; it &gt; 30 &#125;</span><br><span class="line">    println(&quot;arr1中大于30的第一个元素的索引为 = $&#123;arr23&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // last返回数组的最后一个元素</span><br><span class="line">    val arr24 = arr1.last()</span><br><span class="line">    println(&quot;arr1的最后一个元素为 = $&#123;arr24&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // last带有谓词作为参数，返回数组最后一个符合条件的元素，其中谓词常用lambda表达式</span><br><span class="line">    val arr25 = arr1.last() &#123;it &gt; 30&#125;</span><br><span class="line">    println(&quot;arr1中大于30的最后一个元素为 = $&#123;arr25&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // indexOfLast返回数组最后一个符合条件的元素的索引，其中谓词常用lambda表达式</span><br><span class="line">    val arr26 = arr1.indexOfLast() &#123; it &gt; 30 &#125;</span><br><span class="line">    println(&quot;arr1中大于30的最后一个元素的索引为 = $&#123;arr26&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // indexOf返回数组中某元素的索引</span><br><span class="line">    val arr27 = arr1.indexOf(10)</span><br><span class="line">    println(&quot;arr1中1的索引为 = $&#123;arr27&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // isEmpty判断数组是否为空，即大小是否为0</span><br><span class="line">    val arr28 = arr1.isEmpty()</span><br><span class="line">    println(&quot;arr1是否为空 = $&#123;arr28&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // isNotEmpty判断数组是否不为空，即大小是否不为0</span><br><span class="line">    val arr29 = arr1.isNotEmpty()</span><br><span class="line">    println(&quot;arr1是否不为空 = $&#123;arr29&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // getOrElse获取指定位置的元素，如果不存在则返回映射对应的元素，其中映射常用lambda表达式</span><br><span class="line">    val arr30 = arr1.getOrElse(10) &#123; it * 2 &#125;</span><br><span class="line">    println(&quot;arr1[10]的值为 = $&#123;arr30&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // getOrNull获取指定位置的元素，如果不存在则返回Null</span><br><span class="line">    val arr31 = arr1.getOrNull(10)</span><br><span class="line">    println(&quot;arr1[10]的值为 = $&#123;arr31&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // joinToString将元素根据映射转换为字符串，并进行组合，其中第一个参数为两个元素之间的连接符，第二个参数为第一个元素之前的字符串，第三个参数为最后一个元素之后的字符串，第四个参数为显示的元素个数</span><br><span class="line">    val arr32 = arr1.joinToString(&quot;-&gt;&quot;, &quot;begin-&gt;&quot;, &quot;-&gt;end&quot;, 4) &#123; &quot;$&#123;it&#125;&quot; &#125;</span><br><span class="line">    println(arr32)</span><br><span class="line"></span><br><span class="line">    // max返回数组最大的元素</span><br><span class="line">    val arr33 = arr1.max()</span><br><span class="line">    println(&quot;arr1的最大值为 = $&#123;arr33&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // maxBy根据条件返回数组最大的元素，其中条件常用lambda表达式</span><br><span class="line">    val arr34 = arr1.maxBy &#123; Math.abs(it - 36) &#125;</span><br><span class="line">    println(&quot;arr1元素减36并取绝对值的最大值为 = $&#123;arr34&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // min返回数组最小的元素</span><br><span class="line">    val arr35 = arr1.min()</span><br><span class="line">    println(&quot;arr1的最小值为 = $&#123;arr35&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // minBy根据条件返回数组最小的元素，其中条件常用lambda表达式</span><br><span class="line">    val arr36 = arr1.minBy &#123; Math.abs(it - 36) &#125;</span><br><span class="line">    println(&quot;arr1元素减36并取绝对值的最大值为 = $&#123;arr36&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // random随机返回数组中的任意一个元素</span><br><span class="line">    val arr37 = arr1.random()</span><br><span class="line">    println(&quot;arr1随机取出一个元素为 = $&#123;arr37&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // random根据种子点随机返回数组中的任意一个元素</span><br><span class="line">    val arr38 = arr1.random(Random(20))</span><br><span class="line">    println(&quot;arr1随机取出种子点为20的元素为 = $&#123;arr38&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // reduce将元素进行迭代计算后返回计算的结果，在本例中，数组为[30, 10, 50, 40, 20]，先将30赋值给x，10赋值给y，进行2x + y操作得到70，然后将70赋值给x，50赋值给y，得到190，同理得到420，最后得到860</span><br><span class="line">    val arr39 = arr1.reduce() &#123; x, y -&gt; 2 * x + y &#125;</span><br><span class="line">    println(&quot;arr1迭代求解2 * x + y的值为 = $&#123;arr39&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // sum返回数组所有元素之和</span><br><span class="line">    val arr40 = arr1.sum()</span><br><span class="line">    println(&quot;arr1元素之和为 = $&#123;arr40&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // sumBy返回数组所有元素映射结果之和，其中映射常用lambda表达式</span><br><span class="line">    val arr41 = arr1.sumBy &#123; it * it &#125;</span><br><span class="line">    println(&quot;arr1元素平方之和为 = $&#123;arr41&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // zip将两个数组进行结合形成新List集合，结合后集合每个元素是一个Pair二元组，二元组对象具有.first和.second两个属性，可以获取对应的值</span><br><span class="line">    val arr42 = arr1.zip(arr1.reversed())</span><br><span class="line">    print(&quot;将arr1和其逆序组合后, &quot;)</span><br><span class="line">    arr42.forEachIndexed &#123; index, i -&gt; print(&quot;arr42[$&#123;index&#125;] = &lt;$&#123;i.first&#125; $&#123;i.second&#125;&gt; &quot;) &#125;</span><br><span class="line">    println()</span><br><span class="line"></span><br><span class="line">    // map将数组中的每个元素按照映射形成新List集合，其中映射常用lambda表达式</span><br><span class="line">    val arr43 = arr1.map &#123; it * 2 &#125;</span><br><span class="line">    println(&quot;arr1所有元素乘2为 = $&#123;arr43&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // union将两个数组求并集形成Set集合</span><br><span class="line">    val arr44 = arr1.union(arr43)</span><br><span class="line">    println(&quot;arr1和arr1乘2的并集为 = $&#123;arr44&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // intersect将两个数组求交集形成Set集合、此外还有subtract求差集</span><br><span class="line">    val arr45 = arr1.intersect(arr43)</span><br><span class="line">    println(&quot;arr1和arr1乘2的交集为 = $&#123;arr45&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // toList根据数组创建List集合</span><br><span class="line">    val arr47 = arr1.toList()</span><br><span class="line">    println(&quot;$&#123;arr47.javaClass&#125;类型的arr47 = $&#123;arr47&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // toMutableList根据数组创建可变List集合</span><br><span class="line">    val arr48 = arr1.toMutableList()</span><br><span class="line">    println(&quot;$&#123;arr48.javaClass&#125;类型的arr48 = $&#123;arr48&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // toSet根据数组创建Set集合</span><br><span class="line">    val arr49 = arr1.toSet()</span><br><span class="line">    println(&quot;$&#123;arr49.javaClass&#125;类型的arr49 = $&#123;arr49&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // toMutableSet根据数组创建可变Set集合</span><br><span class="line">    val arr50 = arr1.toMutableSet()</span><br><span class="line">    println(&quot;$&#123;arr50.javaClass&#125;类型的arr50 = $&#123;arr50&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // toHashSet根据数组创建HashSet集合</span><br><span class="line">    val arr51 = arr1.toHashSet()</span><br><span class="line">    println(&quot;$&#123;arr51.javaClass&#125;类型的arr51 = $&#123;arr51&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // toSortedSet根据数组创建toSortedSet集合</span><br><span class="line">    val arr52 = arr1.toSortedSet()</span><br><span class="line">    println(&quot;$&#123;arr52.javaClass&#125;类型的arr52 = $&#123;arr52&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    // fill将数组用指定元素进行填充，其中第一个参数为指定的元素，第二个参数和第三个参数为起始和终止的位置，默认填充所有元素</span><br><span class="line">    arr1.fill(0)</span><br><span class="line">    print(&quot;将arr1全部填充为0后, &quot;)</span><br><span class="line">    for ((idx, x) in arr1.withIndex()) &#123; print(&quot;arr1[$&#123;idx&#125;] = $&#123;x&#125; &quot;) &#125;</span><br><span class="line">    println()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/LANGUAGE/Kotlin17.png" alt="4"></p>
+<h1 id="Kotlin小结"><a href="#Kotlin小结" class="headerlink" title="Kotlin小结"></a><font size=5 color=red>Kotlin小结</font></h1><p>&emsp;&emsp;数组是我们存放数据的好方法，就如同抽屉一样，每一个抽屉都放置同样的物品，数组的学习非常重要，无论以后从事什么样的研究，数组的使用都是必不可少的，因此需要熟练掌握。</p>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        <div> 
+  
+    <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div> 
+   
+</div>
+
+
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/06/19/program%20Leetcode1239/" rel="next" title="串联字符串的最大长度(Leetcode 1239)">
+                <i class="fa fa-chevron-left"></i> 串联字符串的最大长度(Leetcode 1239)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/06/23/Kotlin_function/" rel="prev" title="Kotlin函数">
+                Kotlin函数 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "1",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      },
+      "slide": {
+        "bdImg": "5",
+        "bdPos": "left",
+        "bdTop": "100"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/github.jpeg"
+                alt="USTCcoder" />
+            
+              <p class="site-author-name" itemprop="name">USTCcoder</p>
+              <p class="site-description motion-element" itemprop="description">身体和灵魂总有一个在路上</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+                <a href="/archives">
+                  <span class="site-state-item-count">392</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">79</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/USTCcoder" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/5754061944" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  </span>
+                
+            </div>
+          
+
+  <div id="music163player"> 
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=436675656&auto=0&height=32"></iframe>
+  </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度搜索" target="_blank">百度搜索</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.ustc.edu.cn/" title="中国科学技术大学" target="_blank">中国科学技术大学</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Kotlin%E6%95%B0%E7%BB%84"><span class="nav-number">1.</span> <span class="nav-text">Kotlin数组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%95%B0%E7%BB%84"><span class="nav-number">2.</span> <span class="nav-text">创建数组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="nav-number">3.</span> <span class="nav-text">二维数组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A1%AE%E5%AE%9A%E7%B1%BB%E5%9E%8B%E6%95%B0%E7%BB%84"><span class="nav-number">4.</span> <span class="nav-text">确定类型数组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E9%AB%98%E9%98%B6%E6%93%8D%E4%BD%9C"><span class="nav-number">5.</span> <span class="nav-text">数组高阶操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Kotlin%E5%B0%8F%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">Kotlin小结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+
+      
+
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-star"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">USTCcoder</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由USTCcoder强力驱动</div>
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+-->
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数<i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量<i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '37HNVv1wwpKB3vg0A6yqm9TB-gzGzoHsz',
+        appKey: 'kGYPNb5xWnFV2pcjCPAREbkg',
+        placeholder: '给主人一点鼓励吧( ⊙ o ⊙ )',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: ,
+    el: 'wpac-rating',
+    color: 'fc79533'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+
+<!-- 动态可交互背景（js引入）
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+ <script>
+ $("body").backstretch("/images/github_logo.jpeg");
+  </script>
+-->
+</body>
+</html>
+<!-- 页面点击小红心 
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+-->

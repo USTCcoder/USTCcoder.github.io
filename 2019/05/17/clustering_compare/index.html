@@ -1,0 +1,1601 @@
+﻿<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-fill-left.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/github_logo.jpeg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/github_logo.jpeg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/github_logo.jpeg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/github_logo.jpeg?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/github_logo.jpeg">
+
+
+  <meta name="msapplication-config" content="/images/github_logo.jpeg" />
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="GitHub" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Clustering Algorithms Comparison">
+<meta property="og:type" content="article">
+<meta property="og:title" content="聚类算法比较(Clustering Algorithms Comparison)">
+<meta property="og:url" content="https://ustccoder.github.io/2019/05/17/clustering_compare/index.html">
+<meta property="og:site_name" content="GitHub">
+<meta property="og:description" content="Clustering Algorithms Comparison">
+<meta property="og:locale">
+<meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/compare5.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/agnes.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/compare_agnes2.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/diana.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/compare_diana4.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/kmeans.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/compare_kmeans3.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/isodata.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/compare_isodata3.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/dbscan.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/compare_dbscan3.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/mdca.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/compare_mdca4.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/compare_cfdp1.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/compare_cfdp4.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/compare_spectral3.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/spectral.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/compare_gmm1.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/compare_gmm3.png">
+<meta property="article:published_time" content="2019-05-17T14:20:18.000Z">
+<meta property="article:modified_time" content="2019-08-07T15:52:14.000Z">
+<meta property="article:author" content="USTCcoder">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ustccoder.github.io/images/MACHINE/compare5.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"perspectiveLeftIn","post_header":"fadeIn","post_body":"fadeIn","coll_header":"fadeIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://USTCcoder.github.io/2019/05/17/clustering_compare/"/>
+
+
+
+
+
+  <title>聚类算法比较(Clustering Algorithms Comparison) | GitHub</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<!--
+<link rel="stylesheet" href="/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script type="text/javascript" src="/dist/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/music.js"></script>
+-->
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a target="_blank" rel="noopener" href="https://github.com/USTCcoder" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">GitHub</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            我的主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            日志总览
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分门别类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于博主
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2019/05/17/clustering_compare/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="USTCcoder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/github.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GitHub">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">聚类算法比较(Clustering Algorithms Comparison)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-17T22:20:18+08:00">
+                2019-05-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%97%A0%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">无监督学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/05/17/clustering_compare/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/17/clustering_compare/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读数<i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Clustering Algorithms Comparison</center></font></td></tr></table>
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong><font size=5 color=gray><center>聚类算法比较</center></font></strong></p>
+<h1 id="无监督学习"><a href="#无监督学习" class="headerlink" title="无监督学习"></a><font size=5 color=red>无监督学习</font></h1><p>&emsp;&emsp;现实生活中常常会<strong>缺乏足够的先验知识</strong>，因此<strong>难以人工标注类别或进行人工类别标注的成本太高</strong>。很自然地，我们希望计算机能代我们完成这些工作，或至少提供一些帮助。根据<strong>类别未知(没有被标记)<strong>的训练样本解决模式识别中的各种问题，称之为</strong>无监督学习</strong>。</p>
+<span id="more"></span>
+<h1 id="算法分类"><a href="#算法分类" class="headerlink" title="算法分类"></a><font size=5 color=red>算法分类</font></h1><p><img src="/images/MACHINE/compare5.png" alt="COMPARE"></p>
+<h1 id="性能比较"><a href="#性能比较" class="headerlink" title="性能比较"></a><font size=5 color=red>性能比较</font></h1><p><font size=4>所用数据集可以查看相关文档，<a href="https://ustccoder.github.io/2019/04/25/clustering_Dataset/">数据集(Data Set)</a></font></p>
+<h2 id="凝聚的层次聚类-AGNES"><a href="#凝聚的层次聚类-AGNES" class="headerlink" title="凝聚的层次聚类(AGNES)"></a><a href="https://ustccoder.github.io/2019/05/01/clustering_AGNES/">凝聚的层次聚类(AGNES)</a></h2><ul>
+<li><font size=4><strong>优点：</strong><ul>
+<li>对噪声数据不敏感</li>
+<li>算法简单，容易理解</li>
+<li>不依赖初始值的选择</li>
+<li>对于类别较多的训练集分类较快</li>
+</ul>
+</li>
+<li><font size=4><strong>缺点：</strong><ul>
+<li>合并操作不能撤销</li>
+<li>需要在测试前知道类别的个数</li>
+<li>对于类别较少的训练集分类较慢</li>
+<li>只适合分布呈凸型或者球形的数据集</li>
+<li>对于高维数据，距离的度量并不是很好</li>
+</ul>
+</li>
+</ul>
+<center><div style="float:left;margin-left:50px"><img src="/images/MACHINE/agnes.png"  width="200" height="260" ><center>高斯型数据</center></div>
+<div style="float:right;margin-right:50px"><img src="/images/MACHINE/compare_agnes2.png"  width="200" height="260" ><center>圆形数据</center></div></center>
+<div style="float:none;clear:both;"></div>
+
+<h2 id="分裂的层次聚类-DIANA"><a href="#分裂的层次聚类-DIANA" class="headerlink" title="分裂的层次聚类(DIANA)"></a><a href="https://ustccoder.github.io/2019/05/02/clustering_DIANA/">分裂的层次聚类(DIANA)</a></h2><ul>
+<li><font size=4><strong>优点：</strong><ul>
+<li>算法简单，容易理解</li>
+<li>不依赖初始值的选择</li>
+<li>对于类别较少的训练集分类较快</li>
+</ul>
+</li>
+<li><font size=4><strong>缺点：</strong><ul>
+<li>对噪声数据敏感</li>
+<li>分裂操作不能撤销</li>
+<li>需要在测试前知道类别的个数</li>
+<li>对于类别较多的训练集分类较慢</li>
+<li>只适合分布呈凸型或者球形的数据集</li>
+<li>对于高维数据，距离的度量并不是很好</li>
+</ul>
+</li>
+</ul>
+<center><div style="float:left;margin-left:50px"><img src="/images/MACHINE/diana.png"  width="200" height="260" ><center>高斯型数据</center></div>
+<div style="float:right;margin-right:50px"><img src="/images/MACHINE/compare_diana4.png"  width="200" height="260" ><center>混合型数据</center></div></center>
+<div style="float:none;clear:both;"></div>
+
+<h2 id="K均值聚类-K-MEANS"><a href="#K均值聚类-K-MEANS" class="headerlink" title="K均值聚类(K-MEANS)"></a><a href="https://ustccoder.github.io/2019/05/03/clustering_KMEANS/">K均值聚类(K-MEANS)</a></h2><ul>
+<li><font size=4><strong>优点：</strong><ul>
+<li>算法简单，容易理解</li>
+<li>大数据集时，对噪声数据不敏感</li>
+</ul>
+</li>
+<li><font size=4><strong>缺点：</strong><ul>
+<li>对初始中心点敏感</li>
+<li>需要在测试前知道类别的个数</li>
+<li>只适合分布呈凸型或者球形的数据集</li>
+<li>对于高维数据，距离的度量并不是很好</li>
+</ul>
+</li>
+</ul>
+<center><div style="float:left;margin-left:50px"><img src="/images/MACHINE/kmeans.png"  width="200" height="260" ><center>高斯型数据</center></div>
+<div style="float:right;margin-right:50px"><img src="/images/MACHINE/compare_kmeans3.png"  width="200" height="260" ><center>直线型数据</center></div></center>
+<div style="float:none;clear:both;"></div>
+
+<h2 id="迭代自组织分析聚类-ISODATA"><a href="#迭代自组织分析聚类-ISODATA" class="headerlink" title="迭代自组织分析聚类(ISODATA)"></a><a href="https://ustccoder.github.io/2019/05/04/clustering_ISODATA/">迭代自组织分析聚类(ISODATA)</a></h2><ul>
+<li><font size=4><strong>优点：</strong><ul>
+<li>大数据集时，对噪声数据不敏感</li>
+<li>可以动态调整类别个数和类别中心</li>
+<li>在先验知识不足的情况下有较好的分类能力</li>
+</ul>
+</li>
+<li><font size=4><strong>缺点：</strong><ul>
+<li>对初始中心点敏感</li>
+<li>算法复杂，分类速度较慢</li>
+<li>只适合分布呈凸型或者球形的数据集</li>
+<li>对于高维数据，距离的度量并不是很好</li>
+</ul>
+</li>
+</ul>
+<center><div style="float:left;margin-left:50px"><img src="/images/MACHINE/isodata.png"  width="200" height="260" ><center>高斯型数据</center></div>
+<div style="float:right;margin-right:50px"><img src="/images/MACHINE/compare_isodata3.png"  width="200" height="260" ><center>直线型数据</center></div></center>
+<div style="float:none;clear:both;"></div>
+
+<h2 id="密度聚类-DBSCAN"><a href="#密度聚类-DBSCAN" class="headerlink" title="密度聚类(DBSCAN)"></a><a href="https://ustccoder.github.io/2019/05/05/clustering_DBSCAN/">密度聚类(DBSCAN)</a></h2><ul>
+<li><font size=4><strong>优点：</strong><ul>
+<li>算法简单，容易理解</li>
+<li>不依赖初始数据点的选择</li>
+<li>可以完成任意形状的聚类</li>
+</ul>
+</li>
+<li><font size=4><strong>缺点：</strong><ul>
+<li>对噪声数据敏感</li>
+<li>需要在测试前确定eps和minPts</li>
+<li>不适合数据集中密度差异较大的情况</li>
+<li>对于高维数据，距离的度量并不是很好</li>
+</ul>
+</li>
+</ul>
+<center><div style="float:left;margin-left:50px"><img src="/images/MACHINE/dbscan.png"  width="200" height="260" ><center>圆形数据</center></div>
+<div style="float:right;margin-right:50px"><img src="/images/MACHINE/compare_dbscan3.png"  width="200" height="260" ><center>直线型数据</center></div></center>
+<div style="float:none;clear:both;"></div>
+
+<h2 id="密度最大值聚类-MDCA"><a href="#密度最大值聚类-MDCA" class="headerlink" title="密度最大值聚类(MDCA)"></a><a href="https://ustccoder.github.io/2019/05/07/clustering_MDCA/">密度最大值聚类(MDCA)</a></h2><ul>
+<li><font size=4><strong>优点：</strong><ul>
+<li>对噪声数据不敏感</li>
+<li>不依赖初始数据点的选择</li>
+<li>可以完成任意形状的聚类</li>
+</ul>
+</li>
+<li><font size=4><strong>缺点：</strong><ul>
+<li>算法复杂，分类速度较慢</li>
+<li>需要在测试前确定密度阈值</li>
+<li>对于高维数据，距离的度量并不是很好</li>
+<li>不适合数据集密度差异较大或整体密度基本相同的情况</li>
+</ul>
+</li>
+</ul>
+<center><div style="float:left;margin-left:50px"><img src="/images/MACHINE/mdca.png"  width="200" height="260" ><center>高斯型数据</center></div>
+<div style="float:right;margin-right:50px"><img src="/images/MACHINE/compare_mdca4.png"  width="200" height="260" ><center>混合型数据</center></div></center>
+<div style="float:none;clear:both;"></div>
+
+<h2 id="快速搜索聚类-CFDP"><a href="#快速搜索聚类-CFDP" class="headerlink" title="快速搜索聚类(CFDP)"></a><a href="https://ustccoder.github.io/2019/05/09/clustering_CFDP/">快速搜索聚类(CFDP)</a></h2><ul>
+<li><font size=4><strong>优点：</strong><ul>
+<li>对噪声数据不敏感</li>
+<li>不依赖初始数据点的选择</li>
+<li>可以完成任意形状的聚类</li>
+</ul>
+</li>
+<li><font size=4><strong>缺点：</strong><ul>
+<li>离群点的确定非常复杂</li>
+<li>算法复杂，分类速度较慢</li>
+<li>对于高维数据，距离的度量并不是很好</li>
+<li>不适合数据集整体密度基本相同的情况</li>
+</ul>
+</li>
+</ul>
+<center><div style="float:left;margin-left:50px"><img src="/images/MACHINE/compare_cfdp1.png"  width="200" height="260" ><center>高斯型数据</center></div>
+<div style="float:right;margin-right:50px"><img src="/images/MACHINE/compare_cfdp4.png"  width="200" height="260" ><center>混合型数据</center></div></center>
+<div style="float:none;clear:both;"></div>
+
+<h2 id="谱聚类-Spectral-Clustering"><a href="#谱聚类-Spectral-Clustering" class="headerlink" title="谱聚类(Spectral Clustering)"></a><a href="https://ustccoder.github.io/2019/05/11/clustering_SPECTRAL/">谱聚类(Spectral Clustering)</a></h2><ul>
+<li><font size=4><strong>优点：</strong><ul>
+<li>不依赖初始数据点的选择</li>
+<li>使用了降维技术，适合于高维数据的聚类</li>
+<li>建立在谱图理论，能在大部分形状聚类，收敛于全局最优解</li>
+</ul>
+</li>
+<li><font size=4><strong>缺点：</strong><ul>
+<li>难以对圆形数据聚类</li>
+<li>对噪声数据非常敏感</li>
+<li>需要在测试前知道类别的个数</li>
+</ul>
+</li>
+</ul>
+<center><div style="float:left;margin-left:50px"><img src="/images/MACHINE/compare_spectral3.png"  width="200" height="260" ><center>直线型数据</center></div>
+<div style="float:right;margin-right:50px"><img src="/images/MACHINE/spectral.png"  width="200" height="260" ><center>混合型数据</center></div></center>
+<div style="float:none;clear:both;"></div>
+
+<h2 id="高斯混合模型聚类-GMM"><a href="#高斯混合模型聚类-GMM" class="headerlink" title="高斯混合模型聚类(GMM)"></a><a href="https://ustccoder.github.io/2019/05/12/clustering_GMM/">高斯混合模型聚类(GMM)</a></h2><ul>
+<li><font size=4><strong>优点：</strong><ul>
+<li>可以完成大部分形状的聚类</li>
+<li>大数据集时，对噪声数据不敏感</li>
+<li>对于距离或密度聚类，更适合高维特征</li>
+</ul>
+</li>
+<li><font size=4><strong>缺点：</strong><ul>
+<li>计算复杂，速度较慢</li>
+<li>难以对圆形数据聚类</li>
+<li>需要在测试前知道类别的个数</li>
+<li>初始化参数会对聚类结果产生影响</li>
+</ul>
+</li>
+</ul>
+<center><div style="float:left;margin-left:50px"><img src="/images/MACHINE/compare_gmm1.png"  width="200" height="260" ><center>高斯型数据</center></div>
+<div style="float:right;margin-right:50px"><img src="/images/MACHINE/compare_gmm3.png"  width="200" height="260" ><center>直线型数据</center></div></center>
+<div style="float:none;clear:both;"></div>
+
+<h1 id="特点小结"><a href="#特点小结" class="headerlink" title="特点小结"></a><font size=5 color=red>特点小结</font></h1><ul>
+<li>凸型或者球形分布的数据集，绝大部分算法都是可以适用的</li>
+<li>圆形分布的数据集，DBSCAN算法最为合适</li>
+<li>线型分布的数据集，DBSCAN，Spectral Clustering，GMM都可以使用</li>
+<li>高维特征最好使用Spectral Clustering或者GMM算法</li>
+<li>密度算法大多适用于各类的密度峰值相差不大的情况</li>
+<li>实际中可以通过已知的某些先验知识尝试去选择合适的算法</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        <div> 
+  
+    <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div> 
+   
+</div>
+
+
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/12/clustering_GMM/" rel="next" title="高斯混合模型聚类(GMM)">
+                <i class="fa fa-chevron-left"></i> 高斯混合模型聚类(GMM)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/19/optimization_Testfunction/" rel="prev" title="测试函数(Test Function)">
+                测试函数(Test Function) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "1",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      },
+      "slide": {
+        "bdImg": "5",
+        "bdPos": "left",
+        "bdTop": "100"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/github.jpeg"
+                alt="USTCcoder" />
+            
+              <p class="site-author-name" itemprop="name">USTCcoder</p>
+              <p class="site-description motion-element" itemprop="description">身体和灵魂总有一个在路上</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+                <a href="/archives">
+                  <span class="site-state-item-count">392</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">79</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/USTCcoder" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/5754061944" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  </span>
+                
+            </div>
+          
+
+  <div id="music163player"> 
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=436675656&auto=0&height=32"></iframe>
+  </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度搜索" target="_blank">百度搜索</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.ustc.edu.cn/" title="中国科学技术大学" target="_blank">中国科学技术大学</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A0%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0"><span class="nav-number">1.</span> <span class="nav-text">无监督学习</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB"><span class="nav-number">2.</span> <span class="nav-text">算法分类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E6%AF%94%E8%BE%83"><span class="nav-number">3.</span> <span class="nav-text">性能比较</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%9D%E8%81%9A%E7%9A%84%E5%B1%82%E6%AC%A1%E8%81%9A%E7%B1%BB-AGNES"><span class="nav-number">3.1.</span> <span class="nav-text">凝聚的层次聚类(AGNES)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E8%A3%82%E7%9A%84%E5%B1%82%E6%AC%A1%E8%81%9A%E7%B1%BB-DIANA"><span class="nav-number">3.2.</span> <span class="nav-text">分裂的层次聚类(DIANA)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#K%E5%9D%87%E5%80%BC%E8%81%9A%E7%B1%BB-K-MEANS"><span class="nav-number">3.3.</span> <span class="nav-text">K均值聚类(K-MEANS)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3%E8%87%AA%E7%BB%84%E7%BB%87%E5%88%86%E6%9E%90%E8%81%9A%E7%B1%BB-ISODATA"><span class="nav-number">3.4.</span> <span class="nav-text">迭代自组织分析聚类(ISODATA)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%86%E5%BA%A6%E8%81%9A%E7%B1%BB-DBSCAN"><span class="nav-number">3.5.</span> <span class="nav-text">密度聚类(DBSCAN)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%86%E5%BA%A6%E6%9C%80%E5%A4%A7%E5%80%BC%E8%81%9A%E7%B1%BB-MDCA"><span class="nav-number">3.6.</span> <span class="nav-text">密度最大值聚类(MDCA)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E6%90%9C%E7%B4%A2%E8%81%9A%E7%B1%BB-CFDP"><span class="nav-number">3.7.</span> <span class="nav-text">快速搜索聚类(CFDP)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%B1%E8%81%9A%E7%B1%BB-Spectral-Clustering"><span class="nav-number">3.8.</span> <span class="nav-text">谱聚类(Spectral Clustering)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%AB%98%E6%96%AF%E6%B7%B7%E5%90%88%E6%A8%A1%E5%9E%8B%E8%81%9A%E7%B1%BB-GMM"><span class="nav-number">3.9.</span> <span class="nav-text">高斯混合模型聚类(GMM)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%89%B9%E7%82%B9%E5%B0%8F%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">特点小结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+
+      
+
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-star"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">USTCcoder</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由USTCcoder强力驱动</div>
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+-->
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数<i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量<i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '37HNVv1wwpKB3vg0A6yqm9TB-gzGzoHsz',
+        appKey: 'kGYPNb5xWnFV2pcjCPAREbkg',
+        placeholder: '给主人一点鼓励吧( ⊙ o ⊙ )',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: ,
+    el: 'wpac-rating',
+    color: 'fc79533'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+
+<!-- 动态可交互背景（js引入）
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+ <script>
+ $("body").backstretch("/images/github_logo.jpeg");
+  </script>
+-->
+</body>
+</html>
+<!-- 页面点击小红心 
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+-->

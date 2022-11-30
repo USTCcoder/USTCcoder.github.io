@@ -1,0 +1,1435 @@
+﻿<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-fill-left.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/github_logo.jpeg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/github_logo.jpeg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/github_logo.jpeg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/github_logo.jpeg?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/github_logo.jpeg">
+
+
+  <meta name="msapplication-config" content="/images/github_logo.jpeg" />
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="GitHub" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Linear Programming">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线性规划(Linear Programming)">
+<meta property="og:url" content="https://ustccoder.github.io/2019/08/08/algorithm%20linear%20programming/index.html">
+<meta property="og:site_name" content="GitHub">
+<meta property="og:description" content="Linear Programming">
+<meta property="og:locale">
+<meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/line1.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/line2.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/line3.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/line4.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/line5.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/line6.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/line7.png">
+<meta property="og:image" content="https://ustccoder.github.io/images/ALGORITHM/line8.png">
+<meta property="article:published_time" content="2019-08-08T12:09:25.000Z">
+<meta property="article:modified_time" content="2020-11-30T09:19:28.000Z">
+<meta property="article:author" content="USTCcoder">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ustccoder.github.io/images/ALGORITHM/line1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"perspectiveLeftIn","post_header":"fadeIn","post_body":"fadeIn","coll_header":"fadeIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://USTCcoder.github.io/2019/08/08/algorithm linear programming/"/>
+
+
+
+
+
+  <title>线性规划(Linear Programming) | GitHub</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<!--
+<link rel="stylesheet" href="/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script type="text/javascript" src="/dist/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/music.js"></script>
+-->
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a target="_blank" rel="noopener" href="https://github.com/USTCcoder" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">GitHub</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            我的主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            日志总览
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分门别类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于博主
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2019/08/08/algorithm%20linear%20programming/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="USTCcoder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/github.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GitHub">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">线性规划(Linear Programming)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-08T20:09:25+08:00">
+                2019-08-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构和算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E9%83%A8%E5%88%86/" itemprop="url" rel="index">
+                    <span itemprop="name">算法部分</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/08/algorithm%20linear%20programming/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/08/algorithm%20linear%20programming/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读数<i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.7k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Linear Programming</center></font></td></tr></table>
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong><font size=5 color=gray><center>线性规划</center></font></strong></p>
+<h1 id="原理介绍"><a href="#原理介绍" class="headerlink" title="原理介绍"></a><font size=5 color=red>原理介绍</font></h1><p>&emsp;&emsp; <strong>Linear Programming:线性规划</strong>，是<strong>运筹学</strong>中的一个重要分支，<strong>研究线性约束条件下线性目标函数的极值问题</strong>的数学理论和方法，能从各种限制条件的组合中，选择出最为合理的计算方法，建立线性规划模型，从而求得最佳结果。广泛应用于军事作战、经济分析、经营管理和工程技术等方面。为合理地利用有限的人力、物力、财力等资源作出的<strong>最优决策</strong>，提供科学的依据。</p>
+<span id="more"></span>
+
+<h1 id="算法基础"><a href="#算法基础" class="headerlink" title="算法基础"></a><font size=5 color=red>算法基础</font></h1><h2 id="线性规划标准型"><a href="#线性规划标准型" class="headerlink" title="线性规划标准型"></a><font size=4>线性规划标准型</font></h2><p>&emsp;&emsp;<font size=3>对于复杂的线性规划问题，很难采用初中数学的画图法解决，一般要把问题转化为线性规划标准型。</font><br><img src="/images/ALGORITHM/line1.png" alt="1"></p>
+<h2 id="线性规划标准型转化方法"><a href="#线性规划标准型转化方法" class="headerlink" title="线性规划标准型转化方法"></a><font size=4>线性规划标准型转化方法</font></h2><p>&emsp;&emsp;<font size=3>(1)一般线性规划形式中目标函数如果求最小值，即$\min z = \sum_{i=1}^n c_ix_i$，那么令$z’ = -z$，则求解$\max z’ = \sum_{i=1}^n c_ix_i$，得到最优解后加负号即可。</font><br>&emsp;&emsp;<font size=3>(2)右端常数项小于零时，则不等式两边同时乘-1，将其变为大于零，并改变不等式方向，保证恒等变形。</font><br>&emsp;&emsp;<font size=3>(3)约束条件大于等于约束时，则在不等式左边减去一个新的非负变量，将不等式约束改为等式约束。</font><br>&emsp;&emsp;<font size=3>(4)约束条件小于等于约束时，则在不等式左边加上一个新的非负变量，将不等式约束改为等式约束。</font><br>&emsp;&emsp;<font size=3>(5)无约束的决策变量x，则引入两个新的非负变量x’，x’’，令$x=x’-x’’, \ x’ \ge 0, \ x’’ \ge 0$，将x’，x’’带入模型</font><br>&emsp;&emsp;<font size=3>(6)决策变量x小于等于0时，令x’=-x，将x’带入模型</font></p>
+<p>$$\min z = x_2 - 3 \ x_3 + 2 \ x_4$$<br>$$\begin{cases} x_1 + 3 \ x_2 - x_3 + 2 \ x_4 =7 \ -2 \ x_2 + 4 \ x_3 \le 12 \ -4 \ x_2 + 3 \ x_3 + 8 \ x_4 \le 10 \ x_i \ge 0 \ (i = 1, \ 2, \ 3, \ 4) \end{cases}$$<br>&emsp;&emsp;<font size=3>将其转化为线性规划标准型:z’=-z</font><br>$$\min z’ = -x_2 + 3 \ x_3 - 2 \ x_4$$<br>$$\begin{cases} x_1 + 3 \ x_2 - x_3 + 2 \ x_4 =7 \ -2 \ x_2 + 4 \ x_3 + x_5 = 12 \ -4 \ x_2 + 3 \ x_3 + 8 \ x_4 + x_6 = 10 \ x_i \ge 0 \ (i = 1, \ 2, \ 3, \ 4, \ 5, \ 6) \end{cases}$$</p>
+<h2 id="单纯行算法"><a href="#单纯行算法" class="headerlink" title="单纯行算法"></a><font size=4>单纯行算法</font></h2><p>&emsp;&emsp;<font size=3>基本变量：每个约束条件中的系数为正且只出现在一个约束条件中的变量</font><br>&emsp;&emsp;<font size=3>非基本变量：除基本变量外的变量全部为非基本变量</font><br>&emsp;&emsp;<font size=3>基本可行解：满足标准形式约束条件的可行解称为基本可行解</font><br>&emsp;&emsp;<font size=3>检验数：目标函数中非基本变量的系数</font></p>
+<h2 id="最优解的判别"><a href="#最优解的判别" class="headerlink" title="最优解的判别"></a><font size=4>最优解的判别</font></h2><p>&emsp;&emsp;<font size=3>(1)若目标函数中关于非基本变量的所有系数小于等于0，则当前基本可行解就是最优解。</font><br>&emsp;&emsp;<font size=3>(2)若目标函数中关于非基本变量的所有系数小于等于0，同时存在某个非基本变量的检验数等于0，则线性规划问题有无穷多个最优解。</font><br>&emsp;&emsp;<font size=3>(3)如果某个非基本变量的系数大于0，而该变量对应的列向量的各个分量都小于等于0，则该线性规划问题有无界解。</font></p>
+<h1 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a><font size=5 color=red>算法步骤</font></h1><h2 id="建立初始单纯形表"><a href="#建立初始单纯形表" class="headerlink" title="建立初始单纯形表"></a><font size=4>建立初始单纯形表</font></h2><p>&emsp;&emsp;<font size=3>(1)从构建出的线性规划标准型中找出基本变量和非基本变量，且让目标函数由非基本变量表示。</font><br>&emsp;&emsp;<font size=3>(2)基本变量的系数要缩放到1，基本变量做列，非基本变量做行。</font><br>&emsp;&emsp;<font size=3>(2)检验数放第一行，常数项放第一列，约束条件中的非基本变量的系数作为值，构造初始单纯形表。</font><br><img src="/images/ALGORITHM/line2.png" alt="2"></p>
+<h2 id="根据单纯形表判断是否得到最优解"><a href="#根据单纯形表判断是否得到最优解" class="headerlink" title="根据单纯形表判断是否得到最优解"></a><font size=4>根据单纯形表判断是否得到最优解</font></h2><p>&emsp;&emsp;<font size=3>(1)如果所有的检验数都小于等于0，则已获得最优解，算法结束，取出左上角的值即为最优解。</font><br>&emsp;&emsp;<font size=3>(2)如果所有的检验数有些为正数，但其中某一正的检验数对应的列向量的所有分量均小于等于0，则线性规划问题无解，算法结束。</font><br>&emsp;&emsp;<font size=3>(3)如果所有的检验数有些为正数，但其中某一正的检验数对应的列向量中有正的分量，则继续下一步。</font></p>
+<h2 id="选择入基变量"><a href="#选择入基变量" class="headerlink" title="选择入基变量"></a><font size=4>选择入基变量</font></h2><p>&emsp;&emsp;<font size=3>选取检验数中最大的一个，其对应的非基本变量称为入基变量，该列称为入基列</font></p>
+<h2 id="选择离基变量"><a href="#选择离基变量" class="headerlink" title="选择离基变量"></a><font size=4>选择离基变量</font></h2><p>&emsp;&emsp;<font size=3>选取常数列元素与入基列元素的比值中，正数的最小者所对应的基本变量为离基变量。</font></p>
+<h2 id="换基变换"><a href="#换基变换" class="headerlink" title="换基变换"></a><font size=4>换基变换</font></h2><p>&emsp;&emsp;<font size=3>将单纯形表上的入基变量和离基变量互换位置。</font><br><img src="/images/ALGORITHM/line3.png" alt="3"></p>
+<h2 id="计算新的单纯形表"><a href="#计算新的单纯形表" class="headerlink" title="计算新的单纯形表"></a><font size=4>计算新的单纯形表</font></h2><p>&emsp;&emsp;<font size=3>入基列=-原值/交叉位值。</font><br>&emsp;&emsp;<font size=3>离基行=原值/交叉位值。</font><br>&emsp;&emsp;<font size=3>交叉位=原值去倒数。</font><br>&emsp;&emsp;<font size=3>左上角值=原值+同行入基列元素值*同列离基行元素值/交叉位值。</font></p>
+<p><img src="/images/ALGORITHM/line4.png" alt="4"></p>
+<p>&emsp;&emsp;<font size=3>其余值=原值-同行入基列元素值*同列离基行元素值/交叉位值。</font></p>
+<p><img src="/images/ALGORITHM/line5.png" alt="5"></p>
+<p>&emsp;&emsp;<font size=3>得到新的单纯形表再返回第二步重新判断。直到满足终止条件。</font><br>&emsp;&emsp;<font size=3>本题的最终的单纯形表如下，可知最优解为z’=11，由于此题要求最小值，即z=-z=-11。</font><br><img src="/images/ALGORITHM/line6.png" alt="6"><br>&emsp;&emsp;<font size=3>其最优解为基本变量对应的常数项组成，非基本变量全部置为0，即解为</font><br>$$\begin{pmatrix} x_1 \ x_2 \ x_3 \ x_4 \ x_5 \ x_6 \end{pmatrix} = \begin{pmatrix} 0 \ 4 \ 5 \ 0 \ 0 \ 11 \end{pmatrix}$$</p>
+<h1 id="经典例题-最大利润"><a href="#经典例题-最大利润" class="headerlink" title="经典例题(最大利润)"></a><font size=5 color=red>经典例题(最大利润)</font></h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a><font size=4>问题描述</font></h2><p>&emsp;&emsp;某工厂有3个车间，第一个车间用1个单位的原料N可以加工5个单位的产品A和2个单位的产品B。<br>&emsp;&emsp;如果产品A直接售出，售价为10元，如果在第二个车间继续加工，则需要加工费5元，加工后售价为19元。<br>&emsp;&emsp;如果产品B直接售出，售价为16元，如果在第三个车间继续加工，则需要加工费4元，加工后售价为24元。<br>&emsp;&emsp;原材料N的单位购入价为5元，每工时的工资是15元，第一个车间加工一个单位的N需要0.05个工时，第二个车间加工一个单位需要0.1个工时，第三个车间加工一个单位需要0.08个工时。<br>&emsp;&emsp;每个月最多能得到12000单位的原材料N，工时最多为1000工时，问如何安排生产才能得到最高的收益？</p>
+<h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a><font size=4>问题分析</font></h2><p>&emsp;&emsp;假设A直接卖出的数量为x<sub>1</sub>，收获的利润为$10 \ x_1$<br>&emsp;&emsp;假设A在第二车间加工后的出售量为x<sub>2</sub>，收获的利润为$(19-5-0.1 \times 15) \ x_2 = 12.5 \ x_2$<br>&emsp;&emsp;假设B直接卖出的数量为x<sub>3</sub>，收获的利润为$16 \ x_3$<br>&emsp;&emsp;假设B在第三车间加工后的出售量为x<sub>4</sub>，收获的利润为$(24-4-0.08 \times 15) \ x_4 = 18.8 \ x_4$<br>&emsp;&emsp;假设所用的原材料数量为x<sub>5</sub>，所用的成本为$(5+0.05 \times 15) \ x_5 = 5.75 \ x_5$<br>&emsp;&emsp;根据分析可得目标函数和约束条件如下:<br>$$\max z = 10 \ x_1 + 12.5 \ x_2 + 16 \ x_4 +18.8 \ x_4 - 5.75 \ x_5$$<br>$$\begin{cases} x_1 + x_2 - 5 \ x_5 =0 \ x_3 + x_4 - 2 \ x_5 = 0 \  x_5 \le 12000 \ 0.1 \ x_1 + 0.08 \ x_4 +0.05 \ x_5 \le 1000 \ x_i \ge 0 \ (i = 1, \ 2, \ 3, \ 4, \ 5) \end{cases}$$</p>
+<p>&emsp;&emsp;将其转换为标准型可知:<br>$$\max z = 10 \ x_1 + 12.5 \ x_2 + 16 \ x_4 +18.8 \ x_4 - 5.75 \ x_5$$<br>$$\begin{cases} x_1 + x_2 - 5 \ x_5 =0 \ x_3 + x_4 - 2 \ x_5 = 0 \  x_5 + x_6 = 12000 \ 0.1 \ x_1 + 0.08 \ x_4 +0.05 \ x_5 + x_7 = 1000 \ x_i \ge 0 \ (i = 1, \ 2, \ 3, \ 4, \ 5, \ 6, \ 7) \end{cases}$$</p>
+<p>&emsp;&emsp;找出基本变量$x_1, \ x_3, \ x_6, \ x_7$和非基本变量$x_2, \ x_4, \ x_5$<br>&emsp;&emsp;将目标函数由非基本变量表示，即用$x_1 = 5 \ x_5 - x_2, \ x_3 = 2 \ x_5 - x_4$替换，目标函数转化为:<br>$$\begin{align} z &amp; =10(5 \ x_5 - x_2) + 12.5 \ x_2 + 16(2 \ x_5 - x_4) + 18.8 \ x_4 - 5.75 \ x_5 \ &amp; = 2.5 \ x_2 + 2.8 \ x_4 + 76.25 \ x_5 \ \end{align}$$</p>
+<p>&emsp;&emsp;构造初始单纯形表<br><img src="/images/ALGORITHM/line7.png" alt="7"></p>
+<p>&emsp;&emsp;第一行输入基本变量的下标，第二行输入非基本变量的下标，然后输入初始单纯形表。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1 3 6 7 # 基本变量下标</span><br><span class="line">2 4 5 # 非基本变量下标</span><br><span class="line">0 2.5 2.8 76.25 # 初始单纯形表</span><br><span class="line">0 1 0 -5</span><br><span class="line">0 0 1 -2</span><br><span class="line">12000 0 0 1</span><br><span class="line">1000 0.1 0.08 0.05</span><br></pre></td></tr></table></figure>
+
+<h2 id="python代码实战"><a href="#python代码实战" class="headerlink" title="python代码实战"></a><font size=4>python代码实战</font></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line"></span><br><span class="line">def display_simplex_table(simplex_table):</span><br><span class="line">    print(&#x27;-----单纯形表如下-----&#x27;)</span><br><span class="line">    print(&#x27; &#x27;.join([&#x27; &#x27;] + nonbase_subscript))</span><br><span class="line">    for i in range(base_num):</span><br><span class="line">        print(&#x27; &#x27;.join([base_subscript[i]] + [str(x) for x in simplex_table[i]]))</span><br><span class="line"></span><br><span class="line">def judge_simplex_table(simplex_table):</span><br><span class="line">    global solve</span><br><span class="line">    display_simplex_table(simplex_table)</span><br><span class="line">    all_negative_j_flag = True</span><br><span class="line">    for j in range(1, nonbase_num):</span><br><span class="line">        if simplex_table[0][j] &gt; 0:</span><br><span class="line">            all_negative_j_flag = False</span><br><span class="line">            all_negative_i_flag = True</span><br><span class="line">            for i in range(1, base_num):</span><br><span class="line">                if simplex_table[i][j] &gt; 0:</span><br><span class="line">                    all_negative_i_flag = False</span><br><span class="line">            if all_negative_i_flag:</span><br><span class="line">                print(&#x27;该线性规划问题无界，无法求得最优解&#x27;)</span><br><span class="line">                return</span><br><span class="line">    if all_negative_j_flag:</span><br><span class="line">        for i in range(1, base_num):</span><br><span class="line">            solve.append(base_subscript[i] + &#x27;=&#x27; + str(simplex_table[i][0]))</span><br><span class="line">        for j in range(1, nonbase_num):</span><br><span class="line">            solve.append(nonbase_subscript[j] + &#x27;=&#x27; + str(simplex_table[0][j]))</span><br><span class="line">        print(&#x27;该问题的最优解为:&#x27;, simplex_table[0][0])</span><br><span class="line">        print(&#x27;该问题的解向量为:&#x27;, &#x27;, &#x27;.join(solve))</span><br><span class="line">        return</span><br><span class="line">    else:</span><br><span class="line">        update_simplex_table(simplex_table)</span><br><span class="line">        return</span><br><span class="line"></span><br><span class="line">def update_simplex_table(simplex_table):</span><br><span class="line">    global base_subscript, nonbase_subscript</span><br><span class="line">    in_base_var = simplex_table[0][1:].index(max(simplex_table[0][1:])) + 1</span><br><span class="line">    ratio = []</span><br><span class="line">    for i in range(1, base_num):</span><br><span class="line">        ratio = ratio + [0]  if simplex_table[i][in_base_var] == 0 else ratio + [simplex_table[i][0]/simplex_table[i][in_base_var]]</span><br><span class="line">    out_base_value = max(ratio) + 1</span><br><span class="line">    out_base_var = 0</span><br><span class="line">    for i in range(len(ratio)):</span><br><span class="line">        out_base_value, out_base_var = [ratio[i], i] if 0 &lt; ratio[i] &lt; out_base_value else [out_base_value, out_base_var]</span><br><span class="line">    out_base_var += 1</span><br><span class="line">    tmp_table = [[0 for i in range(nonbase_num)] for j in range(base_num)]</span><br><span class="line">    for i in range(base_num):</span><br><span class="line">        for j in range(nonbase_num):</span><br><span class="line">            if i == 0 and j == 0:</span><br><span class="line">                tmp_table[i][j] = simplex_table[i][j] + simplex_table[out_base_var][j] * simplex_table[i][in_base_var] / simplex_table[out_base_var][in_base_var]</span><br><span class="line">                continue</span><br><span class="line">            if i != out_base_var and j != in_base_var:</span><br><span class="line">                tmp_table[i][j] = simplex_table[i][j] - simplex_table[out_base_var][j] * simplex_table[i][in_base_var] / simplex_table[out_base_var][in_base_var]</span><br><span class="line">                continue</span><br><span class="line">            if i != out_base_var and j == in_base_var:</span><br><span class="line">                tmp_table[i][j] = -1 * simplex_table[i][j] / simplex_table[out_base_var][in_base_var]</span><br><span class="line">                continue</span><br><span class="line">            if i == out_base_var and j != in_base_var:</span><br><span class="line">                tmp_table[i][j] = simplex_table[i][j] / simplex_table[out_base_var][in_base_var]</span><br><span class="line">                continue</span><br><span class="line">            if i == out_base_var and j == in_base_var:</span><br><span class="line">                tmp_table[i][j] = 1 / simplex_table[i][j]</span><br><span class="line">                continue</span><br><span class="line">    simplex_table = [x[:] for x in tmp_table]</span><br><span class="line">    base_subscript[out_base_var], nonbase_subscript[in_base_var] = nonbase_subscript[in_base_var], base_subscript[out_base_var]</span><br><span class="line">    judge_simplex_table(simplex_table)</span><br><span class="line"></span><br><span class="line">print(&#x27;输入基本变量下标:&#x27;)</span><br><span class="line">for line in sys.stdin:</span><br><span class="line">    base_subscript = [&#x27;c&#x27;] + [&#x27;x&#x27; + x for x in line.strip().split()]</span><br><span class="line">    print(&#x27;输入非基本变量下标:&#x27;)</span><br><span class="line">    nonbase_subscript = [&#x27;b&#x27;] + [&#x27;x&#x27; + x for x in sys.stdin.readline().strip().split()]</span><br><span class="line">    base_num, nonbase_num = len(base_subscript), len(nonbase_subscript)</span><br><span class="line">    simplex_table, solve = [], []</span><br><span class="line">    print(&#x27;请输入初始单纯形表:&#x27;)</span><br><span class="line">    for i in range(base_num):</span><br><span class="line">        simplex_table.append([float(x) for x in sys.stdin.readline().strip().split()])</span><br><span class="line">    judge_simplex_table(simplex_table)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="代码运行结果"><a href="#代码运行结果" class="headerlink" title="代码运行结果"></a><font size=4>代码运行结果</font></h2><p><img src="/images/ALGORITHM/line8.png" alt="8"></p>
+<h1 id="算法总结"><a href="#算法总结" class="headerlink" title="算法总结"></a><font size=5 color=red>算法总结</font></h1><p>&emsp;&emsp;线性规划问题的难点不在于算法的设计，而是在于如何从文字描述中寻找到合适的模型，如何建立线性规划方程组。线性规划在实际的生产生活中有着重要的应用，虽然该算法理解起来较为复杂，但是记住其求解形式，遇到此类问题直接仿照使用即可。</p>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        <div> 
+  
+    <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div> 
+   
+</div>
+
+
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/07/algorithm%20union%20find/" rel="next" title="并查集(Union Find)">
+                <i class="fa fa-chevron-left"></i> 并查集(Union Find)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/12/library%20Sklearn/" rel="prev" title="Scikit-Learn">
+                Scikit-Learn <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "1",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      },
+      "slide": {
+        "bdImg": "5",
+        "bdPos": "left",
+        "bdTop": "100"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/github.jpeg"
+                alt="USTCcoder" />
+            
+              <p class="site-author-name" itemprop="name">USTCcoder</p>
+              <p class="site-description motion-element" itemprop="description">身体和灵魂总有一个在路上</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+                <a href="/archives">
+                  <span class="site-state-item-count">392</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">79</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/USTCcoder" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/5754061944" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  </span>
+                
+            </div>
+          
+
+  <div id="music163player"> 
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=436675656&auto=0&height=32"></iframe>
+  </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度搜索" target="_blank">百度搜索</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.ustc.edu.cn/" title="中国科学技术大学" target="_blank">中国科学技术大学</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">原理介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80"><span class="nav-number">2.</span> <span class="nav-text">算法基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92%E6%A0%87%E5%87%86%E5%9E%8B"><span class="nav-number">2.1.</span> <span class="nav-text">线性规划标准型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92%E6%A0%87%E5%87%86%E5%9E%8B%E8%BD%AC%E5%8C%96%E6%96%B9%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">线性规划标准型转化方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E7%BA%AF%E8%A1%8C%E7%AE%97%E6%B3%95"><span class="nav-number">2.3.</span> <span class="nav-text">单纯行算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E4%BC%98%E8%A7%A3%E7%9A%84%E5%88%A4%E5%88%AB"><span class="nav-number">2.4.</span> <span class="nav-text">最优解的判别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E6%AD%A5%E9%AA%A4"><span class="nav-number">3.</span> <span class="nav-text">算法步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E5%88%9D%E5%A7%8B%E5%8D%95%E7%BA%AF%E5%BD%A2%E8%A1%A8"><span class="nav-number">3.1.</span> <span class="nav-text">建立初始单纯形表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AE%E5%8D%95%E7%BA%AF%E5%BD%A2%E8%A1%A8%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E5%BE%97%E5%88%B0%E6%9C%80%E4%BC%98%E8%A7%A3"><span class="nav-number">3.2.</span> <span class="nav-text">根据单纯形表判断是否得到最优解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E5%85%A5%E5%9F%BA%E5%8F%98%E9%87%8F"><span class="nav-number">3.3.</span> <span class="nav-text">选择入基变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E7%A6%BB%E5%9F%BA%E5%8F%98%E9%87%8F"><span class="nav-number">3.4.</span> <span class="nav-text">选择离基变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8D%A2%E5%9F%BA%E5%8F%98%E6%8D%A2"><span class="nav-number">3.5.</span> <span class="nav-text">换基变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%96%B0%E7%9A%84%E5%8D%95%E7%BA%AF%E5%BD%A2%E8%A1%A8"><span class="nav-number">3.6.</span> <span class="nav-text">计算新的单纯形表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E4%BE%8B%E9%A2%98-%E6%9C%80%E5%A4%A7%E5%88%A9%E6%B6%A6"><span class="nav-number">4.</span> <span class="nav-text">经典例题(最大利润)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="nav-number">4.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90"><span class="nav-number">4.2.</span> <span class="nav-text">问题分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%88%98"><span class="nav-number">4.3.</span> <span class="nav-text">python代码实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C"><span class="nav-number">4.4.</span> <span class="nav-text">代码运行结果</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">算法总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+
+      
+
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-star"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">USTCcoder</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由USTCcoder强力驱动</div>
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+-->
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数<i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量<i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '37HNVv1wwpKB3vg0A6yqm9TB-gzGzoHsz',
+        appKey: 'kGYPNb5xWnFV2pcjCPAREbkg',
+        placeholder: '给主人一点鼓励吧( ⊙ o ⊙ )',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: ,
+    el: 'wpac-rating',
+    color: 'fc79533'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+
+<!-- 动态可交互背景（js引入）
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+ <script>
+ $("body").backstretch("/images/github_logo.jpeg");
+  </script>
+-->
+</body>
+</html>
+<!-- 页面点击小红心 
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+-->
