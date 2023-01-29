@@ -132,14 +132,14 @@
 
 <meta name="description" content="单例模式(Singleton)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设计模式—单例模式(Singleton)">
+<meta property="og:title" content="单例模式(Singleton)">
 <meta property="og:url" content="https://ustccoder.github.io/2021/09/25/design_patter_singleton/index.html">
 <meta property="og:site_name" content="GitHub">
 <meta property="og:description" content="单例模式(Singleton)">
 <meta property="og:locale">
 <meta property="og:image" content="https://ustccoder.github.io/images/design_pattern/singleton.png">
 <meta property="article:published_time" content="2021-09-25T11:07:28.000Z">
-<meta property="article:modified_time" content="2021-10-03T16:04:56.000Z">
+<meta property="article:modified_time" content="2023-01-22T04:18:10.659Z">
 <meta property="article:author" content="USTCcoder">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://ustccoder.github.io/images/design_pattern/singleton.png">
@@ -178,7 +178,7 @@
 
 
 
-  <title>设计模式—单例模式(Singleton) | GitHub</title>
+  <title>单例模式(Singleton) | GitHub</title>
   
 
 
@@ -362,7 +362,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">设计模式—单例模式(Singleton)</h1>
+          <h1 class="post-title" itemprop="name headline">单例模式(Singleton)</h1>
         
 
         <div class="post-meta">
@@ -399,17 +399,6 @@
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index">
                     <span itemprop="name">设计模式</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index">
-                    <span itemprop="name">单例模式</span>
                   </a>
                 </span>
 
@@ -456,7 +445,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.7k
+                  1.9k
                 </span>
               
 
@@ -472,7 +461,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  6
+                  7
                 </span>
               
             </div>
@@ -512,13 +501,13 @@
 <p>优点：</p>
 <ul>
 <li>写法简单，代码容易理解</li>
-<li>在类装载的时候完成实例化，避免线程同步的问题</li>
+<li>在类加载的时候完成实例化，让JVM保证线程的同步问题</li>
 </ul>
 <p>缺点：</p>
 <ul>
-<li>在类装载的时候完成实例化，如果没有用到这个实例，则会导致内存浪费</li>
+<li>在类加载的时候完成实例化，如果没有用到这个实例，则会导致内存浪费</li>
 </ul>
-<p><strong>在实际的开发中，可以使用这种方法</strong></p>
+<p><strong>在实际的开发中，如果内存占用较小，可以使用这种方法</strong></p>
 <h2 id="静态代码块饿汉式"><a href="#静态代码块饿汉式" class="headerlink" title="静态代码块饿汉式"></a>静态代码块饿汉式</h2><p>和静态常量饿汉式相似，只不过将静态变量的赋值放在静态代码块中</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance；</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line">         instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -538,8 +527,9 @@
 </ul>
 <p>缺点：</p>
 <ul>
-<li>只能在单线程下使用，在多线程下，如果一个线程进入了if(singleton == null)的语句中，另一个线程也通过了这个语句，此时就会产生多个实例。<strong>因此在实际的开发中，不能使用这种方法</strong></li>
+<li>只能在单线程下使用，在多线程下，如果一个线程通过if(singleton == null)的判断，另一个线程也通过了这个语句，此时就会产生多个实例。</li>
 </ul>
+<p><strong>在实际的开发中，不能使用这种方法</strong></p>
 <h2 id="线程安全懒汉式"><a href="#线程安全懒汉式" class="headerlink" title="线程安全懒汉式"></a>线程安全懒汉式</h2><p>使用同步方法，保证同时只允许一个线程进入getInstance方法。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">            instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -549,16 +539,19 @@
 </ul>
 <p>缺点：</p>
 <ul>
-<li>效率较低，每个线程执行getInstance方法都要进行同步，而实例化只运行了一次。<strong>因此在实际的开发中，不推荐使用这种方法</strong></li>
+<li>效率较低，每次执行getInstance方法都要进行加锁。</li>
 </ul>
+<p><strong>在实际的开发中，不推荐使用这种方法</strong></p>
 <h2 id="同步代码块懒汉式"><a href="#同步代码块懒汉式" class="headerlink" title="同步代码块懒汉式"></a>同步代码块懒汉式</h2><p>在if(instance == null)中添加同步代码块</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (Singleton.class) &#123;</span><br><span class="line">                instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>和线程不安全懒汉式一样，如果一个线程进入了if(singleton == null)的语句中，另一个线程也通过了这个语句，此时就会产生多个实例，并没有起到线程安全的作用。<strong>因此在实际的开发中，不能使用这种方法</strong></p>
+<p>和线程不安全懒汉式一样，如果一个线程进入了if(singleton == null)的语句中，另一个线程也通过了这个语句，此时就会产生多个实例，并没有起到线程安全的作用。</p>
+<p><strong>在实际的开发中，不能使用这种方法</strong></p>
 <h2 id="双重检查懒汉式"><a href="#双重检查懒汉式" class="headerlink" title="双重检查懒汉式"></a>双重检查懒汉式</h2><h3 id="步骤-2"><a href="#步骤-2" class="headerlink" title="步骤"></a>步骤</h3><ul>
 <li>使用private static volatile 修饰静态Singleton对象</li>
 <li>在if(instance == null)代码块中添加同步代码块，并在同步代码块中再次检查if(instance == null)</li>
 </ul>
+<p>第一个判断的目的：防止每次调用都会加锁，只有为null的时候才要创建对象，此时才应该加锁<br>第二个判断的目的：防止多个线程都在等锁，第一个线程创建完毕释放锁后，后面的线程拿到锁继续创建对象</p>
 <p>这里出现了volatile修饰符，小伙伴们可能会觉得有些陌生。volatile的目的是保证Java代码的可见性和有序性。</p>
 <ul>
 <li>可见性：当用volatile修饰变量时，JVM会把该线程本地内存中的变量强制刷新到主内存中，并且这个操作会使其他线程中的变量缓存无效。</li>
@@ -568,6 +561,13 @@
 </ul>
 </li>
 </ul>
+<p>这里为什么要加入volatile修饰符呢？是因为instance = new Singleton();这一行可以分成三个步骤</p>
+<ol>
+<li>申请内存</li>
+<li>初始化对象</li>
+<li>将初始化的对象分配到内存中</li>
+</ol>
+<p>如果此时产生了重排序，可能会申请完内存后，还没有完成初始化就分配内存了。此时instance不为null，如果其他线程获取了这个instance，并去使用，就会导致使用一个未初始化完毕的对象，可能产生问题。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> Singleton instance;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (Singleton.class) &#123;</span><br><span class="line">                <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>优点：</p>
@@ -579,8 +579,8 @@
 <p><strong>在实际的开发中，推荐使用这种方法</strong></p>
 <h2 id="静态内部类懒汉式"><a href="#静态内部类懒汉式" class="headerlink" title="静态内部类懒汉式"></a>静态内部类懒汉式</h2><p>静态内部类的特点：</p>
 <ul>
-<li>当外部类被装载时，静态内部类不会被装载</li>
-<li>当静态内部类装载时，仅会装载一次，且线程是安全的</li>
+<li>当外部类被加载时，静态内部类不会被加载</li>
+<li>当静态内部类加载时，仅会加载一次，且线程是安全的</li>
 </ul>
 <h3 id="步骤-3"><a href="#步骤-3" class="headerlink" title="步骤"></a>步骤</h3><ul>
 <li>创建静态内部类，在静态内部类中创建Singleton实例</li>
@@ -590,8 +590,8 @@
 
 <p>优点：</p>
 <ul>
-<li>采用类装载机制保证初始化实例时只有一个线程，保证线程安全</li>
-<li>静态内部类在Singleton被装载时不会立即实例化，不会产生内存浪费</li>
+<li>采用类加载机制保证初始化实例时只有一个线程，保证线程安全</li>
+<li>静态内部类在Singleton被加载时不会立即实例化，不会产生内存浪费</li>
 </ul>
 <p><strong>在实际的开发中，推荐使用这种方法</strong></p>
 <h2 id="枚举饿汉式"><a href="#枚举饿汉式" class="headerlink" title="枚举饿汉式"></a>枚举饿汉式</h2><p>枚举方式有些奇怪，不符合我们的正常认知，但仍然是满足需要的一种方式</p>
@@ -599,12 +599,12 @@
 <p>优点：</p>
 <ul>
 <li>写法简单，代码容易理解</li>
-<li>在枚举类装载时完成实例化，避免线程同步问题</li>
-<li>能够防止反序列化重写创建对象</li>
+<li>在枚举类加载时完成实例化，避免线程同步问题</li>
+<li>最安全，能够防止反射、反序列化重写创建对象</li>
 </ul>
 <p>缺点：</p>
 <ul>
-<li>因为是饿汉式加载机制，因此可能会导致内存浪费</li>
+<li>因为枚举的成员都是静态的，因此是饿汉式加载机制，可能会导致内存浪费</li>
 </ul>
 <p><strong>在实际的开发中，推荐使用这种方法</strong></p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a><font size=5 color=red>总结</font></h1><p>&emsp;&emsp;单例模式保证了系统内存中该类仅存在一个对象，节省系统资源，避免频繁创建和销毁对象，提高系统性能。是最简单也是经常使用的一种设计模式，虽然这里介绍了八种方法创建单例模式，但是小伙伴们要仔细阅读其优缺点，可能有一些方法无法真正做到单例或者是实际开发中不推荐使用的方法，这是我们需要牢记的。</p>
@@ -656,8 +656,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2021/09/20/design_pattern_summary/" rel="next" title="设计模式—概述(Summary)">
-                <i class="fa fa-chevron-left"></i> 设计模式—概述(Summary)
+              <a href="/2021/09/20/design_pattern_summary/" rel="next" title="概述(Summary)">
+                <i class="fa fa-chevron-left"></i> 概述(Summary)
               </a>
             
           </div>
@@ -666,8 +666,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2021/09/30/design_patter_simple_factory/" rel="prev" title="设计模式—简单工厂模式(Simple Factory)">
-                设计模式—简单工厂模式(Simple Factory) <i class="fa fa-chevron-right"></i>
+              <a href="/2021/09/30/design_patter_simple_factory/" rel="prev" title="简单工厂模式(Simple Factory)">
+                简单工厂模式(Simple Factory) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -779,7 +779,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">392</span>
+                  <span class="site-state-item-count">410</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -790,7 +790,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">79</span>
+                  <span class="site-state-item-count">68</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -891,7 +891,7 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-star"></i>
   </span>

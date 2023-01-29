@@ -142,7 +142,7 @@
 <meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/spectral9.png">
 <meta property="og:image" content="https://ustccoder.github.io/images/MACHINE/spectral.png">
 <meta property="article:published_time" content="2019-05-11T10:52:21.000Z">
-<meta property="article:modified_time" content="2020-05-09T10:20:46.000Z">
+<meta property="article:modified_time" content="2023-01-29T14:29:31.234Z">
 <meta property="article:author" content="USTCcoder">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://ustccoder.github.io/images/MACHINE/spectral2.png">
@@ -459,7 +459,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.8k
+                  1.9k
                 </span>
               
 
@@ -515,7 +515,9 @@
 <p>&emsp;&emsp;<font size=4>4. 求标准化拉普拉斯矩阵</font><br>$$L_{sym}=D^{-1/2}LD^{-1/2}=D^{-1/2}(D-W)D^{-1/2}$$</p>
 <p>&emsp;&emsp;<font size=4>5. 取前K个特征值对应的特征向量</font></p>
 <p>&emsp;&emsp;<font size=4>6. 用K-Means对归一化的特征向量进行分类</font></p>
-<p>&emsp;&emsp;<font size=4>7. 一个便于理解的实例</font><br><img src="/images/MACHINE/spectral2.png" alt="SPECTRAL"><br>$$x=\begin{bmatrix} 0.7 &amp; 0.8 &amp; 0.1 &amp; 0.4 &amp; 0.2 &amp; 0.5 &amp; 0.6 \\ 0.5 &amp; 0.6 &amp; 0.1 &amp; 0.8 &amp; 0.2 &amp; 0.8 &amp; 0.7 \end{bmatrix}$$<br><br></br><br>$$w=\begin{bmatrix} 0 &amp; 0.990 &amp; 0.771 &amp; 0.914 &amp; 0.844 &amp; 0.937 &amp; 0.975 \\ 0.990 &amp; 0 &amp; 0.691 &amp; 0.905 &amp; 0.771 &amp; 0.937 &amp; 0.975 \\ 0.771 &amp; 0.691 &amp; 0 &amp; 0.748 &amp; 0.990 &amp; 0.723 &amp; 0.737 \\ 0.914 &amp; 0.905 &amp; 0.748 &amp; 0 &amp; 0.819 &amp; 0.995 &amp; 0.975 \\ 0.844 &amp; 0.771 &amp; 0.990 &amp; 0.819 &amp; 0 &amp; 0.799 &amp; 0.815 \\ 0.937 &amp; 0.937 &amp; 0.723 &amp; 0.995 &amp; 0.799 &amp; 0 &amp; 0.990 \\ 0.975 &amp; 0.975 &amp; 0.737 &amp; 0.975 &amp; 0.815 &amp; 0.990 &amp; 0 \end{bmatrix}$$<br><br></br><br>$$d=\begin{bmatrix} 5.43 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 5.27 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 4.66 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 5.36 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 5.04 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 5.38 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 5.47 \end{bmatrix}$$<br><br></br><br>$$L_{sym}=\begin{bmatrix} 1 &amp; -0.185 &amp; -0.153 &amp; -0.169 &amp; -0.161 &amp; -0.173 &amp; -0.179 \\ -0.185 &amp; 1 &amp; -0.139 &amp; -0.170 &amp; -0.150 &amp; -0.176 &amp; -0.182 \\ -0.153 &amp; -0.139 &amp; 1 &amp; -0.150 &amp; -0.204 &amp; -0.144 &amp; -0.146 \\ -0.169 &amp; -0.170 &amp; -0.150 &amp; 1 &amp; -0.158 &amp; -0.185 &amp; -0.180 \\ -0.161 &amp; -0.150 &amp; -0.204 &amp; -0.158 &amp; 1 &amp; -0.153 &amp; -0.155 \\ -0.173 &amp; -0.176 &amp; -0.144 &amp; -0.185 &amp; -0.153 &amp; 1 &amp; -0.183 \\ -0.179 &amp; -0.182 &amp; -0.146 &amp; -0.180 &amp; -0.155 &amp; -0.183 &amp; 1 \end{bmatrix}$$<br><br></br><br>$$feat_value=\begin{bmatrix} 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 1.080 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1.159 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1.205 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1.183 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1.187 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1.186 \end{bmatrix}$$<br><br></br><br>$$feat_vector=\begin{bmatrix} -0.385 &amp; -0.141 &amp; 0.535 &amp; -0.004 &amp; 0.371 &amp; 0.534 &amp; -0.349 \\  -0.379 &amp; -0.302 &amp; 0.470 &amp; -0.040 &amp; 0.042 &amp; -0.691 &amp; 0.249 \\  -0.357 &amp; 0.642 &amp; -0.005 &amp; -0.675 &amp; -0.031 &amp; -0.033 &amp; 0.051 \\  -0.383 &amp; -0.178 &amp; -0.575 &amp; -0.004 &amp; 0.246 &amp; -0.299 &amp; -0.584 \\  -0.371 &amp; 0.558 &amp; 0.010 &amp; 0.736 &amp; -0.036 &amp; -0.053 &amp; 0.070 \\  -0.383 &amp; -0.261 &amp; -0.400 &amp; -0.019 &amp; 0.264 &amp; 0.314 &amp; 0.676 \\  -0.387 &amp; -0.256 &amp; -0.034 &amp; -0.017 &amp; -0.853 &amp; 0.213 &amp; -0.104 \end{bmatrix}$$<br>&emsp;&emsp;<font size=4>取最小的两个特征值对应的特征向量可得：</font><br>$$feature_vector=\begin{bmatrix} -0.385 &amp; -0.141 \\  -0.379 &amp; -0.302 \\  -0.357 &amp; 0.642 \\  -0.383 &amp; -0.178 \\  -0.371 &amp; 0.558 \\  -0.383 &amp; -0.261 \\  -0.387 &amp; -0.256 \end{bmatrix}$$<br>&emsp;&emsp;<font size=4>特征向量按行归一化：</font><br>$$feature_vector=\begin{bmatrix} -0.939 &amp; -0.344 \\ -0.782 &amp; -0.623 \\ -0.486 &amp; 0.874 \\ -0.907 &amp; -0.422 \\ -0.553 &amp; 0.833 \\ -0.827 &amp; -0.563 \\ -0.834 &amp; -0.552 \end{bmatrix}$$<br>&emsp;&emsp;<font size=4>可以明显看出：${x_1,x_2,x_4,x_6,x_7} \in A_1\ ,\ {x_3,x_5} \in A_2$</font><br><img src="/images/MACHINE/spectral3.png" alt="SPECTRAL"></p>
+<p>&emsp;&emsp;<font size=4>7. 一个便于理解的实例</font><br><img src="/images/MACHINE/spectral2.png" alt="SPECTRAL"><br>$$x=\begin{bmatrix} 0.7 &amp; 0.8 &amp; 0.1 &amp; 0.4 &amp; 0.2 &amp; 0.5 &amp; 0.6 \\ 0.5 &amp; 0.6 &amp; 0.1 &amp; 0.8 &amp; 0.2 &amp; 0.8 &amp; 0.7 \end{bmatrix}$$<br><br></br><br>$$w=\begin{bmatrix} 0 &amp; 0.990 &amp; 0.771 &amp; 0.914 &amp; 0.844 &amp; 0.937 &amp; 0.975 \\ 0.990 &amp; 0 &amp; 0.691 &amp; 0.905 &amp; 0.771 &amp; 0.937 &amp; 0.975 \\ 0.771 &amp; 0.691 &amp; 0 &amp; 0.748 &amp; 0.990 &amp; 0.723 &amp; 0.737 \\ 0.914 &amp; 0.905 &amp; 0.748 &amp; 0 &amp; 0.819 &amp; 0.995 &amp; 0.975 \\ 0.844 &amp; 0.771 &amp; 0.990 &amp; 0.819 &amp; 0 &amp; 0.799 &amp; 0.815 \\ 0.937 &amp; 0.937 &amp; 0.723 &amp; 0.995 &amp; 0.799 &amp; 0 &amp; 0.990 \\ 0.975 &amp; 0.975 &amp; 0.737 &amp; 0.975 &amp; 0.815 &amp; 0.990 &amp; 0 \end{bmatrix}$$<br><br></br><br>$$d=\begin{bmatrix} 5.43 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 5.27 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 4.66 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 5.36 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 5.04 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 5.38 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 5.47 \end{bmatrix}$$<br><br></br><br>$$L_{sym}=\begin{bmatrix} 1 &amp; -0.185 &amp; -0.153 &amp; -0.169 &amp; -0.161 &amp; -0.173 &amp; -0.179 \\ -0.185 &amp; 1 &amp; -0.139 &amp; -0.170 &amp; -0.150 &amp; -0.176 &amp; -0.182 \\ -0.153 &amp; -0.139 &amp; 1 &amp; -0.150 &amp; -0.204 &amp; -0.144 &amp; -0.146 \\ -0.169 &amp; -0.170 &amp; -0.150 &amp; 1 &amp; -0.158 &amp; -0.185 &amp; -0.180 \\ -0.161 &amp; -0.150 &amp; -0.204 &amp; -0.158 &amp; 1 &amp; -0.153 &amp; -0.155 \\ -0.173 &amp; -0.176 &amp; -0.144 &amp; -0.185 &amp; -0.153 &amp; 1 &amp; -0.183 \\ -0.179 &amp; -0.182 &amp; -0.146 &amp; -0.180 &amp; -0.155 &amp; -0.183 &amp; 1 \end{bmatrix}$$<br><br></br><br>$$feature\_value=\begin{bmatrix} 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 1.080 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1.159 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1.205 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1.183 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1.187 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1.186 \end{bmatrix}$$<br><br></br><br>$$feature\_vector=\begin{bmatrix} -0.385 &amp; -0.141 &amp; 0.535 &amp; -0.004 &amp; 0.371 &amp; 0.534 &amp; -0.349 \\  -0.379 &amp; -0.302 &amp; 0.470 &amp; -0.040 &amp; 0.042 &amp; -0.691 &amp; 0.249 \\  -0.357 &amp; 0.642 &amp; -0.005 &amp; -0.675 &amp; -0.031 &amp; -0.033 &amp; 0.051 \\  -0.383 &amp; -0.178 &amp; -0.575 &amp; -0.004 &amp; 0.246 &amp; -0.299 &amp; -0.584 \\  -0.371 &amp; 0.558 &amp; 0.010 &amp; 0.736 &amp; -0.036 &amp; -0.053 &amp; 0.070 \\  -0.383 &amp; -0.261 &amp; -0.400 &amp; -0.019 &amp; 0.264 &amp; 0.314 &amp; 0.676 \\  -0.387 &amp; -0.256 &amp; -0.034 &amp; -0.017 &amp; -0.853 &amp; 0.213 &amp; -0.104 \end{bmatrix}$$<br>&emsp;&emsp;<font size=4>取最小的两个特征值对应的特征向量可得：</font><br>$$feature\_vector=\begin{bmatrix} -0.385 &amp; -0.141 \\  -0.379 &amp; -0.302 \\  -0.357 &amp; 0.642 \\  -0.383 &amp; -0.178 \\  -0.371 &amp; 0.558 \\  -0.383 &amp; -0.261 \\  -0.387 &amp; -0.256 \end{bmatrix}$$<br>&emsp;&emsp;<font size=4>特征向量按行归一化：</font><br>$$feature\_vector=\begin{bmatrix} -0.939 &amp; -0.344 \\ -0.782 &amp; -0.623 \\ -0.486 &amp; 0.874 \\ -0.907 &amp; -0.422 \\ -0.553 &amp; 0.833 \\ -0.827 &amp; -0.563 \\ -0.834 &amp; -0.552 \end{bmatrix}$$</p>
+<p>&emsp;&emsp;<font size=4>此时7个点变成了7个行向量，从第二维可以明显看出：${x_1,x_2,x_4,x_6,x_7} \in A_1\ ,\ {x_3,x_5} \in A_2$</font></p>
+<p>在本例中，点的坐标是二维的，提取特征后也是二维的，给大家的感觉是不如直接使用K-Means，但是如果输入特征是n维，就可以看出差异了。<br><img src="/images/MACHINE/spectral3.png" alt="SPECTRAL"></p>
 <h1 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a><font size=5 color=red>算法流程</font></h1><p><img src="/images/MACHINE/spectral9.png" alt="SPECTRAL"></p>
 <p><br></br></p>
 <h1 id="代码实战"><a href="#代码实战" class="headerlink" title="代码实战"></a><font size=5 color=red>代码实战</font></h1><p><font size=4>代码中所用数据集可以查看相关文档，<a href="https://ustccoder.github.io/2019/04/25/clustering_Dataset/">数据集(Data Set)</a></font></p>
@@ -714,7 +716,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">392</span>
+                  <span class="site-state-item-count">410</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -725,7 +727,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">79</span>
+                  <span class="site-state-item-count">68</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -826,7 +828,7 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-star"></i>
   </span>
