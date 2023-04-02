@@ -342,7 +342,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2019/05/25/optimization_NM/">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2019/08/08/algorithm%20linear%20programming/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="USTCcoder">
@@ -361,7 +361,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/05/25/optimization_NM/" itemprop="url">单纯形法(Nelder-Mead)</a></h1>
+                <a class="post-title-link" href="/2019/08/08/algorithm%20linear%20programming/" itemprop="url">线性规划(Linear Programming)</a></h1>
         
 
         <div class="post-meta">
@@ -373,8 +373,1728 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-25T19:33:42+08:00">
-                2019-05-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-08T20:09:25+08:00">
+                2019-08-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构和算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E9%83%A8%E5%88%86/" itemprop="url" rel="index">
+                    <span itemprop="name">算法部分</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/08/algorithm%20linear%20programming/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/08/algorithm%20linear%20programming/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.7k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Linear Programming</center></font></td></tr></table>
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+	  
+          <div class="out-img-topic">
+            <img src=/images/ALGORITHM/line.jpg class="img-topic" />
+          </div>
+          
+        <p><strong><font size=5 color=gray><center>线性规划</center></font></strong></p>
+<h1 id="原理介绍"><a href="#原理介绍" class="headerlink" title="原理介绍"></a><font size=5 color=red>原理介绍</font></h1><p>&emsp;&emsp; <strong>Linear Programming:线性规划</strong>，是<strong>运筹学</strong>中的一个重要分支，<strong>研究线性约束条件下线性目标函数的极值问题</strong>的数学理论和方法，能从各种限制条件的组合中，选择出最为合理的计算方法，建立线性规划模型，从而求得最佳结果。广泛应用于军事作战、经济分析、经营管理和工程技术等方面。为合理地利用有限的人力、物力、财力等资源作出的<strong>最优决策</strong>，提供科学的依据。</p>   
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/08/08/algorithm%20linear%20programming/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2019/08/07/algorithm%20union%20find/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="USTCcoder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/github.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GitHub">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/07/algorithm%20union%20find/" itemprop="url">并查集(Union Find)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-07T14:30:18+08:00">
+                2019-08-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构和算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E9%83%A8%E5%88%86/" itemprop="url" rel="index">
+                    <span itemprop="name">算法部分</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/07/algorithm%20union%20find/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/07/algorithm%20union%20find/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  950
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Union Find</center></font></td></tr></table>
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+	  
+          <div class="out-img-topic">
+            <img src=/images/ALGORITHM/union.jpg class="img-topic" />
+          </div>
+          
+        <p><strong><font size=5 color=gray><center>并查集</center></font></strong></p>
+<h1 id="原理介绍"><a href="#原理介绍" class="headerlink" title="原理介绍"></a><font size=5 color=red>原理介绍</font></h1><p>&emsp;&emsp; <strong>Union Find:并查集</strong>，是一种<strong>树型</strong>的数据结构，用于处理一些<strong>不相交集合的合并及查询</strong>问题。在一些有N个元素的集合应用问题中，我们通常是在开始时让每个元素构成一个单元素的集合，然后按一定顺序将属于<strong>同一组</strong>的元素所在的<strong>集合合并</strong>。</p>   
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/08/07/algorithm%20union%20find/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2019/08/02/algorithm%20bit%20operation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="USTCcoder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/github.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GitHub">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/02/algorithm%20bit%20operation/" itemprop="url">位运算(Bit Operation)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-02T20:18:25+08:00">
+                2019-08-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构和算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E9%83%A8%E5%88%86/" itemprop="url" rel="index">
+                    <span itemprop="name">算法部分</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/02/algorithm%20bit%20operation/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/02/algorithm%20bit%20operation/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Bit Operation</center></font></td></tr></table>
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+	  
+          <div class="out-img-topic">
+            <img src=/images/ALGORITHM/bit.jpg class="img-topic" />
+          </div>
+          
+        <p><strong><font size=5 color=gray><center>位运算</center></font></strong></p>
+<h1 id="原理介绍"><a href="#原理介绍" class="headerlink" title="原理介绍"></a><font size=5 color=red>原理介绍</font></h1><p>&emsp;&emsp; <strong>Bit Operation:位运算</strong>，程序中的所有数在计算机内存中都是以<strong>二进制的形式储存</strong>的，位运算就是直接对整数在内存中的二进制位进行操作，所以运算速度相对较快。位运算主要包括**按位与(&amp;)<strong>、</strong>按位或(|)<strong>、</strong>按位异或(^)<strong>、</strong>取反(<del>)<strong>、</strong>左移(&lt;&lt;)**、**右移(&gt;&gt;)**这几种，其中除了取反(</del>)以外，其他的都是二目运算符，即要求运算符左右两侧均有一个运算量。</p>   
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/08/02/algorithm%20bit%20operation/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2019/07/31/algorithm%20BFS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="USTCcoder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/github.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GitHub">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/31/algorithm%20BFS/" itemprop="url">广度优先搜索(Breadth-First-Search)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-31T20:38:40+08:00">
+                2019-07-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构和算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E9%83%A8%E5%88%86/" itemprop="url" rel="index">
+                    <span itemprop="name">算法部分</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/31/algorithm%20BFS/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/31/algorithm%20BFS/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Breadth-First-Search</center></font></td></tr></table>
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+	  
+          <div class="out-img-topic">
+            <img src=/images/ALGORITHM/bfs.jpg class="img-topic" />
+          </div>
+          
+        <p><strong><font size=5 color=gray><center>Breadth-First-Search</center></font></strong></p>
+<h1 id="原理介绍"><a href="#原理介绍" class="headerlink" title="原理介绍"></a><font size=5 color=red>原理介绍</font></h1><p>&emsp;&emsp; <strong>Breadth-First-Search(BFS):深度优先搜索</strong>，属于<strong>图算法</strong>的一种，是一种盲目搜寻法，目的是系统地<strong>展开并检查图中的所有节点</strong>，以找寻结果。在树搜索算法中，从上到下为纵，从左向右为横，纵向搜索为深度优先，而横向搜索是广度优先。简言之就是<strong>先访问图的顶点</strong>，然后<strong>优先访问其邻接点</strong>，然后再依次<strong>进行被访问点的邻接点</strong>，<strong>一层一层</strong>访问，直至访问完所有点，遍历结束，通常根据<strong>队列的先进先出</strong>性质将各结点遍历。</p>   
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/31/algorithm%20BFS/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2019/07/27/algorithm%20DFS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="USTCcoder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/github.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GitHub">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/27/algorithm%20DFS/" itemprop="url">深度优先搜索(Depth-First-Search)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-27T20:13:40+08:00">
+                2019-07-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构和算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E9%83%A8%E5%88%86/" itemprop="url" rel="index">
+                    <span itemprop="name">算法部分</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/27/algorithm%20DFS/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/27/algorithm%20DFS/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.9k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Depth-First-Search</center></font></td></tr></table>
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+	  
+          <div class="out-img-topic">
+            <img src=/images/ALGORITHM/dfs.jpg class="img-topic" />
+          </div>
+          
+        <p><strong><font size=5 color=gray><center>Depth-First-Search</center></font></strong></p>
+<h1 id="原理介绍"><a href="#原理介绍" class="headerlink" title="原理介绍"></a><font size=5 color=red>原理介绍</font></h1><p>&emsp;&emsp; <strong>Depth-First-Search(DFS):深度优先搜索</strong>，属于<strong>图算法</strong>的一种，是一种盲目搜寻法，从<strong>初始状态出发</strong>，当搜索到某一步时，发现原先选择并不是最优或达不到目标，就<strong>退回一步重新选择</strong>。根据产生子节点的条件约束，搜索问题的最优解。因此又名<strong>回溯法</strong>，是一种<strong>能进则进，进不了则换，换不了则退</strong>的搜索方法。</p>   
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/27/algorithm%20DFS/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2019/07/25/algorithm%20Dynamic_Programming/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="USTCcoder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/github.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GitHub">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/25/algorithm%20Dynamic_Programming/" itemprop="url">动态规划(Dynamic Programming)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-25T19:38:40+08:00">
+                2019-07-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构和算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E9%83%A8%E5%88%86/" itemprop="url" rel="index">
+                    <span itemprop="name">算法部分</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/25/algorithm%20Dynamic_Programming/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/25/algorithm%20Dynamic_Programming/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Dynamic Programming</center></font></td></tr></table>
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+	  
+          <div class="out-img-topic">
+            <img src=/images/ALGORITHM/dynamic.png class="img-topic" />
+          </div>
+          
+        <p><strong><font size=5 color=gray><center>动态规划</center></font></strong></p>
+<h1 id="原理介绍"><a href="#原理介绍" class="headerlink" title="原理介绍"></a><font size=5 color=red>原理介绍</font></h1><p>&emsp;&emsp; <strong>Dynamic Programming(DP):动态规划</strong>，是运筹学的一个分支，是求解决策过程最优化的数学方法。于1957年被Richard Bellman(理查德·贝尔曼)提出。其中的Programming不是编程的意思，而是指一种表格处理法，把每一步得到的子问题的结果<strong>存储在表格</strong>里，每次遇到子问题时不需要再求解一遍。其本质也是一种分治算法，其不同点在于分治算法将原问题分解为若干子问题，自顶向下求解各子问题，再合并子问题的解。动态规划也是把原问题分解为若干子问题，然后<strong>自底向上</strong>，先求解最小的子问题，把结果存储起来，求解大问题时直接查询小问题的解，<strong>避免了大量的重复计算</strong>，提高了算法效率。<strong>其本质为：递归+记忆化</strong></p>   
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/25/algorithm%20Dynamic_Programming/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2019/07/21/algorithm%20divide_and_conquer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="USTCcoder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/github.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GitHub">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/21/algorithm%20divide_and_conquer/" itemprop="url">分治算法(Divide and Conquer)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-21T19:38:40+08:00">
+                2019-07-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构和算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E9%83%A8%E5%88%86/" itemprop="url" rel="index">
+                    <span itemprop="name">算法部分</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/21/algorithm%20divide_and_conquer/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/21/algorithm%20divide_and_conquer/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Divide and Conquer</center></font></td></tr></table>
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+	  
+          <div class="out-img-topic">
+            <img src=/images/ALGORITHM/divide.jpg class="img-topic" />
+          </div>
+          
+        <p><strong><font size=5 color=gray><center>分治算法</center></font></strong></p>
+<h1 id="原理介绍"><a href="#原理介绍" class="headerlink" title="原理介绍"></a><font size=5 color=red>原理介绍</font></h1><p>&emsp;&emsp; <strong>Divide and Conquer:分治算法</strong>，分而治之。山高皇帝远，治理国家，不可能所有的事情都由皇帝解决，国家分省、市、县、镇、村，层层管理，最终汇总合并到皇帝。借鉴于这种思想，将一个规模为n的问题<strong>分解</strong>为k个规模较小的子问题，这些子问题<strong>互相独立</strong>且<strong>与原问题相同</strong>（如果子问题的规模仍然不够小，则再继续划分），然后<strong>递归求解</strong>这些问题，最好用适当的方法将各子问题的解<strong>合并</strong>成原问题的解。</p>   
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/21/algorithm%20divide_and_conquer/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2019/07/19/algorithm%20greedy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="USTCcoder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/github.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GitHub">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/19/algorithm%20greedy/" itemprop="url">贪心算法(Greedy)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-19T19:29:40+08:00">
+                2019-07-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构和算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E9%83%A8%E5%88%86/" itemprop="url" rel="index">
+                    <span itemprop="name">算法部分</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/19/algorithm%20greedy/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/19/algorithm%20greedy/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Greedy</center></font></td></tr></table>
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+	  
+          <div class="out-img-topic">
+            <img src=/images/ALGORITHM/greedy.jpg class="img-topic" />
+          </div>
+          
+        <p><strong><font size=5 color=gray><center>贪心算法</center></font></strong></p>
+<h1 id="原理介绍"><a href="#原理介绍" class="headerlink" title="原理介绍"></a><font size=5 color=red>原理介绍</font></h1><p>&emsp;&emsp; <strong>Greedy:贪心算法</strong>，又称贪婪算法，人要活在当下，看清楚眼前，这种思想就是贪心思想。是指在对问题求解时，总是做出<strong>当前最好</strong>的选择，不从整体最优上加以考虑。也就是说，它期望通过<strong>局部最优选择</strong>从而得到全局最优的解决方案。</p>   
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/19/algorithm%20greedy/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2019/07/12/classfication%20MLP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="USTCcoder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/github.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GitHub">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/12/classfication%20MLP/" itemprop="url">MLP(Multi-Layer Perceptron)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-12T09:25:16+08:00">
+                2019-07-12
               </time>
             
 
@@ -407,8 +2127,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%85%A8%E5%B1%80%E6%90%9C%E7%B4%A2%E6%96%B9%E6%B3%95/" itemprop="url" rel="index">
-                    <span itemprop="name">全局搜索方法</span>
+                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">有监督学习</span>
                   </a>
                 </span>
 
@@ -425,8 +2145,219 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/05/25/optimization_NM/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/25/optimization_NM/" itemprop="commentCount"></span>
+                <a href="/2019/07/12/classfication%20MLP/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/12/classfication%20MLP/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>MLP(Multi-Layer Perceptron)</center></font></td></tr></table>
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+	  
+        <p><img src="/images/MACHINE/mlp.png" alt="mlp"></p>
+<h1 id="原理解读"><a href="#原理解读" class="headerlink" title="原理解读"></a><font size=5 color=red>原理解读</font></h1><p>&emsp;&emsp;<strong>MLP(Multi-Layer Perceptron)</strong>:多层感知机**本质上是一种全连接的深度神经网络(DNN)**，感知机只有一层功能神经元进行学习和训练，其能力非常有限，难以解决非线性可分的问题。为了解决这个问题，需要考虑使用多层神经元进行学习。</p>   
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/12/classfication%20MLP/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2019/07/02/classification%20LR/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="USTCcoder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/github.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GitHub">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/02/classification%20LR/" itemprop="url">逻辑回归(Logistics Regression)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-02T13:25:30+08:00">
+                2019-07-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">有监督学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/02/classification%20LR/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/02/classification%20LR/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -474,7 +2405,7 @@
 
           
               <div class="post-description">
-                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Nelder-Mead</center></font></td></tr></table>
+                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>逻辑回归(Logistics Regression)</center></font></td></tr></table>
               </div>
           
 
@@ -494,1950 +2425,15 @@
         
 	  
           <div class="out-img-topic">
-            <img src=/images/OPTIMIZATION/nm.png class="img-topic" />
+            <img src=/images/MACHINE/lr.jpg class="img-topic" />
           </div>
           
-        <p><strong><font size=5 color=gray><center>单纯形法</center></font></strong></p>
-<h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a><font size=5 color=red>背景介绍</font></h1><p>&emsp;&emsp;Nelder-Mead:单纯形法秉承<strong>保证每一次迭代比前一次更优</strong>的基本思想，先找出一个基本可行解，看是否是最优解，若不是，则按照一定法则转换到另一改进后<strong>更优的基本可行解</strong>，再鉴别，若仍不是，则再转换，按此重复进行。因基本可行解的个数有限，故经<strong>有限次转换必能得出问题的最优解</strong>。</p>   
+        <p><img src="/images/MACHINE/lr.jpg" alt="lr"></p>
+<h1 id="原理解读"><a href="#原理解读" class="headerlink" title="原理解读"></a><font size=5 color=red>原理解读</font></h1><p>&emsp;&emsp;逻辑回归(Logistics Regression):是一种<strong>广义线性回归</strong>，都具有 w’x+b，其中w和b是待求参数，其区别在于他们的<strong>因变量不同</strong>，多重线性回归直接将w’x+b作为因变量，即y =w’x+b，而logistic回归则通过函数g将w’x+b对应一个隐状态p，p =g(w’x+b),然后<strong>根据p 与1-p的大小决定因变量的值</strong>。如果g是logistic函数，就是logistic回归。</p>   
 
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/05/25/optimization_NM/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2019/05/24/optimization_PSO/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="USTCcoder">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/github.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GitHub">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/24/optimization_PSO/" itemprop="url">粒子群算法(PSO)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-24T21:14:15+08:00">
-                2019-05-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%85%A8%E5%B1%80%E6%90%9C%E7%B4%A2%E6%96%B9%E6%B3%95/" itemprop="url" rel="index">
-                    <span itemprop="name">全局搜索方法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/05/24/optimization_PSO/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/24/optimization_PSO/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                  <span class="post-meta-divider">|</span>
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  979
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-              <div class="post-description">
-                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>PSO</center></font></td></tr></table>
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-	  
-          <div class="out-img-topic">
-            <img src=/images/OPTIMIZATION/pso.png class="img-topic" />
-          </div>
-          
-        <p><strong><font size=5 color=gray><center>粒子群算法</center></font></strong></p>
-<h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a><font size=5 color=red>背景介绍</font></h1><p>&emsp;&emsp;PSO(Particle Swarm Optimization):受到飞鸟集群活动的规律性启发，进而利用群体智能建立的一个简化模型。粒子群算法在对动物集群活动行为观察基础上，利用群体中的个体对信息的<strong>共享</strong>使整个群体的运动在问题求解空间中产生<strong>从无序到有序</strong>的演化过程，从而获得最优解。</p>   
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/05/24/optimization_PSO/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2019/05/23/optimization_ACO/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="USTCcoder">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/github.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GitHub">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/23/optimization_ACO/" itemprop="url">蚁群算法(ACO)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-23T20:17:47+08:00">
-                2019-05-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%85%A8%E5%B1%80%E6%90%9C%E7%B4%A2%E6%96%B9%E6%B3%95/" itemprop="url" rel="index">
-                    <span itemprop="name">全局搜索方法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/05/23/optimization_ACO/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/23/optimization_ACO/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                  <span class="post-meta-divider">|</span>
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-              <div class="post-description">
-                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>ACO</center></font></td></tr></table>
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-	  
-          <div class="out-img-topic">
-            <img src=/images/OPTIMIZATION/aco.png class="img-topic" />
-          </div>
-          
-        <p><strong><font size=5 color=gray><center>蚁群算法</center></font></strong></p>
-<h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a><font size=5 color=red>背景介绍</font></h1><p>&emsp;&emsp;ACO(ant colony optimization):研究蚂蚁觅食的过程中，发现单个蚂蚁的行为比较简单，但是蚁群整体却可以体现一些智能的行为。例如蚁群可以在不同的环境下，寻找最短到达食物源的路径。蚂蚁会在其经过的路径上释放一种可以称之为<strong>信息素</strong>的物质，蚁群内的蚂蚁对信息素具有感知能力，它们会<strong>沿着信息素浓度较高路径行走</strong>，而每只路过的蚂蚁都会在路上留下信息素，形成一种类似<strong>正反馈</strong>的机制。</p>   
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/05/23/optimization_ACO/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2019/05/22/optimization_IA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="USTCcoder">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/github.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GitHub">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/22/optimization_IA/" itemprop="url">免疫算法(IA)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-22T18:29:47+08:00">
-                2019-05-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%85%A8%E5%B1%80%E6%90%9C%E7%B4%A2%E6%96%B9%E6%B3%95/" itemprop="url" rel="index">
-                    <span itemprop="name">全局搜索方法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/05/22/optimization_IA/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/22/optimization_IA/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                  <span class="post-meta-divider">|</span>
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.2k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  6
-                </span>
-              
-            </div>
-          
-
-          
-              <div class="post-description">
-                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>IA</center></font></td></tr></table>
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-	  
-          <div class="out-img-topic">
-            <img src=/images/OPTIMIZATION/ia.png class="img-topic" />
-          </div>
-          
-        <p><strong><font size=5 color=gray><center>测试函数说明</center></font></strong></p>
-<h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a><font size=5 color=red>背景介绍</font></h1><p>&emsp;&emsp;IA(Immune Algorithm):免疫算法基于<strong>生物免疫系统</strong>的基本机制，模仿了人体的免疫系统，解决了遗传算法的<strong>早熟收敛</strong>问题。因为免疫系统具有<strong>辨识记忆</strong>的特点，所以可以更快识别群体，面对待求解问题时，相当于面对各种抗原，可以提前<strong>注射疫苗</strong>抑制退化问题，从而更加保持优胜劣汰的特点。</p>   
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/05/22/optimization_IA/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2019/05/21/optimization_GA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="USTCcoder">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/github.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GitHub">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/21/optimization_GA/" itemprop="url">遗传算法(GA)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-21T17:59:45+08:00">
-                2019-05-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%85%A8%E5%B1%80%E6%90%9C%E7%B4%A2%E6%96%B9%E6%B3%95/" itemprop="url" rel="index">
-                    <span itemprop="name">全局搜索方法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/05/21/optimization_GA/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/21/optimization_GA/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                  <span class="post-meta-divider">|</span>
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.2k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  5
-                </span>
-              
-            </div>
-          
-
-          
-              <div class="post-description">
-                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>GA</center></font></td></tr></table>
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-	  
-          <div class="out-img-topic">
-            <img src=/images/OPTIMIZATION/ga.png class="img-topic" />
-          </div>
-          
-        <p><strong><font size=5 color=gray><center>遗传算法</center></font></strong></p>
-<h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a><font size=5 color=red>背景介绍</font></h1><p>&emsp;&emsp;GA(Genetic Algorithm):是模拟达尔文生物进化论的<strong>自然选择</strong>和<strong>遗传学机理</strong>的生物进化过程的计算模型，不需要确定的规则就能自动获取和指导优化的搜索空间，<strong>自适应</strong>地调整搜索方向，是一种通过模拟自然进化过程搜索最优解的方法。   
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/05/21/optimization_GA/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2019/05/20/optimization_SA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="USTCcoder">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/github.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GitHub">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/20/optimization_SA/" itemprop="url">模拟退火算法(SA)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-20T20:12:20+08:00">
-                2019-05-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%85%A8%E5%B1%80%E6%90%9C%E7%B4%A2%E6%96%B9%E6%B3%95/" itemprop="url" rel="index">
-                    <span itemprop="name">全局搜索方法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/05/20/optimization_SA/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/20/optimization_SA/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                  <span class="post-meta-divider">|</span>
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  847
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-              <div class="post-description">
-                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>SA</center></font></td></tr></table>
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-	  
-          <div class="out-img-topic">
-            <img src=/images/OPTIMIZATION/sa.png class="img-topic" />
-          </div>
-          
-        <p><strong><font size=5 color=gray><center>模拟退火算法</center></font></strong></p>
-<h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a><font size=5 color=red>背景介绍</font></h1><p>&emsp;&emsp;SA(Simulate Anneal):是一种基于<strong>Mentcarlo迭代求解法</strong>的一种启发式随机搜索方法，基于物理中固体物质的退火过程与一般组合优化问题之间的相似性，通过<strong>模拟退火过程</strong>，用来在一个大的搜寻空间内找寻命题的最优解（或近似最优解）。</p>   
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/05/20/optimization_SA/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2019/05/19/optimization_Testfunction/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="USTCcoder">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/github.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GitHub">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/19/optimization_Testfunction/" itemprop="url">测试函数(Test Function)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-19T19:29:40+08:00">
-                2019-05-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%85%A8%E5%B1%80%E6%90%9C%E7%B4%A2%E6%96%B9%E6%B3%95/" itemprop="url" rel="index">
-                    <span itemprop="name">全局搜索方法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/05/19/optimization_Testfunction/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/19/optimization_Testfunction/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                  <span class="post-meta-divider">|</span>
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  381
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-              <div class="post-description">
-                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Test Function</center></font></td></tr></table>
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-	  
-          <div class="out-img-topic">
-            <img src=/images/OPTIMIZATION/test_function.jpg class="img-topic" />
-          </div>
-          
-        <p><strong><font size=5 color=gray><center>测试函数说明</center></font></strong></p>
-<h1 id="原理介绍"><a href="#原理介绍" class="headerlink" title="原理介绍"></a><font size=5 color=red>原理介绍</font></h1><p>&emsp;&emsp;Test Function:对于全局最优解来说，测试函数的选择是<strong>至关重要</strong>的，测试函数的好坏往往可以体现出<strong>搜索算法的优劣</strong>。有时性能一般的算法在某个特定的函数下发挥的很好，但是在别的函数下就很难搜索到全局最优解。因此我们需要设计各种测试函数，从<strong>搜索效率，搜索精度，适应程度</strong>多个方面综合比较各个算法，只有这样，在今后的使用中才能得心应手。</p>   
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/05/19/optimization_Testfunction/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2019/05/17/clustering_compare/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="USTCcoder">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/github.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GitHub">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/17/clustering_compare/" itemprop="url">聚类算法比较(Clustering Algorithms Comparison)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-17T22:20:18+08:00">
-                2019-05-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%97%A0%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">无监督学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/05/17/clustering_compare/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/17/clustering_compare/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                  <span class="post-meta-divider">|</span>
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.3k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-              <div class="post-description">
-                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Clustering Algorithms Comparison</center></font></td></tr></table>
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-	  
-          <div class="out-img-topic">
-            <img src=/images/MACHINE/compare5.png class="img-topic" />
-          </div>
-          
-        <p><strong><font size=5 color=gray><center>聚类算法比较</center></font></strong></p>
-<h1 id="无监督学习"><a href="#无监督学习" class="headerlink" title="无监督学习"></a><font size=5 color=red>无监督学习</font></h1><p>&emsp;&emsp;现实生活中常常会<strong>缺乏足够的先验知识</strong>，因此<strong>难以人工标注类别或进行人工类别标注的成本太高</strong>。很自然地，我们希望计算机能代我们完成这些工作，或至少提供一些帮助。根据<strong>类别未知(没有被标记)<strong>的训练样本解决模式识别中的各种问题，称之为</strong>无监督学习</strong>。</p>   
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/05/17/clustering_compare/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2019/05/12/clustering_GMM/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="USTCcoder">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/github.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GitHub">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/12/clustering_GMM/" itemprop="url">高斯混合模型聚类(GMM)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-12T20:05:27+08:00">
-                2019-05-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%97%A0%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">无监督学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/05/12/clustering_GMM/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/12/clustering_GMM/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                  <span class="post-meta-divider">|</span>
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.1k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-              <div class="post-description">
-                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>GMM</center></font></td></tr></table>
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-	  
-          <div class="out-img-topic">
-            <img src=/images/MACHINE/gmm5.png class="img-topic" />
-          </div>
-          
-        <p><strong><font size=5 color=gray><center>高斯混合模型聚类方法</center></font></strong></p>
-<h1 id="原理解读"><a href="#原理解读" class="headerlink" title="原理解读"></a><font size=5 color=red>原理解读</font></h1><p>&emsp;&emsp;GMM(Gaussian Mixture Model,):是一个将事物分解为若干的基于<strong>高斯概率密度函数（正态分布曲线）</strong>形成的模型，混合高斯分布( MoG )由多个混合成分组成，每一个混合成分对应一个高斯分布。当聚类问题中<strong>各个类别的尺寸不同</strong>、聚类间<strong>有相关关系</strong>的时候，往往使用 MoG 更合适。   
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/05/12/clustering_GMM/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2019/05/11/clustering_SPECTRAL/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="USTCcoder">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/github.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GitHub">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/11/clustering_SPECTRAL/" itemprop="url">谱聚类(Spectral Clustering)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-11T18:52:21+08:00">
-                2019-05-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%97%A0%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">无监督学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/05/11/clustering_SPECTRAL/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/11/clustering_SPECTRAL/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                  <span class="post-meta-divider">|</span>
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.9k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  9
-                </span>
-              
-            </div>
-          
-
-          
-              <div class="post-description">
-                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Spectral Clustering</center></font></td></tr></table>
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-	  
-          <div class="out-img-topic">
-            <img src=/images/MACHINE/spectral1.png class="img-topic" />
-          </div>
-          
-        <p><strong><font size=5 color=gray><center>谱聚类方法</center></font></strong></p>
-<h1 id="原理解读"><a href="#原理解读" class="headerlink" title="原理解读"></a><font size=5 color=red>原理解读</font></h1><p>&emsp;&emsp;Spectral Clustering:是一种基于<strong>图论</strong>的聚类算法，第一步是<strong>构图</strong>：将数据集中的每个对象看做空间中的点V，将这些点之用边E连接起来，距离较远的两个点之间的边权重值较低、距离较近的两个点之间的边权重值较高，这样就构成了一个<strong>基于相似度的无向权重图G(V,E)<strong>。第二步是</strong>切图</strong>：按照一定的切边规则将图切分为不同的子图，规则是使子图内的边权重和尽可能大，不同子图间的边权重和尽可能小，从而达到聚类目的。</p>   
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/05/11/clustering_SPECTRAL/" rel="contents">
+            <a class="btn" href="/2019/07/02/classification%20LR/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2483,7 +2479,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/39/">&lt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/39/">39</a><span class="page-number current">40</span><a class="page-number" href="/page/41/">41</a><a class="extend next" rel="next" href="/page/41/">&gt;</a>
+    <a class="extend prev" rel="prev" href="/page/39/">&lt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/39/">39</a><span class="page-number current">40</span><a class="page-number" href="/page/41/">41</a><span class="space">&hellip;</span><a class="page-number" href="/page/43/">43</a><a class="extend next" rel="next" href="/page/41/">&gt;</a>
   </nav>
 
 
@@ -2533,7 +2529,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">410</span>
+                  <span class="site-state-item-count">426</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2544,7 +2540,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">68</span>
+                  <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

@@ -342,7 +342,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/05/15/program%20Leetcode837/">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/06/04/generative_adversarial%20LSGAN/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="USTCcoder">
@@ -361,7 +361,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/05/15/program%20Leetcode837/" itemprop="url">新21点(Leetcode 837)</a></h1>
+                <a class="post-title-link" href="/2020/06/04/generative_adversarial%20LSGAN/" itemprop="url">LSGAN</a></h1>
         
 
         <div class="post-meta">
@@ -373,8 +373,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-15T14:03:13+08:00">
-                2020-05-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-04T17:03:33+08:00">
+                2020-06-04
               </time>
             
 
@@ -396,8 +396,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index">
-                    <span itemprop="name">刷题记录</span>
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
                   </a>
                 </span>
 
@@ -407,30 +407,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/" itemprop="url" rel="index">
-                    <span itemprop="name">深度优先搜索</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" itemprop="url" rel="index">
-                    <span itemprop="name">动态规划</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/" itemprop="url" rel="index">
-                    <span itemprop="name">广度优先搜索</span>
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E7%94%9F%E6%88%90%E5%BC%8F%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index">
+                    <span itemprop="name">生成式对抗网络</span>
                   </a>
                 </span>
 
@@ -447,8 +425,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/05/15/program%20Leetcode837/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/15/program%20Leetcode837/" itemprop="commentCount"></span>
+                <a href="/2020/06/04/generative_adversarial%20LSGAN/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/06/04/generative_adversarial%20LSGAN/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -472,7 +450,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  736
+                  1.3k
                 </span>
               
 
@@ -488,7 +466,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  6
                 </span>
               
             </div>
@@ -496,7 +474,7 @@
 
           
               <div class="post-description">
-                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Leetcode 837</center></font></td></tr></table>
+                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>LSGAN</center></font></td></tr></table>
               </div>
           
 
@@ -515,12 +493,16 @@
       
         
 	  
-        <p><img src="/images/ALGORITHM/leetcode837.png" alt="1"></p>
-<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size=5 color=red>题目分析</font></h1><p>&emsp;&emsp; 这个题目看上去非常复杂，题目意思是每次获得牌的点数为1-W之间，大于等于K则不再要牌，否则继续要牌，如果手中牌的点数之和小于等于N则赢，求赢的概率。</p>   
+          <div class="out-img-topic">
+            <img src=/images/Generative_adversarial/lsgan.png class="img-topic" />
+          </div>
+          
+        <p><strong><font size=5 color=gray><center>LSGAN</center></font></strong></p>
+<h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a><font size=5 color=red>背景介绍</font></h1><p>&emsp;&emsp;<strong>LSGAN(Least Squares Generative Adversarial Networks, 最小二乘生成式对抗网络)</strong>:于<strong>2016年</strong>提出，<strong>分析了GAN网络中使用的交叉熵损失函数时可能会导致在饱和区收敛速度太慢，而且提出了一种新的最小二乘损失函数代替，构建了一个更加稳定，收敛更快，质量更高的生成式对抗网络</strong>。</p>   
 
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2020/05/15/program%20Leetcode837/" rel="contents">
+            <a class="btn" href="/2020/06/04/generative_adversarial%20LSGAN/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -575,7 +557,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/05/14/deep%20learning%20tensorboard/">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/06/03/generative_adversarial%20COGAN/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="USTCcoder">
@@ -594,7 +576,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/05/14/deep%20learning%20tensorboard/" itemprop="url">TensorBoard黑科技</a></h1>
+                <a class="post-title-link" href="/2020/06/03/generative_adversarial%20COGAN/" itemprop="url">COGAN</a></h1>
         
 
         <div class="post-meta">
@@ -606,8 +588,1298 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-14T20:39:39+08:00">
-                2020-05-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-03T13:13:51+08:00">
+                2020-06-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E7%94%9F%E6%88%90%E5%BC%8F%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index">
+                    <span itemprop="name">生成式对抗网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/06/03/generative_adversarial%20COGAN/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/06/03/generative_adversarial%20COGAN/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.9k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>COGAN</center></font></td></tr></table>
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+	  
+          <div class="out-img-topic">
+            <img src=/images/Generative_adversarial/cogan.png class="img-topic" />
+          </div>
+          
+        <p><strong><font size=5 color=gray><center>COGAN</center></font></strong></p>
+<h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a><font size=5 color=red>背景介绍</font></h1><p>&emsp;&emsp;<strong>COGAN(Coupled Generative Adversarial Networks, 耦合生成式对抗网络)</strong>:于<strong>2016年</strong>发表在<strong>NIPS</strong>上，只有两个以上模型才能称之为耦合，因此COGAN中存在两个生成模型和两个判别模型，而且共用某些网络层，实现耦合效果。</p>   
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/06/03/generative_adversarial%20COGAN/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/06/01/generative_adversarial%20ACGAN/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="USTCcoder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/github.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GitHub">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/01/generative_adversarial%20ACGAN/" itemprop="url">ACGAN</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-01T15:36:50+08:00">
+                2020-06-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E7%94%9F%E6%88%90%E5%BC%8F%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index">
+                    <span itemprop="name">生成式对抗网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/06/01/generative_adversarial%20ACGAN/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/06/01/generative_adversarial%20ACGAN/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.6k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>ACGAN</center></font></td></tr></table>
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+	  
+          <div class="out-img-topic">
+            <img src=/images/Generative_adversarial/acgan.png class="img-topic" />
+          </div>
+          
+        <p><strong><font size=5 color=gray><center>ACGAN</center></font></strong></p>
+<h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a><font size=5 color=red>背景介绍</font></h1><p>&emsp;&emsp;<strong>ACGAN(Auxiliary Classifier Generative Adversarial Networks, 辅助分类器生成式对抗网络)</strong>:于<strong>2016年</strong>提出，是CGAN类型网络的升级版本，<strong>引入了Embedding层对类别标签进行处理，而且增加了类别分类网络</strong>，因此称之为辅助分类器生成式对抗网络。</p>   
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/06/01/generative_adversarial%20ACGAN/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/05/31/generative_adversarial%20CGAN/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="USTCcoder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/github.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GitHub">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/31/generative_adversarial%20CGAN/" itemprop="url">CGAN</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-31T16:51:11+08:00">
+                2020-05-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E7%94%9F%E6%88%90%E5%BC%8F%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index">
+                    <span itemprop="name">生成式对抗网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/05/31/generative_adversarial%20CGAN/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/31/generative_adversarial%20CGAN/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>CGAN</center></font></td></tr></table>
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+	  
+          <div class="out-img-topic">
+            <img src=/images/Generative_adversarial/cgan.png class="img-topic" />
+          </div>
+          
+        <p><strong><font size=5 color=gray><center>CGAN</center></font></strong></p>
+<h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a><font size=5 color=red>背景介绍</font></h1><p>&emsp;&emsp;<strong>CGAN(Conditional Generative Adversarial Networks, 条件生成式对抗网络)</strong>:于<strong>2014年</strong>提出，<strong>引入标签变量，可以通过控制其标签变量的值，产生不同类别的图像</strong>，其网络结构和GAN基本类似，只是多了一些条件变量的处理。</p>   
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/05/31/generative_adversarial%20CGAN/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/05/29/generative_adversarial%20DCGAN/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="USTCcoder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/github.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GitHub">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/29/generative_adversarial%20DCGAN/" itemprop="url">DCGAN</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-29T09:11:34+08:00">
+                2020-05-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E7%94%9F%E6%88%90%E5%BC%8F%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index">
+                    <span itemprop="name">生成式对抗网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/05/29/generative_adversarial%20DCGAN/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/29/generative_adversarial%20DCGAN/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>DCGAN</center></font></td></tr></table>
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+	  
+          <div class="out-img-topic">
+            <img src=/images/Generative_adversarial/dcgan.png class="img-topic" />
+          </div>
+          
+        <p><strong><font size=5 color=gray><center>DCGAN</center></font></strong></p>
+<h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a><font size=5 color=red>背景介绍</font></h1><p>&emsp;&emsp;<strong>DCGAN(Deep Convolutional Generative Adversarial Networks, 深度卷积生成式对抗网络):<strong>于</strong>2016年</strong>发表于ICLR，是GAN类型网络的升级版本，其中改变的只是<strong>将GAN中的全连接层变为卷积层和上采样层，这样可以使用更少的参数实现更大像素图像的生成</strong>。</p>   
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/05/29/generative_adversarial%20DCGAN/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/05/27/generative_adversarial%20GAN/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="USTCcoder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/github.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GitHub">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/27/generative_adversarial%20GAN/" itemprop="url">GAN</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-27T22:48:56+08:00">
+                2020-05-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E7%94%9F%E6%88%90%E5%BC%8F%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index">
+                    <span itemprop="name">生成式对抗网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/05/27/generative_adversarial%20GAN/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/27/generative_adversarial%20GAN/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>GAN</center></font></td></tr></table>
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+	  
+          <div class="out-img-topic">
+            <img src=/images/Generative_adversarial/gan.png class="img-topic" />
+          </div>
+          
+        <p><strong><font size=5 color=gray><center>GAN</center></font></strong></p>
+<h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a><font size=5 color=red>背景介绍</font></h1><p>&emsp;&emsp;<strong>GAN(Generative Adversarial Networks, 生成式对抗网络):<strong>是GAN类型网络的初代版本，</strong>据说是Ian Goodfellow在2014年喝了一杯啤酒之后，在梦中产生的想法</strong>，我不禁感叹，大佬就是大佬啊，虽然现在这是最简单的生成式对抗网络模型，其效果也被很多模型超越，但是它的思想值得我们学习。</p>   
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/05/27/generative_adversarial%20GAN/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/05/25/generative_adversarial%20Dataset/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="USTCcoder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/github.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GitHub">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/25/generative_adversarial%20Dataset/" itemprop="url">生成式对抗网络数据集</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-25T15:41:43+08:00">
+                2020-05-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E7%94%9F%E6%88%90%E5%BC%8F%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index">
+                    <span itemprop="name">生成式对抗网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/05/25/generative_adversarial%20Dataset/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/25/generative_adversarial%20Dataset/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Data Set</center></font></td></tr></table>
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+	  
+          <div class="out-img-topic">
+            <img src=/images/Generative_adversarial/Dataset.png class="img-topic" />
+          </div>
+          
+        <p><strong><font size=5 color=gray><center>Data Set</center></font></strong></p>
+<h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a><font size=5 color=red>背景介绍</font></h1><p>&emsp;&emsp;<strong>Generative Adversarial Networks(GAN, 生成式对抗网络):<strong>是一类深度学习模型，也是计算机视觉的</strong>新晋成员</strong>，由<strong>Ian J. Goodfellow在2014年10月</strong>提出，<strong>短短5年多的时间，已经有成百上千种不同的GAN网络被提出，可以说GAN的提出受到了广泛的关注</strong>。现在的GAN不仅仅只是生成网络，而其应用更是越来越广泛，包括<strong>图像生成</strong>，<strong>超分辨率提升</strong>，<strong>风格迁移</strong>等等。而且GAN的使用非常有趣，可以带领我们目睹从0到1的变化趋势。</p>   
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/05/25/generative_adversarial%20Dataset/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/05/24/deep%20learning%20entropy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="USTCcoder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/github.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GitHub">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/24/deep%20learning%20entropy/" itemprop="url">熵，交叉熵，相对熵的关系</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-24T16:22:32+08:00">
+                2020-05-24
               </time>
             
 
@@ -658,8 +1930,438 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/05/14/deep%20learning%20tensorboard/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/14/deep%20learning%20tensorboard/" itemprop="commentCount"></span>
+                <a href="/2020/05/24/deep%20learning%20entropy/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/24/deep%20learning%20entropy/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.6k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Entropy & Cross Entropy & Relative Entropy</center></font></td></tr></table>
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+	  
+          <div class="out-img-topic">
+            <img src=/images/deep_learning/entropy.png class="img-topic" />
+          </div>
+          
+        <p><strong><font size=5 color=gray><center>Entropy &amp; Cross Entropy &amp; Relative Entropy</center></font></strong></p>
+<h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a><font size=5 color=red>背景介绍</font></h1><p>&emsp;&emsp;<strong>Entropy, Cross Entropy, Relative Entropy(熵，交叉熵，相对熵)</strong>:在机器学习或者深度学习的过程中，避免不了与熵接触，但是熵是什么，小伙伴们是否有很多问号？感觉是那么回事，但是又无法说清楚。</p>   
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/05/24/deep%20learning%20entropy/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/05/23/deep%20learning%20regularization/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="USTCcoder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/github.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GitHub">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/23/deep%20learning%20regularization/" itemprop="url">Regularization黑科技</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-23T12:26:23+08:00">
+                2020-05-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/" itemprop="url" rel="index">
+                    <span itemprop="name">常用技巧</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/05/23/deep%20learning%20regularization/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/23/deep%20learning%20regularization/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Regularization</center></font></td></tr></table>
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+	  
+          <div class="out-img-topic">
+            <img src=/images/deep_learning/regularization.png class="img-topic" />
+          </div>
+          
+        <p><strong><font size=5 color=gray><center>Regularization</center></font></strong></p>
+<h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a><font size=5 color=red>背景介绍</font></h1><p>&emsp;&emsp;<strong>Regularization(正则化)</strong>:简单的说就是<strong>减小测试误差的行为</strong>，我们在构建深度学习模型时，最终目的是为了让模型更好的面对测试数据，而不是训练数据。但是<strong>网络在学习的过程中很容易就出现了Overfitting(过拟合)<strong>，这就导致</strong>模型的泛化能力下降</strong>，所以需要<strong>引入一些正则化的方法，降低模型的复杂度</strong>。</p>   
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/05/23/deep%20learning%20regularization/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/05/22/deep%20learning%20train_evaluate_predict/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="USTCcoder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/github.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GitHub">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/22/deep%20learning%20train_evaluate_predict/" itemprop="url">TensorFlow训练，验证，预测的三种方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-22T21:19:10+08:00">
+                2020-05-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/" itemprop="url" rel="index">
+                    <span itemprop="name">常用技巧</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/05/22/deep%20learning%20train_evaluate_predict/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/22/deep%20learning%20train_evaluate_predict/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -707,7 +2409,7 @@
 
           
               <div class="post-description">
-                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>TensorBoard</center></font></td></tr></table>
+                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Train & Evaluate & Predict</center></font></td></tr></table>
               </div>
           
 
@@ -727,1734 +2429,15 @@
         
 	  
           <div class="out-img-topic">
-            <img src=/images/deep_learning/tensorboard.png class="img-topic" />
+            <img src=/images/deep_learning/train.png class="img-topic" />
           </div>
           
-        <p><strong><font size=5 color=gray><center>TensorBoard</center></font></strong></p>
-<h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a><font size=5 color=red>背景介绍</font></h1><p>&emsp;&emsp;<strong>TensorBoard</strong>:是一个<strong>可视化工具</strong>，它可以用来<strong>展示网络流图，损失函数，评价函数等等随epoch的变化过程</strong>，其工作原理是，<strong>程序给磁盘的某个目录写数据，然后监听器就可以监听到这个目录的变化，打开Web浏览器就可以从监听器中获得数据，完成实时的数据更新</strong>。今天给小伙伴们介绍TensorBoard的两种使用方法，希望小伙伴们可以认真学习，动手尝试。</p>   
+        <p><strong><font size=5 color=gray><center>Train &amp; Evaluate &amp; Predict</center></font></strong></p>
+<h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a><font size=5 color=red>背景介绍</font></h1><p>&emsp;&emsp;<strong>Train, Evaluate, Predict(训练，验证，预测)</strong>:<strong>是深度学习中的基础内容，想要完成一个深度学习工程问题，训练，验证，预测是必不可少的环节</strong>，今天以LeNet-5模型为例，给入门的小伙伴们提供TensorFlow中三种常用的训练，验证，预测方法。</p>   
 
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2020/05/14/deep%20learning%20tensorboard/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/05/13/deep%20learning%20data_augmentation/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="USTCcoder">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/github.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GitHub">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/05/13/deep%20learning%20data_augmentation/" itemprop="url">Data Augmentation(数据增强)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-13T21:23:26+08:00">
-                2020-05-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">深度学习</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/" itemprop="url" rel="index">
-                    <span itemprop="name">常用技巧</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/05/13/deep%20learning%20data_augmentation/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/13/deep%20learning%20data_augmentation/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                  <span class="post-meta-divider">|</span>
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  3.2k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  16
-                </span>
-              
-            </div>
-          
-
-          
-              <div class="post-description">
-                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Data Augmentation</center></font></td></tr></table>
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-	  
-          <div class="out-img-topic">
-            <img src=/images/deep_learning/data.png class="img-topic" />
-          </div>
-          
-        <p><strong><font size=5 color=gray><center>Data Augmentation</center></font></strong></p>
-<h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a><font size=5 color=red>背景介绍</font></h1><p>&emsp;&emsp;<strong>Data Augmentation(数据增强)</strong>:在深度学习工程实践中，必不可少的是数据集，但是如果<strong>自己采集数据集，非常的耗时，而且数量往往不够</strong>。这时需要一定的<strong>数据增强</strong>操作，来扩充自己的数据集<strong>使网络更加鲁棒</strong>。今天给小伙伴们盘点常用的数据增强操作。</p>   
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/05/13/deep%20learning%20data_augmentation/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/05/12/deep%20learning%20metrics/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="USTCcoder">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/github.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GitHub">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/05/12/deep%20learning%20metrics/" itemprop="url">Metrics黑科技</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-12T10:46:07+08:00">
-                2020-05-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">深度学习</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/" itemprop="url" rel="index">
-                    <span itemprop="name">常用技巧</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/05/12/deep%20learning%20metrics/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/12/deep%20learning%20metrics/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                  <span class="post-meta-divider">|</span>
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  3.4k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  12
-                </span>
-              
-            </div>
-          
-
-          
-              <div class="post-description">
-                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Metrics</center></font></td></tr></table>
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-	  
-          <div class="out-img-topic">
-            <img src=/images/deep_learning/confuse.png class="img-topic" />
-          </div>
-          
-        <p><strong><font size=5 color=gray><center>Metrics</center></font></strong></p>
-<h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a><font size=5 color=red>背景介绍</font></h1><p>&emsp;&emsp;<strong>Metrics(评价指标)</strong>:评价指标是<strong>检验神经网络模型好坏的评定依据</strong>，也是<strong>我们要达到的最终目标</strong>，指标越好则我们的任务完成的越好。有时我们需要<strong>根据评价指标修改我们的网络模型，参数</strong>等等，就类似于考试成绩一样，我们根据成绩检验自己薄弱的地方，然后去调整和修改，神经网络也是一样，只有建立好合适的评价指标，才能真正区分网络的优劣。今天给小伙伴们介绍深度学习中常用的评价指标。</p>   
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/05/12/deep%20learning%20metrics/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/05/11/deep%20learning%20learning_rate/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="USTCcoder">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/github.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GitHub">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/05/11/deep%20learning%20learning_rate/" itemprop="url">Learning Rate黑科技</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-11T07:22:13+08:00">
-                2020-05-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">深度学习</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/" itemprop="url" rel="index">
-                    <span itemprop="name">常用技巧</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/05/11/deep%20learning%20learning_rate/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/11/deep%20learning%20learning_rate/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                  <span class="post-meta-divider">|</span>
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.3k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  5
-                </span>
-              
-            </div>
-          
-
-          
-              <div class="post-description">
-                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Learning Rate</center></font></td></tr></table>
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-	  
-          <div class="out-img-topic">
-            <img src=/images/deep_learning/learning_rate.png class="img-topic" />
-          </div>
-          
-        <p><strong><font size=5 color=gray><center>Learning Rate</center></font></strong></p>
-<h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a><font size=5 color=red>背景介绍</font></h1><p>&emsp;&emsp;<strong>Learning Rate(学习率)</strong>:深度学习中有一个重要的参数为学习率，小伙伴们应该都知道，这是<strong>设置优化器时的一个必要参数</strong>，学习率<strong>指导我们在梯度下降的过程中，如何去使用损失函数的梯度调整网络的权重</strong>。因此对网络的影响是非常重要的。今天给小伙伴们盘点一下常用的学习率黑科技。</p>   
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/05/11/deep%20learning%20learning_rate/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/05/10/deep%20learning%20optimizer/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="USTCcoder">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/github.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GitHub">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/05/10/deep%20learning%20optimizer/" itemprop="url">Optimizer黑科技</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-10T15:37:36+08:00">
-                2020-05-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">深度学习</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/" itemprop="url" rel="index">
-                    <span itemprop="name">常用技巧</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/05/10/deep%20learning%20optimizer/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/10/deep%20learning%20optimizer/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                  <span class="post-meta-divider">|</span>
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  2.3k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  9
-                </span>
-              
-            </div>
-          
-
-          
-              <div class="post-description">
-                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Optimizer</center></font></td></tr></table>
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-	  
-          <div class="out-img-topic">
-            <img src=/images/deep_learning/opt3.webp class="img-topic" />
-          </div>
-          
-        <h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a><font size=5 color=red>背景介绍</font></h1><p>&emsp;&emsp;<strong>Optimizer(优化器)</strong>:在深度神经网络中，<strong>如果说到达Loss最小是我们的终点站，那么出行方式就是优化器，它给我们提供一种方法接近Loss最小的地方</strong>。打一个简单的比方，如果我要从安徽前往北京，北京就是我们的目标，相当于神经网络中的Loss函数，而我们选择的交通方式则是优化器，我可以选择长途汽车出行，也可以选择火车出行，也可以选择飞机出行。选择哪一种交通方式最为合适呢？这也需要根据实际问题确定，优化器也是这样，<strong>没有最好的优化器，只有最适合的优化器</strong>，这里我不写太多的公式，主要是聊一聊各个优化器的用法，特点和参数表达的意义。</p>   
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/05/10/deep%20learning%20optimizer/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/05/09/deep%20learning%20loss/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="USTCcoder">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/github.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GitHub">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/05/09/deep%20learning%20loss/" itemprop="url">Loss黑科技</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-09T18:30:17+08:00">
-                2020-05-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">深度学习</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/" itemprop="url" rel="index">
-                    <span itemprop="name">常用技巧</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/05/09/deep%20learning%20loss/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/09/deep%20learning%20loss/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                  <span class="post-meta-divider">|</span>
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  2.6k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  10
-                </span>
-              
-            </div>
-          
-
-          
-              <div class="post-description">
-                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Loss</center></font></td></tr></table>
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-	  
-          <div class="out-img-topic">
-            <img src=/images/deep_learning/loss.png class="img-topic" />
-          </div>
-          
-        <p><strong><font size=5 color=gray><center>Loss</center></font></strong></p>
-<h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a><font size=5 color=red>背景介绍</font></h1><p>&emsp;&emsp;<strong>Loss(损失函数)</strong>:在深度学习任务中，一个最重要的概念就是损失函数，这里不区分损失函数，代价函数和目标函数，这里指的就是神经网络中最终需要优化的函数。<strong>损失函数决定者参数更新的方向</strong>，神经网络的<strong>输出y_pred要和真实值y_true进行比较，使两者的距离越小越好，这个距离的度量就是损失函数</strong>。打一个简单的比方，损失函数对于神经网络来说就有如灯塔之于船只，可以指明前进的方向。<strong>神经网络的参数更新是根据损失函数来确定的</strong>，如果损失函数设置错误，则会产生巨大偏差，甚至南辕北辙的效果，在这篇博客中，我向大家介绍一些常用的损失函数。</p>   
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/05/09/deep%20learning%20loss/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/05/08/deep%20learning%20addition_vs_concatenate/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="USTCcoder">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/github.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GitHub">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/05/08/deep%20learning%20addition_vs_concatenate/" itemprop="url">Addition VS Concatenate</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-08T21:25:59+08:00">
-                2020-05-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">深度学习</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/" itemprop="url" rel="index">
-                    <span itemprop="name">常用技巧</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/05/08/deep%20learning%20addition_vs_concatenate/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/08/deep%20learning%20addition_vs_concatenate/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                  <span class="post-meta-divider">|</span>
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.1k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-              <div class="post-description">
-                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Addition VS Concatenate</center></font></td></tr></table>
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-	  
-          <div class="out-img-topic">
-            <img src=/images/deep_learning/addition.png class="img-topic" />
-          </div>
-          
-        <p><strong><font size=5 color=gray><center>Addition VS Concatenate</center></font></strong></p>
-<h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a><font size=5 color=red>背景介绍</font></h1><p>&emsp;&emsp;<strong>(Feature fusion)特征融合</strong>:VGG网络提出以后，给人们一种印象，深度学习越复杂，参数越多，会有越强的表达能力。但是在深度神经网络的研究过程中，发现<strong>到达一定深度后，一味地增加网络的深度并不能带来效果的提升，反而会导致网络收敛变慢</strong>。这时需要引入一些其他的方法既能提高网络的表达能力，也不会使网络收敛速度大大降低。两种特征融合方法**(Addition和Concatenate)**随着时代的发展产生了。相信小伙伴们也已经有所了解，在这里我系统的整理一下它们之间的区别。</p>   
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/05/08/deep%20learning%20addition_vs_concatenate/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/05/07/deep%20learning%20BN_VS_LN_VS_IN_VS_GN/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="USTCcoder">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/github.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GitHub">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/05/07/deep%20learning%20BN_VS_LN_VS_IN_VS_GN/" itemprop="url">Normalization黑科技</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-07T17:53:31+08:00">
-                2020-05-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">深度学习</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/" itemprop="url" rel="index">
-                    <span itemprop="name">常用技巧</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/05/07/deep%20learning%20BN_VS_LN_VS_IN_VS_GN/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/07/deep%20learning%20BN_VS_LN_VS_IN_VS_GN/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                  <span class="post-meta-divider">|</span>
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  3.1k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  13
-                </span>
-              
-            </div>
-          
-
-          
-              <div class="post-description">
-                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Normalization</center></font></td></tr></table>
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-	  
-          <div class="out-img-topic">
-            <img src=/images/deep_learning/normalization.png class="img-topic" />
-          </div>
-          
-        <p><strong><font size=5 color=gray><center>Normalization</center></font></strong></p>
-<h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a><font size=5 color=red>背景介绍</font></h1><p>&emsp;&emsp;<strong>Normalization(标准化)</strong>:深度神经网络模型训练困难，其中一个重要的现象就是<strong>ICS(Internal Covariate Shift，内部协变量偏移)<strong>，其中</strong>解决的方法就是Normalization</strong>，现在标准化成为深度学习<strong>必备神器</strong>，今天带小伙伴们看一看，瞧一瞧。</p>   
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/05/07/deep%20learning%20BN_VS_LN_VS_IN_VS_GN/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2020/05/06/deep%20learning%20upsampling/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="USTCcoder">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/github.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GitHub">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/05/06/deep%20learning%20upsampling/" itemprop="url">Upsampling黑科技</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-06T17:47:37+08:00">
-                2020-05-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">深度学习</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/" itemprop="url" rel="index">
-                    <span itemprop="name">常用技巧</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/05/06/deep%20learning%20upsampling/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/06/deep%20learning%20upsampling/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                  <span class="post-meta-divider">|</span>
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  635
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-              <div class="post-description">
-                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Upsampling</center></font></td></tr></table>
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-	  
-          <div class="out-img-topic">
-            <img src=/images/Semantic_segmentation/SegNet_U.png class="img-topic" />
-          </div>
-          
-        <p><strong><font size=5 color=gray><center>Upsampling</center></font></strong></p>
-<h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a><font size=5 color=red>背景介绍</font></h1><p>&emsp;&emsp;<strong>Upsampling(上采样)</strong>:简单的说就是放大图像，获得更大的分辨率，上采样对于卷积神经网络任务来说并不是必须的，但是在某些场合中却必须要使用，尤其是在<strong>语义分割</strong>任务中，如何选择上采样的方式可能决定着语义分割效果。可能小伙伴们对上采样不是很熟悉，但是对于下采样一定都不陌生，典型的下采样步骤就是池化。因此上采样也可被看作是<strong>池化的逆过程</strong>。</p>   
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/05/06/deep%20learning%20upsampling/" rel="contents">
+            <a class="btn" href="/2020/05/22/deep%20learning%20train_evaluate_predict/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2500,7 +2483,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/30/">&lt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><span class="page-number current">31</span><a class="page-number" href="/page/32/">32</a><span class="space">&hellip;</span><a class="page-number" href="/page/41/">41</a><a class="extend next" rel="next" href="/page/32/">&gt;</a>
+    <a class="extend prev" rel="prev" href="/page/30/">&lt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><span class="page-number current">31</span><a class="page-number" href="/page/32/">32</a><span class="space">&hellip;</span><a class="page-number" href="/page/43/">43</a><a class="extend next" rel="next" href="/page/32/">&gt;</a>
   </nav>
 
 
@@ -2550,7 +2533,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">410</span>
+                  <span class="site-state-item-count">426</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2561,7 +2544,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">68</span>
+                  <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

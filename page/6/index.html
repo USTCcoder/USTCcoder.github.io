@@ -342,7 +342,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2022/09/12/program%20Interview13/">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2022/10/20/program%20Leetcode85/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="USTCcoder">
@@ -361,7 +361,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2022/09/12/program%20Interview13/" itemprop="url">二维数组的逆序对(某大厂手撕面试题)</a></h1>
+                <a class="post-title-link" href="/2022/10/20/program%20Leetcode85/" itemprop="url">最大矩形(Leetcode 85)</a></h1>
         
 
         <div class="post-meta">
@@ -373,8 +373,452 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-09-12T22:24:03+08:00">
-                2022-09-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-10-20T00:18:27+08:00">
+                2022-10-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index">
+                    <span itemprop="name">刷题记录</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E6%95%B0%E7%BB%84/" itemprop="url" rel="index">
+                    <span itemprop="name">数组</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" itemprop="url" rel="index">
+                    <span itemprop="name">动态规划</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E5%8D%95%E8%B0%83%E6%A0%88-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" itemprop="url" rel="index">
+                    <span itemprop="name">单调栈/单调队列</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2022/10/20/program%20Leetcode85/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2022/10/20/program%20Leetcode85/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  615
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Leetcode 85</center></font></td></tr></table>
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+	  
+        <p><img src="/images/ALGORITHM/leetcode85png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size=5 color=red>题目分析</font></h1><p>&emsp;&emsp; 本题有一定的难度，但是难度不是很大，没有思路的小伙伴，给一些提示，参考<a href="https://ustccoder.github.io/2021/04/19/program%20Leetcode84/">柱状图中最大的矩形</a>的解法，然后试着写出本题。</p>   
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2022/10/20/program%20Leetcode85/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2022/10/19/program%20Leetcode827/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="USTCcoder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/github.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GitHub">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2022/10/19/program%20Leetcode827/" itemprop="url">最大人工岛(Leetcode 827)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-10-19T23:06:36+08:00">
+                2022-10-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index">
+                    <span itemprop="name">刷题记录</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E5%B9%B6%E6%9F%A5%E9%9B%86/" itemprop="url" rel="index">
+                    <span itemprop="name">并查集</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2022/10/19/program%20Leetcode827/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2022/10/19/program%20Leetcode827/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  737
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Leetcode 827</center></font></td></tr></table>
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+	  
+        <p><img src="/images/ALGORITHM/leetcode827.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size=5 color=red>题目分析</font></h1><p>&emsp;&emsp; 这种题目小伙伴们应该见过很多了，直接并查集的模板套用即可。小伙伴先看一下能否顺利写出并查集的模板。</p>   
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2022/10/19/program%20Leetcode827/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2022/10/17/program%20Leetcode2407/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="USTCcoder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/github.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GitHub">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2022/10/17/program%20Leetcode2407/" itemprop="url">最长递增子序列 II(Leetcode 2407)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-10-17T23:41:37+08:00">
+                2022-10-17
               </time>
             
 
@@ -414,6 +858,17 @@
 
                 
                 
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E7%BA%BF%E6%AE%B5%E6%A0%91/" itemprop="url" rel="index">
+                    <span itemprop="name">线段树</span>
+                  </a>
+                </span>
+
+                
+                
               
             </span>
           
@@ -425,8 +880,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2022/09/12/program%20Interview13/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2022/09/12/program%20Interview13/" itemprop="commentCount"></span>
+                <a href="/2022/10/17/program%20Leetcode2407/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2022/10/17/program%20Leetcode2407/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -450,7 +905,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  902
+                  1.2k
                 </span>
               
 
@@ -466,7 +921,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  5
                 </span>
               
             </div>
@@ -474,7 +929,7 @@
 
           
               <div class="post-description">
-                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Interview</center></font></td></tr></table>
+                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Leetcode 2407</center></font></td></tr></table>
               </div>
           
 
@@ -493,12 +948,12 @@
       
         
 	  
-        <p><img src="/images/ALGORITHM/interview13.png" alt="1"></p>
-<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size=5 color=red>题目分析</font></h1><p>&emsp;&emsp; 这个题目是我在学习一维逆序对时，有一个同学提问二维逆序对如何求解时发现的，他说在面试某厂时，面试官提出的问题。我的天，现在的面试手撕代码已经这么BT了吗？一维逆序对还不行？？？我思考了一下，没写出来，因此也算是我自己的一个学习机会。</p>   
+        <p><img src="/images/ALGORITHM/leetcode2407.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size=5 color=red>题目分析</font></h1><p>&emsp;&emsp; 本题是周赛的第四题，题意比较简单，和Leetcode300题非常相似，主要考察小伙伴们一题多解的能力，这个也是我写这些博客的目的。在很多题目里，我都会写出某个题的多种解法，如果第300题，小伙伴们只掌握了单调栈+二分的做法，那么本题是无法求解的。小伙伴们可以去看一下<a href="https://ustccoder.github.io/2020/08/30/program%20Leetcode300/">最长递增子序列</a>的其他解法，然后试着写出本题。</p>   
 
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2022/09/12/program%20Interview13/" rel="contents">
+            <a class="btn" href="/2022/10/17/program%20Leetcode2407/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -553,7 +1008,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2022/09/10/program%20Leetcode239/">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2022/10/14/program%20Leetcode42/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="USTCcoder">
@@ -572,7 +1027,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2022/09/10/program%20Leetcode239/" itemprop="url">滑动窗口最大值(Leetcode 239)</a></h1>
+                <a class="post-title-link" href="/2022/10/14/program%20Leetcode42/" itemprop="url">接雨水(Leetcode 42)</a></h1>
         
 
         <div class="post-meta">
@@ -584,8 +1039,485 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-09-10T23:24:43+08:00">
-                2022-09-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-10-14T20:05:30+08:00">
+                2022-10-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index">
+                    <span itemprop="name">刷题记录</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E6%A8%A1%E6%8B%9F/" itemprop="url" rel="index">
+                    <span itemprop="name">模拟</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" itemprop="url" rel="index">
+                    <span itemprop="name">动态规划</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E5%8D%95%E8%B0%83%E6%A0%88-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" itemprop="url" rel="index">
+                    <span itemprop="name">单调栈/单调队列</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3-%E5%8F%8C%E6%8C%87%E9%92%88/" itemprop="url" rel="index">
+                    <span itemprop="name">滑动窗口/双指针</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2022/10/14/program%20Leetcode42/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2022/10/14/program%20Leetcode42/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.6k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Leetcode 42</center></font></td></tr></table>
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+	  
+        <p><img src="/images/ALGORITHM/leetcode42.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size=5 color=red>题目分析</font></h1><p>&emsp;&emsp; 这个题目也是一个经典的算法题了，先简单给大家介绍一下题意，就是雨水类似于放在一个山谷里，如果左右都有高的地方，则可以放入水。本题有多种做法，小伙伴们可以先思考一下。</p>   
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2022/10/14/program%20Leetcode42/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2022/10/11/program%20Leetcode679/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="USTCcoder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/github.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GitHub">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2022/10/11/program%20Leetcode679/" itemprop="url">24 点游戏(Leetcode 679)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-10-11T19:40:44+08:00">
+                2022-10-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index">
+                    <span itemprop="name">刷题记录</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E6%A8%A1%E6%8B%9F/" itemprop="url" rel="index">
+                    <span itemprop="name">模拟</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index">
+                    <span itemprop="name">数学</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E9%80%92%E5%BD%92/" itemprop="url" rel="index">
+                    <span itemprop="name">递归</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2022/10/11/program%20Leetcode679/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2022/10/11/program%20Leetcode679/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  605
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Leetcode 679</center></font></td></tr></table>
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+	  
+        <p><img src="/images/ALGORITHM/leetcode679.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size=5 color=red>题目分析</font></h1><p>&emsp;&emsp; 本题是一个大家都玩过的扑克游戏，小时候为了锻炼计算能力，家长和老师经常用扑克牌比赛，看谁能够使用四张牌迅速通过加减乘除得到24。</p>   
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2022/10/11/program%20Leetcode679/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2022/10/09/program%20Leetcode857/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="USTCcoder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/github.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GitHub">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2022/10/09/program%20Leetcode857/" itemprop="url">雇佣 K 名工人的最低成本(Leetcode 857)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-10-09T22:08:45+08:00">
+                2022-10-09
               </time>
             
 
@@ -625,39 +1557,6 @@
 
                 
                 
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E6%95%B0%E7%BB%84/" itemprop="url" rel="index">
-                    <span itemprop="name">数组</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3-%E5%8F%8C%E6%8C%87%E9%92%88/" itemprop="url" rel="index">
-                    <span itemprop="name">滑动窗口/双指针</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E5%8D%95%E8%B0%83%E6%A0%88-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" itemprop="url" rel="index">
-                    <span itemprop="name">单调栈/单调队列</span>
-                  </a>
-                </span>
-
-                
-                
               
             </span>
           
@@ -669,8 +1568,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2022/09/10/program%20Leetcode239/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2022/09/10/program%20Leetcode239/" itemprop="commentCount"></span>
+                <a href="/2022/10/09/program%20Leetcode857/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2022/10/09/program%20Leetcode857/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -694,7 +1593,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.3k
+                  684
                 </span>
               
 
@@ -710,7 +1609,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5
+                  2
                 </span>
               
             </div>
@@ -718,7 +1617,7 @@
 
           
               <div class="post-description">
-                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Leetcode 239</center></font></td></tr></table>
+                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Leetcode 857</center></font></td></tr></table>
               </div>
           
 
@@ -737,12 +1636,12 @@
       
         
 	  
-        <p><img src="/images/ALGORITHM/leetcode239.png" alt="1"></p>
-<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size=5 color=red>题目分析</font></h1><p>&emsp;&emsp; 这个问题也是经典的算法之一了，也是图像处理或者信号处理中常常需要处理的问题。解法并不困难，能否找到最好的求解方法是这个题目的关键，小伙伴们先想一想如何解答。在两年前做过本题，今天又遇到他了，补充一下java的题解和使用堆的做法。</p>   
+        <p><img src="/images/ALGORITHM/leetcode857.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size=5 color=red>题目分析</font></h1><p>&emsp;&emsp; 想要求解本题，首先要明白本题的意思，理解题意的时间可能比求解本题还要困难。题意是说每个人都有一个工作质量quality，如果一个人的工作质量是另一个人的两倍，那么他的工资也至少是他的两倍，且要满足最低工资。</p>   
 
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2022/09/10/program%20Leetcode239/" rel="contents">
+            <a class="btn" href="/2022/10/09/program%20Leetcode857/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -797,7 +1696,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2022/09/07/program%20Leetcode782/">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2022/10/07/program%20Leetcode2421/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="USTCcoder">
@@ -816,7 +1715,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2022/09/07/program%20Leetcode782/" itemprop="url">变为棋盘(Leetcode 782)</a></h1>
+                <a class="post-title-link" href="/2022/10/07/program%20Leetcode2421/" itemprop="url">好路径的数目(Leetcode 2421)</a></h1>
         
 
         <div class="post-meta">
@@ -828,8 +1727,441 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-09-07T23:55:58+08:00">
-                2022-09-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-10-07T00:38:32+08:00">
+                2022-10-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index">
+                    <span itemprop="name">刷题记录</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E5%B9%B6%E6%9F%A5%E9%9B%86/" itemprop="url" rel="index">
+                    <span itemprop="name">并查集</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2022/10/07/program%20Leetcode2421/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2022/10/07/program%20Leetcode2421/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  681
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Leetcode 2421</center></font></td></tr></table>
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+	  
+        <p><img src="/images/ALGORITHM/leetcode2421.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size=5 color=red>题目分析</font></h1><p>&emsp;&emsp; 本题是第312场周赛的最后一题，题目的难度比较大，不要求小伙伴能够在第一次遇到时就能成功求解出来，但是要理解本题的思想。</p>   
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2022/10/07/program%20Leetcode2421/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2022/10/04/program%20Leetcode2402/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="USTCcoder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/github.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GitHub">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2022/10/04/program%20Leetcode2402/" itemprop="url">会议室 III(Leetcode 2402)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-10-04T23:39:40+08:00">
+                2022-10-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index">
+                    <span itemprop="name">刷题记录</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E6%A8%A1%E6%8B%9F/" itemprop="url" rel="index">
+                    <span itemprop="name">模拟</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E5%A0%86/" itemprop="url" rel="index">
+                    <span itemprop="name">堆</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2022/10/04/program%20Leetcode2402/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2022/10/04/program%20Leetcode2402/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  699
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Leetcode 2402</center></font></td></tr></table>
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+	  
+        <p><img src="/images/ALGORITHM/leetcode2402.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size=5 color=red>题目分析</font></h1><p>&emsp;&emsp; 本题是周赛的第四题，思路还是比较清晰的，跟着样例模拟一下就能解答。</p>   
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2022/10/04/program%20Leetcode2402/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2022/10/02/program%20Leetcode2401/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="USTCcoder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/github.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GitHub">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2022/10/02/program%20Leetcode2401/" itemprop="url">最长优雅子数组(Leetcode 2401)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-10-02T23:39:16+08:00">
+                2022-10-02
               </time>
             
 
@@ -873,8 +2205,208 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E6%A8%A1%E6%8B%9F/" itemprop="url" rel="index">
-                    <span itemprop="name">模拟</span>
+                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3-%E5%8F%8C%E6%8C%87%E9%92%88/" itemprop="url" rel="index">
+                    <span itemprop="name">滑动窗口/双指针</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2022/10/02/program%20Leetcode2401/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2022/10/02/program%20Leetcode2401/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  481
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Leetcode 2401</center></font></td></tr></table>
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+	  
+        <p><img src="/images/ALGORITHM/leetcode2401.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size=5 color=red>题目分析</font></h1><p>&emsp;&emsp; 本题是周赛的第三题，我感觉比第二题简单。本周的双周赛最后一题就是双指针，这又来了一题双指针，希望小伙伴们可以好好掌握双指针的解题模板。</p>   
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2022/10/02/program%20Leetcode2401/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2022/09/30/program%20Leetcode2400/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="USTCcoder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/github.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GitHub">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2022/09/30/program%20Leetcode2400/" itemprop="url">恰好移动 k 步到达某一位置的方法数目(Leetcode 2400)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-09-30T23:16:48+08:00">
+                2022-09-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index">
+                    <span itemprop="name">刷题记录</span>
                   </a>
                 </span>
 
@@ -891,6 +2423,17 @@
 
                 
                 
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" itemprop="url" rel="index">
+                    <span itemprop="name">动态规划</span>
+                  </a>
+                </span>
+
+                
+                
               
             </span>
           
@@ -902,8 +2445,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2022/09/07/program%20Leetcode782/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2022/09/07/program%20Leetcode782/" itemprop="commentCount"></span>
+                <a href="/2022/09/30/program%20Leetcode2400/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2022/09/30/program%20Leetcode2400/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -927,240 +2470,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.1k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-              <div class="post-description">
-                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Leetcode 782</center></font></td></tr></table>
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-	  
-        <p><img src="/images/ALGORITHM/leetcode782.png" alt="1"></p>
-<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size=5 color=red>题目分析</font></h1><p>&emsp;&emsp; 遇到本题，我们先思考应该如何交换，能否先交换列，然后再交换行？交换列时有什么特征，交换行有什么特征？</p>   
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2022/09/07/program%20Leetcode782/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2022/09/06/program%20Leetcode652/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="USTCcoder">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/github.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GitHub">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2022/09/06/program%20Leetcode652/" itemprop="url">寻找重复的子树(Leetcode 652)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-09-06T22:41:58+08:00">
-                2022-09-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index">
-                    <span itemprop="name">刷题记录</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E6%A0%91/" itemprop="url" rel="index">
-                    <span itemprop="name">树</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E5%93%88%E5%B8%8C%E8%A1%A8/" itemprop="url" rel="index">
-                    <span itemprop="name">哈希表</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E9%80%92%E5%BD%92/" itemprop="url" rel="index">
-                    <span itemprop="name">递归</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2022/09/06/program%20Leetcode652/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2022/09/06/program%20Leetcode652/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                  <span class="post-meta-divider">|</span>
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.1k
+                  1.2k
                 </span>
               
 
@@ -1184,7 +2494,7 @@
 
           
               <div class="post-description">
-                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Leetcode 652</center></font></td></tr></table>
+                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Leetcode 2400</center></font></td></tr></table>
               </div>
           
 
@@ -1203,1320 +2513,12 @@
       
         
 	  
-        <p><img src="/images/ALGORITHM/leetcode652.png" alt="1"></p>
-<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size=5 color=red>题目分析</font></h1><p>&emsp;&emsp; Leetcode的每日一题是这个题目，翻了一下当时的博客，发现这是很早以前做过的题目了。第一次做是在两年前了。这个题目还是比较复杂的，这一次还是没有想到最优的解法。能想到的方法是记录所有子树的结构，然后将结构序列化存入字典中，并记录每个结构出现的次数，当次数大于1说明有重复的结构。我们就在python的基础上补充java的题解吧。</p>   
+        <p><img src="/images/ALGORITHM/leetcode2400.png" alt="1"></p>
+<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size=5 color=red>题目分析</font></h1><p>&emsp;&emsp; 本题是周赛的第二题，有两种思路，虽然是一个mid题目，但是我觉得难度还是相当大的，小伙伴们能否想出$ O(n^2) $的解法呢，能否再进一步想出更优的解法呢？</p>   
 
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2022/09/06/program%20Leetcode652/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2022/09/03/data_linked_list/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="USTCcoder">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/github.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GitHub">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2022/09/03/data_linked_list/" itemprop="url">链表</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-09-03T14:55:06+08:00">
-                2022-09-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构和算法</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%83%A8%E5%88%86/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构部分</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2022/09/03/data_linked_list/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2022/09/03/data_linked_list/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                  <span class="post-meta-divider">|</span>
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  3.8k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  15
-                </span>
-              
-            </div>
-          
-
-          
-              <div class="post-description">
-                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>链表</center></font></td></tr></table>
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-	  
-          <div class="out-img-topic">
-            <img src=/images/ALGORITHM/linked_list.png class="img-topic" />
-          </div>
-          
-        <p><strong><font size=5 color=gray><center>链表</center></font></strong></p>
-<h1 id="链表介绍"><a href="#链表介绍" class="headerlink" title="链表介绍"></a>链表介绍</h1><p>&emsp;&emsp;<strong>链表(Linked List)</strong>:链表是一种非常基础的数据结构，链表的实现和数组不同，链表中的元素是一个个的节点，不是存放在连续的地址空间中的，当需要添加元素时，在最后一个节点的尾部添加一个节点即可。C++中的list、以及Java中的LinkedList，都是链表，当时只是讲解了链表的使用，并没有讲解实现和源码。我们今天从增、删、改、查入手，详细讲解一下链表的源码。</p>   
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2022/09/03/data_linked_list/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2022/08/31/program%20Leetcode315/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="USTCcoder">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/github.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GitHub">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2022/08/31/program%20Leetcode315/" itemprop="url">计算右侧小于当前元素的个数(Leetcode 315)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-08-31T12:16:11+08:00">
-                2022-08-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index">
-                    <span itemprop="name">刷题记录</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E5%88%86%E6%B2%BB/" itemprop="url" rel="index">
-                    <span itemprop="name">分治</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E6%95%B0%E7%BB%84/" itemprop="url" rel="index">
-                    <span itemprop="name">数组</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2022/08/31/program%20Leetcode315/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2022/08/31/program%20Leetcode315/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                  <span class="post-meta-divider">|</span>
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.1k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  5
-                </span>
-              
-            </div>
-          
-
-          
-              <div class="post-description">
-                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Leetcode 315</center></font></td></tr></table>
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-	  
-        <p><img src="/images/ALGORITHM/leetcode315.png" alt="1"></p>
-<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size=5 color=red>题目分析</font></h1><p>&emsp;&emsp; 在前面刚刚讲解完逆序对，下面就来了一题类似的题目，这个题目比逆序对稍微又困难了一点，暴力算法肯定是不能做出来了，还是两种方法，分治算法和树状数组，小伙伴们尝试一下如何求解，有困难的小伙伴可以参考<a href="https://ustccoder.github.io/2022/08/28/program%20Leetcode_offer51/">逆序对</a></p>   
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2022/08/31/program%20Leetcode315/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2022/08/28/program%20Leetcode_offer51/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="USTCcoder">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/github.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GitHub">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2022/08/28/program%20Leetcode_offer51/" itemprop="url">数组中的逆序对(Leetcode 剑指Offer51)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-08-28T00:35:22+08:00">
-                2022-08-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index">
-                    <span itemprop="name">刷题记录</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E5%88%86%E6%B2%BB/" itemprop="url" rel="index">
-                    <span itemprop="name">分治</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" itemprop="url" rel="index">
-                    <span itemprop="name">树状数组</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2022/08/28/program%20Leetcode_offer51/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2022/08/28/program%20Leetcode_offer51/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                  <span class="post-meta-divider">|</span>
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.5k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  6
-                </span>
-              
-            </div>
-          
-
-          
-              <div class="post-description">
-                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Leetcode 剑指Offer51</center></font></td></tr></table>
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-	  
-        <p><img src="/images/ALGORITHM/leetcodeoffer51.png" alt="1"></p>
-<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size=5 color=red>题目分析</font></h1><p>&emsp;&emsp; 这个题目还有一种另外的表达方式，交换两个相邻数，使得数组有序的最少交换次数，两个题目的意思是相同的，都是寻找逆序数的对数。这个题目最早是2020年写的题解，后面随着学习的深入，掌握了一些更高级的数据结构，可以有另外的思路求解本题，对这篇博客进行补充。</p>   
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2022/08/28/program%20Leetcode_offer51/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2022/08/25/program%20Leetcode1224/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="USTCcoder">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/github.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GitHub">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2022/08/25/program%20Leetcode1224/" itemprop="url">最大相等频率(Leetcode 1224)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-08-25T23:21:31+08:00">
-                2022-08-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index">
-                    <span itemprop="name">刷题记录</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E6%A8%A1%E6%8B%9F/" itemprop="url" rel="index">
-                    <span itemprop="name">模拟</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E5%93%88%E5%B8%8C%E8%A1%A8/" itemprop="url" rel="index">
-                    <span itemprop="name">哈希表</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2022/08/25/program%20Leetcode1224/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2022/08/25/program%20Leetcode1224/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                  <span class="post-meta-divider">|</span>
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  701
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-              <div class="post-description">
-                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Leetcode 1224</center></font></td></tr></table>
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-	  
-        <p><img src="/images/ALGORITHM/leetcode1224.png" alt="1"></p>
-<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size=5 color=red>题目分析</font></h1><p>&emsp;&emsp; 又是一个困难题，遇到困难题目，我们先模拟结果。是不是要记录每一个元素出现的次数，然后比较次数是否除了一个数，剩下的均相等？</p>
-<p>按照我们的思路，**时间复杂度是O(n^2)**，但是数据量是1e5，因此我们要想一下如何优化。</p>   
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2022/08/25/program%20Leetcode1224/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2022/08/20/data_array_list/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="USTCcoder">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/github.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GitHub">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2022/08/20/data_array_list/" itemprop="url">动态数组</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-08-20T22:45:41+08:00">
-                2022-08-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构和算法</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%83%A8%E5%88%86/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构部分</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2022/08/20/data_array_list/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2022/08/20/data_array_list/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                  <span class="post-meta-divider">|</span>
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  3.4k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  14
-                </span>
-              
-            </div>
-          
-
-          
-              <div class="post-description">
-                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>动态数组</center></font></td></tr></table>
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-	  
-          <div class="out-img-topic">
-            <img src=/images/ALGORITHM/array_list.png class="img-topic" />
-          </div>
-          
-        <p><strong><font size=5 color=gray><center>动态数组</center></font></strong></p>
-<h1 id="动态数组介绍"><a href="#动态数组介绍" class="headerlink" title="动态数组介绍"></a>动态数组介绍</h1><p>&emsp;&emsp;<strong>动态数组(Dynamic array)</strong>:动态数组是一种非常基础的数据结构，指的是大小可以变化的数组。之前在讲语言基础的时候，Python中的list、C++中的vector、以及Java中的ArrayList，都是动态数组，当时只是讲解了动态数组的使用，并没有讲解实现和源码。我们今天从增、删、改、查入手，详细讲解一下动态数组的源码。</p>   
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2022/08/20/data_array_list/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://USTCcoder.github.io/2022/08/18/program%20Leetcode761/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="USTCcoder">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/github.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GitHub">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2022/08/18/program%20Leetcode761/" itemprop="url">特殊的二进制序列(Leetcode 761)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-08-18T00:08:26+08:00">
-                2022-08-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index">
-                    <span itemprop="name">刷题记录</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/%E5%88%86%E6%B2%BB/" itemprop="url" rel="index">
-                    <span itemprop="name">分治</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2022/08/18/program%20Leetcode761/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2022/08/18/program%20Leetcode761/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                  <span class="post-meta-divider">|</span>
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  828
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-              <div class="post-description">
-                  <table><tr><td bgcolor=grey><font size=5 face="STXihei" color=white><center>Leetcode 761</center></font></td></tr></table>
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-	  
-        <p><img src="/images/ALGORITHM/leetcode761.png" alt="1"></p>
-<h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a><font size=5 color=red>题目分析</font></h1><p>&emsp;&emsp; 我们看到困难题，首先要有信心去解决它，要向之前做过的题目靠近。本题特殊的二进制序列，本质上就是括号的匹配问题，合法的括号表达式是怎么样的？是不是左括号和右括号相等，如果将左括号类比1，右括号类比0，是不是每一个前缀码中的1要大于等于0？</p>   
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2022/08/18/program%20Leetcode761/" rel="contents">
+            <a class="btn" href="/2022/09/30/program%20Leetcode2400/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2562,7 +2564,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/">&lt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/41/">41</a><a class="extend next" rel="next" href="/page/7/">&gt;</a>
+    <a class="extend prev" rel="prev" href="/page/5/">&lt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/43/">43</a><a class="extend next" rel="next" href="/page/7/">&gt;</a>
   </nav>
 
 
@@ -2612,7 +2614,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">410</span>
+                  <span class="site-state-item-count">426</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2623,7 +2625,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">68</span>
+                  <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
